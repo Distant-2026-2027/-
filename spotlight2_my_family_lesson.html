@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Family! — Английский язык, 2 класс (Spotlight 2, 3b)</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', Arial, sans-serif; background:linear-gradient(135deg,#43a047,#00897b); min-height:100vh; padding:15px; }
+  .wrap { max-width:900px; margin:0 auto; }
+  header { background:#fff; border-radius:18px; padding:18px 20px; text-align:center; margin-bottom:15px; box-shadow:0 4px 14px rgba(0,0,0,.15); }
+  header h1 { color:#e65100; font-size:30px; }
+  header .sub { color:#555; font-size:16px; margin-top:4px; }
+  .badge { display:inline-block; background:#ffd600; color:#333; font-weight:bold; padding:4px 14px; border-radius:14px; margin-top:8px; font-size:15px; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:15px; }
+  nav button { border:none; border-radius:14px; padding:10px 14px; font-size:15px; font-weight:bold; cursor:pointer; background:rgba(255,255,255,.85); color:#333; transition:.2s; }
+  nav button.on { background:#ffd600; color:#4e342e; transform:scale(1.06); box-shadow:0 3px 8px rgba(0,0,0,.25); }
+  section { display:none; background:#fff; border-radius:18px; padding:22px; box-shadow:0 4px 14px rgba(0,0,0,.15); }
+  section.on { display:block; animation:pop .25s; }
+  @keyframes pop { from{transform:scale(.97); opacity:0;} to{transform:scale(1); opacity:1;} }
+  h2 { color:#00695c; margin-bottom:12px; font-size:24px; }
+  p, li { font-size:17px; line-height:1.55; }
+  .btn { display:inline-block; background:#00897b; color:#fff; border:none; border-radius:14px; padding:11px 20px; font-size:16px; font-weight:bold; cursor:pointer; margin:6px 6px 6px 0; transition:.15s; }
+  .btn:hover { background:#00695c; }
+  .btn.y { background:#ff9800; } .btn.y:hover { background:#f57c00; }
+  .note { background:#fff8e1; border-left:5px solid #ffb300; padding:10px 14px; border-radius:8px; margin:12px 0; font-size:15px; }
+  /* слова */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+  .card { background:linear-gradient(160deg,#e0f2f1,#ffffff); border:2px solid #b2dfdb; border-radius:16px; padding:14px 10px; text-align:center; cursor:pointer; transition:.15s; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 6px 14px rgba(0,0,0,.18); border-color:#00897b; }
+  .card .em { font-size:42px; }
+  .card .w { font-weight:bold; color:#00695c; font-size:17px; margin-top:4px; }
+  .card .t { font-size:13px; color:#777; }
+  .card .r { font-size:13px; color:#e65100; margin-top:2px; }
+  .card.playing { background:#fff9c4; border-color:#ffd600; }
+  .hint { font-size:13px; color:#777; text-align:center; margin-top:8px; }
+  /* таблицы */
+  table { border-collapse:collapse; width:100%; margin:10px 0; }
+  th, td { border:1px solid #cfd8dc; padding:8px 10px; font-size:15px; text-align:left; vertical-align:top; }
+  th { background:#e0f2f1; color:#00695c; }
+  /* диалог */
+  .line { padding:10px 14px; border-radius:14px; margin:8px 0; max-width:88%; cursor:pointer; font-size:17px; }
+  .line:hover { filter:brightness(.97); }
+  .l1 { background:#e1f5fe; margin-left:0; }
+  .l2 { background:#fff3e0; margin-left:auto; }
+  .who { font-weight:bold; font-size:14px; color:#555; display:block; }
+  .tr { font-size:13px; color:#777; margin-top:2px; display:none; }
+  .line.open .tr { display:block; }
+  /* игры */
+  .qbox { background:#f1f8e9; border:2px solid #c5e1a5; border-radius:14px; padding:14px; margin:12px 0; }
+  .qbox .q { font-size:17px; margin-bottom:8px; }
+  .opt { display:inline-block; background:#fff; border:2px solid #aed581; border-radius:12px; padding:9px 16px; margin:4px 6px 0 0; cursor:pointer; font-size:16px; transition:.15s; }
+  .opt:hover { background:#e8f5e9; }
+  .opt.ok { background:#c8e6c9; border-color:#2e7d32; font-weight:bold; }
+  .opt.bad { background:#ffcdd2; border-color:#c62828; }
+  .fb { margin-top:8px; font-weight:bold; min-height:22px; font-size:15px; }
+  .score { font-size:16px; font-weight:bold; color:#00695c; margin-top:10px; }
+  /* конструктор */
+  .pick { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; }
+  .pick .opt.sel { background:#b2ebf2; border-color:#00897b; font-weight:bold; }
+  input.txt { border:2px solid #b2dfdb; border-radius:10px; padding:8px 12px; font-size:16px; width:150px; margin:4px 6px 4px 0; }
+  .story { background:#e0f7fa; border-radius:14px; padding:14px; margin-top:10px; font-size:17px; display:none; }
+  /* тест */
+  .tq { margin:14px 0; }
+  .tq .qt { font-weight:bold; font-size:16px; margin-bottom:6px; }
+  .tq .opt { margin:3px 6px 0 0; }
+  .medal { text-align:center; font-size:34px; font-weight:bold; padding:14px; border-radius:14px; display:none; }
+  /* физкультминутка */
+  .dance { text-align:center; font-size:19px; background:#fce4ec; border-radius:14px; padding:16px; margin:12px 0; }
+  footer { text-align:center; color:rgba(255,255,255,.85); font-size:13px; margin-top:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🏠 My Family! Моя семья 💛</h1>
+    <div class="sub">Знакомимся с семьёй Ларри и Лулу и рассказываем о своей · Spotlight 2, юнит 3b</div>
+    <span class="badge">Английский язык · 2 класс</span>
+  </header>
+
+  <nav id="nav"></nav>
+
+  <section id="s0">
+    <h2>🎯 Цель урока</h2>
+    <p><b>Тема:</b> «Моя семья. Дом, в котором я живу» — Spotlight 2, урок 3b «My Family!» (с. 22–23) + блок «Мой дом».</p>
+    <p><b>Сегодня мы:</b></p>
+    <ul style="margin:8px 0 8px 22px;">
+      <li>учим слова о семье: mummy, daddy, brother, sister, grandma, grandpa, family;</li>
+      <li>знакомимся с домом: house, flat, kitchen, bedroom, living room, garden;</li>
+      <li>учимся представлять семью: <i>This is my mummy.</i> и спрашивать: <i>Who's this?</i></li>
+      <li>играем, слушаем диалог Ларри и Лулу и говорим сами!</li>
+    </ul>
+    <table>
+      <tr><th>Результаты (ФГОС)</th><th>Чему научится ученик</th></tr>
+      <tr><td><b>Предметные</b></td><td>Называет членов семьи и комнаты дома по-английски; представляет родных конструкцией This is my…; понимает вопросы Who's this? и отвечает на них.</td></tr>
+      <tr><td><b>Метапредметные</b></td><td>Слушает собеседника, работает по образцу, проверяет себя и оценивает свой результат.</td></tr>
+      <tr><td><b>Личностные</b></td><td>Любит и уважает свою семью, гордится своим домом, радуется успехам.</td></tr>
+    </table>
+    <div class="dance">🎈 <b>Правило урока:</b> нажимай на слова и реплики — они умеют говорить! Слушай и повторяй вслух.</div>
+  </section>
+
+  <section id="s1">
+    <h2>📖 Новые слова</h2>
+    <p style="margin-bottom:10px;">Нажми на карточку — слово прозвучит <b>два раза</b>: сначала медленно, потом как обычно. Повторяй вслух!</p>
+    <div class="grid" id="words1"></div>
+    <h2 style="margin-top:22px;">🏠 Мой дом</h2>
+    <div class="grid" id="words2"></div>
+    <div class="note">💡 <b>Подсказка:</b> слово <i>family</i> читается «фэ́мили», а <i>house</i> — «ха́ус». Не путай: <i>flat</i> — это квартира (внутри), а <i>house</i> — целый дом (снаружи).</div>
+    <div class="hint">👆 Нажми — и послушай!</div>
+  </section>
+
+  <section id="s2">
+    <h2>💬 Полезные фразы</h2>
+    <p>Так мы представляем свою семью и спрашиваем о чужой:</p>
+    <table>
+      <tr><th>Фраза</th><th>Как сказать</th><th>Когда используем</th></tr>
+      <tr><td><b>This is my mummy.</b></td><td>«зис из май ма́ми»</td><td>Представляем маму</td></tr>
+      <tr><td><b>This is my daddy.</b></td><td>«зис из май дэ́ди»</td><td>Представляем папу</td></tr>
+      <tr><td><b>This is my sister.</b></td><td>«зис из май си́стэ»</td><td>Представляем сестру</td></tr>
+      <tr><td><b>Who's this?</b></td><td>«ху́з зис?»</td><td>Спрашиваем: «Кто это?»</td></tr>
+      <tr><td><b>This is my brother.</b></td><td>«зис из май брэ́за»</td><td>Отвечаем про брата</td></tr>
+      <tr><td><b>I love my family!</b></td><td>«ай лав май фэ́мили»</td><td>«Я люблю свою семью!»</td></tr>
+      <tr><td><b>This is my house.</b></td><td>«зис из май ха́ус»</td><td>Показываем свой дом</td></tr>
+    </table>
+    <div class="note">📌 <b>Грамматика-помощница:</b> This is… = «Это…». Слово <i>my</i> — «мой/моя/моё»: my mummy — «моя мама». Нажимай на фразы в таблице, чтобы послушать!</div>
+    <button class="btn" onclick="speakPhrases()">🔊 Прослушать все фразы</button>
+  </section>
+
+  <section id="s3">
+    <h2>🗣 Диалог: Ларри и Лулу показывают дом</h2>
+    <p>Ларри и Лулу — брат и сестра. Они показывают свою семью и дом. Нажми на реплику — она прозвучит. Нажми ещё раз — увидишь перевод.</p>
+    <div id="dialog"></div>
+    <button class="btn y" onclick="speakDialog()">🔊 Прослушать весь диалог</button>
+    <div class="qbox" style="margin-top:14px;">
+      <div class="q">❓ Проверь себя: кто показал спальню? Кто сказал «I love my family!»?</div>
+      <span class="opt" onclick="pickD(this,0)">Лулу и Ларри</span>
+      <span class="opt" onclick="pickD(this,1)">Няня Шайн и Чаклз</span>
+      <span class="opt" onclick="pickD(this,2)">Мистер Панч</span>
+      <div class="fb" id="dfb"></div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2>🎲 Игра 1: «Кто это?»</h2>
+    <p>Прочитай загадку и выбери, о ком или о чём она. За каждый правильный ответ — балл!</p>
+    <div id="g1"></div>
+    <div class="score">⭐ Баллы: <span id="g1s">0</span> / 8</div>
+  </section>
+
+  <section id="s5">
+    <h2>🧩 Игра 2: «Вставь слово»</h2>
+    <p>Выбери правильное слово, чтобы закончить предложение.</p>
+    <div id="g2"></div>
+    <div class="score">⭐ Баллы: <span id="g2s">0</span> / 8</div>
+  </section>
+
+  <section id="s6">
+    <h2>🎤 Говори сам: рассказ о моей семье</h2>
+    <p>Выбери трёх членов семьи, напиши их имена, выбери, какой у тебя дом — и получи свой рассказ. Его можно послушать целиком!</p>
+    <p><b>Шаг 1.</b> Кто есть в твоей семье? (выбери 3)</p>
+    <div class="pick" id="famPick"></div>
+    <p><b>Шаг 2.</b> Как их зовут? (напиши по-русски или по-английски)</p>
+    <div>
+      <input class="txt" id="n1" placeholder="Имя №1"><input class="txt" id="n2" placeholder="Имя №2"><input class="txt" id="n3" placeholder="Имя №3">
+    </div>
+    <p><b>Шаг 3.</b> Твой дом — какой он?</p>
+    <div class="pick" id="housePick"></div>
+    <button class="btn y" onclick="makeStory()">✨ Собрать мой рассказ</button>
+    <div class="story" id="storyOut"></div>
+  </section>
+
+  <section id="s7">
+    <h2>🤸 Физкультминутка</h2>
+    <p>Встаём и показываем движениями! Учитель говорит — мы делаем:</p>
+    <div class="dance">🤸 <b>Jump like a brother!</b> — прыгаем<br>💃 <b>Dance like a sister!</b> — танцуем<br>🧗 <b>Climb like a grandpa!</b> — тянемся вверх<br>🚶 <b>Walk like a mummy!</b> — шагаем важно<br>🏠 <b>Stop! This is my house!</b> — показываем крышу руками</div>
+    <p>А теперь слушай и повторяй хором: <i>Mummy, daddy, brother, sister, grandma, grandpa — family!</i></p>
+  </section>
+
+  <section id="s8">
+    <h2>✏️ Тест: проверь себя</h2>
+    <p>10 вопросов. За 9–10 правильных — золотая медаль! 🥇</p>
+    <div id="test"></div>
+    <button class="btn" onclick="checkTest()">✅ Проверить ответы</button>
+    <div class="score">⭐ Результат: <span id="tscore">0</span> / 10</div>
+    <div class="medal" id="medal"></div>
+  </section>
+
+  <section id="s9">
+    <h2>🏠 Домашнее задание</h2>
+    <table>
+      <tr><th>Задание</th><th>Что сделать</th><th>Критерий успеха</th></tr>
+      <tr><td>📖 Основное</td><td>Нарисуй свою семью и подпиши каждого: This is my mummy, This is my daddy…</td><td>Подписаны минимум 4 члена семьи, слова написаны без ошибок</td></tr>
+      <tr><td>⭐ Со звёздочкой</td><td>Нарисуй «дом мечты» и подпиши комнаты: kitchen, bedroom, living room, garden. Расскажи о нём одному предложению: This is my house!</td><td>Нарисован дом и подписаны хотя бы 2 комнаты</td></tr>
+      <tr><td>🔁 Повторение</td><td>Прочитай слова урока вслух три раза: сначала медленно, потом быстро. Кто быстрее — ты или урок? 😄</td><td>Все 13 слов прочитаны вслух</td></tr>
+    </table>
+    <div class="note">🌟 Покажи рисунок семье и попроси её сказать: <i>This is my family — I love my family!</i></div>
+    <p><b>Итог урока:</b> теперь ты умеешь представлять свою семью по-английски и называть дом. Молодец!</p>
+  </section>
+
+  <footer>Интерактивный урок · Spotlight 2, юнит 3b «My Family!» · По ФГОС и ФРП · Работает офлайн</footer>
+</div>
+
+<script>
+var VOICE = null;
+function pickVoice(){
+  var vs = speechSynthesis.getVoices();
+  for (var i=0;i<vs.length;i++){ if(/en[-_](GB|US)/i.test(vs[i].lang)){ VOICE=vs[i]; break; } }
+}
+if (typeof speechSynthesis !== 'undefined'){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(t, slow, cb){
+  if (typeof speechSynthesis === 'undefined'){ if(cb)cb(); return; }
+  speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(t);
+  u.lang = 'en-GB'; u.rate = slow ? 0.55 : 0.92; if (VOICE) u.voice = VOICE;
+  u.onend = function(){ if(cb)cb(); };
+  speechSynthesis.speak(u);
+}
+function sayWord(t, el){
+  speak(t, true, function(){ speak(t, false, function(){ if(el) setTimeout(function(){ el.classList.remove('playing'); }, 400); }); });
+  if (el) el.classList.add('playing');
+}
+
+var FAM = [
+  ['👩','mummy','/ˈmʌmi/','ма́ми','мама'],
+  ['👨','daddy','/ˈdædi/','дэ́ди','папа'],
+  ['👦','brother','/ˈbrʌðə(r)/','брэ́за','брат'],
+  ['👧','sister','/ˈsɪstə(r)/','си́стэ','сестра'],
+  ['👵','grandma','/ˈɡrænmɑː/','грэ́нма','бабушка'],
+  ['👴','grandpa','/ˈɡrænpɑː/','грэ́нпа','дедушка'],
+  ['👨‍👩‍👧‍👦','family','/ˈfæməli/','фэ́мили','семья']
+];
+var HOUSE = [
+  ['🏠','house','/haʊs/','ха́ус','дом'],
+  ['🏢','flat','/flæt/','флэт','квартира'],
+  ['🍳','kitchen','/ˈkɪtʃɪn/','ки́чин','кухня'],
+  ['🛋️','living room','/ˈlɪvɪŋ ruːm/','ли́вин рум','гостиная'],
+  ['🛏️','bedroom','/ˈbedruːm/','бэ́друм','спальня'],
+  ['🌳','garden','/ˈɡɑːdən/','га́дэн','сад']
+];
+function cardHTML(a){
+  return '<div class="card" onclick="sayWord(\'' + a[1] + '\', this)"><div class="em">' + a[0] + '</div><div class="w">' + a[1] + '</div><div class="t">' + a[2] + '</div><div class="r">' + a[3] + ' — ' + a[4] + '</div></div>';
+}
+document.getElementById('words1').innerHTML = FAM.map(cardHTML).join('');
+document.getElementById('words2').innerHTML = HOUSE.map(cardHTML).join('');
+
+var PHRASES = ['This is my mummy.','This is my daddy.','This is my sister.','Who is this?','This is my brother.','I love my family!','This is my house.'];
+function speakPhrases(){
+  var i = 0;
+  (function next(){
+    if (i < PHRASES.length){ speak(PHRASES[i], false, function(){ i++; setTimeout(next, 350); }); }
+  })();
+}
+
+var DL = [
+  ['Larry','Look! This is my house!','Смотри! Это мой дом!'],
+  ['Larry','This is my mummy. This is my daddy.','Это моя мама. Это мой папа.'],
+  ['Lulu','Who\'s this?','Кто это?'],
+  ['Larry','This is my grandma. She is kind.','Это моя бабушка. Она добрая.'],
+  ['Lulu','And this is my grandpa. He is funny!','А это мой дедушка. Он весёлый!'],
+  ['Larry','This is my sister. Her name is Lulu!','Это моя сестра. Её зовут Лулу!'],
+  ['Lulu','He-he! And this is my kitchen. I like cakes!','Хи-хи! А это моя кухня. Я люблю пирожные!'],
+  ['Larry','This is my bedroom. Look at my toys!','Это моя спальня. Смотри, какие игрушки!'],
+  ['Lulu','This is the living room. It is big.','Это гостиная. Она большая.'],
+  ['Larry','I love my family!','Я люблю свою семью!']
+];
+document.getElementById('dialog').innerHTML = DL.map(function(l,i){
+  return '<div class="line ' + (i%2 ? 'l2':'l1') + '" onclick="sayLine(' + i + ', this)"><span class="who">' + l[0] + '</span>' + l[1] + '<div class="tr">' + l[2] + '</div></div>';
+}).join('');
+function sayLine(i, el){ speak(DL[i][1], false); el.classList.toggle('open'); }
+function speakDialog(){
+  var i = 0;
+  (function next(){
+    if (i < DL.length){ speak(DL[i][1], false, function(){ i++; setTimeout(next, 400); }); }
+  })();
+}
+function pickD(el, ok){
+  var all = el.parentNode.querySelectorAll('.opt');
+  for (var i=0;i<all.length;i++){ all[i].classList.remove('ok','bad'); all[i].onclick = null; }
+  if (ok){ el.classList.add('ok'); document.getElementById('dfb').textContent = '🎉 Верно!'; speak('Well done!', false); }
+  else { el.classList.add('bad'); document.getElementById('dfb').textContent = 'Попробуй ещё раз! 😉'; }
+}
+
+var G1 = [
+  ['She cooks cakes. She is my mummy\'s mummy. Who is she?',['grandma','daddy','brother']],
+  ['He goes to work. He is my mummy\'s husband. Who is he?',['daddy','sister','grandma']],
+  ['She is little. She is my parents\' daughter. Who is she?',['sister','grandpa','mummy']],
+  ['He is little. He plays with my toys. Who is he?',['brother','mummy','grandma']],
+  ['She is old and kind. She has grey hair. Who is she?',['grandma','sister','daddy']],
+  ['He is old. He reads newspapers. Who is he?',['grandpa','mummy','sister']],
+  ['I sleep in this room. There is my bed. What is it?',['bedroom','kitchen','garden']],
+  ['Mummy cooks dinner here. What is it?',['the kitchen','the garden','the bedroom']]
+];
+(function(){
+  var h = '';
+  G1.forEach(function(q,qi){
+    h += '<div class="qbox" id="q1' + qi + '"><div class="q">' + (qi+1) + '. ' + q[0] + '</div>';
+    q[1].forEach(function(o,oi){ h += '<span class="opt" onclick="pick1(this,' + qi + ',' + oi + ')">' + o + '</span>'; });
+    h += '<div class="fb" id="fb1' + qi + '"></div></div>';
+  });
+  document.getElementById('g1').innerHTML = h;
+})();
+var G1RIGHT = [0,0,0,0,0,0,0,0];
+var G1SCORE = 0;
+function pick1(el,qi,oi){
+  var box = document.getElementById('q1' + qi);
+  var all = box.querySelectorAll('.opt');
+  for (var i=0;i<all.length;i++){ all[i].classList.remove('ok','bad'); }
+  if (oi === G1RIGHT[qi]){
+    el.classList.add('ok');
+    document.getElementById('fb1' + qi).textContent = '🎉 Верно! Звук: ' + el.textContent;
+    speak(el.textContent, false);
+    G1SCORE++;
+    document.getElementById('g1s').textContent = G1SCORE;
+  } else { el.classList.add('bad'); document.getElementById('fb1' + qi).textContent = 'Не то. Попробуй ещё! 😉'; }
+}
+
+var G2 = [
+  ['This is my ___. She cooks pies.',['mummy','daddy','grandpa'],0],
+  ['This is my ___. He is old and funny.',['sister','grandpa','mummy'],1],
+  ['This is my ___. She is little and nice.',['brother','sister','grandma'],1],
+  ['This is my ___. He plays football with me.',['daddy','grandma','sister'],0],
+  ['I have got a big ___. There are four rooms in it.',['house','grandpa','mummy'],0],
+  ['Mummy cooks in the ___.',['kitchen','garden','bedroom'],0],
+  ['I sleep in the ___.',['bedroom','kitchen','living room'],0],
+  ['We watch TV in the ___.',['living room','garden','flat'],0]
+];
+(function(){
+  var h = '';
+  G2.forEach(function(q,qi){
+    h += '<div class="qbox" id="q2' + qi + '"><div class="q">' + (qi+1) + '. ' + q[0] + '</div>';
+    q[1].forEach(function(o,oi){ h += '<span class="opt" onclick="pick2(this,' + qi + ',' + oi + ')">' + o + '</span>'; });
+    h += '<div class="fb" id="fb2' + qi + '"></div></div>';
+  });
+  document.getElementById('g2').innerHTML = h;
+})();
+var G2SCORE = 0;
+function pick2(el,qi,oi){
+  var box = document.getElementById('q2' + qi);
+  var all = box.querySelectorAll('.opt');
+  for (var i=0;i<all.length;i++){ all[i].classList.remove('ok','bad'); }
+  if (oi === G2[qi][2]){
+    el.classList.add('ok');
+    var full = G2[qi][0].replace('___', el.textContent);
+    document.getElementById('fb2' + qi).textContent = '🎉 Верно! «' + full + '»';
+    speak(full, false);
+    G2SCORE++;
+    document.getElementById('g2s').textContent = G2SCORE;
+  } else { el.classList.add('bad'); document.getElementById('fb2' + qi).textContent = 'Не то. Попробуй ещё! 😉'; }
+}
+
+var FCHOICES = ['mummy','daddy','brother','sister','grandma','grandpa'];
+var fSel = [];
+(function(){
+  document.getElementById('famPick').innerHTML = FCHOICES.map(function(f){
+    return '<span class="opt" onclick="toggleFam(this,\'' + f + '\')">' + f + '</span>';
+  }).join('');
+})();
+function toggleFam(el, f){
+  if (fSel.indexOf(f) >= 0){ fSel = fSel.filter(function(x){ return x !== f; }); el.classList.remove('sel'); }
+  else { if (fSel.length >= 3) return; fSel.push(f); el.classList.add('sel'); }
+}
+var HCHOICES = [['big','большой 🏰'],['small','маленький 🏡']];
+var hSel = 'big';
+(function(){
+  document.getElementById('housePick').innerHTML = HCHOICES.map(function(h,i){
+    return '<span class="opt' + (i===0 ? ' sel':'') + '" onclick="pickHouse(this,\'' + h[0] + '\')">' + h[1] + '</span>';
+  }).join('');
+})();
+function pickHouse(el, h){
+  hSel = h;
+  var all = document.getElementById('housePick').querySelectorAll('.opt');
+  for (var i=0;i<all.length;i++) all[i].classList.remove('sel');
+  el.classList.add('sel');
+}
+function makeStory(){
+  if (fSel.length === 0){ alert('Сначала выбери хотя бы одного члена семьи!'); return; }
+  var names = [document.getElementById('n1').value.trim(), document.getElementById('n2').value.trim(), document.getElementById('n3').value.trim()];
+  var parts = ['This is my family.'];
+  fSel.forEach(function(f,i){
+    parts.push('This is my ' + f + '.' + (names[i] ? ' ' + (f==='mummy'||f==='sister'||f==='grandma' ? 'Her name is ' : 'His name is ') + names[i] + '.' : ''));
+  });
+  parts.push('My house is ' + hSel + '.');
+  parts.push('I love my family!');
+  var story = parts.join(' ');
+  var out = document.getElementById('storyOut');
+  out.style.display = 'block';
+  out.innerHTML = '📖 <b>Твой рассказ:</b><br>' + story + '<br><br><button class="btn" id="storyBtn">🔊 Прослушать рассказ</button>';
+  document.getElementById('storyBtn').onclick = function(){
+    var i = 0;
+    (function next(){
+      if (i < parts.length){ speak(parts[i], false, function(){ i++; setTimeout(next, 300); }); }
+    })();
+  };
+}
+
+var TEST = [
+  ['This is my ___. She is my mummy\'s mummy.',['grandma','daddy','brother'],0],
+  ['Who is this? — This is my ___.',''], // dummy handled below
+  ['Как сказать «папа» по-английски?',['daddy','mummy','sister'],0],
+  ['Как сказать «брат»?',['brother','sister','grandma'],0],
+  ['Как сказать «сестра»?',['sister','brother','grandpa'],0],
+  ['«Кухня» — это…',['kitchen','bedroom','garden'],0],
+  ['«Гостиная» — это…',['living room','kitchen','flat'],0],
+  ['«Спальня» — это…',['bedroom','garden','kitchen'],0],
+  ['«Дом» (целый, с крышей) — это…',['house','flat','sister'],0],
+  ['«Я люблю свою семью!» — это…',['I love my family!','This is my family.','Who is my family?'],0],
+  ['Mummy cooks dinner in the…',['kitchen','bedroom','garden'],0]
+];
+TEST.splice(1,1);
+(function(){
+  var h = '';
+  TEST.forEach(function(q,qi){
+    h += '<div class="tq" id="tq' + qi + '"><div class="qt">' + (qi+1) + '. ' + q[0] + '</div>';
+    q[1].forEach(function(o,oi){ h += '<span class="opt" onclick="pickT(this,' + qi + ',' + oi + ')">' + o + '</span>'; });
+    h += '</div>';
+  });
+  document.getElementById('test').innerHTML = h;
+})();
+var TANS = [], TSCORE = 0, TDONE = {};
+TEST.forEach(function(q,i){ TANS.push(q[2]); });
+function pickT(el,qi,oi){
+  if (TDONE[qi]) return;
+  var box = document.getElementById('tq' + qi);
+  var all = box.querySelectorAll('.opt');
+  for (var i=0;i<all.length;i++) all[i].classList.remove('ok','bad');
+  if (oi === TANS[qi]){ el.classList.add('ok'); TDONE[qi] = true; TSCORE++; }
+  else { el.classList.add('bad'); speak('Oops!', false); }
+}
+function checkTest(){
+  document.getElementById('tscore').textContent = TSCORE;
+  var m = document.getElementById('medal');
+  m.style.display = 'block';
+  if (TSCORE >= 9){ m.style.background = '#fff9c4'; m.innerHTML = '🥇 Золотая медаль! Ты — чемпион семьи!'; speak('Well done! Excellent!', false); }
+  else if (TSCORE >= 7){ m.style.background = '#e1f5fe'; m.innerHTML = '🥈 Молодец! Почти золотая медаль!'; speak('Good job!', false); }
+  else { m.style.background = '#fce4ec'; m.innerHTML = '💪 Хорошая попытка! Пройди ещё раз — и медаль твоя!'; speak('Try again! You can do it!', false); }
+}
+
+var TABS = [
+  ['s0','🎯 Цель урока'],['s1','📖 Слова'],['s2','💬 Фразы'],['s3','🗣 Диалог'],
+  ['s4','🎲 Игра 1'],['s5','🧩 Игра 2'],['s6','🎤 Говори сам'],['s7','🤸 Физкультминутка'],
+  ['s8','✏️ Тест'],['s9','🏠 Домашка']
+];
+(function(){
+  var n = document.getElementById('nav');
+  TABS.forEach(function(t,i){
+    var b = document.createElement('button');
+    b.textContent = t[1];
+    b.onclick = function(){ showTab(i); };
+    n.appendChild(b);
+  });
+  showTab(0);
+})();
+function showTab(i){
+  TABS.forEach(function(t,j){
+    document.getElementById(t[0]).classList.toggle('on', j===i);
+    document.getElementById('nav').children[j].classList.toggle('on', j===i);
+  });
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
