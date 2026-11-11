@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotlight 7 — Досуг и увлечения подростка</title>
+<style>
+:root{--violet:#5b3fa8;--violet2:#7b5cc7;--teal:#2bbfae;--yellow:#ffd54d;--bg:#f4f1fb;--card:#ffffff;--ink:#2d2350;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(160deg,#f4f1fb,#e8f7f5);color:var(--ink);padding:12px;max-width:900px;margin:0 auto}
+h1{color:var(--violet);font-size:1.5em;text-align:center;margin:10px 0 4px}
+.sub{text-align:center;color:#6a5b9e;font-size:.95em;margin-bottom:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:14px}
+.tabs button{border:none;border-radius:20px;padding:8px 14px;font-size:.9em;cursor:pointer;background:#e2dcf5;color:var(--violet);font-weight:600;transition:.2s}
+.tabs button.active{background:var(--violet);color:#fff;transform:scale(1.05)}
+.tab{display:none;animation:fade .3s}
+.tab.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(91,63,168,.12)}
+.card h2{color:var(--violet);font-size:1.15em;margin-bottom:10px}
+.badge{display:inline-block;background:var(--teal);color:#fff;border-radius:10px;padding:2px 10px;font-size:.8em;margin-left:6px;vertical-align:middle}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+td,th{border:1px solid #d9d2ef;padding:6px 8px;text-align:left}
+th{background:#efeafc;color:var(--violet)}
+.cat{font-size:.78em;font-weight:700;padding:2px 8px;border-radius:8px;color:#fff;display:inline-block;margin-bottom:4px}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.word{background:#f6f3ff;border:2px solid #d9d2ef;border-radius:12px;padding:8px;cursor:pointer;transition:.15s;text-align:center}
+.word:hover{border-color:var(--violet2);transform:translateY(-2px);box-shadow:0 3px 8px rgba(91,63,168,.2)}
+.word .en{font-weight:700;color:var(--violet);font-size:1em}
+.word .ru{font-size:.82em;color:#555;margin-top:2px}
+.phrase{background:#f0fbf9;border-left:4px solid var(--teal);border-radius:8px;padding:8px 10px;margin:6px 0;font-size:.95em;cursor:pointer}
+.phrase:hover{background:#dff5f2}
+.phrase b{color:var(--teal)}
+.line{margin:8px 0;padding:8px 12px;border-radius:10px;font-size:.98em;cursor:pointer}
+.a{background:#efeafc;border-left:4px solid var(--violet2)}
+.b{background:#e6f7f4;border-left:4px solid var(--teal)}
+.line:hover{filter:brightness(.97)}
+.q{margin:12px 0;padding:12px;background:#f6f3ff;border-radius:12px}
+.q p{font-weight:600;margin-bottom:8px}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid #d9d2ef;border-radius:10px;padding:9px 12px;margin:5px 0;cursor:pointer;font-size:.95em;transition:.15s}
+.opt:hover{border-color:var(--violet2)}
+.opt.ok{background:#d9f5e8;border-color:#2bbfae;font-weight:700}
+.opt.no{background:#fde3e3;border-color:#e06666}
+.score{font-size:1.1em;font-weight:700;color:var(--violet);text-align:center;margin-top:10px}
+.hint{font-size:.85em;color:#777;margin-top:6px}
+.big{background:var(--yellow);border:none;border-radius:24px;padding:12px 26px;font-size:1.05em;font-weight:700;color:#5b3fa8;cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,.15);margin:6px 4px}
+.big:active{transform:scale(.97)}
+.gap{display:inline-block;min-width:110px;border-bottom:2px solid var(--violet);font-weight:700;text-align:center}
+input.gapin{border:none;border-bottom:2px solid var(--violet);font-size:1em;width:130px;text-align:center;outline:none;background:#fffbe9}
+.sel{margin:8px 0}
+.sel select{padding:6px 10px;border-radius:8px;border:2px solid #d9d2ef;font-size:.95em;margin-right:6px}
+.storybox{background:#fffbe9;border:2px dashed var(--yellow);border-radius:12px;padding:14px;font-size:1.05em;line-height:1.6;min-height:60px}
+.star{background:#fff7d6;border:2px solid var(--yellow);border-radius:12px;padding:12px;margin-top:10px}
+.medal{font-size:2em;text-align:center}
+.starbtn{cursor:pointer}
+@media(max-width:600px){h1{font-size:1.2em}.wgrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<h1>🎭 Досуг и увлечения подростка</h1>
+<div class="sub">Английский язык • 7 класс • Spotlight 7 (Modules 1, 3, 7) • Обобщение</div>
+
+<div class="tabs" id="tabs">
+<button data-t="t0" class="active">🎯 Цель</button>
+<button data-t="t1">📖 Слова</button>
+<button data-t="t2">💬 Фразы</button>
+<button data-t="t3">🗣 Диалог</button>
+<button data-t="t4">🎲 Игра 1</button>
+<button data-t="t5">🧩 Игра 2</button>
+<button data-t="t6">🎤 Говори сам</button>
+<button data-t="t7">✏️ Тест</button>
+<button data-t="t8">🏠 Домашка</button>
+</div>
+
+<!-- ЦЕЛЬ -->
+<div id="t0" class="tab show">
+<div class="card">
+<h2>🎯 Цель урока</h2>
+<p><b>Тема:</b> «Досуг и увлечения (хобби) современного подростка: чтение, кино, театр, музей, спорт, музыка».<br>
+<b>Что узнаем:</b> слова по шести темам досуга, как рассказать о своём хобби и пригласить друга.<br>
+<b>Чему научимся:</b> описывать увлечения, задавать вопросы о досуге и отвечать на них, выбирать занятие и объяснять выбор.</p>
+</div>
+<div class="card">
+<h2>Планируемые результаты (ФГОС)</h2>
+<table>
+<tr><th>Группа</th><th>Результат</th></tr>
+<tr><td><b>Предметные</b></td><td>Владеет лексикой по темам «чтение, кино, театр, музей, спорт, музыка»; строит монолог о досуге (6–8 фраз) и диалог-расспрос; употребляет like/enjoy + V-ing, Present Perfect.</td></tr>
+<tr><td><b>Метапредметные</b></td><td>Систематизирует лексику по темам; планирует устное высказывание; оценивает свой результат по критериям.</td></tr>
+<tr><td><b>Личностные</b></td><td>Осознанно выбирает полезный досуг; уважает увлечения одноклассников; понимает роль хобби в жизни человека.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- СЛОВА -->
+<div id="t1" class="tab">
+<div class="card">
+<h2>📖 Словарь: 20 слов <span class="badge">клик = послушать</span></h2>
+<p class="hint">Каждое слово прозвучит дважды: сначала медленно по слогам, потом в обычном темпе.</p>
+<div id="wgrid" class="wgrid"></div>
+</div>
+</div>
+
+<!-- ФРАЗЫ -->
+<div id="t2" class="tab">
+<div class="card">
+<h2>💬 Готовые фразы <span class="badge">клик = послушать</span></h2>
+<div id="phrases"></div>
+</div>
+<div class="card">
+<h2>🧠 Грамматика: коротко и по делу</h2>
+<table>
+<tr><th>Правило</th><th>Пример</th></tr>
+<tr><td><b>like / enjoy / love + V-ing</b> — что любишь делать</td><td>I enjoy <b>reading</b> novels.</td></tr>
+<tr><td><b>How often…?</b> — как часто</td><td><b>How often</b> do you go to the cinema?</td></tr>
+<tr><td><b>Present Perfect</b> — «когда-либо был(а)»</td><td><b>Have</b> you <b>ever been</b> to a museum?</td></tr>
+<tr><td><b>I'd rather…</b> — «я предпочёл(а) бы»</td><td>I'd rather <b>watch</b> a comedy.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ДИАЛОГ -->
+<div id="t3" class="tab">
+<div class="card">
+<h2>🗣 Диалог: «День хобби» <span class="badge">клик по реплике = послушать</span></h2>
+<div id="dialog"></div>
+<div style="text-align:center"><button class="big" onclick="playWhole()">▶ Послушать весь диалог</button></div>
+</div>
+<div class="card">
+<h2>❓ Проверь понимание</h2>
+<p>1. Where do Emma and Jack go first? &nbsp; 2. What film do they watch? &nbsp; 3. Who plays the guitar in the evening?</p>
+</div>
+</div>
+
+<!-- ИГРА 1 -->
+<div id="t4" class="tab">
+<div class="card">
+<h2>🎲 Игра 1: «Угадай занятие»</h2>
+<p class="hint">Прочитай описание и выбери правильный ответ.</p>
+<div id="g1"></div>
+<div class="score" id="g1score"></div>
+</div>
+</div>
+
+<!-- ИГРА 2 -->
+<div id="t5" class="tab">
+<div class="card">
+<h2>🧩 Игра 2: «Вставь слово»</h2>
+<p class="hint">Впиши пропущенное слово и нажми «Проверить».</p>
+<div id="g2"></div>
+<div style="text-align:center"><button class="big" onclick="checkG2()">✅ Проверить</button></div>
+<div class="score" id="g2score"></div>
+</div>
+</div>
+
+<!-- ГОВОРИ САМ -->
+<div id="t6" class="tab">
+<div class="card">
+<h2>🎤 Собери свой рассказ о досуге</h2>
+<p>Выбери ответы — и получится твой личный рассказ. Потом послушай и повтори вслух!</p>
+<div class="sel">🧩 Занятие: <select id="s1"><option>reading detective stories</option><option>watching comedies</option><option>going to the theatre</option><option>visiting museums</option><option>playing football</option><option>listening to music</option></select></div>
+<div class="sel">📅 Как часто: <select id="s2"><option>every weekend</option><option>twice a week</option><option>once a month</option><option>in my free time</option></select></div>
+<div class="sel">💭 Почему нравится: <select id="s3"><option>it is exciting and helps me relax</option><option>it is useful and interesting</option><option>I learn new things</option><option>I spend time with my friends</option></select></div>
+<div class="sel">🤝 Приглашение другу: <select id="s4"><option>How about joining me next Saturday?</option><option>Would you like to come with me?</option><option>Let's do it together!</option></select></div>
+<button class="big" onclick="makeStory()">✨ Составить рассказ</button>
+<button class="big" onclick="speakStory()">🔊 Послушать</button>
+<div class="storybox" id="story" style="margin-top:12px">Твой рассказ появится здесь…</div>
+</div>
+</div>
+
+<!-- ТЕСТ -->
+<div id="t7" class="tab">
+<div class="card">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div id="test"></div>
+<button class="big" onclick="checkTest()">📊 Узнать результат</button>
+<div class="medal" id="medal"></div>
+<div class="score" id="tscore"></div>
+</div>
+</div>
+
+<!-- ДОМАШКА -->
+<div id="t8" class="tab">
+<div class="card">
+<h2>🏠 Домашнее задание</h2>
+<p>✍️ <b>Напиши письмо другу (5–7 предложений)</b> о своём досуге по плану:</p>
+<ol style="margin:8px 0 8px 20px">
+<li>Твоё любимое занятие (I'm keen on…).</li>
+<li>Как часто ты этим занимаешься.</li>
+<li>Почему тебе это нравится.</li>
+<li>Пригласи друга присоединиться (How about…?).</li>
+</ol>
+<p class="hint"><b>Критерии успеха:</b> 5–7 предложений • 6–8 новых слов из урока • приглашение друга • без ошибок в like + V-ing.</p>
+<div class="star">⭐ <b>Задание со звёздочкой:</b> нарисуй или составь коллаж «Суббота мечты» — расписание идеального дня досуга с подписями по-английски (at 10 a.m. — reading; at 2 p.m. — a football match…).</div>
+</div>
+</div>
+
+<script>
+const CATS={read:["Чтение 📚","#8e5bbf"],cinema:["Кино 🎬","#c9566b"],theatre:["Театр 🎭","#c98a3d"],museum:["Музей 🏛","#3d8f6b"],sport:["Спорт ⚽","#3d7fc9"],music:["Музыка 🎸","#b85bb0"]};
+const WORDS=[
+["a novel","роман"],["poetry","поэзия"],["a bookworm","книжный червь"],["an author","автор"],
+["science fiction","фантастика"],["a comedy","комедия"],["a plot","сюжет"],["an actor","актёр"],
+["a play","спектакль"],["the audience","зрители"],["the stage","сцена"],
+["an exhibition","выставка"],["a guided tour","экскурсия с гидом"],["a painting","картина"],
+["to keep fit","поддерживать форму"],["a tournament","турнир"],["a team","команда"],
+["lyrics","слова песни"],["a concert","концерт"],["a band","музыкальная группа"]
+];
+const WORDCAT=["read","read","read","read","cinema","cinema","cinema","cinema","theatre","theatre","theatre","museum","museum","museum","sport","sport","sport","music","music","music"];
+const PHRASES=[
+["I'm keen on music.","Я увлекаюсь музыкой."],
+["I'm fond of reading.","Я люблю читать."],
+["I'm interested in history.","Я интересуюсь историей."],
+["Have you ever been to a museum?","Ты когда-нибудь был(а) в музее?"],
+["How about going to the cinema?","Как насчёт похода в кино?"],
+["Let's go to the concert!","Давай пойдём на концерт!"],
+["I'd rather watch a comedy.","Я предпочёл(а) бы комедию."],
+["What do you do in your free time?","Чем ты занимаешься в свободное время?"],
+["Sounds great!","Звучит отлично!"],
+["Count me in!","Я с вами! / Записывай меня!"]
+];
+const DIALOG=[
+["a","Emma: Hi, Jack! What are your plans for Saturday?"],
+["b","Jack: Hi, Emma! Nothing special. Why?"],
+["a","Emma: How about visiting the new history exhibition at the museum?"],
+["b","Jack: Sounds great! I'm keen on history. And after that?"],
+["a","Emma: Let's watch a comedy at the cinema. It's a new film with my favourite actor."],
+["b","Jack: Great idea! I enjoy comedies. And in the evening?"],
+["a","Emma: There's a concert in the park. My favourite band is playing!"],
+["b","Jack: Count me in! It's going to be a perfect hobby day!"]
+];
+const G1=[
+["You read it page by page. It can be about detectives or love.","a novel",["a novel","a tournament","the stage"]],
+["People laugh a lot when they watch it.","a comedy","a comedy","the news","a painting"],
+["It stands in the museum and was painted long ago.","a painting","a painting","a band","lyrics"],
+["A person who acts in films or plays.","an actor","an actor","an author","a coach"],
+["You can see old and interesting things here.","a museum","a museum","a concert","a plot"],
+["Eleven people play in it on the field.","a team","a team","an exhibition","the audience"],
+["Words of a song.","lyrics","lyrics","a play","poetry"],
+["A competition in sport.","a tournament","a tournament","a guided tour","a novel"]
+];
+const G2=[
+["I'm keen ___ reading detective stories.","on","on|in|at — предлог после keen"],
+["I enjoy ___ (watch) comedies at the weekend.","watching","like/enjoy + V-ing"],
+["Have you ever ___ to the theatre?","been","Present Perfect: been"],
+["How ___ do you go to the cinema?","often","How often = как часто"],
+["How ___ visiting the museum?","about","How about + V-ing"],
+["We listened to the ___ of the song and sang along.","lyrics","слова песни"],
+["The football ___ starts at 5 p.m.","tournament","турнир"],
+["I'd rather ___ a comedy than the news.","watch","I'd rather + глагол"]
+];
+const TEST=[
+["1. I'm keen ___ music.","on|in|to|at",0],
+["2. People who watch a play are…","the audience|the plot|lyrics|a band",0],
+["3. Have you ever ___ to a concert?","been|be|being|was",0],
+["4. «Фантастика» по-английски —","science fiction|a comedy|a play|an exhibition",0],
+["5. I enjoy ___ books in the evening.","reading|to read|read|reads",0],
+["6. How ___ do you play football?","often|much|many|long",0],
+["7. Words of a song are…","lyrics|a plot|an actor|poetry",0],
+["8. How about ___ to the museum?","going|go|to go|goes",0],
+["9. To ___ fit means to be healthy and strong.","keep|do|make|take",0],
+["10. A group of musicians is…","a band|a team|an audience|a stage",0]
+];
+function say(t,slow){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=slow?0.6:0.95;speechSynthesis.speak(u);}catch(e){}}
+function sayTwice(t){say(t,true);try{speechSynthesis.onend=()=>{if(!speechSynthesis.speaking){setTimeout(()=>say(t,false),300);}};}catch(e){}}
+// слова
+const wg=document.getElementById("wgrid");
+WORDS.forEach((w,i)=>{const d=document.createElement("div");d.className="word";d.innerHTML='<div class="cat" style="background:'+CATS[WORDCAT[i]][1]+'">'+CATS[WORDCAT[i]][0]+'</div><div class="en">'+w[0]+'</div><div class="ru">'+w[1]+'</div>';d.onclick=()=>sayTwice(w[0]);wg.appendChild(d);});
+// фразы
+const ph=document.getElementById("phrases");
+PHRASES.forEach(p=>{const d=document.createElement("div");d.className="phrase";d.innerHTML="<b>"+p[0]+"</b><br><span style='color:#555'>"+p[1]+"</span>";d.onclick=()=>sayTwice(p[0]);ph.appendChild(d);});
+// диалог
+const dl=document.getElementById("dialog");
+DIALOG.forEach(l=>{const d=document.createElement("div");d.className="line "+l[0];d.textContent=l[1];d.onclick=()=>say(l[1].split(": ")[1],false);dl.appendChild(d);});
+function playWhole(){DIALOG.forEach((l,i)=>setTimeout(()=>say(l[1].split(": ")[1],false),i*2600));}
+// игра 1
+let g1done=0,g1ok=0;
+const g1el=document.getElementById("g1");
+G1.forEach((q,qi)=>{const d=document.createElement("div");d.className="q";d.innerHTML="<p>"+q[0]+"</p>";const shuf=[q[2],q[3],q[4],q[5]].sort(()=>Math.random()-0.5);shuf.forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;if(o===q[2]){b.classList.add("ok");g1ok++;say("Correct! "+q[2],false);}else{b.classList.add("no");[...d.querySelectorAll(".opt")].find(x=>x.textContent===q[2]).classList.add("ok");say("The answer is "+q[2],false);}g1done++;document.getElementById("g1score").textContent="Результат: "+g1ok+" из 8 🎯";};d.appendChild(b);});g1el.appendChild(d);});
+// игра 2
+const g2el=document.getElementById("g2");
+G2.forEach((q,i)=>{const d=document.createElement("div");d.className="q";d.innerHTML="<p>"+q[0].replace("___",'<input class="gapin" id="g2i'+i+'" autocomplete="off">')+"</p><div class='hint'>💡 "+q[2]+"</div>";g2el.appendChild(d);});
+function checkG2(){let ok=0;G2.forEach((q,i)=>{const v=document.getElementById("g2i"+i).value.trim().toLowerCase();const inp=document.getElementById("g2i"+i);if(v===q[1].toLowerCase()){inp.style.background="#d9f5e8";ok++;}else{inp.style.background="#fde3e3";inp.value=q[1];}});document.getElementById("g2score").textContent="Правильно: "+ok+" из 8 "+(ok===8?"🏆":"");say("You got "+ok+" out of 8!",false);}
+// рассказ
+function makeStory(){const s1=document.getElementById("s1").value,s2=document.getElementById("s2").value,s3=document.getElementById("s3").value,s4=document.getElementById("s4").value;document.getElementById("story").innerHTML="I'm keen on "+s1+". I do it "+s2+", because "+s3+". My friends say it is a great hobby. "+s4+" Come and join me!";}
+function speakStory(){const t=document.getElementById("story").textContent;if(t.indexOf("появится")>-1)return;say(t,false);}
+// тест
+let tanswered={};
+const te=document.getElementById("test");
+TEST.forEach((q,qi)=>{const d=document.createElement("div");d.className="q";d.innerHTML="<p>"+q[0]+"</p>";const shuf=q[1].split("|").map((v,j)=>({v,ok:j===q[2]})).sort(()=>Math.random()-0.5);shuf.forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o.v;b.onclick=()=>{d.dataset.done=qi;d.querySelectorAll(".opt").forEach(x=>x.classList.remove("ok","no"));if(o.ok)b.classList.add("ok");else{b.classList.add("no");[...d.querySelectorAll(".opt")].find(x=>x.textContent===shuf.find(s=>s.ok).v).classList.add("ok");}tanswered[qi]=o.ok;};d.appendChild(b);});te.appendChild(d);});
+function checkTest(){const n=Object.keys(tanswered).length;if(n<10){document.getElementById("tscore").textContent="Ответь на все 10 вопросов! ("+n+"/10)";return;}const ok=Object.values(tanswered).filter(Boolean).length;document.getElementById("tscore").textContent="Твой результат: "+ok+" из 10 баллов";document.getElementById("medal").textContent=ok===10?"🏆👑":ok>=9?"🥇":ok>=7?"🥈":ok>=5?"🥉":"💪 Попробуй ещё!";say("Your score is "+ok+" out of 10!",false);}
+// вкладки
+document.getElementById("tabs").addEventListener("click",e=>{if(e.target.tagName!=="BUTTON")return;document.querySelectorAll("#tabs button").forEach(b=>b.classList.remove("active"));e.target.classList.add("active");document.querySelectorAll(".tab").forEach(t=>t.classList.remove("show"));document.getElementById(e.target.dataset.t).classList.add("show");});
+</script>
+</body>
+</html>
