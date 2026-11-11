@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pirate Fruit Salad — Английский язык, 4 класс</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Comic Sans MS','Segoe UI',sans-serif; }
+  body {
+    min-height:100vh;
+    background:linear-gradient(180deg,#0b2d5c 0%,#124a8f 45%,#1a6bb5 75%,#2b8fd6 100%);
+    color:#fff;
+    display:flex; flex-direction:column; align-items:center;
+    padding:18px;
+  }
+  .waves { position:fixed; bottom:0; left:0; width:100%; height:120px; pointer-events:none; z-index:0; }
+  header { text-align:center; margin-bottom:14px; z-index:1; }
+  header h1 { font-size:2em; color:#ffd54a; text-shadow:3px 3px 0 #5a3a00, -1px -1px 0 #5a3a00; }
+  header p { color:#cfe8ff; font-size:1.05em; margin-top:4px; }
+  .progress-bar { width:min(560px,90vw); height:16px; background:#082247; border:3px solid #ffd54a; border-radius:10px; margin:10px auto; overflow:hidden; }
+  .progress-fill { height:100%; width:0%; background:linear-gradient(90deg,#7bd94a,#c7f24a); transition:width .4s; }
+  .screen {
+    display:none; width:min(900px,96vw);
+    background:rgba(6,25,55,.82); border:4px solid #c98b3f; border-radius:22px;
+    padding:22px; z-index:1; box-shadow:0 10px 30px rgba(0,0,0,.4);
+    animation:pop .35s ease;
+  }
+  .screen.active { display:block; }
+  @keyframes pop { from { transform:scale(.92); opacity:0; } to { transform:scale(1); opacity:1; } }
+  h2 { color:#ffd54a; text-align:center; margin-bottom:14px; font-size:1.5em; }
+  .subtitle { text-align:center; color:#cfe8ff; margin-bottom:16px; }
+  .btn {
+    display:inline-block; cursor:pointer; border:none; border-radius:14px;
+    background:linear-gradient(180deg,#ffd54a,#f0a72c); color:#5a3a00;
+    font-size:1.1em; font-weight:bold; padding:12px 26px; margin:8px 6px;
+    box-shadow:0 4px 0 #a96b12; transition:transform .12s;
+  }
+  .btn:hover { transform:translateY(-2px); }
+  .btn:active { transform:translateY(2px); box-shadow:0 1px 0 #a96b12; }
+  .btn.blue { background:linear-gradient(180deg,#7ecbff,#3b8fe0); color:#082247; box-shadow:0 4px 0 #1c5c9e; }
+  .center { text-align:center; }
+  /* ----_vocab_---- */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
+  .card {
+    background:#fdf6e3; color:#333; border-radius:16px; padding:12px 8px; text-align:center;
+    border:3px solid #c98b3f; cursor:pointer; transition:transform .15s;
+  }
+  .card:hover { transform:translateY(-4px) rotate(-1.5deg); }
+  .card .emoji { font-size:3em; }
+  .card .en { font-weight:bold; font-size:1.15em; color:#0b2d5c; margin-top:4px; }
+  .card .ru { font-size:.95em; color:#7a5a20; }
+  .card .spk { font-size:.8em; color:#b8860b; }
+  /* ----_match_---- */
+  .match-wrap { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+  .word-chip, .pic-chip {
+    padding:10px 14px; border-radius:12px; border:3px solid #c98b3f; cursor:pointer;
+    font-weight:bold; font-size:1.05em; background:#fdf6e3; color:#333; user-select:none;
+  }
+  .pic-chip { font-size:1.6em; }
+  .word-chip.sel, .pic-chip.sel { outline:4px solid #ffd54a; background:#fff3c4; }
+  .word-chip.done, .pic-chip.done { opacity:.35; pointer-events:none; background:#b9f2b0; border-color:#3d8b2f; }
+  .word-chip.err, .pic-chip.err { animation:shake .35s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  /* ----_quiz_---- */
+  .quiz-q { text-align:center; font-size:1.3em; margin-bottom:12px; }
+  .quiz-opts { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+  .opt { padding:14px; border-radius:14px; border:3px solid #c98b3f; background:#fdf6e3; color:#333; font-weight:bold; cursor:pointer; font-size:1.1em; }
+  .opt.correct { background:#b9f2b0; border-color:#3d8b2f; }
+  .opt.wrong { background:#ffb3b3; border-color:#b03030; }
+  /* ----_recipe_---- */
+  .steps { display:flex; flex-direction:column; gap:10px; }
+  .step {
+    background:#fdf6e3; color:#333; border-radius:14px; border:3px solid #c98b3f;
+    padding:12px 16px; cursor:pointer; display:flex; align-items:center; gap:12px; font-size:1.1em;
+  }
+  .step .num { min-width:36px; height:36px; border-radius:50%; background:#0b2d5c; color:#ffd54a; display:flex; align-items:center; justify-content:center; font-weight:bold; }
+  .step .ru { color:#7a5a20; font-size:.9em; }
+  .step.ok { background:#b9f2b0; border-color:#3d8b2f; }
+  .step.err { animation:shake .35s; }
+  .salad-bowl { font-size:3em; text-align:center; margin-top:10px; min-height:1.2em; }
+  .feedback { text-align:center; font-size:1.2em; min-height:1.4em; margin-top:12px; font-weight:bold; }
+  .score-badge { position:fixed; top:12px; right:14px; background:#ffd54a; color:#5a3a00; font-weight:bold; padding:8px 14px; border-radius:20px; z-index:5; box-shadow:0 3px 8px rgba(0,0,0,.4); }
+  .pirate-face { font-size:4em; text-align:center; }
+  .final-stars { font-size:2.6em; text-align:center; margin:10px 0; }
+</style>
+</head>
+<body>
+<div class="score-badge">⭐ Очки: <span id="score">0</span></div>
+
+<header>
+  <h1>🏴‍☠️ Pirate Fruit Salad 🍎</h1>
+  <p>Английский язык · 4 класс · Интерактивный урок</p>
+  <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+</header>
+
+<!-- WELCOME -->
+<section class="screen active" id="scr-welcome">
+  <div class="pirate-face">🏴‍☠️🧜‍♂️🦜</div>
+  <h2>Ahoy, young pirates!</h2>
+  <p class="subtitle">Привет, юный пират! Капитан Фрутти потерял свой знаменитый <b>Pirate Fruit Salad</b> — пиратский фруктовый салат! Помоги собрать рецепт: выучи слова, пройди испытания и заслужи пиратский клад!</p>
+  <div class="center">
+    <button class="btn" onclick="go(1)">⚓ Start the adventure!</button>
+  </div>
+</section>
+
+<!-- VOCAB -->
+<section class="screen" id="scr-vocab">
+  <h2>🃏 Step 1. New words — Новые слова</h2>
+  <p class="subtitle">Нажми на карточку — услышишь, как слово звучит по-английски! Повтори вслух, как настоящий пират!</p>
+  <div class="cards" id="vocabCards"></div>
+  <div class="center"><button class="btn blue" onclick="go(2)">Дальше: игра «Найди пару» ➜</button></div>
+</section>
+
+<!-- MATCH -->
+<section class="screen" id="scr-match">
+  <h2>🧩 Step 2. Match the words!</h2>
+  <p class="subtitle">Соедини слово с картинкой. Нажми слово, потом картинку!</p>
+  <div class="match-wrap" id="matchWords"></div>
+  <div style="height:12px"></div>
+  <div class="match-wrap" id="matchPics"></div>
+  <div class="feedback" id="matchFb"></div>
+  <div class="center"><button class="btn blue" id="matchNext" style="display:none" onclick="go(3)">Дальше: викторина ➜</button></div>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="scr-quiz">
+  <h2>❓ Step 3. Pirate Quiz</h2>
+  <p class="subtitle">Отвечай на вопросы и получай сундуки с золотом! 🪙</p>
+  <div class="quiz-q" id="quizQ"></div>
+  <div class="quiz-opts" id="quizOpts"></div>
+  <div class="feedback" id="quizFb"></div>
+</section>
+
+<!-- RECIPE -->
+<section class="screen" id="scr-recipe">
+  <h2>🥣 Step 4. Make the salad!</h2>
+  <p class="subtitle">Собери рецепт! Нажимай шаги в правильном порядке: сначала 1, потом 2, потом 3…</p>
+  <div class="steps" id="recipeSteps"></div>
+  <div class="salad-bowl" id="bowl"></div>
+  <div class="feedback" id="recipeFb"></div>
+  <div class="center"><button class="btn blue" id="recipeNext" style="display:none" onclick="go(5)">Финал: наш клад! 🏆</button></div>
+</section>
+
+<!-- FINAL -->
+<section class="screen" id="scr-final">
+  <div class="pirate-face">🏆🦜</div>
+  <h2 id="finalTitle">Well done, pirate!</h2>
+  <div class="final-stars" id="finalStars"></div>
+  <p class="subtitle" id="finalText"></p>
+  <div class="center">
+    <button class="btn" onclick="restart()">🔄 Играть снова</button>
+  </div>
+</section>
+
+<svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none">
+  <path fill="#0a244d" opacity=".7" d="M0,64 C240,110 480,20 720,60 C960,100 1200,30 1440,70 L1440,120 L0,120 Z"></path>
+  <path fill="#071b3c" opacity=".8" d="M0,90 C260,50 520,110 780,80 C1040,50 1240,100 1440,85 L1440,120 L0,120 Z"></path>
+</svg>
+
+<script>
+const VOCAB = [
+  {en:"apple", ru:"яблоко", emoji:"🍎"},
+  {en:"banana", ru:"банан", emoji:"🍌"},
+  {en:"orange", ru:"апельсин", emoji:"🍊"},
+  {en:"grapes", ru:"виноград", emoji:"🍇"},
+  {en:"pear", ru:"груша", emoji:"🍐"},
+  {en:"pineapple", ru:"ананас", emoji:"🍍"},
+  {en:"lemon", ru:"лимон", emoji:"🍋"},
+  {en:"strawberry", ru:"земляника / клубника", emoji:"🍓"}
+];
+let score = 0;
+const $ = id => document.getElementById(id);
+
+function addScore(n){ score += n; $("score").textContent = score; }
+
+function go(i){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  const ids = ["scr-welcome","scr-vocab","scr-match","scr-quiz","scr-recipe","scr-final"];
+  $(ids[i]).classList.add("active");
+  $("pfill").style.width = (i/(ids.length-1)*100) + "%";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function speak(word){
+  try{
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US"; u.rate = 0.85;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* vocab */
+const cardsHtml = VOCAB.map(v =>
+  `<div class="card" onclick="speak('${v.en}')">
+     <div class="emoji">${v.emoji}</div>
+     <div class="en">${v.en}</div>
+     <div class="ru">${v.ru}</div>
+     <div class="spk">🔊 нажми, чтобы услышать</div>
+   </div>`).join("");
+$("vocabCards").innerHTML = cardsHtml;
+
+/* matching */
+let selWord = null, matched = 0;
+const shuffledPics = [...VOCAB].sort(()=>Math.random()-.5);
+$("matchWords").innerHTML = VOCAB.map(v=>`<div class="word-chip" data-w="${v.en}" onclick="pickWord(this)">${v.en}</div>`).join("");
+$("matchPics").innerHTML = shuffledPics.map(v=>`<div class="pic-chip" data-w="${v.en}" onclick="pickPic(this)">${v.emoji}</div>`).join("");
+
+function pickWord(el){
+  document.querySelectorAll(".word-chip").forEach(c=>c.classList.remove("sel"));
+  el.classList.add("sel"); selWord = el;
+}
+function pickPic(el){
+  if(!selWord) return;
+  if(selWord.dataset.w === el.dataset.w){
+    selWord.classList.add("done"); el.classList.add("done");
+    matched++; addScore(10);
+    speak(selWord.dataset.w);
+    $("matchFb").textContent = "✔ Great! Отлично!";
+    $("matchFb").style.color = "#8ff58a";
+    selWord = null;
+    if(matched === VOCAB.length){
+      $("matchFb").textContent = "🎉 All matched! Все пары найдены!";
+      $("matchNext").style.display = "inline-block";
+    }
+  } else {
+    selWord.classList.add("err"); el.classList.add("err");
+    $("matchFb").textContent = "✘ Try again! Попробуй ещё!";
+    $("matchFb").style.color = "#ffb0b0";
+    setTimeout(()=>{document.querySelectorAll(".err").forEach(e=>e.classList.remove("err"));},400);
+  }
+}
+
+/* quiz */
+const QUIZ = [
+  {q:"🍎 This is a …", opts:["apple","banana","lemon"], a:0},
+  {q:"🍌 This is a …", opts:["orange","banana","pear"], a:1},
+  {q:"I like apples. = …", opts:["Я не люблю яблоки.","Я люблю яблоки.","Я ем суп."], a:1},
+  {q:"🍇 Grapes are …", opts:["purple (фиолетовые)","blue (синие)","black (чёрные)"], a:0},
+  {q:"🍍 Pineapple means …", opts:["ель","ананас","тыква"], a:1},
+  {q:"Do you like bananas? — Yes, I …", opts:["am","do","like"], a:1}
+];
+let qIndex = 0;
+function showQ(){
+  if(qIndex >= QUIZ.length){
+    $("quizQ").textContent = "🏴‍☠️ Quiz complete!";
+    $("quizFb").textContent = "Great job! Теперь соберём салат!";
+    $("quizFb").style.color = "#8ff58a";
+    const btn = document.createElement("button");
+    btn.className = "btn blue"; btn.textContent = "Дальше: рецепт салата ➜";
+    btn.onclick = ()=>go(4);
+    $("quizOpts").innerHTML = ""; $("quizOpts").appendChild(btn);
+    return;
+  }
+  const q = QUIZ[qIndex];
+  $("quizQ").innerHTML = `Question ${qIndex+1}/${QUIZ.length}: ${q.q}`;
+  $("quizFb").textContent = "";
+  $("quizOpts").innerHTML = q.opts.map((o,i)=>`<button class="opt" onclick="answer(this,${i===q.a})">${o}</button>`).join("");
+}
+function answer(el, ok){
+  document.querySelectorAll(".opt").forEach(o=>o.style.pointerEvents="none");
+  if(ok){ el.classList.add("correct"); addScore(15); $("quizFb").textContent = "✔ Right! Ты нашёл золото! 🪙"; $("quizFb").style.color="#8ff58a"; }
+  else {
+    el.classList.add("wrong");
+    document.querySelectorAll(".opt")[QUIZ[qIndex].a].classList.add("correct");
+    $("quizFb").textContent = "✘ Almost! Правильный ответ выделен."; $("quizFb").style.color="#ffb0b0";
+  }
+  qIndex++; setTimeout(showQ, 1300);
+}
+showQ();
+
+/* recipe */
+const RECIPE = [
+  {en:"1. Wash the fruits", ru:"Помой фрукты", emoji:"💧"},
+  {en:"2. Peel the fruits", ru:"Почисти фрукты", emoji:"🧽"},
+  {en:"3. Cut the fruits", ru:"Нарежь фрукты", emoji:"🔪"},
+  {en:"4. Put them in a bowl", ru:"Положи в миску", emoji:"🥣"},
+  {en:"5. Mix everything", ru:"Всё перемешай", emoji:"🥄"},
+  {en:"6. Eat and say: Yummy!", ru:"Ешь и скажи: Yummy!", emoji:"😋"}
+];
+const shuffledSteps = [...RECIPE].sort(()=>Math.random()-.5);
+$("recipeSteps").innerHTML = shuffledSteps.map((s)=>
+  `<div class="step" data-n="${s.en.split(".")[0]}" onclick="pickStep(this)">
+     <div class="num">${s.en.split(".")[0]}</div>
+     <div>${s.emoji} ${s.en.slice(3)}<br><span class="ru">${s.ru}</span></div>
+   </div>`).join("");
+let stepNeed = 1;
+function pickStep(el){
+  const n = parseInt(el.dataset.n);
+  if(n === stepNeed){
+    el.classList.add("ok"); el.style.pointerEvents = "none";
+    addScore(10); stepNeed++;
+    $("bowl").textContent = ["","💧","🧽","🔪","🥣","🥄","🏴‍☠️😋"][stepNeed-1] || "";
+    $("recipeFb").textContent = "✔ " + RECIPE[n-1].en + " — " + RECIPE[n-1].ru;
+    $("recipeFb").style.color = "#8ff58a";
+    if(stepNeed > RECIPE.length){
+      $("recipeFb").textContent = "🎉 The Pirate Fruit Salad is ready! Салат готов!";
+      $("recipeNext").style.display = "inline-block";
+    }
+  } else {
+    el.classList.add("err");
+    $("recipeFb").textContent = "✘ Not this one! Сначала шаг " + stepNeed + ".";
+    $("recipeFb").style.color = "#ffb0b0";
+    setTimeout(()=>el.classList.remove("err"),400);
+  }
+}
+
+/* final */
+const finalBtnCheck = setInterval(()=>{
+  // показываем финал только по кнопке — ничего не делаем здесь
+}, 1000);
+
+function finish(){
+  let stars, title, text;
+  if(score >= 250){ stars = "⭐⭐⭐⭐⭐"; title = "Legendary Pirate Captain!"; text = `Твой клад: ${score} очков! Ты — настоящий капитан Фрутти! 🏴‍☠️`; }
+  else if(score >= 180){ stars = "⭐⭐⭐⭐"; title = "Brave Pirate!"; text = `Твой клад: ${score} очков! Отличная работа, пират!`; }
+  else { stars = "⭐⭐⭐"; title = "Young Sailor!"; text = `Твой клад: ${score} очков! Ещё немного тренировки — и ты станешь капитаном!`; }
+  $("finalStars").textContent = stars;
+  $("finalTitle").textContent = title;
+  $("finalText").innerHTML = text + "<br><br><b>Домашнее задание:</b> расскажи дома по-английски, какие фрукты ты любишь: <i>“I like apples and bananas.”</i>";
+  go(5);
+}
+const recipeNextBtn = $("recipeNext");
+recipeNextBtn.addEventListener("click", finish);
+
+function restart(){
+  score = 0; $("score").textContent = 0; qIndex = 0; matched = 0; stepNeed = 1;
+  document.querySelectorAll(".done,.ok").forEach(e=>{e.classList.remove("done","ok"); e.style.pointerEvents="";});
+  $("matchNext").style.display = "none"; $("recipeNext").style.display = "none";
+  $("bowl").textContent = ""; $("matchFb").textContent = ""; $("recipeFb").textContent = "";
+  go(0);
+}
+</script>
+</body>
+</html>
