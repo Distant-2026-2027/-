@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotlight 6 — Unit 4b: Досуг и развлечения. How about…?</title>
+<style>
+  :root{
+    --violet:#5b3fd4; --violet-dark:#4530a8; --pink:#ff5c8a; --yellow:#ffd93d;
+    --bg:#f4f2fb; --card:#ffffff; --ink:#2d2a45; --green:#2eae60; --red:#e04848;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',Verdana,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--violet),var(--pink)); color:#fff; padding:26px 16px; text-align:center;}
+  header h1{font-size:1.5em; margin-bottom:6px;}
+  header p{opacity:.95; font-size:.95em;}
+  .badge{display:inline-block; background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.5);
+         border-radius:20px; padding:3px 14px; margin:4px 4px 0; font-size:.85em;}
+  nav{position:sticky; top:0; z-index:10; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.08);
+      display:flex; flex-wrap:wrap; justify-content:center; gap:6px; padding:8px;}
+  nav button{border:2px solid var(--violet); background:#fff; color:var(--violet); font-weight:600;
+             border-radius:20px; padding:7px 14px; cursor:pointer; font-size:.9em; transition:.15s;}
+  nav button:hover{background:var(--violet); color:#fff;}
+  nav button.active{background:var(--violet); color:#fff;}
+  main{max-width:860px; margin:0 auto; padding:18px 14px 60px;}
+  section{display:none; animation:fade .25s ease;}
+  section.show{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+  .card{background:var(--card); border-radius:16px; padding:18px 20px; margin:14px 0;
+        box-shadow:0 2px 10px rgba(91,63,212,.08);}
+  h2{color:var(--violet-dark); margin-bottom:10px; font-size:1.25em;}
+  h3{color:var(--violet-dark); margin:14px 0 8px;}
+  .note{background:#fff8e1; border-left:4px solid var(--yellow); border-radius:8px; padding:10px 14px; margin:10px 0;}
+  .btn{display:inline-block; background:var(--violet); color:#fff; border:none; border-radius:12px;
+       padding:10px 18px; font-size:1em; font-weight:600; cursor:pointer; margin:6px 6px 6px 0; transition:.15s;}
+  .btn:hover{background:var(--violet-dark);}
+  .btn.alt{background:var(--pink);} .btn.alt:hover{background:#e04a75;}
+  .btn.ghost{background:#fff; color:var(--violet); border:2px solid var(--violet);}
+  /* vocab cards */
+  .word-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px;}
+  .wcard{background:#fff; border:2px solid #ece7fb; border-radius:14px; padding:12px 14px; cursor:pointer;
+         transition:.15s; position:relative;}
+  .wcard:hover{border-color:var(--violet); transform:translateY(-2px); box-shadow:0 4px 12px rgba(91,63,212,.15);}
+  .wcard .en{font-size:1.15em; font-weight:700; color:var(--violet-dark);}
+  .wcard .ipa{color:#777; font-size:.9em; font-family:Georgia,serif;}
+  .wcard .ru{margin-top:4px; font-size:.95em;}
+  .wcard .hint{color:#a05a00; font-size:.9em; margin-top:2px;}
+  .wcard .spk{position:absolute; top:10px; right:12px; font-size:1.2em;}
+  /* game */
+  .opt{display:block; width:100%; text-align:left; margin:8px 0; padding:12px 14px; border-radius:12px;
+       border:2px solid #ddd; background:#fff; cursor:pointer; font-size:1em; transition:.15s;}
+  .opt:hover{border-color:var(--violet);}
+  .opt.correct{background:#e6f7ee; border-color:var(--green); font-weight:700;}
+  .opt.wrong{background:#fdeaea; border-color:var(--red);}
+  .feedback{margin-top:8px; font-weight:600; min-height:1.4em;}
+  .score{font-size:1.1em; font-weight:700; color:var(--violet-dark); margin-top:8px;}
+  /* dialogue */
+  .line{margin:10px 0; padding:10px 14px; border-radius:14px; max-width:85%; cursor:pointer; transition:.15s;}
+  .line:hover{filter:brightness(.97);}
+  .line.a{background:#e7f0ff; border-top-left-radius:2px;}
+  .line.b{background:#ffe9f0; margin-left:auto; border-top-right-radius:2px;}
+  .line .who{font-size:.8em; font-weight:700; color:#666; display:block;}
+  .line .ru{color:#555; font-size:.92em; margin-top:3px;}
+  table{width:100%; border-collapse:collapse; margin:10px 0;}
+  th,td{border:1px solid #e2dcf5; padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#efeafd; color:var(--violet-dark);}
+  .testq{margin:16px 0; padding:14px; border:2px solid #ece7fb; border-radius:14px;}
+  .testq h4{margin-bottom:8px; font-size:1em;}
+  .result{font-size:1.2em; font-weight:700; margin-top:14px; padding:14px; border-radius:14px; display:none;}
+  footer{text-align:center; color:#888; font-size:.85em; padding:20px;}
+  @media(max-width:520px){header h1{font-size:1.15em;} .line{max-width:95%;}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎬 Досуг и развлечения современного подростка</h1>
+  <p>English • 6 класс • Spotlight 6, Module 4, Unit 4b — «How about…?»</p>
+  <span class="badge">Английский язык</span>
+  <span class="badge">6 класс</span>
+  <span class="badge">ФГОС • ФРП</span>
+</header>
+
+<nav id="tabs">
+  <button data-t="goal" class="active">🎯 Цель урока</button>
+  <button data-t="words">📖 Слова</button>
+  <button data-t="chat">💬 Фразы</button>
+  <button data-t="talk">🗣 Диалог</button>
+  <button data-t="game1">🎲 Игра 1</button>
+  <button data-t="game2">🧩 Игра 2</button>
+  <button data-t="creator">🎤 Говори сам</button>
+  <button data-t="test">✏️ Тест</button>
+  <button data-t="hw">🏠 Домашка</button>
+</nav>
+
+<main>
+  <!-- GOAL -->
+  <section id="goal" class="show">
+    <div class="card">
+      <h2>🎯 Чему мы научимся</h2>
+      <p>Сегодня говорим о том, <b>как современные подростки проводят свободное время</b> и как договориться с другом, что посмотреть вечером. К концу урока ты сможешь:</p>
+      <ul style="margin:10px 0 10px 22px;">
+        <li>назвать виды телепередач по-английски (a sitcom, the news…);</li>
+        <li>оценить их: <i>wonderful, exciting, boring…</i></li>
+        <li>пригласить друга и предложить идею: <b>How about…?</b> / <b>Would you like to join me?</b></li>
+        <li>согласиться или вежливо отказаться и предложить своё.</li>
+      </ul>
+      <h3>Планируемые результаты (по ФГОС)</h3>
+      <table>
+        <tr><th>Группа</th><th>Что осваиваем</th></tr>
+        <tr><td><b>Предметные</b></td><td>Лексика по теме «Досуг»; речевые образцы для приглашения и выбора занятий; аудирование и чтение с пониманием основного содержания.</td></tr>
+        <tr><td><b>Метапредметные</b></td><td>Планировать своё свободное время и выбирать занятия; сравнивать варианты; вести диалог и договариваться (коммуникативные УУД); проверять себя и оценивать результат.</td></tr>
+        <tr><td><b>Личностные</b></td><td>Осознанно выбирать полезный досуг; уважать вкусы других людей и интересы одноклассников.</td></tr>
+      </table>
+      <div class="note">💡 Как работать с уроком: переходи по вкладкам сверху. Слова и реплики <b>озвучиваются по клику</b> — сначала медленно, потом в обычном темпе. В конце пройди тест: за 9–10 баллов ждёт медаль 🥇</div>
+    </div>
+  </section>
+
+  <!-- WORDS -->
+  <section id="words">
+    <div class="card">
+      <h2>📖 Слова: телепередачи</h2>
+      <p>Кликни по карточке — услышишь слово дважды: медленно и в обычном темпе.</p>
+      <div class="word-grid" id="wordGrid"></div>
+      <button class="btn alt" id="playAllBtn">🔊 Прослушать все слова</button>
+      <button class="btn ghost" id="stopAllBtn">⏹ Стоп</button>
+    </div>
+    <div class="card">
+      <h2>🎨 Слова-оценки: как сказать «классно» и «скучно»</h2>
+      <div class="word-grid" id="adjGrid"></div>
+      <div class="note">🔎 Обрати внимание: с прилагательными используется глагол <b>be</b> — <i>Cartoons are exciting.</i> А с передачей в единственном числе: <i>The film is boring.</i></div>
+    </div>
+  </section>
+
+  <!-- PHRASES -->
+  <section id="chat">
+    <div class="card">
+      <h2>💬 Фразы для приглашения и выбора</h2>
+      <p>Клик по строке — послушать.</p>
+      <div id="phraseList"></div>
+      <h3>Грамматика в две строчки</h3>
+      <table>
+        <tr><th>Конструкция</th><th>Пример</th><th>Перевод</th></tr>
+        <tr><td><b>How about</b> + V-ing?</td><td><i>How about watching a comedy?</i></td><td>Как насчёт посмотреть комедию?</td></tr>
+        <tr><td><b>Would you like</b> + to V?</td><td><i>Would you like to join me?</i></td><td>Не хочешь присоединиться?</td></tr>
+        <tr><td><b>I'd rather</b> + V</td><td><i>I'd rather watch the news.</i></td><td>Я бы лучше посмотрел новости.</td></tr>
+      </table>
+      <div class="note">⚖️ Правило выбора: <i>How about</i> — предложение с опцией («как насчёт?»), <i>Would you like</i> — вежливое приглашение. Оба отлично работают в диалоге!</div>
+    </div>
+  </section>
+
+  <!-- DIALOGUE -->
+  <section id="talk">
+    <div class="card">
+      <h2>🗣 Диалог: что посмотреть вечером</h2>
+      <p>Дэвид и Тони договариваются о вечернем просмотре. Кликни по реплике — услышишь её.</p>
+      <div id="dialogue"></div>
+      <button class="btn alt" id="playDialogBtn">🔊 Послушать весь диалог</button>
+      <button class="btn ghost" id="stopDialogBtn">⏹ Стоп</button>
+      <h3>Вопросы к диалогу</h3>
+      <div class="opt-group" data-q="Что хочет посмотреть Дэвид?" data-ok="1" data-fb="Верно! Дэвид зовёт Тони посмотреть новый фильм-фантастику.">
+        <button class="opt">1. Мультфильм</button>
+        <button class="opt">2. Новый научно-фантастический фильм</button>
+        <button class="opt">3. Реалити-шоу</button>
+      </div>
+      <div class="opt-group" data-q="Во сколько договорились встретиться?" data-ok="2" data-fb="Верно! В 7:30 у Дэвида дома.">
+        <button class="opt">1. В 6:00</button>
+        <button class="opt">2. В 7:30</button>
+        <button class="opt">3. В 9:00</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME 1 -->
+  <section id="game1">
+    <div class="card">
+      <h2>🎲 Игра 1: «Угадай передачу»</h2>
+      <p>Прочитай описание и выбери правильную передачу. За каждый верный ответ +1 балл!</p>
+      <div class="score" id="g1score">Счёт: 0 / 8</div>
+      <div id="g1area"></div>
+    </div>
+  </section>
+
+  <!-- GAME 2 -->
+  <section id="game2">
+    <div class="card">
+      <h2>🧩 Игра 2: вставь пропущенное слово</h2>
+      <p>Выбери нужное слово или фразу из трёх вариантов.</p>
+      <div class="score" id="g2score">Счёт: 0 / 8</div>
+      <div id="g2area"></div>
+    </div>
+  </section>
+
+  <!-- CREATOR -->
+  <section id="creator">
+    <div class="card">
+      <h2>🎤 Говори сам: собери свой диалог</h2>
+      <p>Выбери по одному варианту в каждой строке — и получишь готовый мини-диалог. Прочитай его вслух, а потом озвучим целиком!</p>
+      <div id="pickArea"></div>
+      <div id="madeDialog" class="note" style="display:none; margin-top:14px;"></div>
+      <button class="btn" id="speakMadeBtn" style="display:none;">🔊 Озвучить мой диалог</button>
+      <button class="btn ghost" id="clearMadeBtn" style="display:none;">🗑 Сбросить</button>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="test">
+    <div class="card">
+      <h2>✏️ Проверь себя: 10 вопросов</h2>
+      <p>Отвечай по порядку. В конце — оценка результата.</p>
+      <div id="testArea"></div>
+      <button class="btn" id="checkTestBtn">Проверить ответы</button>
+      <button class="btn ghost" id="resetTestBtn">Начать заново</button>
+      <div class="result" id="testResult"></div>
+    </div>
+  </section>
+
+  <!-- HW -->
+  <section id="hw">
+    <div class="card">
+      <h2>🏠 Домашнее задание</h2>
+      <ul style="margin:10px 0 10px 22px;">
+        <li><b>1. Слова.</b> Выучи слова-передачи и прилагательные из вкладки «Слова». Прочитай каждое вслух три раза.</li>
+        <li><b>2. Пять предложений.</b> Напиши, какие передачи любишь и почему. Пример: <i>I love science fiction. It is exciting.</i></li>
+        <li><b>3. Мини-диалог.</b> Запиши диалог с членом семьи или другом о том, что посмотреть вечером. Используй <i>How about…?</i> и <i>Would you like…?</i></li>
+        <li><b>⭐ Со звёздочкой:</b> составь «расписание ТВ на вечер мечты» — 4 передачи и по одному прилагательному к каждой. Можешь нарисовать!</li>
+      </ul>
+      <div class="note">✅ Критерии успеха: я могу назвать 8+ передач по-английски • могу предложить и согласиться/отказаться • говорю «How about…?» без запинки.</div>
+    </div>
+  </section>
+</main>
+
+<footer>Интерактивный урок • Spotlight 6, Module 4b • Все материалы озвучиваются браузером</footer>
+
+<script>
+(function(){
+  "use strict";
+  var TABS = document.getElementById('tabs');
+  var sections = document.querySelectorAll('main section');
+
+  // ---- tabs ----
+  TABS.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if(!b) return;
+    TABS.querySelectorAll('button').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    sections.forEach(function(s){ s.classList.remove('show'); });
+    var sec = document.getElementById(b.dataset.t);
+    if(sec) sec.classList.add('show');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---- speech ----
+  var voices = [];
+  function loadVoices(){
+    voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  }
+  loadVoices();
+  if(window.speechSynthesis){ speechSynthesis.onvoiceschanged = loadVoices; }
+  function pickVoice(){
+    var en = voices.filter(function(v){ return /^en(-|_)?/i.test(v.lang); });
+    var uk = en.filter(function(v){ return /en-GB/i.test(v.lang) || /UK|British|Daniel|Serena|Kate/i.test(v.name); });
+    return uk[0] || en[0] || null;
+  }
+  function speak(text, slow){
+    if(!window.speechSynthesis) return;
+    speechSynthesis.cancel();
+    var v = pickVoice();
+    var one = function(rate){
+      var u = new SpeechSynthesisUtterance(text);
+      if(v) u.voice = v;
+      u.lang = (v && v.lang) ? v.lang : 'en-GB';
+      u.rate = rate; u.pitch = 1;
+      speechSynthesis.speak(u);
+    };
+    if(slow){
+      one(0.55);
+      // обычный темп вторым заходом
+      setTimeout(function(){
+        if(window.speechSynthesis){
+          var u2 = new SpeechSynthesisUtterance(text);
+          if(v) u2.voice = v;
+          u2.lang = (v && v.lang) ? v.lang : 'en-GB';
+          u2.rate = 0.9;
+          speechSynthesis.speak(u2);
+        }
+      }, text.length * 110);
+    } else {
+      one(0.9);
+    }
+  }
+  window.__speak = speak;
+
+  // ---- data ----
+  var programmes = [
+    {en:"a sitcom", ipa:"/ˈsɪtkɒm/", ru:"ситком, комедия положений", hint:"СИТ-ком"},
+    {en:"a drama", ipa:"/ˈdrɑːmə/", ru:"драма", hint:"ДРА-ма"},
+    {en:"a music show", ipa:"/ˈmjuːzɪk ʃəʊ/", ru:"музыкальная передача", hint:"МЬЮ-зик шОу"},
+    {en:"the news", ipa:"/njuːz/", ru:"новости", hint:"нЬЮуз"},
+    {en:"a sports programme", ipa:"/spɔːts ˈprəʊɡræm/", ru:"спортивная передача", hint:"спОортс ПРОУгрэм"},
+    {en:"a cartoon", ipa:"/kɑːˈtuːn/", ru:"мультфильм", hint:"каТУУн"},
+    {en:"a reality show", ipa:"/riˈæləti ʃəʊ/", ru:"реалити-шоу", hint:"ри-А-ли-ти шОу"},
+    {en:"science fiction", ipa:"/ˈsaɪəns ˈfɪkʃn/", ru:"научная фантастика", hint:"САЙ-энс ФИКшн"},
+    {en:"a talk show", ipa:"/ˈtɔːk ʃəʊ/", ru:"ток-шоу", hint:"тОок шОу"},
+    {en:"a wildlife programme", ipa:"/ˈwaɪldlaɪf/", ru:"передача о природе", hint:"ВАЙЛд-лайф"}
+  ];
+  var adjectives = [
+    {en:"wonderful", ipa:"/ˈwʌndəfl/", ru:"замечательный", hint:"УАН-дэ-фул"},
+    {en:"exciting", ipa:"/ɪkˈsaɪtɪŋ/", ru:"захватывающий", hint:"ик-САЙ-тин"},
+    {en:"enjoyable", ipa:"/ɪnˈdʒɔɪəbl/", ru:"приятный, радующий", hint:"ин-ДЖОЙ-э-бл"},
+    {en:"boring", ipa:"/ˈbɔːrɪŋ/", ru:"скучный", hint:"БО-ринг"},
+    {en:"awful", ipa:"/ˈɔːfl/", ru:"ужасный", hint:"О-фул"},
+    {en:"terrible", ipa:"/ˈterəbl/", ru:"ужасный, отвратительный", hint:"ТЭ-рэ-бл"}
+  ];
+  var phrases = [
+    {en:"Are you free tonight?", ru:"Ты свободен сегодня вечером?"},
+    {en:"Would you like to join me?", ru:"Хочешь присоединиться ко мне?"},
+    {en:"How about watching a comedy?", ru:"Как насчёт комедии?"},
+    {en:"Great idea! I love it!", ru:"Отличная идея! Обожаю это!"},
+    {en:"That sounds great!", ru:"Звучит здорово!"},
+    {en:"Count me in!", ru:"Рассчитывай на меня! / Я с вами!"},
+    {en:"Sorry, I can't make it.", ru:"Извини, не получится."},
+    {en:"I'd rather watch the news.", ru:"Я бы лучше посмотрел новости."},
+    {en:"Nothing much.", ru:"Ничего особенного (не занят)."},
+    {en:"For a change.", ru:"Для разнообразия."}
+  ];
+  var dialogue = [
+    {who:"David", text:"Hi, Tony! Are you free tonight?", ru:"Привет, Тони! Ты свободен сегодня вечером?"},
+    {who:"Tony",  text:"Yes, I think so. Nothing much.", ru:"Да, кажется. Ничего особенного."},
+    {who:"David", text:"There's a new science fiction film on TV. Would you like to join me?", ru:"По телевизору новый фантастический фильм. Хочешь присоединиться?"},
+    {who:"Tony",  text:"Great idea! I love science fiction. It's so exciting!", ru:"Отличная идея! Я обожаю фантастику. Она такая захватывающая!"},
+    {who:"David", text:"How about meeting at my place at 7:30?", ru:"Как насчёт встретиться у меня в 7:30?"},
+    {who:"Tony",  text:"Perfect! Count me in!", ru:"Идеально! Я с тобой!"},
+    {who:"David", text:"See you tonight then!", ru:"До вечера!"}
+  ];
+
+  // ---- render vocab ----
+  function wordCard(w){
+    return '<div class="wcard" data-en="'+w.en+'">' +
+      '<span class="spk">🔊</span>' +
+      '<div class="en">'+w.en+'</div>' +
+      '<div class="ipa">'+w.ipa+'</div>' +
+      '<div class="ru">'+w.ru+'</div>' +
+      '<div class="hint">как читать: '+w.hint+'</div></div>';
+  }
+  document.getElementById('wordGrid').innerHTML = programmes.map(wordCard).join('');
+  document.getElementById('adjGrid').innerHTML = adjectives.map(wordCard).join('');
+  document.getElementById('words').addEventListener('click', function(e){
+    var c = e.target.closest('.wcard');
+    if(c) speak(c.dataset.en, true);
+  });
+
+  document.getElementById('playAllBtn').addEventListener('click', function(){
+    programmes.forEach(function(w){ speak(w.en, false); });
+  });
+  document.getElementById('stopAllBtn').addEventListener('click', function(){
+    if(window.speechSynthesis) speechSynthesis.cancel();
+  });
+
+  // ---- phrases ----
+  document.getElementById('phraseList').innerHTML = phrases.map(function(p){
+    return '<div class="line a" data-en="'+p.en+'"><span class="who">🔊 нажми, чтобы услышать</span>' +
+      '<b>'+p.en+'</b><div class="ru">'+p.ru+'</div></div>';
+  }).join('');
+  document.getElementById('chat').addEventListener('click', function(e){
+    var l = e.target.closest('.line');
+    if(l) speak(l.dataset.en, true);
+  });
+
+  // ---- dialogue ----
+  document.getElementById('dialogue').innerHTML = dialogue.map(function(d){
+    return '<div class="line '+(d.who==='David'?'a':'b')+'" data-en="'+d.text+'">' +
+      '<span class="who">'+d.who+'</span><b>'+d.text+'</b>' +
+      '<div class="ru">'+d.ru+'</div></div>';
+  }).join('');
+  document.getElementById('talk').addEventListener('click', function(e){
+    var l = e.target.closest('.line');
+    if(l) speak(l.dataset.en, true);
+  });
+  document.getElementById('playDialogBtn').addEventListener('click', function(){
+    dialogue.forEach(function(d){ speak(d.text, false); });
+  });
+  document.getElementById('stopDialogBtn').addEventListener('click', function(){
+    if(window.speechSynthesis) speechSynthesis.cancel();
+  });
+
+  // ---- universal option groups ----
+  document.querySelectorAll('.opt-group').forEach(function(gr){
+    var ok = parseInt(gr.dataset.ok,10);
+    gr.addEventListener('click', function(e){
+      var btns = gr.querySelectorAll('.opt');
+      var idx = Array.prototype.indexOf.call(btns, e.target.closest('.opt'));
+      if(idx < 0) return;
+      btns.forEach(function(b,i){
+        b.classList.remove('correct','wrong');
+        if(i === ok) b.classList.add('correct');
+      });
+      if(idx !== ok) e.target.closest('.opt').classList.add('wrong');
+      gr.querySelector('.feedback').textContent = gr.dataset.fb;
+    });
+    gr.insertAdjacentHTML('beforeend','<div class="feedback"></div>');
+  });
+
+  // ---- game 1: guess the programme ----
+  var g1 = [
+    {q:"People answer questions about their lives and we watch them at home. What is it?", opts:["the news","a reality show","a drama"], ok:1, fb:"Верно! В реалити-шоу снимают обычных людей в реальных ситуациях."},
+    {q:"Cartoon animals and heroes move and talk. It's for kids and adults too. What is it?", opts:["a cartoon","a talk show","the news"], ok:0, fb:"Верно! Это мультфильм."},
+    {q:"A presenter talks to a famous guest on a sofa. What is it?", opts:["a sitcom","a sports programme","a talk show"], ok:2, fb:"Верно! Это ток-шоу."},
+    {q:"Spaceships, robots and aliens on other planets. What is it?", opts:["science fiction","a music show","a drama"], ok:0, fb:"Верно! Это фантастика."},
+    {q:"A story with serious feelings and famous actors. What is it?", opts:["a cartoon","a drama","a reality show"], ok:1, fb:"Верно! Это драма."},
+    {q:"Funny episodes about a family in one flat. People laugh a lot. What is it?", opts:["a sitcom","the news","a wildlife programme"], ok:0, fb:"Верно! Это ситком."},
+    {q:"Match results, scores and interviews with sportsmen. What is it?", opts:["a talk show","a music show","a sports programme"], ok:2, fb:"Верно! Это спортивная передача."},
+    {q:"Lions, oceans and amazing animals in nature. What is it?", opts:["a wildlife programme","a reality show","a sitcom"], ok:0, fb:"Верно! Это передача о природе."}
+  ];
+  var g1i = 0, g1s = 0;
+  function renderG1(){
+    var area = document.getElementById('g1area');
+    if(g1i >= g1.length){
+      area.innerHTML = '<div class="note">🎉 Игра пройдена! Твой счёт: <b>'+g1s+' из '+g1.length+'</b>. ' +
+        (g1s>=7?'Невероятно — ты настоящий знаток телепрограмм! 🥇':g1s>=5?'Здорово! Почти всё верно.':'Хорошая тренировка! Пройди ещё раз.') + '</div>';
+      var b = document.createElement('button'); b.className='btn ghost'; b.textContent='↻ Играть заново';
+      b.addEventListener('click', function(){ g1i=0; g1s=0; renderG1(); });
+      area.appendChild(b); return;
+    }
+    var item = g1[g1i];
+    area.innerHTML = '<p><b>Вопрос '+(g1i+1)+' из '+g1.length+'. </b>'+item.q+'</p>' +
+      item.opts.map(function(o,i){ return '<button class="opt" data-i="'+i+'">'+o+'</button>'; }).join('') +
+      '<div class="feedback"></div>';
+    area.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var i = parseInt(btn.dataset.i,10);
+        var fb = area.querySelector('.feedback');
+        if(i === item.ok){ btn.classList.add('correct'); g1s++; fb.textContent = item.fb; }
+        else {
+          btn.classList.add('wrong');
+          area.querySelectorAll('.opt')[item.ok].classList.add('correct');
+          fb.textContent = 'Почти! Правильный ответ выделен зелёным. ' + item.fb;
+        }
+        area.querySelectorAll('.opt').forEach(function(x){ x.style.pointerEvents='none'; });
+        document.getElementById('g1score').textContent = 'Счёт: '+g1s+' / '+g1.length;
+        speak(item.opts[item.ok], false);
+        setTimeout(function(){ g1i++; renderG1(); }, 1500);
+      });
+    });
+  }
+  renderG1();
+
+  // ---- game 2: fill the gap ----
+  var g2 = [
+    {q:"— ___ you free tonight? — Yes, I am!", opts:["Are","Is","Do"], ok:0, fb:"Верно! С you используется are."},
+    {q:"Would you like to ___ me?", opts:["join","joins","joining"], ok:0, fb:"Верно! После would like — инфинитив с to."},
+    {q:"How ___ watching a comedy?", opts:["about","much","many"], ok:0, fb:"Верно! Устойчивая фраза How about…?"},
+    {q:"— Let's watch the news. — ___, it's boring!", opts:["Oh, no","Great idea","Count me in"], ok:0, fb:"Верно! Отказываемся и объясняем: скучно."},
+    {q:"There's a new science fiction film ___ TV.", opts:["on","in","at"], ok:0, fb:"Верно! Передачи показывают on TV."},
+    {q:"I love cartoons. They are so ___!", opts:["exciting","boring","awful"], ok:0, fb:"Верно! Exciting — положительная оценка."},
+    {q:"— Are you free? — Sorry, I can't ___ it today.", opts:["make","do","join"], ok:0, fb:"Верно! Фраза can't make it — «не получится»."},
+    {q:"— Let's meet at 7:30. — ___, count me in!", opts:["Perfect","Awful","Terrible"], ok:0, fb:"Верно! Perfect — согласие с планом."}
+  ];
+  var g2i = 0, g2s = 0;
+  function renderG2(){
+    var area = document.getElementById('g2area');
+    if(g2i >= g2.length){
+      area.innerHTML = '<div class="note">🎉 Игра пройдена! Твой счёт: <b>'+g2s+' из '+g2.length+'</b>. ' +
+        (g2s>=7?'Блестяще! Ты готов вести диалог на английском! 🥇':g2s>=5?'Отличный результат!':'Ещё разок — и будет идеально!') + '</div>';
+      var b = document.createElement('button'); b.className='btn ghost'; b.textContent='↻ Играть заново';
+      b.addEventListener('click', function(){ g2i=0; g2s=0; renderG2(); });
+      area.appendChild(b); return;
+    }
+    var item = g2[g2i];
+    area.innerHTML = '<p><b>Вопрос '+(g2i+1)+' из '+g2.length+'. </b>'+item.q+'</p>' +
+      item.opts.map(function(o,i){ return '<button class="opt" data-i="'+i+'">'+o+'</button>'; }).join('') +
+      '<div class="feedback"></div>';
+    area.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var i = parseInt(btn.dataset.i,10);
+        var fb = area.querySelector('.feedback');
+        if(i === item.ok){ btn.classList.add('correct'); g2s++; fb.textContent = item.fb; }
+        else {
+          btn.classList.add('wrong');
+          area.querySelectorAll('.opt')[item.ok].classList.add('correct');
+          fb.textContent = 'Почти! Правильный ответ выделен зелёным. ' + item.fb;
+        }
+        area.querySelectorAll('.opt').forEach(function(x){ x.style.pointerEvents='none'; });
+        document.getElementById('g2score').textContent = 'Счёт: '+g2s+' / '+g2.length;
+        setTimeout(function(){ g2i++; renderG2(); }, 1500);
+      });
+    });
+  }
+  renderG2();
+
+  // ---- creator ----
+  var picks = [
+    {label:"Что предложить другу?", opts:["watching a comedy","watching the news","watching a reality show"]},
+    {label:"Как это оценить?", opts:["It's exciting!","It's boring!","It's terrible!"]},
+    {label:"Ответ друга?", opts:["Great idea! Count me in!","Sorry, I can't make it.","Nothing much."]}
+  ];
+  var chosen = [null,null,null];
+  document.getElementById('pickArea').innerHTML = picks.map(function(p,i){
+    return '<h3>'+(i+1)+'. '+p.label+'</h3>' +
+      p.opts.map(function(o){ return '<button class="opt" data-g="'+i+'" data-v="'+o+'">'+o+'</button>'; }).join('');
+  }).join('');
+  document.getElementById('pickArea').addEventListener('click', function(e){
+    var b = e.target.closest('button.opt'); if(!b) return;
+    var g = parseInt(b.dataset.g,10);
+    chosen[g] = b.dataset.v;
+    b.parentNode.querySelectorAll('.opt').forEach(function(x){ x.classList.remove('correct'); });
+    b.classList.add('correct');
+    updateMade();
+  });
+  function updateMade(){
+    var box = document.getElementById('madeDialog');
+    if(chosen[0] === null){
+      box.style.display='none'; document.getElementById('speakMadeBtn').style.display='none';
+      document.getElementById('clearMadeBtn').style.display='none'; return;
+    }
+    var lines = [
+      '<b>Ты:</b> Are you free tonight? I want to relax.',
+      '<b>Друг:</b> Nothing much. Why?',
+      '<b>Ты:</b> How about ' + chosen[0] + '? ' + (chosen[1]||'') ,
+      '<b>Друг:</b> ' + (chosen[2]||'Great idea! Count me in!'),
+      '<b>Ты:</b> See you tonight then!'
+    ];
+    box.innerHTML = '<h3 style="margin-top:4px;">📝 Твой диалог:</h3>' + lines.map(function(l){ return '<p>'+l+'</p>'; }).join('');
+    box.style.display='block';
+    document.getElementById('speakMadeBtn').style.display='inline-block';
+    document.getElementById('clearMadeBtn').style.display='inline-block';
+  }
+  document.getElementById('speakMadeBtn').addEventListener('click', function(){
+    var spoken = [
+      "Are you free tonight? I want to relax.",
+      "Nothing much. Why?",
+      "How about " + chosen[0].replace('watching ','watching ') + "?",
+      chosen[1] || "",
+      chosen[2] || "Great idea! Count me in!",
+      "See you tonight then!"
+    ].filter(Boolean).join(' ');
+    speak(spoken, false);
+  });
+  document.getElementById('clearMadeBtn').addEventListener('click', function(){
+    chosen = [null,null,null];
+    document.querySelectorAll('#pickArea .opt').forEach(function(x){ x.classList.remove('correct'); });
+    updateMade();
+  });
+
+  // ---- test ----
+  var test = [
+    {q:"«Мультфильм» по-английски:", opts:["a cartoon","a comedy","the news"], ok:0},
+    {q:"Как насчёт посмотреть фантастику?", opts:["How about watching science fiction?","Would you like watching science fiction?","How about to watch science fiction?"], ok:0},
+    {q:"«Скучный» по-английски:", opts:["boring","exciting","enjoyable"], ok:0},
+    {q:"Would you like to ___ me?", opts:["join","joins","joining"], ok:0},
+    {q:"«Рассчитывай на меня!» — это…", opts:["Count me in!","Count on TV!","Meet me in!"], ok:0},
+    {q:"I ___ rather watch the news.", opts:["'d","am","will"], ok:0},
+    {q:"Реалити-шоу — это…", opts:["a reality show","a music show","a sitcom"], ok:0},
+    {q:"Cartoons ___ exciting.", opts:["are","is","am"], ok:0},
+    {q:"— Are you free tonight? — ___", opts:["Yes, I am!","Yes, I do!","Yes, I can!"], ok:0},
+    {q:"«Ничего особенного» по-английски:", opts:["Nothing much.","Great idea!","For a change."], ok:0}
+  ];
+  function renderTest(){
+    document.getElementById('testArea').innerHTML = test.map(function(t,i){
+      var opts = t.opts.map(function(o,j){
+        return '<button class="opt" data-i="'+j+'" data-q="'+i+'">'+o+'</button>';
+      }).join('');
+      return '<div class="testq" data-q="'+i+'"><h4>'+(i+1)+'. '+t.q+'</h4>'+opts+'</div>';
+    }).join('');
+    document.getElementById('testResult').style.display='none';
+  }
+  var answers = {};
+  document.getElementById('testArea').addEventListener('click', function(e){
+    var b = e.target.closest('.opt'); if(!b) return;
+    var qi = parseInt(b.dataset.q,10), oi = parseInt(b.dataset.i,10);
+    answers[qi] = oi;
+    b.parentNode.querySelectorAll('.opt').forEach(function(x){ x.classList.remove('correct','wrong'); });
+    b.classList.add('correct');
+  });
+  document.getElementById('checkTestBtn').addEventListener('click', function(){
+    var score = 0, unanswered = 0;
+    test.forEach(function(t,i){
+      if(answers[i] === undefined){ unanswered++; return; }
+      var box = document.querySelector('.testq[data-q="'+i+'"]');
+      box.querySelectorAll('.opt').forEach(function(b,j){
+        b.classList.remove('correct','wrong');
+        if(j === t.ok) b.classList.add('correct');
+        if(j === answers[i] && j !== t.ok) b.classList.add('wrong');
+      });
+      if(answers[i] === t.ok) score++;
+    });
+    var res = document.getElementById('testResult');
+    var mark, text;
+    if(score >= 9){ mark='🥇'; text='Превосходно! Ты настоящий знаток английского!'; }
+    else if(score >= 7){ mark='🥈'; text='Очень хорошо! Ещё чуть-чуть — и медаль!'; }
+    else if(score >= 5){ mark='🥉'; text='Хорошо! Повтори слова и пройди тест ещё раз.'; }
+    else { mark='📚'; text='Не расстраивайся — вернись к вкладкам «Слова» и «Фразы» и попробуй снова!'; }
+    res.innerHTML = mark+' Твой результат: <b>'+score+' из 10</b>. '+text +
+      (unanswered ? '<br>⚠️ Не отвечено вопросов: '+unanswered+'.' : '');
+    res.style.display='block';
+    res.scrollIntoView({behavior:'smooth'});
+  });
+  document.getElementById('resetTestBtn').addEventListener('click', function(){
+    answers = {}; renderTest();
+  });
+  renderTest();
+})();
+</script>
+</body>
+</html>
