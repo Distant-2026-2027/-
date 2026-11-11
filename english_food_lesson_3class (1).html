@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Favourite Food — английский 3 класс (Spotlight 6b)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Verdana,sans-serif;background:#fff8ec;color:#333;min-height:100vh}
+header{background:#ff9800;color:#fff;padding:14px;text-align:center}
+header h1{font-size:22px}
+header p{font-size:13px;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;background:#ffe0b2;padding:8px;position:sticky;top:0;z-index:5}
+nav button{border:none;background:#fff;border-radius:20px;padding:8px 14px;font-size:14px;cursor:pointer;font-weight:bold;color:#e65100}
+nav button.on{background:#e65100;color:#fff}
+main{max-width:820px;margin:0 auto;padding:16px}
+section.tab{display:none}
+section.tab.on{display:block}
+.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+h2{color:#e65100;font-size:20px;margin-bottom:10px}
+h3{color:#ef6c00;margin:10px 0 6px}
+.big{font-size:17px;line-height:1.6}
+.wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.wcard{background:#fffde7;border:2px solid #ffd54f;border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:.15s}
+.wcard:hover{transform:scale(1.03);background:#fff3c4}
+.wcard .em{font-size:38px}
+.wcard .en{font-weight:bold;font-size:16px;color:#33691e}
+.wcard .ru{font-size:13px;color:#555}
+.wcard .tr{font-size:12px;color:#1565c0;font-style:italic}
+.btn{display:inline-block;border:none;border-radius:20px;padding:10px 18px;font-size:15px;cursor:pointer;font-weight:bold;margin:4px;color:#fff;background:#43a047}
+.btn.o{background:#1e88e5}.btn.r{background:#e53935}.btn.y{background:#f9a825;color:#333}
+.btn:active{transform:scale(.96)}
+.opt{display:inline-block;border:2px solid #90caf9;background:#e3f2fd;border-radius:10px;padding:8px 14px;margin:4px;font-size:15px;cursor:pointer}
+.opt.ok{background:#a5d6a7;border-color:#2e7d32}
+.opt.no{background:#ef9a9a;border-color:#c62828}
+.dline{background:#f1f8e9;border-radius:10px;padding:8px 12px;margin:6px 0;cursor:pointer}
+.dline b{color:#33691e}
+.hint{font-size:13px;color:#666;margin-top:6px}
+.score{font-size:18px;font-weight:bold;color:#e65100;margin-top:8px}
+table{width:100%;border-collapse:collapse;margin:8px 0}
+td{border:1px solid #ffcc80;padding:8px;font-size:15px}
+td b{color:#33691e}
+input[type=radio]{margin-right:6px}
+label.q{display:block;margin:6px 0;font-size:15px}
+.emoji{font-size:34px}
+footer{text-align:center;padding:16px;color:#8d6e63;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>🍔 My Favourite Food</h1>
+<p>Урок английского языка · 3 класс · Spotlight, Unit 6b</p>
+</header>
+<nav id="tabs">
+<button onclick="showTab(0,this)" class="on">🎯 Цель</button>
+<button onclick="showTab(1,this)">📖 Слова</button>
+<button onclick="showTab(2,this)">🧺 Игра 1</button>
+<button onclick="showTab(3,this)">💬 Как спросить</button>
+<button onclick="showTab(4,this)">🗣 Разговор</button>
+<button onclick="showTab(5,this)">🎲 Игра 2</button>
+<button onclick="showTab(6,this)">✏️ Проверь себя</button>
+<button onclick="showTab(7,this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="tab0">
+<div class="card">
+<h2>Что мы узнаем сегодня 🎯</h2>
+<p class="big">На этом уроке мы научимся:</p>
+<ul class="big" style="margin:10px 0 10px 22px">
+<li>называть продукты на английском языке 🍎🧀🥛</li>
+<li>спрашивать: <b>Do you like...?</b> — «Ты любишь...?»</li>
+<li>отвечать: <b>Yes, I do</b> / <b>No, I don't</b></li>
+<li>рассказывать о вкусах друзей: <b>His/Her favourite food is...</b></li>
+</ul>
+<div class="hint">💡 Нажимай на вкладки сверху — урок состоит из 8 шагов. Пройди их по порядку!</div>
+</div>
+</section>
+
+<section class="tab" id="tab1">
+<div class="card">
+<h2>Слова: еда 📖</h2>
+<p class="big">Нажми на карточку — слово прозвучит <b>два раза</b>: сначала медленно, потом как обычно. Под словом написано, как его читать.</p>
+<div class="wordgrid" id="wordgrid"></div>
+<div style="text-align:center;margin-top:12px">
+<button class="btn" onclick="sayAll()">▶️ Прослушать все слова</button>
+<button class="btn o" onclick="stopSpeak()">⏹ Стоп</button>
+</div>
+<div class="hint">Если голос не слышен — проверь, что громкость включена. Транскрипция всегда поможет прочитать слово!</div>
+</div>
+</section>
+
+<section class="tab" id="tab2">
+<div class="card">
+<h2>Игра «Собери корзинку» 🧺</h2>
+<p>Послушай слово и найди правильную картинку!</p>
+<div style="text-align:center;margin:10px 0">
+<button class="btn" onclick="playTask()">🔊 Послушать слово</button>
+<span class="score" id="g1score">Счёт: 0 из 8</span>
+</div>
+<div id="g1opts" style="text-align:center;font-size:52px"></div>
+<p id="g1msg" style="text-align:center;font-size:17px;min-height:24px"></p>
+</div>
+</section>
+
+<section class="tab" id="tab3">
+<div class="card">
+<h2>Как спросить «Ты любишь...?» 💬</h2>
+<table>
+<tr><td><b>Do you like cheese?</b></td><td>Ты любишь сыр?</td></tr>
+<tr><td><b>Yes, I do.</b></td><td>Да, люблю.</td></tr>
+<tr><td><b>No, I don't.</b></td><td>Нет, не люблю.</td></tr>
+<tr><td><b>Does he like milk?</b></td><td>Он любит молоко?</td></tr>
+<tr><td><b>Yes, he does. / No, he doesn't.</b></td><td>Да. / Нет.</td></tr>
+</table>
+<h3>Про друзей 🧒👧</h3>
+<table>
+<tr><td><b>Tom likes pizza. His favourite food is pizza.</b></td><td>Том любит пиццу. Его любимая еда — пицца.</td></tr>
+<tr><td><b>Ann likes cake. Her favourite food is cake.</b></td><td>Энн любит торт. Её любимая еда — торт.</td></tr>
+</table>
+<p class="hint">🔑 Запомни: про мальчика — <b>his</b> (его), про девочку — <b>her</b> (её). С he/she/it добавляем <b>-s</b>: he like<b>s</b>.</p>
+<button class="btn o" onclick="speakSlow('Do you like cheese? Yes, I do. No, I do not.')">🔊 Послушать примеры</button>
+</div>
+</section>
+
+<section class="tab" id="tab4">
+<div class="card">
+<h2>Разговор Кейт и Тома 🗣</h2>
+<p class="hint">Нажми на любую реплику — она озвучится медленно и чётко.</p>
+<div id="dialog"></div>
+<h3>Мини-вопросы по диалогу</h3>
+<div id="dq"></div>
+</div>
+</section>
+
+<section class="tab" id="tab5">
+<div class="card">
+<h2>Игра «Вставь слово» 🎲</h2>
+<p>Выбери правильное слово в каждом предложении!</p>
+<div id="g2"></div>
+<div class="score" id="g2score">Счёт: 0 из 8</div>
+</div>
+</section>
+
+<section class="tab" id="tab6">
+<div class="card">
+<h2>Проверь себя ✏️</h2>
+<p>10 вопросов. В конце — твоя оценка!</p>
+<div id="test"></div>
+<button class="btn" onclick="checkTest()">Проверить ответы</button>
+<div class="score" id="tres"></div>
+</div>
+</section>
+
+<section class="tab" id="tab7">
+<div class="card">
+<h2>Домашнее задание 🏠</h2>
+<ul class="big" style="margin-left:22px;line-height:1.9">
+<li>📖 Выпиши в тетрадь 8 любых новых слов и транскрипцию к ним.</li>
+<li>✏️ Напиши 4 предложения: <i>My friend ... likes ...</i> (His/Her favourite food is...)</li>
+<li>🗣 Спроси дома: <i>Do you like...?</i> и запиши ответы родных.</li>
+<li>⭐ Со звёздочкой: нарисуй «меню пиратского обеда» на английском 🏴‍☠️</li>
+</ul>
+<div style="text-align:center;font-size:44px;margin-top:10px">🍎🧀🥛🍦</div>
+<p style="text-align:center;font-size:17px;margin-top:8px"><b>Well done!</b> Ты отлично потрудился! 🥇</p>
+</div>
+</section>
+
+</main>
+<footer>Урок «Любимая еда моих друзей и одноклассников» · Spotlight 3 · Unit 6b</footer>
+
+<script>
+'use strict';
+/* ---------- вкладки ---------- */
+function showTab(n,btn){
+ var s=document.getElementsByClassName('tab');
+ for(var i=0;i<s.length;i++){s[i].className='tab';}
+ document.getElementById('tab'+n).className='tab on';
+ var b=document.getElementById('tabs').children;
+ for(var j=0;j<b.length;j++){b[j].className='';}
+ btn.className='on';
+ window.scrollTo(0,0);
+}
+
+/* ---------- озвучка ---------- */
+var VOICE=null;
+function pickVoice(){
+ if(!('speechSynthesis' in window))return;
+ var vs=speechSynthesis.getVoices();
+ if(!vs||!vs.length)return;
+ var patterns=[/Google UK English Female/i,/Google UK English Male/i,/Daniel/i,/Serena/i,/Kate/i,/Microsoft (Libby|Sonia|Ryan)/i,/en-GB/i,/Samantha/i,/Alex/i,/en-US/i,/English/i];
+ for(var p=0;p<patterns.length;p++){
+  for(var i=0;i<vs.length;i++){
+   if(patterns[p].test(vs[i].name)&&/en/i.test(vs[i].lang)){VOICE=vs[i];return;}
+  }
+ }
+ for(var k=0;k<vs.length;k++){if(/^en/.test(vs[k].lang)){VOICE=vs[k];return;}}
+}
+if('speechSynthesis' in window){
+ pickVoice();
+ speechSynthesis.onvoiceschanged=pickVoice;
+}
+function speak(text,rate){
+ if(!('speechSynthesis' in window))return;
+ speechSynthesis.cancel();
+ var u=new SpeechSynthesisUtterance(text);
+ u.lang='en-GB';
+ if(VOICE)u.voice=VOICE;
+ u.rate=rate||0.65;
+ u.pitch=1.05;
+ speechSynthesis.speak(u);
+}
+function sayWord(w){
+ speak(w+'.',0.45);
+ setTimeout(function(){speak(w,0.7);},2200);
+}
+function sayAll(){
+ for(var i=0;i<WORDS.length;i++){
+  (function(w){setTimeout(function(){sayWord(w);},i*4800);})(WORDS[i][0]);
+ }
+}
+function stopSpeak(){if('speechSynthesis' in window)speechSynthesis.cancel();}
+
+/* ---------- слова ---------- */
+var WORDS=[
+ ['apples','🍎','/ˈæplz/','эплз','яблоки'],
+ ['bananas','🍌','/bəˈnɑːnəz/','бэ-наа-наз','бананы'],
+ ['cheese','🧀','/tʃiːz/','чииз','сыр'],
+ ['milk','🥛','/mɪlk/','милк','молоко'],
+ ['bread','🍞','/bred/','брэд','хлеб'],
+ ['fish','🐟','/fɪʃ/','фиш','рыба'],
+ ['chicken','🍗','/ˈtʃɪkɪn/','чи-кен','курица'],
+ ['eggs','🥚','/eɡz/','эгз','яйца'],
+ ['ice cream','🍦','/ˈaɪs kriːm/','айс-крим','мороженое'],
+ ['cake','🍰','/keɪk/','кейк','торт'],
+ ['juice','🧃','/dʒuːs/','джуус','сок'],
+ ['pizza','🍕','/ˈpiːtsə/','пи-ца','пицца'],
+ ['chips','🍟','/tʃɪps/','чипс','картошка фри'],
+ ['tomatoes','🍅','/təˈmɑːtəʊz/','тэ-маа-тоуз','помидоры'],
+ ['potatoes','🥔','/pəˈteɪtəʊz/','пэ-тей-тоуз','картошка'],
+ ['carrots','🥕','/ˈkærəts/','ка-рэтс','морковь']
+];
+(function(){
+ var g=document.getElementById('wordgrid'),h='';
+ for(var i=0;i<WORDS.length;i++){
+  var w=WORDS[i];
+  h+='<div class="wcard" onclick="sayWord(\''+w[0].replace(/'/g,"\\'")+'\')">'
+   +'<div class="em">'+w[1]+'</div>'
+   +'<div class="en">'+w[0]+'</div>'
+   +'<div class="tr">'+w[2]+' · ['+w[3]+']</div>'
+   +'<div class="ru">'+w[4]+'</div></div>';
+ }
+ g.innerHTML=h;
+})();
+
+/* ---------- игра 1 ---------- */
+var g1score=0,g1done=0,g1answer=-1;
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function playTask(){
+ if(g1done>=8){g1done=0;g1score=0;document.getElementById('g1score').innerHTML='Счёт: 0 из 8';}
+ var idx=Math.floor(Math.random()*WORDS.length);
+ g1answer=idx;
+ var opts=[idx],pool=[];
+ for(var i=0;i<WORDS.length;i++){if(i!==idx)pool.push(i);}
+ pool=shuffle(pool);
+ opts=opts.concat(pool.slice(0,3));
+ opts=shuffle(opts);
+ var h='';
+ for(var k=0;k<opts.length;k++){
+  h+='<span class="opt" style="padding:14px;font-size:52px" onclick="checkG1('+opts[k]+',this)">'+WORDS[opts[k]][1]+'</span>';
+ }
+ document.getElementById('g1opts').innerHTML=h;
+ document.getElementById('g1msg').innerHTML='';
+ sayWord(WORDS[idx][0]);
+}
+function checkG1(n,el){
+ var m=document.getElementById('g1msg');
+ if(n===g1answer){
+  el.className='opt ok';m.innerHTML='✅ Верно! '+WORDS[n][0]+' — '+WORDS[n][4];g1score++;
+ }else{
+  el.className='opt no';m.innerHTML='❌ Не то! Правильный ответ: '+WORDS[g1answer][1]+' '+WORDS[g1answer][0];
+ }
+ g1done++;
+ document.getElementById('g1score').innerHTML='Счёт: '+g1score+' из 8';
+ setTimeout(playTask,1800);
+}
+
+/* ---------- диалог ---------- */
+var DIALOG=[
+ ['Kate','Hello, Tom! Do you like cheese?'],
+ ['Tom','Yes, I do! Cheese is my favourite food.'],
+ ['Kate','Does your sister like milk?'],
+ ['Tom','No, she doesn\'t. But she likes ice cream.'],
+ ['Kate','My friend Max likes pizza. His favourite food is pizza.'],
+ ['Tom','And my friend Ann likes apples. Her favourite food is apples!']
+];
+(function(){
+ var h='';
+ for(var i=0;i<DIALOG.length;i++){
+  var d=DIALOG[i];
+  var txt=d[1].replace(/'/g,"\\'");
+  h+='<div class="dline" onclick="speak(\''+txt+'\',0.55)"><b>'+d[0]+':</b> '+d[1]+'</div>';
+ }
+ document.getElementById('dialog').innerHTML=h;
+ var q=[
+  ['What is Tom\'s favourite food?',['Cheese','Milk','Pizza'],0],
+  ['Who likes apples?',['Max','Ann','Kate'],1]
+ ];
+ var qh='';
+ for(var k=0;k<q.length;k++){
+  qh+='<p><b>'+q[k][0]+'</b></p>';
+  for(var j=0;j<3;j++){
+   qh+='<span class="opt" onclick="checkDQ(this,'+(j===q[k][2])+')">'+q[k][1][j]+'</span>';
+  }
+ }
+ document.getElementById('dq').innerHTML=qh;
+})();
+function checkDQ(el,ok){
+ el.className=ok?'opt ok':'opt no';
+}
+
+/* ---------- игра 2 ---------- */
+var G2=[
+ ['Do you ___ apples?',['like','likes'],0],
+ ['___ she like fish?',['Do','Does'],1],
+ ['My friend ___ milk.',['like','likes'],1],
+ ['No, I ___ like carrots.',['don\'t','doesn\'t'],0],
+ ['Tom likes pizza. ___ favourite food is pizza.',['His','Her'],0],
+ ['Ann likes cake. ___ favourite food is cake.',['His','Her'],1],
+ ['___ you like cheese?',['Do','Does'],0],
+ ['Does Max like juice? Yes, he ___.',['do','does'],1]
+];
+(function(){
+ var h='';
+ for(var i=0;i<G2.length;i++){
+  var g=G2[i];
+  h+='<p class="big" style="margin:10px 0 2px">'+(i+1)+'. '+g[0].replace('___','<b>___</b>')+'</p>';
+  for(var j=0;j<2;j++){
+   var t=g[1][j].replace(/'/g,"\\'");
+   h+='<span class="opt" onclick="checkG2(this,'+(j===g[2])+')">'+g[1][j]+'</span>';
+  }
+ }
+ document.getElementById('g2').innerHTML=h;
+})();
+var g2score=0,g2ans=0;
+function checkG2(el,ok){
+ if(el.dataset.done)return;
+ el.dataset.done='1';
+ el.className=ok?'opt ok':'opt no';
+ if(ok)g2score++;else g2ans++;
+ document.getElementById('g2score').innerHTML='Счёт: '+g2score+' из 8'+(g2score+g2ans>=8?' — Игра пройдена! 🎉':'');
+}
+
+/* ---------- тест ---------- */
+var TEST=[
+ ['Сколько слов-продуктов ты выучил на уроке? Ты видишь «cheese» — это…',['сыр','чай','курица'],0],
+ ['Выбери правильный вопрос:',['Do you like apples?','You do like apples?','Like you apples?'],0],
+ ['Как ответить «Да, люблю»?',['Yes, I do.','Yes, I like.','No, I don\'t.'],0],
+ ['«Does she like milk?» — ответ «нет»:',['No, she doesn\'t.','No, she don\'t.','No, she isn\'t.'],0],
+ ['Молоко по-английски — это…',['milk','bread','juice'],0],
+ ['Том любит пиццу. Его любимая еда — пицца:',['His favourite food is pizza.','Her favourite food is pizza.','His favourite food is cake.'],0],
+ ['Энн любит торт. «Её» — это…',['her','his','him'],0],
+ ['Хлеб по-английски — это…',['bread','cheese','fish'],0],
+ ['Мороженое по-английски — это…',['ice cream','apple pie','chips'],0],
+ ['«My friend likes carrots» означает:',['Мой друг любит морковь.','Мой друг любит сыр.','Я люблю морковь.'],0]
+];
+(function(){
+ var h='';
+ for(var i=0;i<TEST.length;i++){
+  h+='<p style="margin:12px 0 4px"><b>'+(i+1)+'.</b> '+TEST[i][0]+'</p>';
+  for(var j=0;j<3;j++){
+   h+='<label class="q"><input type="radio" name="q'+i+'" value="'+j+'">'+TEST[i][1][j]+'</label>';
+  }
+ }
+ document.getElementById('test').innerHTML=h;
+})();
+function checkTest(){
+ var score=0;
+ for(var i=0;i<TEST.length;i++){
+  var r=document.getElementsByName('q'+i);
+  for(var k=0;k<r.length;k++){
+   if(r[k].checked&&parseInt(r[k].value)===TEST[i][2])score++;
+  }
+ }
+ var msg;
+ if(score>=9)msg='🥇 Отлично! Ты настоящий знаток английского!';
+ else if(score>=7)msg='🥈 Хорошо! Ещё чуть-чуть — и будет идеально!';
+ else if(score>=5)msg='🥉 Неплохо! Повтори слова и попробуй снова.';
+ else msg='💪 Пройди урок ещё раз — всё обязательно получится!';
+ document.getElementById('tres').innerHTML='Твой результат: '+score+' из 10. '+msg;
+}
+</script>
+</body>
+</html>
