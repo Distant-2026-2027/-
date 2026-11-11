@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Физическая культура. 6–7 классы — интерактивная книга</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Segoe UI", Arial, sans-serif; background:#f0f4f8; color:#1e2a38; }
+  #layout { display:flex; min-height:100vh; }
+  nav { width:280px; background:#14304d; color:#fff; padding:20px 0; overflow-y:auto; height:100vh; position:sticky; top:0; flex-shrink:0; }
+  nav .brand { padding:0 20px 16px; border-bottom:1px solid rgba(255,255,255,.15); }
+  nav .brand h1 { font-size:17px; line-height:1.3; }
+  nav .brand p { font-size:12px; opacity:.7; margin-top:4px; }
+  nav ul { list-style:none; padding:10px 0; }
+  nav li button { display:block; width:100%; text-align:left; background:none; border:none; color:#dbe7f3; padding:10px 20px; font-size:14px; cursor:pointer; border-left:4px solid transparent; }
+  nav li button:hover { background:rgba(255,255,255,.08); }
+  nav li button.active { background:rgba(255,255,255,.12); border-left-color:#ffb347; color:#fff; font-weight:600; }
+  nav .class-label { padding:12px 20px 4px; font-size:11px; letter-spacing:1px; text-transform:uppercase; opacity:.55; }
+  main { flex:1; padding:28px 40px 60px; max-width:900px; }
+  #topbar { display:flex; align-items:center; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+  #menuBtn { display:none; background:#14304d; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-size:15px; cursor:pointer; }
+  #progressbar { flex:1; height:10px; background:#d8e2ec; border-radius:6px; overflow:hidden; min-width:120px; }
+  #progressfill { height:100%; width:0; background:linear-gradient(90deg,#2f80c8,#ffb347); transition:width .3s; }
+  #progressText { font-size:13px; color:#5a6b7d; }
+  section.page { display:none; animation:fade .25s ease; }
+  section.page.active { display:block; }
+  @keyframes fade { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+  .kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#2f80c8; font-weight:700; margin-bottom:6px; }
+  h2 { font-size:28px; margin-bottom:14px; color:#14304d; }
+  h3 { font-size:20px; margin:24px 0 10px; color:#14304d; border-left:4px solid #ffb347; padding-left:10px; }
+  p, li { line-height:1.65; font-size:16px; margin-bottom:10px; }
+  ul, ol { margin:0 0 12px 22px; }
+  .card { background:#fff; border-radius:12px; padding:18px 22px; margin:14px 0; box-shadow:0 1px 4px rgba(20,48,77,.08); }
+  .fact { border-left:4px solid #2f80c8; background:#eaf3fb; }
+  .warn { border-left:4px solid #e07a3f; background:#fdf3ec; }
+  table { border-collapse:collapse; width:100%; margin:12px 0; background:#fff; font-size:14px; }
+  th, td { border:1px solid #cfdbe5; padding:8px 10px; text-align:left; }
+  th { background:#14304d; color:#fff; }
+  tr:nth-child(even) td { background:#f6fafd; }
+  details { background:#fff; border-radius:10px; margin:10px 0; box-shadow:0 1px 3px rgba(20,48,77,.08); overflow:hidden; }
+  details summary { cursor:pointer; padding:14px 18px; font-weight:600; color:#14304d; list-style:none; }
+  details summary::before { content:"+ "; color:#ffb347; font-weight:800; }
+  details[open] summary::before { content:"− "; }
+  details .inner { padding:0 18px 16px; }
+  .navbtns { display:flex; justify-content:space-between; margin-top:30px; gap:10px; }
+  .navbtns button { background:#2f80c8; color:#fff; border:none; padding:12px 20px; border-radius:10px; font-size:15px; cursor:pointer; }
+  .navbtns button:disabled { background:#b9c9d6; cursor:default; }
+  .navbtns button:hover:not(:disabled) { background:#14304d; }
+  /* квизы */
+  .quiz { background:#fff; border:2px solid #2f80c8; border-radius:12px; padding:16px 20px; margin:18px 0; }
+  .quiz h4 { color:#2f80c8; margin-bottom:10px; font-size:15px; }
+  .q { margin-bottom:14px; }
+  .q p { font-weight:600; margin-bottom:6px; }
+  .opt { display:block; width:100%; text-align:left; background:#f2f6fa; border:2px solid #d8e2ec; border-radius:8px; padding:9px 12px; margin:6px 0; font-size:15px; cursor:pointer; }
+  .opt:hover { border-color:#2f80c8; }
+  .opt.correct { background:#e2f4e3; border-color:#3d9a4a; }
+  .opt.wrong { background:#fdeaea; border-color:#d9534f; }
+  .feedback { font-size:14px; margin-top:6px; font-weight:600; display:none; }
+  #finalScore { font-size:20px; font-weight:700; color:#14304d; margin-top:14px; }
+  .bigcover { text-align:center; padding:50px 20px; background:linear-gradient(135deg,#14304d,#2f80c8); color:#fff; border-radius:16px; margin-bottom:20px; }
+  .bigcover h2 { color:#fff; font-size:32px; }
+  .bigcover .medal { font-size:56px; }
+  @media (max-width:820px){
+    nav { position:fixed; left:-300px; transition:left .25s; z-index:10; }
+    nav.open { left:0; }
+    #menuBtn { display:block; }
+    main { padding:20px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+  <div class="brand"><h1>Физическая культура</h1><p>6–7 классы · интерактивная книга</p></div>
+  <div class="class-label">Как пользоваться</div>
+  <ul>
+    <li><button data-sec="intro" class="active">📖 Начало</button></li>
+  </ul>
+  <div class="class-label">6 класс</div>
+  <ul>
+    <li><button data-sec="c1">1. История Олимпийских игр</button></li>
+    <li><button data-sec="c2">2. Дневник по физкультуре</button></li>
+    <li><button data-sec="c3">3. Физическая подготовка</button></li>
+  </ul>
+  <div class="class-label">7 класс</div>
+  <ul>
+    <li><button data-sec="c4">4. Олимпийское движение в России</button></li>
+    <li><button data-sec="c5">5. Воспитание личности</button></li>
+    <li><button data-sec="c6">6. Техника безопасности</button></li>
+  </ul>
+  <div class="class-label">6–7 классы</div>
+  <ul>
+    <li><button data-sec="c7">7. Физическое совершенствование</button></li>
+    <li><button data-sec="dict">Словарь терминов</button></li>
+    <li><button data-sec="test">🏆 Итоговый тест</button></li>
+  </ul>
+</nav>
+<main>
+<div id="topbar">
+  <button id="menuBtn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ Оглавление</button>
+  <div id="progressbar"><div id="progressfill"></div></div>
+  <span id="progressText">0 из 9 разделов</span>
+</div>
+
+<section class="page active" id="intro">
+  <div class="bigcover"><div class="medal">🥇</div><h2>Физическая культура</h2><p style="opacity:.85">Интерактивная книга по учебнику 6–7 классов</p></div>
+  <p>Эта книга создана по учебнику А. П. Матвеева «Физическая культура. 6–7 классы» (издательство «Просвещение»). Внутри — короткие конспекты по всем разделам, интересные факты, карточки-вопросы и итоговый тест.</p>
+  <div class="card fact"><b>Как пользоваться:</b> выбирай главы в оглавлении слева (на телефоне — кнопка ☰ сверху). В каждой главе есть <b>интерактивные вопросы</b> — нажимай на вариант ответа и сразу узнавай, правильно ли. Прочитанные главы отмечаются в шкале прогресса сверху.</div>
+  <div class="card"><b>Что внутри:</b>
+    <ul>
+      <li>История Олимпийских игр и олимпийское движение в России;</li>
+      <li>как вести дневник по физической культуре;</li>
+      <li>физические качества и как их тренировать;</li>
+      <li>правила безопасности и гигиены;</li>
+      <li>оздоровительная и спортивная деятельность;</li>
+      <li>словарь терминов и итоговый тест 🏆</li>
+    </ul>
+  </div>
+  <div class="navbtns"><button onclick="go('c1')">Начать чтение →</button><button onclick="go('test')">Сразу к тесту</button></div>
+</section>
+
+<section class="page" id="c1">
+  <div class="kicker">6 класс · Часть I</div>
+  <h2>История современных Олимпийских игр</h2>
+  <h3>Возрождение Олимпийских игр</h3>
+  <p>Олимпийские игры Древней Греции были запрещены в 394 году римским императором Феодосием I. Но идея соревнований в честь мира и спорта не умерла: народы продолжали устраивать состязания — рыцарские турниры, кулачные бои, стрельбу из лука.</p>
+  <p>На рубеже XVII–XVIII веков в Европе вырос интерес к науке и истории, в учебных заведениях появились занятия физическими упражнениями, а затем и спортивные клубы. Всё это подготовило почву для главного человека этой истории — <b>Пьера де Кубертена</b> (1863–1937).</p>
+  <div class="card fact"><b>Кто такой Пьер де Кубертен?</b> Французский учёный и педагог, «отец олимпизма». Он изучал историю древних Игр, участвовал в раскопках стадионов в Греции и организовал I Международный олимпийский конгресс в Париже. <b>23 июня 1894 года</b> на нём создали Международный олимпийский комитет (МОК) и приняли Олимпийскую хартию — свод основных законов олимпийского движения. С тех пор 23 июня отмечается как <b>Олимпийский день</b>.</div>
+  <p>Олимпийская хартия говорит: олимпизм — это особая философия жизни, объединяющая достоинства тела, воли и разума. Цель движения — мирное общество и человеческое достоинство: сильное тело должно сочетаться с интеллектом и честностью.</p>
+  <h3>Символика и ритуалы</h3>
+  <ul>
+    <li><b>Пять колец</b> (синее, чёрное, красное сверху; жёлтое и зелёное снизу) — символ единства пяти континентов и встречи спортсменов всего мира. Автор идеи — Кубертен.</li>
+    <li><b>Девиз</b> «Быстрее, выше, сильнее» предложил французский священник Анри Дидон. Впервые символ и девиз показаны на Играх I Олимпиады в Афинах в 1896 году.</li>
+    <li><b>Олимпийский флаг</b> — белое полотнище с пятью кольцами. Впервые поднят в 1920 году на Играх VII Олимпиады в Антверпене (Бельгия).</li>
+    <li><b>Олимпийская клятва</b> — впервые прозвучала на тех же Играх 1920 года; текст написал Кубертен. Спортсмены клянутся соблюдать правила и вести борьбу в спортивном духе.</li>
+    <li><b>Олимпийский огонь</b> зажигают от солнечных лучей у развалин храма Зевса в Олимпии. Идея Кубертена; впервые ритуал исполнили в 1928 году на Играх IX Олимпиады в Амстердаме.</li>
+  </ul>
+  <h3>Первые Игры современности</h3>
+  <p><b>Афины, апрель 1896 года.</b> Приехали 245 спортсменов из 14 стран, соревнования шли по 9 видам спорта, участвовали только мужчины. Первый чемпион — американец <b>Джеймс Конноли</b>, победивший в тройном прыжке.</p>
+  <div class="card fact"><b>Легенда о марафоне.</b> В 490 году до н. э. афинский воин Филиппидис пробежал более 40 км от Марафона до Афин, крикнул «Радуйтесь! Мы победили!» — и упал замертво. В память об этом на Играх 1896 года старт марафона дали в Марафоне. Первым пришёл греческий атлет Спирос Луис — стадион приветствовал его стоя.</div>
+  <p>Россия на первых Играх не участвовала. Впервые наши спортсмены приехали на Олимпиаду 1908 года в Лондоне: борцы Николай Орлов и Александр Петров взяли серебро, а фигурист <b>Николай Панин-Коломенкин</b> выиграл золото в фигурном катании и стал <b>первым российским олимпийским чемпионом</b>. В 1912 году команда России участвовала в Играх в Стокгольме, выступила неудачно — и это подстегнуло развитие спорта в стране.</p>
+  <div class="quiz" data-quiz="c1">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Когда и где был создан Международный олимпийский комитет?</p>
+      <button class="opt" data-ok="0">В 1896 году в Афинах</button>
+      <button class="opt" data-ok="1">В 1894 году в Париже</button>
+      <button class="opt" data-ok="0">В 1920 году в Антверпене</button>
+      <div class="feedback">Верно! Конгресс состоялся 23 июня 1894 года в Париже — это день Олимпийского дня.</div></div>
+    <div class="q"><p>2. Кто стал первым олимпийским чемпионом в истории России?</p>
+      <button class="opt" data-ok="0">Борец Николай Орлов</button>
+      <button class="opt" data-ok="0">Бегун Спирос Луис</button>
+      <button class="opt" data-ok="1">Фигурист Николай Панин-Коломенкин</button>
+      <div class="feedback">Верно! Золото в фигурном катании на Играх 1908 года в Лондоне.</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('intro')">← Назад</button><button onclick="go('c2')">Дальше: Дневник →</button></div>
+</section>
+
+<section class="page" id="c2">
+  <div class="kicker">6 класс · Часть II</div>
+  <h2>Дневник по физической культуре</h2>
+  <p>В подростковом возрасте организм быстро растёт, и все школьники развиваются по-разному: у одних быстро растут мышцы, у других — скорость кровообращения. Поэтому самостоятельные занятия должны учитывать индивидуальные возможности организма. Для этого и нужен дневник по физкультуре.</p>
+  <h3>Зачем нужен дневник</h3>
+  <ol>
+    <li>Лучше познавать себя: оценивать физические качества и состояние здоровья.</li>
+    <li>Воспитывать дисциплину и ответственность за выполнение планов.</li>
+    <li>Приучаться к регулярным занятиям и контролировать их эффективность.</li>
+    <li>Закреплять навыки здорового образа жизни.</li>
+  </ol>
+  <h3>Разделы дневника</h3>
+  <div class="card">
+    <ol>
+      <li>Режим дня</li>
+      <li>Режим учебной недели</li>
+      <li>Наблюдение за физическим развитием</li>
+      <li>Наблюдение за физической подготовленностью</li>
+      <li>Наблюдение за состоянием здоровья</li>
+      <li>Планы занятий физической культурой</li>
+      <li>Учебные задания</li>
+      <li>Дополнительный материал</li>
+    </ol>
+  </div>
+  <p><b>Наблюдение за состоянием здоровья</b> — новый для 6 класса раздел. Оценивают сон, аппетит, самочувствие, настроение, пульс в положении лёжа и стоя. Делать это нужно <b>не реже одного раза в неделю</b>, лучше в понедельник. Если какой-то показатель не соответствует норме — измерять каждый день, а при долгом отклонении обратиться к врачу.</p>
+  <div class="card warn"><b>Как часто заполнять разделы:</b> физическое развитие — раз в 3 месяца; физические качества — раз в месяц; здоровье — каждую пятницу; комплексы зарядки и физкультминуток обновлять раз в 2–3 недели.</div>
+  <div class="quiz" data-quiz="c2">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Сколько основных разделов в дневнике по физической культуре?</p>
+      <button class="opt" data-ok="0">5</button>
+      <button class="opt" data-ok="1">8</button>
+      <button class="opt" data-ok="0">12</button>
+      <div class="feedback">Верно! От режима дня до дополнительного материала — всего восемь.</div></div>
+    <div class="q"><p>2. Как часто нужно оценивать состояние здоровья в дневнике?</p>
+      <button class="opt" data-ok="0">Раз в месяц</button>
+      <button class="opt" data-ok="1">Не реже раза в неделю</button>
+      <button class="opt" data-ok="0">Раз в четверть</button>
+      <div class="feedback">Верно! Рекомендуется в понедельник — в начале учебной недели.</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('c1')">← Назад</button><button onclick="go('c3')">Дальше: Физическая подготовка →</button></div>
+</section>
+
+<section class="page" id="c3">
+  <div class="kicker">6 класс · Часть II</div>
+  <h2>Физическая подготовка человека</h2>
+  <p>Древние говорили: «Движение — это жизнь». <b>Физическая подготовка</b> — направленное развитие физических качеств, а <b>физическая подготовленность</b> — уровень их развития, которого человек достиг.</p>
+  <h3>Физические качества</h3>
+  <div class="card">
+    <table>
+      <tr><th>Качество</th><th>Что это</th><th>На что опирается</th></tr>
+      <tr><td><b>Сила</b></td><td>Преодоление внешнего сопротивления за счёт мышечных напряжений</td><td>Основой всех остальных качеств</td></tr>
+      <tr><td><b>Быстрота</b></td><td>Выполнение движений за минимальное время</td><td>Центральную нервную систему, скорость сокращения мышц</td></tr>
+      <tr><td><b>Выносливость</b></td><td>Длительная работа с разной нагрузкой</td><td>Дыхательную и кровеносную системы (поставку кислорода)</td></tr>
+      <tr><td><b>Гибкость</b></td><td>Движения с максимальной амплитудой</td><td>Подвижность суставов, силу и быстроту мышц</td></tr>
+      <tr><td><b>Ловкость</b></td><td>Умение управлять телом, перестраивать движения</td><td>Быстроту, координацию, внимание, мышление</td></tr>
+    </table>
+  </div>
+  <p><b>Координация движений</b> — умение точно, быстро и экономично управлять сложными действиями. Её развитие улучшает мышление, память и внимание, снижает утомляемость на умственной работе.</p>
+  <h3>Показатели нагрузки</h3>
+  <ul>
+    <li><b>Величина нагрузки</b> — мера её воздействия на организм: внешние показатели (дозировка) и внутренние (режим по пульсу).</li>
+    <li><b>Интенсивность</b> — напряжение организма при работе, в процентах от максимума.</li>
+    <li><b>Продолжительность</b> — время воздействия нагрузки.</li>
+    <li><b>Объём</b> — суммарное количество нагрузки за занятие или серию занятий.</li>
+  </ul>
+  <div class="card fact"><b>Формула интенсивности:</b> ИН = (выполняемая нагрузка ÷ предельная нагрузка) × 100%. Пример: максимум отжиманий — 12 раз, выбрали 8. ИН = 8 ÷ 12 × 100% ≈ 66,7% — это <b>большая</b> нагрузка, режим развивающий.</div>
+  <div class="card">
+    <table>
+      <tr><th>Режим</th><th>Пульс</th><th>Интенсивность</th></tr>
+      <tr><td>Оздоровительный</td><td>до 120 уд./мин</td><td>низкая (35–44%)</td></tr>
+      <tr><td>Поддерживающий</td><td>до 140 уд./мин</td><td>малая и умеренная (45–64%)</td></tr>
+      <tr><td>Развивающий</td><td>до 160 уд./мин</td><td>большая и высокая (65–84%)</td></tr>
+      <tr><td>Тренирующий</td><td>180 и выше</td><td>околопредельная и предельная (85–100%)</td></tr>
+    </table>
+  </div>
+  <h3>Три правила развития физических качеств</h3>
+  <ol>
+    <li><b>Регулярность и систематичность</b> — занятия с постоянными интервалами, по плану. Занятия с большой нагрузкой — не чаще 2–3 раз в неделю, с умеренной — хоть каждый день.</li>
+    <li><b>Доступность и индивидуальный подход</b> — нагрузка должна быть ниже предельной для тебя. Приём пищи — минимум за час до занятия.</li>
+    <li><b>Непрерывность и постепенность</b> — нагрузку повышают не от занятия к занятию, а сериями из 4–6 занятий: организм успевает приспособиться.</li>
+  </ol>
+  <h3>Как повысить нагрузку (6 способов)</h3>
+  <ul>
+    <li>увеличить количество повторений (10 отжиманий → 14);</li>
+    <li>уменьшить время отдыха (1 мин → 45 с);</li>
+    <li>увеличить скорость выполнения (30 приседаний за 30 с → 40 за 30 с);</li>
+    <li>увеличить отягощение (приседания с гантелями);</li>
+    <li>увеличить время упражнения (бег 2 мин → 3 мин);</li>
+    <li>изменить положение тела (отжимания со скамейки → от пола).</li>
+  </ul>
+  <div class="card warn"><b>Контроль утомления.</b> Стандартная проба: 20 глубоких приседаний за 40 секунд, затем пульс за первые 15 с × 4. Лёгкое утомление — пульс 130–140 уд./мин и быстрое восстановление; очень большая степень — пульс выше 180, побледнение, нарушение координации: нагрузку снижают или прекращают занятия.</div>
+  <h3>Комплекс ГТО, IV ступень (12–13 лет)</h3>
+  <p>С 6 класса подготовленность оценивают по тестам ГТО IV ступени: 4 обязательных испытания и испытания по выбору, три уровня знаков — бронзовый, серебряный, золотой.</p>
+  <details><summary>Нормативы: юноши</summary><div class="inner">
+    <table>
+      <tr><th>Испытание</th><th>Бронза</th><th>Серебро</th><th>Золото</th></tr>
+      <tr><td>Бег 60 м, с</td><td>5,8</td><td>5,4</td><td>5,0</td></tr>
+      <tr><td>Бег 1500 м</td><td>8:30</td><td>7:50</td><td>7:03</td></tr>
+      <tr><td>Подтягивание на высокой перекладине</td><td>3</td><td>5</td><td>8</td></tr>
+      <tr><td>Отжимания в упоре лёжа</td><td>12</td><td>16</td><td>24</td></tr>
+      <tr><td>Наклон вперёд, см</td><td>+3</td><td>+5</td><td>+9</td></tr>
+      <tr><td>Бег 30 м, с</td><td>6,1</td><td>5,7</td><td>5,2</td></tr>
+    </table>
+  </div></details>
+  <details><summary>Нормативы: девушки</summary><div class="inner">
+    <table>
+      <tr><th>Испытание</th><th>Бронза</th><th>Серебро</th><th>Золото</th></tr>
+      <tr><td>Бег 60 м, с</td><td>11,1</td><td>10,2</td><td>9,9</td></tr>
+      <tr><td>Бег 1500 м</td><td>10:20*</td><td>9:10</td><td>8:15</td></tr>
+      <tr><td>Подтягивание на низкой перекладине</td><td>10</td><td>12</td><td>15</td></tr>
+      <tr><td>Отжимания в упоре лёжа</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Наклон вперёд, см</td><td>+4</td><td>+6</td><td>+13</td></tr>
+    </table>
+    <p style="font-size:12px; color:#7a8a99">*Приведённые цифры — выборочные из таблиц учебника; точные нормативы сверь по полным таблицам ГТО для своей ступени.</p>
+  </div></details>
+  <div class="card warn"><b>Правила тестовых испытаний:</b> технику упражнений разучивают заранее; испытания проводят в одно и то же время (лучше 11–12 или 16–17 ч); после еды — пауза 1,5–2 ч; не более трёх испытаний в день; перед ними обязательна разминка.</div>
+  <div class="quiz" data-quiz="c3">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Какое качество считается основой всех остальных физических качеств?</p>
+      <button class="opt" data-ok="0">Быстрота</button>
+      <button class="opt" data-ok="1">Сила</button>
+      <button class="opt" data-ok="0">Гибкость</button>
+      <div class="feedback">Верно! Сила обеспечивает разнообразные передвижения и движения туловища.</div></div>
+    <div class="q"><p>2. Максимум отжиманий — 10 раз, выполняем 6. К какой интенсивности относится нагрузка? (6/10 × 100% = 60%)</p>
+      <button class="opt" data-ok="0">Большая</button>
+      <button class="opt" data-ok="1">Умеренная</button>
+      <button class="opt" data-ok="0">Околопредельная</button>
+      <div class="feedback">Верно! 60% — умеренная интенсивность (55–64%).</div></div>
+    <div class="q"><p>3. Через сколько занятий повышают нагрузку в самостоятельных занятиях школьников?</p>
+      <button class="opt" data-ok="0">Каждое занятие</button>
+      <button class="opt" data-ok="0">Через месяц</button>
+      <button class="opt" data-ok="1">Через серию из 4–6 занятий</button>
+      <div class="feedback">Верно! Организм успевает адаптироваться — это «восходящая лестница».</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('c2')">← Назад</button><button onclick="go('c4')">Дальше: 7 класс →</button></div>
+</section>
+
+<section class="page" id="c4">
+  <div class="kicker">7 класс · Часть I</div>
+  <h2>Олимпийское движение в России</h2>
+  <h3>Истоки</h3>
+  <p>В XV–XVII веках спорт в России развивался скромнее, чем в Европе. После отмены крепостного права в середине XIX века культура и образование пошли вперёд — а развивающим спортом особенно заинтересовались военные.</p>
+  <div class="card fact"><b>Алексей Дмитриевич Бутовский</b> (1838–1917) — генерал русской армии, один из первых деятелей российского спорта. Он ввёл обязательные занятия физкультурой в подготовку офицеров и стал соратником Кубертена: в 1894 году вошёл в состав первого Международного олимпийского комитета.</div>
+  <p>На Играх 1908 года в Лондоне три россиянина взяли медали (золото Панина-Коломенкина, серебро борцов Орлова и Петрова). Успехи ускорили создание Российского олимпийского комитета. В 1913 году прошла <b>I Всероссийская олимпиада</b> — более 500 спортсменов из 20 городов, а в 1914 году II Олимпиада собрала уже более 1000 участников из 24 городов.</p>
+  <p>Игры VI Олимпиады 1916 года не состоялись из-за Первой мировой войны, а Революция и Гражданская война надолго отстранили наших спортсменов от Олимпиад. Только в 1951 году в СССР создали Олимпийский комитет — и страна вернулась на Игры.</p>
+  <h3>Олимпийское движение в СССР</h3>
+  <ul>
+    <li><b>1931 год</b> — введён физкультурный комплекс «Готов к труду и обороне» (ГТО) с нормативами и нагрудным знаком; уже через два года его носили более 2,5 млн человек.</li>
+    <li><b>1952 год, Хельсинки</b> — дебют СССР на летних Играх: советская команда разделила первое место в неофициальном зачёте с США (22 золота, 30 серебра, 10 бронзы). Первой олимпийской чемпионкой СССР стала метательница диска <b>Нина Пономарёва</b>.</li>
+    <li><b>1956 год, Кортина д’Ампеццо</b> — дебют на зимних Играх: первое общекомандное место, героем стал конькобежец <b>Евгений Гришин</b> (2 золота на 500 и 1500 м).</li>
+    <li><b>1952–1992 годы</b> — 1343 олимпийские медали (525 золотых). Такого успеха не добивалась ни одна страна мира.</li>
+  </ul>
+  <h3>Олимпиада-80 в Москве</h3>
+  <p>В 1974 году сессия МОК решила провести Игры XXII Олимпиады в Москве. Однако в 1980 году США развернули кампанию за бойкот Игр, и ряд стран (США, ФРГ, Япония и другие) не приехали. Всё же Игры состоялись: более 5000 спортсменов из 80 стран, соревнования по 21 виду спорта, 36 мировых и 74 олимпийских рекорда. Сборная СССР заняла первое место с 80 золотыми, 69 серебряными и 46 бронзовыми медалями. Запомнилось и закрытие Игр с талисманом — медвежонком Мишей.</p>
+  <h3>Олимпиада-2014 в Сочи</h3>
+  <p>XXII зимние Игры собрали спортсменов из 87 стран. Талисманы — белый мишка, заяц и леопард (сила, быстрота и выносливость). Торжественное открытие смотрели более 3 млрд зрителей из 90 стран. Российские спортсмены завоевали 33 медали: 13 золотых, 11 серебряных, 9 бронзовых.</p>
+  <div class="quiz" data-quiz="c4">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Кто вошёл в первый состав МОК как представитель России?</p>
+      <button class="opt" data-ok="0">Николай Панин-Коломенкин</button>
+      <button class="opt" data-ok="1">Алексей Дмитриевич Бутовский</button>
+      <button class="opt" data-ok="0">Евгений Гришин</button>
+      <div class="feedback">Верно! Бутовский — соратник Кубертена и один из основателей олимпизма в России.</div></div>
+    <div class="q"><p>2. В каком году СССР впервые участвовал в летних Олимпийских играх?</p>
+      <button class="opt" data-ok="0">1936</button>
+      <button class="opt" data-ok="0">1980</button>
+      <button class="opt" data-ok="1">1952</button>
+      <div class="feedback">Верно! Хельсинки-1952 — триумфальный дебют сборной СССР.</div></div>
+    <div class="q"><p>3. Какая страна победила в неофициальном командном зачёте Олимпиады-1980 в Москве?</p>
+      <button class="opt" data-ok="1">СССР</button>
+      <button class="opt" data-ok="0">США</button>
+      <button class="opt" data-ok="0">ГДР</button>
+      <div class="feedback">Верно! 80 золотых медалей — значительный перевес над командой ГДР.</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('c3')">← Назад</button><button onclick="go('c5')">Дальше: Воспитание личности →</button></div>
+</section>
+
+<section class="page" id="c5">
+  <div class="kicker">7 класс · Часть I</div>
+  <h2>Воспитание личности на занятиях физкультурой и спортом</h2>
+  <p>Спорт воспитывает не только тело, но и характер. На занятиях физической культурой формируются морально-этические привычки: честность, дисциплина, уважение к сопернику, умение работать в команде.</p>
+  <div class="card"><b>Что развивает физкультура, кроме мышц:</b>
+    <ul>
+      <li>волю и целеустремлённость — через регулярные тренировки;</li>
+      <li>честную игру — уважение к правилам и соперникам;</li>
+      <li>командное взаимодействие — в спортивных и подвижных играх;</li>
+      <li>самостоятельность — умение самому организовать занятие, выбрать нагрузку, оценить результат.</li>
+    </ul>
+  </div>
+  <p>Особенность программы 6–7 классов — направленность на обучение навыкам <b>самостоятельных занятий</b>: от составления плана до контроля самочувствия. Это умение остаётся с человеком на всю жизнь.</p>
+  <div class="quiz" data-quiz="c5">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Что главное в понятии «честная игра»?</p>
+      <button class="opt" data-ok="1">Уважение к правилам и сопернику</button>
+      <button class="opt" data-ok="0">Победа любой ценой</button>
+      <button class="opt" data-ok="0">Отсутствие соревнований</button>
+      <div class="feedback">Верно! Это одна из главных ценностей олимпийского движения.</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('c4')">← Назад</button><button onclick="go('c6')">Дальше: Техника безопасности →</button></div>
+</section>
+
+<section class="page" id="c6">
+  <div class="kicker">7 класс · Часть II</div>
+  <h2>Техника безопасности и гигиена мест занятий</h2>
+  <p>Чтобы занятия приносили пользу, а не травмы, соблюдай правила — и на уроке, и дома.</p>
+  <div class="card"><b>Перед занятием:</b>
+    <ul>
+      <li>проверь исправность инвентаря и оборудования;</li>
+      <li>убери посторонние предметы со спортплощадки;</li>
+      <li>надень подходящую одежду и обувь (не скользящую, по размеру);</li>
+      <li>сделай разминку — она повышает активность дыхания, кровообращения и мышечный тонус.</li>
+    </ul>
+  </div>
+  <div class="card"><b>Гигиена мест занятий:</b>
+    <ul>
+      <li>помещение и площадка должны быть чистыми и проветренными;</li>
+      <li>занятия дома — на ровной нескользкой поверхности, с достаточным пространством;</li>
+      <li>после занятия — убрать инвентарь, проветрить помещение, вымыть руки.</li>
+    </ul>
+  </div>
+  <div class="card warn"><b>Главное правило:</b> если во время упражнения почувствовал боль, головокружение или сильную усталость — прекрати упражнение и сообщи учителю. Здоровье важнее любого результата.</div>
+  <div class="quiz" data-quiz="c6">
+    <h4>❓ Проверь себя</h4>
+    <div class="q"><p>1. Через какое время после приёма пищи можно начинать занятие?</p>
+      <button class="opt" data-ok="0">Сразу после еды</button>
+      <button class="opt" data-ok="1">Не менее чем через 1–1,5 часа</button>
+      <button class="opt" data-ok="0">Через 5 минут</button>
+      <div class="feedback">Верно! После еды кровь идёт к пищеварительной системе — заниматься раньше вредно.</div></div>
+  </div>
+  <div class="navbtns"><button onclick="go('c5')">← Назад</button><button onclick="go('c7')">Дальше: Физическое совершенствование →</button></div>
+</section>
+
+<section class="page" id="c7">
+  <div class="kicker">6–7 классы · Часть III</div>
+  <h2>Физическое совершенствование</h2>
+  <p>Третья часть учебника — практика. Она объединяет упражнения для 6 и 7 классов и состоит из трёх видов деятельности.</p>
+  <h3>1. Физкультурно-оздоровительная деятельность</h3>
+  <ul>
+    <li>составление и соблюдение режима учебного дня и недели;</li>
+    <li>занятия оздоровительной и гигиенической физкультурой: утренняя гимнастика, физкультминутки, дыхательная гимнастика, упражнения на осанку;</li>
+    <li>формирование осанки и телосложения;</li>
+    <li>закаливание — по таблицам с температурными режимами и последовательным их изменением.</li>
+  </ul>
+  <h3>2. Спортивно-оздоровительная деятельность</h3>
+  <p>Занятия по видам спорта школьной программы: гимнастика, лёгкая атлетика, лыжная подготовка, спортивные игры (баскетбол, волейбол, футбол и другие). Включает физическую и техническую подготовку, игровую и соревновательную деятельность, командное взаимодействие.</p>
+  <h3>3. Прикладно-ориентированная физкультурная деятельность</h3>
+  <p>Освоение жизненно важных двигательных навыков — умений, которые пригодятся в обычной жизни: уверенное передвижение, преодоление препятствий, действия в сложных ситуациях.</p>
+  <div class="card fact"><b>Домашние задания учебника</b> закрепляют материал уроков: комплексы упражнений для самостоятельных занятий, наблюдение за развитием качеств и ведение дневника — всё это части единой системы.</div>
+  <div class="navbtns"><button onclick="go('c6')">← Назад</button><button onclick="go('dict')">Дальше: Словарь →</button></div>
+</section>
+
+<section class="page" id="dict">
+  <div class="kicker">Справочник</div>
+  <h2>Словарь терминов</h2>
+  <div class="card"><table>
+    <tr><th>Термин</th><th>Значение</th></tr>
+    <tr><td>Олимпийская хартия</td><td>Свод основных законов и принципов олимпийского движения</td></tr>
+    <tr><td>МОК</td><td>Международный олимпийский комитет — организация, руководящая олимпийским движением</td></tr>
+    <tr><td>Физическая подготовка</td><td>Процесс направленного развития физических качеств</td></tr>
+    <tr><td>Физическая подготовленность</td><td>Уровень развития физических качеств, достигнутый человеком</td></tr>
+    <tr><td>Физическая нагрузка</td><td>Двигательная активность, повышающая работу основных систем организма</td></tr>
+    <tr><td>Интенсивность нагрузки</td><td>Напряжение организма при мышечной работе, в % от максимума</td></tr>
+    <tr><td>Координация движений</td><td>Точное, быстрое и экономичное управление двигательными действиями</td></tr>
+    <tr><td>ГТО</td><td>«Готов к труду и обороне» — комплекс нормативов физической подготовки</td></tr>
+    <tr><td>Адаптация</td><td>Приспособление организма к физическим нагрузкам</td></tr>
+  </table></div>
+  <div class="navbtns"><button onclick="go('c7')">← Назад</button><button onclick="go('test')">К итоговому тесту →</button></div>
+</section>
+
+<section class="page" id="test">
+  <div class="kicker">Итоговая проверка</div>
+  <h2>🏆 Итоговый тест «Проверь свои успехи»</h2>
+  <p>10 вопросов по всей книге. Отвечай — правильные ответы подсветятся сразу, а в конце покажем результат.</p>
+  <div class="quiz" data-quiz="final">
+    <h4>Тест</h4>
+    <div class="q"><p>1. В каком году был создан Международный олимпийский комитет?</p>
+      <button class="opt" data-ok="1">1894</button><button class="opt" data-ok="0">1896</button><button class="opt" data-ok="0">1920</button><div class="feedback"></div></div>
+    <div class="q"><p>2. Что символизируют пять олимпийских колец?</p>
+      <button class="opt" data-ok="0">Пять видов спорта</button><button class="opt" data-ok="1">Единство пяти континентов</button><button class="opt" data-ok="0">Пять медалей</button><div class="feedback"></div></div>
+    <div class="q"><p>3. Кто автор девиза «Быстрее, выше, сильнее»?</p>
+      <button class="opt" data-ok="1">Анри Дидон</button><button class="opt" data-ok="0">Феодосий I</button><button class="opt" data-ok="0">Карл Шуман</button><div class="feedback"></div></div>
+    <div class="q"><p>4. Первый российский олимпийский чемпион — это...</p>
+      <button class="opt" data-ok="0">Джеймс Конноли</button><button class="opt" data-ok="0">Спирос Луис</button><button class="opt" data-ok="1">Николай Панин-Коломенкин</button><div class="feedback"></div></div>
+    <div class="q"><p>5. Какое качество позволяет длительно выполнять работу?</p>
+      <button class="opt" data-ok="0">Быстрота</button><button class="opt" data-ok="1">Выносливость</button><button class="opt" data-ok="0">Гибкость</button><div class="feedback"></div></div>
+    <div class="q"><p>6. Развивающий режим нагрузки — это пульс до...</p>
+      <button class="opt" data-ok="1">160 уд./мин</button><button class="opt" data-ok="0">120 уд./мин</button><button class="opt" data-ok="0">200 уд./мин</button><div class="feedback"></div></div>
+    <div class="q"><p>7. Занятия с большой нагрузкой проводят не чаще...</p>
+      <button class="opt" data-ok="1">2–3 раз в неделю</button><button class="opt" data-ok="0">6 раз в день</button><button class="opt" data-ok="0">1 раза в месяц</button><div class="feedback"></div></div>
+    <div class="q"><p>8. Нагрузку повышают...</p>
+      <button class="opt" data-ok="1">сериями из 4–6 занятий</button><button class="opt" data-ok="0">каждый день вдвое</button><button class="opt" data-ok="0">никогда</button><div class="feedback"></div></div>
+    <div class="q"><p>9. Комплекс ГТО впервые введён в...</p>
+      <button class="opt" data-ok="0">1952 году</button><button class="opt" data-ok="1">1931 году</button><button class="opt" data-ok="0">1894 году</button><div class="feedback"></div></div>
+    <div class="q"><p>10. Зимняя Олимпиада 2014 года прошла в...</p>
+      <button class="opt" data-ok="1">Сочи</button><button class="opt" data-ok="0">Москве</button><button class="opt" data-ok="0">Лондоне</button><div class="feedback"></div></div>
+    <div id="finalScore"></div>
+  </div>
+  <div class="navbtns"><button onclick="go('dict')">← К словарю</button><button onclick="go('intro')">📖 К началу книги</button></div>
+</section>
+
+</main>
+</div>
+<script>
+var sections = ["intro","c1","c2","c3","c4","c5","c6","c7","dict","test"];
+var visited = {};
+function go(id){
+  document.querySelectorAll("section.page").forEach(function(s){s.classList.remove("active");});
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("nav li button").forEach(function(b){b.classList.toggle("active", b.dataset.sec===id);});
+  visited[id]=true;
+  var n = sections.filter(function(s){return visited[s];}).length;
+  document.getElementById("progressfill").style.width = Math.round(n/sections.length*100)+"%";
+  document.getElementById("progressText").textContent = n+" из "+sections.length+" разделов";
+  document.getElementById("sidebar").classList.remove("open");
+  window.scrollTo(0,0);
+}
+document.querySelectorAll("nav li button").forEach(function(b){ b.addEventListener("click", function(){ go(b.dataset.sec); }); });
+document.querySelectorAll(".quiz").forEach(function(quiz){
+  var answered = 0, total = quiz.querySelectorAll(".q").length, correct = 0, done = quiz.querySelectorAll(".q").length;
+  quiz.querySelectorAll(".q").forEach(function(q){
+    q.querySelectorAll(".opt").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if(q.classList.contains("answered")) return;
+        q.classList.add("answered");
+        var ok = btn.dataset.ok === "1";
+        btn.classList.add(ok ? "correct" : "wrong");
+        if(!ok){ q.querySelector('[data-ok="1"]').classList.add("correct"); } else { correct++; }
+        answered++;
+        var fb = q.querySelector(".feedback");
+        if(fb && fb.textContent.trim()){ fb.style.display="block"; }
+        if(quiz.dataset.quiz==="final" && answered===total){
+          var s = document.getElementById("finalScore");
+          s.textContent = "Результат: "+correct+" из "+total+". "+(correct>=8?"Отлично, ты настоящий олимпиец! 🥇":correct>=5?"Хорошо! Перечитай главы с ошибками.":"Перечитай книгу и попробуй снова 💪");
+        }
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
