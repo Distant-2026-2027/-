@@ -3,213 +3,495 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Great Minds — Spotlight 8, Unit 3 — интерактивный урок</title>
+<title>Great Minds — Spotlight 8, Module 3</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#1f2a44,#4a2b5f);min-height:100vh;color:#222;padding-bottom:40px}
-.wrap{max-width:860px;margin:0 auto;padding:12px}
-header{background:linear-gradient(135deg,#f0a500,#e67e22);border-radius:0 0 22px 22px;padding:20px 16px;text-align:center;color:#fff}
-header h1{font-size:1.7em;text-shadow:1px 2px 3px rgba(0,0,0,.3)}
-header p{margin-top:6px;font-size:1.05em}
-.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;position:sticky;top:0;z-index:10;background:rgba(31,42,68,.92);padding:8px;border-radius:0 0 14px 14px}
-.tab{border:none;border-radius:20px;padding:8px 13px;cursor:pointer;font-size:.92em;background:#3a4a6b;color:#fff;transition:.2s}
-.tab.active{background:#f0a500;color:#222;font-weight:bold}
-.panel{display:none;background:#fff;border-radius:16px;margin-top:14px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
-.panel.show{display:block}
-h2{color:#4a2b5f;margin-bottom:10px;font-size:1.25em}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#2d1b4e;color:#333;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:12px}
+header{background:linear-gradient(135deg,#3b2063,#5b2c8d);color:#fff;border-radius:16px;padding:18px 20px;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+header h1{font-size:1.6em}
+header p{color:#ffd76e;font-weight:600}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab-btn{border:none;background:#fff;color:#3b2063;font-weight:700;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:.92em}
+.tab-btn.active{background:#ffd76e}
+section.tab{display:none;background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+section.tab.active{display:block}
+h2{color:#5b2c8d;margin-bottom:10px;font-size:1.25em}
 table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95em}
-th,td{border:1px solid #d8c9ec;padding:7px 9px;text-align:left;vertical-align:top}
-th{background:#efe6f7;color:#4a2b5f}
-.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-.wcard{background:#faf7ff;border:2px solid #e2d4f5;border-radius:14px;padding:10px;cursor:pointer;position:relative;transition:.2s;text-align:center}
-.wcard:hover{border-color:#f0a500;transform:translateY(-2px)}
-.wcard .we{font-size:2em}
-.wcard .wn{font-weight:bold;color:#4a2b5f;margin-top:4px}
-.wcard .wr{font-size:.9em;color:#555}
-.wcard .wd{display:none;margin-top:6px;font-size:.85em;background:#fff3d6;border-radius:8px;padding:6px}
-.wcard.open .wd{display:block}
-.spk{position:absolute;top:6px;right:8px;font-size:1.05em}
-.phrase{background:#faf7ff;border-left:4px solid #f0a500;border-radius:8px;padding:9px 12px;margin:8px 0;cursor:pointer}
-.phrase b{color:#4a2b5f}
-.phrase .ru{display:none;color:#666;font-size:.92em;margin-top:3px}
-.phrase.open .ru{display:block}
-.gram{background:#eef7ee;border:2px dashed #7bb661;border-radius:12px;padding:12px;margin:12px 0;font-size:.95em}
-.dline{background:#faf7ff;border-radius:10px;padding:9px 12px;margin:7px 0;cursor:pointer}
-.dline .who{font-weight:bold;color:#8a4fd3}
-.dline .ru{display:none;color:#666;font-size:.92em;margin-top:4px;border-top:1px dashed #ccc;padding-top:4px}
-.dline.open .ru{display:block}
-.dbtn{background:#f0a500;border:none;border-radius:8px;padding:3px 10px;cursor:pointer;margin-right:8px}
-.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border:2px solid #d8c9ec;border-radius:10px;background:#fff;cursor:pointer;font-size:.95em;transition:.15s}
-.opt:hover{border-color:#f0a500}
-.opt.ok{background:#c9f0c9;border-color:#3f9f3f;font-weight:bold}
-.opt.bad{background:#f8d0d0;border-color:#c33}
-.qcard{border:1px solid #e2d4f5;border-radius:12px;padding:12px;margin:12px 0;background:#fcfbff}
-.qtext{font-weight:bold;color:#4a2b5f;margin-bottom:6px}
-.score{font-weight:bold;color:#8a4fd3;font-size:1.05em;margin-top:8px}
-select{padding:7px 10px;border-radius:8px;border:2px solid #d8c9ec;font-size:.95em;margin:4px}
-.fb{margin-top:8px;padding:8px 12px;border-radius:10px;display:none}
-.fb.ok{display:block;background:#c9f0c9}
-.fb.bad{display:block;background:#f8d0d0}
-.chip{display:inline-block;margin:4px;padding:9px 14px;border:2px solid #d8c9ec;border-radius:20px;cursor:pointer;background:#fff;font-size:.93em}
-.chip.sel{background:#f0a500;border-color:#c77f00;font-weight:bold}
-.storybox{background:#fffbe9;border:2px solid #f0a500;border-radius:12px;padding:14px;margin-top:12px;line-height:1.55}
-.bigbtn{display:inline-block;background:linear-gradient(135deg,#8a4fd3,#6a34a8);color:#fff;border:none;border-radius:24px;padding:11px 22px;font-size:1em;cursor:pointer;margin:8px 4px 0 0}
-.bigbtn:hover{filter:brightness(1.1)}
-.hint{color:#777;font-size:.88em;margin-top:6px}
-.star{background:#fff3d6;border-radius:10px;padding:10px 12px;margin-top:10px}
-@media(max-width:600px){.wgrid{grid-template-columns:1fr 1fr}header h1{font-size:1.3em}}
+th,td{border:1px solid #e0d5f0;padding:7px 9px;text-align:left}
+th{background:#f1e8fb;color:#3b2063}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.word-card{background:#f7f3fd;border:2px solid #d9c8f2;border-radius:12px;padding:10px 12px;cursor:pointer;transition:.15s}
+.word-card:hover{border-color:#8a4fd3;transform:translateY(-2px)}
+.word-card .en{font-weight:800;color:#3b2063;font-size:1.08em}
+.word-card .tr{color:#7a5ba8;font-size:.88em}
+.word-card .ru{font-size:.92em;margin-top:2px}
+.word-card .hint{color:#999;font-size:.8em;margin-top:2px;font-style:italic}
+.group-title{margin:14px 0 6px;color:#8a4fd3;font-weight:800}
+.btn{display:inline-block;border:none;background:#8a4fd3;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;cursor:pointer;margin:4px 6px 4px 0;font-size:.95em}
+.btn:hover{background:#6f37b5}
+.btn.yellow{background:#f5a623}.btn.yellow:hover{background:#d88f0f}
+.btn.green{background:#2e9e5b}.btn.green:hover{background:#237a46}
+.line{padding:9px 12px;border-radius:10px;margin:6px 0;cursor:pointer;border:2px solid transparent}
+.line.a{background:#f1e8fb;border-color:#d9c8f2}
+.line.b{background:#fff4e0;border-color:#f5d9a8}
+.line .who{font-weight:800;color:#5b2c8d}
+.line .ru{display:none;color:#666;font-size:.92em;margin-top:3px}
+.line.open .ru{display:block}
+.q{background:#f7f3fd;border-radius:12px;padding:12px;margin:10px 0}
+.q p{font-weight:700;margin-bottom:8px}
+.opt{display:block;width:100%;text-align:left;border:2px solid #d9c8f2;background:#fff;border-radius:10px;padding:9px 12px;margin:5px 0;cursor:pointer;font-size:.95em}
+.opt:hover{border-color:#8a4fd3}
+.opt.right{background:#d9f2e3;border-color:#2e9e5b}
+.opt.wrong{background:#fbdede;border-color:#d9534f}
+.feedback{font-weight:700;margin-top:6px;min-height:1.4em}
+.score{font-size:1.15em;font-weight:800;color:#5b2c8d}
+input[type=text],select{padding:9px 10px;border:2px solid #d9c8f2;border-radius:10px;font-size:1em;width:100%;max-width:340px}
+.big-speak{background:#fff9ec;border:2px dashed #f5a623;border-radius:14px;padding:14px;margin-top:10px;font-size:1.05em}
+.badge{font-size:2em;text-align:center;margin-top:8px}
+.small{color:#777;font-size:.88em}
+.star{background:#fff3cd;border:2px solid #f5a623;border-radius:12px;padding:12px;margin-top:10px}
+ul{margin:8px 0 8px 22px}
 </style>
 </head>
 <body>
-<header>
-<div style="font-size:.95em;letter-spacing:1px">SPOTLIGHT 8 &bull; MODULE 3 &bull; GREAT MINDS</div>
-<h1>🎭 Great Minds: выдающиеся люди</h1>
-<p>Английский язык &bull; 8 класс &bull; Писатели, поэты, художники</p>
-</header>
 <div class="wrap">
-<div class="tabs">
-<button class="tab active" onclick="go('goal')">🎯 Цель</button>
-<button class="tab" onclick="go('words')">📖 Слова</button>
-<button class="tab" onclick="go('phrases')">💬 Фразы</button>
-<button class="tab" onclick="go('dialog')">🗣 Диалог</button>
-<button class="tab" onclick="go('game1')">🎲 Угадай человека</button>
-<button class="tab" onclick="go('game2')">🧩 Вставь слово</button>
-<button class="tab" onclick="go('speak')">🎤 Говори сам</button>
-<button class="tab" onclick="go('test')">✏️ Тест</button>
-<button class="tab" onclick="go('homework')">🏠 Домашка</button>
-</div>
+<header>
+<h1>🎭 Great Minds</h1>
+<p>Spotlight 8 • Module 3 • Выдающиеся люди: писатели, поэты, художники</p>
+</header>
+<nav>
+<button class="tab-btn active" data-tab="goal">🎯 Цель урока</button>
+<button class="tab-btn" data-tab="words">📖 Слова</button>
+<button class="tab-btn" data-tab="phrases">💬 Фразы</button>
+<button class="tab-btn" data-tab="dialog">🗣 Диалог</button>
+<button class="tab-btn" data-tab="game1">🎲 Игра 1</button>
+<button class="tab-btn" data-tab="game2">🧩 Игра 2</button>
+<button class="tab-btn" data-tab="speak">🎤 Говори сам</button>
+<button class="tab-btn" data-tab="test">✏️ Тест</button>
+<button class="tab-btn" data-tab="hw">🏠 Домашка</button>
+</nav>
 
-<div id="goal" class="panel show">
-<h2>🎯 Цель урока</h2>
-<p><b>Тема:</b> «Выдающиеся люди родной страны и страны изучаемого языка (писатели, поэты, художники)».</p>
-<p><b>Сегодня мы:</b></p>
-<ul style="margin:8px 0 8px 20px">
-<li>узнаем, кем были Шекспир, Диккенс, Пушкин, Толстой, Айвазовский и Леонардо да Винчи;</li>
-<li>научимся рассказывать о жизни великого человека по плану;</li>
-<li>освоим <b>Passive Voice</b>: <i>was born, was written, was painted</i> — язык биографий.</li>
+<section class="tab active" id="goal">
+<h2>Цель урока</h2>
+<p><b>Тема:</b> выдающиеся люди родной страны и страны изучаемого языка — писатели, поэты, художники.</p>
+<p><b>Сегодня мы научимся:</b></p>
+<ul>
+<li>называть профессии и произведения великих людей по-английски;</li>
+<li>рассказывать о жизни знаменитого человека с помощью Passive Voice (<i>was born, was written, was painted</i>);</li>
+<li>выражать своё мнение о писателях, поэтах и художниках;</li>
+<li>составлять мини-биографию по плану.</li>
 </ul>
 <table>
-<tr><th>Результаты (ФГОС)</th><th>Чему научимся</th></tr>
-<tr><td><b>Предметные</b></td><td>лексика «выдающиеся люди и их произведения»; конструкции Passive Voice; монолог-рассказ о выдающемся человеке (по ФРП: биографии великих людей)</td></tr>
-<tr><td><b>Метапредметные</b></td><td>искать и отбирать информацию; строить рассказ по плану; оценивать свою работу</td></tr>
-<tr><td><b>Личностные</b></td><td>уважение к культурному наследию России и Великобритании; гордость за выдающихся людей своей страны</td></tr>
+<tr><th>Результаты</th><th>Чему учимся</th></tr>
+<tr><td><b>Предметные</b></td><td>Лексика «великие люди и произведения»; Passive Voice; монолог-рассказ о выдающемся человеке</td></tr>
+<tr><td><b>Метапредметные</b></td><td>Отбирать информацию, строить рассказ по плану, оценивать себя</td></tr>
+<tr><td><b>Личностные</b></td><td>Уважение к культурному наследию России и Великобритании</td></tr>
 </table>
-</div>
+</section>
 
-<div id="words" class="panel">
-<h2>📖 Слова урока</h2>
-<p class="hint">Нажми на карточку: слово прозвучит сначала <b>медленно, по слогам</b>, потом <b>в обычном темпе</b>. В карточке — транскрипция и подсказка, как читать.</p>
-<h3 style="color:#8a4fd3;margin:14px 0 8px">🎨 Профессии и произведения</h3>
-<div class="wgrid" id="wgrid1"></div>
-<h3 style="color:#8a4fd3;margin:18px 0 8px">🌱 Этапы жизни (Unit 3d — как рассказывают биографии)</h3>
-<div class="wgrid" id="wgrid2"></div>
-</div>
+<section class="tab" id="words">
+<h2>📖 Новые слова</h2>
+<p class="small">Нажми на карточку — слово прозвучит <b>дважды</b>: сначала медленно, потом в обычном темпе.</p>
+<div id="wordsBox"></div>
+</section>
 
-<div id="phrases" class="panel">
-<h2>💬 Фразы для разговора о великих людях</h2>
-<p class="hint">Нажми на фразу — она прозвучит, а под ней откроется перевод.</p>
-<div id="phrlist"></div>
-<div class="gram">
-<b>📐 Грамматическая шпаргалка: Passive Voice (Unit 3c)</b><br>
-Когда важно, <i>кто что сделал</i>, — используем страдательный залог: <b>be + V3</b>.<br>
-• <i>He <b>was born</b> in 1564</i> — он родился в 1564 году.<br>
-• <i>'Hamlet' <b>was written</b> by Shakespeare</i> — «Гамлет» был написан Шекспиром.<br>
-• <i>This picture <b>was painted</b> by Repin</i> — эта картина была написана Репиным.<br>
-Запомни: <b>was born, was written, was painted, was created</b> — четыре главных глагола биографии!
-</div>
-</div>
+<section class="tab" id="phrases">
+<h2>💬 Фразы урока</h2>
+<div id="phrBox"></div>
+<p><button class="btn yellow" onclick="playPhrasesAll()">▶️ Прослушать все фразы</button></p>
+<h3>Грамматическая шпаргалка: четыре главных глагола биографии (Passive Voice)</h3>
+<table>
+<tr><th>Фраза</th><th>Перевод</th></tr>
+<tr><td>He <b>was born</b> in 1564.</td><td>Он родился в 1564 году.</td></tr>
+<tr><td>The play <b>was written</b> in 1600.</td><td>Пьеса была написана в 1600 году.</td></tr>
+<tr><td>The picture <b>was painted</b> in 1850.</td><td>Картина была написана в 1850 году.</td></tr>
+<tr><td>The museum <b>was created</b> in his honour.</td><td>Музей был создан в его честь.</td></tr>
+</table>
+</section>
 
-<div id="dialog" class="panel">
-<h2>🗣 Диалог: Анна и Марк обсуждают великие имена</h2>
-<p class="hint">Нажми на <b>🔊</b> — реплика прозвучит. Нажми на саму реплику — увидишь перевод.</p>
-<div id="dlglist"></div>
-<div class="qcard"><div class="qtext">Проверь себя:</div>
-<p>1. Где родился Шекспир? &nbsp; 2. Какой шедевр назвал Марк?</p></div>
+<section class="tab" id="dialog">
+<h2>🗣 Диалог: Anna and Mark</h2>
+<p class="small">Нажми на реплику, чтобы услышать её и увидеть перевод.</p>
+<div id="dlgBox"></div>
+<p><button class="btn green" onclick="playDialogAll()">▶️ Прослушать весь диалог</button></p>
+<div class="q">
+<p>1. What did Anna call Shakespeare?</p>
+<button class="opt" onclick="dq(this,false,'Нет! Anna назвала его «the greatest playwright».')">A great painter</button>
+<button class="opt" onclick="dq(this,true,'Верно! «The greatest playwright in the English language».')">The greatest playwright</button>
+<button class="opt" onclick="dq(this,false,'Нет! Это про Шекспира, не про музей.')">A quiet museum</button>
 </div>
-
-<div id="game1" class="panel">
-<h2>🎲 Игра: «Угадай великого человека»</h2>
-<p class="hint">Прочитай факты и выбери, о ком идёт речь. За каждый правильный ответ — балл!</p>
-<div id="g1list"></div>
-<div class="score" id="g1score">Счёт: 0 / 8</div>
+<div class="q">
+<p>2. Which painting did Mark talk about?</p>
+<button class="opt" onclick="dq(this,false,'Нет! Mark говорил про «Девятый вал».')">The Boyarynya Morozova</button>
+<button class="opt" onclick="dq(this,false,'Почти, но это про Айвазовского в другом вопросе.')">Black Square</button>
+<button class="opt" onclick="dq(this,true,'Верно! «The Ninth Wave» by Aivazovsky.')">The Ninth Wave</button>
 </div>
+</section>
 
-<div id="game2" class="panel">
-<h2>🧩 Игра: «Вставь слово»</h2>
-<p class="hint">Выбери пропущенное слово — проверим и озвучим правильное предложение.</p>
-<div id="g2list"></div>
-<button class="bigbtn" onclick="checkG2()">Проверить ответы</button>
-<div class="score" id="g2score"></div>
-<div class="fb" id="g2fb"></div>
-</div>
+<section class="tab" id="game1">
+<h2>🎲 Игра 1: Угадай великого человека</h2>
+<p class="small">Прочитай биографию-загадку и выбери имя. Счёт: <span class="score" id="g1score">0</span> / 8</p>
+<div id="g1box"></div>
+</section>
 
-<div id="speak" class="panel">
-<h2>🎤 Говори сам: рассказ о великом человеке</h2>
-<p>Выбери выдающегося человека — и урок соберёт твой рассказ:</p>
-<div id="chips"></div>
-<p style="margin-top:10px">И добавь свою оценку в конце:</p>
-<div id="adjs"></div>
-<div class="storybox" id="story">Выбери человека из списка выше 👆</div>
-<button class="bigbtn" onclick="speakStory()">🔊 Послушать мой рассказ</button>
-<button class="bigbtn" onclick="newPerson()">🔄 Другой человек</button>
-<p class="hint">Прочитай рассказ вслух сам, потом послушай и сравни произношение!</p>
-</div>
+<section class="tab" id="game2">
+<h2>🧩 Игра 2: Вставь слово</h2>
+<p class="small">Выбери правильную форму глагола. Правильное предложение прозвучит вслух!</p>
+<div id="g2box"></div>
+</section>
 
-<div id="test" class="panel">
-<h2>✏️ Тест: 10 вопросов</h2>
-<p class="hint">Выбери ответ в каждом вопросе и нажми «Проверить». За 9–10 баллов — золотая медаль 🥇</p>
-<div id="testlist"></div>
-<button class="bigbtn" onclick="checkTest()">Проверить</button>
-<div class="score" id="testres"></div>
-</div>
+<section class="tab" id="speak">
+<h2>🎤 Говори сам</h2>
+<p>Выбери великого человека, что он сделал и что ты о нём думаешь.</p>
+<p>
+<select id="spPerson"></select>
+</p>
+<p>
+<select id="spDo"></select>
+</p>
+<p>
+<select id="spOp"></select>
+</p>
+<div class="big-speak" id="spOut">Выбери варианты — здесь появится твой рассказ.</div>
+<p><button class="btn" onclick="makeSpeak()">✨ Составить рассказ</button>
+<button class="btn green" id="spSay" onclick="speakSpeak()">🔊 Прослушать</button></p>
+</section>
 
-<div id="homework" class="panel">
+<section class="tab" id="test">
+<h2>✏️ Тест: проверь себя</h2>
+<p class="small">10 вопросов. За 9–10 правильных — золотая медаль! 🥇</p>
+<div id="testBox"></div>
+<p class="score" id="testScore"></p>
+</section>
+
+<section class="tab" id="hw">
 <h2>🏠 Домашнее задание</h2>
-<p><b>Основное:</b> напиши мини-биографию (60–80 слов) о выдающемся писателе, поэте или художнике — из России или из Великобритании — для нашей «Галереи великих умов».</p>
+<p><b>Задание:</b> напиши мини-биографию (60–80 слов) великого человека для нашей «Галереи великих умов». Это может быть писатель, поэт или художник из России или Великобритании.</p>
 <p><b>План рассказа:</b></p>
-<ol style="margin:6px 0 6px 20px">
-<li>Кто это? (a writer, a poet, a painter…)</li>
-<li>Когда и где <i>was born</i>?</li>
-<li>Чем знаменит? Что создал? (<i>was written / was painted</i>)</li>
-<li>Почему ты выбрал(а) именно его или её?</li>
-</ol>
-<p><b>Критерии успеха:</b> ✔ минимум 5 фактов &nbsp; ✔ хотя бы 3 конструкции Passive Voice &nbsp; ✔ 60–80 слов &nbsp; ✔ проверь орфографию</p>
-<div class="star">⭐ <b>Задание со звёздочкой:</b> оформи биографию как карточку для музея и придумай один вопрос-загадку о своём герое для одноклассников — на следующем уроке сыграем в «Угадай великую личность»!</div>
-</div>
+<ul>
+<li>Who was he/she? (a famous writer / poet / painter)</li>
+<li>When and where was he/she born?</li>
+<li>What did he/she create? Use: was written, was painted…</li>
+<li>Why do you like this person?</li>
+</ul>
+<p><b>Критерии успеха:</b> 60–80 слов ✓ 4 фразы из урока ✓ Passive Voice (1–2 раза) ✓ своё мнение в конце ✓</p>
+<div class="star">⭐ <b>Задание со звёздочкой:</b> сделай музейную карточку своего героя (картинка + 3 факта) и придумай вопрос-загадку для одноклассников: «Who am I?»</div>
+</section>
 </div>
 
 <script>
-const D = {"words_prof": [{"en": "a writer", "ru": "писатель", "tr": "[ˈraɪtə]", "hint": "рай-тэ", "say": "a writer", "emoji": "✍️"}, {"en": "a poet", "ru": "поэт", "tr": "[ˈpəʊɪt]", "hint": "по-эт", "say": "a poet", "emoji": "🖋️"}, {"en": "a playwright", "ru": "драматург", "tr": "[ˈpleɪraɪt]", "hint": "плей-райт", "say": "a playwright", "emoji": "🎭"}, {"en": "a painter", "ru": "художник", "tr": "[ˈpeɪntə]", "hint": "пейн-тэ", "say": "a painter", "emoji": "🎨"}, {"en": "a novelist", "ru": "романист, автор романов", "tr": "[ˈnɒvəlɪst]", "hint": "но-вэ-лист", "say": "a novelist", "emoji": "📚"}, {"en": "a masterpiece", "ru": "шедевр", "tr": "[ˈmɑːstəpiːs]", "hint": "ма-стэ-пис", "say": "a masterpiece", "emoji": "🖼️"}, {"en": "a novel", "ru": "роман", "tr": "[ˈnɒvl]", "hint": "но-вэл", "say": "a novel", "emoji": "📕"}, {"en": "a poem", "ru": "стихотворение", "tr": "[ˈpəʊɪm]", "hint": "по-им", "say": "a poem", "emoji": "📜"}, {"en": "a sonnet", "ru": "сонет", "tr": "[ˈsɒnɪt]", "hint": "со-нит", "say": "a sonnet", "emoji": "💛"}, {"en": "a portrait", "ru": "портрет", "tr": "[ˈpɔːtrət]", "hint": "по-трит", "say": "a portrait", "emoji": "🧑‍🎨"}, {"en": "a landscape", "ru": "пейзаж", "tr": "[ˈlændskeɪp]", "hint": "ленд-скейп", "say": "a landscape", "emoji": "🌄"}, {"en": "an exhibition", "ru": "выставка", "tr": "[ˌeksɪˈbɪʃn]", "hint": "эк-си-бишн", "say": "an exhibition", "emoji": "🏛️"}], "words_life": [{"en": "be born", "ru": "родиться (was born)", "tr": "[bi bɔːn]", "hint": "би бо-н", "say": "be born", "emoji": "👶"}, {"en": "grow up", "ru": "расти, взрослеть", "tr": "[ɡrəʊ ʌp]", "hint": "гроу ап", "say": "grow up", "emoji": "🌱"}, {"en": "graduate from", "ru": "окончить (университет)", "tr": "[ˈɡrædʒueɪt]", "hint": "грэ-джу-эйт", "say": "graduate from university", "emoji": "🎓"}, {"en": "start a career", "ru": "начать карьеру", "tr": "[stɑːt ə kəˈrɪə]", "hint": "старт э кэ-риэ", "say": "start a career", "emoji": "🚀"}, {"en": "get married", "ru": "жениться, выйти замуж", "tr": "[ɡet ˈmærid]", "hint": "гэт мэ-рид", "say": "get married", "emoji": "💍"}, {"en": "make a discovery", "ru": "сделать открытие", "tr": "[meɪk ə dɪˈskʌvəri]", "hint": "мэйк э дис-ка-вэ-ри", "say": "make a discovery", "emoji": "💡"}, {"en": "win an award", "ru": "получить награду", "tr": "[wɪn ən əˈwɔːd]", "hint": "уин эн э-уорд", "say": "win an award", "emoji": "🏆"}, {"en": "pass away", "ru": "уйти из жизни", "tr": "[pɑːs əˈweɪ]", "hint": "пас э-уэй", "say": "pass away", "emoji": "🕊️"}], "phrases": [{"en": "Who is your favourite writer?", "ru": "Кто твой любимый писатель?"}, {"en": "He was born in 1564.", "ru": "Он родился в 1564 году."}, {"en": "He grew up in a small town.", "ru": "Он вырос в маленьком городке."}, {"en": "This novel was written in the 19th century.", "ru": "Этот роман был написан в XIX веке."}, {"en": "This masterpiece was painted by Repin.", "ru": "Этот шедевр был написан Репиным."}, {"en": "He is famous for his plays and sonnets.", "ru": "Он знаменит своими пьесами и сонетами."}, {"en": "What is he famous for?", "ru": "Чем он знаменит?"}, {"en": "She graduated from university in 1903.", "ru": "Она окончила университет в 1903 году."}, {"en": "He won the Nobel Prize.", "ru": "Он получил Нобелевскую премию."}, {"en": "Great minds think alike!", "ru": "Великие умы мыслят одинаково!"}], "dialog": [{"who": "Anna", "flag": "🇷🇺", "en": "Mark, who is your favourite writer?", "ru": "Марк, кто твой любимый писатель?"}, {"who": "Mark", "flag": "🇬🇧", "en": "Definitely William Shakespeare! He was born in Stratford-upon-Avon in 1564. He wrote 37 plays!", "ru": "Определённо Уильям Шекспир! Он родился в Стратфорде-на-Эйвоне в 1564 году. Он написал 37 пьес!"}, {"who": "Anna", "flag": "🇷🇺", "en": "Impressive! In Russia, we love Alexander Pushkin. He is our greatest poet. He was born in Moscow in 1799.", "ru": "Впечатляет! В России мы любим Александра Пушкина. Он наш величайший поэт. Он родился в Москве в 1799 году."}, {"who": "Mark", "flag": "🇬🇧", "en": "Yes! I know his novel in verse 'Eugene Onegin'. Was it written in the 19th century?", "ru": "Да! Я знаю его роман в стихах «Евгений Онегин». Он был написан в XIX веке?"}, {"who": "Anna", "flag": "🇷🇺", "en": "That's right! And what about art? What is your favourite masterpiece?", "ru": "Верно! А как насчёт живописи? Какой твой любимый шедевр?"}, {"who": "Mark", "flag": "🇬🇧", "en": "I'm keen on landscapes. 'The Ninth Wave' by Aivazovsky is my favourite. It was painted in 1850!", "ru": "Я увлекаюсь пейзажами. «Девятый вал» Айвазовского — мой любимый. Он был написан в 1850 году!"}, {"who": "Anna", "flag": "🇷🇺", "en": "Wow, a British boy who loves Russian art! Great minds think alike!", "ru": "Ух ты, британский мальчик, который любит русское искусство! Великие умы мыслят одинаково!"}, {"who": "Mark", "flag": "🇬🇧", "en": "Ha! That's a good one. Let's visit the museum together one day.", "ru": "Ха! Хорошо сказано. Давай как-нибудь сходим в музей вместе."}], "game1": [{"q": "He was born in 1564 in Stratford-upon-Avon. He wrote 'Romeo and Juliet' and 'Hamlet'.", "opts": ["Charles Dickens", "William Shakespeare", "Leo Tolstoy"], "a": 1}, {"q": "He was a great Russian poet. He wrote the novel in verse 'Eugene Onegin'.", "opts": ["Alexander Pushkin", "Ivan Aivazovsky", "William Shakespeare"], "a": 0}, {"q": "He was an English novelist. He wrote 'Oliver Twist' and 'A Christmas Carol'.", "opts": ["Leo Tolstoy", "Leonardo da Vinci", "Charles Dickens"], "a": 2}, {"q": "She is a modern British writer. She wrote the books about a young wizard.", "opts": ["J.K. Rowling", "Marie Curie", "Queen Elizabeth II"], "a": 0}, {"q": "He was a Russian painter of the sea. His masterpiece 'The Ninth Wave' was painted in 1850.", "opts": ["Ilya Repin", "Ivan Aivazovsky", "J.M.W. Turner"], "a": 1}, {"q": "He was an Italian artist and inventor. He painted the 'Mona Lisa'.", "opts": ["Leonardo da Vinci", "Charles Dickens", "Alexander Pushkin"], "a": 0}, {"q": "He was a famous Russian writer. His long novel 'War and Peace' is known all over the world.", "opts": ["Ivan Aivazovsky", "Leo Tolstoy", "William Shakespeare"], "a": 1}, {"q": "He was a British painter. His paintings are full of light, sea and storms.", "opts": ["J.M.W. Turner", "Charles Dickens", "Walt Disney"], "a": 0}], "game2": [{"pre": "Pushkin ", "post": " born in 1799.", "opts": ["was", "were", "is"], "a": 0, "say": "Pushkin was born in 1799."}, {"pre": "'Hamlet' was ", "post": " by Shakespeare.", "opts": ["wrote", "writed", "written"], "a": 2, "say": "'Hamlet' was written by Shakespeare."}, {"pre": "The 'Mona Lisa' was painted ", "post": " Leonardo da Vinci.", "opts": ["with", "by", "from"], "a": 1, "say": "The 'Mona Lisa' was painted by Leonardo da Vinci."}, {"pre": "Tolstoy ", "post": " up on his family estate.", "opts": ["grew", "growed", "grows"], "a": 0, "say": "Tolstoy grew up on his family estate."}, {"pre": "Marie Curie ", "post": " a Nobel Prize twice.", "opts": ["wins", "won", "winned"], "a": 1, "say": "Marie Curie won a Nobel Prize twice."}, {"pre": "This ", "post": " was painted by Repin.", "opts": ["poem", "masterpiece", "career"], "a": 1, "say": "This masterpiece was painted by Repin."}, {"pre": "Shakespeare ", "post": " 37 plays in his life.", "opts": ["writed", "writes", "wrote"], "a": 2, "say": "Shakespeare wrote 37 plays in his life."}, {"pre": "The great poet ", "post": " away in 1837.", "opts": ["passed", "past", "pass"], "a": 0, "say": "The great poet passed away in 1837."}], "people": [{"name": "William Shakespeare", "pron": "He", "prof": "playwright", "year": "1564", "work": "'Hamlet'", "kind": "play", "verb": "wrote", "verb3": "written", "flag": "🇬🇧"}, {"name": "Alexander Pushkin", "pron": "He", "prof": "poet", "year": "1799", "work": "'Eugene Onegin'", "kind": "novel in verse", "verb": "wrote", "verb3": "written", "flag": "🇷🇺"}, {"name": "Charles Dickens", "pron": "He", "prof": "novelist", "year": "1812", "work": "'Oliver Twist'", "kind": "novel", "verb": "wrote", "verb3": "written", "flag": "🇬🇧"}, {"name": "Leo Tolstoy", "pron": "He", "prof": "writer", "year": "1828", "work": "'War and Peace'", "kind": "novel", "verb": "wrote", "verb3": "written", "flag": "🇷🇺"}, {"name": "J.K. Rowling", "pron": "She", "prof": "writer", "year": "1965", "work": "'Harry Potter'", "kind": "book series", "verb": "wrote", "verb3": "written", "flag": "🇬🇧"}, {"name": "Ivan Aivazovsky", "pron": "He", "prof": "painter", "year": "1817", "work": "'The Ninth Wave'", "kind": "painting", "verb": "painted", "verb3": "painted", "flag": "🇷🇺"}, {"name": "Ilya Repin", "pron": "He", "prof": "painter", "year": "1844", "work": "'Barge Haulers on the Volga'", "kind": "painting", "verb": "painted", "verb3": "painted", "flag": "🇷🇺"}, {"name": "Leonardo da Vinci", "pron": "He", "prof": "artist", "year": "1452", "work": "'Mona Lisa'", "kind": "painting", "verb": "painted", "verb3": "painted", "flag": "🇮🇹"}], "adjs": ["a true great mind", "an amazing talent", "a genius of world culture"], "test": [{"q": "Shakespeare was a famous…", "opts": ["playwright", "painter", "driver"], "a": 0}, {"q": "'Eugene Onegin' was written by…", "opts": ["Charles Dickens", "Alexander Pushkin", "Leonardo da Vinci"], "a": 1}, {"q": "A person who writes poems is a…", "opts": ["poet", "painter", "scientist"], "a": 0}, {"q": "Where was Pushkin born?", "opts": ["In Stratford-upon-Avon", "In Moscow, in 1799", "In Paris, in 1900"], "a": 1}, {"q": "'The Ninth Wave' was painted by…", "opts": ["Ivan Aivazovsky", "J.M.W. Turner", "Ilya Repin"], "a": 0}, {"q": "Charles Dickens, the author of 'Oliver Twist', was…", "opts": ["a novelist", "a sculptor", "a musician"], "a": 0}, {"q": "'War and Peace' was written by…", "opts": ["Leo Tolstoy", "William Shakespeare", "J.K. Rowling"], "a": 0}, {"q": "The 'Mona Lisa' was painted by…", "opts": ["Leonardo da Vinci", "Alexander Pushkin", "Marie Curie"], "a": 0}, {"q": "She wrote the books about Harry Potter. She is…", "opts": ["J.K. Rowling", "Queen Elizabeth II", "Marie Curie"], "a": 0}, {"q": "A very famous and great work of art is called a…", "opts": ["masterpiece", "landscape", "career"], "a": 0}]};
-const $ = id => document.getElementById(id);
-function go(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));event.target.classList.add('active');$(id).classList.add('show');window.scrollTo(0,0);}
-function utter(text,rate){return new Promise(res=>{if(!window.speechSynthesis){res();return;}const u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=rate;u.onend=res;u.onerror=res;speechSynthesis.speak(u);});}
-async function speakWord(el){el.classList.add('open');await utter(el.dataset.say,0.55);await utter(el.dataset.say,1.0);}
-function renderWords(list,gridId){gridId.innerHTML=list.map(w=>`<div class="wcard" data-say="${w.say}" onclick="speakWord(this)"><span class="spk">🔊</span><div class="we">${w.emoji}</div><div class="wn">${w.en}</div><div class="wr">${w.ru}</div><div class="wd">${w.tr} &nbsp;•&nbsp; читается: <b>${w.hint}</b></div></div>`).join('');}
-renderWords(D.words_prof,'wgrid1');renderWords(D.words_life,'wgrid2');
+var SP = window.speechSynthesis || null;
+function speak(text, rate, cb){
+  if(!SP){ if(cb)cb(); return; }
+  try{ SP.cancel(); }catch(e){}
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-GB'; u.rate = rate || 1;
+  u.onend = function(){ if(cb)cb(); };
+  u.onerror = function(){ if(cb)cb(); };
+  SP.speak(u);
+}
 
-$('phrlist').innerHTML = D.phrases.map(p=>`<div class="phrase" onclick="this.classList.toggle('open');utter('${p.en.replace(/'/g,"\'")}',0.95)"><b>${p.en}</b> 🔊<div class="ru">${p.ru}</div></div>`).join('');
+/* TABS */
+var btns = document.querySelectorAll('.tab-btn');
+for(var i=0;i<btns.length;i++){
+  btns[i].addEventListener('click', function(){
+    var id = this.getAttribute('data-tab');
+    var all = document.querySelectorAll('.tab-btn');
+    for(var j=0;j<all.length;j++) all[j].classList.remove('active');
+    this.classList.add('active');
+    var secs = document.querySelectorAll('section.tab');
+    for(var k=0;k<secs.length;k++) secs[k].classList.remove('active');
+    document.getElementById(id).classList.add('active');
+  });
+}
 
-$('dlglist').innerHTML = D.dialog.map(l=>`<div class="dline" onclick="this.classList.toggle('open')"><button class="dbtn" onclick="event.stopPropagation();utter(this.dataset.t,0.95)" data-t="${l.en.replace(/"/g,'&quot;')}">🔊</button><span class="who">${l.flag} ${l.who}:</span> ${l.en}<div class="ru">${l.ru}</div></div>`).join('');
+/* WORDS */
+var wordsGroup1 = [
+ {en:'a playwright', tr:'/ˈpleɪraɪt/', ru:'драматург', hint:'плэ́й-райт', say:'a playwright'},
+ {en:'a novelist', tr:'/ˈnɒvəlɪst/', ru:'романист, автор романов', hint:'но́-ва-лист', say:'a novelist'},
+ {en:'a poet', tr:'/ˈpəʊɪt/', ru:'поэт', hint:'по́-уэт', say:'a poet'},
+ {en:'a painter', tr:'/ˈpeɪntə/', ru:'художник', hint:'пэ́йн-тэ', say:'a painter'},
+ {en:'a masterpiece', tr:'/ˈmɑːstəpiːs/', ru:'шедевр', hint:'ма́-стэ-пис', say:'a masterpiece'},
+ {en:'a sonnet', tr:'/ˈsɒnɪt/', ru:'сонет', hint:'со́-нит', say:'a sonnet'},
+ {en:'a novel', tr:'/ˈnɒvl/', ru:'роман (книга)', hint:'но́-вэл', say:'a novel'},
+ {en:'a poem', tr:'/ˈpəʊɪm/', ru:'поэма, стихотворение', hint:'по́-уэм', say:'a poem'},
+ {en:'a landscape', tr:'/ˈlændskeɪp/', ru:'пейзаж', hint:'лэнд-скейп', say:'a landscape'},
+ {en:'a portrait', tr:'/ˈpɔːtreɪt/', ru:'портрет', hint:'по́-трэт', say:'a portrait'}
+];
+var wordsGroup2 = [
+ {en:'be born', tr:'/bi bɔːn/', ru:'родиться', hint:'би-борн', say:'to be born'},
+ {en:'grow up', tr:'/ɡrəʊ ʌp/', ru:'расти, взрослеть', hint:'гро́у ап', say:'to grow up'},
+ {en:'go to school', tr:'/ɡəʊ tə skuːl/', ru:'ходить в школу', hint:'го́у ту скул', say:'to go to school'},
+ {en:'graduate from', tr:'/ˈɡrædʒueɪt frɒm/', ru:'окончить (учебное заведение)', hint:'грэ́-джу-эйт фром', say:'to graduate from university'},
+ {en:'become famous', tr:'/bɪˈkʌm ˈfeɪməs/', ru:'стать известным', hint:'би-ка́м фэ́й-мэс', say:'to become famous'},
+ {en:'make a discovery', tr:'/meɪk ə dɪˈskʌvəri/', ru:'сделать открытие', hint:'мэйк э дис-ка́-ви', say:'to make a discovery'},
+ {en:'win an award', tr:'/wɪn ən əˈwɔːd/', ru:'получить награду', hint:'вин эн э-во́:д', say:'to win an award'},
+ {en:'pass away', tr:'/pɑːs əˈweɪ/', ru:'скончаться (устареть не будет — вежливо)', hint:'па:с э-уэ́й', say:'to pass away'}
+];
+function buildWords(){
+  var box = document.getElementById('wordsBox');
+  var g1 = document.createElement('div');
+  g1.innerHTML = '<div class="group-title">🎨 Профессии и произведения</div>';
+  var grid1 = document.createElement('div'); grid1.className = 'words';
+  wordsGroup1.forEach(function(w){
+    var c = document.createElement('div'); c.className='word-card';
+    c.innerHTML = '<div class="en">🔊 '+w.en+'</div><div class="tr">'+w.tr+'</div><div class="ru">'+w.ru+'</div><div class="hint">читается: '+w.hint+'</div>';
+    c.addEventListener('click', function(){
+      speak(w.say, 0.55, function(){ speak(w.say, 1.0, null); });
+    });
+    grid1.appendChild(c);
+  });
+  g1.appendChild(grid1);
+  var g2 = document.createElement('div');
+  g2.innerHTML = '<div class="group-title">⏳ Этапы жизни (Unit 3d)</div>';
+  var grid2 = document.createElement('div'); grid2.className = 'words';
+  wordsGroup2.forEach(function(w){
+    var c = document.createElement('div'); c.className='word-card';
+    c.innerHTML = '<div class="en">🔊 '+w.en+'</div><div class="tr">'+w.tr+'</div><div class="ru">'+w.ru+'</div><div class="hint">читается: '+w.hint+'</div>';
+    c.addEventListener('click', function(){
+      speak(w.say, 0.55, function(){ speak(w.say, 1.0, null); });
+    });
+    grid2.appendChild(c);
+  });
+  g2.appendChild(grid2);
+  box.appendChild(g1); box.appendChild(g2);
+}
 
-let g1done=0,g1pts=0;
-$('g1list').innerHTML = D.game1.map((q,i)=>`<div class="qcard" id="g1q${i}"><div class="qtext">${i+1}. ${q.q}</div>${q.opts.map((o,j)=>`<button class="opt" onclick="g1ans(${i},${j},this)">${o}</button>`).join('')}</div>`).join('');
-function g1ans(i,j,btn){const q=D.game1[i];const card=$('g1q'+i);if(card.dataset.done)return;card.dataset.done=1;g1done++;const opts=card.querySelectorAll('.opt');opts[q.a].classList.add('ok');if(j===q.a){g1pts++;}else{btn.classList.add('bad');}utter(q.opts[q.a],0.95);$('g1score').textContent=`Счёт: ${g1pts} / 8`+(g1done===8?(g1pts>=7?' — Отлично! 🏆':(g1pts>=5?' — Хорошо! 💪':' — Попробуй ещё раз 🙂')):'');}
+/* PHRASES */
+var phrases = [
+ {en:'He was born in 1564 in England.', ru:'Он родился в 1564 году в Англии.'},
+ {en:'He wrote thirty-seven plays.', ru:'Он написал 37 пьес.'},
+ {en:'His novels are read all over the world.', ru:'Его романы читают во всём мире.'},
+ {en:'This painting was created two hundred years ago.', ru:'Эта картина была создана двести лет назад.'},
+ {en:'Who is your favourite writer?', ru:'Кто твой любимый писатель?'},
+ {en:'I am keen on Russian poetry.', ru:'Я увлекаюсь русской поэзией.'},
+ {en:'She is famous for her detective novels.', ru:'Она знаменита своими детективными романами.'},
+ {en:'He won an award for his book.', ru:'Он получил награду за свою книгу.'},
+ {en:'His pictures are full of light.', ru:'Его картины полны света.'},
+ {en:'I think he is a genius.', ru:'Я думаю, он гений.'}
+];
+function buildPhrases(){
+  var box = document.getElementById('phrBox');
+  phrases.forEach(function(p, i){
+    var d = document.createElement('div'); d.className='line a';
+    d.innerHTML = '<span class="who">🔊</span> '+p.en+'<div class="ru">'+p.ru+'</div>';
+    d.addEventListener('click', function(){ speak(p.en, 0.9, null); d.classList.toggle('open'); });
+    box.appendChild(d);
+  });
+}
+function playPhrasesAll(){
+  var i = 0;
+  function next(){
+    if(i >= phrases.length) return;
+    var en = phrases[i].en; i++;
+    speak(en, 0.95, next);
+  }
+  next();
+}
 
-$('g2list').innerHTML = D.game2.map((q,i)=>`<div class="qcard"><div class="qtext">${i+1}.${q.pre}<select id="g2s${i}">${q.opts.map((o,j)=>`<option value="${j}">${o}</option>`).join('')}</select>${q.post}</div></div>`).join('');
-function checkG2(){let pts=0;D.game2.forEach((q,i)=>{const s=$('g2s'+i);if(+s.value===q.a){pts++;s.style.borderColor='#3f9f3f';s.style.background='#c9f0c9';}else{s.style.borderColor='#c33';s.style.background='#f8d0d0';}});$('g2score').textContent=`Правильных ответов: ${pts} / 8`+(pts>=7?' — Молодец! 🏆':(pts>=5?' — Хорошо! 💪':' — Повтори Passive Voice 🙂'));const fb=$('g2fb');fb.className='fb '+(pts>=5?'ok':'bad');fb.textContent='Правильные предложения:';D.game2.forEach(q=>{fb.textContent+=' '+q.say;});speakSeq(D.game2.map(q=>q.say));}
-async function speakSeq(list){for(const t of list){await utter(t,0.95);}}
+/* DIALOGUE */
+var dialog = [
+ {who:'Anna', en:'Mark, do you like reading?', ru:'Марк, ты любишь читать?'},
+ {who:'Mark', en:'Yes! I am keen on books. My favourite writer is Shakespeare.', ru:'Да! Я увлекаюсь книгами. Мой любимый писатель — Шекспир.'},
+ {who:'Anna', en:'Shakespeare was born in 1564, right?', ru:'Шекспир родился в 1564 году, верно?'},
+ {who:'Mark', en:'Exactly! Many people say he is the greatest playwright in the English language.', ru:'Точно! Многие говорят, что он величайший драматург на английском языке.'},
+ {who:'Anna', en:'And I love Pushkin. His poems are wonderful, and every Russian child knows them.', ru:'А я люблю Пушкина. Его стихи чудесные, и каждый русский ребёнок их знает.'},
+ {who:'Mark', en:'Great! Do you like art too?', ru:'Здорово! Ты тоже любишь искусство?'},
+ {who:'Anna', en:'Of course. Last month I saw The Ninth Wave by Aivazovsky. The picture was painted in 1850.', ru:'Конечно. В прошлом месяце я видела «Девятый вал» Айвазовского. Картина была написана в 1850 году.'},
+ {who:'Mark', en:'Wow! Is it really that old? It looks so alive — the sea is full of light!', ru:'Ого! Неужели она такая старая? Она выглядит такой живой — море полно света!'},
+ {who:'Anna', en:'That is why people call Aivazovsky a genius. Come with me next time!', ru:'Вот почему люди называют Айвазовского гением. Пойдёшь со мной в следующий раз!'},
+ {who:'Mark', en:'Count me in!', ru:'Записывай меня в компанию!'}
+];
+function buildDialog(){
+  var box = document.getElementById('dlgBox');
+  dialog.forEach(function(l, i){
+    var d = document.createElement('div');
+    d.className = 'line ' + (l.who === 'Anna' ? 'a' : 'b');
+    d.innerHTML = '<span class="who">'+l.who+':</span> '+l.en+'<div class="ru">'+l.ru+'</div>';
+    d.addEventListener('click', function(){ speak(l.en, 0.9, null); d.classList.toggle('open'); });
+    box.appendChild(d);
+  });
+}
+function playDialogAll(){
+  var i = 0;
+  function next(){
+    if(i >= dialog.length) return;
+    var en = dialog[i].en; i++;
+    speak(en, 0.95, next);
+  }
+  next();
+}
+function dq(btn, ok, msg){
+  var q = btn.parentElement;
+  var opts = q.querySelectorAll('.opt');
+  for(var i=0;i<opts.length;i++) opts[i].classList.remove('right','wrong');
+  btn.classList.add(ok ? 'right' : 'wrong');
+  var fb = q.querySelector('.feedback') || document.createElement('div');
+  if(!fb.classList.contains('feedback')){ fb.className='feedback'; q.appendChild(fb); }
+  fb.textContent = msg;
+  if(ok) speak(msg, 1, null);
+}
 
-let selP=null,selA=0;
-function renderChips(){$('chips').innerHTML=D.people.map((p,i)=>`<span class="chip" id="pchip${i}" onclick="pickP(${i})">${p.flag} ${p.name}</span>`).join('');$('adjs').innerHTML=D.adjs.map((a,i)=>`<span class="chip" id="achip${i}" onclick="pickA(${i})">${a}</span>`).join('');}
-function pickP(i){selP=i;D.people.forEach((_,j)=>$('pchip'+j).classList.remove('sel'));$('pchip'+i).classList.add('sel');buildStory();}
-function pickA(i){selA=i;D.adjs.forEach((_,j)=>$('achip'+j).classList.remove('sel'));$('achip'+i).classList.add('sel');buildStory();}
-function buildStory(){if(selP===null)return;const p=D.people[selP];const pron=p.pron||'He';const t=`${p.name} was born in ${p.year}. ${pron} was a famous ${p.prof}. ${pron} ${p.verb} ${p.work}. This ${p.kind} is a real masterpiece! In my opinion, ${p.name} was ${D.adjs[selA]}.`;$('story').innerHTML=t.replace(/In my opinion/, '<b>In my opinion</b>');$('story').dataset.text=t;}
-function newPerson(){selP=null;document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('sel'));$('story').innerHTML='Выбери человека из списка выше 👆';}
-function speakStory(){const t=$('story').dataset.text;if(t)utter(t,0.95);}
-renderChips();
+/* GAME 1 */
+var g1data = [
+ {q:'I was born in 1564 in England. I wrote "Romeo and Juliet" and 37 plays. Who am I?', opts:['Charles Dickens','William Shakespeare','Leo Tolstoy'], a:1},
+ {q:'I am a British novelist. My books about a young wizard are read all over the world. Who am I?', opts:['J. K. Rowling','Jane Austen','Agatha Christie'], a:0},
+ {q:'I was born in 1812 in England. I wrote "Oliver Twist" about poor children in London. Who am I?', opts:['William Shakespeare','Charles Dickens','Mark Twain'], a:1},
+ {q:'I was a Russian writer. I wrote "War and Peace" and "Anna Karenina". Who am I?', opts:['Fyodor Dostoevsky','Anton Chekhov','Leo Tolstoy'], a:2},
+ {q:'I was a Russian painter of the sea. My most famous picture is "The Ninth Wave". Who am I?', opts:['Ivan Aivazovsky','Ilya Repin','Isaac Levitan'], a:0},
+ {q:'I was a Russian painter. My portraits of famous people are in the Tretyakov Gallery. Who am I?', opts:['Karl Bryullov','Ilya Repin','Vasily Surikov'], a:1},
+ {q:'I was an Italian artist and inventor. I painted the "Mona Lisa". Who am I?', opts:['Raphael','Michelangelo','Leonardo da Vinci'], a:2},
+ {q:'I was born in 1799 in Moscow. Russians call me their greatest poet. I wrote "Ruslan and Ludmila". Who am I?', opts:['Alexander Pushkin','Mikhail Lermontov','Sergei Yesenin'], a:0}
+];
+var g1score = 0, g1done = 0;
+function buildG1(){
+  var box = document.getElementById('g1box');
+  g1data.forEach(function(item, idx){
+    var q = document.createElement('div'); q.className = 'q';
+    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
+    var fb = document.createElement('div'); fb.className = 'feedback';
+    item.opts.forEach(function(o, oi){
+      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
+      b.addEventListener('click', function(){
+        if(q.getAttribute('data-done')) return;
+        q.setAttribute('data-done','1');
+        if(oi === item.a){
+          b.classList.add('right'); fb.textContent = '✅ Верно!'; fb.style.color = '#2e9e5b';
+          g1score++; speak(item.opts[item.a], 1, null);
+        } else {
+          b.classList.add('wrong'); fb.textContent = '❌ Правильно: ' + item.opts[item.a];
+          fb.style.color = '#d9534f';
+          q.querySelectorAll('.opt')[item.a].classList.add('right');
+        }
+        g1done++;
+        document.getElementById('g1score').textContent = g1score;
+        if(g1done === 8) fb.textContent += (g1score >= 7 ? ' 🏆 Отличный результат!' : ' Попробуй ещё раз!');
+      });
+      q.appendChild(b);
+    });
+    q.appendChild(fb);
+    box.appendChild(q);
+  });
+}
 
-$('testlist').innerHTML = D.test.map((q,i)=>`<div class="qcard"><div class="qtext">${i+1}. ${q.q}</div>${q.opts.map((o,j)=>`<label class="opt"><input type="radio" name="tq${i}" value="${j}" style="margin-right:8px">${o}</label>`).join('')}</div>`).join('');
-function checkTest(){let pts=0,ans=0;D.test.forEach((q,i)=>{const sel=document.querySelector(`input[name="tq${i}"]:checked`);if(sel){ans++;if(+sel.value===q.a)pts++;}});const r=$('testres');if(ans<D.test.length){r.textContent=`Ответь на все вопросы! Отвечено: ${ans} из ${D.test.length}`;r.style.color='#c33';return;}let medal=pts>=9?' 🥇 Золотая медаль!':(pts>=7?' 🥈 Серебро! Отличный результат!':' — Повтори слова и попробуй ещё раз 🙂');r.textContent=`Твой результат: ${pts} / 10`+medal;r.style.color='#3f9f3f';if(pts>=9)utter('Excellent! Great minds think alike!',0.95);}
+/* GAME 2 */
+var g2data = [
+ {q:'Shakespeare ___ in 1564.', opts:['was born','is born','born'], a:0},
+ {q:'"War and Peace" ___ by Leo Tolstoy.', opts:['wrote','was written','is writing'], a:1},
+ {q:'"The Ninth Wave" ___ by Aivazovsky in 1850.', opts:['was painted','painted','paints'], a:0},
+ {q:'Pushkin ___ up in Moscow.', opts:['grew','grow','grown'], a:0},
+ {q:'This museum ___ in his honour.', opts:['created','was created','is create'], a:1},
+ {q:'Marie Curie ___ a discovery in science.', opts:['make','made','making'], a:1},
+ {q:'She ___ an award for her novel.', opts:['win','won','winned'], a:1},
+ {q:'The great writer ___ away in 1837.', opts:['passed','pass','passing'], a:0}
+];
+function buildG2(){
+  var box = document.getElementById('g2box');
+  g2data.forEach(function(item, idx){
+    var q = document.createElement('div'); q.className = 'q';
+    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
+    var fb = document.createElement('div'); fb.className = 'feedback';
+    item.opts.forEach(function(o, oi){
+      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
+      b.addEventListener('click', function(){
+        if(q.getAttribute('data-done')) return;
+        q.setAttribute('data-done','1');
+        if(oi === item.a){
+          b.classList.add('right'); fb.textContent = '✅ Верно!'; fb.style.color = '#2e9e5b';
+          var full = item.q.replace('___', item.opts[item.a]);
+          speak(full, 0.9, null);
+        } else {
+          b.classList.add('wrong'); fb.textContent = '❌ Правильно: ' + item.opts[item.a];
+          fb.style.color = '#d9534f';
+          q.querySelectorAll('.opt')[item.a].classList.add('right');
+        }
+      });
+      q.appendChild(b);
+    });
+    q.appendChild(fb);
+    box.appendChild(q);
+  });
+}
+
+/* SPEAK */
+var spPeople = [
+ {name:'William Shakespeare', do:'wrote Romeo and Juliet', say:'my favourite writer is William Shakespeare'},
+ {name:'Alexander Pushkin', do:'wrote wonderful poems', say:'my favourite poet is Alexander Pushkin'},
+ {name:'Charles Dickens', do:'wrote Oliver Twist', say:'my favourite writer is Charles Dickens'},
+ {name:'Leo Tolstoy', do:'wrote War and Peace', say:'my favourite writer is Leo Tolstoy'},
+ {name:'J. K. Rowling', do:'wrote the Harry Potter books', say:'my favourite writer is J. K. Rowling'},
+ {name:'Ivan Aivazovsky', do:'painted The Ninth Wave', say:'my favourite painter is Ivan Aivazovsky'},
+ {name:'Ilya Repin', do:'painted great portraits', say:'my favourite painter is Ilya Repin'},
+ {name:'Leonardo da Vinci', do:'painted the Mona Lisa', say:'my favourite artist is Leonardo da Vinci'}
+];
+var spOps = [
+ {t:'I think he is a genius.', v:'I think he is a genius.'},
+ {t:'His works are wonderful!', v:'His works are wonderful!'},
+ {t:'I am keen on his books.', v:'I am keen on his books.'},
+ {t:'Her pictures are full of light.', v:'Her pictures are full of light.'}
+];
+function buildSpeak(){
+  var p = document.getElementById('spPerson');
+  spPeople.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x.name; p.appendChild(o); });
+  var d = document.getElementById('spDo');
+  var dos = ['wrote Romeo and Juliet','wrote wonderful poems','wrote Oliver Twist','wrote War and Peace','wrote the Harry Potter books','painted The Ninth Wave','painted great portraits','painted the Mona Lisa'];
+  dos.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x; d.appendChild(o); });
+  var op = document.getElementById('spOp');
+  spOps.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x.t; op.appendChild(o); });
+}
+function makeSpeak(){
+  var person = spPeople[document.getElementById('spPerson').value];
+  var doTxt = document.getElementById('spDo').value;
+  var op = spOps[document.getElementById('spOp').value];
+  var text = 'I would like to tell you about a great person. ' + person.say + '. He ' + doTxt + '. ' + op.v;
+  document.getElementById('spOut').textContent = text;
+  window.spText = text;
+}
+function speakSpeak(){
+  if(window.spText) speak(window.spText, 0.95, null);
+}
+
+/* TEST */
+var test = [
+ {q:'Shakespeare was a famous ___.', opts:['playwright','painter','singer'], a:0},
+ {q:'A person who writes novels is a ___.', opts:['novelist','sculptor','musician'], a:0},
+ {q:'"Romeo and Juliet" was ___ by Shakespeare.', opts:['write','wrote','written'], a:2},
+ {q:'Aivazovsky is famous for his ___.', opts:['detective novels','seascapes','plays'], a:1},
+ {q:'Pushkin was born in ___.', opts:['1564','1799','1850'], a:1},
+ {q:'The Mona Lisa was painted by ___.', opts:['Leonardo da Vinci','Ilya Repin','Charles Dickens'], a:0},
+ {q:'"War and Peace" was written by ___.', opts:['Leo Tolstoy','Fyodor Dostoevsky','Anton Chekhov'], a:0},
+ {q:'She won an award ___ her book.', opts:['for','about','from'], a:0},
+ {q:'Harry Potter books were written by ___.', opts:['Jane Austen','J. K. Rowling','J. R. R. Tolkien'], a:1},
+ {q:'The great poet passed ___ in 1837.', opts:['away','up','out'], a:0}
+];
+var testDone = 0, testScore = 0;
+function buildTest(){
+  var box = document.getElementById('testBox');
+  test.forEach(function(item, idx){
+    var q = document.createElement('div'); q.className = 'q';
+    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
+    item.opts.forEach(function(o, oi){
+      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
+      b.addEventListener('click', function(){
+        if(q.getAttribute('data-done')) return;
+        q.setAttribute('data-done','1');
+        if(oi === item.a){ b.classList.add('right'); testScore++; }
+        else { b.classList.add('wrong'); q.querySelectorAll('.opt')[item.a].classList.add('right'); }
+        testDone++;
+        if(testDone === 10){
+          var out = document.getElementById('testScore');
+          out.textContent = 'Твой результат: ' + testScore + ' из 10. ';
+          out.textContent += testScore >= 9 ? '🥇 Золотая медаль!' : (testScore >= 7 ? '🥈 Молодец! Почти идеально.' : '🥉 Пройди тест ещё раз!');
+        }
+      });
+      q.appendChild(b);
+    });
+    box.appendChild(q);
+  });
+}
+
+buildWords(); buildPhrases(); buildDialog(); buildG1(); buildG2(); buildSpeak(); buildTest();
 </script>
 </body>
 </html>
