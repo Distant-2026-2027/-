@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Favourite Day — Spotlight 6, Unit 4c</title>
+<style>
+:root{--c1:#ff9800;--c2:#4caf50;--c3:#03a9f4;--bg:#fff8ec;--card:#fff;--tx:#333;--acc:#ff6d00;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Verdana,sans-serif;background:var(--bg);color:var(--tx);line-height:1.55}
+header{background:linear-gradient(135deg,#ffb300,#ff6d00);color:#fff;padding:22px 16px;text-align:center;border-radius:0 0 24px 24px}
+header h1{font-size:1.7em;letter-spacing:.5px}
+header p{opacity:.95;font-size:1em;margin-top:6px}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 10px;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:2px solid #ffe0b2}
+nav button{border:none;border-radius:22px;padding:9px 14px;font-size:.95em;cursor:pointer;background:#fff;color:#795548;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.08)}
+nav button.on{background:var(--acc);color:#fff}
+main{max-width:900px;margin:0 auto;padding:18px 14px 60px}
+.card{background:var(--card);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 10px rgba(0,0,0,.07)}
+h2{color:var(--acc);margin-bottom:10px;font-size:1.3em}
+.tag{display:inline-block;border-radius:10px;padding:2px 10px;font-size:.8em;color:#fff;margin-bottom:8px}
+.g1{background:var(--c3)}.g2{background:var(--c2)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.wcard{border-radius:12px;padding:12px;cursor:pointer;background:#fff;border:2px solid #ffe0b2;transition:.2s}
+.wcard:hover{border-color:var(--acc);transform:translateY(-2px)}
+.wcard .en{font-weight:700;font-size:1.15em}
+.wcard .ru{color:#666;font-size:.92em;margin-top:3px}
+.wcard .tr{color:#8d6e63;font-size:.85em;margin-top:2px;font-style:italic}
+.wcard .hint{color:#2e7d32;font-size:.85em;margin-top:2px}
+.btn{border:none;border-radius:10px;padding:8px 14px;font-weight:600;cursor:pointer;background:var(--c3);color:#fff;margin:4px 6px 4px 0;font-size:.95em}
+.btn.g{background:var(--c2)}.btn.o{background:var(--acc)}
+.phr{border-bottom:1px dashed #e0d5c5;padding:9px 0;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.phr .p-en{font-weight:600}
+.phr .p-ru{color:#777;font-size:.92em}
+.dl{margin:8px 0;padding:10px 14px;border-radius:14px;max-width:92%;cursor:pointer}
+.a{background:#e3f2fd;margin-right:auto}.b{background:#fff3e0;margin-left:auto}
+.dl .who{font-weight:700;font-size:.8em;color:#888}
+.dl .tra{color:#777;font-size:.92em;margin-top:4px;display:none}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.95em}
+th,td{border:1px solid #ead9c0;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#ffe0b2}
+.opt{display:block;width:100%;text-align:left;border:2px solid #ffe0b2;background:#fff;border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer;font-size:1em}
+.opt:hover{border-color:var(--acc)}
+.opt.right{border-color:#4caf50;background:#e8f5e9}
+.opt.wrong{border-color:#e53935;background:#ffebee}
+.score{font-weight:700;font-size:1.15em;color:var(--acc);margin-top:8px}
+.medal{font-size:2.2em;text-align:center;margin-top:8px}
+select,input[type=text]{padding:9px;border-radius:10px;border:2px solid #ffe0b2;font-size:1em;width:100%;max-width:420px;margin:4px 0}
+.out{background:#f1f8e9;border-radius:12px;padding:14px;margin-top:12px;font-size:1.08em;display:none}
+.center{text-align:center}
+.note{background:#fff8e1;border-left:4px solid var(--c1);padding:10px 14px;border-radius:8px;font-size:.95em;margin-top:10px}
+@media(max-width:600px){header h1{font-size:1.3em}}
+</style>
+</head>
+<body>
+<header>
+<h1>⭐ My Favourite Day ⭐</h1>
+<p>Английский язык • 6 класс • Spotlight 6, Module 4 «Day after day», Unit 4c • Досуг и развлечения подростка</p>
+</header>
+<nav id="tabs"></nav>
+<main id="content"></main>
+<script>
+var tabs=["🎯 Цель урока","📖 Слова","💬 Фразы","🗣 Диалог","🎲 Игра: Угадай занятие","🧩 Вставь слово","🎤 Говори сам","✏️ Тест","🏠 Домашнее задание"];
+var words=[
+{e:"🏄",en:"surf the Net",ru:"«сидеть» в интернете",ipa:"[сёрф зэ нет]",hint:"серфить = «скользить» по сети",g:1},
+{e:"👥",en:"meet up with friends",ru:"встречаться с друзьями",ipa:"[мит ап виз фрэндз]",hint:"meet up = собраться вместе",g:1},
+{e:"🎲",en:"play board games",ru:"играть в настольные игры",ipa:"[плэй борд гэймз]",hint:"board = доска (игровая)",g:1},
+{e:"🚲",en:"go for a bike ride",ru:"кататься на велосипеде",ipa:"[гоу фо э байк рэйд]",hint:"ride = поездка, катание",g:1},
+{e:"⚽",en:"do sports",ru:"заниматься спортом",ipa:"[ду спотс]",hint:"do sports, а не play sports",g:1},
+{e:"🎬",en:"watch a film",ru:"смотреть фильм",ipa:"[воч э филм]",hint:"watch — про экран и кино",g:1},
+{e:"🛍",en:"go shopping",ru:"ходить за покупками",ipa:"[гоу шоппинг]",hint:"двойной p + ing",g:1},
+{e:"💰",en:"pocket money",ru:"карманные деньги",ipa:"[покит мани]",hint:"pocket = карман",g:1},
+{e:"🚐",en:"set off",ru:"отправляться в путь",ipa:"[сет оф]",hint:"как «завестись» и поехать",g:2},
+{e:"📍",en:"arrive at",ru:"прибывать (в место)",ipa:"[эрайв эт]",hint:"arrive AT the camp",g:2},
+{e:"⛺",en:"put up a tent",ru:"поставить палатку",ipa:"[пут ап э тент]",hint:"не «put a tent», а put UP",g:2},
+{e:"🪢",en:"tie knots",ru:"завязывать узлы",ipa:"[тай нотс]",hint:"tie = завязывать",g:2},
+{e:"🧗",en:"go climbing",ru:"заниматься скалолазанием",ipa:"[гоу клайминг]",hint:"climb — «b» не читается!",g:2},
+{e:"🔥",en:"the campfire",ru:"костёр (в лагере)",ipa:"[зэ кэмпфайэ]",hint:"camp + fire = лагерный костёр",g:2},
+{e:"📖",en:"tell stories",ru:"рассказывать истории",ipa:"[тел сториз]",hint:"tell stories, а не say stories",g:2},
+{e:"😴",en:"go to bed",ru:"ложиться спать",ipa:"[гоу ту бэд]",hint:"не «go to sleep» в значении «ложиться»",g:2}];
+var phrases=[
+{en:"Are you free tonight?",ru:"Ты свободен сегодня вечером?"},
+{en:"How about going to the cinema?",ru:"Как насчёт сходить в кино?"},
+{en:"Sounds great!",ru:"Звучит отлично!"},
+{en:"Count me in!",ru:"Я с вами! (Возьми меня в компанию!)"},
+{en:"See you there!",ru:"Увидимся там!"},
+{en:"What time do we set off?",ru:"Во сколько мы отправляемся?"},
+{en:"Let's meet at the bus stop.",ru:"Давай встретимся на автобусной остановке."},
+{en:"Don't be late!",ru:"Не опаздывай!"},
+{en:"Saturday is my favourite day!",ru:"Суббота — мой любимый день!"},
+{en:"Have fun!",ru:"Весело проведи время!"}];
+var grammar=[
+{t:"Present Simple",b:"I / you / we / they <b>surf</b> the Net every day.<br>He / She / It <b>surfs</b> the Net every day.<br>Вопрос: <b>Do</b> you <b>play</b> board games? — <b>Does</b> he <b>go</b> climbing?"},
+{t:"Наречия частоты",b:"always (всегда) → usually (обычно) → often (часто) → sometimes (иногда) → never (никогда)<br>Ставим <b>перед</b> глаголом: I <b>usually</b> meet my friends."}];
+var dialogue=[
+{who:"Ann",a:1,en:"Mark, what's your favourite day of the week?",ru:"Марк, какой твой любимый день недели?"},
+{who:"Mark",a:0,en:"Saturday, of course! I always set off early in the morning.",ru:"Суббота, конечно! Я всегда отправляюсь в путь рано утром."},
+{who:"Ann",a:1,en:"Where do you go?",ru:"Куда ты ходишь?"},
+{who:"Mark",a:0,en:"To the scout club. We arrive at the camp at ten o'clock.",ru:"В скаутский клуб. Мы приходим в лагерь в десять часов."},
+{who:"Ann",a:1,en:"And what do you do there?",ru:"А что вы там делаете?"},
+{who:"Mark",a:0,en:"We put up a tent, go climbing and tie knots. I love the campfire in the evening!",ru:"Ставим палатку, занимаемся скалолазанием и завязываем узлы. Обожаю костёр вечером!"},
+{who:"Ann",a:1,en:"Cool! Do you tell stories there?",ru:"Круто! Вы рассказываете там истории?"},
+{who:"Mark",a:0,en:"Yes! Our leader tells funny stories at the campfire. Count me in next time — do you want to come?",ru:"Да! Наш вожатый рассказывает смешные истории у костра. Возьму тебя в следующий раз — хочешь пойти со мной?"},
+{who:"Ann",a:1,en:"Sounds great! See you there!",ru:"Звучит отлично! Увидимся там!"}];
+var dq=[
+{q:"When does Mark set off on Saturdays?",opts:["Early in the morning","Late at night","At noon"],c:0},
+{q:"Where does Mark go?",opts:["To the scout club","To the cinema","To the swimming pool"],c:0},
+{q:"What does Mark love in the evening?",opts:["The campfire","A new film","Board games"],c:0}];
+var riddles=[
+{q:"I sit at my computer and visit many websites.",opts:["surf the Net","go shopping","tie knots"],c:0},
+{q:"We sleep in this when we are at the camp.",opts:["the campfire","a tent","a bike"],c:1},
+{q:"I move fast on two wheels in the park.",opts:["go for a bike ride","watch a film","play board games"],c:0},
+{q:"In the evening we make a fire and sit around it.",opts:["pocket money","the campfire","set off"],c:1},
+{q:"I play Monopoly or chess with my family.",opts:["play board games","go climbing","do sports"],c:0},
+{q:"I climb rocks and trees with my friends.",opts:["tell stories","go shopping","go climbing"],c:2},
+{q:"My grandmother tells me interesting things about the past.",opts:["tell stories","surf the Net","put up a tent"],c:0},
+{q:"We meet in a café and chat for hours.",opts:["go to bed","meet up with friends","set off"],c:1}];
+var gaps=[
+{b:"Let's ",a:"set",c:" off early on Saturday!",h:"отправляться"},
+{b:"We ",a:"put",c:" up a tent near the river.",h:"ставить"},
+{b:"How about ",a:"going",c:" to the cinema?",h:"How about + глагол с -ing"},
+{b:"Are you ",a:"free",c:" tonight?",h:"свободен"},
+{b:"She always ",a:"ties",c:" knots very fast.",h:"завязывает (3-е лицо!)"},
+{b:"We tell stories at the ",a:"campfire",c:".",h:"костёр"},
+{b:"Count me ",a:"in",c:"!",h:"я с вами!"},
+{b:"I use my ",a:"pocket",c:" money to buy comics.",h:"карманные деньги"}];
+var speakConf={days:["Saturday","Sunday","Friday"],
+ acts:["I surf the Net","I meet up with my friends","I play board games","I go for a bike ride","I do sports","I watch a film","I go shopping","I go to the scout club","I put up a tent","I go climbing","I tell stories at the campfire"],
+ whys:["it makes me happy","I love spending time with my friends","it is fun and exciting","it helps me relax","I learn new things"]};
+var test=[
+{q:"Как переводится «surf the Net»?",opts:["«сидеть» в интернете","идти в магазин","завязывать узлы"],c:0},
+{q:"My favourite day ___ Saturday.",opts:["is","are","am"],c:0},
+{q:"«Set off» означает…",opts:["отправляться в путь","ложиться спать","смотреть фильм"],c:0},
+{q:"Ann goes to the scout club ___ Saturday.",opts:["on","in","at"],c:0},
+{q:"«Put up a tent» — это…",opts:["поставить палатку","купить палатку","сломать палатку"],c:0},
+{q:"How about ___ bowling?",opts:["going","go","goes"],c:0},
+{q:"«Tie knots» переводится…",opts:["завязывать узлы","рассказывать истории","заниматься спортом"],c:0},
+{q:"She always ___ stories at the campfire.",opts:["tells","tell","telling"],c:0},
+{q:"«Pocket money» — это…",opts:["карманные деньги","подарок","зарплата"],c:0},
+{q:"I'm keen ___ board games.",opts:["on","in","at"],c:0}];
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function speak(text,slow,cb){try{if(!('speechSynthesis' in window))return;var u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=slow?0.55:1;if(cb)u.onend=cb;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+function sayTwice(text){speak(text,true,function(){speak(text,false);});}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+var cur=0;
+function render(){
+var nav=document.getElementById('tabs'),m=document.getElementById('content');nav.innerHTML='';m.innerHTML='';
+tabs.forEach(function(t,i){var b=document.createElement('button');b.textContent=t;if(i===cur)b.className='on';b.onclick=function(){cur=i;render();window.scrollTo(0,0);};nav.appendChild(b);});
+var h='';
+if(cur===0){h='<div class="card"><h2>🎯 Цель урока</h2><p><b>Тема:</b> Досуг и развлечения современного подростка (любимые занятия).<br><b>Опора учебника:</b> Spotlight 6, Module 4 «Day after day», Unit 4c «My favourite day» (с. 40) + фразы-приглашения из 4b.</p>'+
+'<table><tr><th>Планируемые результаты</th><th>Ученик научится</th></tr>'+
+'<tr><td><b>Предметные</b></td><td>употреблять лексику досуга; задавать вопросы и отвечать в Present Simple; приглашать и соглашаться (How about…? Count me in!); рассказывать о своём любимом дне</td></tr>'+
+'<tr><td><b>Метапредметные</b></td><td>планировать высказывание (утро — день — вечер); извлекать информацию из диалога; оценивать свою работу</td></tr>'+
+'<tr><td><b>Личностные</b></td><td>ценить полезный досуг и активный отдых; уважать увлечения одноклассников</td></tr></table>'+
+'<div class="note">💡 Ход урока: слова → фразы → диалог → игры → «Говори сам» → тест. На каждый блок 5–10 минут.</div></div>';}
+if(cur===1){h='<div class="card"><h2>📖 Слова</h2><p>Нажми на карточку — слово прозвучит <b>дважды</b>: сначала медленно, потом в обычном темпе.</p>'+
+'<span class="tag g1">Досуг подростка</span><div class="words">'+words.filter(function(w){return w.g===1;}).map(wc).join('')+'</div>'+
+'<span class="tag g2" style="margin-top:14px">День в скаутском клубе (Unit 4c)</span><div class="words">'+words.filter(function(w){return w.g===2;}).map(wc).join('')+'</div></div>';}
+if(cur===2){h='<div class="card"><h2>💬 Полезные фразы</h2><button class="btn" onclick="speakAll()">🔊 Прослушать все</button><div id="phrs">'+
+phrases.map(function(p,i){return '<div class="phr"><div><div class="p-en">'+p.en+'</div><div class="p-ru">'+p.ru+'</div></div><button class="btn" onclick="speak(phrases['+i+'].en)">🔊</button></div>';}).join('')+'</div>'+
+'<h2 style="margin-top:18px">📝 Грамматическая шпаргалка</h2>'+grammar.map(function(g){return '<div class="note"><b>'+g.t+'</b><br>'+g.b+'</div>';}).join('')+'</div>';}
+if(cur===3){h='<div class="card"><h2>🗣 Диалог: Ann and Mark</h2><p>Нажми на реплику, чтобы прослушать. Нажми ещё раз — появится перевод.</p>'+
+dialogue.map(function(d,i){return '<div class="dl '+(d.a?'a':'b')+'" onclick="togle('+i+')"><span class="who">'+d.who+'</span><br>'+d.en+' <span class="btn" style="padding:2px 8px" onclick="event.stopPropagation();speak(dialogue['+i+'].en)">🔊</span><div class="tra" id="tr'+i+'">'+d.ru+'</div></div>';}).join('')+
+'<div class="card"><b>Вопросы на понимание:</b>'+dq.map(function(q,i){return '<div style="margin-top:10px"><b>'+(i+1)+'. '+q.q+'</b>'+q.opts.map(function(o,j){return '<button class="opt" onclick="dcheck(this,'+i+','+j+')">'+o+'</button>';}).join('')+'</div>';}).join('')+'</div></div>';}
+if(cur===4){h='<div class="card"><h2>🎲 Угадай занятие</h2><p>Прочитай описание и выбери занятие. За каждый правильный ответ +1 балл!</p><div id="rid"></div><div class="score" id="rscore"></div></div>';setTimeout(ridInit,50);}
+if(cur===5){h='<div class="card"><h2>🧩 Вставь слово</h2><p>Впиши пропущенное слово и нажми «Проверить». Подсказка — под каждым предложением.</p>'+
+gaps.map(function(g,i){return '<div style="margin:12px 0"><b>'+(i+1)+'.</b> '+esc(g.b)+'<input type="text" id="gap'+i+'" style="display:inline-block;width:130px;margin:0 4px"> '+esc(g.c)+'<div class="hint" style="color:#2e7d32;font-size:.85em">Подсказка: '+g.h+'</div><div id="gr'+i+'" style="font-weight:700"></div></div>';}).join('')+
+'<button class="btn o" onclick="gapCheck()">Проверить всё</button><div class="score" id="gscore"></div></div>';}
+if(cur===6){h='<div class="card"><h2>🎤 Говори сам: My favourite day</h2><p>Выбери день, три занятия и причину — и получи свой рассказ, который можно прослушать!</p>'+
+'<p><b>Мой любимый день:</b></p>'+speakConf.days.map(function(d,i){return '<button class="btn o" onclick="sp.day=\''+d+'\';spMark(this)">'+d+'</button>';}).join('')+
+'<p style="margin-top:10px"><b>Утром:</b></p>'+actBtns(0)+'<p style="margin-top:10px"><b>Днём:</b></p>'+actBtns(1)+'<p style="margin-top:10px"><b>Вечером:</b></p>'+actBtns(2)+
+'<p style="margin-top:10px"><b>Почему мне это нравится:</b></p>'+speakConf.whys.map(function(w,i){return '<button class="btn g" onclick="sp.why=\''+w+'\';spMark(this)">'+w+'</button>';}).join('')+
+'<div class="out" id="spout"></div></div>';}
+if(cur===7){h='<div class="card"><h2>✏️ Тест: 10 вопросов</h2><p>За 9–10 баллов — золотая медаль 🥇, за 7–8 — серебряная 🥈, за 5–6 — бронзовая 🥉.</p><div id="tq"></div><div class="score" id="tscore"></div><div class="medal" id="tmedal"></div></div>';setTimeout(testInit,50);}
+if(cur===8){h='<div class="card"><h2>🏠 Домашнее задание</h2>'+
+'<p><b>Задание 1.</b> Напиши статью <b>«My favourite day»</b> (50–80 слов) по плану:<br>1) Какой день твой любимый?<br>2) Что ты делаешь утром, днём и вечером (наречия usually/often/always!)<br>3) Почему ты любишь этот день.<br>Используй минимум 4 слова из урока.</p>'+
+'<table><tr><th>Критерий</th><th>Баллы</th></tr><tr><td>Объём 50–80 слов</td><td>2</td></tr><tr><td>Минимум 4 слова из урока</td><td>2</td></tr><tr><td>Наречия частоты</td><td>2</td></tr><tr><td>Грамотность (Present Simple)</td><td>2</td></tr><tr><td>Идеи и оформление</td><td>2</td></tr><tr><td><b>Итого</b></td><td><b>10</b></td></tr></table>'+
+'<div class="note">⭐ <b>Задание со звёздочкой:</b> опроси 5 одноклассников «What do you do at the weekend?» и нарисуй круговую диаграмму — как в модуле 4 учебника!</div></div>';}
+m.innerHTML=h;
+}
+function wc(w){return '<div class="wcard" onclick="sayTwice(\''+w.en.replace(/'/g,"\\'")+'\')"><div class="en">'+w.e+' '+w.en+'</div><div class="ru">'+w.ru+'</div><div class="tr">'+w.ipa+'</div><div class="hint">💡 '+w.hint+'</div></div>';}
+function speakAll(){phrases.forEach(function(p,i){setTimeout(function(){speak(p.en);},i*3200);});}
+function togle(i){var e=document.getElementById('tr'+i);e.style.display=e.style.display==='block'?'none':'block';}
+function dcheck(b,qi,oi){var ok=dq[qi].c===oi;b.classList.add(ok?'right':'wrong');if(!ok)b.style.opacity=.7;}
+function actBtns(n){return speakConf.acts.map(function(a,i){return '<button class="btn" onclick="sp.acts['+n+']=\''+a.replace(/'/g,"\\'")+'\';spMark(this)">'+a.replace(/^I /,'')+'</button>';}).join('');}
+var sp={day:null,acts:[null,null,null],why:null};
+function spMark(b){Array.prototype.forEach.call(b.parentNode.children,function(c){c.style.outline='';});b.style.outline='3px solid #ff6d00';spShow();}
+function spShow(){if(!sp.day||!sp.acts[0]||!sp.acts[1]||!sp.acts[2]||!sp.why)return;
+var t='My favourite day is '+sp.day+'. In the morning I usually '+sp.acts[0].replace(/^I /,'').replace(/^(surf|meet|play|go|do|watch|tell|put)/,'$1')+'. In the afternoon I '+sp.acts[1].replace(/^I /,'')+'. In the evening I '+sp.acts[2].replace(/^I /,'')+'. I love '+sp.day+' because '+sp.why+'.';
+var o=document.getElementById('spout');o.style.display='block';o.innerHTML='<b>Твой рассказ:</b><br>'+t+'<br><button class="btn o" onclick="sayTwice(this.previousSibling.textContent)">🔊 Прослушать</button>';
+o.querySelector('button').onclick=function(){sayTwice(t);};}
+var rs=0,rans=[];
+function ridInit(){var box=document.getElementById('rid');box.innerHTML=riddles.map(function(r,i){return '<div style="margin:12px 0"><b>'+(i+1)+'.</b> '+r.q+r.opts.map(function(o,j){return '<button class="opt" onclick="rcheck(this,'+i+','+j+')">'+o+'</button>';}).join('')+'</div>';}).join('');}
+function rcheck(b,i,j){if(rans[i]!==undefined)return;rans[i]=j;var ok=riddles[i].c===j;if(ok){rs++;b.classList.add('right');}else{b.classList.add('wrong');}document.getElementById('rscore').textContent='Баллов: '+rs+' из 8';if(ok)speak(riddles[i].opts[j]);}
+var gscore=0;
+function gapCheck(){gscore=0;gaps.forEach(function(g,i){var v=document.getElementById('gap'+i).value.trim().toLowerCase();var ok=v===g.a.toLowerCase();document.getElementById('gr'+i).textContent=ok?'✅ Верно!':'❌ Правильно: '+g.a;document.getElementById('gr'+i).style.color=ok?'#2e7d32':'#c62828';if(ok)gscore++;});
+document.getElementById('gscore').textContent='Правильных: '+gscore+' из 8';gaps.forEach(function(g,i){var v=document.getElementById('gap'+i).value.trim().toLowerCase();if(v===g.a.toLowerCase())speak(g.b+g.a+g.c);});}
+var tscore=0,tans=[],tdata=[];
+function testInit(){tdata=test.map(function(t){var idx=shuffle(t.opts.map(function(_,i){return i;}));return {q:t.q,opts:idx.map(function(k){return t.opts[k];}),c:idx.indexOf(t.c)};});
+document.getElementById('tq').innerHTML=tdata.map(function(t,i){return '<div style="margin:12px 0"><b>'+(i+1)+'. '+t.q+'</b>'+t.opts.map(function(o,j){return '<button class="opt" onclick="tcheck(this,'+i+','+j+')">'+o+'</button>';}).join('')+'</div>';}).join('');}
+function tcheck(b,i,j){if(tans[i]!==undefined)return;tans[i]=j;var ok=tdata[i].c===j;if(ok)tscore++;b.classList.add(ok?'right':'wrong');
+document.getElementById('tscore').textContent='Баллов: '+tscore+' из 10';
+if(tans.length===10){var m=document.getElementById('tmedal');if(tscore>=9)m.textContent='🥇 Отлично! Золотая медаль!';else if(tscore>=7)m.textContent='🥈 Здорово! Серебряная медаль!';else if(tscore>=5)m.textContent='🥉 Хорошо! Бронзовая медаль!';else m.textContent='💪 Ещё раз пройди слова и игры — и всё получится!';}}
+render();
+</script>
+</body>
+</html>
