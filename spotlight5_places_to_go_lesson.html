@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Go! — Spotlight 5, Unit 9b</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:linear-gradient(160deg,#0f3b4c,#1a5c6e);color:#fff;min-height:100vh}
+header{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.badge{background:#f6b93b;color:#0f3b4c;font-weight:bold;padding:5px 14px;border-radius:20px;font-size:14px}
+h1{font-size:1.5em;color:#ffd166}
+nav{display:flex;gap:8px;padding:6px 22px;flex-wrap:wrap;position:relative;z-index:10}
+nav button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);padding:9px 14px;border-radius:12px;cursor:pointer;font-size:14px;pointer-events:auto;transition:.2s}
+nav button.active{background:#f6b93b;color:#0f3b4c;font-weight:bold;border-color:#f6b93b}
+nav button:hover{background:rgba(255,255,255,.28)}
+main{padding:18px 26px 50px;position:relative;z-index:5;max-width:900px;margin:0 auto}
+section{display:none;animation:fade .3s}
+section.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:20px;margin:12px 0;pointer-events:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border:1px solid rgba(255,255,255,.25);padding:7px 9px;text-align:left}
+th{background:rgba(255,255,255,.12)}
+.word{display:inline-block;background:#fff;color:#0f3b4c;padding:9px 14px;margin:5px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:600;pointer-events:auto;border:none;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.word:hover{background:#ffd166;transform:translateY(-2px)}
+.word .tr{display:block;font-size:11px;color:#1a5c6e;font-weight:normal}
+.group{margin:10px 0}
+.gtitle{font-size:15px;font-weight:bold;color:#ffd166;margin-bottom:4px}
+.phrase{background:rgba(255,255,255,.1);padding:10px 14px;margin:6px 0;border-radius:10px;cursor:pointer;pointer-events:auto}
+.phrase .ru{display:none;color:#ffd166;font-size:14px;margin-top:4px}
+.phrase.open .ru{display:block}
+.dlg{margin:8px 0;cursor:pointer;pointer-events:auto;padding:9px 13px;border-radius:12px}
+.dlg.a{background:rgba(246,185,59,.18);border-left:4px solid #f6b93b}
+.dlg.b{background:rgba(255,255,255,.09);border-left:4px solid #4ecdc4;margin-left:36px}
+.dlg .ru{display:none;color:#ffd166;font-size:14px}
+.dlg.open .ru{display:block}
+.quiz-btn{display:block;width:100%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;padding:11px;margin:6px 0;border-radius:10px;cursor:pointer;text-align:left;font-size:15px;pointer-events:auto}
+.quiz-btn:hover{background:rgba(255,255,255,.25)}
+.quiz-btn.ok{background:#2ecc71;color:#083b1f;font-weight:bold}
+.quiz-btn.bad{background:#e74c3c;color:#fff}
+.score{font-size:18px;color:#ffd166;font-weight:bold;margin-top:10px}
+textarea,input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:15px;pointer-events:auto}
+select{padding:9px;border-radius:10px;background:#0f3b4c;color:#fff;border:1px solid rgba(255,255,255,.3);font-size:15px;margin:4px;pointer-events:auto}
+.medal{font-size:40px;text-align:center;margin-top:10px}
+.btn{background:#f6b93b;color:#0f3b4c;font-weight:bold;border:none;padding:10px 18px;border-radius:12px;cursor:pointer;font-size:15px;pointer-events:auto;margin-top:8px}
+.btn:hover{background:#ffd166}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#2ecc71;color:#fff;padding:10px 20px;border-radius:12px;display:none;z-index:99;font-weight:bold}
+.bubbles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bubbles div{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
+.note{color:#9fd8e8;font-size:13px}
+</style>
+</head>
+<body>
+<div class="bubbles"><div style="width:220px;height:220px;top:-60px;left:-60px"></div><div style="width:140px;height:140px;bottom:8%;right:-40px"></div><div style="width:90px;height:90px;top:40%;left:4%"></div></div>
+<header>
+<h1>🎡 Let's Go! — Places to Go</h1>
+<div><span class="badge">Spotlight 5</span> <span class="badge">Module 9 • Unit 9b</span></div>
+</header>
+<nav>
+<button data-tab="goal" class="active">🎯 Цель урока</button>
+<button data-tab="words">📖 Слова</button>
+<button data-tab="phrases">💬 Фразы</button>
+<button data-tab="dialog">🗣 Диалог</button>
+<button data-tab="game1">🎲 Угадай место</button>
+<button data-tab="game2">🧩 Вставь слово</button>
+<button data-tab="speak">🎤 Говори сам</button>
+<button data-tab="test">✏️ Тест</button>
+<button data-tab="hw">🏠 Домашка</button>
+</nav>
+<main>
+<section id="goal" class="active"><div class="card"><h2>Тема урока</h2><p>«Досуг и увлечения современных подростков (места для отдыха)» — Spotlight 5, Module 9 «Modern living», Unit 9b «Let's go».</p><h3>Цели</h3><ul><li>научиться называть места отдыха и говорить, что там можно делать;</li><li>освоить <b>must / mustn't</b> (правила в общественных местах) и приглашения <b>How about…? Let's…</b></li><li>составить рассказ о своём любимом месте отдыха.</li></ul><h3>Планируемые результаты (ФГОС)</h3><table><tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr><tr><td>лексика «места для отдыха»; must/mustn't; диалог-приглашение; монолог о любимом месте</td><td>планировать высказывание; самооценка; работа по алгоритму</td><td>полезный досуг; уважение к правилам в общественных местах</td></tr></table></div></section>
+<section id="words"><div class="card"><h2>📖 Слова — нажми и послушай</h2><p class="note">Первое нажатие — медленно, второе — в обычном темпе. Подсказка — как читать.</p><div id="wordbox"></div></div></section>
+<section id="phrases"><div class="card"><h2>💬 Фразы — кликни для перевода</h2><div id="phrasebox"></div><h3>Шпаргалка</h3><p><b>must</b> = можно/нужно (You must buy a ticket.)<br><b>mustn't</b> = нельзя (You mustn't feed the animals!)<br><b>How about + глагол-ing</b> = приглашение (How about going to the zoo?)</p></div></section>
+<section id="dialog"><div class="card"><h2>🗣 Диалог: «Where shall we go?»</h2><div id="dlgbox"></div><div id="dlgq"></div></div></section>
+<section id="game1"><div class="card"><h2>🎲 Угадай место</h2><div id="riddle"></div><div class="score" id="riddlescore"></div></div></section>
+<section id="game2"><div class="card"><h2>🧩 Вставь слово</h2><div id="gapbox"></div></div></section>
+<section id="speak"><div class="card"><h2>🎤 Говори сам: My favourite place</h2><p>Выбери и послушай свой рассказ:</p><p><select id="s1"></select><select id="s2"></select><select id="s3"></select></p><button class="btn" onclick="makeStory()">Собрать рассказ</button><div class="card" id="story" style="display:none"><p id="storytext"></p><button class="btn" onclick="say(document.getElementById('storytext').textContent)">🔊 Послушать</button></div></div></section>
+<section id="test"><div class="card"><h2>✏️ Тест: 10 вопросов</h2><div id="testbox"></div><div class="medal" id="medal"></div><button class="btn" onclick="location.reload()">Пройти заново</button></div></section>
+<section id="hw"><div class="card"><h2>🏠 Домашнее задание</h2><p>Напиши статью <b>«My favourite place»</b> (50–80 слов) по плану: What place is it? • Where is it? • Who do you go with? • What can you do there? • Why do you like it?</p><p><b>Задание со звёздочкой:</b> придумай 3 правила must / mustn't для любимого места и нарисуй к ним знаки.</p><table><tr><th>Критерий</th><th>Балл</th></tr><tr><td>Объём 50–80 слов</td><td>2</td></tr><tr><td>Слова урока (минимум 5)</td><td>3</td></tr><tr><td>Есть must или mustn't</td><td>2</td></tr><tr><td>Ответы на все 5 пунктов плана</td><td>3</td></tr></table></div></section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const WORDS={places:[["a zoo","[zuː]","зоопарк"],["a theme park","[θiːm pɑːk]","парк развлечений"],["a theatre","[ˈθɪətə]","театр"],["an art gallery","[ˈɑːt ˈɡælərɪ]","художественная галерея"],["a concert hall","[ˈkɒnsət hɔːl]","концертный зал"],["a cinema","[ˈsɪnəmə]","кинотеатр"],["a museum","[mjuˈzɪəm]","музей"],["a cafe","[ˈkæfeɪ]","кафе"]],activities:[["see wild animals","siː waɪld ˈænɪməlz","видеть диких животных"],["go on a roller coaster","ɡəʊ ɒn ə ˈrəʊlə ˈkəʊstə","кататься на американских горках"],["watch a play","wɒtʃ ə pleɪ","смотреть спектакль"],["look at paintings","lʊk æt ˈpeɪntɪŋz","смотреть на картины"],["have a picnic","hæv ə ˈpɪknɪk","устраивать пикник"],["take photos","teɪk ˈfəʊtəʊz","фотографировать"],["buy souvenirs","baɪ ˌsuːvəˈnɪəz","покупать сувениры"],["have fun","hæv fʌn","веселиться"]]};
+function speak(t,slow){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=slow?0.55:1;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1200);}
+const wb=document.getElementById('wordbox');
+for(const[g,arr]of Object.entries(WORDS)){const d=document.createElement('div');d.className='group';d.innerHTML='<div class="gtitle">'+(g==='places'?'🏛 Места для отдыха':'🏃 Что там можно делать')+'</div>';let n=0;for(const[w,tr,ru]of arr){const b=document.createElement('button');b.className='word';b.innerHTML=w+'<span class="tr">'+tr+' — '+ru+'</span>';let clicks=0;b.addEventListener('click',()=>{clicks++;speak(w,clicks%2===1);});d.appendChild(b);}wb.appendChild(d);}
+const PH=[["Are you free on Saturday?","Ты свободен в субботу?"],["Let's go to the zoo!","Давай пойдём в зоопарк!"],["How about going to the theme park?","Как насчёт парка развлечений?"],["Sounds great!","Звучит здорово!"],["I'd love to.","С удовольствием."],["What time shall we meet?","Во сколько встретимся?"],["Let's meet at 10 o'clock.","Давай встретимся в 10 часов."],["Count me in!","Берите меня!"],["See you there!","Увидимся там!"],["It's going to be fun!","Будет весело!"]];
+const pb=document.getElementById('phrasebox');
+for(const[en,ru]of PH){const d=document.createElement('div');d.className='phrase';d.innerHTML='<b>'+en+'</b><div class="ru">'+ru+'</div>';d.addEventListener('click',()=>{d.classList.toggle('open');speak(en,false);});pb.appendChild(d);}
+const DLG=[["a","Anna: Hi Mark! Are you free on Saturday?","Привет, Марк! Ты свободен в субботу?"],["b","Mark: Hi Anna! Yes, I am. Why?","Привет, Анна! Да. А что?"],["a","Anna: How about going to the new theme park?","Как насчёт нового парка развлечений?"],["b","Mark: Sounds great! I love roller coasters!","Отлично! Обожаю американские горки!"],["a","Anna: Me too! But you must be taller than 1.2 m.","Я тоже! Но нужно быть выше 1,2 м."],["b","Mark: No problem! And we mustn't lose each other, OK?","Не проблема! И нам нельзя терять друг друга, окей?"],["a","Anna: OK! Let's meet at 10 o'clock at the bus stop.","Договорились! Встретимся в 10 на остановке."],["b","Mark: See you there!","Увидимся там!"]];
+const db=document.getElementById('dlgbox');
+for(const[who,en,ru]of DLG){const d=document.createElement('div');d.className='dlg '+who;d.innerHTML=en+'<div class="ru">'+ru+'</div>';d.addEventListener('click',()=>{d.classList.toggle('open');speak(en,false);});db.appendChild(d);}
+const DQ=[["Куда Анна приглашает Марка?","В зоопарк","В новый парк развлечений","В театр",1],["Что нельзя делать в парке?","Терять друг друга","Кататься на горках","Есть мороженое",0],["Во сколько встреча?","В 12 часов","В 2 часа","В 10 часов",2]];
+const dq=document.getElementById('dlgq');
+DQ.forEach((q,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML='<b>'+(i+1)+'. '+q[0]+'</b>';q.slice(1,4).forEach((opt,j)=>{const b=document.createElement('button');b.className='quiz-btn';b.textContent=opt;b.addEventListener('click',()=>{if(j===q[3]){b.classList.add('ok');toast('Верно!');}else b.classList.add('bad');});c.appendChild(b);});dq.appendChild(c);});
+const RID=[["You can see lions, monkeys and giraffes here. But you mustn't feed the animals!","a zoo"],["You can ride a roller coaster and eat candy floss here.","a theme park"],["You can watch a play and see actors on stage.","a theatre"],["You can look at famous paintings here, but you mustn't touch them.","an art gallery"],["You can watch a concert or listen to music here.","a concert hall"],["You can watch a film and buy popcorn here.","a cinema"],["You can learn about dinosaurs, space and history here.","a museum"],["You can drink hot chocolate and eat a cake here.","a cafe"]];
+let rs=0,ri=0;const rd=document.getElementById('riddle');
+function nextRiddle(){if(ri>=RID.length){rd.innerHTML='<h3>Игра пройдена! Правильных ответов: '+rs+' из '+RID.length+' 🏆</h3>';return;}const[r,ans]=RID[ri];const opts=[ans].concat(RID.filter((x,k)=>k!==ri).slice(0,3).map(x=>x[1])).sort(()=>Math.random()-0.5);rd.innerHTML='<p><b>Загадка '+(ri+1)+'/'+RID.length+':</b> '+r+'</p><button class="btn" onclick="speak(`'+r.replace(/'/g,"\\'")+'`,false)">🔊 Послушать</button><div id="ropts"></div>';const ob=document.getElementById('ropts');opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-btn';b.textContent=o;b.addEventListener('click',()=>{if(o===ans){b.classList.add('ok');rs++;toast('Верно!');}else{b.classList.add('bad');toast('Нет: '+ans);}document.getElementById('riddlescore').textContent='Счёт: '+rs;ri++;setTimeout(nextRiddle,900);});ob.appendChild(b);});}
+nextRiddle();
+const GAPS=[["You ___ feed the animals in the zoo.","mustn't",["must","mustn't","can"]],["Let's ___ to the cinema!","go",["go","going","goes"]],["How about ___ to the theme park?","going",["go","goes","going"]],["You ___ buy a ticket before the concert.","must",["must","mustn't","don't"]],["We can ___ wild animals at the zoo.","see",["watch","look","see"]],["She likes ___ paintings at the gallery.","looking at",["looking at","look at","looks at"]],["I'd ___ to go to the concert.","love",["want","love","need"]],["Let's ___ at 10 o'clock.","meet",["met","meet","meets"]]];
+const gb=document.getElementById('gapbox');
+GAPS.forEach(([q,a,opts],i)=>{const c=document.createElement('div');c.className='card';c.innerHTML='<b>'+(i+1)+'.</b> '+q.replace('___','<span id="g'+i+'" style="color:#ffd166">____</span>');opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-btn';b.textContent=o;b.addEventListener('click',()=>{if(o===a){b.classList.add('ok');document.getElementById('g'+i).textContent=a;speak(q.replace('___',a),false);}else b.classList.add('bad');});c.appendChild(b);});gb.appendChild(c);});
+const S1=[["the zoo","the zoo"],["the theme park","the theme park"],["the cinema","the cinema"],["the museum","the museum"]];
+const S2=[["with my family","with my family"],["with my friends","with my friends"],["with my class","with my class"]];
+const S3=[["see the animals","see the animals"],["ride the roller coaster","ride the roller coaster"],["watch a good film","watch a good film"],["have fun","have fun"]];
+function fill(sel,arr){arr.forEach(([t])=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});}
+fill(document.getElementById('s1'),S1);fill(document.getElementById('s2'),S2);fill(document.getElementById('s3'),S3);
+function makeStory(){const p=document.getElementById('s1').value,w=document.getElementById('s2').value,d=document.getElementById('s3').value;const t="My favourite place is "+p+". I usually go there "+w+". I can "+d+" and take photos there. I mustn't forget my ticket! I think "+p+" is the best place for a teenager. Let's go together!";document.getElementById('storytext').textContent=t;document.getElementById('story').style.display='block';speak(t,false);}
+const TQ=[["В парке развлечений нельзя…","lose your friends","ride a roller coaster","have fun",0],["«Давай пойдём в кино» — это…","Let's go to the cinema!","How about cinema go?","I go cinema now.",0],["You must ___ a ticket.","buy","buying","to buying",0],["Загадка: «You can watch a play here» — это…","a theatre","a cafe","a zoo",0],["How about ___ a picnic?","having","have","has",0],["«Зоопарк» по-английски — это…","a zoo","a zoom","a zone",0],["You mustn't ___ the animals.","feed","feeder","feeding",0],["Партнёр к фразе «Are you free on Saturday?» — ответ…","Yes, I am!","Yes, I do!","Yes, I have!",0],["«Сувениры» — это…","souvenirs","souprs","supermarkets",0],["I ___ have fun with my friends.","can","must to","am can",0]];
+let ti=0,ts=0;const tb=document.getElementById('testbox');
+function nextTest(){if(ti>=TQ.length){const m=ts>=9?'🥇 Золотая медаль!':ts>=7?'🥈 Отлично!':'🥉 Хорошо, повтори слова!';tb.innerHTML='<p>Тест пройден. Результат: '+ts+' из 10.</p><div class="medal">'+m+'</div>';return;}const[q,a,b,c,ok]=TQ[ti];const opts=[a,b,c].sort(()=>Math.random()-0.5);tb.innerHTML='<p><b>Вопрос '+(ti+1)+'/10:</b> '+q+'</p><div id="topts"></div>';opts.forEach(o=>{const btn=document.createElement('button');btn.className='quiz-btn';btn.textContent=o;btn.addEventListener('click',()=>{if(o===[a,b,c][ok]){btn.classList.add('ok');ts++;}else{btn.classList.add('bad');toast('Верно: '+[a,b,c][ok]);}ti++;setTimeout(nextTest,900);});document.getElementById('topts').appendChild(btn);});}
+nextTest();
+document.querySelectorAll('nav button').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');});});
+</script>
+</body>
+</html>
