@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Matters — Spotlight 11</title>
+<style>
+:root{--green:#0e7c5a;--lime:#e8f5ec;--amber:#f4a940;--dark:#173f33;--card:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(160deg,#eafaf1,#dff3ea);color:#222;line-height:1.5}
+header{background:linear-gradient(135deg,#0e7c5a,#159a72);color:#fff;padding:22px 16px;text-align:center}
+header h1{font-size:1.7em;margin-bottom:6px}
+header p{opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0}
+.tabs button{border:none;background:#fff;color:var(--dark);padding:10px 14px;border-radius:20px;font-size:.95em;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.2s}
+.tabs button:hover{transform:translateY(-2px)}
+.tabs button.on{background:var(--green);color:#fff}
+section{display:none;background:var(--card);border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(0,0,0,.07)}
+section.on{display:block}
+h2{color:var(--green);margin-bottom:12px;font-size:1.35em}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th,td{border:1px solid #d7e8de;padding:8px 10px;text-align:left;font-size:.95em}
+th{background:var(--lime);color:var(--dark)}
+.wgroup{margin:14px 0 6px;font-weight:700;color:var(--green)}
+.tag{display:inline-block;font-size:.75em;padding:2px 10px;border-radius:12px;margin-left:6px;color:#fff}
+.t1{background:#c0576a}.t2{background:#b0713d}.t3{background:#3d7bb0}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:10px}
+.word{background:var(--lime);border:2px solid #bfe3cf;border-radius:12px;padding:10px;cursor:pointer;transition:.15s}
+.word:hover{border-color:var(--green);transform:scale(1.02)}
+.word b{font-size:1.05em}
+.word .tr{color:#555;font-size:.85em;font-style:italic}
+.word .ru{font-size:.8em;color:#666}
+.word .hint{display:none;font-size:.8em;color:#444;margin-top:4px;border-top:1px dashed #b8d8c5;padding-top:4px}
+.word.open .hint{display:block}
+.phrase{background:#fffbe9;border-left:4px solid var(--amber);border-radius:8px;padding:8px 12px;margin:8px 0;cursor:pointer}
+.phrase .ru{color:#777;font-size:.88em;display:none}
+.phrase.open .ru{display:block}
+.gram{background:#eef3fb;border:2px solid #b9cdf0;border-radius:12px;padding:12px 14px;margin-top:12px}
+.line{padding:10px;border-radius:10px;margin:8px 0;cursor:pointer;transition:.15s}
+.line:hover{filter:brightness(.97)}
+.a{background:#e9f6ee}.b{background:#eef0fa}
+.line .ru{display:none;color:#666;font-size:.88em}
+.line.open .ru{display:block}
+.speakbtn{background:var(--amber);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:.95em;margin:6px 4px 6px 0}
+.qopt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:10px;border:2px solid #d7e8de;background:#fff;cursor:pointer;font-size:.97em}
+.qopt:hover{border-color:var(--green)}
+.qopt.ok{background:#d9f2e3;border-color:var(--green)}
+.qopt.no{background:#fde3e3;border-color:#d66}
+.gap{display:inline-block;min-width:130px;border-bottom:2px dashed var(--green);text-align:center;font-weight:700;color:var(--green)}
+.hintbtn{background:none;border:1px solid #b9cdf0;border-radius:8px;padding:2px 8px;font-size:.8em;cursor:pointer;color:#4463a8}
+.ctl{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.ctl select,.ctl input{padding:8px;border-radius:8px;border:1px solid #cfe0d7;font-size:.95em}
+.story{background:var(--lime);border-radius:12px;padding:14px;margin-top:10px;display:none}
+.score{font-weight:700;color:var(--green);font-size:1.1em;margin-top:8px}
+.medal{font-size:1.4em}
+.hw{background:#fff4e4;border-left:4px solid var(--amber);border-radius:8px;padding:12px;margin:8px 0}
+.check{display:inline-block;width:18px;height:18px;border:2px solid var(--green);border-radius:4px;vertical-align:-3px;margin-right:6px}
+footer{text-align:center;padding:18px;color:#5a7a6d;font-size:.85em}
+@media(max-width:600px){header h1{font-size:1.3em}.wgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><h1>🩺 Health Matters</h1><p>Spotlight 11 • Модуль 4 «Danger!» • Забота о здоровье. Самочувствие • 11 класс</p></header>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<section id="s0"><h2>🎯 Цель урока</h2>
+<p><b>Тема:</b> Забота о здоровье. Самочувствие (лексика Module 4 «Danger!»: Injuries &amp; Illnesses, симптомы, лечение; предметное содержание речи ФРП — «Здоровый образ жизни, забота о здоровье»).</p>
+<h3>Задачи</h3>
+<ul><li>активировать лексику по темам «симптомы», «болезни и травмы», «лечение»;</li>
+<li>тренировать модальные глаголы совета (should / must / may) в речи о здоровье;</li>
+<li>развивать умения диалога-расспроса «На приёме у врача» и монолога-совета;</li>
+<li>систематизировать лексику урока в связном высказывании и письменном совете.</li></ul>
+<h3>Планируемые результаты (ФГОС)</h3>
+<table><tr><th>Группа</th><th>Ученик научится</th></tr>
+<tr><td><b>Предметные</b></td><td>употреблять 20 лексических единиц по теме «здоровье»; говорить о симптомах и давать советы (should/shouldn't); вести диалог с врачом; воспринимать диалог на слух</td></tr>
+<tr><td><b>Метапредметные</b></td><td>извлекать информацию из аудио- и печатного текста; строить высказывание по плану; оценивать результат (самооценка в тесте)</td></tr>
+<tr><td><b>Личностные</b></td><td>осознанное отношение к своему здоровью; умение заботиться о заболевших и просить о помощи</td></tr></table></section>
+
+<section id="s1"><h2>📖 Слова (кликни — услышишь)</h2>
+<p>Каждое слово звучит <b>дважды</b>: сначала медленно и по слогам, потом в обычном темпе. Повторный клик откроет подсказку.</p>
+<div id="words"></div></section>
+
+<section id="s2"><h2>💬 Фразы урока</h2>
+<p>Клик по фразе — перевод. Кнопка — озвучить все подряд.</p>
+<div id="phrases"></div>
+<div class="gram"><b>🧠 Грамматическая шпаргалка: советы о здоровье</b><br>
+You <b>should</b> see a doctor. — Тебе следует…<br>
+You <b>mustn't</b> take antibiotics without a prescription. — Нельзя…<br>
+You <b>may</b> feel dizzy at first. — Возможно, ты…<br><br>
+<b>Идиомы из учебника:</b> <i>under the weather</i> (неважно себя чувствовать) • <i>off colour</i> (нездоровится) • <i>back on your feet</i> (поправиться, встать на ноги) • <i>drop like flies</i> (болеть один за другим)</div></section>
+
+<section id="s3"><h2>🗣 Диалог: «На приёме у врача»</h2>
+<p>Джеймс звонит в поликлинику: у него болит ухо и кружится голова. Клик по реплике — перевод.</p>
+<div id="dialog"></div>
+<button class="speakbtn" onclick="speakWhole()">▶ Прослушать весь диалог</button>
+<div class="gram"><b>❓ Проверь понимание:</b><ol>
+<li>How long has James been feeling unwell? <i>(For three days.)</i></li>
+<li>What are his symptoms? <i>(An earache, a high temperature and he feels dizzy.)</i></li>
+<li>What does the nurse advise him to do? <i>(Take a painkiller and see the doctor at 4 pm.)</i></li></ol></div></section>
+
+<section id="s4"><h2>🎲 Игра: «Угадай недуг»</h2>
+<p>Прочитай описание — выбери, что случилось с человеком.</p>
+<div id="game1"></div><div class="score" id="g1score"></div></section>
+
+<section id="s5"><h2>🧩 Тренажёр: «Вставь слово»</h2>
+<div id="game2"></div></section>
+
+<section id="s6"><h2>🎤 Говори сам: «Моё самочувствие»</h2>
+<p>Собери свой рассказ: выбери длительность, отметь симптомы (минимум 2), добавь совет самому себе.</p>
+<div class="ctl"><select id="c1"><option value="for two days">for two days</option><option value="since Monday">since Monday</option><option value="for a week">for a week</option></select></div>
+<div class="ctl" id="symbox"></div>
+<div class="ctl"><select id="c2"><option value="You should stay in bed and drink warm tea.">stay in bed and drink warm tea</option><option value="You should see a doctor as soon as possible.">see a doctor</option><option value="You should take a painkiller and rest.">take a painkiller and rest</option></select></div>
+<button class="speakbtn" onclick="makeStory()">🎤 Составить рассказ</button>
+<div class="story" id="story"></div></section>
+
+<section id="s7"><h2>✏️ Тест: 10 вопросов</h2>
+<div id="test"></div><div class="score" id="tscore"></div></section>
+
+<section id="s8"><h2>🏠 Домашнее задание</h2>
+<div class="hw"><b>Основное:</b> напиши пост «My tips for staying healthy» (120–150 слов). Используй <b>should / shouldn't</b> и не меньше <b>5 выражений</b> из урока.</div>
+<div class="hw"><b>⭐ Со звёздочкой:</b> разыграй диалог с врачом по телефону (6–8 реплик) и запиши его на диктофон.</div>
+<table><tr><th>Критерий</th><th>Отлично (3)</th><th>Хорошо (2)</th><th>Старайся (1)</th></tr>
+<tr><td>Объём и план</td><td>120–150 слов, все части</td><td>100–120 слов</td><td>менее 100 слов</td></tr>
+<tr><td>Лексика урока</td><td>5+ выражений</td><td>3–4 выражения</td><td>1–2</td></tr>
+<tr><td>Грамматика</td><td>should/shouldn't без ошибок</td><td>1–2 ошибки</td><td>3+ ошибки</td></tr></table>
+<p>Успех: рассказ построен по плану, советы понятны и вежливы 💪</p></section>
+</div>
+<footer>Собрано для дистанционного урока • Spotlight 11 • Module 4 «Danger!»</footer>
+<script>
+var VOICES_READY=false;
+function pickVoice(){var vs=speechSynthesis.getVoices();for(var i=0;i<vs.length;i++){if(/en[-_]/i.test(vs[i].lang))return vs[i];}return null;}
+function speak(t,slow){try{if(!('speechSynthesis'in window))return;var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';var v=pickVoice();if(v)u.voice=v;u.rate=slow?0.55:0.95;speechSynthesis.speak(u);}catch(e){}}
+function sayTwice(t){speak(t,true);setTimeout(function(){speak(t,false);},Math.min(9000,1800+t.length*55));}
+var tabs=["🎯 Цель","📖 Слова","💬 Фразы","🗣 Диалог","🎲 Игра","🧩 Тренажёр","🎤 Говори сам","✏️ Тест","🏠 Домашка"];
+var cur=0;
+function initTabs(){var t=document.getElementById('tabs');for(var i=0;i<tabs.length;i++){(function(i){var b=document.createElement('button');b.textContent=tabs[i];b.onclick=function(){cur=i;show(i);};t.appendChild(b);})(i);}show(0);}
+function show(i){cur=i;var ss=document.querySelectorAll('section');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');document.getElementById('s'+i).classList.add('on');var bs=document.querySelectorAll('.tabs button');for(var j=0;j<bs.length;j++)bs[j].classList.remove('on');bs[i].classList.add('on');window.scrollTo(0,0);}
+var words=[
+["a splitting headache","сильная головная боль",".Split.ting. Head.ache.","сильная головная боль",1],
+["a runny nose","насморк","a Run.ny Nose","насморк",1],
+["a sore throat","боль в горле","a Sore Throat","боль в горле",1],
+["a high temperature","высокая температура","a High Tem.per.a.ture","высокая температура",1],
+["dizzy","головокружение","Diz.zy","головокружение",1],
+["a cough","кашель","a Cough","кашель",1],
+["to feel unwell","неважно себя чувствовать","to Feel Un.well","неважно себя чувствовать",1],
+["an ear infection","отит (инфекция уха)","an Ear In.fec.tion","воспаление уха",2],
+["the flu","грипп","the Flu","грипп",2],
+["a sprain","растяжение","a Sprain","растяжение",2],
+["a fracture","перелом","a Frac.ture","перелом",2],
+["a cold","простуда","a Cold","простуда",2],
+["allergy","аллергия","Al.ler.gy","аллергия",2],
+["a painkiller","обезболивающее","a Pain.kil.ler","обезболивающее",3],
+["antibiotics","антибиотики","An.ti.bi.ot.ics","антибиотики",3],
+["a prescription","рецепт","a Pre.scrip.tion","рецепт",3],
+["first aid","первая помощь","First Aid","первая помощь",3],
+["to recover","выздоравливать","to Re.cov.er","выздоравливать",3],
+["back on your feet","поправиться","back on your Feet","встать на ноги",3],
+["a healthy lifestyle","здоровый образ жизни","a Heal.thy Life.style","здоровый образ жизни",3]];
+var gnames=["Симптомы","Болезни и травмы","Лечение и забота"];var gcls=["t1","t2","t3"];
+function initWords(){var c=document.getElementById('words');for(var g=0;g<3;g++){var h=document.createElement('div');h.className='wgroup';h.innerHTML=gnames[g]+' <span class="tag '+gcls[g]+'">'+(g+1)+'</span>';c.appendChild(h);var gr=document.createElement('div');gr.className='wgrid';c.appendChild(gr);for(var i=0;i<words.length;i++){(function(w){if(w[4]-1!==g)return;var d=document.createElement('div');d.className='word';d.innerHTML='<b>'+w[0]+'</b><br><span class="tr">'+w[2]+'</span><br><span class="ru">'+w[1]+'</span><div class="hint">💡 как читать: '+w[3]+'</div>';d.onclick=function(){sayTwice(w[0]);this.classList.toggle('open');};gr.appendChild(d);})(words[i]);}}}
+var phrases=[
+["I've been feeling under the weather for a few days.","Я уже несколько дней неважно себя чувствую."],
+["You look a bit off colour. What's the matter?","Ты выглядишь нездоровым. Что случилось?"],
+["I've got a splitting headache and I feel dizzy.","У меня сильная головная боль и головокружение."],
+["Have you taken your temperature?","Ты измерял(а) температуру?"],
+["You should stay in bed and drink plenty of fluids.","Тебе следует лежать в постели и пить много жидкости."],
+["You mustn't take antibiotics without a prescription.","Нельзя принимать антибиотики без рецепта."],
+["How long have you had these symptoms?","Как давно у тебя эти симптомы?"],
+["Take this painkiller twice a day after meals.","Принимайте это обезболивающее дважды в день после еды."],
+["Get plenty of rest and you'll be back on your feet soon.","Хорошо отдыхайте — скоро встанете на ноги."],
+["An apple a day keeps the doctor away.","Одно яблоко в день — и врач не понадобится."]];
+function initPhrases(){var c=document.getElementById('phrases');for(var i=0;i<phrases.length;i++){(function(p){var d=document.createElement('div');d.className='phrase';d.innerHTML='🔊 '+p[0]+'<div class="ru">'+p[1]+'</div>';d.onclick=function(){speak(p[0],false);this.classList.toggle('open');};c.appendChild(d);})(phrases[i]);}}
+var dlg=[
+["Receptionist, Doctor Brown's surgery. How can I help?","Регистратура, приёмная доктора Брауна. Чем могу помочь?","b"],
+["Hello, this is James Brown. I'd like to make an appointment.","Здравствуйте, это Джеймс Браун. Я хотел бы записаться на приём.","a"],
+["What seems to be the problem, James?","В чём проблема, Джеймс?","b"],
+["I've been feeling unwell for three days. I've got an earache, a high temperature and I feel dizzy.","Я неважно себя чувствую три дня. У меня боль в ухе, высокая температура и головокружение.","a"],
+["I see. Have you taken any medicine?","Понятно. Вы принимали какие-то лекарства?","b"],
+["Only a painkiller, but the earache hasn't gone away.","Только обезболивающее, но боль в ухе не прошла.","a"],
+["The doctor can see you at 4 pm today. Before that, take a painkiller and drink plenty of fluids.","Доктор примет вас сегодня в 16:00. До этого примите обезболивающее и пейте много жидкости.","b"],
+["Thank you very much. See you at four.","Спасибо большое. До встречи в четыре.","a"]];
+function initDialog(){var c=document.getElementById('dialog');for(var i=0;i<dlg.length;i++){(function(l){var d=document.createElement('div');d.className='line '+l[2];d.innerHTML=(l[2]==='a'?'🙂 ':'👩‍⚕️ ')+l[0]+'<div class="ru">'+l[1]+'</div>';d.onclick=function(){speak(l[0],false);this.classList.toggle('open');};c.appendChild(d);})(dlg[i]);}}
+function speakWhole(){for(var i=0;i<dlg.length;i++){(function(l,k){setTimeout(function(){speak(l[0],false);},k*4200);})(dlg[i],i);}}
+var g1=[
+["Masha sneezes, her nose is runny and her eyes are itchy when she plays with her cat.","a cold","an allergy","a fracture",1],
+["Tom fell off his bike. His arm hurts a lot and it may be broken.","a sprain","a sore throat","a fracture",2],
+["Sara can't stop coughing and her temperature is 38.5.","the flu","an ear infection","a headache",0],
+["Oleg's ear hurts, especially at night.","an earache","a runny nose","a sprain",0],
+["After the football match Kirill can hardly walk: his ankle hurts but nothing is broken.","a sprain","a cough","the flu",0],
+["Nina has taken her temperature: it is 39 and she aches all over.","a high temperature","a fracture","first aid",0],
+["Dad hit his head and now he feels dizzy. What should we call?","the doctor","an allergy","a runny nose",0],
+["You need this immediately if someone stops breathing.","first aid","a prescription","a painkiller",0]];
+var g1i=0,g1s=0;
+function initG1(){renderG1();}
+function renderG1(){var c=document.getElementById('game1');c.innerHTML='';if(g1i>=g1.length){c.innerHTML='<div class="score">Игра пройдена! Результат: '+g1s+' из '+g1.length+' '+medal(g1s,g1.length)+'</div><button class="speakbtn" onclick="g1i=0;g1s=0;renderG1()">🔄 Ещё раз</button>';return;}var q=g1[g1i];var d=document.createElement('div');d.innerHTML='<p><b>'+q[0]+'</b></p>';for(var j=1;j<4;j++){(function(txt,idx){var b=document.createElement('button');b.className='qopt';b.textContent=txt;b.onclick=function(){if(idx===q[3]){b.classList.add('ok');g1s++;speak(txt,false);}else{b.classList.add('no');}g1i++;setTimeout(renderG1,900);document.getElementById('g1score').textContent='Счёт: '+g1s+'/'+g1.length;};d.appendChild(b);})(q[j],j-1);}c.appendChild(d);}
+var g2=[
+["You have got a ___ throat. Drink warm tea.","sore","runny","dizzy"],
+["I can't come to school: I have got a high ___.","temperature","prescription","painkiller"],
+["Take these ___ twice a day after meals.","antibiotics","symptoms","fractures"],
+["The doctor wrote me a ___ for some medicine.","prescription","temperature","headache"],
+["First ___ is very important in an emergency.","aid","aid-kit","aidbox"],
+["Rest well and soon you will be back on your ___.","feet","hand","head"],
+["After the fall he felt ___ and had to sit down.","dizzy","healthy","recovered"],
+["She recovered quickly and is ___ now.","unwell","fit","ill"]];
+function initG2(){var c=document.getElementById('game2');for(var i=0;i<g2.length;i++){(function(g,idx){var d=document.createElement('div');d.innerHTML='<p>'+(idx+1)+'. '+g[0].replace('___','<span class="gap" id="gap'+idx+'">?</span>')+' <button class="hintbtn" onclick="document.getElementById(\'g2h'+idx+'\').style.display=\'block\'">💡 подсказка</button></p><div id="g2h'+idx+'" style="display:none;font-size:.85em;color:#4463a8;margin-bottom:6px">Слова: '+g[2]+', '+g[3]+' — одно лишнее</div>';var opts=[g[1],g[2],g[3]].sort(function(){return Math.random()-0.5;});for(var j=0;j<3;j++){(function(txt){var b=document.createElement('button');b.className='qopt';b.textContent=txt;b.onclick=function(){if(txt===g[1]){b.classList.add('ok');document.getElementById('gap'+idx).textContent=g[1];speak(g[0].replace('___',g[1]),false);}else{b.classList.add('no');}};d.appendChild(b);})(opts[j]);}c.appendChild(d);})(g2[i],i);}}
+var syms=[["an earache","a runny nose","a sore throat","a splitting headache","a high temperature","a cough","I feel dizzy","I feel unwell"]];
+function initSpeak(){var c=document.getElementById('symbox');for(var i=0;i<syms[0].length;i++){(function(s){var lab=document.createElement('label');lab.style.cssText='background:#fff;border:2px solid #d7e8de;border-radius:10px;padding:6px 10px;cursor:pointer';var cb=document.createElement('input');cb.type='checkbox';cb.value=s;cb.style.marginRight='5px';lab.appendChild(cb);lab.appendChild(document.createTextNode(s));c.appendChild(lab);})(syms[0][i]);}}
+function makeStory(){var dur=document.getElementById('c1').value;var adv=document.getElementById('c2').value;var sel=[];var cbs=document.querySelectorAll('#symbox input');for(var i=0;i<cbs.length;i++)if(cbs[i].checked)sel.push(cbs[i].value);if(sel.length<2){document.getElementById('story').style.display='block';document.getElementById('story').innerHTML='⚠️ Отметь хотя бы два симптома!';return;}var list=sel.join(', ');var text="I haven't been feeling well "+dur+". I have got "+list+". It's not easy, but I know what to do. My advice to myself: "+adv+" I hope I will be back on my feet soon!";document.getElementById('story').style.display='block';document.getElementById('story').innerHTML='🩺 <b>Твой рассказ:</b><br>'+text+'<br><button class="speakbtn" onclick="speak(this.dataset.t,false)" data-t="'+text.replace(/"/g,'')+'">🔊 Прослушать</button>';speak(text,false);}
+var test=[
+["Насморк по-английски:","a runny nose","a running nose","a nose run"],
+["Обезболивающее — это:","a painkiller","a pain-killer pill","a painkiller tablet"],
+["«Неважно себя чувствовать» (идиома):","under the weather","under the sky","under the bed"],
+["Дай совет другу с температурой:","You should stay in bed.","You must go to school.","You may run a marathon."],
+["Растяжение — это:","a sprain","a sprint","a spell"],
+["Врач выписал тебе:","a prescription","a description","a subscription"],
+["«Поправиться, встать на ноги»:","back on your feet","back on your head","back on your hands"],
+["Сильная головная боль:","a splitting headache","a cutting headache","a breaking headache"],
+["Антибиотики нельзя принимать без…:","a prescription","a prescription doctor","a receipt"],
+["Здоровый образ жизни — это:","a healthy lifestyle","a health living style","a healthy life style"]];
+var tIdx=0,tS=0,answered=[];
+function initTest(){shuffleTest();renderT();}
+function shuffleTest(){for(var i=0;i<test.length;i++){var opts=[test[i][1],test[i][2],test[i][3]];var corr=test[i][1];for(var j=opts.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=opts[j];opts[j]=opts[k];opts[k]=t;}test[i]=[test[i][0],opts[0],opts[1],opts[2],corr];}}
+function medal(s,n){if(s===n)return '🥇';if(s>=n-2)return '🥈';return '🥉';}
+function renderT(){var c=document.getElementById('test');if(tIdx>=test.length){document.getElementById('tscore').innerHTML='Результат: '+tS+' из '+test.length+' '+medal(tS,test.length)+(tS>=9?' Отлично!':'')+'<br><button class="speakbtn" onclick="tIdx=0;tS=0;shuffleTest();renderT();document.getElementById(\'tscore\').textContent=\'\'">🔄 Ещё раз</button>';return;}var q=test[tIdx];var d=document.createElement('div');d.innerHTML='<p><b>Вопрос '+(tIdx+1)+' из '+test.length+'. '+q[0]+'</b></p>';for(var j=1;j<4;j++){(function(txt){var b=document.createElement('button');b.className='qopt';b.textContent=txt;b.onclick=function(){var done=false;var bs=d.querySelectorAll('.qopt');for(var x=0;x<bs.length;x++){if(bs[x].classList.contains('ok')||bs[x].classList.contains('no'))done=true;}if(done)return;if(txt===q[4]){b.classList.add('ok');tS++;speak(q[0]+' — '+txt,false);}else{b.classList.add('no');var bs2=d.querySelectorAll('.qopt');for(var y=0;y<bs2.length;y++)if(bs2[y].textContent===q[4])bs2[y].classList.add('ok');}tIdx++;setTimeout(function(){renderT();document.getElementById('tscore').textContent='Счёт: '+tS+'/'+test.length;},1400);};d.appendChild(b);})(q[j]);}c.appendChild(d);}
+initTabs();initWords();initPhrases();initDialog();initG1();initG2();initSpeak();initTest();
+</script>
+</body>
+</html>
