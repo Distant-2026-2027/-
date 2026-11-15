@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Countries — Spotlight 7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eaf6f6;color:#2b3a42}
+.header{background:linear-gradient(135deg,#1a6f8f,#2aa5a0);color:#fff;padding:22px 18px;border-radius:0 0 24px 24px;text-align:center}
+.header h1{font-size:1.7em;margin-bottom:6px}
+.header p{opacity:.92;font-size:.95em}
+.badges{margin-top:10px}
+.badge{display:inline-block;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:12px;font-size:.8em;margin:3px}
+.layout{display:flex;max-width:1000px;margin:0 auto;gap:16px;padding:16px}
+nav{min-width:190px}
+nav button{display:block;width:100%;text-align:left;background:#fff;border:2px solid #d6ecee;border-radius:12px;padding:10px 12px;margin-bottom:8px;cursor:pointer;font-size:.95em;color:#2b3a42;transition:.2s}
+nav button:hover{border-color:#2aa5a0}
+nav button.active{background:#2aa5a0;color:#fff;border-color:#2aa5a0}
+main{flex:1;background:#fff;border-radius:16px;padding:22px;min-height:520px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.tab{display:none}
+.tab.on{display:block}
+h2{color:#1a6f8f;margin-bottom:12px;font-size:1.35em}
+h3{color:#1a6f8f}
+.note{background:#eef7f8;border-left:4px solid #2aa5a0;padding:10px 14px;border-radius:8px;margin:10px 0;font-size:.92em}
+.card{background:#f6fbfb;border:1px solid #d6ecee;border-radius:10px;padding:10px 14px;margin:8px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9em}
+th,td{border:1px solid #cfe6e8;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#e2f1f2;color:#1a6f8f}
+.word{display:inline-block;background:#fff;border:2px solid #bfe3e6;border-radius:24px;padding:7px 15px;margin:5px;cursor:pointer;transition:.2s;font-size:.98em}
+.word:hover{background:#2aa5a0;color:#fff}
+.word.gold{border-color:#f0b429}
+.word.gold:hover{background:#f0b429;color:#5a4700}
+.hint{background:#fff8e6;border:1px dashed #f0b429;border-radius:10px;padding:9px 13px;margin-top:12px;font-size:.92em;min-height:44px}
+.tag{font-size:.72em;color:#888;margin-left:6px}
+.phrase{background:#f6fbfb;border-radius:10px;padding:9px 13px;margin:8px 0;cursor:pointer}
+.phrase:hover{background:#e2f1f2}
+.phrase .ru{display:none;color:#667;font-size:.88em;margin-top:4px}
+.phrase.open .ru{display:block}
+.dlg{display:flex;margin:8px 0}
+.dlg .who{min-width:58px;font-weight:700;color:#1a6f8f}
+.dlg .msg{background:#eef7f8;border-radius:12px;padding:8px 12px;cursor:pointer;flex:1}
+.dlg .msg .ru{display:none;color:#667;font-size:.85em;margin-top:3px}
+.dlg .msg.open .ru{display:block}
+.btn{display:inline-block;background:#2aa5a0;color:#fff;border:none;border-radius:10px;padding:10px 18px;cursor:pointer;font-size:.95em;margin:6px 6px 0 0}
+.btn.alt{background:#f0b429;color:#5a4700}
+.q{background:#f6fbfb;border-radius:10px;padding:10px 13px;margin:10px 0}
+.opts button{display:block;width:100%;text-align:left;background:#fff;border:2px solid #d6ecee;border-radius:8px;padding:8px 12px;margin:6px 0;cursor:pointer}
+.opts button.ok{background:#d9f2e0;border-color:#3aa76d}
+.opts button.bad{background:#fde3e3;border-color:#d9534f}
+.score{font-weight:700;color:#1a6f8f}
+input.gap{border:none;border-bottom:2px solid #2aa5a0;font-size:1em;padding:4px;width:130px;text-align:center;outline:none}
+.footer{text-align:center;color:#8aa;padding:14px;font-size:.8em}
+@media(max-width:760px){.layout{flex-direction:column}nav{display:flex;flex-wrap:wrap;gap:6px}nav button{width:auto;flex:1 1 40%;margin:0;text-align:center}}
+</style>
+</head>
+<body>
+<div class="header"><h1>🗺 Two Countries</h1><p>Родная страна и страна изучаемого языка</p><div class="badges"><span class="badge">Spotlight 7</span><span class="badge">Module 1 • Culture Corner</span><span class="badge">7 класс</span><span class="badge">🔁 Повторение: хобби</span></div></div>
+<div class="layout"><nav id="nav"></nav><main id="main"></main></div>
+<div class="footer">Интерактивный урок • Spotlight 7 • работает офлайн</div>
+<script>
+
+const WORDS=[["the United Kingdom", "/ðə jʊˈnaɪtɪd ˈkɪŋdəm/", "Соединённое Королевство", "UK читается «ю-кей»"], ["an island", "/ˈaɪlənd/", "остров", "буква S не читается: айленд!"], ["to be situated", "/sɪˈtʃueɪtɪd/", "быть расположенным", "от sit — «расположено на месте»"], ["a capital city", "/ˈkæpɪtl/", "столица", "capital — и столица, и заглавная буква"], ["population", "/ˌpɒpjuˈleɪʃn/", "население", "похоже на popular — «народный»"], ["an official language", "/əˈfɪʃl ˈlæŋɡwɪdʒ/", "официальный язык", "official — как офис, «официальный»"], ["to consist of", "/kənˈsɪst əv/", "состоять из", "consist of = состоит из частей"], ["the British Isles", "/ˈbrɪtɪʃ aɪlz/", "Британские острова", "Isles тоже без звука S: айлз"], ["a landmark", "/ˈlændmɑːk/", "достопримечательность", "land + mark = «знак на земле»"], ["a castle", "/ˈkɑːsl/", "замок", "Edinburgh Castle — Эдинбургский замок"], ["a fortress", "/ˈfɔːtrəs/", "крепость", "от fort — «форт»"], ["a tower", "/ˈtaʊə/", "башня", "the Tower of London — знаменитый Тауэр"], ["a legend", "/ˈledʒənd/", "легенда", "легенда — старинная история"], ["a raven", "/ˈreɪvn/", "ворон", "вороны живут в Тауэре!"], ["a tradition", "/trəˈdɪʃn/", "традиция", "передаётся из поколения в поколение"], ["to celebrate", "/ˈselɪbreɪt/", "праздновать", "celebrate = праздновать весело!"]];
+const HOBBY=[["playing board games", "/ˈbɔːd ɡeɪmz/", "играть в настольные игры"], ["surfing the Net", "/ˈsɜːfɪŋ ðə net/", "сидеть в интернете"], ["riding a bike", "/ˈraɪdɪŋ ə baɪk/", "кататься на велосипеде"], ["collecting stamps", "/kəˈlektɪŋ stæmps/", "коллекционировать марки"], ["doing puzzles", "/ˈduːɪŋ ˈpʌzlz/", "собирать пазлы"], ["taking photos", "/ˈteɪkɪŋ ˈfəʊtəʊz/", "фотографировать"], ["playing the guitar", "/ˈɡɪtɑː/", "играть на гитаре"], ["going camping", "/ˈkæmpɪŋ/", "ходить в поход"]];
+const PHR=[["The UK is situated on the British Isles.", "Соединённое Королевство расположено на Британских островах."], ["The UK consists of four parts.", "В Соединённое Королевство входят четыре части."], ["The capital city of the UK is London.", "Столица Соединённого Королевства — Лондон."], ["The population of the UK is about 68 million people.", "Население Соединённого Королевства — около 68 миллионов человек."], ["English is the official language.", "Английский — официальный язык."], ["The Tower of London is a famous landmark.", "Тауэр — знаменитая достопримечательность."], ["Russia is the biggest country in the world.", "Россия — самая большая страна в мире."], ["The capital of Russia is Moscow.", "Столица России — Москва."], ["People in Russia celebrate Maslenitsa.", "В России отмечают Масленицу."], ["What do people in your country celebrate?", "Что отмечают люди в твоей стране?"]];
+const HOBBY_PHR=[["In my free time I like reading books.", "В свободное время я люблю читать книги."], ["I am fond of playing board games.", "Я увлекаюсь настольными играми."], ["My hobby is taking photos.", "Моё хобби — фотографировать."], ["I usually go camping in summer.", "Летом я обычно хожу в поход."]];
+const DLG=[["Anna", "Mark, let's do our project about two countries!", "Марк, давай делать наш проект о двух странах!"], ["Mark", "Great idea! The UK and Russia — the two countries we study.", "Отличная идея! Соединённое Королевство и Россия — две страны, которые мы изучаем."], ["Anna", "The UK is situated on the British Isles. It consists of four parts.", "Соединённое Королевство расположено на Британских островах. В него входят четыре части."], ["Mark", "And the capital city is London. The population is about 68 million.", "А столица — Лондон. Население — около 68 миллионов."], ["Anna", "Look — the Tower of London! It's an old fortress. There are six ravens in it!", "Смотри — Тауэр! Это старинная крепость. И в ней живут шесть воронов!"], ["Mark", "Is there a legend about the ravens?", "А про воронов есть легенда?"], ["Anna", "Yes! People say the Tower will fall if the ravens leave.", "Да! Говорят, Тауэр падёт, если вороны улетят."], ["Mark", "Cool! And in Russia we celebrate Maslenitsa — with pancakes and games!", "Здорово! А в России мы отмечаем Масленицу — с блинами и играми!"], ["Anna", "And people in the UK celebrate Christmas with carols and presents.", "А в Соединённом Королевстве празднуют Рождество — с колядками и подарками."], ["Mark", "Our project will be great! Let's add landmarks: the Kremlin, Red Square…", "Наш проект будет отличным! Добавим достопримечательности: Кремль, Красную площадь…"]];
+const RIDDLE=[["I am an old fortress in London. Six black birds live in me. What am I?", "the Tower of London"], ["I am a big castle in Scotland's capital. What am I?", "Edinburgh Castle"], ["I am the biggest country in the world. What am I?", "Russia"], ["I am a red square in the heart of Moscow. What am I?", "Red Square"], ["I am a very deep lake in Russia. What am I?", "Lake Baikal"], ["I am a famous old stone circle in the UK. What am I?", "Stonehenge"], ["I am the famous clock tower in London. What am I?", "Big Ben"], ["I am the capital city of the UK. What am I?", "London"]];
+const GAPS=[["The UK is ___ on the British Isles.", "situated"], ["The UK ___ of four parts.", "consists"], ["London is the ___ city of the UK.", "capital"], ["English is the ___ language.", "official"], ["There is a ___ about the ravens of the Tower.", "legend"], ["Russia is the ___ country in the world.", "biggest"], ["People in Russia ___ Maslenitsa.", "celebrate"], ["In my free time I like ___ board games.", "playing"]];
+const TEST=[["Where is the UK situated?", ["On the British Isles", "In Africa", "In Asia", "On one island only"], "On the British Isles"], ["How many parts does the UK consist of?", ["Four", "Two", "Six", "Ten"], "Four"], ["What is the capital of the UK?", ["London", "Edinburgh", "Cardiff", "Belfast"], "London"], ["What is the official language of the UK?", ["English", "French", "German", "Spanish"], "English"], ["What birds live in the Tower of London?", ["Ravens", "Eagles", "Parrots", "Penguins"], "Ravens"], ["What is the biggest country in the world?", ["Russia", "Canada", "China", "The UK"], "Russia"], ["What is the capital of Russia?", ["Moscow", "St Petersburg", "Kazan", "Sochi"], "Moscow"], ["What do people in Russia celebrate in spring?", ["Maslenitsa", "Halloween", "Thanksgiving", "Bonfire Night"], "Maslenitsa"], ["Which lake is very deep and famous in Russia?", ["Lake Baikal", "Lake Ontario", "Lake Conwy", "Loch Ness"], "Lake Baikal"], ["Which word means a free-time activity?", ["hobby", "capital", "island", "fortress"], "hobby"]];
+const RU=[["Размер", "the biggest country in the world — самая большая страна в мире"], ["Столица", "Moscow"], ["Население", "about 146 million people"], ["Официальный язык", "Russian"], ["Достопримечательности", "the Kremlin, Red Square, Lake Baikal, St Petersburg"], ["Праздники", "Maslenitsa, New Year, Victory Day"]];
+const UKF=[["Размер", "small but famous — небольшая, но знаменитая"], ["Столица", "London"], ["Население", "about 68 million people"], ["Официальный язык", "English"], ["Достопримечательности", "the Tower of London, Edinburgh Castle, Stonehenge, Big Ben"], ["Праздники", "Christmas, Easter, Bonfire Night"]];
+const TABS=[
+["goal","🎯 Цель урока"],["words","📖 Слова"],["phrases","💬 Фразы"],["hobby","🔁 Повторение: хобби"],
+["dialogue","🗣 Диалог"],["riddle","🎲 Угадай место"],["gap","🧩 Вставь слово"],["speak","🎤 Говори сам"],
+["test","✏️ Тест"],["hw","🏠 Домашка"]];
+let sp={};
+function speak(t,slow){
+ try{const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=slow?0.55:0.95;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}
+}
+function sayWord2(t){speak(t,true);setTimeout(()=>speak(t,false),1300);}
+function buildNav(){
+ const n=document.getElementById('nav');
+ n.innerHTML=TABS.map((t,i)=>'<button data-i="'+i+'">'+t[1]+'</button>').join('');
+ n.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.i)));
+}
+function show(i){
+ document.querySelectorAll('#nav button').forEach((b,j)=>b.classList.toggle('active',j===i));
+ document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+ window.scrollTo(0,0);
+}
+function renderWords(){
+ let h='<h2>📖 Словарь урока — 16 слов</h2><div class="note">Кликни на слово — оно прозвучит <b>дважды</b>: сначала медленно, потом в обычном темпе. Повтори вслух!</div>';
+ h+='<h3 style="margin:10px 0">🌍 Страна и карта</h3>';
+ WORDS.slice(0,8).forEach(w=>h+='<span class="word" data-w="'+WORDS.indexOf(w)+'">'+w[0]+'<span class="tag">'+w[1]+'</span></span>');
+ h+='<h3 style="margin:14px 0 4px">🏰 Места и обычаи</h3>';
+ WORDS.slice(8).forEach(w=>h+='<span class="word" data-w="'+WORDS.indexOf(w)+'">'+w[0]+'<span class="tag">'+w[1]+'</span></span>');
+ h+='<div class="hint" id="hint">👆 Нажми на слово, чтобы увидеть перевод, подсказку и услышать его.</div>';
+ return h;
+}
+function renderHobby(){
+ let h='<h2>🔁 Повторение: досуг и увлечения подростка</h2>';
+ h+='<div class="note">Вспомним тему «Досуг и увлечения» (Spotlight 5–6): чем занимаются подростки в свободное время — и свяжем её с культурой двух стран. Кликни на выражение — услышишь его дважды.</div>';
+ h+='<h3 style="margin:8px 0">🎨 Хобби подростков</h3>';
+ HOBBY.forEach((w,i)=>h+='<span class="word gold" data-h="'+i+'">'+w[0]+'</span>');
+ h+='<h3 style="margin:14px 0 4px">💬 Фразы о свободном времени</h3>';
+ HOBBY_PHR.forEach((p,i)=>h+='<div class="phrase" data-hp="'+i+'">🗣 '+p[0]+'<div class="ru">'+p[1]+'</div></div>');
+ h+='<h3 style="margin:14px 0 4px">🎯 Задание-связка</h3><div class="card">Расскажи партнёру: какое твоё хобби, а какое популярно в Великобритании и в России? Начни так: <i>My hobby is… / In the UK people like… / In Russia people love…</i></div>';
+ h+='<div class="hint" id="hhint">👆 Нажми на выражение, чтобы услышать его.</div>';
+ return h;
+}
+function renderPhrases(){
+ let h='<h2>💬 Говорим о странах</h2><div class="note">Кликни на фразу — услышишь её и увидишь перевод. Это готовые предложения для рассказа о стране!</div>';
+ PHR.forEach((p,i)=>h+='<div class="phrase" data-p="'+i+'">🗣 '+p[0]+'<div class="ru">'+p[1]+'</div></div>');
+ h+='<h3 style="margin-top:16px">🧭 План рассказа о стране</h3><div class="card">1️⃣ Положение → 2️⃣ Состав → 3️⃣ Столица → 4️⃣ Население → 5️⃣ Язык → 6️⃣ Достопримечательности → 7️⃣ Традиции</div>';
+ h+='<div class="note"><b>Грамматика:</b> название страны с артиклем <b>the</b> (the UK, the Tower of London), а Russia — без артикля. Факты — в Present Simple: <i>The UK is situated… Russia consists of…</i></div>';
+ return h;
+}
+function renderDialogue(){
+ let h='<h2>🗣 Диалог: проект «Две страны»</h2><div class="note">Анна и Марк готовят проект о Великобритании и России. Кликни на реплику — услышишь и увидишь перевод.</div>';
+ DLG.forEach((d,i)=>h+='<div class="dlg"><span class="who">'+d[0]+':</span><div class="msg" data-d="'+i+'">'+d[1]+'<div class="ru">'+d[2]+'</div></div></div>');
+ h+='<h3 style="margin-top:14px">Проверь себя — ответь устно</h3>';
+ h+='<div class="q">1. Сколько частей в Соединённом Королевстве?</div>';
+ h+='<div class="q">2. Какая легенда связана с воронов Тауэра?</div>';
+ h+='<div class="q">3. Что Анна и Марк добавили в проект про Россию?</div>';
+ return h;
+}
+function renderRiddle(){
+ let h='<h2>🎲 Игра: «Угадай место»</h2><div class="note">Прочитай загадку и выбери ответ. За каждый правильный ответ +1 балл!</div><div id="rscore" class="score">Баллы: 0 / '+RIDDLE.length+'</div>';
+ RIDDLE.forEach((r,i)=>{
+  let opts=[r[1],'the Kremlin','Lake Conwy','Edinburgh'].filter((x,ix,arr)=>arr.indexOf(x)===ix);
+  opts.sort(()=>Math.random()-.5);
+  h+='<div class="q"><b>'+r[0]+'</b><div class="opts" id="ro'+i+'">';
+  opts.forEach(o=>h+='<button data-r="'+i+'" data-v="'+o+'">'+o+'</button>');
+  h+='</div></div>';
+ });
+ return h;
+}
+function renderGap(){
+ let h='<h2>🧩 Тренажёр: «Вставь слово»</h2><div class="note">Вставь пропущенное слово и нажми «Проверить». Правильное предложение прозвучит вслух!</div>';
+ GAPS.forEach((g,i)=>{
+  h+='<div class="q">'+g[0].replace('___','<input class="gap" id="g'+i+'" autocomplete="off">')+' <button class="btn alt" data-g="'+i+'">Проверить</button> <span id="gres'+i+'"></span></div>';
+ });
+ return h;
+}
+function renderSpeak(){
+ let h='<h2>🎤 Говори сам: «Моя страна и Британия»</h2><div class="note">Выбери варианты — получится твой рассказ. Нажми «Озвучить» и повтори вслух!</div>';
+ h+='<div class="card"><b>1. О какой стране расскажешь?</b><div class="opts">';
+ ['Russia','the UK'].forEach((o,i)=>h+='<button data-sk="0" data-v="'+i+'">'+o+'</button>');
+ h+='</div></div><div class="card"><b>2. Главная достопримечательность</b><div class="opts">';
+ ['the Kremlin and Red Square','the Tower of London','Lake Baikal','Edinburgh Castle'].forEach((o,i)=>h+='<button data-sk="1" data-v="'+i+'">'+o+'</button>');
+ h+='</div></div><div class="card"><b>3. Праздник, который я люблю</b><div class="opts">';
+ ['Maslenitsa','Christmas','New Year','Easter'].forEach((o,i)=>h+='<button data-sk="2" data-v="'+i+'">'+o+'</button>');
+ h+='</div></div><div class="card"><b>4. Хобби, популярное у подростков</b><div class="opts">';
+ ['playing board games','surfing the Net','riding a bike','going camping'].forEach((o,i)=>h+='<button data-sk="3" data-v="'+i+'">'+o+'</button>');
+ h+='</div></div><div id="speakOut" class="note" style="display:none"></div><button class="btn" id="saySpeak">🔊 Озвучить мой рассказ</button>';
+ return h;
+}
+function renderTest(){
+ let h='<h2>✏️ Тест: 10 вопросов</h2><div class="note">Выбери правильный вариант. 🥇 за 9–10 баллов, 🥈 за 7–8, 🥉 за 5–6.</div><div id="tscore" class="score">Результат: 0 / 10</div>';
+ TEST.forEach((t,i)=>{
+  const opts=t[1].slice().sort(()=>Math.random()-.5);
+  h+='<div class="q"><b>'+(i+1)+'. '+t[0]+'</b><div class="opts">';
+  opts.forEach(o=>h+='<button data-t="'+i+'" data-v="'+o+'">'+o+'</button>');
+  h+='</div></div>';
+ });
+ return h;
+}
+function renderHw(){
+ let h='<h2>🏠 Домашнее задание</h2>';
+ h+='<div class="card"><b>✍️ Основное:</b> напиши статью <b>«My country and the UK»</b> (60–90 слов) по плану:</div>';
+ h+='<div class="card">1️⃣ Название и положение страны<br>2️⃣ Столица и население<br>3️⃣ Официальный язык<br>4️⃣ 2–3 достопримечательности<br>5️⃣ Праздник или традиция<br>6️⃣ Сравнение с Великобританией (1 предложение)</div>';
+ h+='<div class="card"><b>⭐ Со звёздочкой:</b> придумай мини-викторину из 5 вопросов о России для одноклассников.</div>';
+ h+='<h3>Критерии оценки</h3><table><tr><th>Критерий</th><th>Баллы</th></tr><tr><td>Соответствие плану (6 пунктов)</td><td>3</td></tr><tr><td>Лексика урока (8+ слов)</td><td>3</td></tr><tr><td>Грамматика (the, Present Simple)</td><td>2</td></tr><tr><td>Объём и оформление</td><td>1</td></tr><tr><td><b>Итого</b></td><td><b>9 → «5», 7–8 → «4», 5–6 → «3»</b></td></tr></table>';
+ h+='<h3>Справка: две страны</h3><table><tr><th>Параметр</th><th>🇷🇺 Россия</th><th>🇬🇧 Великобритания</th></tr>';
+ for(let i=0;i<RU.length;i++)h+='<tr><td><b>'+RU[i][0]+'</b></td><td>'+RU[i][1]+'</td><td>'+(UKF[i]?UKF[i][1]:'')+'</td></tr>';
+ h+='</table>';
+ return h;
+}
+function renderGoal(){
+ let h='<h2>🎯 Цель урока</h2><div class="note"><b>Тема:</b> Родная страна и страна изучаемого языка: географическое положение, столицы, население, официальные языки, достопримечательности, культурные особенности (национальные праздники, традиции, обычаи). <b>Учебник:</b> Spotlight 7, Module 1 «Lifestyles», Culture Corner «Landmarks of the British Isles» (с. 11) + повторение темы «Досуг и увлечения подростка».</div>';
+ h+='<div class="card"><b>Обучающие:</b> 16 лексических единиц по теме «страна»; факты о Великобритании и России; Present Simple в описании фактов.</div>';
+ h+='<div class="card"><b>Развивающие:</b> рассказ о стране по плану; сравнение двух стран; работа с викториной.</div>';
+ h+='<div class="card"><b>Воспитательные:</b> уважение к культурному наследию, гордость за родную страну, интерес к культуре страны изучаемого языка.</div>';
+ h+='<h3 style="margin-top:14px">Планируемые результаты (ФГОС)</h3><table><tr><th>Группа</th><th>Ученик научится</th></tr>';
+ h+='<tr><td>Предметные</td><td>Называть страну, столицу, население, язык; рассказывать о достопримечательностях и традициях; вести диалог-обмен фактами</td></tr>';
+ h+='<tr><td>Метапредметные</td><td>Сравнивать информацию о двух странах по плану; оценивать свой результат в играх и тесте</td></tr>';
+ h+='<tr><td>Личностные</td><td>Уважать культуру своей страны и страны изучаемого языка; понимать ценность традиций</td></tr></table>';
+ h+='<h3>Ход урока (45 минут)</h3><table><tr><th>Этап</th><th>Время</th><th>Что делаем</th></tr>';
+ h+='<tr><td>1. Оргмомент</td><td>2 мин</td><td>Приветствие, тема и цель</td></tr>';
+ h+='<tr><td>2. Повторение: хобби</td><td>6 мин</td><td>Вкладка «🔁 Повторение» — лексическая разминка</td></tr>';
+ h+='<tr><td>3. Новая лексика</td><td>8 мин</td><td>Вкладка «📖 Слова» с озвучкой</td></tr>';
+ h+='<tr><td>4. Речевые образцы</td><td>5 мин</td><td>Вкладка «💬 Фразы»</td></tr>';
+ h+='<tr><td>5. Аудирование</td><td>6 мин</td><td>Вкладка «🗣 Диалог»</td></tr>';
+ h+='<tr><td>6. Игра «Угадай место»</td><td>5 мин</td><td>Вкладка «🎲»</td></tr>';
+ h+='<tr><td>7. Тренажёр</td><td>4 мин</td><td>Вкладка «🧩»</td></tr>';
+ h+='<tr><td>8. Говорение + тест</td><td>7 мин</td><td>Вкладки «🎤» и «✏️»</td></tr>';
+ h+='<tr><td>9. Рефлексия и ДЗ</td><td>2 мин</td><td>Итоги, вкладка «🏠»</td></tr></table>';
+ return h;
+}
+function build(){
+ const M=document.getElementById('main');
+ const tabs=[renderGoal(),renderWords(),renderPhrases(),renderHobby(),renderDialogue(),renderRiddle(),renderGap(),renderSpeak(),renderTest(),renderHw()];
+ M.innerHTML=tabs.map((h,i)=>'<div class="tab'+(i===0?' on':'')+'" id="tab'+i+'">'+h+'</div>').join('');
+}
+buildNav();build();
+document.getElementById('main').addEventListener('click',e=>{
+ const t=e.target;
+ const w=t.closest('[data-w]');
+ if(w){const i=+w.dataset.w;sayWord2(WORDS[i][0]);const h=document.getElementById('hint');if(h)h.innerHTML='<b>'+WORDS[i][0]+'</b> '+WORDS[i][1]+' — '+WORDS[i][2]+'. Подсказка: '+WORDS[i][3];return;}
+ const hw=t.closest('[data-h]');
+ if(hw){const i=+hw.dataset.h;sayWord2(HOBBY[i][0]);const h=document.getElementById('hhint');if(h)h.innerHTML='<b>'+HOBBY[i][0]+'</b> '+HOBBY[i][1]+' — '+HOBBY[i][2];return;}
+ const ph=t.closest('[data-p]');
+ if(ph){const i=+ph.dataset.p;speak(PHR[i][0],false);ph.classList.toggle('open');return;}
+ const hpc=t.closest('[data-hp]');
+ if(hpc){const i=+hpc.dataset.hp;speak(HOBBY_PHR[i][0],false);hpc.classList.toggle('open');return;}
+ const d=t.closest('[data-d]');
+ if(d){const i=+d.dataset.d;speak(DLG[i][1],false);d.classList.toggle('open');return;}
+ const rb=t.closest('[data-r]');
+ if(rb){
+  const i=+rb.dataset.r,v=rb.getAttribute('data-v');
+  const box=document.getElementById('ro'+i);
+  box.querySelectorAll('button').forEach(b=>{b.disabled=true;if(b.getAttribute('data-v')===RIDDLE[i][1])b.classList.add('ok');});
+  if(v===RIDDLE[i][1]){window.__rs=(window.__rs||0)+1;speak(RIDDLE[i][1],false);}
+  else rb.classList.add('bad');
+  document.getElementById('rscore').textContent='Баллы: '+(window.__rs||0)+' / '+RIDDLE.length;
+  return;
+ }
+ const gb=t.closest('[data-g]');
+ if(gb){
+  const i=+gb.dataset.g,inp=document.getElementById('g'+i),res=document.getElementById('gres'+i);
+  if(inp.value.trim().toLowerCase()===GAPS[i][1].toLowerCase()){res.textContent='✅ Верно!';res.style.color='#3aa76d';speak(GAPS[i][0].replace('___',GAPS[i][1]),false);}
+  else{res.textContent='❌ Правильно: '+GAPS[i][1];res.style.color='#d9534f';}
+  return;
+ }
+ const sk=t.closest('[data-sk]');
+ if(sk){sp[sk.dataset.sk]=+sk.dataset.v;sk.parentElement.querySelectorAll('button').forEach(b=>b.style.borderColor='');sk.style.borderColor='#f0b429';return;}
+ const tb=t.closest('[data-t]');
+ if(tb){
+  const i=+tb.dataset.t,v=tb.getAttribute('data-v');
+  tb.parentElement.querySelectorAll('button').forEach(b=>{b.disabled=true;if(b.getAttribute('data-v')===TEST[i][2])b.classList.add('ok');});
+  if(v===TEST[i][2]){window.__ts=(window.__ts||0)+1;speak(TEST[i][2],false);}
+  else tb.classList.add('bad');
+  document.getElementById('tscore').textContent='Результат: '+(window.__ts||0)+' / 10';
+  return;
+ }
+});
+document.addEventListener('click',e=>{
+ if(e.target&&e.target.id==='saySpeak'){
+  const c0=['Russia','the UK'],c1=['the Kremlin and Red Square','the Tower of London','Lake Baikal','Edinburgh Castle'],c2=['Maslenitsa','Christmas','New Year','Easter'],c3=['playing board games','surfing the Net','riding a bike','going camping'];
+  if(sp[0]===undefined){alert('Сначала выбери страну!');return;}
+  let txt='My country is '+c0[sp[0]]+'. ';
+  txt+='The capital city is '+(sp[0]===0?'Moscow':'London')+'. ';
+  txt+='The famous landmark is '+c1[sp[1]!==undefined?sp[1]:0]+'. ';
+  txt+='My favourite celebration is '+c2[sp[2]!==undefined?sp[2]:0]+'. ';
+  txt+='Teenagers in my country like '+c3[sp[3]!==undefined?sp[3]:0]+'. ';
+  txt+='I love my country!';
+  const out=document.getElementById('speakOut');
+  out.style.display='block';out.innerHTML='<b>Твой рассказ:</b><br>'+txt;
+  speak(txt,false);
+ }
+});
+
+</script>
+</body>
+</html>
