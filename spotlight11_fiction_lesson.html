@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiction and Feelings — Spotlight 11, Module 4</title>
+<style>
+:root{--gold:#c9a227;--dark:#2b2b3c;--cream:#faf5ea;--accent:#8a5a2b;--soft:#e9dfc8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--dark)}
+.wrap{max-width:900px;margin:0 auto;padding:12px}
+header{background:linear-gradient(135deg,#3a2f1e,#6b4f2a);color:#f5e8c8;border-radius:0 0 18px 18px;padding:18px 20px;text-align:center}
+header h1{margin:0;font-size:1.7em;letter-spacing:1px}
+header p{margin:6px 0 0;font-style:italic}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px 0;position:sticky;top:0;background:var(--cream);z-index:5;border-bottom:2px solid var(--soft)}
+nav button{font-family:inherit;font-size:.85em;padding:7px 10px;border:1px solid var(--accent);background:#fff;border-radius:14px;cursor:pointer;color:var(--dark)}
+nav button.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.tab{display:none;padding:16px 4px}
+.tab.on{display:block}
+h2{color:var(--accent);border-bottom:2px dashed var(--gold);padding-bottom:4px}
+h3{color:var(--dark)}
+.card{background:#fff;border:1px solid var(--soft);border-radius:12px;padding:10px 14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.wcard{display:inline-block;vertical-align:top;width:46%;min-width:240px;background:#fff;border:1px solid var(--soft);border-left:5px solid var(--gold);border-radius:10px;padding:10px 12px;margin:6px;cursor:pointer;transition:transform .1s}
+.wcard:active{transform:scale(.97)}
+.wcard b{font-size:1.1em}
+.trn{color:#7a6a45;font-style:italic}
+.rus{margin-top:4px}
+.hint{margin-top:4px;font-size:.85em;color:#8a7a55}
+.btn{font-family:inherit;font-size:.9em;padding:6px 14px;border:none;border-radius:16px;background:var(--gold);color:#fff;cursor:pointer;margin:4px 4px 0 0}
+.btn.gray{background:#9a8f77}
+.dline{cursor:pointer;padding:6px 8px;border-left:4px solid var(--soft);margin:6px 0}
+.dline.a{border-color:#b3541e}.dline.m{border-color:#2f6f6f}
+.dname{font-weight:bold;margin-right:6px}
+.tr{display:none;color:#7a6a45;font-style:italic;font-size:.92em}
+.answer{display:none;color:var(--accent);font-weight:bold;margin-top:6px}
+input[type=text]{font-family:inherit;font-size:1em;padding:5px 8px;border:1px solid var(--soft);border-radius:8px;width:180px}
+.fb{margin-left:8px;font-weight:bold}
+.ok{color:#2e7d32}.bad{color:#b3541e}
+select{font-family:inherit;font-size:1em;padding:5px;border:1px solid var(--soft);border-radius:8px;margin:4px 0}
+table{border-collapse:collapse;width:100%;margin:8px 0}
+td,th{border:1px solid var(--soft);padding:6px 8px;font-size:.92em;text-align:left}
+th{background:var(--soft)}
+.star{background:#fff8dc;border:1px dashed var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0}
+.score{font-size:1.1em;font-weight:bold;color:var(--accent)}
+footer{text-align:center;color:#9a8f77;font-size:.85em;padding:16px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>📚 Fiction &amp; Feelings</h1>
+<p>Межличностные отношения в художественной литературе • Spotlight 11 • Module 4 «Danger!» • Unit 4d</p>
+</header>
+<nav id="nav">
+<button class="on" onclick="showTab(0)">🎯 Цель урока</button>
+<button class="" onclick="showTab(1)">📖 Слова</button>
+<button class="" onclick="showTab(2)">💬 Фразы</button>
+<button class="" onclick="showTab(3)">🔁 Повторение</button>
+<button class="" onclick="showTab(4)">🗣 Диалог</button>
+<button class="" onclick="showTab(5)">🎲 Угадай героя</button>
+<button class="" onclick="showTab(6)">🧩 Вставь слово</button>
+<button class="" onclick="showTab(7)">🎤 Говори сам</button>
+<button class="" onclick="showTab(8)">✏️ Тест</button>
+<button class="" onclick="showTab(9)">🏠 Домашка</button>
+</nav><main>
+<section class="tab on" id="tab0">
+<h2>🎯 Цель урока</h2>
+<div class="card"><b>Тема (ФРП):</b> межличностные отношения с членами семьи и знакомыми в художественной литературе.</div>
+<div class="card"><b>Цель:</b> научиться обсуждать отношения героев художественного произведения и рассказывать о любимом персонаже по-английски.<br>
+<b>Опора учебника:</b> Spotlight 11, Module 4 «Danger!», Unit 4d «Literature» (с. 70–71) — отрывок из «Приключений Тома Сойера» Марка Твена.</div>
+<h3>Планируемые результаты (ФГОС)</h3>
+<table>
+<tr><th>Группа</th><th>Ученик научится</th></tr>
+<tr><td><b>Предметные</b></td><td>употреблять 16 новых ЛЕ по темам «отношения» и «книга»; пересказывать эпизод в Past Simple / Past Perfect; строить монолог о персонаже (5–7 фраз)</td></tr>
+<tr><td><b>Познавательные</b></td><td>анализировать поступки героев, сравнивать отношения «в книге» и «в жизни»</td></tr>
+<tr><td><b>Регулятивные</b></td><td>проверять себя по ключам, оценивать результат теста, планировать домашнюю работу</td></tr>
+<tr><td><b>Коммуникативные</b></td><td>обсуждать сюжет в паре, соглашаться и не соглашаться (I agree / True / Exactly)</td></tr>
+<tr><td><b>Личностные</b></td><td>осознавать ценность дружбы, верности и взаимовыручки; уважать литературное наследие</td></tr>
+</table>
+<h3>Ход урока (45 минут)</h3>
+<table>
+<tr><th>№</th><th>Этап</th><th>Время</th><th>Что происходит</th></tr>
+<tr><td>1</td><td>Организационный момент</td><td>2 мин</td><td>Приветствие, тема урока</td></tr>
+<tr><td>2</td><td>Повторение: здоровье (4a)</td><td>5 мин</td><td>Вкладка «Повторение» — лексика здоровья</td></tr>
+<tr><td>3</td><td>Введение новой лексики</td><td>8 мин</td><td>Вкладка «Слова» — 16 карточек с озвучкой</td></tr>
+<tr><td>4</td><td>Фразы и грамматика</td><td>6 мин</td><td>Вкладка «Фразы» — план пересказа, Past Simple / Past Perfect</td></tr>
+<tr><td>5</td><td>Работа с текстом</td><td>8 мин</td><td>Вкладка «Диалог» — обсуждение отрывка</td></tr>
+<tr><td>6</td><td>Игра «Угадай героя»</td><td>5 мин</td><td>Вкладка с загадками</td></tr>
+<tr><td>7</td><td>Тренажёр «Вставь слово»</td><td>5 мин</td><td>Вкладка с пропусками</td></tr>
+<tr><td>8</td><td>Говорение и тест</td><td>4 мин</td><td>Вкладки «Говори сам» и «Тест»</td></tr>
+<tr><td>9</td><td>Домашнее задание</td><td>2 мин</td><td>Вкладка «Домашка» — объяснение задания</td></tr>
+</table>
+</section>
+<section class="tab" id="tab1"><h2>📖 Слова (16)</h2><p>Кликни по карточке — слово прозвучит дважды: медленно, потом в обычном темпе.</p>
+<h3>1. Отношения и чувства</h3>
+<div class="wcard" onclick="speakWord(0)"><b>to get on well with</b><br><span class="trn">[ɡet ɒn wel wɪð]</span><div class="rus">ладить (с кем-то)</div><div class="hint">💡 get on well — «гуд он уэл»: вместе хорошо — значит, ладим</div></div>
+<div class="wcard" onclick="speakWord(1)"><b>a quarrel</b><br><span class="trn">[ˈkwɒrəl]</span><div class="rus">ссора</div><div class="hint">💡 похоже на «кворрел» — звук скандала</div></div>
+<div class="wcard" onclick="speakWord(2)"><b>to make up</b><br><span class="trn">[meɪk ʌp]</span><div class="rus">помириться</div><div class="hint">💡 make up — буквально «сделать (мир) заново»</div></div>
+<div class="wcard" onclick="speakWord(3)"><b>to care about</b><br><span class="trn">[keər əˈbaʊt]</span><div class="rus">заботиться о</div><div class="hint">💡 care = забота, about — «о ком»</div></div>
+<div class="wcard" onclick="speakWord(4)"><b>to rely on</b><br><span class="trn">[rɪˈlaɪ ɒn]</span><div class="rus">полагаться на</div><div class="hint">💡 rely — «релей»: надёжный, на него опираешься</div></div>
+<div class="wcard" onclick="speakWord(5)"><b>an acquaintance</b><br><span class="trn">[əˈkweɪntəns]</span><div class="rus">знакомый</div><div class="hint">💡 не друг, но и не чужой — знакомый</div></div>
+<div class="wcard" onclick="speakWord(6)"><b>to support</b><br><span class="trn">[səˈpɔːt]</span><div class="rus">поддерживать</div><div class="hint">💡 support = «под-пирать»: держать человека</div></div>
+<div class="wcard" onclick="speakWord(7)"><b>an argument</b><br><span class="trn">[ˈɑːɡjumənt]</span><div class="rus">спор</div><div class="hint">💡 argue — спорить, argument — сам спор</div></div>
+<h3>2. Книга и сюжет</h3>
+<div class="wcard" onclick="speakWord(8)"><b>fiction</b><br><span class="trn">[ˈfɪkʃn]</span><div class="rus">художественная литература</div><div class="hint">💡 fix → fict: то, что «сфабриковано», выдумано</div></div>
+<div class="wcard" onclick="speakWord(9)"><b>a novel</b><br><span class="trn">[ˈnɒvl]</span><div class="rus">роман</div><div class="hint">💡 novel = «новый» — роман когда-то был новым жанром</div></div>
+<div class="wcard" onclick="speakWord(10)"><b>a chapter</b><br><span class="trn">[ˈtʃæptə]</span><div class="rus">глава</div><div class="hint">💡 похоже на «капитан» — глава ведёт книгу</div></div>
+<div class="wcard" onclick="speakWord(11)"><b>a plot</b><br><span class="trn">[plɒt]</span><div class="rus">сюжет</div><div class="hint">💡 короткое слово — короткий план книги</div></div>
+<div class="wcard" onclick="speakWord(12)"><b>a character</b><br><span class="trn">[ˈkærəktə]</span><div class="rus">персонаж</div><div class="hint">💡 тот же корень, что «характер»</div></div>
+<div class="wcard" onclick="speakWord(13)"><b>the author</b><br><span class="trn">[ˈɔːθə]</span><div class="rus">автор</div><div class="hint">💡 au-thor — «о-тор»</div></div>
+<div class="wcard" onclick="speakWord(14)"><b>an adventure</b><br><span class="trn">[ədˈventʃə]</span><div class="rus">приключение</div><div class="hint">💡 ad + venture = «риск-приключение»</div></div>
+<div class="wcard" onclick="speakWord(15)"><b>to be based on</b><br><span class="trn">[bi ˈbeɪst ɒn]</span><div class="rus">быть основанным на</div><div class="hint">💡 based — от base, «база»</div></div>
+</section>
+<section class="tab" id="tab2"><h2>💬 Фразы для пересказа</h2><p>Прочитай и послушай каждую фразу — она пригодится в пересказе и монологе.</p>
+<div class="card">📌 Tom and Becky got lost in a cave. <button class="btn" onclick="speak(0,'ph')">🔊</button></div>
+<div class="card">📌 Tom found the way out and saved Becky. <button class="btn" onclick="speak(1,'ph')">🔊</button></div>
+<div class="card">📌 Huck saved the life of the Widow Douglas. <button class="btn" onclick="speak(2,'ph')">🔊</button></div>
+<div class="card">📌 Becky relied on Tom — and he didn't let her down. <button class="btn" onclick="speak(3,'ph')">🔊</button></div>
+<div class="card">📌 The boys often had quarrels, but they always made up. <button class="btn" onclick="speak(4,'ph')">🔊</button></div>
+<div class="card">📌 Tom knows how to cheer his friends up. <button class="btn" onclick="speak(5,'ph')">🔊</button></div>
+<div class="card">📌 Mark Twain based the novel on his own childhood. <button class="btn" onclick="speak(6,'ph')">🔊</button></div>
+<div class="card">📌 Real friends care about each other and support each other. <button class="btn" onclick="speak(7,'ph')">🔊</button></div>
+<div class="card">📌 In books characters face danger and make difficult choices. <button class="btn" onclick="speak(8,'ph')">🔊</button></div>
+<div class="card">📌 Good fiction helps us understand people better. <button class="btn" onclick="speak(9,'ph')">🔊</button></div>
+<h3>План рассказа о персонаже</h3>
+<div class="card">1) Who is he/she? — 2) What is he/she like? — 3) What did he/she do? — 4) How do other characters treat him/her? — 5) Why do you admire him/her?</div>
+<h3>Грамматика пересказа</h3>
+<div class="card"><b>Past Simple</b> — последовательные события: <i>Tom found the way out and saved Becky.</i><br>
+<b>Past Perfect</b> — действие ДО другого действия в прошлом: <i>When Tom found the way out, they had spent three days in the cave.</i><br>
+<b>used to</b> — привычки прошлого: <i>In his childhood Tom used to play pirates with his friends.</i></div>
+</section>
+<section class="tab" id="tab3"><h2>🔁 Повторение: здоровье (Unit 4a)</h2><p>Вспомни слова прошлых уроков — они пригодятся, когда будем говорить, что случилось с героями.</p>
+<div class="card">🩺 <b>a pain</b> <span class="trn">[peɪn]</span> — боль <button class="btn" onclick="speak(0,'rw')">🔊</button></div>
+<div class="card">🩺 <b>an injury</b> <span class="trn">[ˈɪndʒəri]</span> — травма <button class="btn" onclick="speak(1,'rw')">🔊</button></div>
+<div class="card">🩺 <b>an ambulance</b> <span class="trn">[ˈæmbjələns]</span> — скорая помощь <button class="btn" onclick="speak(2,'rw')">🔊</button></div>
+<div class="card">🩺 <b>to recover</b> <span class="trn">[rɪˈkʌvə]</span> — выздороветь <button class="btn" onclick="speak(3,'rw')">🔊</button></div>
+<div class="card">🩺 <b>a recovery</b> <span class="trn">[rɪˈkʌvəri]</span> — выздоровление <button class="btn" onclick="speak(4,'rw')">🔊</button></div>
+<div class="card">🩺 <b>to catch a cold</b> <span class="trn">[kætʃ ə kəʊld]</span> — простудиться <button class="btn" onclick="speak(5,'rw')">🔊</button></div>
+<div class="card">🩺 <b>a sore throat</b> <span class="trn">[sɔː θrəʊt]</span> — больное горло <button class="btn" onclick="speak(6,'rw')">🔊</button></div>
+<div class="card">🩺 <b>to treat</b> <span class="trn">[triːt]</span> — лечить <button class="btn" onclick="speak(7,'rw')">🔊</button></div>
+<div class="card">🔗 <b>Связка с текстом:</b> <i>Tom and Becky spent three days in the cave. Luckily, after the rescue they soon made a full recovery.</i></div></section>
+<section class="tab" id="tab4"><h2>🗣 Диалог: discussing the story</h2><p>Кликни по строчке «посмотреть перевод» — появится перевод. Кнопка 🔊 озвучивает реплику.</p>
+<div class="dline a"><span class="dname">A:</span>Have you finished The Adventures of Tom Sawyer? <button class="btn" onclick="speak(0,'dl')">🔊</button><div class="tr" id="tr0">Ты дочитал «Приключения Тома Сойера»?</div><div onclick="toggleTr(0)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline m"><span class="dname">M:</span>Yes, I read the last chapter yesterday. The scene in the cave is fantastic! <button class="btn" onclick="speak(1,'dl')">🔊</button><div class="tr" id="tr1">Да, я дочитал последнюю главу вчера. Сцена в пещере — восторг!</div><div onclick="toggleTr(1)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline a"><span class="dname">A:</span>I agree. Tom was so brave. He cheered Becky up and found the way out. <button class="btn" onclick="speak(2,'dl')">🔊</button><div class="tr" id="tr2">Согласна. Том был таким смелым. Он подбодрил Бекки и нашёл выход.</div><div onclick="toggleTr(2)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline m"><span class="dname">M:</span>And he used a kite string! That was clever of him. <button class="btn" onclick="speak(3,'dl')">🔊</button><div class="tr" id="tr3">И он использовал бечёвку воздушного змея! Это было умно с его стороны.</div><div onclick="toggleTr(3)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline a"><span class="dname">A:</span>Becky relied on Tom completely — and he didn't let her down. <button class="btn" onclick="speak(4,'dl')">🔊</button><div class="tr" id="tr4">Бекки полностью полагалась на Тома — и он её не подвёл.</div><div onclick="toggleTr(4)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline m"><span class="dname">M:</span>What about Huck? He saved the Widow Douglas. He is a real hero too. <button class="btn" onclick="speak(5,'dl')">🔊</button><div class="tr" id="tr5">А как же Гек? Он спас Вдову Дугласу. Он тоже настоящий герой.</div><div onclick="toggleTr(5)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline a"><span class="dname">A:</span>True. The book teaches us to care about friends and never give up. <button class="btn" onclick="speak(6,'dl')">🔊</button><div class="tr" id="tr6">Верно. Книга учит заботиться о друзьях и не сдаваться.</div><div onclick="toggleTr(6)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<div class="dline m"><span class="dname">M:</span>Exactly. That is why people love this novel after 150 years! <button class="btn" onclick="speak(7,'dl')">🔊</button><div class="tr" id="tr7">Точно. Вот почему люди любят этот роман спустя 150 лет!</div><div onclick="toggleTr(7)" style="font-size:.8em;color:#9a8f77">посмотреть перевод</div></div>
+<h3>Вопросы на понимание</h3>
+<div class="card">❓ Where did Tom and Becky get lost?<div class="answer" id="dans0">✔ In a cave.</div><button class="btn gray" onclick="toggleAns(0)">Показать ответ</button></div>
+<div class="card">❓ What did Tom use to find the way out?<div class="answer" id="dans1">✔ A kite string.</div><button class="btn gray" onclick="toggleAns(1)">Показать ответ</button></div>
+<div class="card">❓ Why do people love the novel after 150 years?<div class="answer" id="dans2">✔ It teaches us to care about friends and never give up.</div><button class="btn gray" onclick="toggleAns(2)">Показать ответ</button></div>
+</section>
+<section class="tab" id="tab5"><h2>🎲 Угадай героя</h2><p>Прочитай загадку, назови героя вслух — потом проверь себя. Счёт считается сам!</p><div class="score">Счёт: <span id="rscore">0</span> / 8</div>
+<div class="card">🧩 <b>1.</b> I am a boy who lives with Aunt Polly. I am naughty but brave. I got lost in a cave and found the way out. Who am I? <button class="btn" onclick="speak(0,'rd')">🔊</button><div class="answer" id="rans0">🎭 Tom Sawyer</div><button class="btn gray" onclick="revealRiddle(0)">Показать ответ</button></div>
+<div class="card">🧩 <b>2.</b> I am Tom's best friend. People in town think I am bad, but I have a kind heart. The Widow Douglas wants to give me a home. Who am I? <button class="btn" onclick="speak(1,'rd')">🔊</button><div class="answer" id="rans1">🎭 Huckleberry Finn</div><button class="btn gray" onclick="revealRiddle(1)">Показать ответ</button></div>
+<div class="card">🧩 <b>3.</b> I am a judge's daughter. Tom and I got lost in a cave together, but I never lost hope. Who am I? <button class="btn" onclick="speak(2,'rd')">🔊</button><div class="answer" id="rans2">🎭 Becky Thatcher</div><button class="btn gray" onclick="revealRiddle(2)">Показать ответ</button></div>
+<div class="card">🧩 <b>4.</b> I take care of my nephew Tom. He often plays truant, and I don't know what to do with him! Who am I? <button class="btn" onclick="speak(3,'rd')">🔊</button><div class="answer" id="rans3">🎭 Aunt Polly</div><button class="btn gray" onclick="revealRiddle(3)">Показать ответ</button></div>
+<div class="card">🧩 <b>5.</b> I am a rich and respected man in town. I am Becky's father, and I thank Tom for his brave deed in the cave. Who am I? <button class="btn" onclick="speak(4,'rd')">🔊</button><div class="answer" id="rans4">🎭 Judge Thatcher</div><button class="btn gray" onclick="revealRiddle(4)">Показать ответ</button></div>
+<div class="card">🧩 <b>6.</b> I am a kind old lady. I was very ill, and Huck saved my life. Now I want to teach him good manners. Who am I? <button class="btn" onclick="speak(5,'rd')">🔊</button><div class="answer" id="rans5">🎭 Widow Douglas</div><button class="btn gray" onclick="revealRiddle(5)">Показать ответ</button></div>
+<div class="card">🧩 <b>7.</b> I am a writer from Missouri. My real name is Samuel Clemens, but you know my pen name. Who am I? <button class="btn" onclick="speak(6,'rd')">🔊</button><div class="answer" id="rans6">🎭 Mark Twain</div><button class="btn gray" onclick="revealRiddle(6)">Показать ответ</button></div>
+<div class="card">🧩 <b>8.</b> I am a dangerous man in the story. People are afraid of me. I know a secret about a treasure. Who am I? <button class="btn" onclick="speak(7,'rd')">🔊</button><div class="answer" id="rans7">🎭 Injun Joe</div><button class="btn gray" onclick="revealRiddle(7)">Показать ответ</button></div>
+</section>
+<section class="tab" id="tab6"><h2>🧩 Вставь слово</h2><p>Впиши слово по смыслу. Слова-помощники: <b>aunt, cave, Douglas, string, author, based, frightened, quarrel</b>.</p>
+<div class="card">Tom lives with his <input type="text" id="gb0" autocomplete="off"> Polly.</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(0)">Проверить</button><span class="fb" id="gf0"></span></div>
+<div class="card">Tom and Becky got lost in the <input type="text" id="gb1" autocomplete="off"> .</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(1)">Проверить</button><span class="fb" id="gf1"></span></div>
+<div class="card">Huck saved the life of the Widow <input type="text" id="gb2" autocomplete="off"> .</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(2)">Проверить</button><span class="fb" id="gf2"></span></div>
+<div class="card">Tom found the way out with a kite <input type="text" id="gb3" autocomplete="off"> .</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(3)">Проверить</button><span class="fb" id="gf3"></span></div>
+<div class="card">Mark Twain is the <input type="text" id="gb4" autocomplete="off"> of the novel.</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(4)">Проверить</button><span class="fb" id="gf4"></span></div>
+<div class="card">The novel is <input type="text" id="gb5" autocomplete="off"> on a real American town.</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(5)">Проверить</button><span class="fb" id="gf5"></span></div>
+<div class="card">Becky was <input type="text" id="gb6" autocomplete="off"> , but Tom cheered her up.</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(6)">Проверить</button><span class="fb" id="gf6"></span></div>
+<div class="card">The boys had a <input type="text" id="gb7" autocomplete="off"> , but soon they made up.</div>
+<div style="margin:-6px 0 10px"><button class="btn" onclick="checkGap(7)">Проверить</button><span class="fb" id="gf7"></span></div>
+</section>
+<section class="tab" id="tab7"><h2>🎤 Говори сам: My favourite character</h2>
+<p>Выбери по строчке в каждом столбце — получится твой личный монолог. Потом послушай его целиком.</p>
+<div class="card">
+<b>Герой:</b><br>
+<select id="ch0"><option>Tom Sawyer</option><option>Becky Thatcher</option><option>Huckleberry Finn</option><option>the Widow Douglas</option></select><br>
+<b>Черта характера:</b><br>
+<select id="ch1"><option>brave</option><option>resourceful</option><option>loyal</option><option>kind</option></select><br>
+<b>Поступок:</b><br>
+<select id="ch2"><option>found the way out of the cave</option><option>saved the Widow Douglas</option><option>helped his friend in trouble</option><option>never gave up</option></select><br>
+<b>Почему восхищаюсь:</b><br>
+<select id="ch3"><option>because he never gives up</option><option>because he is loyal to his friends</option><option>because he cares about others</option><option>because he stays calm in danger</option></select><br>
+<button class="btn" onclick="buildSpeech()">🎧 Собрать и озвучить</button>
+</div>
+<div class="card" id="speechOut" style="display:none"></div>
+</section>
+<section class="tab" id="tab8"><h2>✏️ Тест (10 вопросов)</h2><p>Выбери один ответ в каждом вопросе, потом нажми «Проверить». За 9–10 баллов — золотая медаль 🥇</p>
+<div class="card"><b>1. Who wrote The Adventures of Tom Sawyer?</b>
+<div><label><input type="radio" name="q0" value="0"> Mark Twain</label></div>
+<div><label><input type="radio" name="q0" value="1"> Charles Dickens</label></div>
+<div><label><input type="radio" name="q0" value="2"> Jack London</label></div>
+<div><label><input type="radio" name="q0" value="3"> Daniel Defoe</label></div>
+</div>
+<div class="card"><b>2. Where did Tom and Becky get lost?</b>
+<div><label><input type="radio" name="q1" value="0"> In a forest</label></div>
+<div><label><input type="radio" name="q1" value="1"> In a cave</label></div>
+<div><label><input type="radio" name="q1" value="2"> On an island</label></div>
+<div><label><input type="radio" name="q1" value="3"> In a big city</label></div>
+</div>
+<div class="card"><b>3. Who did Huck save?</b>
+<div><label><input type="radio" name="q2" value="0"> Aunt Polly</label></div>
+<div><label><input type="radio" name="q2" value="1"> Becky Thatcher</label></div>
+<div><label><input type="radio" name="q2" value="2"> The Widow Douglas</label></div>
+<div><label><input type="radio" name="q2" value="3"> Injun Joe</label></div>
+</div>
+<div class="card"><b>4. What did Tom use to find the way out?</b>
+<div><label><input type="radio" name="q3" value="0"> A candle</label></div>
+<div><label><input type="radio" name="q3" value="1"> A torch</label></div>
+<div><label><input type="radio" name="q3" value="2"> A kite string</label></div>
+<div><label><input type="radio" name="q3" value="3"> A rope ladder</label></div>
+</div>
+<div class="card"><b>5. Who is Tom's best friend?</b>
+<div><label><input type="radio" name="q4" value="0"> Sid</label></div>
+<div><label><input type="radio" name="q4" value="1"> Huckleberry Finn</label></div>
+<div><label><input type="radio" name="q4" value="2"> Joe Harper</label></div>
+<div><label><input type="radio" name="q4" value="3"> The Judge</label></div>
+</div>
+<div class="card"><b>6. What is Mark Twain's real name?</b>
+<div><label><input type="radio" name="q5" value="0"> Samuel Clemens</label></div>
+<div><label><input type="radio" name="q5" value="1"> William Cooper</label></div>
+<div><label><input type="radio" name="q5" value="2"> Henry Miller</label></div>
+<div><label><input type="radio" name="q5" value="3"> John London</label></div>
+</div>
+<div class="card"><b>7. Which word means «ссора»?</b>
+<div><label><input type="radio" name="q6" value="0"> an argument</label></div>
+<div><label><input type="radio" name="q6" value="1"> a quarrel</label></div>
+<div><label><input type="radio" name="q6" value="2"> a chapter</label></div>
+<div><label><input type="radio" name="q6" value="3"> a plot</label></div>
+</div>
+<div class="card"><b>8. Which word means «полагаться на»?</b>
+<div><label><input type="radio" name="q7" value="0"> to rely on</label></div>
+<div><label><input type="radio" name="q7" value="1"> to make up</label></div>
+<div><label><input type="radio" name="q7" value="2"> to get on</label></div>
+<div><label><input type="radio" name="q7" value="3"> to cheer up</label></div>
+</div>
+<div class="card"><b>9. Tom ___ on well with his friends.</b>
+<div><label><input type="radio" name="q8" value="0"> get</label></div>
+<div><label><input type="radio" name="q8" value="1"> gets</label></div>
+<div><label><input type="radio" name="q8" value="2"> got</label></div>
+<div><label><input type="radio" name="q8" value="3"> getting</label></div>
+</div>
+<div class="card"><b>10. The novel is based ___ real events.</b>
+<div><label><input type="radio" name="q9" value="0"> in</label></div>
+<div><label><input type="radio" name="q9" value="1"> at</label></div>
+<div><label><input type="radio" name="q9" value="2"> on</label></div>
+<div><label><input type="radio" name="q9" value="3"> for</label></div>
+</div>
+<button class="btn" onclick="checkQuiz()">Проверить</button> <div class="card" id="qres" style="display:none"></div></section>
+<section class="tab" id="tab9"><h2>🏠 Домашнее задание</h2>
+<div class="card"><b>Основное задание:</b> напиши историю <i>«The Day in the Cave»</i> (70–90 слов) от лица Тома <b>или</b> Бекки.<br>
+План: 1) Where were you and what happened? 2) How did you feel? 3) What did you (or your friend) do? 4) How did it end? 5) What did you learn about each other?</div>
+<div class="star"><b>⭐ Со звёздочкой:</b> опиши отношения двух героев (например, Тома и Гека, или Тома и тёти Полли) в 5–6 предложениях, использовав минимум 5 новых слов урока: to get on well with, a quarrel, to make up, to care about, to rely on, to support…</div>
+<h3>Критерии оценки (максимум 9 баллов)</h3>
+<table>
+<tr><th>Критерий</th><th>Баллы</th></tr>
+<tr><td>Объём 70–90 слов, план соблюдён</td><td>2</td></tr>
+<tr><td>Лексика урока (не менее 5 слов)</td><td>3</td></tr>
+<tr><td>Грамматика (Past Simple / Past Perfect)</td><td>2</td></tr>
+<tr><td>Оформление и орфография</td><td>2</td></tr>
+</table>
+<table>
+<tr><th>Баллы</th><th>Отметка</th></tr>
+<tr><td>8–9</td><td>«5»</td></tr>
+<tr><td>6–7</td><td>«4»</td></tr>
+<tr><td>5</td><td>«3»</td></tr>
+<tr><td>менее 5</td><td>«2»</td></tr>
+</table>
+</section>
+</main>
+<footer>Fiction &amp; Feelings • Spotlight 11 • Module 4 • интерактивный урок</footer>
+</div>
+<script>
+
+var WORDS=["to get on well with", "a quarrel", "to make up", "to care about", "to rely on", "an acquaintance", "to support", "an argument", "fiction", "a novel", "a chapter", "a plot", "a character", "the author", "an adventure", "to be based on"];
+var PH=["Tom and Becky got lost in a cave.", "Tom found the way out and saved Becky.", "Huck saved the life of the Widow Douglas.", "Becky relied on Tom — and he didn't let her down.", "The boys often had quarrels, but they always made up.", "Tom knows how to cheer his friends up.", "Mark Twain based the novel on his own childhood.", "Real friends care about each other and support each other.", "In books characters face danger and make difficult choices.", "Good fiction helps us understand people better."];
+var RW=["a pain", "an injury", "an ambulance", "to recover", "a recovery", "to catch a cold", "a sore throat", "to treat"];
+var DL=["Have you finished The Adventures of Tom Sawyer?", "Yes, I read the last chapter yesterday. The scene in the cave is fantastic!", "I agree. Tom was so brave. He cheered Becky up and found the way out.", "And he used a kite string! That was clever of him.", "Becky relied on Tom completely — and he didn't let her down.", "What about Huck? He saved the Widow Douglas. He is a real hero too.", "True. The book teaches us to care about friends and never give up.", "Exactly. That is why people love this novel after 150 years!"];
+var RD=[["I am a boy who lives with Aunt Polly. I am naughty but brave. I got lost in a cave and found the way out. Who am I?", "Tom Sawyer"], ["I am Tom's best friend. People in town think I am bad, but I have a kind heart. The Widow Douglas wants to give me a home. Who am I?", "Huckleberry Finn"], ["I am a judge's daughter. Tom and I got lost in a cave together, but I never lost hope. Who am I?", "Becky Thatcher"], ["I take care of my nephew Tom. He often plays truant, and I don't know what to do with him! Who am I?", "Aunt Polly"], ["I am a rich and respected man in town. I am Becky's father, and I thank Tom for his brave deed in the cave. Who am I?", "Judge Thatcher"], ["I am a kind old lady. I was very ill, and Huck saved my life. Now I want to teach him good manners. Who am I?", "Widow Douglas"], ["I am a writer from Missouri. My real name is Samuel Clemens, but you know my pen name. Who am I?", "Mark Twain"], ["I am a dangerous man in the story. People are afraid of me. I know a secret about a treasure. Who am I?", "Injun Joe"]];
+var GAP=[["Tom lives with his ___ Polly.", "aunt", "тётя", "Tom lives with his aunt Polly."], ["Tom and Becky got lost in the ___ .", "cave", "пещера", "Tom and Becky got lost in the cave."], ["Huck saved the life of the Widow ___ .", "Douglas", "Вдова Дугласа", "Huck saved the life of the Widow Douglas."], ["Tom found the way out with a kite ___ .", "string", "бечёвка, нить", "Tom found the way out with a kite string."], ["Mark Twain is the ___ of the novel.", "author", "автор", "Mark Twain is the author of the novel."], ["The novel is ___ on a real American town.", "based", "основан", "The novel is based on a real American town."], ["Becky was ___ , but Tom cheered her up.", "frightened", "напугана", "Becky was frightened, but Tom cheered her up."], ["The boys had a ___ , but soon they made up.", "quarrel", "ссора", "The boys had a quarrel, but soon they made up."]];
+var QUIZ=[["Who wrote The Adventures of Tom Sawyer?", ["Mark Twain", "Charles Dickens", "Jack London", "Daniel Defoe"], 0], ["Where did Tom and Becky get lost?", ["In a forest", "In a cave", "On an island", "In a big city"], 1], ["Who did Huck save?", ["Aunt Polly", "Becky Thatcher", "The Widow Douglas", "Injun Joe"], 2], ["What did Tom use to find the way out?", ["A candle", "A torch", "A kite string", "A rope ladder"], 2], ["Who is Tom's best friend?", ["Sid", "Huckleberry Finn", "Joe Harper", "The Judge"], 1], ["What is Mark Twain's real name?", ["Samuel Clemens", "William Cooper", "Henry Miller", "John London"], 0], ["Which word means «ссора»?", ["an argument", "a quarrel", "a chapter", "a plot"], 1], ["Which word means «полагаться на»?", ["to rely on", "to make up", "to get on", "to cheer up"], 0], ["Tom ___ on well with his friends.", ["get", "gets", "got", "getting"], 1], ["The novel is based ___ real events.", ["in", "at", "on", "for"], 2]];
+
+function showTab(i){
+ var ts=document.getElementsByClassName("tab");
+ for(var k=0;k<ts.length;k++){ts[k].classList.remove("on");}
+ document.getElementById("tab"+i).classList.add("on");
+ var bs=document.getElementById("nav").getElementsByTagName("button");
+ for(var k2=0;k2<bs.length;k2++){bs[k2].classList.remove("on");}
+ bs[i].classList.add("on");
+}
+function speak(text,rate){
+ try{
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang="en-US";u.rate=rate||1;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+ }catch(e){}
+}
+function speakWord(i){
+ speak(WORDS[i],0.55);
+ setTimeout(function(){speak(WORDS[i],0.95);},1200+WORDS[i].length*60);
+}
+function toggleTr(i){
+ var el=document.getElementById("tr"+i);
+ el.style.display=(el.style.display==="block")?"none":"block";
+}
+function toggleAns(i){
+ var el=document.getElementById("dans"+i);
+ el.style.display=(el.style.display==="block")?"none":"block";
+}
+var rscore=0,shown={};
+function revealRiddle(i){
+ var el=document.getElementById("rans"+i);
+ if(el.style.display!=="block"){el.style.display="block";if(!shown[i]){shown[i]=true;rscore++;document.getElementById("rscore").textContent=rscore;}}
+}
+function checkGap(i){
+ var v=document.getElementById("gb"+i).value.trim().toLowerCase();
+ var f=document.getElementById("gf"+i);
+ if(v===GAP[i][1].toLowerCase()){f.textContent="✔ Верно!";f.className="fb ok";speak(GAP[i][3],0.95);}
+ else{f.textContent="✗ Попробуй ещё";f.className="fb bad";}
+}
+function checkQuiz(){
+ var s=0;
+ for(var i=0;i<QUIZ.length;i++){
+  var ms=document.getElementsByName("q"+i);
+  for(var j=0;j<ms.length;j++){if(ms[j].checked&&Number(ms[j].value)===QUIZ[i][2]){s++;}}
+ }
+ var r=document.getElementById("qres");
+ r.style.display="block";
+ var medal=s>=9?"🥇 Золотая медаль!":(s>=7?"🥈 Молодец!":(s>=5?"🥉 Хорошо, но можно лучше":"📖 Перечитай вкладки и попробуй снова"));
+ r.innerHTML="Результат: <b>"+s+" / 10</b><br>"+medal;
+}
+function buildSpeech(){
+ var ch=document.getElementById("ch0").value;
+ var tr=document.getElementById("ch1").value;
+ var de=document.getElementById("ch2").value;
+ var rs=document.getElementById("ch3").value;
+ var text="My favourite character is "+ch+". He is "+tr+". In the story he "+de+". I admire him "+rs+". I think real friends should care about each other and never give up, just like "+ch+".";
+ var out=document.getElementById("speechOut");
+ out.style.display="block";
+ out.innerHTML="📄 <b>Твой монолог:</b><br>"+text+'<br><button class="btn" onclick="replay()">🔊 Послушать</button>';
+ window.lastSpeech=text;
+ speak(text,0.95);
+}
+function replay(){speak(window.lastSpeech||"",0.95);}
+
+</script></body></html>
