@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контроль: Досуг и увлечения — Spotlight 7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#eef2f7;color:#1f2a44;padding:16px}
+.wrap{max-width:900px;margin:0 auto}
+header{background:linear-gradient(135deg,#2c5f8a,#4a90c2);color:#fff;border-radius:14px;padding:24px;margin-bottom:16px}
+header h1{font-size:1.6em;margin-bottom:6px}
+header p{opacity:.92;font-size:.98em}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab{padding:9px 13px;border:none;border-radius:9px;background:#fff;color:#1f2a44;font-size:.9em;cursor:pointer;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.tab.on{background:#2c5f8a;color:#fff}
+section{display:none;background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+section.on{display:block}
+h2{color:#2c5f8a;margin-bottom:12px;font-size:1.25em}
+h3{color:#4a90c2;margin:16px 0 8px;font-size:1.05em}
+p{line-height:1.55;margin-bottom:10px}
+ul,ol{margin:8px 0 12px 22px;line-height:1.6}
+li{margin-bottom:5px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94em}
+th,td{border:1px solid #d5dde8;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eaf2fa;color:#2c5f8a}
+.card{background:#f4f8fc;border-left:4px solid #4a90c2;border-radius:8px;padding:12px 14px;margin:10px 0}
+.warn{background:#fff7ec;border-left-color:#e8a13c}
+.good{background:#eefaf0;border-left-color:#4caf6d}
+button.act{background:#2c5f8a;color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:.95em;font-weight:600;cursor:pointer;margin:8px 6px 4px 0}
+button.act:hover{background:#4a90c2}
+.inp{width:100%;max-width:480px;padding:9px 12px;border:1.5px solid #c6d2e0;border-radius:8px;font-size:.95em;margin:4px 0}
+select{padding:8px;border:1.5px solid #c6d2e0;border-radius:8px;font-size:.93em;margin:4px 6px 4px 0}
+.q{margin:14px 0;padding:12px 14px;background:#f8fafd;border-radius:10px;border:1px solid #e3ebf4}
+.q b{color:#2c5f8a}
+.res{font-weight:700;margin-top:10px;padding:10px 14px;border-radius:9px;display:none}
+.res.ok{display:block;background:#eefaf0;color:#2c7a46}
+.res.no{display:block;background:#fdeeee;color:#b3372f}
+.big{font-size:1.5em;font-weight:800;color:#2c5f8a}
+small{color:#5a6b82}
+.en{font-style:italic;color:#33455e}
+@media(max-width:640px){header h1{font-size:1.2em}.tab{padding:8px 10px;font-size:.82em}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>📝 Контрольная работа: «Досуг и увлечения современного подростка»</h1>
+<p>Английский язык • 7 класс • Spotlight (Module 1 «Lifestyles», Module 3 «Profiles», Module 4 «In the news») • 45 минут • 32 балла</p>
+</header>
+
+<div class="tabs">
+<button class="tab on" onclick="show(0,this)">🎯 О контроле</button>
+<button class="tab" onclick="show(1,this)">📖 Лексика</button>
+<button class="tab" onclick="show(2,this)">⚙️ Грамматика</button>
+<button class="tab" onclick="show(3,this)">🔗 Конструкции</button>
+<button class="tab" onclick="show(4,this)">📚 Чтение</button>
+<button class="tab" onclick="show(5,this)">🎧 Аудирование</button>
+<button class="tab" onclick="show(6,this)">✉️ Письмо</button>
+<button class="tab" onclick="show(7,this)">🗣 Говорение</button>
+<button class="tab" onclick="show(8,this)">📊 Итоги</button>
+<button class="tab" onclick="show(9,this)">🏠 Рефлексия</button>
+</div>
+
+<section class="on">
+<h2>🎯 Что проверяем</h2>
+<p>Эта работа проверяет, как вы усвоили тему <b>«Досуг и увлечения (хобби) современного подростка»</b>: чтение, кино, театр, музей, спорт, музыка. Работа охватывает лексику и грамматику модулей 1, 3 и 4 учебника Spotlight 7.</p>
+<h3>Структура работы</h3>
+<table>
+<tr><th>Часть</th><th>Что делаем</th><th>Баллы</th></tr>
+<tr><td>1. Лексика</td><td>Сопоставление + вставка слов</td><td>10</td></tr>
+<tr><td>2. Грамматика</td><td>Present Simple / Present Continuous</td><td>6</td></tr>
+<tr><td>3. Конструкции</td><td>like / love / enjoy / hate / don't mind + V-ing</td><td>6</td></tr>
+<tr><td>4. Чтение</td><td>Текст о Кейт, 5 вопросов</td><td>5</td></tr>
+<tr><td>5. Аудирование</td><td>Текст о Марке, 5 утверждений верно/неверно</td><td>5</td></tr>
+<tr><td>6. Письмо</td><td>Email о хобби (проверяет учитель)</td><td>5</td></tr>
+<tr><td>7. Говорение</td><td>Монолог «My favourite hobby» (проверяет учитель)</td><td>10</td></tr>
+</table>
+<p><b>Итого: 42 балла</b> (32 балла проверяются автоматически + 10 баллов учитель за письмо и говорение).</p>
+<div class="card warn"><b>Инструкция:</b> выполняйте части по порядку. Задания 1–5 проверяются сами — жмите кнопку «Проверить». Письмо и говорение покажите учителю. Время работы — 45 минут. Удачи!</div>
+<h3>Результаты по ФГОС</h3>
+<ul>
+<li><b>Предметные:</b> употребление ЛЕ по теме «Досуг и увлечения»; Present Simple vs Present Continuous; глаголы like/love/enjoy/hate/don't mind + V-ing; понимание текста при чтении и аудировании; написание email; монологическое высказывание.</li>
+<li><b>Метапредметные:</b> самоконтроль и самооценка результата; планирование письменного высказывания; работа по образцу.</li>
+<li><b>Личностные:</b> осознание ценности увлечений в жизни подростка, здорового образа жизни и творческой активности.</li>
+</ul>
+</section>
+
+<section>
+<h2>📖 Часть 1. Лексика — 10 баллов</h2>
+<h3>Задание A. Сопоставь хобби и описание (5 баллов)</h3>
+<p>Выбери, о каком увлечении идёт речь.</p>
+<div class="q"><b>1.</b> You look at paintings and sculptures in special halls. Sometimes there are famous works by artists there.
+<br><select id="a1"><option value="">— выбери —</option><option>reading</option><option>going to the museum</option><option>playing football</option><option>going to the cinema</option><option>dancing</option></select></div>
+<div class="q"><b>2.</b> You watch films on a big screen and eat popcorn.
+<br><select id="a2"><option value="">— выбери —</option><option>reading</option><option>going to the museum</option><option>playing football</option><option>going to the cinema</option><option>dancing</option></select></div>
+<div class="q"><b>3.</b> You kick a ball, run and try to score a goal with your team.
+<br><select id="a3"><option value="">— выбери —</option><option>reading</option><option>going to the museum</option><option>playing football</option><option>going to the cinema</option><option>dancing</option></select></div>
+<div class="q"><b>4.</b> You turn pages, follow the story and learn new words.
+<br><select id="a4"><option value="">— выбери —</option><option>reading</option><option>going to the museum</option><option>playing football</option><option>going to the cinema</option><option>dancing</option></select></div>
+<div class="q"><b>5.</b> You move to music — in a club, at a concert or in a dance class.
+<br><select id="a5"><option value="">— выбери —</option><option>reading</option><option>going to the museum</option><option>playing football</option><option>going to the cinema</option><option>dancing</option></select></div>
+<h3>Задание B. Вставь слово (5 баллов)</h3>
+<p>Слова для вставки: <b>novel, play, concert, coach, screen</b></p>
+<div class="q"><b>1.</b> Anna is reading a detective <input class="inp" id="b1" placeholder="слово"> about a famous detective.</div>
+<div class="q"><b>2.</b> We watched a wonderful <input class="inp" id="b2" placeholder="слово"> at the theatre yesterday.</div>
+<div class="q"><b>3.</b> My favourite band gives a <input class="inp" id="b3" placeholder="слово"> at the weekend.</div>
+<div class="q"><b>4.</b> Our football <input class="inp" id="b4" placeholder="слово"> trains with us three times a week.</div>
+<div class="q"><b>5.</b> The film looks great on a big <input class="inp" id="b5" placeholder="слово">.</div>
+<button class="act" onclick="checkLex()">Проверить</button>
+<div class="res" id="r1"></div>
+</section>
+
+<section>
+<h2>⚙️ Часть 2. Грамматика: Present Simple vs Present Continuous — 6 баллов</h2>
+<p>Вспомни: Present Simple — привычки и факты (<span class="en">usually, every day, often</span>); Present Continuous — действия сейчас или в этот период (<span class="en">now, at the moment, this week</span>).</p>
+<p>Раскрой скобки в нужной форме глагола.</p>
+<div class="q"><b>1.</b> My friend usually <input class="inp" id="g1" placeholder="read" style="max-width:200px;display:inline-block;width:auto"> fantasy books, but this week he <input class="inp" id="g2" placeholder="read" style="max-width:200px;display:inline-block;width:auto"> a detective story.</div>
+<div class="q"><b>2.</b> Look! The children <input class="inp" id="g3" placeholder="dance" style="max-width:200px;display:inline-block;width:auto"> on the stage.</div>
+<div class="q"><b>3.</b> We often <input class="inp" id="g4" placeholder="go" style="max-width:200px;display:inline-block;width:auto"> to the museum at weekends.</div>
+<div class="q"><b>4.</b> I can't talk now — I <input class="inp" id="g5" placeholder="do" style="max-width:200px;display:inline-block;width:auto"> my homework.</div>
+<div class="q"><b>5.</b> She <input class="inp" id="g6" placeholder="not / play" style="max-width:200px;display:inline-block;width:auto"> computer games in the evening.</div>
+<button class="act" onclick="checkGram()">Проверить</button>
+<div class="res" id="r2"></div>
+<div class="card good"><b>Подсказка:</b> он/она + глагол → окончание <span class="en">-s</span> (reads, plays); «сейчас» → <span class="en">am/is/are + V-ing</span>; отрицание в Present Simple → <span class="en">doesn't + V</span>.</div>
+</section>
+
+<section>
+<h2>🔗 Часть 3. Конструкции с V-ing — 6 баллов</h2>
+<p>Соедини правильно: <span class="en">like / love / enjoy / hate / don't mind</span> + <b>глагол с -ing</b>.</p>
+<p>Впиши глагол в правильной форме.</p>
+<div class="q"><b>1.</b> I enjoy <input class="inp" id="c1" placeholder="swim" style="max-width:200px;display:inline-block;width:auto"> in the pool with my friends.</div>
+<div class="q"><b>2.</b> My brother loves <input class="inp" id="c2" placeholder="play" style="max-width:200px;display:inline-block;width:auto"> chess in the evenings.</div>
+<div class="q"><b>3.</b> Kate doesn't mind <input class="inp" id="c3" placeholder="read" style="max-width:200px;display:inline-block;width:auto"> in the evenings.</div>
+<div class="q"><b>4.</b> We hate <input class="inp" id="c4" placeholder="wait" style="max-width:200px;display:inline-block;width:auto"> for a bus in the rain.</div>
+<div class="q"><b>5.</b> Do you like <input class="inp" id="c5" placeholder="watch" style="max-width:200px;display:inline-block;width:auto"> films in English?</div>
+<div class="q"><b>6.</b> They enjoy <input class="inp" id="c6" placeholder="listen" style="max-width:200px;display:inline-block;width:auto"> to rock music.</div>
+<button class="act" onclick="checkVing()">Проверить</button>
+<div class="res" id="r3"></div>
+</section>
+
+<section>
+<h2>📚 Часть 4. Чтение — 5 баллов</h2>
+<div class="card"><p><b>Kate's free time</b></p>
+<p class="en">My name is Kate and I am thirteen years old. I have many hobbies, but reading is my favourite one. I love detective stories and fantasy books. At the moment I am reading a novel about a young wizard. Every evening I read for an hour before I go to bed.</p>
+<p class="en">I also enjoy music. I play the guitar, but I am not very good at it yet. My dream is to play in a school band. On Saturdays my best friend Alice and I usually go to the cinema or to the theatre. Last week we watched a wonderful musical!</p>
+<p class="en">My friends think I am a quiet girl, but in fact I like sport too. Every Tuesday and Thursday I play volleyball with my classmates. And in summer we often ride our bikes in the park.</p></div>
+<p>Выбери правильный ответ.</p>
+<div class="q"><b>1.</b> Kate's favourite hobby is …
+<br><select id="q1"><option value="">— выбери —</option><option>music</option><option>reading</option><option>sport</option></select></div>
+<div class="q"><b>2.</b> At the moment Kate is reading a novel about …
+<br><select id="q2"><option value="">— выбери —</option><option>a young wizard</option><option>a famous detective</option><option>a school band</option></select></div>
+<div class="q"><b>3.</b> Kate plays …
+<br><select id="q3"><option value="">— выбери —</option><option>the piano</option><option>the guitar</option><option>volleyball professionally</option></select></div>
+<div class="q"><b>4.</b> On Saturdays Kate and Alice usually go to …
+<br><select id="q4"><option value="">— выбери —</option><option>the museum</option><option>the cinema or the theatre</option><option>the swimming pool</option></select></div>
+<div class="q"><b>5.</b> Kate plays volleyball …
+<br><select id="q5"><option value="">— выбери —</option><option>every day</option><option>on Tuesdays and Thursdays</option><option>only in summer</option></select></div>
+<button class="act" onclick="checkRead()">Проверить</button>
+<div class="res" id="r4"></div>
+</section>
+
+<section>
+<h2>🎧 Часть 5. Аудирование — 5 баллов</h2>
+<p>Прослушай текст (кнопка ниже) — можно слушать сколько нужно. Отметь, верно (✓) или неверно (✗) утверждение.</p>
+<button class="act" onclick="speak()">🔊 Прослушать текст</button>
+<button class="act" style="background:#8a99ab" onclick="speechSynthesis.cancel()">⏹ Стоп</button>
+<div class="card"><p class="en">Hi! My name is Mark. I am twelve years old and I want to tell you about my hobbies. My favourite hobby is football. I play football at school and my coach says I am a good player. We have training three times a week and matches on Sundays.</p>
+<p class="en">But football is not my only hobby. I love music and I listen to it every day. My favourite kind of music is rock. I would like to learn to play the drums, but I haven't got a drum kit at home.</p>
+<p class="en">My sister Lena prefers quieter activities. She enjoys reading and going to the museum. She says paintings and old things are very interesting. We sometimes go to the cinema together and watch adventure films. I like weekends very much!</p></div>
+<div class="q"><b>1.</b> Mark's favourite hobby is football.
+<br><select id="h1"><option value="">— выбери —</option><option>✓ верно</option><option>✗ неверно</option></select></div>
+<div class="q"><b>2.</b> Mark plays matches on Sundays.
+<br><select id="h2"><option value="">— выбери —</option><option>✓ верно</option><option>✗ неверно</option></select></div>
+<div class="q"><b>3.</b> Mark has got a drum kit at home.
+<br><select id="h3"><option value="">— выбери —</option><option>✓ верно</option><option>✗ неверно</option></select></div>
+<div class="q"><b>4.</b> Lena enjoys reading and going to the museum.
+<br><select id="h4"><option value="">— выбери —</option><option>✓ верно</option><option>✗ неверно</option></select></div>
+<div class="q"><b>5.</b> Mark and Lena sometimes watch cartoons together.
+<br><select id="h5"><option value="">— выбери —</option><option>✓ верно</option><option>✗ неверно</option></select></div>
+<button class="act" onclick="checkListen()">Проверить</button>
+<div class="res" id="r5"></div>
+</section>
+
+<section>
+<h2>✉️ Часть 6. Письмо — 5 баллов (проверяет учитель)</h2>
+<p>Напиши письмо другу (email, <b>60–80 слов</b>) о своём хобби. Используй план:</p>
+<ol>
+<li>Приветствие и благодарность за письмо.</li>
+<li>Какое у тебя хобби и почему оно тебе нравится.</li>
+<li>Как часто ты этим занимаешься и с кем.</li>
+<li>Задай 2 вопроса о хобби друга.</li>
+<li>Завершение письма и подпись.</li>
+</ol>
+<div class="card warn"><b>Чек-лист перед сдачей:</b> ☐ приветствие и подпись есть; ☐ объём 60–80 слов; ☐ есть Present Simple и Present Continuous; ☐ есть like/love/enjoy + V-ing; ☐ есть 2 вопроса; ☐ письмо разделено на абзацы.</div>
+<textarea class="inp" id="letter" rows="10" placeholder="Hi Ben, ..."></textarea>
+<div class="card good"><b>Образец начала:</b> <span class="en">Hi Ben, Thanks for your letter. You want to know about my hobbies. Well, I love …</span> Не переписывай образец целиком — это подсказка для старта!</div>
+<p><small>Это задание проверяет учитель — оно не входит в автосчёт.</small></p>
+</section>
+
+<section>
+<h2>🗣 Часть 7. Говорение — 10 баллов (проверяет учитель)</h2>
+<p>Подготовь и расскажи монолог <b>«My favourite hobby»</b> (40–50 секунд). План:</p>
+<ol>
+<li>What is your hobby and why do you like it?</li>
+<li>How often do you do it? Where? With whom?</li>
+<li>What do you need for your hobby?</li>
+<li>Why is this hobby good for you?</li>
+</ol>
+<div class="card"><b>Опоры:</b> <span class="en">My favourite hobby is … • I enjoy/love … because … • I usually do it on … • I need … • This hobby helps me to … • I think it is great because …</span></div>
+<button class="act" id="timerBtn" onclick="startTimer()">⏱ Запустить таймер 45 сек</button>
+<span id="timer" class="big">0:45</span>
+<div class="card warn"><b>Критерии (по 2 балла):</b> содержание по плану; лексика темы; грамматическая правильность; произношение и интонация; объём и темп.</div>
+<p><small>Это задание проверяет учитель — оно не входит в автосчёт.</small></p>
+</section>
+
+<section>
+<h2>📊 Итоги</h2>
+<p>Здесь виден автосчёт по частям 1–5. Письмо и говорение оценивает учитель (до 10 баллов дополнительно).</p>
+<table>
+<tr><th>Часть</th><th>Баллы</th><th>Максимум</th></tr>
+<tr><td>1. Лексика</td><td id="s1">—</td><td>10</td></tr>
+<tr><td>2. Грамматика</td><td id="s2">—</td><td>6</td></tr>
+<tr><td>3. Конструкции</td><td id="s3">—</td><td>6</td></tr>
+<tr><td>4. Чтение</td><td id="s4">—</td><td>5</td></tr>
+<tr><td>5. Аудирование</td><td id="s5">—</td><td>5</td></tr>
+<tr><td><b>Автосумма</b></td><td id="stotal">—</td><td><b>32</b></td></tr>
+</table>
+<div class="card"><span class="big" id="grade">—</span> &nbsp; <b id="gradeTxt"></b></div>
+<p><b>Шкала отметок</b> (из 32 автобаллов): 29–32 → «5» · 23–28 → «4» · 16–22 → «3» · 0–15 → «2». С учётом письма и говорения максимум — 42 балла.</p>
+<button class="act" style="background:#8a99ab" onclick="resetAll()">🔄 Сбросить ответы</button>
+</section>
+
+<section>
+<h2>🏠 Рефлексия</h2>
+<p>Ответь себе честно — это поможет подготовиться дальше.</p>
+<div class="card">😌 <b>Легко справился(лась) с:</b> какая часть была самой простой? Отметь её в тетради.</div>
+<div class="card">🤔 <b>Было труднее всего:</b> грамматика, чтение или аудирование? Запиши правило, которое нужно повторить.</div>
+<div class="card">💬 <b>Я могу рассказать о своём хобби 5–6 предложений</b> — да / почти / пока нет. Если «пока нет» — прочитай ещё раз вкладку «Говорение».</div>
+<div class="card good"><b>Молодец, что прошёл(ла) всю работу!</b> Покажи результаты и письмо учителю. До встречи на следующем уроке! 🌟</div>
+</section>
+
+<footer style="text-align:center;padding:18px;color:#5a6b82;font-size:.85em">Контрольная работа • Spotlight 7 • Досуг и увлечения подростка • Работает офлайн</footer>
+</div>
+
+<script>
+function show(i,btn){var s=document.querySelectorAll('section'),t=document.querySelectorAll('.tab');for(var j=0;j<s.length;j++)s[j].classList.remove('on');for(var j=0;j<t.length;j++)t[j].classList.remove('on');s[i].classList.add('on');btn.classList.add('on');window.scrollTo(0,0);}
+function res(id,ok,txt){var r=document.getElementById(id);r.className='res '+(ok?'ok':'no');r.innerHTML=txt;}
+function val(id){return document.getElementById(id).value.trim().toLowerCase();}
+// Лексика
+function checkLex(){
+var A={a1:'going to the museum',a2:'going to the cinema',a3:'playing football',a4:'reading',a5:'dancing'};
+var B={b1:'novel',b2:'play',b3:'concert',b4:'coach',b5:'screen'};
+var n=0;
+for(var k in A){if(val(k)===A[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+for(var k in B){if(val(k)===B[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+document.getElementById('s1').textContent=n; updTotal();
+res('r1',n===10,'✔ Результат: '+n+' из 10.'+(n===10?' Отлично!':' Проверь поля, выделенные красным.'));
+}
+// Грамматика
+function checkGram(){
+var G={g1:'reads',g2:'is reading',g3:'are dancing',g4:'go',g5:'am doing',g6:"doesn't play"};
+var n=0;
+for(var k in G){if(val(k)===G[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+document.getElementById('s2').textContent=n; updTotal();
+res('r2',n===6,'✔ Результат: '+n+' из 6.'+(n===6?' Грамматика — твоя сильная сторона!':' Ошибки в полях, выделенных красным.'));
+}
+// V-ing
+function checkVing(){
+var C={c1:'swimming',c2:'playing',c3:'reading',c4:'waiting',c5:'watching',c6:'listening'};
+var n=0;
+for(var k in C){if(val(k)===C[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+document.getElementById('s3').textContent=n; updTotal();
+res('r3',n===6,'✔ Результат: '+n+' из 6.'+(n===6?' Идеально!':' Помни: после like/love/enjoy/hate/don\'t mind глагол имеет форму -ing.'));
+}
+// Чтение
+function checkRead(){
+var Q={q1:'reading',q2:'a young wizard',q3:'the guitar',q4:'the cinema or the theatre',q5:'on tuesdays and thursdays'};
+var n=0;
+for(var k in Q){if(val(k)===Q[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+document.getElementById('s4').textContent=n; updTotal();
+res('r4',n===5,'✔ Результат: '+n+' из 5.'+(n===5?' Чтение — отлично!':' Перечитай текст ещё раз и проверь ответы.'));
+}
+// Аудирование
+function checkListen(){
+var H={h1:'✓ верно',h2:'✓ верно',h3:'✗ неверно',h4:'✓ верно',h5:'✗ неверно'};
+var n=0;
+for(var k in H){if(val(k)===H[k])n++;else document.getElementById(k).style.borderColor='#c94f45';}
+document.getElementById('s5').textContent=n; updTotal();
+res('r5',n===5,'✔ Результат: '+n+' из 5.'+(n===5?' Аудирование — супер!':' Послушай текст ещё раз.'));
+}
+// Итоги
+function updTotal(){
+var t=0,ok=true;
+['s1','s2','s3','s4','s5'].forEach(function(id){var v=document.getElementById(id).textContent;if(v==='—')ok=false;else t+=parseInt(v);});
+if(!ok)return;
+document.getElementById('stotal').textContent=t;
+var g=document.getElementById('grade'),gt=document.getElementById('gradeTxt');
+if(t>=29){g.textContent='5';gt.textContent='Отлично! Ты уверенно владеешь темой.';}
+else if(t>=23){g.textContent='4';gt.textContent='Хорошо! Повтори то, где были ошибки.';}
+else if(t>=16){g.textContent='3';gt.textContent='Удовлетворительно. Проработай слабые части.';}
+else{g.textContent='2';gt.textContent='Нужно повторить лексику и грамматику темы — и попробовать ещё раз.';}
+}
+function resetAll(){
+document.querySelectorAll('.inp').forEach(function(e){e.value='';e.style.borderColor='';});
+document.querySelectorAll('select').forEach(function(e){e.value='';e.style.borderColor='';});
+['s1','s2','s3','s4','s5','stotal'].forEach(function(id){document.getElementById(id).textContent='—';});
+document.getElementById('grade').textContent='—';document.getElementById('gradeTxt').textContent='';
+document.querySelectorAll('.res').forEach(function(e){e.className='res';});
+}
+// Озвучка
+function speak(){
+if(!('speechSynthesis' in window)){alert('Ваш браузер не поддерживает озвучку. Откройте файл в Chrome или Edge.');return;}
+speechSynthesis.cancel();
+var u1=new SpeechSynthesisUtterance("Hi! My name is Mark. I am twelve years old and I want to tell you about my hobbies. My favourite hobby is football. I play football at school and my coach says I am a good player. We have training three times a week and matches on Sundays.");
+var u2=new SpeechSynthesisUtterance("But football is not my only hobby. I love music and I listen to it every day. My favourite kind of music is rock. I would like to learn to play the drums, but I haven't got a drum kit at home.");
+var u3=new SpeechSynthesisUtterance("My sister Lena prefers quieter activities. She enjoys reading and going to the museum. She says paintings and old things are very interesting. We sometimes go to the cinema together and watch adventure films. I like weekends very much!");
+[u1,u2,u3].forEach(function(u){u.lang='en-GB';u.rate=.85;}); 
+speechSynthesis.speak(u1);speechSynthesis.speak(u2);speechSynthesis.speak(u3);
+}
+// Таймер
+var tleft=45,tint=null;
+function startTimer(){
+clearInterval(tint);tleft=45;
+document.getElementById('timerBtn').textContent='⏱ Идёт запись…';
+tint=setInterval(function(){
+tleft--;
+var m=Math.floor(tleft/60),s=tleft%60;
+document.getElementById('timer').textContent=m+':'+(s<10?'0':'')+s;
+if(tleft<=0){clearInterval(tint);document.getElementById('timerBtn').textContent='✅ Время вышло — покажи учителю';}
+},1000);
+}
+</script>
+</body>
+</html>
