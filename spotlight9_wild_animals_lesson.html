@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 9 — Wild Animals</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef7f2;color:#22333b}
+header{background:linear-gradient(120deg,#0b6e4f,#14967f,#f2a541);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.92;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#0b4f3a;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.12);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#f2a541;color:#22333b;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#0b6e4f;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.wcard{background:#f0faf6;border:2px solid #bfe6d5;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#f2a541}
+.wcard b{font-size:1.1em;color:#0b6e4f}
+.wcard span{display:block;font-size:.85em;color:#556;margin-top:4px}
+.phr{border-left:4px solid #f2a541;background:#fffdf5;padding:10px 14px;margin:8px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#0b6e4f}.phr .tr{display:none;color:#556;font-size:.92em;margin-top:4px}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#0b6e4f;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #bbb;padding:6px 0}
+.line .tr{display:none;color:#0b6e4f;font-size:.92em}
+.rid{background:#fff;border:2px solid #bfe6d5;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #14967f;background:#fff;color:#0b6e4f;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#0b6e4f;color:#fff}
+.opts button.bad{background:#e63946;border-color:#e63946;color:#fff;opacity:.6}
+.gap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.gap input{border:2px solid #bfe6d5;border-radius:8px;padding:7px;width:150px;font-size:1em}
+.gap input.good{border-color:#0b6e4f;background:#e3f6ec}
+.gap input.err{border-color:#e63946;background:#fdecec}
+.bank{background:#fff8e6;border:1px dashed #d8a422;padding:10px;border-radius:10px;margin:10px 0;font-style:italic}
+select{padding:8px;border-radius:8px;border:2px solid #bfe6d5;font-size:.95em;margin:4px 0;width:100%;max-width:420px}
+.big{background:#f2a541;border:0;color:#22333b;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#f0faf6}
+#quizRes,#gapRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #cfe6da;padding:8px;font-size:.95em}
+th{background:#e3f6ec;color:#0b6e4f}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #f2a541}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>🐾 WILD ANIMALS</h1>
+<p>Природа: дикие животные • Spotlight 9, Module 7, Culture Corner 7 • 9 класс</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">🐾 Угадай зверя</button>
+<button onclick="show('t7',this)">🧩 Вставь слово</button>
+<button onclick="show('t8',this)">🎤 Говори сам</button>
+<button onclick="show('t9',this)">✏️ Тест</button>
+<button onclick="show('t10',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (3 мин).</b> What wild animals live in your region? Are they dangerous?</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (5 мин).</b> Правила безопасности и модальные глаголы must / mustn't / should.</div></div>
+<div class="step"><div class="n">3</div><div><b>Новая лексика (7 мин).</b> 16 слов: животные и слова о безопасности.</div></div>
+<div class="step"><div class="n">4</div><div><b>Диалог (5 мин).</b> Анна и Марк собираются в Эверглейдс.</div></div>
+<div class="step"><div class="n">5</div><div><b>Чтение (8 мин).</b> Текст о диких животных США + 5 вопросов.</div></div>
+<div class="step"><div class="n">6</div><div><b>Игра (6 мин).</b> Загадки о зверях России и США.</div></div>
+<div class="step"><div class="n">7</div><div><b>Лексика на письме (5 мин).</b> Упражнение «Вставь слово».</div></div>
+<div class="step"><div class="n">8</div><div><b>Говорение (4 мин).</b> Монолог о любимом диком животном.</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (2 мин).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС ООО</h2>
+<p><b>Предметные:</b> употребляет ЛЕ по теме «Дикие животные»; соблюдает правила безопасности с must / mustn't / should; извлекает информацию из текста.</p>
+<p><b>Метапредметные:</b> сравнивает животный мир России и США, работает с текстом, оценивает свои ответы.</p>
+<p><b>Личностные:</b> экологическое сознание, уважение к природе, бережное отношение к диким животным.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку</h2>
+<p style="color:#556">Клик по карточке — слово прозвучит дважды.</p>
+<div class="card"><h3>Животные</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Безопасность и природа</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы урока — клик по фразе покажет перевод</h2>
+<div class="card" id="phrBox"></div>
+<div class="card"><h3>Шпаргалка: must / mustn't / should</h3>
+<p><b>must</b> — обязан: <i>You must keep your distance from wild animals.</i></p>
+<p><b>mustn't</b> — запрещено: <i>You mustn't feed the alligators.</i></p>
+<p><b>should / shouldn't</b> — совет: <i>You should wear boots in snake areas.</i></p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: лесенка модуля 7</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>7a–7d: правила безопасности.</b> Дороги, транспорт, чрезвычайные ситуации.</div></div>
+<div class="step"><div class="n">2</div><div><b>Модальные глаголы.</b> must (обязан), mustn't (запрещено), should (совет), can (можно).</div></div>
+<div class="step"><div class="n">3</div><div><b>Сегодня: Culture Corner 7.</b> Дикие животные США и России.</div></div></div>
+<div class="card"><h3>Модальные глаголы — примеры</h3>
+<table><tr><th>Форма</th><th>Значение</th><th>Пример</th></tr>
+<tr><td>must</td><td>обязан</td><td>You must watch where you step.</td></tr>
+<tr><td>mustn't</td><td>запрещено</td><td>You mustn't feed wild animals.</td></tr>
+<tr><td>should</td><td>следует</td><td>You should keep your distance.</td></tr>
+<tr><td>shouldn't</td><td>не следует</td><td>You shouldn't corner a wild animal.</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: поход в Эверглейдс</h2>
+<div class="card">
+<p style="color:#556">Клик по реплике — появится перевод.</p>
+<div class="line"><b>Anna:</b> Mark, are you ready for our trip to the Everglades?<div class="tr">Марк, ты готов к нашей поездке в Эверглейдс?</div></div>
+<div class="line"><b>Mark:</b> Almost! I have got a map, water and a torch.<div class="tr">Почти! У меня есть карта, вода и фонарик.</div></div>
+<div class="line"><b>Anna:</b> Remember, we mustn't feed the alligators. It is against the rules and very dangerous.<div class="tr">Помни, нам нельзя кормить аллигаторов. Это против правил и очень опасно.</div></div>
+<div class="line"><b>Mark:</b> I know! Alligators can be four metres long and they attack very fast.<div class="tr">Знаю! Аллигаторы могут быть длиной четыре метра и нападают очень быстро.</div></div>
+<div class="line"><b>Anna:</b> And we should wear boots. There are rattlesnakes in the grass.<div class="tr">И нам стоит надеть ботинки. В траве водятся гремучие змеи.</div></div>
+<div class="line"><b>Mark:</b> Good idea. And what should we do if we meet a grizzly bear?<div class="tr">Хорошая мысль. А что нам делать, если мы встретим гризли?</div></div>
+<div class="line"><b>Anna:</b> Grizzly bears live in the mountains, not in the swamps!<div class="tr">Гризли живут в горах, а не на болотах!</div></div>
+<div class="line"><b>Mark:</b> Oops! Then let us watch where we step and enjoy nature.<div class="tr">Ой! Тогда давай смотреть, куда ступаем, и наслаждаться природой.</div></div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Wild Animals of the USA</h2>
+<div class="card">
+<p>The United States is famous for its wildlife. In the south, in the swamps of Florida, lives the American alligator. It can be four metres long! Alligators usually hunt fish, birds and small animals. They wait motionless in the water and attack very fast.</p>
+<p>In the deserts and forests there are rattlesnakes. Their venom is very dangerous, but these snakes never attack people first — they only warn with a rattling sound.</p>
+<p>In the mountains of the west lives the grizzly bear. It is big and strong, but it prefers berries and fish to people. If you meet a grizzly, stay calm and back away slowly.</p>
+<p>The raccoon is smaller and friendlier. This clever animal with a black mask on its face lives near rivers and even in cities.</p>
+<p>Many wild animals in the USA are endangered today. National parks protect their habitats, and rangers warn visitors about the rules: never feed wild animals, watch where you step and keep your distance.</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. Where do alligators live? — In the swamps of <b>Florida</b>.</p>
+<p>2. How does a rattlesnake warn people? — With a <b>rattling sound</b>.</p>
+<p>3. What does a grizzly bear prefer to eat? — <b>Berries and fish</b>.</p>
+<p>4. What does a raccoon have on its face? — A <b>black mask</b>.</p>
+<p>5. What do national parks and rangers do? — They <b>protect habitats</b> and warn visitors about the rules.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>🐾 Игра: угадай зверя</h2>
+<p style="color:#556">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 Вставь слово</h2>
+<div class="bank">Слова-помощники: venom, prey, motionless, endangered, habitat, warn, ferocious, predator</div>
+<div class="card">
+<div class="gap">1. Rattlesnakes use their <input data-a="venom"> to kill small animals.</div>
+<div class="gap">2. A grizzly bear hunts fish and other <input data-a="prey"> in the river.</div>
+<div class="gap">3. If you meet a bear, stand <input data-a="motionless"> and do not run.</div>
+<div class="gap">4. The Amur tiger is an <input data-a="endangered"> species.</div>
+<div class="gap">5. Swamps and forests are the natural <input data-a="habitat"> of many animals.</div>
+<div class="gap">6. Rangers <input data-a="warn"> visitors about dangerous animals.</div>
+<div class="gap">7. A <input data-a="ferocious"> wild animal can attack without warning.</div>
+<div class="gap">8. The alligator is a powerful <input data-a="predator"> of the swamps.</div>
+<button class="big" onclick="checkGaps()">Проверить</button>
+<div id="gapRes"></div>
+</div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🎤 Говори сам: My favourite wild animal</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовый монолог.</p>
+<p><b>1. Животное:</b></p><select id="s1">
+<option value="My favourite wild animal is the alligator.">the alligator</option>
+<option value="My favourite wild animal is the Amur tiger.">the Amur tiger</option>
+<option value="My favourite wild animal is the wolf.">the wolf</option>
+<option value="My favourite wild animal is the lynx.">the lynx</option></select>
+<p><b>2. Где живёт:</b></p><select id="s2">
+<option value="It lives in the swamps of Florida.">in the swamps of Florida</option>
+<option value="It lives in the Russian Far East.">in the Russian Far East</option>
+<option value="It lives in the forests of Siberia.">in the forests of Siberia</option>
+<option value="It lives in the mountains.">in the mountains</option></select>
+<p><b>3. Чем питается:</b></p><select id="s3">
+<option value="It eats fish, birds and small animals.">fish, birds and small animals</option>
+<option value="It eats deer and wild boar.">deer and wild boar</option>
+<option value="It eats hares and mice.">hares and mice</option>
+<option value="It eats berries and fish.">berries and fish</option></select>
+<p><b>4. Почему он опасен:</b></p><select id="s4">
+<option value="It is dangerous because it is a strong predator.">a strong predator</option>
+<option value="It is dangerous because it is unpredictable.">it is unpredictable</option>
+<option value="It is dangerous because its venom is fatal.">its venom is fatal</option>
+<option value="It is dangerous because it can attack without warning.">it attacks without warning</option></select>
+<p><b>5. Как защитить:</b></p><select id="s5">
+<option value="To protect it, we should protect its habitat.">protect its habitat</option>
+<option value="To protect it, we should create national parks.">create national parks</option>
+<option value="To protect it, we should never feed wild animals.">never feed wild animals</option>
+<option value="To protect it, we should learn more about it.">learn more about it</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut" style="background:#f0faf6;border-radius:10px;padding:12px;margin-top:8px;display:none"></div>
+</div>
+</section>
+
+<section class="tab" id="t9">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t10">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> эссе <b>«Save Our Wildlife»</b> (100–150 слов). План: какие дикие животные в опасности → почему это происходит → что делают национальные парки → что можешь сделать ты → вывод. Используй не менее 8 слов из урока и модальные глаголы must / should.</p>
+<p><b>Звёздочка (по желанию):</b> постер <b>«Dangerous Wild Animals of Russia»</b> по образцу факт-файлов из учебника: рисунок или фото + факт-файл на английском (name, habitat, size, danger level).</p>
+<p><b>Критерии (9 баллов):</b> соответствие плану (2), лексика урока (2), грамматика и модальные глаголы (2), орфография (2), оформление (1).</p>
+<p><b>Шкала:</b> 8–9 — «5»; 6–7 — «4»; 4–5 — «3».</p>
+</div>
+</section>
+
+</main>
+<script>
+var W1=[["alligator","ˈælɪɡeɪtə","аллигатор"],["rattlesnake","ˈrætlsneɪk","гремучая змея"],["grizzly bear","ˈɡrɪzli beə","гризли"],["raccoon","rəˈkuːn","енот-полоскун"],["predator","ˈpredətə","хищник"],["venom","ˈvenəm","яд"],["prey","preɪ","добыча"],["species","ˈspiːʃiːz","вид"]];
+var W2=[["motionless","ˈməʊʃənləs","неподвижный"],["fatal","ˈfeɪtl","смертельный"],["poisonous","ˈpɔɪzənəs","ядовитый"],["ferocious","fəˈrəʊʃəs","свирепый"],["unpredictable","ˌʌnprɪˈdɪktəbl","непредсказуемый"],["endangered","ɪnˈdeɪndʒəd","исчезающий"],["habitat","ˈhæbɪtæt","среда обитания"],["warn","wɔːn","предупреждать"]];
+var P=[["Never try to feed wild animals.","Никогда не пытайся кормить диких животных."],["Watch where you step.","Смотри, куда ступаешь."],["Keep your distance.","Соблюдай дистанцию."],["Wild animals are unpredictable.","Дикие животные непредсказуемы."],["Stay calm and back away slowly.","Сохраняй спокойствие и медленно отходи назад."],["This species is endangered.","Этот вид находится под угрозой исчезновения."],["Wildlife needs our protection.","Дикая природа нуждается в нашей защите."],["Never corner a wild animal.","Никогда не загоняй дикое животное в угол."],["In case of emergency, call a ranger.","В случае опасности позови егеря."],["Respect nature and it will respect you.","Уважай природу — и она уважит тебя."]];
+var R=[["I have a long body, sharp teeth and I live in swamps. I wait motionless for my prey.",["Raccoon","Alligator","Grizzly bear"],1],["My tail makes a rattling sound. My venom is dangerous, but I never attack first.",["Rattlesnake","Wolf","Lynx"],0],["I am a huge bear of the mountains. I love fish and berries. Stand still if you meet me!",["Brown bear","Polar bear","Grizzly bear"],2],["I am small and clever, with a black mask on my face. I wash my food in water.",["Raccoon","Beaver","Fox"],0],["I live in a pack, I am a predator of the forest, and I howl at the moon.",["Lynx","Wolf","Bear"],1],["I am the biggest cat in Russia. I live in the Far East and I am endangered.",["Lion","Leopard","Amur tiger"],2],["I am strong and I love honey. In Russian forests people call me the master of the taiga.",["Brown bear","Wolf","Lynx"],0],["I am a wild cat with tufts on my ears. I hunt hares and birds at night.",["Lynx","Tiger","Raccoon"],0]];
+var Q=[["Alligator means...",["крокодил","аллигатор","ящерица"],1],["Venom means...",["клетка","лапа","яд"],2],["Motionless means...",["неподвижный","шумный","быстрый"],0],["Which animal has a black mask on its face?",["The grizzly bear","The raccoon","The lynx"],1],["Rattlesnakes warn people with...",["a loud roar","a rattling sound","a bright light"],1],["You ___ feed wild animals in a national park.",["must","must not","can"],1],["You ___ wear boots in snake areas.",["should","must not","can not"],0],["The Amur tiger lives in...",["Florida","the Russian Far East","the deserts of Africa"],1],["Endangered means...",["домашний","опасный","исчезающий"],2],["If you meet a bear, you should...",["run away fast","back away slowly","shout and wave"],1]];
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.85;speechSynthesis.speak(v);},1400);}catch(e){}}
+function tr(el){var s=el.nextElementSibling;if(!s)return;s.style.display=s.style.display==="block"?"none":"block";}
+(function(){var h="",i,w;for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}document.getElementById("w1").innerHTML=h;h="";for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}document.getElementById("w2").innerHTML=h;h="";for(i=0;i<P.length;i++){h+="<div class='phr' onclick='tr(this)'><i>"+(i+1)+". "+P[i][0]+"</i><div class='tr'>"+P[i][1]+"</div></div>";}document.getElementById("phrBox").innerHTML=h;h="";for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}document.getElementById("ridBox").innerHTML=h;h="";for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}document.getElementById("quizBox").innerHTML=h;})();
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;speak(btn.textContent);}else{btn.classList.add("bad");btn.disabled=true;}}
+function checkGaps(){var ins=document.querySelectorAll(".gap input"),good=0;for(var i=0;i<ins.length;i++){var v=ins[i].value.trim().toLowerCase();if(v===ins[i].dataset.a){ins[i].className="good";good++;}else{ins[i].className="err";}}document.getElementById("gapRes").textContent="Правильно: "+good+" из 8 "+(good===8?"— отлично! 🏅":"— проверь ошибки.");}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value+" Wildlife needs our protection!";var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My favourite wild animal.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,1200));}
+function checkQuiz(){var ans=[1,2,0,1,1,1,0,1,2,1],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🥇 Золотая медаль! ":score>=6?"👍 Хорошо! ":"Потренируйся ещё! ";res.textContent=m+"Твой результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
