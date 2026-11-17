@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My Free Time — Spotlight 6, Module 4</title><style>
+:root{--blue:#2b5bd7;--dark:#1c2b4a;--gold:#f2b01e;--pink:#e0567a;--bg:#f4f6fb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.5}
+header{background:linear-gradient(135deg,#2b5bd7,#6a3bd8);color:#fff;padding:20px 16px}
+h1{font-size:1.45rem}.sub{opacity:.92;font-size:.95rem;margin-top:4px}
+.badge{display:inline-block;background:rgba(255,255,255,.22);border-radius:20px;padding:3px 12px;font-size:.8rem;margin:8px 4px 0 0}
+nav{position:sticky;top:0;background:#fff;box-shadow:0 2px 6px rgba(28,43,74,.1);display:flex;overflow-x:auto;z-index:5}
+nav button{flex:0 0 auto;border:none;background:none;padding:12px 14px;font-size:.9rem;cursor:pointer;color:#556;border-bottom:3px solid transparent;white-space:nowrap}
+nav button.on{color:var(--blue);border-color:var(--blue);font-weight:600}
+main{max-width:900px;margin:0 auto;padding:16px 14px 40px}
+.pane{display:none}.pane.on{display:block}
+h2{margin:6px 0 12px;font-size:1.3rem}
+h3{margin:14px 0 8px;font-size:1.05rem;color:var(--blue)}
+.card{background:#fff;border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 2px 8px rgba(28,43,74,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.wordcard{background:#fff;border-radius:12px;padding:12px;cursor:pointer;box-shadow:0 2px 8px rgba(28,43,74,.1);border-left:5px solid var(--blue)}
+.wordcard.g2{border-left-color:var(--pink)}
+.en{font-weight:700;font-size:1.02rem}.tr{color:#7a8399;font-size:.82rem}.ru{margin-top:4px;font-size:.9rem}
+.small{font-size:.85rem;color:#667}
+.phrase,.dline{background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;box-shadow:0 2px 8px rgba(28,43,74,.08)}
+.phrase{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.phrase .ru,.dru{color:#4a7d5b;font-size:.9rem;margin-top:2px}
+.say{background:var(--blue);color:#fff;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1rem;flex:0 0 auto}
+.dline{cursor:pointer}.dru{display:none;border-top:1px dashed #cdd5e4;margin-top:6px;padding-top:6px}
+.dline.open .dru{display:block}
+.opt{display:block;width:100%;text-align:left;padding:10px 12px;margin:6px 0;border-radius:10px;border:2px solid #dbe2f0;background:#fff;cursor:pointer;font-size:.95rem}
+.opt.ok{border-color:#2e9e5b;background:#e6f6ec;font-weight:600}.opt.bad{border-color:#d0453e;background:#fdeceb}
+.gapitem input{padding:8px;border:2px solid #dbe2f0;border-radius:8px;width:190px;font-size:1rem}
+.primary{background:var(--blue);color:#fff;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;font-size:.95rem;margin:4px 0}
+.msg{margin-left:10px;font-weight:600}
+select{padding:9px;border-radius:8px;border:2px solid #dbe2f0;font-size:1rem;margin:4px 0;width:100%;max-width:340px;display:block}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #dbe2f0;padding:6px 8px;font-size:.9rem;text-align:left;vertical-align:top}
+.quizres{font-weight:700;margin-top:10px;min-height:1.4em}
+.ladder div{background:#fff;border:2px solid #dbe2f0;border-radius:12px;padding:10px 12px;margin:8px 0}
+.ladder .cur{border-color:var(--gold);background:#fff8e6;font-weight:600}
+footer{color:#889;font-size:.8rem;text-align:center;padding:18px}
+</style></head><body>
+<header><h1>My Free Time!</h1><div class="sub">Досуг и развлечения современного подростка. Мой выходной день — Spotlight 6, Module 4</div>
+<div><span class="badge">Spotlight 6 • 4d Culture Corner</span><span class="badge">Английский язык • 6 класс</span><span class="badge">45 минут</span></div></header>
+<nav id="tabs"></nav>
+<main>
+
+<section class="pane" id="tab-about">
+<h2>🎯 О уроке</h2>
+<div class="card"><b>УМК:</b> Spotlight 6, Module 4 «Day after day», урок 4d — Culture Corner «Teenage life in Britain» (интервью с 15-летним Джеймсом Джонсоном).<br>
+<b>Тема по ФРП:</b> «Досуг и развлечения современного подростка (мой выходной день)».<br>
+<b>Тип урока:</b> урок открытия нового знания с элементами обобщения (4a–4c пройдены ранее).<br>
+<b>Уровень:</b> A2+. <b>Оборудование:</b> компьютер или смартфон с браузером, проектор.</div>
+<div class="card"><h3>План урока (45 минут)</h3><table><tr><th>Время</th><th>Этап</th><th>Вкладка</th></tr><tr><td>0–3 мин</td><td>Оргмомент, приветствие: Good morning! How are you today?</td><td>—</td></tr><tr><td>3–7 мин</td><td>Речевая разминка: What do you do at the weekend?</td><td>—</td></tr><tr><td>7–15 мин</td><td>Новая лексика: 16 карточек, хором и по одному</td><td>Слова</td></tr><tr><td>15–20 мин</td><td>Фразы по теме «Досуг и выходные»</td><td>Фразы</td></tr><tr><td>20–23 мин</td><td>Повторение: режим дня и любимый день (4a–4c)</td><td>Повторение</td></tr><tr><td>23–29 мин</td><td>Диалог + знакомство с Culture Corner 4d (Джеймс Джонсон)</td><td>Диалог</td></tr><tr><td>29–35 мин</td><td>Чтение «Teenage life in Britain» + вопросы</td><td>Чтение</td></tr><tr><td>35–40 мин</td><td>Игры: «Угадай занятие» и «Вставь слово»</td><td>Загадки, Пропуски</td></tr><tr><td>40–43 мин</td><td>Говорение: монолог «My Day Off»</td><td>Говори сам</td></tr><tr><td>43–45 мин</td><td>Итоги, тест, домашнее задание</td><td>Тест, Домашка</td></tr></table></div>
+<div class="card"><h3>Результаты по ФГОС ООО</h3>
+<p><b>Предметные:</b> знает и употребляет ЛЕ по теме «досуг и выходной день»; рассказывает о своём выходном дне в Present Simple с наречиями частотности; понимает текст о жизни британских подростков.</p>
+<p><b>Метапредметные:</b> познавательные — сравнивает досуг британских и российских подростков, строит монолог по плану; регулятивные — проверяет себя в интерактивных заданиях, оценивает результат; коммуникативные — ведёт мини-диалог о планах на выходные.</p>
+<p><b>Личностные:</b> уважение к культуре страны изучаемого языка, осознание ценности свободного времени и здорового досуга.</p></div>
+</section>
+
+<section class="pane" id="tab-words">
+<h2>📖 Слова — 16 карточек</h2>
+<p class="small">Нажми на карточку — слово прозвучит дважды: медленно и в обычном темпе. Розовая полоска — вторая группа.</p>
+<div class="grid" id="words-grid"></div>
+</section>
+
+<section class="pane" id="tab-phrases">
+<h2>💬 Фразы</h2>
+<div id="phrases-box"></div>
+<div class="card"><h3>Шпаргалка</h3>
+<p><b>like / love / enjoy / hate + V-ing:</b> I love playing computer games.</p>
+<p><b>I'm keen on / fond of + V-ing:</b> I'm keen on skateboarding.</p>
+<p><b>Наречия частотности</b> (usually, often, sometimes, never) стоят перед смысловым глаголом: I <b>usually</b> go to the skate park.</p></div>
+</section>
+
+<section class="pane" id="tab-review">
+<h2>🔁 Повторение</h2>
+<div class="ladder">
+<div>Шаг 1. Привычки и режим дня (Module 4a) — I get up at 7 o'clock.</div>
+<div>Шаг 2. Любимый день (4c — прошлый урок) — My favourite day is Saturday.</div>
+<div class="cur">Шаг 3. Сегодня: досуг и выходной день (4d Culture Corner) — I'm keen on skateboarding.</div>
+</div>
+<div class="card"><p><b>Present Simple + наречия частотности:</b> I <b>usually</b> hang out with my friends. / I <b>never</b> get up early on Sundays.</p>
+<p><b>Вопрос:</b> What do you usually do at the weekend? — I usually listen to music and play games.</p>
+<p><b>Like + V-ing:</b> Do you like reading? — Yes, I love it!</p></div>
+</section>
+
+<section class="pane" id="tab-dialog">
+<h2>🗣 Диалог</h2>
+<p class="small">Клик по реплике — покажется перевод. Кнопка ▶ — озвучка.</p>
+<div id="dialog-box"></div>
+<div class="card"><h3>Culture Corner 4d</h3><p>В учебнике — интервью с 15-летним <b>Джеймсом Джонсоном</b> из Брайтона: как британские подростки проводят свободное время. Прочитаем о нём на вкладке «Чтение»!</p></div>
+</section>
+
+<section class="pane" id="tab-reading">
+<h2>📚 Чтение: Teenage life in Britain</h2>
+<div class="card"><p id="read-text">James Johnson is fifteen years old. He lives in Brighton, a town by the sea in the south of England. James is a typical British teenager. On weekdays he is busy with school, but at the weekend he has a lot of free time. His favourite hobby is skateboarding. He usually goes to the skate park with his friends and they ride their boards for hours. On Saturdays James often goes to the youth club, where teenagers chat, listen to music and play table tennis. He is keen on music too. James plays the guitar in a school band. On Sundays he sometimes goes shopping with his family or plays computer games at home. James never feels bored, because his weekends are always exciting. My free time is really important to me, he says.</p><button class="primary say" data-say="James Johnson is fifteen years old. He lives in Brighton, a town by the sea in the south of England. James is a typical British teenager. On weekdays he is busy with school, but at the weekend he has a lot of free time. His favourite hobby is skateboarding. He usually goes to the skate park with his friends and they ride their boards for hours. On Saturdays James often goes to the youth club, where teenagers chat, listen to music and play table tennis. He is keen on music too. James plays the guitar in a school band. On Sundays he sometimes goes shopping with his family or plays computer games at home. James never feels bored, because his weekends are always exciting. My free time is really important to me, he says.">▶ Прослушать текст</button></div>
+<h3>Проверь себя — 5 вопросов</h3>
+<div id="read-qs" data-quiz data-total="5" data-doneN="0" data-okN="0"></div>
+<div class="quizres"></div>
+</section>
+
+<section class="pane" id="tab-riddles">
+<h2>🎲 Угадай занятие</h2>
+<p class="small">Прочитай загадку и выбери занятие. Ошибка — попробуй ещё раз!</p>
+<div id="riddles-box"></div>
+</section>
+
+<section class="pane" id="tab-gaps">
+<h2>🧩 Вставь слово</h2>
+<div class="card"><b>Слова-помощники:</b> weekend, free, keen, hang, boring, exciting, usually, never</div>
+<div id="gaps-box"></div>
+</section>
+
+<section class="pane" id="tab-speak">
+<h2>🎤 Говори сам — монолог «My Day Off»</h2>
+<div class="card">
+<label>1. Чем ты увлекаешься?</label><select id="spk-act"></select>
+<label>2. Куда ты ходишь?</label><select id="spk-place"></select>
+<label>3. Когда?</label><select id="spk-time"></select>
+<label>4. Какое это занятие?</label><select id="spk-feel"></select>
+<button class="primary" id="spk-make">Собрать монолог</button>
+<div id="spk-out" class="card" style="display:none"></div>
+</div>
+</section>
+
+<section class="pane" id="tab-test">
+<h2>✏️ Тест — 10 вопросов</h2>
+<p class="small">Один ответ правильный. За 9–10 баллов — золотая медаль!</p>
+<div id="test-qs" data-quiz data-total="10" data-doneN="0" data-okN="0"></div>
+<div class="quizres"></div>
+</section>
+
+<section class="pane" id="tab-home">
+<h2>🏠 Домашка</h2>
+<div class="card"><b>Напиши рассказ «My Day Off» — 40–50 слов</b> по плану:</div>
+<div class="card">1) When is your day off?<br>2) What do you usually do in the morning?<br>3) What is your favourite free-time activity?<br>4) Who do you spend the day with?<br>5) Why do you like it?</div>
+<div class="card"><b>Пример начала:</b> On Saturday I don't go to school. In the morning I get up at 10 o'clock and have breakfast. Then I usually…</div>
+<div class="card">⭐ <b>Звёздочка (по желанию):</b> сделай постер «My Perfect Weekend» — нарисуй или вклей картинки и подпишешь их по-английски.</div>
+<div class="card"><h3>Критерии — 9 баллов</h3><table><tr><th>Критерий</th><th>Баллы</th></tr><tr><td>Содержание (все 5 пунктов плана)</td><td>3</td></tr><tr><td>Лексика по теме</td><td>2</td></tr><tr><td>Грамматика (Present Simple, V-ing)</td><td>2</td></tr><tr><td>Орфография</td><td>1</td></tr><tr><td>Оформление</td><td>1</td></tr></table>
+<p><b>Шкала отметок:</b> 8–9 → «5» · 6–7 → «4» · 4–5 → «3».</p>
+<p class="small">Для онлайн-урока: рассказ можно прислать в чат голосовым или текстом.</p></div>
+</section>
+
+</main>
+<footer>Интерактивный урок английского языка • Spotlight 6, Module 4 (4d Culture Corner) • 6 класс</footer>
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s);};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+function speakOnce(t,rate){
+ if(!("speechSynthesis" in window))return;
+ try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=rate||0.95;speechSynthesis.speak(u);}catch(e){}
+}
+function speakTwice(t){
+ if(!("speechSynthesis" in window))return;
+ try{speechSynthesis.cancel();
+ var u1=new SpeechSynthesisUtterance(t);u1.lang="en-GB";u1.rate=0.6;
+ var u2=new SpeechSynthesisUtterance(t);u2.lang="en-GB";u2.rate=0.95;
+ u1.onend=function(){speechSynthesis.speak(u2);};
+ speechSynthesis.speak(u1);}catch(e){}
+}
+function switchTab(id){
+ $$(".pane").forEach(function(p){p.classList.toggle("on",p.id==="tab-"+id);});
+ $$(".tabbtn").forEach(function(b){b.classList.toggle("on",b.dataset.tab===id);});
+ window.scrollTo(0,0);
+}
+document.addEventListener("click",function(e){
+ var tb=e.target.closest(".tabbtn");
+ if(tb){switchTab(tb.dataset.tab);return;}
+ var w=e.target.closest(".wordcard");
+ if(w){speakTwice(w.dataset.en);return;}
+ var dl=e.target.closest(".dline");
+ if(dl){dl.classList.toggle("open");return;}
+ var sb=e.target.closest(".say");
+ if(sb){speakTwice(sb.dataset.say);return;}
+ var mc=e.target.closest(".opt");
+ if(mc){
+  var q=mc.parentNode;
+  if(q.dataset.done)return;
+  q.dataset.done="1";
+  var opts=q.querySelectorAll(".opt");
+  var idx=parseInt(mc.dataset.i,10),ans=parseInt(q.dataset.ans,10);
+  var ok=idx===ans;
+  mc.classList.add(ok?"ok":"bad");
+  if(!ok)opts[ans].classList.add("ok");
+  var box=q.closest("[data-quiz]");
+  if(!box){
+   if(q.dataset.done)return;
+   if(ok){q.dataset.done="1";}
+   else{mc.classList.remove("bad");void mc.offsetWidth;mc.classList.add("bad");}
+   return;
+  }
+  if(box){
+   box.dataset.doneN=(parseInt(box.dataset.doneN,10)||0)+1;
+   if(ok)box.dataset.okN=(parseInt(box.dataset.okN,10)||0)+1;
+   var total=parseInt(box.dataset.total,10);
+   if(parseInt(box.dataset.doneN,10)===total){
+    var okN=parseInt(box.dataset.okN,10);
+    var medal=okN>=9?"🥇 Золотая медаль! Отлично!":(okN>=7?"🥈 Серебро! Хорошо!":"💪 Потренируйся ещё!");
+    box.parentNode.querySelector(".quizres").textContent="Результат: "+okN+" из "+total+". "+medal;
+   }
+  }
+  return;
+ }
+ var chk=e.target.closest(".check");
+ if(chk){
+  var gi=parseInt(chk.dataset.i,10);
+  var wrap=chk.parentNode;
+  var inp=wrap.querySelector("input");
+  var msg=wrap.querySelector(".msg");
+  var val=(inp.value||"").trim().toLowerCase();
+  if(val===GAPS[gi][1].toLowerCase()){msg.textContent="Верно! ✓";msg.style.color="#2e9e5b";speakOnce(GAPS[gi][1]);}
+  else{msg.textContent="Правильно: "+GAPS[gi][1];msg.style.color="#d0453e";}
+  return;
+ }
+});
+function qHTML(item,i){
+ var h='<div class="card" data-ans="'+item[2]+'"><p><b>'+(i+1)+'. '+item[0]+'</b></p>';
+ for(var k=0;k<item[1].length;k++){h+='<button class="opt" data-i="'+k+'">'+item[1][k]+"</button>";}
+ return h+"</div>";
+}
+function init(){
+ var nav=$("#tabs"),h="";
+ TABS.forEach(function(t){h+='<button class="tabbtn" data-tab="'+t[0]+'">'+t[1]+"</button>";});
+ nav.innerHTML=h;
+ var wg=$("#words-grid");h="";
+ WORDS.forEach(function(w,i){
+  if(i===0||w.g!==WORDS[i-1].g){
+   h+='<h3 style="grid-column:1/-1">'+(w.g===1?"Занятия и досуг":"Время и оценки")+"</h3>";
+  }
+  h+='<div class="wordcard'+(w.g===2?" g2":"")+'" data-en="'+w.en+'"><div class="en">'+w.en+'</div><div class="tr">['+w.tr+']</div><div class="ru">'+w.ru+"</div></div>";
+ });
+ wg.innerHTML=h;
+ var pb=$("#phrases-box");h="";
+ PHRASES.forEach(function(p){h+='<div class="phrase"><div><div class="en">'+p[0]+'</div><div class="ru">'+p[1]+'</div></div><button class="say" data-say="'+p[0]+'">▶</button></div>';});
+ pb.innerHTML=h;
+ var db=$("#dialog-box");h="";
+ DIALOG.forEach(function(d){h+='<div class="dline"><div class="en">'+d[0]+'</div><div class="dru">'+d[1]+"</div></div>";});
+ db.innerHTML=h;
+ var rq=$("#read-qs");h="";
+ READQ.forEach(function(item,i){h+=qHTML(item,i);});
+ rq.innerHTML=h;
+ var rb=$("#riddles-box");h="";
+ RIDDLES.forEach(function(item,i){h+='<div class="card" data-ans="'+item[2]+'"><p><b>'+(i+1)+'. '+item[0]+"</b></p>";
+  for(var k=0;k<item[1].length;k++){h+='<button class="opt" data-i="'+k+'">'+item[1][k]+"</button>";}
+  h+="</div>";});
+ rb.innerHTML=h;
+ var gb=$("#gaps-box");h="";
+ GAPS.forEach(function(g,i){h+='<div class="gapitem card"><p><b>'+(i+1)+'. '+g[0]+'</b></p><input autocomplete="off"><button class="primary check" data-i="'+i+'">Проверить</button><span class="msg"></span></div>';});
+ gb.innerHTML=h;
+ fill($("#spk-act"),SPK.act);fill($("#spk-place"),SPK.place);fill($("#spk-time"),SPK.time);fill($("#spk-feel"),SPK.feel);
+ var tq=$("#test-qs");h="";
+ TEST.forEach(function(item,i){h+=qHTML(item,i);});
+ tq.innerHTML=h;
+ $("#spk-make").addEventListener("click",function(){
+  var t="My day off. At the weekend I am keen on "+$("#spk-act").value+". "+$("#spk-time").value+" I go to "+$("#spk-place").value+" with my friends. It is "+$("#spk-feel").value+"! In the evening I listen to music or chat online. I never feel bored!";
+  var out=$("#spk-out");out.style.display="block";
+  out.innerHTML="<b>Твой монолог:</b><p>"+t+'</p><button class="primary say" data-say="'+t+'">▶ Прослушать</button>';
+ });
+}
+function fill(sel,arr){var h="";arr.forEach(function(a){h+='<option value="'+a+'">'+a+"</option>";});sel.innerHTML=h;}
+var TABS=[["about","🎯 О уроке"],["words","📖 Слова"],["phrases","💬 Фразы"],["review","🔁 Повторение"],["dialog","🗣 Диалог"],["reading","📚 Чтение"],["riddles","🎲 Загадки"],["gaps","🧩 Пропуски"],["speak","🎤 Говори сам"],["test","✏️ Тест"],["home","🏠 Домашка"]];
+var WORDS=[{"en": "free time", "ru": "свободное время", "tr": "ˌfriː ˈtaɪm", "g": 1}, {"en": "weekend", "ru": "выходные (суббота и воскресенье)", "tr": "ˈwiːkˌend", "g": 1}, {"en": "day off", "ru": "выходной день", "tr": "ˌdeɪ ˈɒf", "g": 1}, {"en": "skateboarding", "ru": "катание на скейте", "tr": "ˈskeɪtbɔːdɪŋ", "g": 1}, {"en": "playing computer games", "ru": "игры на компьютере", "tr": "ˈpleɪɪŋ kəmˈpjuːtə ɡeɪmz", "g": 1}, {"en": "chatting online", "ru": "общение в интернете", "tr": "ˈtʃætɪŋ ˈɒnlaɪn", "g": 1}, {"en": "hanging out with friends", "ru": "прогулки с друзьями", "tr": "ˈhæŋɪŋ aʊt wɪð frendz", "g": 1}, {"en": "going to the cinema", "ru": "поход в кино", "tr": "ˈɡəʊɪŋ tə ðə ˈsɪnəmə", "g": 1}, {"en": "listening to music", "ru": "прослушивание музыки", "tr": "ˈlɪsənɪŋ tə ˈmjuːzɪk", "g": 1}, {"en": "doing judo", "ru": "занятия дзюдо", "tr": "ˈduːɪŋ ˈdʒuːdəʊ", "g": 1}, {"en": "busy", "ru": "занятой", "tr": "ˈbɪzi", "g": 2}, {"en": "boring", "ru": "скучный", "tr": "ˈbɔːrɪŋ", "g": 2}, {"en": "exciting", "ru": "захватывающий", "tr": "ɪkˈsaɪtɪŋ", "g": 2}, {"en": "usually", "ru": "обычно", "tr": "ˈjuːʒʊəli", "g": 2}, {"en": "sometimes", "ru": "иногда", "tr": "ˈsʌmtaɪmz", "g": 2}, {"en": "never", "ru": "никогда", "tr": "ˈnevə", "g": 2}];
+var PHRASES=[["How do you spend your free time?", "Как ты проводишь свободное время?"], ["What do you usually do at the weekend?", "Что ты обычно делаешь в выходные?"], ["I usually hang out with my friends.", "Я обычно гуляю с друзьями."], ["I'm keen on skateboarding.", "Я увлекаюсь скейтбордингом."], ["I'm fond of reading comics.", "Мне нравится читать комиксы."], ["At the weekend I go to the cinema.", "По выходным я хожу в кино."], ["I never get up early on Sundays.", "По воскресеньям я никогда не встаю рано."], ["My favourite day is Saturday.", "Мой любимый день — суббота."], ["That sounds like fun!", "Звучит весело!"], ["Why don't we go skateboarding together?", "Может, покатаемся на скейтах вместе?"]];
+var DIALOG=[["Hi, Anna! What do you usually do at the weekend?", "Привет, Анна! Что ты обычно делаешь по выходным?"], ["I'm keen on skateboarding. I usually go to the skate park with my friends.", "Я увлекаюсь скейтбордингом. Обычно я хожу в скейт-парк с друзьями."], ["Cool! Do you like playing computer games?", "Здорово! А ты любишь компьютерные игры?"], ["Yes, but I prefer playing outside. In my free time I also read comics and listen to music.", "Да, но я предпочитаю играть на улице. В свободное время я ещё читаю комиксы и слушаю музыку."], ["What about Saturday? Why don't we go skateboarding together?", "Как насчёт субботы? Может, покатаемся на скейтах вместе?"], ["That sounds like fun! See you on Saturday at 11 o'clock!", "Звучит весело! Увидимся в субботу в 11 часов!"]];
+var READQ=[["Where does James live?", ["In London", "In Brighton", "In Edinburgh"], 1], ["What is his favourite hobby?", ["Reading", "Skateboarding", "Cooking"], 1], ["Where do teenagers go on Saturdays?", ["To the youth club", "To the museum", "To the library"], 0], ["What does James play in the school band?", ["The drums", "The piano", "The guitar"], 2], ["Why does James never feel bored?", ["Because his weekends are exciting", "Because he has no weekends", "Because he is at school"], 0]];
+var RIDDLES=[["I have a board and four wheels. I ride it in the park.", ["Doing judo", "Skateboarding", "Going to the cinema"], 1], ["I sit in front of the screen and play with a joystick.", ["Chatting online", "Listening to music", "Playing computer games"], 2], ["I put on a white kimono and learn to fall safely.", ["Skateboarding", "Doing judo", "Hanging out with friends"], 1], ["I watch a big screen and eat popcorn.", ["Going to the cinema", "Reading comics", "Doing judo"], 0], ["I put on my headphones and press the play button.", ["Playing computer games", "Listening to music", "Going shopping"], 1], ["I talk with my friends and send photos and smiles.", ["Reading comics", "Doing judo", "Chatting online"], 2], ["We walk in the park, laugh and take photos together.", ["Hanging out with friends", "Listening to music", "Playing computer games"], 0], ["I have comic books. Spider-Man is my favourite!", ["Doing judo", "Reading comics", "Going to the cinema"], 1]];
+var GAPS=[["At the ______ I don't get up early.", "weekend"], ["I have a lot of ______ time after school.", "free"], ["I'm ______ on skateboarding.", "keen"], ["I ______ out with my friends in the park.", "hang"], ["Staying at home all day is ______.", "boring"], ["Our trip to the water park was ______!", "exciting"], ["I ______ watch TV in the evening.", "usually"], ["I ______ play computer games on school days.", "never"]];
+var TEST=[["How do you ______ your free time?", ["spend", "make", "do"], 0], ["I'm keen ______ skateboarding.", ["in", "on", "at"], 1], ["At the weekend I ______ get up early.", ["no", "never", "not ever"], 1], ["My favourite day ______ Saturday.", ["are", "am", "is"], 2], ["James is ______ Brighton.", ["of", "from", "to"], 1], ["On Saturdays teens go to the ______ club.", ["young", "youth", "youngs"], 1], ["Choose the correct sentence:", ["I like play football.", "I like to playing football.", "I like playing football."], 2], ["Chat ______ means talking with friends on the Internet.", ["offline", "online", "out"], 1], ["That ______ like fun!", ["looks", "tastes", "sounds"], 2], ["British teens like ______ with friends at the weekend.", ["hang out", "hangs out", "hanging out"], 2]];
+var SPK={"act": ["skateboarding", "playing computer games", "reading comics", "hanging out with friends"], "place": ["the skate park", "the park", "the cinema", "the swimming pool"], "time": ["On Saturday morning", "On Sunday afternoon", "After school"], "feel": ["exciting", "great fun", "relaxing", "cool"]};
+init();
+})();
+</script></body></html>
