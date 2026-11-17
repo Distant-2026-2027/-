@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Famous Landmarks — Spotlight 9, Module 3</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Verdana,Arial,sans-serif;background:#eef2f7;color:#1c2333;line-height:1.55}
+header{background:linear-gradient(135deg,#14213d,#2c3e7a);color:#fff;padding:22px 16px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:.5px}
+header .sub{color:#f0b429;font-weight:600;margin-top:6px;font-size:.95em}
+.badges{margin-top:10px}
+.badges span{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:4px 12px;font-size:.78em;margin:3px}
+nav{display:flex;overflow-x:auto;background:#fff;border-bottom:3px solid #f0b429;position:sticky;top:0;z-index:9}
+nav button{flex:0 0 auto;border:0;background:none;padding:12px 13px;font-size:.85em;color:#5a6376;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px}
+nav button.on{color:#14213d;font-weight:700;border-bottom-color:#f0b429}
+main{max-width:860px;margin:0 auto;padding:16px 12px 60px}
+.tab{display:none}
+.tab.on{display:block}
+.card{background:#fff;border-radius:14px;padding:14px 16px;margin:12px 0;box-shadow:0 2px 6px rgba(20,33,61,.08)}
+.note{background:#fdf6e3;border-left:4px solid #f0b429;border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0;font-size:.92em}
+h2{color:#14213d;font-size:1.25em;margin:6px 0 10px}
+h3{color:#2c3e7a;font-size:1.05em;margin:12px 0 6px}
+.wcard{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px solid #dde4ef;border-radius:12px;padding:10px 12px;margin:7px 0;cursor:pointer}
+.wcard:active{background:#fdf6e3}
+.wcard .en{font-weight:700;color:#14213d;font-size:1.05em}
+.wcard .ru{color:#5a6376;font-size:.88em;text-align:right}
+.wcard .ipa{color:#8a93a6;font-size:.8em;margin-left:6px}
+.group{color:#2c3e7a;font-weight:700;margin:14px 0 6px;font-size:.95em;text-transform:uppercase;letter-spacing:.5px}
+.ph{background:#fff;border-left:4px solid #2c3e7a;border-radius:0 10px 10px 0;padding:9px 12px;margin:7px 0;font-size:.95em}
+.ph b{color:#14213d}
+.ph .tr{color:#5a6376;font-size:.9em}
+.lad{padding-left:0;margin:8px 0;list-style:none;counter-reset:l}
+.lad li{margin:5px 0;padding-left:6px}
+.dl{border:1.5px solid #dde4ef;border-radius:12px;padding:9px 12px;margin:7px 0}
+.dl .who{font-weight:700;color:#2c3e7a;font-size:.85em}
+.dl .en{margin:2px 0}
+.dl .ru{display:none;color:#5a6376;font-size:.9em;border-top:1px dashed #cdd6e4;margin-top:4px;padding-top:4px}
+.dl.show .ru{display:block}
+.rid{background:#fff;border:1.5px solid #dde4ef;border-radius:12px;padding:11px 13px;margin:8px 0}
+.rid .ans{display:none;margin-top:7px;background:#e8f5ec;border-radius:8px;padding:6px 10px;color:#1d6b3c;font-weight:600}
+.rid.show .ans{display:block}
+.rid .hint{color:#8a93a6;font-size:.85em;margin-top:5px}
+input.gap{border:0;border-bottom:2px solid #2c3e7a;background:#f4f7fc;padding:4px 6px;width:150px;font-size:.95em;color:#14213d;outline:0}
+.gline{margin:9px 0}
+.ok{color:#1d6b3c;font-weight:700}
+.bad{color:#b02a2a;font-weight:700}
+select{padding:8px 10px;border-radius:9px;border:1.5px solid #cdd6e4;font-size:.95em;background:#fff;margin:5px 0;max-width:100%}
+.btn{display:inline-block;background:#14213d;color:#fff;border:0;border-radius:24px;padding:10px 20px;font-size:.95em;cursor:pointer;margin:8px 6px 0 0}
+.btn.alt{background:#f0b429;color:#14213d}
+.q{background:#fff;border:1.5px solid #dde4ef;border-radius:12px;padding:11px 13px;margin:9px 0}
+.q p{font-weight:600;margin-bottom:6px}
+.q label{display:block;padding:5px 8px;border-radius:8px;cursor:pointer;margin:3px 0}
+.q label:hover{background:#f4f7fc}
+.q .expl{display:none;margin-top:7px;font-size:.88em;color:#5a6376}
+.res{text-align:center;font-size:1.3em;font-weight:700;color:#14213d;margin:14px 0}
+.medal{font-size:2.2em;text-align:center;margin:8px 0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92em}
+th,td{border:1px solid #dde4ef;padding:7px 9px;text-align:left}
+th{background:#14213d;color:#fff}
+.checklist li{margin:4px 0}
+audio{display:none}
+.speaker{border:1.5px solid #2c3e7a;background:#eef2fb;color:#14213d;border-radius:10px;padding:8px 14px;cursor:pointer;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>🏰 Famous Landmarks</h1>
+<div class="sub">Страны изучаемого языка: достопримечательности</div>
+<div class="badges"><span>Spotlight 9 • Module 3 «See it to believe it»</span><span>Английский язык • 9 класс • уровень B1+</span></div>
+</header>
+<nav>
+<button data-tab="about" class="on">🎯 О уроке</button>
+<button data-tab="words">📖 Слова</button>
+<button data-tab="phrases">💬 Фразы</button>
+<button data-tab="review">🔁 Повторение</button>
+<button data-tab="dialog">🗣 Диалог</button>
+<button data-tab="reading">📚 Чтение</button>
+<button data-tab="riddles">🏰 Загадки</button>
+<button data-tab="gaps">🧩 Пропуски</button>
+<button data-tab="speak">🎤 Говори сам</button>
+<button data-tab="test">✏️ Тест</button>
+<button data-tab="home">🏠 Домашка</button>
+</nav>
+<main>
+
+<section id="tab-about" class="tab on">
+<div class="card"><h2>План урока — 45 минут</h2>
+<table>
+<tr><th>Время</th><th>Этап</th><th>Вкладка</th></tr>
+<tr><td>3 мин</td><td>Warm-up: What do you know about the UK?</td><td>О уроке</td></tr>
+<tr><td>8 мин</td><td>Лексика: места и впечатления, озвучка</td><td>📖 Слова</td></tr>
+<tr><td>5 мин</td><td>Речевые фразы B1+</td><td>💬 Фразы</td></tr>
+<tr><td>4 мин</td><td>Повторение: Present Perfect (ever / never)</td><td>🔁 Повторение</td></tr>
+<tr><td>7 мин</td><td>Диалог о достопримечательностях + чтение</td><td>🗣 Диалог · 📚 Чтение</td></tr>
+<tr><td>6 мин</td><td>Игра «Угадай достопримечательность»</td><td>🏰 Загадки</td></tr>
+<tr><td>5 мин</td><td>Тренажёр «Вставь слово»</td><td>🧩 Пропуски</td></tr>
+<tr><td>5 мин</td><td>Подготовка монолога</td><td>🎤 Говори сам</td></tr>
+<tr><td>2 мин</td><td>Тест, рефлексия, домашнее задание</td><td>✏️ Тест · 🏠 Домашка</td></tr>
+</table></div>
+<div class="card"><h3>Результаты по ФГОС ООО</h3>
+<ul class="lad">
+<li><b>Предметные:</b> знает ЛЕ по теме «Достопримечательности», описывает место по плану, понимает текст с извлечением информации;</li>
+<li><b>Метапредметные:</b> извлекает информацию из текста, строит монолог-описание с опорой, оценивает результат;</li>
+<li><b>Личностные:</b> уважение к культурному наследию стран изучаемого языка.</li>
+</ul>
+<div class="note">Вкладки переключаются нажатием. Клик по карточке слова — озвучка (дважды). Двойной клик по реплике диалога — перевод.</div></div>
+</section>
+
+<section id="tab-words" class="tab">
+<div class="card"><h2>📖 Слова: клик — озвучка</h2>
+<div class="group">Places — места и строения</div>
+<div class="wcard" data-say="landmark"><span><span class="en">a landmark</span><span class="ipa">/ˈlændmɑːk/</span></span><span class="ru">достопримечательность</span></div>
+<div class="wcard" data-say="castle"><span><span class="en">a castle</span><span class="ipa">/ˈkɑːsl/</span></span><span class="ru">замок</span></div>
+<div class="wcard" data-say="fortress"><span><span class="en">a fortress</span><span class="ipa">/ˈfɔːtrəs/</span></span><span class="ru">крепость</span></div>
+<div class="wcard" data-say="cathedral"><span><span class="en">a cathedral</span><span class="ipa">/kəˈθiːdrəl/</span></span><span class="ru">собор</span></div>
+<div class="wcard" data-say="palace"><span><span class="en">a palace</span><span class="ipa">/ˈpælɪs/</span></span><span class="ru">дворец</span></div>
+<div class="wcard" data-say="tower"><span><span class="en">a tower</span><span class="ipa">/ˈtaʊə/</span></span><span class="ru">башня</span></div>
+<div class="wcard" data-say="bridge"><span><span class="en">a bridge</span><span class="ipa">/brɪdʒ/</span></span><span class="ru">мост</span></div>
+<div class="wcard" data-say="statue"><span><span class="en">a statue</span><span class="ipa">/ˈstætʃuː/</span></span><span class="ru">статуя</span></div>
+<div class="group">Impressions — описание и впечатления</div>
+<div class="wcard" data-say="ancient"><span><span class="en">ancient</span><span class="ipa">/ˈeɪnʃənt/</span></span><span class="ru">древний</span></div>
+<div class="wcard" data-say="magnificent"><span><span class="en">magnificent</span><span class="ipa">/mæɡˈnɪfɪsnt/</span></span><span class="ru">великолепный</span></div>
+<div class="wcard" data-say="spectacular"><span><span class="en">spectacular</span><span class="ipa">/spekˈtækjələ/</span></span><span class="ru">эффектный</span></div>
+<div class="wcard" data-say="breathtaking"><span><span class="en">breathtaking</span><span class="ipa">/ˈbreθteɪkɪŋ/</span></span><span class="ru">захватывающий дух</span></div>
+<div class="wcard" data-say="world-famous"><span><span class="en">world-famous</span></span><span class="ru">всемирно известный</span></div>
+<div class="wcard" data-say="historic"><span><span class="en">historic</span><span class="ipa">/hɪˈstɒrɪk/</span></span><span class="ru">исторический</span></div>
+<div class="wcard" data-say="popular"><span><span class="en">popular</span><span class="ipa">/ˈpɒpjələ/</span></span><span class="ru">популярный</span></div>
+<div class="wcard" data-say="amazing"><span><span class="en">amazing</span><span class="ipa">/əˈmeɪzɪŋ/</span></span><span class="ru">потрясающий</span></div>
+<div class="note">Слова звучат дважды: сначала медленно, затем в обычном темпе. Повторяйте вслух за озвучкой.</div>
+</div>
+</section>
+
+<section id="tab-phrases" class="tab">
+<div class="card"><h2>💬 Речевые фразы B1+</h2>
+<div class="ph" data-say="Where is it located?"><b>Where is it located?</b><br><span class="tr">Где он находится?</span></div>
+<div class="ph" data-say="It is located in the centre of London."><b>It is located in the centre of London.</b><br><span class="tr">Он находится в центре Лондона.</span></div>
+<div class="ph" data-say="It was built in the 11th century."><b>It was built in the 11th century.</b><br><span class="tr">Он был построен в XI веке.</span></div>
+<div class="ph" data-say="It is worth visiting!"><b>It is worth visiting!</b><br><span class="tr">Его стоит посетить!</span></div>
+<div class="ph" data-say="The view from the top is breathtaking."><b>The view from the top is breathtaking.</b><br><span class="tr">Вид сверху захватывает дух.</span></div>
+<div class="ph" data-say="It is a world-famous landmark."><b>It is a world-famous landmark.</b><br><span class="tr">Это всемирно известная достопримечательность.</span></div>
+<div class="ph" data-say="Have you ever been there?"><b>Have you ever been there?</b><br><span class="tr">Ты когда-нибудь там был?</span></div>
+<div class="ph" data-say="I have never seen it before."><b>I have never seen it before.</b><br><span class="tr">Я никогда не видел его раньше.</span></div>
+<div class="ph" data-say="What impressed you most of all?"><b>What impressed you most of all?</b><br><span class="tr">Что впечатлило тебя больше всего?</span></div>
+<div class="ph" data-say="I would like to visit it one day."><b>I would like to visit it one day.</b><br><span class="tr">Я хотел бы однажды его посетить.</span></div>
+<h3>Шпаргалка</h3>
+<ul class="lad">
+<li><b>Место:</b> It is located in… / in the south of… / on the bank of…</li>
+<li><b>История:</b> It was built in… (страдательный залог)</li>
+<li><b>Впечатление:</b> It is worth visiting! / The view is breathtaking.</li>
+</ul></div>
+</section>
+
+<section id="tab-review" class="tab">
+<div class="card"><h2>🔁 Повторение: Present Perfect (ever / never)</h2>
+<div class="note">Для рассказа о впечатлениях нужен Present Perfect: <b>have/has + V3</b>. Лесенка тем: «путешествие → впечатления → достопримечательности».</div>
+<div class="ph" data-say="Have you ever been to London?"><b>Have you ever been to London?</b> — Ты когда-нибудь был в Лондоне?</div>
+<div class="ph" data-say="I have never seen Big Ben."><b>I have never seen Big Ben.</b> — Я никогда не видел Биг-Бен.</div>
+<div class="ph" data-say="She has visited three countries this year."><b>She has visited three countries this year.</b> — Она посетила три страны в этом году.</div>
+<div class="ph" data-say="What an amazing view!"><b>What an amazing view!</b> — Какой потрясающий вид!</div>
+<div class="ph" data-say="It is the most magnificent building I have ever seen."><b>It is the most magnificent building I have ever seen.</b> — Это самое великолепное здание, которое я когда-либо видел.</div>
+<div class="note">Сравните: <b>ever</b> — «когда-либо» (вопросы), <b>never</b> — «никогда» (отрицания). После never глагол уже отрицательный по смыслу — not не нужен.</div>
+</div>
+</section>
+
+<section id="tab-dialog" class="tab">
+<div class="card"><h2>🗣 Диалог: Anne and Mark about the UK</h2>
+<div class="note">Двойной клик по реплике — перевод. Кнопка ▶ — прослушать диалог целиком.</div>
+<div id="dlg"></div>
+<button class="btn" id="playDlg">▶ Прослушать диалог</button></div>
+</section>
+
+<section id="tab-reading" class="tab">
+<div class="card"><h2>📚 Чтение: The UK and its Landmarks</h2>
+<div class="ph">The United Kingdom is famous for its historic landmarks. London, the capital, attracts millions of visitors every year. Big Ben, the great clock tower, and Tower Bridge over the River Thames are the symbols of the city. The Tower of London is an ancient fortress built in the 11th century. Today it is a museum where you can see the Crown Jewels.</div>
+<div class="ph">Not far from London there is Windsor Castle — the Queen's favourite residence. In the south of England you can visit Stonehenge, a mysterious monument of huge stones that is more than four thousand years old. In Scotland, on an old volcano, stands Edinburgh Castle with a breathtaking view of the city. All these places are definitely worth visiting!</div>
+<button class="speaker" id="playTxt">▶ Прослушать текст</button>
+<h3>Вопросы на понимание</h3>
+<div class="q">1. What is the symbol of London?<label><input type="radio" name="rq1" value="0"> the Crown Jewels</label><label><input type="radio" name="rq1" value="1"> Big Ben and Tower Bridge</label><label><input type="radio" name="rq1" value="2"> an old volcano</label></div>
+<div class="q">2. When was the Tower of London built?<label><input type="radio" name="rq2" value="0"> in the 11th century</label><label><input type="radio" name="rq2" value="1"> 4,000 years ago</label><label><input type="radio" name="rq2" value="2"> last year</label></div>
+<div class="q">3. Where can you see the Crown Jewels?<label><input type="radio" name="rq3" value="0"> in Windsor Castle</label><label><input type="radio" name="rq3" value="1"> in the Tower of London</label><label><input type="radio" name="rq3" value="2"> in Stonehenge</label></div>
+<div class="q">4. What is Stonehenge?<label><input type="radio" name="rq4" value="0"> a modern bridge</label><label><input type="radio" name="rq4" value="1"> the Queen's residence</label><label><input type="radio" name="rq4" value="2"> a mysterious monument of huge stones</label></div>
+<div class="q">5. Where is Edinburgh Castle located?<label><input type="radio" name="rq5" value="0"> on an old volcano in Scotland</label><label><input type="radio" name="rq5" value="1"> in the centre of London</label><label><input type="radio" name="rq5" value="2"> in New York</label></div>
+<button class="btn" id="checkRead">Проверить</button>
+<div id="readRes" class="res"></div></div>
+</section>
+
+<section id="tab-riddles" class="tab">
+<div class="card"><h2>🏰 «Угадай достопримечательность»</h2>
+<div class="note">Прочитайте загадку и нажмите на карточку — появится ответ. Постарайтесь угадать до нажатия!</div>
+<div id="riddles"></div></div>
+</section>
+
+<section id="tab-gaps" class="tab">
+<div class="card"><h2>🧩 «Вставь слово»</h2>
+<div class="note">Вставьте слово по смыслу. Небольшие изменения формы допустимы (a landmark → landmarks).</div>
+<div id="gaps"></div>
+<button class="btn" id="checkGaps">Проверить</button>
+<button class="btn alt" id="showGaps">Показать ответы</button>
+<div id="gapRes" class="res"></div></div>
+</section>
+
+<section id="tab-speak" class="tab">
+<div class="card"><h2>🎤 Говори сам: «A Landmark I Would Like to Visit»</h2>
+<div class="note">Выберите по одному варианту в каждом столбце — соберётся готовый монолог. Прочитайте его вслух, затем послушайте озвучку и сравните.</div>
+<p>1. Достопримечательность:</p><select id="s1"></select>
+<p>2. Впечатление:</p><select id="s2"></select>
+<p>3. Причина:</p><select id="s3"></select>
+<button class="btn" id="makeMon">Собрать монолог</button>
+<div id="mon" class="ph" style="display:none"></div>
+<button class="btn alt" id="sayMon" style="display:none">▶ Прослушать</button></div>
+</section>
+
+<section id="tab-test" class="tab">
+<div class="card"><h2>✏️ Тест — 10 вопросов</h2>
+<div class="note">За 9–10 правильных ответов — золотая медаль 🥇. За 7–8 — серебряная 🥈, за 5–6 — бронзовая 🥉.</div>
+<div id="test"></div>
+<button class="btn" id="checkTest">Проверить тест</button>
+<div class="medal" id="medal"></div>
+<div id="testRes" class="res"></div></div>
+</section>
+
+<section id="tab-home" class="tab">
+<div class="card"><h2>🏠 Домашнее задание</h2>
+<p><b>Напишите текст «A Landmark I Would Like to Visit» (80–100 слов)</b> по плану:</p>
+<ul class="lad">
+<li>1. Name the landmark (what and where it is).</li>
+<li>2. Say something about its history.</li>
+<li>3. Describe it: use 3–4 words from the lesson.</li>
+<li>4. Say why it is impressive.</li>
+<li>5. Explain why you would like to visit it.</li>
+<li>6. Finish with a conclusion.</li>
+</ul>
+<div class="note">⭐ Со звёздочкой: сделайте мини-открытку — фото или рисунок достопримечательности и подпись по-английски (2–3 предложения).</div>
+<h3>Критерии (9 баллов)</h3>
+<ul class="lad">
+<li>Соответствие плану — 3 балла;</li>
+<li>Лексика урока (не менее 5 слов) — 2 балла;</li>
+<li>Грамматика (Present Perfect, страдательный залог) — 2 балла;</li>
+<li>Объём и оформление — 2 балла.</li>
+</ul>
+<h3>Шкала отметок</h3>
+<p>9–8 → «5» · 7–6 → «4» · 5 → «3»</p>
+<div class="note">Работа подходит и для онлайн-, и для очного формата: текст можно прислать в чат классу или сдать в тетради.</div></div>
+</section>
+
+</main>
+
+<script>
+(function(){
+"use strict";
+var dlg=[
+["Anne","Have you ever been to London, Mark?","Ты когда-нибудь был в Лондоне, Марк?"],
+["Mark","No, I haven't. But I would like to visit it. What landmarks should I see?","Нет. Но я хотел бы его посетить. Какие достопримечательности стоит посмотреть?"],
+["Anne","Big Ben, of course! It is the most famous landmark of London.","Биг-Бен, конечно! Это самая известная достопримечательность Лондона."],
+["Mark","What about the Tower of London? I have read that it is an ancient fortress.","А Тауэр? Я читал, что это древняя крепость."],
+["Anne","Yes! It was built in the 11th century. The Crown Jewels are there.","Да! Он был построен в XI веке. Там хранятся королевские сокровища."],
+["Mark","Sounds spectacular! And where is Edinburgh Castle?","Звучит эффектно! А где находится Эдинбургский замок?"],
+["Anne","It is located in Scotland, on an old volcano. The view from the top is breathtaking.","Он находится в Шотландии, на старом вулкане. Вид сверху захватывает дух."],
+["Mark","Great! I hope my dream will come true soon.","Здорово! Надеюсь, моя мечта скоро сбудется."]
+];
+var riddles=[
+["I am a famous clock tower in the centre of London. My bell rings every hour. My name is known all over the world.","Big Ben","Кто я?"],
+["I am an ancient monument of huge stones in the south of England. I am more than 4,000 years old. Nobody knows why I am here.","Stonehenge","Стоунхендж"],
+["I am an ancient fortress on the bank of the Thames. My ravens protect the kingdom, and the Crown Jewels are kept inside me.","The Tower of London","Лондонский Тауэр"],
+["I am a bridge over the Thames with two towers. I can open in the middle to let the ships pass.","Tower Bridge","Тауэрский мост"],
+["I am a medieval castle near London. Kings and queens lived in me for almost 1,000 years.","Windsor Castle","Виндзорский замок"],
+["I am a castle on an old volcano in Scotland. The view from my walls is breathtaking.","Edinburgh Castle","Эдинбургский замок"],
+["I am a copper statue with a torch in my hand. I stand on an island in New York Harbour.","The Statue of Liberty","Статуя Свободы"],
+["I am a world-famous building with white «sails» on Sydney Harbour. Concerts take place inside me.","Sydney Opera House","Сиднейская опера"]
+];
+var gaps=[
+["Big Ben is the most famous ___ of London.","landmark"],
+["The Tower of London is an ancient ___ on the bank of the Thames.","fortress"],
+["The view from the top of the tower is ___.","breathtaking"],
+["Stonehenge is more than 4,000 years ___.","old"],
+["Edinburgh Castle is ___ on an old volcano.","located"],
+["St Paul's ___ was built by Christopher Wren.","Cathedral"],
+["The palace is ___ — I took a lot of photos.","magnificent"],
+["Sydney Opera House is ___ for its design.","world-famous"]
+];
+var landmarks=[
+["Big Ben","the centre of London","It is a world-famous clock tower. It was built in the 19th century."],
+["Stonehenge","the south of England","It is an ancient monument of huge stones. It is more than 4,000 years old."],
+["The Tower of London","on the bank of the Thames","It is an ancient fortress built in the 11th century. The Crown Jewels are there."],
+["Windsor Castle","not far from London","It is the Queen's favourite residence with a long and rich history."],
+["Edinburgh Castle","in Scotland","It stands on an old volcano, and the view from the top is breathtaking."]
+];
+var feelings=["magnificent","breathtaking","spectacular","amazing"];
+var reasons=["I love history and old legends.","I want to see the view from the top.","I have read a lot about it in books.","My friends recommend it to me."];
+var test=[
+["What is the most famous clock tower in London?",["Tower Bridge","Big Ben","Stonehenge"],1],
+["Where is the Statue of Liberty located?",["in London","in Edinburgh","in New York"],2],
+["The Tower of London is a(n)…",["ancient fortress","modern office","opera house"],0],
+["How old is Stonehenge?",["about 400 years","more than 4,000 years","more than 40,000 years"],1],
+["Edinburgh Castle stands on…",["a small island","an old volcano","a high bridge"],1],
+["Where can you see the Crown Jewels?",["in the Tower of London","in Stonehenge","in Sydney"],0],
+["«It is worth visiting» means…",["это трудно найти","это стоит посетить","это было разрушено"],1],
+["The word «ancient» means…",["древний","новый","узкий"],0],
+["Choose the correct sentence.",["I have never seen the Tower.","I have never see the Tower.","I has never seen the Tower."],0],
+["Sydney Opera House looks like…",["a clock","white sails","a big ball"],1]
+];
+function say(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.75;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var u2=new SpeechSynthesisUtterance(t);u2.lang="en-US";u2.rate=1;speechSynthesis.speak(u2);},Math.min(4000,600+t.length*70));}catch(e){}}
+function read(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",function(e){
+ var t=e.target;
+ var tab=t.closest("[data-tab]");
+ if(tab){var id=tab.getAttribute("data-tab");
+  document.querySelectorAll("nav button").forEach(function(b){b.classList.toggle("on",b===tab);});
+  document.querySelectorAll(".tab").forEach(function(s){s.classList.toggle("on",s.id==="tab-"+id);});
+  window.scrollTo(0,0);return;}
+ var w=t.closest("[data-say]");
+ if(w){say(w.getAttribute("data-say"));return;}
+ var d=t.closest(".dl");
+ if(d){d.classList.toggle("show");return;}
+ var r=t.closest(".rid");
+ if(r){r.classList.toggle("show");return;}
+});
+var dlgBox=document.getElementById("dlg");
+dlg.forEach(function(l){var div=document.createElement("div");div.className="dl";div.innerHTML="<span class='who'>"+l[0]+":</span><div class='en'>"+l[1]+"</div><div class='ru'>"+l[2]+"</div>";dlgBox.appendChild(div);});
+document.getElementById("playDlg").onclick=function(){read(dlg.map(function(l){return l[1];}).join(" "));};
+document.getElementById("playTxt").onclick=function(){read(document.querySelectorAll("#tab-reading .ph")[0].textContent+" "+document.querySelectorAll("#tab-reading .ph")[1].textContent);};
+var ridBox=document.getElementById("riddles");
+riddles.forEach(function(r,i){var div=document.createElement("div");div.className="rid";div.innerHTML="<b>"+(i+1)+".</b> "+r[0]+"<div class='hint'>"+r[2]+"</div><div class='ans'>Ответ: "+r[1]+"</div>";ridBox.appendChild(div);});
+var gapBox=document.getElementById("gaps");
+gaps.forEach(function(g,i){var div=document.createElement("div");div.className="gline";div.innerHTML="<b>"+(i+1)+".</b> "+g[0].replace("___","<input class='gap' data-i='"+i+"' autocomplete='off'>")+" <span class='mark' id='gm"+i+"'></span>";gapBox.appendChild(div);});
+document.getElementById("checkGaps").onclick=function(){
+ var s=0;
+ gaps.forEach(function(g,i){
+  var v=document.querySelector("input.gap[data-i='"+i+"']").value.trim().toLowerCase();
+  var okv=v==="."+(g[1].toLowerCase())||v===g[1].toLowerCase();
+  if(okv)s++;
+  document.getElementById("gm"+i).innerHTML=okv?"<span class='ok'>✓</span>":"<span class='bad'>✗ "+g[1]+"</span>";
+ });
+ document.getElementById("gapRes").textContent="Результат: "+s+" из 8";
+};
+document.getElementById("showGaps").onclick=function(){gaps.forEach(function(g,i){document.getElementById("gm"+i).innerHTML="<span class='ok'>"+g[1]+"</span>";});};
+var s1=document.getElementById("s1"),s2=document.getElementById("s2"),s3=document.getElementById("s3");
+landmarks.forEach(function(l,i){var o=document.createElement("option");o.value=i;o.textContent=l[0];s1.appendChild(o);});
+feelings.forEach(function(f){var o=document.createElement("option");o.value=f;o.textContent=f;s2.appendChild(o);});
+reasons.forEach(function(f){var o=document.createElement("option");o.value=f;o.textContent=f;s3.appendChild(o);});
+document.getElementById("makeMon").onclick=function(){
+ var l=landmarks[+s1.value];
+ var txt="A landmark I would like to visit is "+l[0]+". It is located in "+l[1]+". "+l[2]+" I think it is "+s2.value+". I would like to visit it because "+s3.value+". I hope my dream will come true one day.";
+ var m=document.getElementById("mon");m.style.display="block";m.textContent=txt;
+ document.getElementById("sayMon").style.display="inline-block";
+};
+document.getElementById("sayMon").onclick=function(){read(document.getElementById("mon").textContent);};
+var tBox=document.getElementById("test");
+test.forEach(function(q,i){
+ var div=document.createElement("div");div.className="q";
+ var opts=q[1].map(function(o,j){return "<label><input type='radio' name='tq"+i+"' value='"+j+"'> "+o+"</label>";}).join("");
+ div.innerHTML="<p>"+(i+1)+". "+q[0]+"</p>"+opts;
+ tBox.appendChild(div);
+});
+document.getElementById("checkTest").onclick=function(){
+ var s=0;
+ test.forEach(function(q,i){
+  var chosen=document.querySelector("input[name='tq"+i+"']:checked");
+  if(chosen&&+chosen.value===q[2])s++;
+ });
+ document.getElementById("testRes").textContent="Результат: "+s+" из 10";
+ document.getElementById("medal").textContent=s>=9?"🥇 Золотая медаль!":s>=7?"🥈 Серебряная медаль!":s>=5?"🥉 Бронзовая медаль!":"Попробуйте ещё раз — у вас всё получится!";
+};
+var rr=document.querySelectorAll("#tab-reading .q");
+document.getElementById("checkRead").onclick=function(){
+ var key=[1,0,1,2,0],s=0;
+ rr.forEach(function(q,i){var c=q.querySelector("input:checked");if(c&&+c.value===key[i])s++;});
+ document.getElementById("readRes").textContent="Результат: "+s+" из 5";
+};
+})();
+</script>
+</body>
+</html>
