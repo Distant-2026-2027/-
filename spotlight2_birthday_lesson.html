@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 2 — My Birthday! (4a) — интерактивный урок</title>
+<style>
+body{font-family:'Comic Sans MS','Segoe UI',sans-serif;margin:0;background:#fff6e8;color:#333}
+header{background:linear-gradient(135deg,#ff8a9e,#ffb347);color:#fff;text-align:center;padding:26px 12px}
+header h1{margin:6px 0 2px;font-size:1.9em}
+header p{margin:0;font-size:1.05em}
+.badges{margin-top:8px}
+.badge{display:inline-block;background:#fff;color:#d23369;border-radius:12px;padding:3px 12px;font-size:.8em;margin:0 4px;font-weight:bold}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding:10px;background:#fff0d6;position:sticky;top:0;z-index:5}
+.tablink{border:0;border-radius:14px;padding:9px 12px;font-size:.92em;background:#fff;cursor:pointer;font-weight:bold}
+.tablink.active{background:#ff8a9e;color:#fff}
+.tabcontent{display:none;max-width:860px;margin:14px auto;padding:0 12px 40px}
+h3{color:#d23369;margin:14px 0 6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:10px 0}
+.card{background:#fff;border:2px solid #ffd1a3;border-radius:14px;padding:10px;text-align:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.card b{display:block;font-size:1.35em;color:#e8604c}
+.card span{display:block;font-size:1.05em}
+.card i{display:block;font-size:.82em;color:#888}
+.card em{display:block;font-size:.72em;color:#ff8a9e;font-style:normal;margin-top:4px}
+.phr{background:#fff;border:2px solid #b3e0ff;border-radius:14px;padding:10px 14px;margin:8px 0;cursor:pointer}
+.phr b{font-size:1.1em;color:#2b6cb0}
+.phr span{display:block;font-size:.95em;color:#555}
+.phr em,.card em{color:#4fa3e0}
+.cheat{background:#fff8d6;border:2px dashed #e8b23c;border-radius:14px;padding:12px 16px;margin:12px 0}
+.line{background:#fff;border:2px solid #e7c9f5;border-radius:14px;padding:10px 14px;margin:8px 0}
+.line b{color:#8a3fc0}
+.line .tr{display:none;font-size:.92em;color:#666;border-top:1px dashed #ccc;margin-top:6px;padding-top:4px}
+.task{background:#fff;border:2px solid #ffd1a3;border-radius:16px;padding:12px 16px;margin:12px 0}
+.opts{margin:8px 0;flex-wrap:wrap;display:flex;gap:8px}
+.opt{border:2px solid #ffb347;background:#fff;border-radius:12px;padding:8px 16px;font-size:1em;cursor:pointer;font-weight:bold}
+.opt:active{background:#ffe9d6}
+.fb{margin-top:6px;font-weight:bold;min-height:1.2em}
+.candles{font-size:1.9em;letter-spacing:2px;margin:8px 0}
+.rid{font-size:1.15em}
+.monologue{background:#fff8d6;border:2px solid #e8b23c;border-radius:14px;padding:12px 16px;margin:10px 0;font-size:1.15em;line-height:1.7}
+.song{background:#ffe4ef;border:2px solid #ff8a9e;border-radius:14px;padding:12px 16px;margin:10px 0;font-size:1.1em;line-height:1.7}
+button[onclick]{border:2px solid #d23369;background:#fff0d6;border-radius:12px;padding:8px 16px;font-weight:bold;cursor:pointer;font-size:1em}
+.note{font-size:.9em;color:#777}
+table.plan{border-collapse:collapse;width:100%}
+table.plan td{border:1px solid #ffd1a3;padding:6px 8px;font-size:.95em}
+ol,ul{margin:6px 0 6px 22px;padding:0}
+select,input{font-size:1em;padding:6px;border-radius:8px;border:1px solid #ccc}
+@media(max-width:600px){header h1{font-size:1.4em}.cards{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<div style="font-size:2.4em">🎂🎈🎁</div>
+<h1>My Birthday!</h1>
+<p>Мой день рождения: сколько тебе лет?</p>
+<div class="badges"><span class="badge">Spotlight 2 • 4a</span><span class="badge">Английский язык • 2 класс</span></div>
+</header>
+<nav><button class="tablink" id="b_about" onclick="openTab(&quot;about&quot;)">🎯 О уроке</button><button class="tablink" id="b_words" onclick="openTab(&quot;words&quot;)">📖 Слова</button><button class="tablink" id="b_phrases" onclick="openTab(&quot;phrases&quot;)">💬 Фразы</button><button class="tablink" id="b_repeat" onclick="openTab(&quot;repeat&quot;)">🔁 Повторение</button><button class="tablink" id="b_dialog" onclick="openTab(&quot;dialog&quot;)">🗣 Диалог</button><button class="tablink" id="b_candles" onclick="openTab(&quot;candles&quot;)">🎂 Свечи</button><button class="tablink" id="b_guess" onclick="openTab(&quot;guess&quot;)">🎲 Угадай возраст</button><button class="tablink" id="b_fill" onclick="openTab(&quot;fill&quot;)">🧩 Вставь слово</button><button class="tablink" id="b_speak" onclick="openTab(&quot;speak&quot;)">🎤 Говори сам</button><button class="tablink" id="b_quiz" onclick="openTab(&quot;quiz&quot;)">✏️ Тест</button><button class="tablink" id="b_home" onclick="openTab(&quot;home&quot;)">🏠 Домашка</button></nav>
+<div class="tabcontent" id="t_about">
+<div class="task">
+<h3>🎯 Что это за урок</h3>
+<p>Интерактивный урок по теме <b>«Мой день рождения (сколько тебе лет?)»</b> — Spotlight 2, урок 4a «My Birthday!».</p>
+<h3>Цели</h3>
+<ul>
+<li>узнать числа от 1 до 10 и слова birthday, candles, party, present, happy, sad;</li>
+<li>научиться спрашивать <b>How old are you?</b> и отвечать <b>I'm eight.</b></li>
+<li>поздравлять друга: <b>Happy birthday to you!</b></li>
+</ul>
+<h3>План урока (45 минут)</h3>
+<table class="plan">
+<tr><td>1</td><td>Приветствие и разминка</td><td>3 мин</td><td>вкладка 🔁 Повторение</td></tr>
+<tr><td>2</td><td>Введение темы: у Лулу день рождения</td><td>2 мин</td><td>вкладка 🎯</td></tr>
+<tr><td>3</td><td>Новые слова</td><td>8 мин</td><td>вкладка 📖 Слова</td></tr>
+<tr><td>4</td><td>Фразы: How old are you?</td><td>5 мин</td><td>вкладка 💬 Фразы</td></tr>
+<tr><td>5</td><td>Диалог на вечеринке Лулу</td><td>5 мин</td><td>вкладка 🗣 Диалог</td></tr>
+<tr><td>6</td><td>Игра «Посчитай свечи»</td><td>5 мин</td><td>вкладка 🎂</td></tr>
+<tr><td>7</td><td>Игра «Угадай возраст» + «Вставь слово»</td><td>8 мин</td><td>вкладки 🎲 🧩</td></tr>
+<tr><td>8</td><td>«Говори сам» + песенка</td><td>5 мин</td><td>вкладки 🎤 🎂</td></tr>
+<tr><td>9</td><td>Тест и итоги</td><td>4 мин</td><td>вкладки ✏️ 🏠</td></tr>
+</table>
+<h3>Результаты по ФГОС НОО</h3>
+<ul>
+<li><b>Предметные:</b> понимает и называет числа 1–10; задаёт вопрос о возрасте и отвечает на него; поздравляет по-английски.</li>
+<li><b>Метапредметные:</b> слушает и выполняет инструкции; сравнивает и выбирает ответ; оценивает свой результат.</li>
+<li><b>Личностные:</b> уважительно общается, радуется за именинника.</li>
+</ul>
+<p class="note">Урок работает офлайн и с телефона. Все клики по словам — озвучка.</p>
+</div></div><div class="tabcontent" id="t_words">
+<h3>📖 Новые слова: числа от 1 до 10</h3>
+<p>Нажми на карточку — слово прозвучит дважды: медленно и в обычном темпе.</p>
+<div class="cards"><div class="card" onclick="speak(0)"><b>one</b><span>один</span><i>/wʌn/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(1)"><b>two</b><span>два</span><i>/tuː/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(2)"><b>three</b><span>три</span><i>/θriː/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(3)"><b>four</b><span>четыре</span><i>/fɔː/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(4)"><b>five</b><span>пять</span><i>/faɪv/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(5)"><b>six</b><span>шесть</span><i>/sɪks/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(6)"><b>seven</b><span>семь</span><i>/ˈsevn/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(7)"><b>eight</b><span>восемь</span><i>/eɪt/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(8)"><b>nine</b><span>девять</span><i>/naɪn/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(9)"><b>ten</b><span>десять</span><i>/ten/</i><em>нажми 🔊</em></div></div>
+<h3>🎉 Слова дня рождения</h3>
+<div class="cards"><div class="card" onclick="speak(10)"><b>birthday</b><span>день рождения</span><i>/ˈbɜːθdeɪ/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(11)"><b>candles</b><span>свечи</span><i>/ˈkændlz/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(12)"><b>party</b><span>вечеринка</span><i>/ˈpɑːti/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(13)"><b>present</b><span>подарок</span><i>/ˈpreznt/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(14)"><b>happy</b><span>весёлый</span><i>/ˈhæpi/</i><em>нажми 🔊</em></div><div class="card" onclick="speak(15)"><b>sad</b><span>грустный</span><i>/sæd/</i><em>нажми 🔊</em></div></div></div><div class="tabcontent" id="t_phrases">
+<h3>💬 Говорим о дне рождения</h3>
+<p>Нажми на фразу — она прозвучит дважды. Повтори вслух!</p>
+<div class="phr" onclick="speak(0)"><b>How old are you?</b><span>Сколько тебе лет?</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(1)"><b>I'm eight.</b><span>Мне восемь лет.</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(2)"><b>Happy birthday to you!</b><span>С днём рождения тебя!</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(3)"><b>It's my birthday today.</b><span>Сегодня мой день рождения.</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(4)"><b>I've got five candles.</b><span>У меня пять свечей.</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(5)"><b>This is my cake.</b><span>Это мой торт.</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(6)"><b>Come to my party!</b><span>Приходи на мою вечеринку!</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(7)"><b>I like my present.</b><span>Мне нравится мой подарок.</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(8)"><b>I am happy!</b><span>Я счастливый!</span><em>нажми 🔊</em></div><div class="phr" onclick="speak(9)"><b>Thank you!</b><span>Спасибо!</span><em>нажми 🔊</em></div>
+<div class="cheat"><b>🧸 Шпаргалка</b><br>
+• How old are you? — I'm eight. (Сколько тебе лет? — Мне восемь.)<br>
+• Happy birthday to you! — С днём рождения!<br>
+• I've got five candles. — У меня пять свечей.<br>
+• It's my birthday today. — Сегодня мой день рождения.</div></div><div class="tabcontent" id="t_repeat">
+<h3>🔁 Что мы уже знаем</h3>
+<p>Прежде чем идти на вечеринку Лулу, вспомним слова из первых уроков. Нажми на карточку!</p>
+<div class="cards"><div class="card" onclick="speak(1000)"><b>Hello! Hi!</b><span>Привет! Здорово!</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1001)"><b>Good morning!</b><span>Доброе утро!</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1002)"><b>What's your name?</b><span>Как тебя зовут?</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1003)"><b>My name is Anna.</b><span>Меня зовут Анна.</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1004)"><b>This is my mummy.</b><span>Это моя мама.</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1005)"><b>This is my daddy.</b><span>Это мой папа.</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1006)"><b>This is my sister.</b><span>Это моя сестра.</span><em>нажми 🔊</em></div><div class="card" onclick="speak(1007)"><b>This is my brother.</b><span>Это мой брат.</span><em>нажми 🔊</em></div></div>
+<div class="task">
+<h3>🪜 Лесенка к теме урока</h3>
+<p>Шаг 1: Приветствие — <i>Hello! What's your name?</i><br>
+Шаг 2: Семья — <i>This is my mummy and my daddy.</i><br>
+Шаг 3: Счёт — <i>one, two, three, four, five…</i><br>
+Шаг 4: Возраст — <i>How old are you? — I'm six!</i></p>
+<p>Скажи каждое предложение вслух, поднимаясь по лесенке. На верхней ступеньке — вопрос о возрасте: он и есть тема нашего урока!</p>
+</div></div><div class="tabcontent" id="t_dialog">
+<h3>🗣 На вечеринке Лулу</h3>
+<p><b>Двойной клик</b> по реплике — покажет перевод и озвучит фразу. Прочитай вслух по ролям: Анна, Марк и Лулу.</p>
+<div class="line" ondblclick="speak(2000)" title="двойной клик — перевод"><b>Anna:</b> Hello, Mark! Come to Lulu's birthday party!<span class="tr">Привет, Марк! Заходи на день рождения Лулу!</span></div><div class="line" ondblclick="speak(2001)" title="двойной клик — перевод"><b>Mark:</b> Hi, Anna! What's this?<span class="tr">Привет, Анна! А это что?</span></div><div class="line" ondblclick="speak(2002)" title="двойной клик — перевод"><b>Anna:</b> It's a birthday cake!<span class="tr">Это праздничный торт!</span></div><div class="line" ondblclick="speak(2003)" title="двойной клик — перевод"><b>Mark:</b> Wow! There are five candles on the cake!<span class="tr">Ух ты! На торте пять свечей!</span></div><div class="line" ondblclick="speak(2004)" title="двойной клик — перевод"><b>Anna:</b> How old is Lulu?<span class="tr">Сколько лет Лулу?</span></div><div class="line" ondblclick="speak(2005)" title="двойной клик — перевод"><b>Mark:</b> She's five today!<span class="tr">Сегодня ей пять лет!</span></div><div class="line" ondblclick="speak(2006)" title="двойной клик — перевод"><b>Anna:</b> Happy birthday, Lulu!<span class="tr">С днём рождения, Лулу!</span></div><div class="line" ondblclick="speak(2007)" title="двойной клик — перевод"><b>Lulu:</b> Thank you! I'm happy today!<span class="tr">Спасибо! Я сегодня счастливая!</span></div><div class="line" ondblclick="speak(2008)" title="двойной клик — перевод"><b>Mark:</b> Happy birthday to you, Lulu!<span class="tr">С днём рождения тебя, Лулу!</span></div><div class="line" ondblclick="speak(2009)" title="двойной клик — перевод"><b>Anna:</b> Let's sing the birthday song!<span class="tr">Давай споём песенку про день рождения!</span></div>
+
+<div class="task">
+<h3>🎂 Песенка «Happy birthday to you!»</h3>
+<p>Нажми кнопку и спой вместе! Затем спой без озвучки — для Лулу.</p>
+<button onclick="speak(2500)">▶️ Прослушать песню</button>
+<div class="song"><b>Happy birthday to you!<br>Happy birthday to you!<br>Happy birthday, dear Lulu!<br>Happy birthday to you!</b></div>
+</div></div><div class="tabcontent" id="t_candles">
+<h3>🎂 Игра: посчитай свечи</h3>
+<p>Сколько свечей на торте? Выбери верное число. Нажми кнопку проверки после каждого ответа.</p>
+<div class="task" id="cand0"><h3>Торт №1. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(0,2,0)">2</button><button class="opt" onclick="candleAns(0,3,0)">3</button><button class="opt" onclick="candleAns(0,4,0)">4</button><button class="opt" onclick="candleAns(0,5,0)">5</button></div><div class="fb"></div></div><div class="task" id="cand1"><h3>Торт №2. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(1,4,1)">4</button><button class="opt" onclick="candleAns(1,5,1)">5</button><button class="opt" onclick="candleAns(1,6,1)">6</button><button class="opt" onclick="candleAns(1,7,1)">7</button></div><div class="fb"></div></div><div class="task" id="cand2"><h3>Торт №3. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(2,6,2)">6</button><button class="opt" onclick="candleAns(2,7,2)">7</button><button class="opt" onclick="candleAns(2,8,2)">8</button><button class="opt" onclick="candleAns(2,9,2)">9</button></div><div class="fb"></div></div><div class="task" id="cand3"><h3>Торт №4. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(3,8,3)">8</button><button class="opt" onclick="candleAns(3,9,3)">9</button><button class="opt" onclick="candleAns(3,10,3)">10</button><button class="opt" onclick="candleAns(3,11,3)">11</button></div><div class="fb"></div></div><div class="task" id="cand4"><h3>Торт №5. Посчитай свечи:</h3><div class="candles">🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(4,1,4)">1</button><button class="opt" onclick="candleAns(4,2,4)">2</button><button class="opt" onclick="candleAns(4,3,4)">3</button><button class="opt" onclick="candleAns(4,4,4)">4</button></div><div class="fb"></div></div><div class="task" id="cand5"><h3>Торт №6. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(5,5,5)">5</button><button class="opt" onclick="candleAns(5,6,5)">6</button><button class="opt" onclick="candleAns(5,7,5)">7</button><button class="opt" onclick="candleAns(5,8,5)">8</button></div><div class="fb"></div></div><div class="task" id="cand6"><h3>Торт №7. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(6,4,6)">4</button><button class="opt" onclick="candleAns(6,6,6)">6</button><button class="opt" onclick="candleAns(6,7,6)">7</button><button class="opt" onclick="candleAns(6,8,6)">8</button></div><div class="fb"></div></div><div class="task" id="cand7"><h3>Торт №8. Посчитай свечи:</h3><div class="candles">🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️🕯️</div><div class="opts"><button class="opt" onclick="candleAns(7,7,7)">7</button><button class="opt" onclick="candleAns(7,9,7)">9</button><button class="opt" onclick="candleAns(7,10,7)">10</button><button class="opt" onclick="candleAns(7,11,7)">11</button></div><div class="fb"></div></div></div><div class="tabcontent" id="t_guess">
+<h3>🎲 Игра: угадай возраст героя</h3>
+<p>Прочитай загадку (нажми — озвучится) и выбери, сколько лет герою: столько же, сколько свечей на торте!</p>
+<div class="task" id="guess0"><h3>Загадка 1</h3><p class="rid" onclick="speak(3000)">I am Lulu. There are five candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(0,4,5)">4</button><button class="opt" onclick="guessAns(0,5,5)">5</button><button class="opt" onclick="guessAns(0,6,5)">6</button></div><div class="fb"></div></div><div class="task" id="guess1"><h3>Загадка 2</h3><p class="rid" onclick="speak(3001)">I am a bear. There are three candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(1,2,3)">2</button><button class="opt" onclick="guessAns(1,3,3)">3</button><button class="opt" onclick="guessAns(1,4,3)">4</button></div><div class="fb"></div></div><div class="task" id="guess2"><h3>Загадка 3</h3><p class="rid" onclick="speak(3002)">I am a ballerina. There are seven candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(2,6,7)">6</button><button class="opt" onclick="guessAns(2,7,7)">7</button><button class="opt" onclick="guessAns(2,8,7)">8</button></div><div class="fb"></div></div><div class="task" id="guess3"><h3>Загадка 4</h3><p class="rid" onclick="speak(3003)">I am a toy soldier. There are two candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(3,2,2)">2</button><button class="opt" onclick="guessAns(3,3,2)">3</button><button class="opt" onclick="guessAns(3,4,2)">4</button></div><div class="fb"></div></div><div class="task" id="guess4"><h3>Загадка 5</h3><p class="rid" onclick="speak(3004)">I am a cat. There are four candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(4,3,4)">3</button><button class="opt" onclick="guessAns(4,4,4)">4</button><button class="opt" onclick="guessAns(4,5,4)">5</button></div><div class="fb"></div></div><div class="task" id="guess5"><h3>Загадка 6</h3><p class="rid" onclick="speak(3005)">I am a clown. There are eight candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(5,7,8)">7</button><button class="opt" onclick="guessAns(5,8,8)">8</button><button class="opt" onclick="guessAns(5,9,8)">9</button></div><div class="fb"></div></div><div class="task" id="guess6"><h3>Загадка 7</h3><p class="rid" onclick="speak(3006)">I am a dog. There are six candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(6,5,6)">5</button><button class="opt" onclick="guessAns(6,6,6)">6</button><button class="opt" onclick="guessAns(6,7,6)">7</button></div><div class="fb"></div></div><div class="task" id="guess7"><h3>Загадка 8</h3><p class="rid" onclick="speak(3007)">I am a doll. There are ten candles on my cake. 🔊</p><p><b>How old is it?</b></p><div class="opts"><button class="opt" onclick="guessAns(7,9,10)">9</button><button class="opt" onclick="guessAns(7,10,10)">10</button><button class="opt" onclick="guessAns(7,11,10)">11</button></div><div class="fb"></div></div></div><div class="tabcontent" id="t_fill">
+<h3>🧩 Вставь нужное слово</h3>
+<p>Прочитай предложение и выбери пропавшее слово.</p>
+<div class="task" id="fill0"><h3>Предложение 1</h3><p class="rid">There are ___ candles on the cake.</p><div class="opts"><button class="opt" onclick="fillAns(0,six,six)">six</button><button class="opt" onclick="fillAns(0,sad,six)">sad</button><button class="opt" onclick="fillAns(0,party,six)">party</button></div><div class="fb"></div></div><div class="task" id="fill1"><h3>Предложение 2</h3><p class="rid">How ___ are you?</p><div class="opts"><button class="opt" onclick="fillAns(1,happy,old)">happy</button><button class="opt" onclick="fillAns(1,old,old)">old</button><button class="opt" onclick="fillAns(1,cake,old)">cake</button></div><div class="fb"></div></div><div class="task" id="fill2"><h3>Предложение 3</h3><p class="rid">I'm ___.</p><div class="opts"><button class="opt" onclick="fillAns(2,candles,nine)">candles</button><button class="opt" onclick="fillAns(2,nine,nine)">nine</button><button class="opt" onclick="fillAns(2,birthday,nine)">birthday</button></div><div class="fb"></div></div><div class="task" id="fill3"><h3>Предложение 4</h3><p class="rid">It's my ___ today!</p><div class="opts"><button class="opt" onclick="fillAns(3,birthday,birthday)">birthday</button><button class="opt" onclick="fillAns(3,sad,birthday)">sad</button><button class="opt" onclick="fillAns(3,one,birthday)">one</button></div><div class="fb"></div></div><div class="task" id="fill4"><h3>Предложение 5</h3><p class="rid">I've got a ___ for you.</p><div class="opts"><button class="opt" onclick="fillAns(4,two,present)">two</button><button class="opt" onclick="fillAns(4,four,present)">four</button><button class="opt" onclick="fillAns(4,present,present)">present</button></div><div class="fb"></div></div><div class="task" id="fill5"><h3>Предложение 6</h3><p class="rid">Let's go to the ___!</p><div class="opts"><button class="opt" onclick="fillAns(5,five,party)">five</button><button class="opt" onclick="fillAns(5,party,party)">party</button><button class="opt" onclick="fillAns(5,three,party)">three</button></div><div class="fb"></div></div><div class="task" id="fill6"><h3>Предложение 7</h3><p class="rid">Lulu is not sad. She is ___!</p><div class="opts"><button class="opt" onclick="fillAns(6,ten,happy)">ten</button><button class="opt" onclick="fillAns(6,happy,happy)">happy</button><button class="opt" onclick="fillAns(6,seven,happy)">seven</button></div><div class="fb"></div></div><div class="task" id="fill7"><h3>Предложение 8</h3><p class="rid">Happy ___ to you!</p><div class="opts"><button class="opt" onclick="fillAns(7,birthday,birthday)">birthday</button><button class="opt" onclick="fillAns(7,eight,birthday)">eight</button><button class="opt" onclick="fillAns(7,candles,birthday)">candles</button></div><div class="fb"></div></div></div><div class="tabcontent" id="t_speak">
+<h3>🎤 Собери свой рассказ</h3>
+<p>Выбери свой возраст и имя — и получится твой рассказ о дне рождения! Послушай его, а потом расскажи сам без подсказки.</p>
+<div class="task">
+<p>1️⃣ Твой возраст:<br><select id="sa"><option value="one">one (один)</option><option value="two">two (два)</option><option value="three">three (три)</option><option value="four">four (четыре)</option><option value="five">five (пять)</option><option value="six">six (шесть)</option><option value="seven">seven (семь)</option><option value="eight">eight (восемь)</option><option value="nine">nine (девять)</option><option value="ten">ten (десять)</option></select></p>
+<p>2️⃣ Как тебя зовут? Напиши по-русски — пока для учителя: <input id="spName" value="">  <i>(имя скажешь сам, когда будешь рассказывать)</i></p>
+<button onclick="makeSpeech()">✨ Собрать рассказ</button>
+<div id="spOut" class="monologue" style="display:none">Hello! I'm <b>[имя]</b>.<br>It's my birthday today!<br>I'm <b id='spAge'>[возраст]</b>.<br>I've got a big cake.<br>I am happy!<br>Happy birthday to me!</div>
+<button onclick="speak(4000)" id="spPlay" style="display:none">▶️ Прослушать</button>
+<p class="note">Подсказка: рассказ начинаем с приветствия, потом возраст, потом торт и свечи!</p>
+</div></div><div class="tabcontent" id="t_quiz">
+<h3>✏️ Тест: 10 вопросов</h3>
+<p>Выбери ответ на каждый вопрос. За 9–10 верных ответов — золотая медаль 🥇!</p>
+<div class="task" id="quiz0"><h3>Вопрос 1</h3><p class="rid">Как спросить: «Сколько тебе лет?»</p><div class="opts"><button class="opt" onclick="quizAns(0,0,0)">How old are you?</button><button class="opt" onclick="quizAns(0,1,0)">What's your name?</button><button class="opt" onclick="quizAns(0,2,0)">Where are you?</button></div><div class="fb"></div></div><div class="task" id="quiz1"><h3>Вопрос 2</h3><p class="rid">I'm seven. — Это значит…</p><div class="opts"><button class="opt" onclick="quizAns(1,0,0)">Мне семь лет.</button><button class="opt" onclick="quizAns(1,1,0)">Мне семь свечей.</button><button class="opt" onclick="quizAns(1,2,0)">Мне семь тортов.</button></div><div class="fb"></div></div><div class="task" id="quiz2"><h3>Вопрос 3</h3><p class="rid">birthday — это…</p><div class="opts"><button class="opt" onclick="quizAns(2,0,0)">день рождения</button><button class="opt" onclick="quizAns(2,1,0)">свеча</button><button class="opt" onclick="quizAns(2,2,0)">подарок</button></div><div class="fb"></div></div><div class="task" id="quiz3"><h3>Вопрос 4</h3><p class="rid">На торте five candles. Сколько свечей?</p><div class="opts"><button class="opt" onclick="quizAns(3,0,0)">5</button><button class="opt" onclick="quizAns(3,1,0)">4</button><button class="opt" onclick="quizAns(3,2,0)">10</button></div><div class="fb"></div></div><div class="task" id="quiz4"><h3>Вопрос 5</h3><p class="rid">party — это…</p><div class="opts"><button class="opt" onclick="quizAns(4,0,0)">вечеринка</button><button class="opt" onclick="quizAns(4,1,0)">праздничный торт</button><button class="opt" onclick="quizAns(4,2,0)">свеча</button></div><div class="fb"></div></div><div class="task" id="quiz5"><h3>Вопрос 6</h3><p class="rid">Выбери правильный ответ: How old are you?</p><div class="opts"><button class="opt" onclick="quizAns(5,0,0)">I'm nine.</button><button class="opt" onclick="quizAns(5,1,0)">My name is Mark.</button><button class="opt" onclick="quizAns(5,2,0)">Hello!</button></div><div class="fb"></div></div><div class="task" id="quiz6"><h3>Вопрос 7</h3><p class="rid">happy — это…</p><div class="opts"><button class="opt" onclick="quizAns(6,0,0)">весёлый</button><button class="opt" onclick="quizAns(6,1,0)">грустный</button><button class="opt" onclick="quizAns(6,2,0)">подарок</button></div><div class="fb"></div></div><div class="task" id="quiz7"><h3>Вопрос 8</h3><p class="rid">sad — это…</p><div class="opts"><button class="opt" onclick="quizAns(7,0,0)">грустный</button><button class="opt" onclick="quizAns(7,1,0)">весёлый</button><button class="opt" onclick="quizAns(7,2,0)">торт</button></div><div class="fb"></div></div><div class="task" id="quiz8"><h3>Вопрос 9</h3><p class="rid">Как поздравить друга по-английски?</p><div class="opts"><button class="opt" onclick="quizAns(8,0,0)">Happy birthday to you!</button><button class="opt" onclick="quizAns(8,1,0)">Thank you!</button><button class="opt" onclick="quizAns(8,2,0)">Goodbye!</button></div><div class="fb"></div></div><div class="task" id="quiz9"><h3>Вопрос 10</h3><p class="rid">eight — это цифра…</p><div class="opts"><button class="opt" onclick="quizAns(9,0,0)">8</button><button class="opt" onclick="quizAns(9,1,0)">6</button><button class="opt" onclick="quizAns(9,2,0)">10</button></div><div class="fb"></div></div>
+<div class="task"><h3>Результат</h3><p id="quizScore">Отвечай на вопросы — счёт появится здесь!</p></div></div><div class="tabcontent" id="t_home">
+<div class="task">
+<h3>🏠 Домашнее задание: «My Birthday»</h3>
+<p>Напиши или расскажи 5 предложений о своём дне рождения (по плану, 20–30 слов):</p>
+<ol>
+<li>Hello! My name is …</li>
+<li>It's my birthday … (когда: today / in June / in December).</li>
+<li>I'm … (сколько тебе лет).</li>
+<li>I've got a cake. There are … candles on it.</li>
+<li>I am happy! / I like my party!</li>
+</ol>
+<p>⭐ Звёздочка (по желанию): нарисуй свой торт с числом свечей по возрасту и подпиши его по-английски — <i>I'm seven.</i></p>
+<h3>✅ Критерии (9 баллов)</h3>
+<ul>
+<li>Все 5 предложений по плану — 3 балла</li>
+<li>Верно использованы числа и <i>How old are you? — I'm…</i> — 3 балла</li>
+<li>Слова написаны без ошибок / рассказ произнесён чётко — 3 балла</li>
+</ul>
+<h3>📊 Шкала отметок</h3>
+<p>9–8 баллов → «5» · 7–6 → «4» · 5–4 → «3»</p>
+<p class="note">⭐ Звёздочка — за воображение и старание, на оценку не влияет: она для тех, кто любит рисовать!</p>
+</div></div>
+<script>
+var TABS = ["about","words","phrases","repeat","dialog","candles","guess","fill","speak","quiz","home"];
+var SP = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "birthday", "candles", "party", "present", "happy", "sad", "How old are you?", "I'm eight.", "Happy birthday to you!", "It's my birthday today.", "I've got five candles.", "This is my cake.", "Come to my party!", "I like my present.", "I am happy!", "Thank you!", "Hello! Hi!", "Good morning!", "What's your name?", "My name is Anna.", "This is my mummy.", "This is my daddy.", "This is my sister.", "This is my brother.", "Anna says: Hello, Mark! Come to Lulu's birthday party!", "Mark says: Hi, Anna! What's this?", "Anna says: It's a birthday cake!", "Mark says: Wow! There are five candles on the cake!", "Anna says: How old is Lulu?", "Mark says: She's five today!", "Anna says: Happy birthday, Lulu!", "Lulu says: Thank you! I'm happy today!", "Mark says: Happy birthday to you, Lulu!", "Anna says: Let's sing the birthday song!", "Happy birthday to you! Happy birthday to you! Happy birthday, dear Lulu! Happy birthday to you!", "I am Lulu. There are five candles on my cake.", "I am a bear. There are three candles on my cake.", "I am a ballerina. There are seven candles on my cake.", "I am a toy soldier. There are two candles on my cake.", "I am a cat. There are four candles on my cake.", "I am a clown. There are eight candles on my cake.", "I am a dog. There are six candles on my cake.", "I am a doll. There are ten candles on my cake.", "My birthday"];
+function openTab(id){
+  for (var i=0;i<TABS.length;i++){
+    document.getElementById("t_"+TABS[i]).style.display="none";
+    document.getElementById("b_"+TABS[i]).classList.remove("active");
+  }
+  document.getElementById("t_"+id).style.display="block";
+  document.getElementById("b_"+id).classList.add("active");
+  window.scrollTo(0,0);
+}
+function speak(i){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  var t = SP[i] || "";
+  var r1 = new SpeechSynthesisUtterance(t); r1.lang="en-GB"; r1.rate=0.6;
+  var r2 = new SpeechSynthesisUtterance(t); r2.lang="en-GB"; r2.rate=1.0;
+  speechSynthesis.speak(r1); speechSynthesis.speak(r2);
+}
+function fb(id, ok, text){
+  var box = document.getElementById(id).querySelector(".fb");
+  box.innerHTML = ok ? "✅ " + text : "❌ Попробуй ещё раз!";
+  if(ok){ document.getElementById(id).style.background = "#e9f9e4"; }
+}
+function candleAns(qi, choice, n){
+  fb("cand"+qi, choice===n, "Верно! " + n + " — правильно! 🔊" );
+  if(choice===n){ speak(["","","one","two","three","four","five","six","seven","eight","nine","ten"][n]); }
+}
+function guessAns(qi, choice, ans){
+  fb("guess"+qi, choice===ans, "Верно! Герою " + ans + " лет!");
+}
+function fillAns(qi, choice, ans){
+  fb("fill"+qi, choice===ans, "Верно! " + ans + " — правильно!");
+  if(choice===ans){ window.__pendingSpeak = choice; setTimeout(function(){ var u=new SpeechSynthesisUtterance(window.__pendingSpeak); u.lang="en-GB"; speechSynthesis.speak(u); }, 250); }
+}
+function makeSpeech(){
+  var age = document.getElementById("sa").value;
+  var out = document.getElementById("spOut");
+  document.getElementById("spAge").innerHTML = age;
+  out.style.display="block";
+  document.getElementById("spPlay").style.display="inline-block";
+}
+var quizTotal = 0, quizDone = 0;
+function quizAns(qi, choice, ci){
+  fb("quiz"+qi, choice===ci, "Верно!");
+  if(choice===ci){ quizTotal++; }
+  if(!document.getElementById("quiz"+qi).dataset.done){
+    quizDone++;
+    document.getElementById("quiz"+qi).dataset.done = "1";
+  }
+  var msg;
+  if(quizDone>=10){
+    msg = quizTotal>=9 ? "Отлично! " + quizTotal + " из 10 — золотая медаль! 🥇" :
+          quizTotal>=7 ? "Хорошо! " + quizTotal + " из 10! 🔥" :
+          "Твой результат: " + quizTotal + " из 10. Пройди ещё раз!";
+  } else {
+    msg = "Отвечено: " + quizDone + " из 10. Верных: " + quizTotal + ".";
+  }
+  document.getElementById("quizScore").innerHTML = msg;
+}
+openTab("about");
+</script>
+</body>
+</html>
