@@ -3,495 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Great Minds — Spotlight 8, Module 3</title>
+<title>Spotlight 8 — Great Minds. An Unusual Gallery (3e)</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
-body{background:#2d1b4e;color:#333;line-height:1.5}
-.wrap{max-width:900px;margin:0 auto;padding:12px}
-header{background:linear-gradient(135deg,#3b2063,#5b2c8d);color:#fff;border-radius:16px;padding:18px 20px;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
-header h1{font-size:1.6em}
-header p{color:#ffd76e;font-weight:600}
-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.tab-btn{border:none;background:#fff;color:#3b2063;font-weight:700;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:.92em}
-.tab-btn.active{background:#ffd76e}
-section.tab{display:none;background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-section.tab.active{display:block}
-h2{color:#5b2c8d;margin-bottom:10px;font-size:1.25em}
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95em}
-th,td{border:1px solid #e0d5f0;padding:7px 9px;text-align:left}
-th{background:#f1e8fb;color:#3b2063}
-.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.word-card{background:#f7f3fd;border:2px solid #d9c8f2;border-radius:12px;padding:10px 12px;cursor:pointer;transition:.15s}
-.word-card:hover{border-color:#8a4fd3;transform:translateY(-2px)}
-.word-card .en{font-weight:800;color:#3b2063;font-size:1.08em}
-.word-card .tr{color:#7a5ba8;font-size:.88em}
-.word-card .ru{font-size:.92em;margin-top:2px}
-.word-card .hint{color:#999;font-size:.8em;margin-top:2px;font-style:italic}
-.group-title{margin:14px 0 6px;color:#8a4fd3;font-weight:800}
-.btn{display:inline-block;border:none;background:#8a4fd3;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;cursor:pointer;margin:4px 6px 4px 0;font-size:.95em}
-.btn:hover{background:#6f37b5}
-.btn.yellow{background:#f5a623}.btn.yellow:hover{background:#d88f0f}
-.btn.green{background:#2e9e5b}.btn.green:hover{background:#237a46}
-.line{padding:9px 12px;border-radius:10px;margin:6px 0;cursor:pointer;border:2px solid transparent}
-.line.a{background:#f1e8fb;border-color:#d9c8f2}
-.line.b{background:#fff4e0;border-color:#f5d9a8}
-.line .who{font-weight:800;color:#5b2c8d}
-.line .ru{display:none;color:#666;font-size:.92em;margin-top:3px}
-.line.open .ru{display:block}
-.q{background:#f7f3fd;border-radius:12px;padding:12px;margin:10px 0}
-.q p{font-weight:700;margin-bottom:8px}
-.opt{display:block;width:100%;text-align:left;border:2px solid #d9c8f2;background:#fff;border-radius:10px;padding:9px 12px;margin:5px 0;cursor:pointer;font-size:.95em}
-.opt:hover{border-color:#8a4fd3}
-.opt.right{background:#d9f2e3;border-color:#2e9e5b}
-.opt.wrong{background:#fbdede;border-color:#d9534f}
-.feedback{font-weight:700;margin-top:6px;min-height:1.4em}
-.score{font-size:1.15em;font-weight:800;color:#5b2c8d}
-input[type=text],select{padding:9px 10px;border:2px solid #d9c8f2;border-radius:10px;font-size:1em;width:100%;max-width:340px}
-.big-speak{background:#fff9ec;border:2px dashed #f5a623;border-radius:14px;padding:14px;margin-top:10px;font-size:1.05em}
-.badge{font-size:2em;text-align:center;margin-top:8px}
-.small{color:#777;font-size:.88em}
-.star{background:#fff3cd;border:2px solid #f5a623;border-radius:12px;padding:12px;margin-top:10px}
-ul{margin:8px 0 8px 22px}
+:root{--navy:#1b2a4a;--gold:#c9a227;--cream:#faf6ec;--ink:#2b2b2b;--soft:#e8e2d0;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(135deg,var(--navy),#31456e);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:.5px}
+header p{color:var(--gold);margin-top:6px;font-weight:600}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.tab{border:2px solid var(--navy);background:#fff;color:var(--navy);padding:7px 12px;border-radius:20px;cursor:pointer;font-size:.9em;font-weight:600}
+.tab.active{background:var(--navy);color:var(--gold)}
+.panel{display:none;max-width:860px;margin:0 auto;padding:20px 16px 60px}
+.panel.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.card{background:#fff;border:1px solid var(--soft);border-radius:12px;padding:12px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .en{font-weight:700;color:var(--navy);font-size:1.05em}
+.card .ipa{color:#777;font-size:.85em}
+.card .ru{color:#444;margin-top:4px}
+h3{color:var(--navy);margin:18px 0 10px}
+.list .row{background:#fff;border:1px solid var(--soft);border-radius:10px;padding:10px 14px;margin:6px 0;cursor:pointer}
+.list .row .en{font-weight:600}
+.hidden{display:none}
+.hint{color:#8a7f5f;font-size:.85em;margin-top:8px;font-style:italic}
+.cheat{background:#fdf9ee;border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+.line{padding:8px 12px;margin:5px 0;border-radius:10px;cursor:pointer}
+.line.a{background:#eef2fa}
+.line.b{background:#fdf3e3}
+.line b{color:var(--navy)}
+.line .ru{color:#555;font-style:italic}
+.story{background:#fff;border:1px solid var(--soft);border-radius:12px;padding:16px;margin:12px 0;font-size:1.02em}
+.q{background:#fff;border:1px solid var(--soft);border-radius:12px;padding:12px;margin:10px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.opt{border:2px solid var(--navy);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.92em}
+.opt.right{background:#d9f2d9;border-color:#2e7d32;color:#1b5e20;font-weight:700}
+.opt.wrong{background:#fdecea;border-color:#c0392b;color:#a93226}
+.riddle{background:#fff;border:1px solid var(--soft);border-radius:12px;padding:12px;margin:10px 0}
+.riddle .fb{margin-top:6px;font-weight:600}
+.gap{background:#fff;border:1px solid var(--soft);border-radius:10px;padding:10px 14px;margin:8px 0}
+.gap input{border:none;border-bottom:2px solid var(--gold);background:#fdf9ee;font-size:1em;padding:2px 6px;width:auto}
+.gap .fb{margin-left:8px;font-weight:600}
+.n{color:var(--navy);font-weight:700}
+.btn{display:inline-block;background:var(--navy);color:var(--gold);border:none;border-radius:24px;padding:10px 22px;font-size:1em;font-weight:700;cursor:pointer;margin:12px 0}
+.btn:hover{filter:brightness(1.15)}
+select{padding:6px 10px;border-radius:8px;border:1px solid var(--soft);font-size:.95em;margin-bottom:8px}
+.result{background:#fdf9ee;border:1px dashed var(--gold);border-radius:12px;padding:14px;margin-top:10px;font-size:1.05em}
+.lead{font-style:italic;color:#5a5a5a}
+@media(max-width:600px){header h1{font-size:1.3em}.grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-<h1>🎭 Great Minds</h1>
-<p>Spotlight 8 • Module 3 • Выдающиеся люди: писатели, поэты, художники</p>
-</header>
-<nav>
-<button class="tab-btn active" data-tab="goal">🎯 Цель урока</button>
-<button class="tab-btn" data-tab="words">📖 Слова</button>
-<button class="tab-btn" data-tab="phrases">💬 Фразы</button>
-<button class="tab-btn" data-tab="dialog">🗣 Диалог</button>
-<button class="tab-btn" data-tab="game1">🎲 Игра 1</button>
-<button class="tab-btn" data-tab="game2">🧩 Игра 2</button>
-<button class="tab-btn" data-tab="speak">🎤 Говори сам</button>
-<button class="tab-btn" data-tab="test">✏️ Тест</button>
-<button class="tab-btn" data-tab="hw">🏠 Домашка</button>
-</nav>
-
-<section class="tab active" id="goal">
-<h2>Цель урока</h2>
-<p><b>Тема:</b> выдающиеся люди родной страны и страны изучаемого языка — писатели, поэты, художники.</p>
-<p><b>Сегодня мы научимся:</b></p>
+<header><h1>🏛 GREAT MINDS</h1><p>Выдающиеся люди: писатели, поэты, художники • Spotlight 8 • Module 3e</p></header>
+<nav><button class="tab active" data-tab="about">🎯 О уроке</button><button class="tab" data-tab="words">📖 Слова</button><button class="tab" data-tab="phrases">💬 Фразы</button><button class="tab" data-tab="review">🔁 Повторение</button><button class="tab" data-tab="dialog">🗣 Диалог</button><button class="tab" data-tab="reading">📚 Чтение</button><button class="tab" data-tab="riddles">🏛 Великие умы</button><button class="tab" data-tab="gaps">🧩 Связки</button><button class="tab" data-tab="speak">🎤 Говори сам</button><button class="tab" data-tab="test">✏️ Тест</button><button class="tab" data-tab="home">🏠 Домашка</button></nav>
+<main><section id="tab-about" class="panel active">
+<div class="cheat">
+<h3>📌 Паспорт урока</h3>
+<p><b>УМК:</b> Spotlight 8 (Английский в фокусе), Module 3 «Great Minds», урок 3e — Writing Skills «An Unusual Gallery».</p>
+<p><b>Тема по ФРП:</b> «Выдающиеся люди родной страны и страны (стран) изучаемого языка (писатели, поэты, художники)».</p>
+<p><b>Уровень:</b> B1. <b>Тип урока:</b> урок развития речевых умений (письмо).</p>
+</div>
+<div class="cheat">
+<h3>🎯 План на 45 минут</h3>
+<ol>
+<li>Оргмомент и речевая разминка «Names in my head» — 3 мин;</li>
+<li>Целеполагание по теме «Великие умы: писатели, поэты, художники» — 3 мин;</li>
+<li>Введение лексики (вкладка «Слова») — 6 мин;</li>
+<li>Повторение: Past Tenses + слова-связки (вкладка «Повторение») — 5 мин;</li>
+<li>Чтение рассказа «The Unusual Gallery» с вопросами — 8 мин;</li>
+<li>Загадки «Угадай великого человека» — 5 мин;</li>
+<li>Тренажёр «Вставь связку» — 4 мин;</li>
+<li>Подготовка монолога «A great mind I admire» — 5 мин;</li>
+<li>Тест и рефлексия — 4 мин;</li>
+<li>Домашнее задание — 2 мин.</li>
+</ol>
+</div>
+<div class="cheat">
+<h3>🏆 Планируемые результаты (ФГОС ООО)</h3>
 <ul>
-<li>называть профессии и произведения великих людей по-английски;</li>
-<li>рассказывать о жизни знаменитого человека с помощью Passive Voice (<i>was born, was written, was painted</i>);</li>
-<li>выражать своё мнение о писателях, поэтах и художниках;</li>
-<li>составлять мини-биографию по плану.</li>
+<li><b>Предметные:</b> владеют ЛЕ по темам «Выдающиеся люди» и «Рассказ»; употребляют Past Simple/Continuous/Perfect и слова-связки; пишут рассказ по плану.</li>
+<li><b>Метапредметные:</b> планируют письменное высказывание, выстраивают логику повествования, осуществляют самоконтроль по критериям.</li>
+<li><b>Личностные:</b> проявляют интерес к культуре родной страны и стран изучаемого языка, уважение к творческому наследию.</li>
+<li><b>Межпредметные связи:</b> литература, история, ИЗО.</li>
 </ul>
-<table>
-<tr><th>Результаты</th><th>Чему учимся</th></tr>
-<tr><td><b>Предметные</b></td><td>Лексика «великие люди и произведения»; Passive Voice; монолог-рассказ о выдающемся человеке</td></tr>
-<tr><td><b>Метапредметные</b></td><td>Отбирать информацию, строить рассказ по плану, оценивать себя</td></tr>
-<tr><td><b>Личностные</b></td><td>Уважение к культурному наследию России и Великобритании</td></tr>
-</table>
-</section>
-
-<section class="tab" id="words">
-<h2>📖 Новые слова</h2>
-<p class="small">Нажми на карточку — слово прозвучит <b>дважды</b>: сначала медленно, потом в обычном темпе.</p>
-<div id="wordsBox"></div>
-</section>
-
-<section class="tab" id="phrases">
-<h2>💬 Фразы урока</h2>
-<div id="phrBox"></div>
-<p><button class="btn yellow" onclick="playPhrasesAll()">▶️ Прослушать все фразы</button></p>
-<h3>Грамматическая шпаргалка: четыре главных глагола биографии (Passive Voice)</h3>
-<table>
-<tr><th>Фраза</th><th>Перевод</th></tr>
-<tr><td>He <b>was born</b> in 1564.</td><td>Он родился в 1564 году.</td></tr>
-<tr><td>The play <b>was written</b> in 1600.</td><td>Пьеса была написана в 1600 году.</td></tr>
-<tr><td>The picture <b>was painted</b> in 1850.</td><td>Картина была написана в 1850 году.</td></tr>
-<tr><td>The museum <b>was created</b> in his honour.</td><td>Музей был создан в его честь.</td></tr>
-</table>
-</section>
-
-<section class="tab" id="dialog">
-<h2>🗣 Диалог: Anna and Mark</h2>
-<p class="small">Нажми на реплику, чтобы услышать её и увидеть перевод.</p>
-<div id="dlgBox"></div>
-<p><button class="btn green" onclick="playDialogAll()">▶️ Прослушать весь диалог</button></p>
-<div class="q">
-<p>1. What did Anna call Shakespeare?</p>
-<button class="opt" onclick="dq(this,false,'Нет! Anna назвала его «the greatest playwright».')">A great painter</button>
-<button class="opt" onclick="dq(this,true,'Верно! «The greatest playwright in the English language».')">The greatest playwright</button>
-<button class="opt" onclick="dq(this,false,'Нет! Это про Шекспира, не про музей.')">A quiet museum</button>
 </div>
-<div class="q">
-<p>2. Which painting did Mark talk about?</p>
-<button class="opt" onclick="dq(this,false,'Нет! Mark говорил про «Девятый вал».')">The Boyarynya Morozova</button>
-<button class="opt" onclick="dq(this,false,'Почти, но это про Айвазовского в другом вопросе.')">Black Square</button>
-<button class="opt" onclick="dq(this,true,'Верно! «The Ninth Wave» by Aivazovsky.')">The Ninth Wave</button>
+</section><section id="tab-words" class="panel"><h3>Люди и творчество</h3><div class="grid">
+<div class="card word" data-say="writer"><div class="en">writer</div><div class="ipa">/ˈraɪtə/</div><div class="ru">писатель</div></div>
+<div class="card word" data-say="poet"><div class="en">poet</div><div class="ipa">/ˈpəʊɪt/</div><div class="ru">поэт</div></div>
+<div class="card word" data-say="painter"><div class="en">painter</div><div class="ipa">/ˈpeɪntə/</div><div class="ru">художник (живописец)</div></div>
+<div class="card word" data-say="playwright"><div class="en">playwright</div><div class="ipa">/ˈpleɪraɪt/</div><div class="ru">драматург</div></div>
+<div class="card word" data-say="novelist"><div class="en">novelist</div><div class="ipa">/ˈnɒvəlɪst/</div><div class="ru">романист, автор романов</div></div>
+<div class="card word" data-say="masterpiece"><div class="en">masterpiece</div><div class="ipa">/ˈmɑːstəpiːs/</div><div class="ru">шедевр</div></div>
+<div class="card word" data-say="achievement"><div class="en">achievement</div><div class="ipa">/əˈtʃiːvmənt/</div><div class="ru">достижение</div></div>
+<div class="card word" data-say="admire"><div class="en">admire</div><div class="ipa">/ədˈmaɪə/</div><div class="ru">восхищаться</div></div>
+</div><p class="hint">Кликни по карточке — слово прозвучит дважды.</p>
+<h3>Рассказ о находке</h3><div class="grid">
+<div class="card word" data-say="stroll"><div class="en">stroll</div><div class="ipa">/strəʊl/</div><div class="ru">гулять, бродить</div></div>
+<div class="card word" data-say="treasure"><div class="en">treasure</div><div class="ipa">/ˈtreʒə/</div><div class="ru">сокровище</div></div>
+<div class="card word" data-say="hide (hid, hidden)"><div class="en">hide (hid, hidden)</div><div class="ipa">/haɪd/</div><div class="ru">прятать</div></div>
+<div class="card word" data-say="climb"><div class="en">climb</div><div class="ipa">/klaɪm/</div><div class="ru">взбираться</div></div>
+<div class="card word" data-say="crawl"><div class="en">crawl</div><div class="ipa">/krɔːl/</div><div class="ru">ползти</div></div>
+<div class="card word" data-say="torch"><div class="en">torch</div><div class="ipa">/tɔːtʃ/</div><div class="ru">факел, фонарик</div></div>
+<div class="card word" data-say="be relieved"><div class="en">be relieved</div><div class="ipa">/bɪ rɪˈliːvd/</div><div class="ru">чувствовать облегчение</div></div>
+<div class="card word" data-say="lay eyes upon"><div class="en">lay eyes upon</div><div class="ipa">/leɪ ˈaɪz əpɒn/</div><div class="ru">увидеть (впервые)</div></div>
+</div><p class="hint">Кликни по карточке — слово прозвучит дважды.</p></section><section id="tab-phrases" class="panel"><div class="list">
+<div class="row phrase" data-ru="Он родился в 1564 году."><div class="en">He was born in 1564.</div><div class="ru hidden">Он родился в 1564 году.</div></div>
+<div class="row phrase" data-ru="Он знаменит своими пьесами и сонетами."><div class="en">He is famous for his plays and sonnets.</div><div class="ru hidden">Он знаменит своими пьесами и сонетами.</div></div>
+<div class="row phrase" data-ru="Среди его шедевров — «Ромео и Джульетта»."><div class="en">His masterpieces include «Romeo and Juliet».</div><div class="ru hidden">Среди его шедевров — «Ромео и Джульетта».</div></div>
+<div class="row phrase" data-ru="Больше всего меня впечатлила картина."><div class="en">What impressed me most was the painting.</div><div class="ru hidden">Больше всего меня впечатлила картина.</div></div>
+<div class="row phrase" data-ru="Я большой поклонник его поэзии."><div class="en">I&#x27;m a big fan of his poetry.</div><div class="ru hidden">Я большой поклонник его поэзии.</div></div>
+<div class="row phrase" data-ru="Как только я вошёл в галерею, я увидел её."><div class="en">As soon as I entered the gallery, I saw it.</div><div class="ru hidden">Как только я вошёл в галерею, я увидел её.</div></div>
+<div class="row phrase" data-ru="Пока мы бродили, мы нашли тайную дверь."><div class="en">While we were strolling, we found a secret door.</div><div class="ru hidden">Пока мы бродили, мы нашли тайную дверь.</div></div>
+<div class="row phrase" data-ru="До этого об этом никто не знал."><div class="en">Before that, nobody knew about it.</div><div class="ru hidden">До этого об этом никто не знал.</div></div>
+<div class="row phrase" data-ru="В конце концов тайна была разгадана."><div class="en">Finally, the mystery was solved.</div><div class="ru hidden">В конце концов тайна была разгадана.</div></div>
+<div class="row phrase" data-ru="В итоге мы почувствовали гордость и облегчение."><div class="en">In the end, we felt proud and relieved.</div><div class="ru hidden">В итоге мы почувствовали гордость и облегчение.</div></div>
+</div><p class="hint">Кликни по фразе — появится перевод.</p>
+<div class="cheat"><h3>📌 Шпаргалка</h3><p><b>Слова-связки</b> делают рассказ живым: <i>as soon as (как только), when (когда), while (пока), before (до того как), then (затем), finally (наконец), in the end (в итоге)</i>.</p><p><b>Говорим о великих людях:</b> <i>He was born in… / He is famous for… / His masterpieces include… / What impressed me most…</i></p></div></section><section id="tab-review" class="panel">
+<h3>🪜 Лесенка модуля 3</h3>
+<ol>
+<li><b>3a</b> — области науки: physics, chemistry, biology, astronomy, politics, psychology;</li>
+<li><b>3b–3d</b> — великие умы: scientist, inventor, discover, invent, achieve (Мария Кюри и другие);</li>
+<li><b>3e (сегодня)</b> — рассказ о находке: Past Tenses + слова-связки + лексика галереи.</li>
+</ol>
+<h3>⏳ Времена рассказа</h3>
+<div class="cheat">
+<p><b>Past Simple</b> — факт в прошлом: <i>We <b>visited</b> the gallery.</i></p>
+<p><b>Past Continuous</b> — процесс в момент: <i>While we <b>were strolling</b>, we noticed a door.</i></p>
+<p><b>Past Perfect</b> — действие до другого: <i>She showed letters that the artist <b>had written</b> a century ago.</i></p>
 </div>
-</section>
-
-<section class="tab" id="game1">
-<h2>🎲 Игра 1: Угадай великого человека</h2>
-<p class="small">Прочитай биографию-загадку и выбери имя. Счёт: <span class="score" id="g1score">0</span> / 8</p>
-<div id="g1box"></div>
-</section>
-
-<section class="tab" id="game2">
-<h2>🧩 Игра 2: Вставь слово</h2>
-<p class="small">Выбери правильную форму глагола. Правильное предложение прозвучит вслух!</p>
-<div id="g2box"></div>
-</section>
-
-<section class="tab" id="speak">
-<h2>🎤 Говори сам</h2>
-<p>Выбери великого человека, что он сделал и что ты о нём думаешь.</p>
-<p>
-<select id="spPerson"></select>
-</p>
-<p>
-<select id="spDo"></select>
-</p>
-<p>
-<select id="spOp"></select>
-</p>
-<div class="big-speak" id="spOut">Выбери варианты — здесь появится твой рассказ.</div>
-<p><button class="btn" onclick="makeSpeak()">✨ Составить рассказ</button>
-<button class="btn green" id="spSay" onclick="speakSpeak()">🔊 Прослушать</button></p>
-</section>
-
-<section class="tab" id="test">
-<h2>✏️ Тест: проверь себя</h2>
-<p class="small">10 вопросов. За 9–10 правильных — золотая медаль! 🥇</p>
-<div id="testBox"></div>
-<p class="score" id="testScore"></p>
-</section>
-
-<section class="tab" id="hw">
-<h2>🏠 Домашнее задание</h2>
-<p><b>Задание:</b> напиши мини-биографию (60–80 слов) великого человека для нашей «Галереи великих умов». Это может быть писатель, поэт или художник из России или Великобритании.</p>
-<p><b>План рассказа:</b></p>
+<h3>🔗 Слова-связки — клей рассказа</h3>
+<p>as soon as → when → while → before → then → finally → in the end. Нанизывай события в порядке, как бусы на нитку.</p>
+</section><section id="tab-dialog" class="panel"><div class="line a"><b>Anna:</b> <span class="en">Mark! How was your weekend?</span><span class="ru hidden">Марк! Как прошли твои выходные?</span></div>
+<div class="line b"><b>Mark:</b> <span class="en">Brilliant! I visited a new art gallery in the city centre.</span><span class="ru hidden">Отлично! Я побывал в новой художественной галерее в центре города.</span></div>
+<div class="line a"><b>Anna:</b> <span class="en">Really? What did you see there?</span><span class="ru hidden">Правда? Что ты там видел?</span></div>
+<div class="line b"><b>Mark:</b> <span class="en">Paintings by great Russian artists — Aivazovsky, Levitan and others.</span><span class="ru hidden">Картины великих русских художников — Айвазовского, Левитана и других.</span></div>
+<div class="line a"><b>Anna:</b> <span class="en">Wow! What impressed you most?</span><span class="ru hidden">Ух ты! Что тебя впечатлило больше всего?</span></div>
+<div class="line b"><b>Mark:</b> <span class="en">«The Ninth Wave». The sea in it looks so powerful!</span><span class="ru hidden">«Девятый вал». Море там выглядит таким мощным!</span></div>
+<div class="line a"><b>Anna:</b> <span class="en">I&#x27;ve never seen it. Is the gallery worth visiting?</span><span class="ru hidden">Я её никогда не видел. Галерея стоит посещения?</span></div>
+<div class="line b"><b>Mark:</b> <span class="en">Definitely! As soon as I entered, I felt like a traveller of the 19th century.</span><span class="ru hidden">Определённо! Как только я вошёл, я почувствовал себя путешественником XIX века.</span></div>
+<div class="line a"><b>Anna:</b> <span class="en">Sounds great! Let&#x27;s go together next weekend.</span><span class="ru hidden">Звучит здорово! Давай сходим вместе на следующих выходных.</span></div>
+<div class="line b"><b>Mark:</b> <span class="en">Why not? Such masterpieces are worth visiting twice!</span><span class="ru hidden">Почему бы и нет? Такие шедевры стоит видеть дважды!</span></div>
+<p class="hint">Кликни по реплике — появится перевод.</p></section><section id="tab-reading" class="panel"><button class="btn" id="read-aloud">🔊 Прочитать рассказ вслух</button>
+<div class="story" id="story-text">Last Saturday my friend Tom and I decided to visit the old city gallery. While we were strolling along the halls, we noticed a strange little door behind a huge picture of the sea. “What is there?” Tom whispered. We found a small hole in the wall, and Tom climbed in first with his torch. I crawled after him. Inside, we discovered a dusty room full of old paintings and a wooden chest. “Is it a treasure?” I asked. Suddenly we heard steps, and Tom hid behind a statue — but it was only the gallery cleaner. We were relieved! In the chest we lay eyes upon letters written by a famous artist a century ago. We showed them to the gallery director immediately. She confirmed that the letters were real. In the end, our names were put on the Discoverers board, and we felt proud of ourselves.</div>
+<h3>Проверь себя — 5 вопросов</h3>
+<div class="q"><b>1. Where did the friends go last Saturday?</b><div class="opts"><button class="opt" data-c="1">To the old city gallery</button><button class="opt" data-c="0">To the beach</button><button class="opt" data-c="0">To the museum of science</button></div></div>
+<div class="q"><b>2. What did they notice behind the huge picture?</b><div class="opts"><button class="opt" data-c="1">A small door</button><button class="opt" data-c="0">A treasure chest</button><button class="opt" data-c="0">A statue</button></div></div>
+<div class="q"><b>3. Why did Tom hide behind the statue?</b><div class="opts"><button class="opt" data-c="1">He heard steps</button><button class="opt" data-c="0">He was tired</button><button class="opt" data-c="0">He saw a ghost</button></div></div>
+<div class="q"><b>4. What did they find in the wooden chest?</b><div class="opts"><button class="opt" data-c="1">Letters written by a famous artist</button><button class="opt" data-c="0">Gold coins</button><button class="opt" data-c="0">An old torch</button></div></div>
+<div class="q"><b>5. How did the friends feel in the end?</b><div class="opts"><button class="opt" data-c="1">Proud</button><button class="opt" data-c="0">Frightened</button><button class="opt" data-c="0">Disappointed</button></div></div></section><section id="tab-riddles" class="panel"><p class="lead">Прочитай загадку о великом человеке и выбери имя. Ошибка не блокирует — пробуй снова!</p>
+<div class="riddle"><div class="q-text">1. He was born in 1564. He wrote 37 plays and 154 sonnets. His theatre was called The Globe. Who is he?</div><div class="opts"><button class="opt rid" data-c="1">William Shakespeare</button><button class="opt rid" data-c="0">Charles Dickens</button><button class="opt rid" data-c="0">Daniel Defoe</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">2. A Russian poet, the author of «Eugene Onegin». He is called «the sun of Russian poetry». Who is he?</div><div class="opts"><button class="opt rid" data-c="1">Alexander Pushkin</button><button class="opt rid" data-c="0">Sergey Yesenin</button><button class="opt rid" data-c="0">Mikhail Lermontov</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">3. An English writer of the 19th century. He wrote «Oliver Twist» and «A Christmas Carol». Who is he?</div><div class="opts"><button class="opt rid" data-c="1">Charles Dickens</button><button class="opt rid" data-c="0">William Shakespeare</button><button class="opt rid" data-c="0">Oscar Wilde</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">4. A Russian poet of the Caucasus, the author of «Mtsyri» and «Demon». He was also a talented painter. Who is he?</div><div class="opts"><button class="opt rid" data-c="1">Mikhail Lermontov</button><button class="opt rid" data-c="0">Alexander Pushkin</button><button class="opt rid" data-c="0">Ivan Turgenev</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">5. A modern British writer. She created a young wizard and seven books about him. Who is she?</div><div class="opts"><button class="opt rid" data-c="1">J.K. Rowling</button><button class="opt rid" data-c="0">Charlotte Brontë</button><button class="opt rid" data-c="0">Jane Austen</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">6. A great Russian writer, the author of «War and Peace» and «Anna Karenina». Who is he?</div><div class="opts"><button class="opt rid" data-c="1">Leo Tolstoy</button><button class="opt rid" data-c="0">Fyodor Dostoevsky</button><button class="opt rid" data-c="0">Anton Chekhov</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">7. An English painter of the 19th century. He was famous for his seascapes and the magic of light. Who is he?</div><div class="opts"><button class="opt rid" data-c="1">J.M.W. Turner</button><button class="opt rid" data-c="0">John Constable</button><button class="opt rid" data-c="0">William Hogarth</button></div><div class="fb"></div></div>
+<div class="riddle"><div class="q-text">8. A Russian painter of the sea. His masterpiece is «The Ninth Wave». Who is he?</div><div class="opts"><button class="opt rid" data-c="1">Ivan Aivazovsky</button><button class="opt rid" data-c="0">Isaac Levitan</button><button class="opt rid" data-c="0">Viktor Vasnetsov</button></div><div class="fb"></div></div></section><section id="tab-gaps" class="panel"><div class="cheat"><b>Слова для вставки:</b> as soon as, because, before, finally, in the end, then, when, while</div>
+<div class="gap"><span class="n">1.</span> <input class='gap-input' data-ans='as soon as' size='12' autocomplete='off'> I entered the gallery, I saw the picture. <span class="fb"></span></div>
+<div class="gap"><span class="n">2.</span> We were strolling <input class='gap-input' data-ans='when' size='8' autocomplete='off'> we noticed a strange door. <span class="fb"></span></div>
+<div class="gap"><span class="n">3.</span> <input class='gap-input' data-ans='before' size='8' autocomplete='off'> that, nobody knew about the secret room. <span class="fb"></span></div>
+<div class="gap"><span class="n">4.</span> <input class='gap-input' data-ans='while' size='8' autocomplete='off'> Tom was climbing the stairs, he dropped his torch. <span class="fb"></span></div>
+<div class="gap"><span class="n">5.</span> He opened the chest, <input class='gap-input' data-ans='then' size='8' autocomplete='off'> checked the letters. <span class="fb"></span></div>
+<div class="gap"><span class="n">6.</span> <input class='gap-input' data-ans='finally' size='9' autocomplete='off'>, the director confirmed the letters were real. <span class="fb"></span></div>
+<div class="gap"><span class="n">7.</span> <input class='gap-input' data-ans='in the end' size='12' autocomplete='off'>, we felt proud of our discovery. <span class="fb"></span></div>
+<div class="gap"><span class="n">8.</span> We were relieved <input class='gap-input' data-ans='because' size='9' autocomplete='off'> the letters were safe. <span class="fb"></span></div>
+<button class="btn" id="check-gaps">✅ Проверить</button></section><section id="tab-speak" class="panel"><p class="lead">Собери свой монолог «A great mind I admire» — выбери три варианта и послушай результат. Это готовая заготовка для устного ответа!</p>
+<label>Человек<br><select id="sp-0"><option value="William Shakespeare">William Shakespeare</option><option value="Alexander Pushkin">Alexander Pushkin</option><option value="Ivan Aivazovsky">Ivan Aivazovsky</option></select></label><br>
+<label>Чем знаменит<br><select id="sp-1"><option value="his plays and sonnets">his plays and sonnets — пьесы и сонеты</option><option value="his poems about Russian nature">his poems about Russian nature — стихи о русской природе</option><option value="his sea paintings">his sea paintings — картины моря</option></select></label><br>
+<label>Почему восхищаюсь<br><select id="sp-2"><option value="his works teach us about life">his works teach us about life — его работы учат жизни</option><option value="I love his beautiful language">I love his beautiful language — люблю его прекрасный язык</option><option value="his pictures are breathtaking">his pictures are breathtaking — его картины захватывают дух</option></select></label><br>
+<button class="btn" id="build-speak">🎤 Собрать и озвучить</button>
+<div class="result" id="speak-result">Выбери варианты и нажми кнопку…</div></section><section id="tab-test" class="panel"><div class="q"><b>1. Who wrote «Romeo and Juliet»?</b><div class="opts"><button class="opt tq" data-c="1">William Shakespeare</button><button class="opt tq" data-c="0">Charles Dickens</button><button class="opt tq" data-c="0">Leo Tolstoy</button></div></div>
+<div class="q"><b>2. «The Ninth Wave» was painted by…</b><div class="opts"><button class="opt tq" data-c="1">Ivan Aivazovsky</button><button class="opt tq" data-c="0">J.M.W. Turner</button><button class="opt tq" data-c="0">Isaac Levitan</button></div></div>
+<div class="q"><b>3. Who is the author of «Eugene Onegin»?</b><div class="opts"><button class="opt tq" data-c="1">Alexander Pushkin</button><button class="opt tq" data-c="0">Mikhail Lermontov</button><button class="opt tq" data-c="0">Anton Chekhov</button></div></div>
+<div class="q"><b>4. Past Perfect образуется: had + …</b><div class="opts"><button class="opt tq" data-c="1">V3 (Past Participle)</button><button class="opt tq" data-c="0">V-ing</button><button class="opt tq" data-c="0">will + V</button></div></div>
+<div class="q"><b>5. «As soon as» переводится…</b><div class="opts"><button class="opt tq" data-c="1">как только</button><button class="opt tq" data-c="0">в конце концов</button><button class="opt tq" data-c="0">потому что</button></div></div>
+<div class="q"><b>6. «Oliver Twist» and «A Christmas Carol» were written by…</b><div class="opts"><button class="opt tq" data-c="1">Charles Dickens</button><button class="opt tq" data-c="0">William Shakespeare</button><button class="opt tq" data-c="0">J.K. Rowling</button></div></div>
+<div class="q"><b>7. «While we were strolling, we found a door». Это время…</b><div class="opts"><button class="opt tq" data-c="1">Past Continuous</button><button class="opt tq" data-c="0">Present Continuous</button><button class="opt tq" data-c="0">Past Perfect</button></div></div>
+<div class="q"><b>8. Who wrote «Mtsyri»?</b><div class="opts"><button class="opt tq" data-c="1">Mikhail Lermontov</button><button class="opt tq" data-c="0">Alexander Pushkin</button><button class="opt tq" data-c="0">Leo Tolstoy</button></div></div>
+<div class="q"><b>9. J.M.W. Turner was famous for…</b><div class="opts"><button class="opt tq" data-c="1">his seascapes</button><button class="opt tq" data-c="0">his plays</button><button class="opt tq" data-c="0">his novels</button></div></div>
+<div class="q"><b>10. The author of «Harry Potter» is…</b><div class="opts"><button class="opt tq" data-c="1">J.K. Rowling</button><button class="opt tq" data-c="0">Jane Austen</button><button class="opt tq" data-c="0">Charlotte Brontë</button></div></div><button class="btn" id="check-test">🏁 Проверить тест</button><div class="result" id="test-result"></div></section><section id="tab-home" class="panel">
+<div class="cheat">
+<h3>✏️ Основное задание</h3>
+<p>Напиши рассказ <b>«The Unusual Gallery»</b> (120–180 слов) по плану:</p>
+<ol>
+<li><b>Type and characters</b> — жанр (adventure? mystery?) и герои;</li>
+<li><b>Place and time</b> — где и когда всё случилось;</li>
+<li><b>Main body</b> — события по порядку, со словами-связками (as soon as, while, before, then, finally);</li>
+<li><b>Conclusion</b> — чем всё закончилось и что почувствовали герои.</li>
+</ol>
+<p>Используй Past Simple, Past Continuous и хотя бы один Past Perfect.</p>
+</div>
+<div class="cheat">
+<h3>⭐ Звёздочка (по желанию)</h3>
+<p>Коллаж <b>«Gallery of Great Minds»</b>: 4–5 портретов писателей, поэтов и художников с подписями по-английски — имя, страна, чем знаменит.</p>
+</div>
+<div class="cheat">
+<h3>📏 Критерии (9 баллов)</h3>
 <ul>
-<li>Who was he/she? (a famous writer / poet / painter)</li>
-<li>When and where was he/she born?</li>
-<li>What did he/she create? Use: was written, was painted…</li>
-<li>Why do you like this person?</li>
+<li>Объём 120–180 слов — 1 б;</li>
+<li>Структура (вступление, основная часть, заключение) — 2 б;</li>
+<li>Соответствие жанру — 1 б;</li>
+<li>Красочность повествования (прилагательные, наречия) — 2 б;</li>
+<li>Слова-связки — 1 б;</li>
+<li>Грамотность (прошедшие времена, орфография) — 2 б.</li>
 </ul>
-<p><b>Критерии успеха:</b> 60–80 слов ✓ 4 фразы из урока ✓ Passive Voice (1–2 раза) ✓ своё мнение в конце ✓</p>
-<div class="star">⭐ <b>Задание со звёздочкой:</b> сделай музейную карточку своего героя (картинка + 3 факта) и придумай вопрос-загадку для одноклассников: «Who am I?»</div>
-</section>
+<p>Критерии — как в учебнике (упр. 7, с. 51). Шкала: 8–9 б — «5», 6–7 б — «4», 5 б — «3».</p>
 </div>
-
+</section></main>
 <script>
-var SP = window.speechSynthesis || null;
-function speak(text, rate, cb){
-  if(!SP){ if(cb)cb(); return; }
-  try{ SP.cancel(); }catch(e){}
-  var u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-GB'; u.rate = rate || 1;
-  u.onend = function(){ if(cb)cb(); };
-  u.onerror = function(){ if(cb)cb(); };
-  SP.speak(u);
+function say(t, twice){
+  try{
+    var u=new SpeechSynthesisUtterance(t);u.lang='en-US';speechSynthesis.speak(u);
+    if(twice){setTimeout(function(){var u2=new SpeechSynthesisUtterance(t);u2.lang='en-US';speechSynthesis.speak(u2);},700);}
+  }catch(e){}
 }
-
-/* TABS */
-var btns = document.querySelectorAll('.tab-btn');
-for(var i=0;i<btns.length;i++){
-  btns[i].addEventListener('click', function(){
-    var id = this.getAttribute('data-tab');
-    var all = document.querySelectorAll('.tab-btn');
-    for(var j=0;j<all.length;j++) all[j].classList.remove('active');
-    this.classList.add('active');
-    var secs = document.querySelectorAll('section.tab');
-    for(var k=0;k<secs.length;k++) secs[k].classList.remove('active');
-    document.getElementById(id).classList.add('active');
-  });
-}
-
-/* WORDS */
-var wordsGroup1 = [
- {en:'a playwright', tr:'/ˈpleɪraɪt/', ru:'драматург', hint:'плэ́й-райт', say:'a playwright'},
- {en:'a novelist', tr:'/ˈnɒvəlɪst/', ru:'романист, автор романов', hint:'но́-ва-лист', say:'a novelist'},
- {en:'a poet', tr:'/ˈpəʊɪt/', ru:'поэт', hint:'по́-уэт', say:'a poet'},
- {en:'a painter', tr:'/ˈpeɪntə/', ru:'художник', hint:'пэ́йн-тэ', say:'a painter'},
- {en:'a masterpiece', tr:'/ˈmɑːstəpiːs/', ru:'шедевр', hint:'ма́-стэ-пис', say:'a masterpiece'},
- {en:'a sonnet', tr:'/ˈsɒnɪt/', ru:'сонет', hint:'со́-нит', say:'a sonnet'},
- {en:'a novel', tr:'/ˈnɒvl/', ru:'роман (книга)', hint:'но́-вэл', say:'a novel'},
- {en:'a poem', tr:'/ˈpəʊɪm/', ru:'поэма, стихотворение', hint:'по́-уэм', say:'a poem'},
- {en:'a landscape', tr:'/ˈlændskeɪp/', ru:'пейзаж', hint:'лэнд-скейп', say:'a landscape'},
- {en:'a portrait', tr:'/ˈpɔːtreɪt/', ru:'портрет', hint:'по́-трэт', say:'a portrait'}
-];
-var wordsGroup2 = [
- {en:'be born', tr:'/bi bɔːn/', ru:'родиться', hint:'би-борн', say:'to be born'},
- {en:'grow up', tr:'/ɡrəʊ ʌp/', ru:'расти, взрослеть', hint:'гро́у ап', say:'to grow up'},
- {en:'go to school', tr:'/ɡəʊ tə skuːl/', ru:'ходить в школу', hint:'го́у ту скул', say:'to go to school'},
- {en:'graduate from', tr:'/ˈɡrædʒueɪt frɒm/', ru:'окончить (учебное заведение)', hint:'грэ́-джу-эйт фром', say:'to graduate from university'},
- {en:'become famous', tr:'/bɪˈkʌm ˈfeɪməs/', ru:'стать известным', hint:'би-ка́м фэ́й-мэс', say:'to become famous'},
- {en:'make a discovery', tr:'/meɪk ə dɪˈskʌvəri/', ru:'сделать открытие', hint:'мэйк э дис-ка́-ви', say:'to make a discovery'},
- {en:'win an award', tr:'/wɪn ən əˈwɔːd/', ru:'получить награду', hint:'вин эн э-во́:д', say:'to win an award'},
- {en:'pass away', tr:'/pɑːs əˈweɪ/', ru:'скончаться (устареть не будет — вежливо)', hint:'па:с э-уэ́й', say:'to pass away'}
-];
-function buildWords(){
-  var box = document.getElementById('wordsBox');
-  var g1 = document.createElement('div');
-  g1.innerHTML = '<div class="group-title">🎨 Профессии и произведения</div>';
-  var grid1 = document.createElement('div'); grid1.className = 'words';
-  wordsGroup1.forEach(function(w){
-    var c = document.createElement('div'); c.className='word-card';
-    c.innerHTML = '<div class="en">🔊 '+w.en+'</div><div class="tr">'+w.tr+'</div><div class="ru">'+w.ru+'</div><div class="hint">читается: '+w.hint+'</div>';
-    c.addEventListener('click', function(){
-      speak(w.say, 0.55, function(){ speak(w.say, 1.0, null); });
-    });
-    grid1.appendChild(c);
-  });
-  g1.appendChild(grid1);
-  var g2 = document.createElement('div');
-  g2.innerHTML = '<div class="group-title">⏳ Этапы жизни (Unit 3d)</div>';
-  var grid2 = document.createElement('div'); grid2.className = 'words';
-  wordsGroup2.forEach(function(w){
-    var c = document.createElement('div'); c.className='word-card';
-    c.innerHTML = '<div class="en">🔊 '+w.en+'</div><div class="tr">'+w.tr+'</div><div class="ru">'+w.ru+'</div><div class="hint">читается: '+w.hint+'</div>';
-    c.addEventListener('click', function(){
-      speak(w.say, 0.55, function(){ speak(w.say, 1.0, null); });
-    });
-    grid2.appendChild(c);
-  });
-  g2.appendChild(grid2);
-  box.appendChild(g1); box.appendChild(g2);
-}
-
-/* PHRASES */
-var phrases = [
- {en:'He was born in 1564 in England.', ru:'Он родился в 1564 году в Англии.'},
- {en:'He wrote thirty-seven plays.', ru:'Он написал 37 пьес.'},
- {en:'His novels are read all over the world.', ru:'Его романы читают во всём мире.'},
- {en:'This painting was created two hundred years ago.', ru:'Эта картина была создана двести лет назад.'},
- {en:'Who is your favourite writer?', ru:'Кто твой любимый писатель?'},
- {en:'I am keen on Russian poetry.', ru:'Я увлекаюсь русской поэзией.'},
- {en:'She is famous for her detective novels.', ru:'Она знаменита своими детективными романами.'},
- {en:'He won an award for his book.', ru:'Он получил награду за свою книгу.'},
- {en:'His pictures are full of light.', ru:'Его картины полны света.'},
- {en:'I think he is a genius.', ru:'Я думаю, он гений.'}
-];
-function buildPhrases(){
-  var box = document.getElementById('phrBox');
-  phrases.forEach(function(p, i){
-    var d = document.createElement('div'); d.className='line a';
-    d.innerHTML = '<span class="who">🔊</span> '+p.en+'<div class="ru">'+p.ru+'</div>';
-    d.addEventListener('click', function(){ speak(p.en, 0.9, null); d.classList.toggle('open'); });
-    box.appendChild(d);
-  });
-}
-function playPhrasesAll(){
-  var i = 0;
-  function next(){
-    if(i >= phrases.length) return;
-    var en = phrases[i].en; i++;
-    speak(en, 0.95, next);
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.classList.contains('tab')){
+    document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+    t.classList.add('active');
+    document.getElementById('tab-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
   }
-  next();
-}
-
-/* DIALOGUE */
-var dialog = [
- {who:'Anna', en:'Mark, do you like reading?', ru:'Марк, ты любишь читать?'},
- {who:'Mark', en:'Yes! I am keen on books. My favourite writer is Shakespeare.', ru:'Да! Я увлекаюсь книгами. Мой любимый писатель — Шекспир.'},
- {who:'Anna', en:'Shakespeare was born in 1564, right?', ru:'Шекспир родился в 1564 году, верно?'},
- {who:'Mark', en:'Exactly! Many people say he is the greatest playwright in the English language.', ru:'Точно! Многие говорят, что он величайший драматург на английском языке.'},
- {who:'Anna', en:'And I love Pushkin. His poems are wonderful, and every Russian child knows them.', ru:'А я люблю Пушкина. Его стихи чудесные, и каждый русский ребёнок их знает.'},
- {who:'Mark', en:'Great! Do you like art too?', ru:'Здорово! Ты тоже любишь искусство?'},
- {who:'Anna', en:'Of course. Last month I saw The Ninth Wave by Aivazovsky. The picture was painted in 1850.', ru:'Конечно. В прошлом месяце я видела «Девятый вал» Айвазовского. Картина была написана в 1850 году.'},
- {who:'Mark', en:'Wow! Is it really that old? It looks so alive — the sea is full of light!', ru:'Ого! Неужели она такая старая? Она выглядит такой живой — море полно света!'},
- {who:'Anna', en:'That is why people call Aivazovsky a genius. Come with me next time!', ru:'Вот почему люди называют Айвазовского гением. Пойдёшь со мной в следующий раз!'},
- {who:'Mark', en:'Count me in!', ru:'Записывай меня в компанию!'}
-];
-function buildDialog(){
-  var box = document.getElementById('dlgBox');
-  dialog.forEach(function(l, i){
-    var d = document.createElement('div');
-    d.className = 'line ' + (l.who === 'Anna' ? 'a' : 'b');
-    d.innerHTML = '<span class="who">'+l.who+':</span> '+l.en+'<div class="ru">'+l.ru+'</div>';
-    d.addEventListener('click', function(){ speak(l.en, 0.9, null); d.classList.toggle('open'); });
-    box.appendChild(d);
-  });
-}
-function playDialogAll(){
-  var i = 0;
-  function next(){
-    if(i >= dialog.length) return;
-    var en = dialog[i].en; i++;
-    speak(en, 0.95, next);
+  if(t.classList.contains('word')){say(t.dataset.say,true);return;}
+  if(t.classList.contains('phrase')){t.querySelector('.ru').classList.toggle('hidden');return;}
+  if(t.classList.contains('line')){t.querySelector('.ru').classList.toggle('hidden');return;}
+  if(t.id==='read-aloud'){say(document.getElementById('story-text').textContent,false);return;}
+  if(t.classList.contains('tq')){
+    t.parentNode.querySelectorAll('.opt').forEach(function(o){o.classList.remove('right','wrong');});
+    t.classList.add(t.dataset.c==='1'?'right':'wrong');
+    return;
   }
-  next();
-}
-function dq(btn, ok, msg){
-  var q = btn.parentElement;
-  var opts = q.querySelectorAll('.opt');
-  for(var i=0;i<opts.length;i++) opts[i].classList.remove('right','wrong');
-  btn.classList.add(ok ? 'right' : 'wrong');
-  var fb = q.querySelector('.feedback') || document.createElement('div');
-  if(!fb.classList.contains('feedback')){ fb.className='feedback'; q.appendChild(fb); }
-  fb.textContent = msg;
-  if(ok) speak(msg, 1, null);
-}
-
-/* GAME 1 */
-var g1data = [
- {q:'I was born in 1564 in England. I wrote "Romeo and Juliet" and 37 plays. Who am I?', opts:['Charles Dickens','William Shakespeare','Leo Tolstoy'], a:1},
- {q:'I am a British novelist. My books about a young wizard are read all over the world. Who am I?', opts:['J. K. Rowling','Jane Austen','Agatha Christie'], a:0},
- {q:'I was born in 1812 in England. I wrote "Oliver Twist" about poor children in London. Who am I?', opts:['William Shakespeare','Charles Dickens','Mark Twain'], a:1},
- {q:'I was a Russian writer. I wrote "War and Peace" and "Anna Karenina". Who am I?', opts:['Fyodor Dostoevsky','Anton Chekhov','Leo Tolstoy'], a:2},
- {q:'I was a Russian painter of the sea. My most famous picture is "The Ninth Wave". Who am I?', opts:['Ivan Aivazovsky','Ilya Repin','Isaac Levitan'], a:0},
- {q:'I was a Russian painter. My portraits of famous people are in the Tretyakov Gallery. Who am I?', opts:['Karl Bryullov','Ilya Repin','Vasily Surikov'], a:1},
- {q:'I was an Italian artist and inventor. I painted the "Mona Lisa". Who am I?', opts:['Raphael','Michelangelo','Leonardo da Vinci'], a:2},
- {q:'I was born in 1799 in Moscow. Russians call me their greatest poet. I wrote "Ruslan and Ludmila". Who am I?', opts:['Alexander Pushkin','Mikhail Lermontov','Sergei Yesenin'], a:0}
-];
-var g1score = 0, g1done = 0;
-function buildG1(){
-  var box = document.getElementById('g1box');
-  g1data.forEach(function(item, idx){
-    var q = document.createElement('div'); q.className = 'q';
-    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
-    var fb = document.createElement('div'); fb.className = 'feedback';
-    item.opts.forEach(function(o, oi){
-      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
-      b.addEventListener('click', function(){
-        if(q.getAttribute('data-done')) return;
-        q.setAttribute('data-done','1');
-        if(oi === item.a){
-          b.classList.add('right'); fb.textContent = '✅ Верно!'; fb.style.color = '#2e9e5b';
-          g1score++; speak(item.opts[item.a], 1, null);
-        } else {
-          b.classList.add('wrong'); fb.textContent = '❌ Правильно: ' + item.opts[item.a];
-          fb.style.color = '#d9534f';
-          q.querySelectorAll('.opt')[item.a].classList.add('right');
-        }
-        g1done++;
-        document.getElementById('g1score').textContent = g1score;
-        if(g1done === 8) fb.textContent += (g1score >= 7 ? ' 🏆 Отличный результат!' : ' Попробуй ещё раз!');
-      });
-      q.appendChild(b);
+  if(t.classList.contains('rid')){
+    var r=t.closest('.riddle'),fb=r.querySelector('.fb');
+    if(t.dataset.c==='1'){t.classList.add('right');fb.textContent='Верно, отлично!';fb.style.color='#1b5e20';}
+    else{t.classList.add('wrong');fb.textContent='Не то — попробуй ещё!';fb.style.color='#a93226';
+      setTimeout(function(){t.classList.remove('wrong');},800);}
+    return;
+  }
+  if(t.classList.contains('opt')&&!t.classList.contains('tq')&&!t.classList.contains('rid')){
+    t.parentNode.querySelectorAll('.opt').forEach(function(o){o.classList.remove('right','wrong');});
+    t.classList.add(t.dataset.c==='1'?'right':'wrong');
+    return;
+  }
+  if(t.id==='check-gaps'){
+    document.querySelectorAll('.gap-input').forEach(function(inp){
+      var ok=inp.value.trim().toLowerCase()===inp.dataset.ans.toLowerCase();
+      inp.style.borderColor=ok?'#2e7d32':'#c0392b';
+      inp.nextElementSibling.textContent=ok?'OK':'X';
+      inp.nextElementSibling.style.color=ok?'#1b5e20':'#a93226';
     });
-    q.appendChild(fb);
-    box.appendChild(q);
-  });
-}
-
-/* GAME 2 */
-var g2data = [
- {q:'Shakespeare ___ in 1564.', opts:['was born','is born','born'], a:0},
- {q:'"War and Peace" ___ by Leo Tolstoy.', opts:['wrote','was written','is writing'], a:1},
- {q:'"The Ninth Wave" ___ by Aivazovsky in 1850.', opts:['was painted','painted','paints'], a:0},
- {q:'Pushkin ___ up in Moscow.', opts:['grew','grow','grown'], a:0},
- {q:'This museum ___ in his honour.', opts:['created','was created','is create'], a:1},
- {q:'Marie Curie ___ a discovery in science.', opts:['make','made','making'], a:1},
- {q:'She ___ an award for her novel.', opts:['win','won','winned'], a:1},
- {q:'The great writer ___ away in 1837.', opts:['passed','pass','passing'], a:0}
-];
-function buildG2(){
-  var box = document.getElementById('g2box');
-  g2data.forEach(function(item, idx){
-    var q = document.createElement('div'); q.className = 'q';
-    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
-    var fb = document.createElement('div'); fb.className = 'feedback';
-    item.opts.forEach(function(o, oi){
-      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
-      b.addEventListener('click', function(){
-        if(q.getAttribute('data-done')) return;
-        q.setAttribute('data-done','1');
-        if(oi === item.a){
-          b.classList.add('right'); fb.textContent = '✅ Верно!'; fb.style.color = '#2e9e5b';
-          var full = item.q.replace('___', item.opts[item.a]);
-          speak(full, 0.9, null);
-        } else {
-          b.classList.add('wrong'); fb.textContent = '❌ Правильно: ' + item.opts[item.a];
-          fb.style.color = '#d9534f';
-          q.querySelectorAll('.opt')[item.a].classList.add('right');
-        }
-      });
-      q.appendChild(b);
+    return;
+  }
+  if(t.id==='check-test'){
+    var total=document.querySelectorAll('.tq').length;
+    var answered=document.querySelectorAll('.q .tq.right, .q .tq.wrong');
+    var right=document.querySelectorAll('.tq.right').length;
+    document.querySelectorAll('.q').forEach(function(q){
+      if(!q.querySelector('.tq.right')&&!q.querySelector('.tq.wrong'))return;
+      q.querySelectorAll('.tq').forEach(function(o){if(o.dataset.c==='1')o.classList.add('right');});
     });
-    q.appendChild(fb);
-    box.appendChild(q);
-  });
-}
-
-/* SPEAK */
-var spPeople = [
- {name:'William Shakespeare', do:'wrote Romeo and Juliet', say:'my favourite writer is William Shakespeare'},
- {name:'Alexander Pushkin', do:'wrote wonderful poems', say:'my favourite poet is Alexander Pushkin'},
- {name:'Charles Dickens', do:'wrote Oliver Twist', say:'my favourite writer is Charles Dickens'},
- {name:'Leo Tolstoy', do:'wrote War and Peace', say:'my favourite writer is Leo Tolstoy'},
- {name:'J. K. Rowling', do:'wrote the Harry Potter books', say:'my favourite writer is J. K. Rowling'},
- {name:'Ivan Aivazovsky', do:'painted The Ninth Wave', say:'my favourite painter is Ivan Aivazovsky'},
- {name:'Ilya Repin', do:'painted great portraits', say:'my favourite painter is Ilya Repin'},
- {name:'Leonardo da Vinci', do:'painted the Mona Lisa', say:'my favourite artist is Leonardo da Vinci'}
-];
-var spOps = [
- {t:'I think he is a genius.', v:'I think he is a genius.'},
- {t:'His works are wonderful!', v:'His works are wonderful!'},
- {t:'I am keen on his books.', v:'I am keen on his books.'},
- {t:'Her pictures are full of light.', v:'Her pictures are full of light.'}
-];
-function buildSpeak(){
-  var p = document.getElementById('spPerson');
-  spPeople.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x.name; p.appendChild(o); });
-  var d = document.getElementById('spDo');
-  var dos = ['wrote Romeo and Juliet','wrote wonderful poems','wrote Oliver Twist','wrote War and Peace','wrote the Harry Potter books','painted The Ninth Wave','painted great portraits','painted the Mona Lisa'];
-  dos.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x; d.appendChild(o); });
-  var op = document.getElementById('spOp');
-  spOps.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x.t; op.appendChild(o); });
-}
-function makeSpeak(){
-  var person = spPeople[document.getElementById('spPerson').value];
-  var doTxt = document.getElementById('spDo').value;
-  var op = spOps[document.getElementById('spOp').value];
-  var text = 'I would like to tell you about a great person. ' + person.say + '. He ' + doTxt + '. ' + op.v;
-  document.getElementById('spOut').textContent = text;
-  window.spText = text;
-}
-function speakSpeak(){
-  if(window.spText) speak(window.spText, 0.95, null);
-}
-
-/* TEST */
-var test = [
- {q:'Shakespeare was a famous ___.', opts:['playwright','painter','singer'], a:0},
- {q:'A person who writes novels is a ___.', opts:['novelist','sculptor','musician'], a:0},
- {q:'"Romeo and Juliet" was ___ by Shakespeare.', opts:['write','wrote','written'], a:2},
- {q:'Aivazovsky is famous for his ___.', opts:['detective novels','seascapes','plays'], a:1},
- {q:'Pushkin was born in ___.', opts:['1564','1799','1850'], a:1},
- {q:'The Mona Lisa was painted by ___.', opts:['Leonardo da Vinci','Ilya Repin','Charles Dickens'], a:0},
- {q:'"War and Peace" was written by ___.', opts:['Leo Tolstoy','Fyodor Dostoevsky','Anton Chekhov'], a:0},
- {q:'She won an award ___ her book.', opts:['for','about','from'], a:0},
- {q:'Harry Potter books were written by ___.', opts:['Jane Austen','J. K. Rowling','J. R. R. Tolkien'], a:1},
- {q:'The great poet passed ___ in 1837.', opts:['away','up','out'], a:0}
-];
-var testDone = 0, testScore = 0;
-function buildTest(){
-  var box = document.getElementById('testBox');
-  test.forEach(function(item, idx){
-    var q = document.createElement('div'); q.className = 'q';
-    var p = document.createElement('p'); p.textContent = (idx+1)+'. '+item.q; q.appendChild(p);
-    item.opts.forEach(function(o, oi){
-      var b = document.createElement('button'); b.className='opt'; b.textContent = o;
-      b.addEventListener('click', function(){
-        if(q.getAttribute('data-done')) return;
-        q.setAttribute('data-done','1');
-        if(oi === item.a){ b.classList.add('right'); testScore++; }
-        else { b.classList.add('wrong'); q.querySelectorAll('.opt')[item.a].classList.add('right'); }
-        testDone++;
-        if(testDone === 10){
-          var out = document.getElementById('testScore');
-          out.textContent = 'Твой результат: ' + testScore + ' из 10. ';
-          out.textContent += testScore >= 9 ? '🥇 Золотая медаль!' : (testScore >= 7 ? '🥈 Молодец! Почти идеально.' : '🥉 Пройди тест ещё раз!');
-        }
-      });
-      q.appendChild(b);
-    });
-    box.appendChild(q);
-  });
-}
-
-buildWords(); buildPhrases(); buildDialog(); buildG1(); buildG2(); buildSpeak(); buildTest();
+    var res=document.getElementById('test-result');
+    res.innerHTML=right>=9?'Medal! Excellent: '+right+' of '+total+'. You are a true expert on great minds!'
+      :(right>=7?'Well done: '+right+' of '+total+'. Review the tricky questions and try again.'
+      :right+' of '+total+'. Re-read the story and phrases — and try again!');
+    return;
+  }
+  if(t.id==='build-speak'){
+    var p=document.getElementById('sp-0').value,f=document.getElementById('sp-1').value,r=document.getElementById('sp-2').value;
+    var text='A great mind I admire is '+p+'. He is famous for '+f+'. '+r.charAt(0).toUpperCase()+r.slice(1)+'.';
+    document.getElementById('speak-result').textContent=text;
+    say(text,false);
+    return;
+  }
+});
 </script>
 </body>
 </html>
