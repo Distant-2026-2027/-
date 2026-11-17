@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 9 — Fears and Phobias</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f2eefb;color:#2d2440}
+header{background:linear-gradient(120deg,#5b3a9e,#8a5bd6,#e8a0bf);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.92;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#3d2a6e;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.14);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#f2c14e;color:#2d2440;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#5b3a9e;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(60,30,110,.08)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.wcard{background:#f6f1ff;border:2px solid #d9c8f5;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#e8a0bf}
+.wcard b{font-size:1.1em;color:#5b3a9e}
+.wcard span{display:block;font-size:.85em;color:#5a5470;margin-top:4px}
+.phr{border-left:4px solid #e8a0bf;background:#fdf7fb;padding:10px 14px;margin:8px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#5b3a9e}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#5b3a9e;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #c9bfe0;padding:6px 0}
+.rid{background:#fff;border:2px solid #d9c8f5;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #8a5bd6;background:#fff;color:#5b3a9e;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#5b3a9e;color:#fff}
+.opts button.bad{background:#c0392b;border-color:#c0392b;color:#fff;opacity:.6}
+.gap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.gap input{border:2px solid #d9c8f5;border-radius:8px;padding:7px;width:160px;font-size:1em}
+.gap input.good{border-color:#1e8e5a;background:#e2f6ec}
+.gap input.err{border-color:#c0392b;background:#fdecea}
+.bank{background:#fff8e6;border:1px dashed #d8a422;padding:10px;border-radius:10px;margin:10px 0;font-style:italic}
+select{padding:8px;border-radius:8px;border:2px solid #d9c8f5;font-size:.95em;margin:4px 0;width:100%;max-width:420px}
+.big{background:#e8a0bf;border:0;color:#2d2440;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#f6f1ff}
+#quizRes,#gapRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #e0d5f2;padding:8px;font-size:.95em}
+th{background:#f0e8fb;color:#5b3a9e}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #e8a0bf}
+#popup{position:fixed;left:0;right:0;bottom:-140px;background:#2d2440;color:#fff;padding:14px
