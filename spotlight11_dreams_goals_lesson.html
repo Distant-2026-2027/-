@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 11 — Goals and Dreams</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f7f4;color:#1e2f2a}
+header{background:linear-gradient(120deg,#145a5f,#1f8a70,#f6b93b);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.92;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#0d4045;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.14);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#f6b93b;color:#1e2f2a;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#1f8a70;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(20,90,95,.08)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.wcard{background:#eefaf4;border:2px solid #bfe6d5;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#f6b93b}
+.wcard b{font-size:1.1em;color:#1f8a70}
+.wcard span{display:block;font-size:.85em;color:#52645c;margin-top:4px}
+.phr{border-left:4px solid #f6b93b;background:#fffbf0;padding:10px 14px;margin:8px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#1f8a70}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#1f8a70;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #b3ccc2;padding:6px 0}
+.rid{background:#fff;border:2px solid #bfe6d5;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #1f8a70;background:#fff;color:#145a5f;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#1f8a70;color:#fff}
+.opts button.bad{background:#c0392b;border-color:#c0392b;color:#fff;opacity:.6}
+select{padding:8px;border-radius:8px;border:2px solid #bfe6d5;font-size:.95em;margin:4px 0;width:100%;max-width:420px}
+.big{background:#f6b93b;border:0;color:#1e2f2a;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#eefaf4}
+#quizRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #d2e8dd;padding:8px;font-size:.95em}
+th{background:#e2f4ec;color:#1f8a70}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #f6b93b}
+#popup{position:fixed;left:0;right:0;bottom:-140px;background:#1e2f2a;color:#fff;padding:14px 18px;border-radius:14px 14px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.35);transition:bottom .25s;z-index:50;max-width:560px;margin:0 auto}
+#popup.on{bottom:0}
+#popup .x{float:right;cursor:pointer;font-size:1.2em;padding:0 6px}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>🌟 GOALS AND DREAMS</h1>
+<p>Выбор профессии. Цели и мечты • Spotlight 11, Module 3 «Responsibility», Unit 3c • 11 класс</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">💼 Угадай профессию</button>
+<button onclick="show('t7',this)">🧩 to или -ing?</button>
+<button onclick="show('t8',this)">🎤 Говори сам</button>
+<button onclick="show('t9',this)">✏️ Тест</button>
+<button onclick="show('t10',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (3 мин).</b> What did you dream of becoming when you were a child? Have your dreams changed?</div></div>
+<div class="step"><div class="n">2</div><div><b>Актуализация (5 мин).</b> Модуль 2 «Where there's a will, there's a way»: цели, упорство, преодоление трудностей.</div></div>
+<div class="step"><div class="n">3</div><div><b>Новая лексика (7 мин).</b> 16 карточек: мечты, цели и язык планов.</div></div>
+<div class="step"><div class="n">4</div><div><b>Грамматика 3c (8 мин).</b> Герундий или инфинитив: правила и примеры о профессии.</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (5 мин).</b> Анна и Марк обсуждают мечты о будущей профессии.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (7 мин).</b> Текст «Goals and Dreams» + 5 вопросов.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (6 мин).</b> «Угадай профессию» и «to или -ing?».</div></div>
+<div class="step"><div class="n">8</div><div><b>Говорение (4 мин).</b> Монолог «My goals and dreams».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (5 мин).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС СОО</h2>
+<p><b>Предметные:</b> различает употребление герундия и инфинитива (3c); использует ЛЕ по теме «Выбор профессии»; высказывается о целях и мечтах; готовится к написанию эссе-рассуждения (3e).</p>
+<p><b>Метапредметные:</b> планирует профессиональное будущее, ставит цели и шаги к ним, сопоставляет грамматические конструкции.</p>
+<p><b>Личностные:</b> профессиональное самоопределение, ответственность за собственный выбор, целеустремлённость.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку</h2>
+<p style="color:#52645c">Клик по карточке — перевод всплывёт снизу экрана, слово прозвучит дважды.</p>
+<div class="card"><h3>Цели и мечты</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Язык планов и решений (3c)</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы урока — клик по фразе, перевод всплывёт</h2>
+<div class="card" id="phrBox"></div>
+<div class="card"><h3>Шпаргалка: герундий или инфинитив (3c)</h3>
+<table><tr><th>Схема</th><th>Глаголы</th><th>Пример</th></tr>
+<tr><td>verb + to-infinitive</td><td>want, hope, decide, plan, afford, manage, promise, aim</td><td>I hope <b>to enter</b> university.</td></tr>
+<tr><td>verb + -ing</td><td>enjoy, imagine, keep, avoid, can't stand, be worth</td><td>I enjoy <b>writing</b> code.</td></tr>
+<tr><td>verb + preposition + -ing</td><td>think of, dream of, succeed in, look forward to</td><td>I'm thinking of <b>becoming</b> a doctor.</td></tr>
+<tr><td>verb + bare infinitive</td><td>make, let</td><td>My parents let me <b>make</b> my own choices.</td></tr></table>
+<p style="color:#52645c;margin-top:8px">⚠️ После предлогов всегда герундий: <i>look forward to hearing, succeed in getting, dream of becoming.</i></p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: лесенка модулей</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Module 1: Relationships.</b> Семья и отношения, описание характера.</div></div>
+<div class="step"><div class="n">2</div><div><b>Module 2: Where there's a will, there's a way.</b> Стресс, давление сверстников, умение поддерживать и убеждать. Девиз модуля — сам про цели: где хотенье, там уменье!</div></div>
+<div class="step"><div class="n">3</div><div><b>Module 3: Responsibility.</b> 3a — Crime and the Law, 3b — Rights and Responsibilities (выражаем сожаление и возмущение), 3e — opinion essay.</div></div>
+<div class="step"><div class="n">4</div><div><b>Сегодня: 3c Grammar in Use.</b> Герундий и инфинитив — язык планов, целей и мечтаний о будущей профессии.</div></div>
+<div class="step"><div class="n">5</div><div><b>Впереди: Module 4 «Danger!»</b> Травмы, чрезвычайные ситуации, модальные глаголы.</div></div></div>
+<div class="card"><h3>Идиомы о работе и успехе</h3>
+<table><tr><th>Идиома</th><th>Значение</th><th>Пример</th></tr>
+<tr><td>earn a living</td><td>зарабатывать на жизнь</td><td>He earns a living as a designer.</td></tr>
+<tr><td>follow in one's footsteps</td><td>идти по стопам</td><td>She followed in her mother's footsteps.</td></tr>
+<tr><td>bring home the bacon</td><td>зарабатывать семье на хлеб</td><td>Both parents bring home the bacon.</td></tr>
+<tr><td>Jack of all trades</td><td>мастер на все руки</td><td>He can fix anything — a real jack of all trades.</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: мечты о профессии</h2>
+<div class="card">
+<p style="color:#52645c">Клик по реплике — перевод всплывёт снизу.</p>
+<div class="line" onclick="tr(this)" data-tr="Анна, ты уже решила, чем займёшься после школы?"><b>Mark:</b> Anna, have you made up your mind about what to do after school?</div>
+<div class="line" onclick="tr(this)" data-tr="Почти! Я мечтаю стать врачом. Не могу представить себе работу в офисе — я хочу помогать людям."><b>Anna:</b> Almost! I dream of becoming a doctor. I can't imagine working in an office — I want to help people.</div>
+<div class="line" onclick="tr(this)" data-tr="Благородная мечта! А я hoping поступить на программирование. Надеюсь поступить в IT-университет."><b>Mark:</b> That's a noble dream! As for me, I hope to enter an IT university.</div>
+<div class="line" onclick="tr(this)" data-tr="И правда? И что ты делаешь уже сейчас, чтобы к этому прийти?"><b>Anna:</b> Really? And what are you doing to make it happen?</div>
+<div class="line" onclick="tr(this)" data-tr="Я обдумываю запись на онлайн-курсы программирования и наслаждаюсь написанием кода каждый вечер."><b>Mark:</b> I'm thinking of taking an online programming course, and I enjoy writing code every evening.</div>
+<div class="line" onclick="tr(this)" data-tr="Умно! А мои родители хотят, чтобы я стала юристом, как папа. Но идти по стопам родителей — не мой путь."><b>Anna:</b> Smart! My parents want me to follow in my father's footsteps, but that is not my path.</div>
+<div class="line" onclick="tr(this)" data-tr="Делай, что говорит сердце. И помни: успех — это 10% таланта и 90% усердия."><b>Mark:</b> Follow your heart then. And remember: success is 10% talent and 90% hard work.</div>
+<div class="line" onclick="tr(this)" data-tr="Согласна! Никогда не отказывайся от мечты. С нетерпением жду начала нашей настоящей взрослой жизни!"><b>Anna:</b> Agreed! Never give up on your dreams. I look forward to starting our real adult life!</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Goals and Dreams</h2>
+<div class="card">
+<p>Every person has dreams. Some children dream of becoming astronauts, others imagine themselves as famous singers. But a dream is only the beginning. To make a dream come true, you need a goal and a plan.</p>
+<p>Psychologists say that people who write down their goals achieve them more often. A good goal is specific and realistic. Instead of saying "I want to be successful", say "I hope to pass my exams and enter university next year". Big goals feel impossible, but small steps keep you moving forward.</p>
+<p>Choosing a profession is one of the most important decisions in life. Some people follow in their parents' footsteps; others prefer to make their own path. Experts advise young people to try different activities: volunteering, school clubs, part-time jobs. You may discover a talent you never knew you had.</p>
+<p>Of course, the road to a dream is not easy. You may fail an exam or lose a competition. But failure is not the end — it is experience. People who succeed in life are not those who never fall, but those who never give up.</p>
+<p>So keep dreaming, set your goals, and take the first step today. In the words of Eleanor Roosevelt: "The future belongs to those who believe in the beauty of their dreams."</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. What do people need to make a dream come true? — A <b>goal</b> and a <b>plan</b>.</p>
+<p>2. What kind of goal is a good goal? — <b>Specific</b> and <b>realistic</b>.</p>
+<p>3. Why should young people try different activities? — To discover a <b>talent</b>.</p>
+<p>4. What is failure, according to the text? — Not the end, but <b>experience</b>.</p>
+<p>5. Who succeeds in life? — People who never <b>give up</b>.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>💼 Игра: угадай профессию</h2>
+<p style="color:#52645c">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 to или -ing? (Grammar 3c)</h2>
+<p style="color:#52645c">Выбери правильную форму — ошибка не блокирует игру.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🎤 Говори сам: My goals and dreams</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовый монолог.</p>
+<p><b>1. Твоя мечта:</b></p><select id="s1">
+<option value="I dream of becoming a doctor.">a doctor</option>
+<option value="I dream of becoming a game developer.">a game developer</option>
+<option value="I dream of becoming an ecologist.">an ecologist</option>
+<option value="I dream of becoming a journalist.">a journalist</option></select>
+<p><b>2. Почему:</b></p><select id="s2">
+<option value="I want to help people and I can't imagine doing anything else.">help people</option>
+<option value="I am keen on technology and I enjoy writing code.">love technology</option>
+<option value="I care about nature and I want to protect it.">care about nature</option>
+<option value="I enjoy writing and asking questions.">love writing</option></select>
+<p><b>3. Что делаешь уже сейчас:</b></p><select id="s3">
+<option value="I am thinking of taking extra courses.">extra courses</option>
+<option value="I have decided to join the school science club.">science club</option>
+<option value="I am planning to start an ecological blog.">ecological blog</option>
+<option value="I keep practising writing every day.">practise writing daily</option></select>
+<p><b>4. Через пять лет:</b></p><select id="s4">
+<option value="I hope to have entered a medical university.">entered university</option>
+<option value="I expect to have created my first app.">created my first app</option>
+<option value="I aim to have done real scientific research.">done research</option>
+<option value="I plan to have had my articles published.">articles published</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="Never give up on your dreams!">never give up</option>
+<option value="Every big goal starts with a small step.">small steps</option>
+<option value="Success is 10% talent and 90% hard work.">10% talent, 90% work</option>
+<option value="The journey matters as much as the goal.">journey matters</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut" style="background:#eefaf4;border-radius:10px;padding:12px;margin-top:8px;display:none"></div>
+</div>
+</section>
+
+<section class="tab" id="t9">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t10">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> эссе-рассуждение <b>«Dream Job: Passion or Salary?»</b> (150–200 слов) по формату opinion essay (3e). План: вступление — суть проблемы → аргументы «за страсть» → аргументы «за зарплату» → твоё мнение и вывод. Используй не менее 5 слов урока и конструкции с герундием и инфинитивом (hope to, dream of, enjoy, look forward to).</p>
+<p><b>Звёздочка (по желанию):</b> напиши 5 своих целей на ближайшие годы, каждая — в разной конструкции: hope to, dream of, plan, enjoy, look forward to.</p>
+<p><b>Критерии (9 баллов):</b> структура opinion essay (2), лексика урока — не менее 5 слов (2), грамматика 3c — герундий и инфинитив (2), орфография (2), оформление (1).</p>
+<p><b>Шкала:</b> 8–9 — «5»; 6–7 — «4»; 4–5 — «3».</p>
+<p><b>Примечание:</b> онлайн — текст в чат или фото рукописной работы; очно — в тетради.</p>
+</div>
+</section>
+
+</main>
+<div id="popup" onclick="hidePop()"><span class="x">✕</span><span id="popTxt"></span></div>
+<script>
+var W1=[["ambition","æmˈbɪʃn","мечта, цель"],["achieve a goal","əˈtʃiːv ə ɡəʊl","достичь цели"],["pursue a career","pəˈsjuː ə kəˈrɪə","строить карьеру"],["make up one's mind","meɪk ʌp wʌnz maɪnd","принять решение"],["challenge","ˈtʃælɪndʒ","вызов, трудная задача"],["determination","dɪˌtɜːmɪˈneɪʃn","целеустремлённость"],["give up","ɡɪv ʌp","сдаваться"],["take up","teɪk ʌp","начинать (занятие)"]];
+var W2=[["hope to do","həʊp tuː","надеяться сделать"],["decide to do","dɪˈsaɪd tuː","решить сделать"],["enjoy doing","ɪnˈdʒɔɪ ˈduːɪŋ","получать удовольствие от"],["imagine doing","ɪˈmædʒɪn ˈduːɪŋ","представлять себе"],["look forward to doing","lʊk ˈfɔːwəd tuː","с нетерпением ждать"],["succeed in doing","səkˈsiːd ɪn","преуспеть в"],["can't stand doing","kɑːnt stænd","терпеть не мочь"],["be worth doing","biː wɜːθ","стоить того, чтобы"]];
+var P=[["I'm thinking of becoming a doctor.","Я думаю о том, чтобы стать врачом."],["I hope to enter university next year.","Надеюсь поступить в университет в следующем году."],["I can't imagine working in an office.","Не могу представить работу в офисе."],["She decided to take a gap year.","Она решила взять год перерыва."],["It's worth trying.","Стоит попробовать."],["I look forward to starting my career.","С нетерпением жду начала карьеры."],["He succeeded in getting a scholarship.","Ему удалось получить стипендию."],["My ambition is to become an engineer.","Моя мечта — стать инженером."],["Never give up on your dreams.","Никогда не отказывайся от мечты."],["Follow in your parents' footsteps or make your own path?","Идти по стопам родителей или выбрать свой путь?"]];
+var R=[["Since childhood I dreamed of flying planes high in the sky. Now I wear a uniform and wings.",["Pilot","Chef","Programmer"],0],["I imagine new buildings and draw them on paper. Houses, schools and stadiums — all my designs.",["Doctor","Architect","Journalist"],1],["I dream of helping animals. I examine, treat and cure cats and dogs.",["Veterinarian","Lawyer","Pilot"],0],["I hope to cook in a famous restaurant one day. I create new dishes with love.",["Chef","Teacher","Ecologist"],0],["I can't stand noise, but I love explaining things and helping students discover the world.",["Programmer","Teacher","Chef"],1],["I enjoy writing stories and asking questions. I tell people the news.",["Journalist","Architect","Farmer"],0],["I write code and create games that millions play. One day I hope to open my own studio.",["Pilot","Programmer","Vet"],1],["I dream of a planet without pollution. I study nature and protect endangered species.",["Ecologist","Teacher","Lawyer"],0]];
+var T=[["I hope ___ university next year.",["to enter","entering"],0],["I enjoy ___ code in Python.",["to write","writing"],1],["She is thinking of ___ a designer.",["to become","becoming"],1],["I can't afford ___ expensive courses.",["to pay","paying"],0],["I look forward to ___ my new job.",["start","starting"],1],["He managed ___ a scholarship.",["to get","getting"],0],["I can't imagine ___ abroad alone.",["living","to live"],0],["It is worth ___.",["to try","trying"],1]];
+var Q=[["I hope ___ university next year.",["to enter","entering","entered"],0],["I enjoy ___ code.",["to write","writing","write"],1],["She is thinking of ___ a designer.",["to become","becoming","become"],1],["I can't afford ___ expensive courses.",["to pay","paying","pay"],0],["I look forward to ___ my new job.",["start","starting","to start"],1],["He managed ___ a scholarship.",["to get","getting","get"],0],["My parents let me ___ my own choices.",["make","to make","making"],0],["Ambition is...",["a strong wish to succeed","a fear of failure","a type of job"],0],["«Never give up on your dreams» means...",["сдавайся","не отказывайся от мечты","мечтай меньше"],1],["Which verb goes with -ing?",["decide","imagine","hope"],1]];
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.85;speechSynthesis.speak(v);},1400);}catch(e){}}
+function pop(txt){var p=document.getElementById("popup");document.getElementById("popTxt").textContent=txt;p.classList.add("on");clearTimeout(pop.t);pop.t=setTimeout(hidePop,5000);}
+function hidePop(){document.getElementById("popup").classList.remove("on");}
+function tr(el){pop(el.getAttribute("data-tr"));}
+(function(){var h="",i,w;for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}document.getElementById("w1").innerHTML=h;h="";for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}document.getElementById("w2").innerHTML=h;h="";for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"pop('"+P[i][1]+"')\"><i>"+(i+1)+". "+P[i][0]+"</i></div>";}document.getElementById("phrBox").innerHTML=h;h="";for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}document.getElementById("ridBox").innerHTML=h;h="";for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}document.getElementById("tenseBox").innerHTML=h;h="";for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}document.getElementById("quizBox").innerHTML=h;})();
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My goals and dreams.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,1200));}
+function checkQuiz(){var ans=[0,1,1,0,1,0,0,0,1,1],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🥇 Золотая медаль! ":score>=6?"👍 Хорошо! ":"Потренируйся ещё! ";res.textContent=m+"Твой результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
