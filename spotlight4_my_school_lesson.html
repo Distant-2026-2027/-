@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 4 — My School</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Comic Sans MS,Arial,sans-serif;background:#e8f4fd;color:#17384f;font-size:18px}
+header{background:linear-gradient(120deg,#2196f3,#64c4ff,#ffb74d);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.95;margin-top:6px}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#1565c0;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.18);color:#fff;padding:10px 14px;border-radius:22px;cursor:pointer;font-size:.95em}
+#tabs button.act{background:#ffb74d;color:#17384f;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#1565c0;margin:10px 0 12px}
+.card{background:#fff;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 3px 10px rgba(21,101,192,.1)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.wcard{background:#e3f2fd;border:3px solid #90caf9;border-radius:14px;padding:12px;cursor:pointer;transition:.2s;font-size:1.05em}
+.wcard:hover{transform:translateY(-4px);border-color:#ffb74d}
+.wcard b{font-size:1.1em;color:#1565c0}
+.wcard span{display:block;font-size:.85em;color:#52708a;margin-top:4px}
+.phr{border-left:5px solid #ffb74d;background:#fff8ec;padding:10px 14px;margin:8px 0;border-radius:0 12px 12px 0;cursor:pointer}
+.phr i{color:#1565c0}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#1565c0;color:#fff;border-radius:50%;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.line{cursor:pointer;border-bottom:1px dashed #a8c8e0;padding:7px 0;font-size:1.05em}
+.rid{background:#fff;border:3px solid #90caf9;border-radius:16px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:3px solid #2196f3;background:#fff;color:#1565c0;padding:9px 16px;border-radius:22px;cursor:pointer;font-size:1em}
+.opts button.ok{background:#43a047;border-color:#43a047;color:#fff}
+.opts button.bad{background:#e53935;border-color:#e53935;color:#fff;opacity:.6}
+select{padding:9px;border-radius:10px;border:3px solid #90caf9;font-size:1em;margin:4px 0;width:100%;max-width:440px}
+.big{background:#ffb74d;border:0;color:#17384f;font-weight:bold;padding:13px 24px;border-radius:26px;cursor:pointer;margin:10px 0;font-size:1.05em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:6px 10px;cursor:pointer;border-radius:10px}
+.qz label:hover{background:#e3f2fd}
+#quizRes{font-weight:bold;margin-top:8px;min-height:26px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #c9e2f4;padding:9px}
+th{background:#dcefff;color:#1565c0}
+.foot{background:#fff;border-radius:18px;padding:14px;margin:12px 0;border:3px dashed #ffb74d}
+#popup{position:fixed;left:0;right:0;bottom:-150px;background:#17384f;color:#fff;padding:15px 18px;border-radius:16px 16px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.35);transition:bottom .25s;z-index:50;max-width:580px;margin:0 auto;font-size:1.05em}
+#popup.on{bottom:0}
+#popup .x{float:right;cursor:pointer;font-size:1.3em;padding:0 6px}
+.song{background:#fff3e0;border:3px solid #ffcc80;border-radius:14px;padding:12px;margin:10px 0;text-align:center;font-style:italic}
+@media(max-width:600px){header h1{font-size:1.2em}}
+</style>
+</head>
+<body>
+<header>
+<h1>🏫 MY SCHOOL — FUN WITH CLASSMATES!</h1>
+<p>Моя школа. Проводим время с одноклассниками • Spotlight 4, Module 1 • 4 класс</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">🎭 Что мы делаем?</button>
+<button onclick="show('t7',this)">🧩 am / is / are</button>
+<button onclick="show('t8',this)">🎤 Говори сам</button>
+<button onclick="show('t9',this)">✏️ Тест</button>
+<button onclick="show('t10',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (4 мин).</b> Hello! What's your name? How are you? Песенка-приветствие.</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (6 мин).</b> Вводный модуль «Back together!»: класс, фамилия, номер телефона, школьные предметы.</div></div>
+<div class="step"><div class="n">3</div><div><b>Новая лексика (8 мин).</b> 14 карточек: школа, класс и игры с друзьями.</div></div>
+<div class="step"><div class="n">4</div><div><b>Грамматика (8 мин).</b> Present Continuous: что мы делаем прямо сейчас.</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (5 мин).</b> Ларри и Лулу на большой перемене.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (7 мин).</b> Текст «Fun with Friends at School» + 4 вопроса.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (5 мин).</b> «Что мы делаем?» и «am / is / are».</div></div>
+<div class="step"><div class="n">8</div><div><b>Говорение (2 мин).</b> Монолог «My school day».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (5 мин).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС НОО</h2>
+<p><b>Предметные:</b> называет школьные помещения и действия с одноклассниками; употребляет Present Continuous в речи; ведёт элементарный диалог; читает короткий текст с пониманием.</p>
+<p><b>Метапредметные:</b> работает по образцу, слушает и повторяет, проверяет себя по ключу, сотрудничает в паре.</p>
+<p><b>Личностные:</b> дружелюбие, интерес к общению с одноклассниками на английском языке.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку</h2>
+<p style="color:#52708a">Клик по карточке — перевод всплывёт снизу экрана, слово прозвучит дважды.</p>
+<div class="card"><h3>В школе и в классе</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Играем с одноклассниками</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы урока — клик по фразе, перевод всплывёт</h2>
+<div class="card" id="phrBox"></div>
+<div class="card"><h3>Шпаргалка: Present Continuous</h3>
+<p>Действие происходит <b>прямо сейчас</b>: <b>am / is / are</b> + глагол с <b>-ing</b>.</p>
+<table><tr><th>Лицо</th><th>Форма</th><th>Пример</th></tr>
+<tr><td>I</td><td>am drawing</td><td>I am drawing a picture.</td></tr>
+<tr><td>He / She / It</td><td>is playing</td><td>She is playing the violin.</td></tr>
+<tr><td>We / You / They</td><td>are singing</td><td>We are singing a song.</td></tr></table>
+<p style="color:#52708a">Вопрос: <i>What are you doing?</i> — Что ты делаешь? Ответ: <i>I am reading a book.</i></p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: вводный модуль «Back together!»</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Знакомство:</b> What's your name? How old are you? What's your surname? What's your phone number?</div></div>
+<div class="step"><div class="n">2</div><div><b>Класс и предметы:</b> What year are you in? What's your favourite subject?</div></div>
+<div class="step"><div class="n">3</div><div><b>Сегодня:</b> что мы делаем вместе с одноклассниками в школе — Present Continuous.</div></div></div>
+<div class="song">🎵 «What are you doing? What are you doing?<br>I am reading, I am reading!<br>What is he doing? What is she doing?<br>We are playing, we are singing!» 🎵</div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: на большой перемене</h2>
+<div class="card">
+<p style="color:#52708a">Клик по реплике — перевод всплывёт снизу.</p>
+<div class="line" onclick="tr(this)" data-tr="Привет, Лулу! Большая переменная — моё любимое время!"><b>Larry:</b> Hi, Lulu! Break time is my favourite time!</div>
+<div class="line" onclick="tr(this)" data-tr="Моё тоже! Смотри, Лиам и Роуз играют в футбол."><b>Lulu:</b> Mine too! Look, Liam and Rose are playing football.</div>
+<div class="line" onclick="tr(this)" data-tr="А Мэй рисует красивую картину. Она рисует кошку!"><b>Larry:</b> And May is drawing a nice picture. She is drawing a cat!</div>
+<div class="line" onclick="tr(this)" data-tr="Стивен и Чарльз играют в шахматы. Давай играть с ними!"><b>Lulu:</b> Steven and Charles are playing chess. Let's play with them!</div>
+<div class="line" onclick="tr(this)" data-tr="Отличная идея! А что ты делаешь сейчас?"><b>Larry:</b> Great idea! And what are you doing now?</div>
+<div class="line" onclick="tr(this)" data-tr="Я танцую и пою свою любимую песенку!"><b>Lulu:</b> I am dancing and singing my favourite song!</div>
+<div class="line" onclick="tr(this)" data-tr="Весело! Я катаюсь на роликах после школы. Пойдём вместе?"><b>Larry:</b> Fun! I am riding my bike after school. Let's go together!</div>
+<div class="line" onclick="tr(this)" data-tr="Конечно! Друзьям вместе веселее!"><b>Lulu:</b> Sure! Friends have fun together!</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Fun with Friends at School</h2>
+<div class="card">
+<p>Hello! My name is Anna. I am in Year 4. My school is big and nice. My favourite subjects are English, Art and PE.</p>
+<p>I love break time because I play with my classmates. Right now, my friends are playing in the playground. Tom and Ben are playing football. Kate and Mary are jumping rope. Oleg is riding his bike. Dasha and I are drawing pictures under the tree. We are drawing funny animals!</p>
+<p>After break we have lessons. In the Music lesson we are singing a song. In the Art lesson we are painting. School is fun when you are with your friends!</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. What are Tom and Ben doing? — They are <b>playing football</b>.</p>
+<p>2. What are Kate and Mary doing? — They are <b>jumping rope</b>.</p>
+<p>3. What is Oleg doing? — He is <b>riding his bike</b>.</p>
+<p>4. What are Dasha and Anna drawing? — They are drawing <b>funny animals</b>.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>🎭 Игра: что мы делаем?</h2>
+<p style="color:#52708a">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 Выбери am / is / are</h2>
+<p style="color:#52708a">Выбери правильное слово — просто клик по кнопке.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🎤 Говори сам: My school day</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовый рассказ.</p>
+<p><b>1. Мой класс:</b></p><select id="s1">
+<option value="I am in Year 4. My class is big and friendly.">Year 4</option>
+<option value="I am in Year 4. My classmates are kind and funny.">kind classmates</option>
+<option value="I am in Year 4. My school is big and nice.">big school</option>
+<option value="I am in Year 4. My favourite subjects are English and Art.">English and Art</option></select>
+<p><b>2. На перемене я:</b></p><select id="s2">
+<option value="At break time I am playing football with my friends.">playing football</option>
+<option value="At break time I am drawing funny pictures.">drawing pictures</option>
+<option value="At break time I am singing and dancing.">singing and dancing</option>
+<option value="At break time I am riding my bike.">riding my bike</option></select>
+<p><b>3. Мой друг сейчас:</b></p><select id="s3">
+<option value="My friend is playing chess now.">playing chess</option>
+<option value="My friend is reading a book now.">reading a book</option>
+<option value="My friend is jumping rope now.">jumping rope</option>
+<option value="My friend is playing hide-and-seek now.">playing hide-and-seek</option></select>
+<p><b>4. На уроке мы:</b></p><select id="s4">
+<option value="In the Music lesson we are singing a song.">singing a song</option>
+<option value="In the Art lesson we are painting a picture.">painting a picture</option>
+<option value="In the English lesson we are reading and writing.">reading and writing</option>
+<option value="In the PE lesson we are running and jumping.">running and jumping</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="School is fun when you are with your friends!">school is fun with friends</option>
+<option value="I love my school and my classmates!">I love my school</option>
+<option value="We learn and play together every day!">we learn and play together</option>
+<option value="Every day at school is a happy day!">every day is happy</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut" style="background:#e3f2fd;border-radius:12px;padding:12px;margin-top:8px;display:none"></div>
+</div>
+</section>
+
+<section class="tab" id="t9">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t10">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> нарисовать картинку «На перемене с друзьями» и подписать 4–5 предложений по образцу: <i>Tom and Ben are playing football. Kate is drawing a cat.</i> Использовать не менее 4 слов урока и Present Continuous (am / is / are + -ing).</p>
+<p><b>Звёздочка (по желанию):</b> записать на английском, что делают сейчас три члена твоей семьи (мама, папа, брат/сестра) — 3 предложения.</p>
+<p><b>Критерии (6 баллов):</b> картинка (1), 4–5 предложений (1), Present Continuous — правильно (2), слова урока — не менее 4 (1), аккуратность (1).</p>
+<p><b>Шкала:</b> 6 — «5»; 4–5 — «4»; 3 — «3».</p>
+<p><b>Примечание:</b> онлайн — фото работы в чат; очно — сдаёшь работу в классе.</p>
+</div>
+</section>
+
+</main>
+<div id="popup" onclick="hidePop()"><span class="x">✕</span><span id="popTxt"></span></div>
+<script>
+var W1=[["class","klɑːs","класс"],["school","skuːl","школа"],["playground","ˈpleɪɡraʊnd","игровая площадка"],["subject","ˈsʌbdʒɪkt","школьный предмет"],["English","ˈɪŋɡlɪʃ","английский язык"],["break time","breɪk taɪm","перемена, время перерыва"],["friend","frend","друг"],["classmate","ˈklɑːsmeɪt","одноклассник"]];
+var W2=[["play football","pleɪ ˈfʊtbɔːl","играть в футбол"],["jump rope","dʒʌmp rəʊp","прыгать через скакалку"],["ride a bike","raɪd ə baɪk","кататься на велосипеде"],["draw","drɔː","рисовать"],["sing","sɪŋ","петь"],["dance","dɑːns","танцевать"],["play chess","pleɪ tʃes","играть в шахматы"],["play hide-and-seek","pleɪ haɪd ənd siːk","играть в прятки"]];
+var P=[["What are you doing?","Что ты делаешь?"],["I am reading a book.","Я читаю книгу."],["What is he doing?","Что он делает?"],["She is playing the violin.","Она играет на скрипке."],["We are playing in the playground.","Мы играем на площадке."],["They are playing football.","Они играют в футбол."],["I am drawing a picture.","Я рисую картину."],["Break time is my favourite time!","Перемена — моё любимое время!"],["Friends have fun together!","Друзьям вместе весело!"],["School is fun with your classmates!","В школе весело с одноклассниками!"]];
+var R=[["Two boys run and kick the ball. They are happy!",["They are playing football.","They are sleeping.","They are cooking."],0],["A girl has got a rope. Jump, jump, jump!",["She is swimming.","She is jumping rope.","She is sleeping."],1],["A boy is on his bike. Round and round he goes!",["He is riding a bike.","He is reading a book.","He is drawing."],0],["A girl sings a nice song. Listen!",["She is drawing.","She is singing.","She is playing chess."],1],["Two friends move the figures on the board.",["They are playing chess.","They are dancing.","They are swimming."],0],["A girl makes a nice picture with her pencils.",["She is painting the door.","She is drawing a picture.","She is playing football."],1],["Boys and girls run and hide. One, two, three — who is here?",["They are playing hide-and-seek.","They are sleeping.","They are eating."],0],["We move to music, one step, two step!",["We are dancing.","We are reading.","We are riding a bike."],0]];
+var T=[["I ___ drawing a picture.",["am","is","are"],0],["She ___ playing the violin.",["am","is","are"],1],["We ___ singing a song.",["am","is","are"],2],["They ___ playing football.",["am","is","are"],2],["Tom ___ riding his bike.",["am","is","are"],1],["My friends ___ jumping rope.",["am","is","are"],2],["What ___ you doing?",["are","is","am"],0],["Lulu ___ dancing.",["am","is","are"],1]];
+var Q=[["I ___ drawing a picture.",["am","is","are"],0],["She ___ playing the violin.",["am","is","are"],1],["We ___ singing a song.",["am","is","are"],2],["They ___ playing football.",["am","is","are"],2],["A place where we play at school is a...",["playground","kitchen","zoo"],0],["A person in your class is your...",["classmate","teacher","mum"],0],["What does «jump rope» mean?",["прыгать через скакалку","кататься на велосипеде","играть в шахматы"],0],["«What are you doing?» means...",["Что ты делаешь сейчас?","Где ты живёшь?","Сколько тебе лет?"],0],["Which word is a school subject?",["English","football","break"],0],["Friends at school...",["have fun together","sleep all day","never play"],0]];
+(function(){var h="",i,w;
+for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w1").innerHTML=h;h="";
+for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w2").innerHTML=h;h="";
+for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"pop('"+P[i][1]+"')\"><i>"+(i+1)+". "+P[i][0]+"</i></div>";}
+document.getElementById("phrBox").innerHTML=h;h="";
+for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>"+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("ridBox").innerHTML=h;h="";
+for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("tenseBox").innerHTML=h;h="";
+for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}
+document.getElementById("quizBox").innerHTML=h;})();
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.8;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.8;speechSynthesis.speak(v);},1400);}catch(e){}}
+function pop(txt){var p=document.getElementById("popup");document.getElementById("popTxt").textContent=txt;p.classList.add("on");clearTimeout(pop.t);pop.t=setTimeout(hidePop,5000);}
+function hidePop(){document.getElementById("popup").classList.remove("on");}
+function tr(el){pop(el.getAttribute("data-tr"));}
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My school day.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,900));}
+function checkQuiz(){var ans=[0,1,2,2,0,0,0,0,0,0],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🌟 Отлично! Молодец! ":score>=6?"👍 Хорошо! ":"Повтори слова и правило. ";res.textContent=m+"Твой результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
