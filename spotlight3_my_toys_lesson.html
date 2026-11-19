@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 3 — My Toys</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Comic Sans MS,Arial,sans-serif;background:#eafcf4;color:#153e38;font-size:18px}
+header{background:linear-gradient(120deg,#00897b,#26a69a,#ff7043);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.95;margin-top:6px}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#00695c;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.18);color:#fff;padding:10px 14px;border-radius:22px;cursor:pointer;font-size:.95em}
+#tabs button.act{background:#ff7043;color:#fff;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#00796b;margin:10px 0 12px}
+.card{background:#fff;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 3px 10px rgba(0,105,92,.1)}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.wcard{background:#e0f7f1;border:3px solid #80cbc4;border-radius:14px;padding:12px;cursor:pointer;transition:.2s;font-size:1.05em}
+.wcard:hover{transform:translateY(-4px);border-color:#ff7043}
+.wcard b{font-size:1.1em;color:#00796b}
+.wcard span{display:block;font-size:.85em;color:#4f6f68;margin-top:4px}
+.phr{border-left:5px solid #ff7043;background:#fff3ec;padding:10px 14px;margin:8px 0;border-radius:0 12px 12px 0;cursor:pointer}
+.phr i{color:#00796b}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#00796b;color:#fff;border-radius:50%;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.line{cursor:pointer;border-bottom:1px dashed #9fd8cd;padding:7px 0;font-size:1.05em}
+.rid{background:#fff;border:3px solid #80cbc4;border-radius:16px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:3px solid #26a69a;background:#fff;color:#00796b;padding:9px 16px;border-radius:22px;cursor:pointer;font-size:1em}
+.opts button.ok{background:#43a047;border-color:#43a047;color:#fff}
+.opts button.bad{background:#e53935;border-color:#e53935;color:#fff;opacity:.6}
+select{padding:9px;border-radius:10px;border:3px solid #80cbc4;font-size:1em;margin:4px 0;width:100%;max-width:440px}
+.big{background:#ff7043;border:0;color:#fff;font-weight:bold;padding:13px 24px;border-radius:26px;cursor:pointer;margin:10px 0;font-size:1.05em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:6px 10px;cursor:pointer;border-radius:10px}
+.qz label:hover{background:#e0f7f1}
+#quizRes{font-weight:bold;margin-top:8px;min-height:26px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #c9e7e0;padding:9px}
+th{background:#d9f2ec;color:#00796b}
+.foot{background:#fff;border-radius:18px;padding:14px;margin:12px 0;border:3px dashed #ff7043}
+#popup{position:fixed;left:0;right:0;bottom:-150px;background:#153e38;color:#fff;padding:15px 18px;border-radius:16px 16px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.35);transition:bottom .25s;z-index:50;max-width:580px;margin:0 auto;font-size:1.05em}
+#popup.on{bottom:0}
+#popup .x{float:right;cursor:pointer;font-size:1.3em;padding:0 6px}
+.song{background:#fff3e0;border:3px solid #ffcc80;border-radius:14px;padding:12px;margin:10px 0;text-align:center;font-style:italic}
+@media(max-width:600px){header h1{font-size:1.2em}}
+</style>
+</head>
+<body>
+<header>
+<h1>🧸 MY FAVOURITE TOYS!</h1>
+<p>Мои любимые игрушки • Spotlight 3, Module 4 «Come in and play!», Unit 7a «Toys for little Betsy» • 3 класс</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">🧸 Угадай игрушку</button>
+<button onclick="show('t7',this)">🧩 a или an?</button>
+<button onclick="show('t8',this)">🎤 Говори сам</button>
+<button onclick="show('t9',this)">✏️ Тест</button>
+<button onclick="show('t10',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (4 мин).</b> Hello! How are you? Песенка и стихотворение про игрушки.</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (6 мин).</b> Модули 1–3: семья, день рождения, животные. Правило чтения Oo.</div></div>
+<div class="step"><div class="n">3</div><div><b>Новая лексика (9 мин).</b> 16 карточек: игрушки Бетси и другие любимые игрушки.</div></div>
+<div class="step"><div class="n">4</div><div><b>Грамматика (8 мин).</b> Притяжательный падеж 's: чья игрушка? Вопрос Whose is this?</div></div>
+<div class="step"><div class="n">5</div><div><b>Артикли (5 мин).</b> a или an: an aeroplane, an elephant, a ball.</div></div>
+<div class="step"><div class="n">6</div><div><b>Диалог (5 мин).</b> Бетси, Ларри и Лулу играют игрушками.</div></div>
+<div class="step"><div class="n">7</div><div><b>Чтение (6 мин).</b> Текст «Toys for little Betsy» + 5 вопросов.</div></div>
+<div class="step"><div class="n">8</div><div><b>Игры и говорение (5 мин).</b> «Угадай игрушку» и рассказ о любимой игрушке.</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (5 мин).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС НОО</h2>
+<p><b>Предметные:</b> называет игрушки по-английски; понимает и употребляет притяжательный падеж 's (Larry's train) и вопрос Whose is this?; различает a/an; ведёт элементарный диалог про игрушки.</p>
+<p><b>Метапредметные:</b> работает по образцу, слушает и повторяет, проверяет себя по ключу.</p>
+<p><b>Личностные:</b> бережное отношение к игрушкам, вежливость к товарищам, интерес к английскому языку.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку</h2>
+<p style="color:#4f6f68">Клик по карточке — перевод всплывёт снизу экрана, слово прозвучит дважды.</p>
+<div class="card"><h3>Игрушки Бетси (7a)</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Ещё любимые игрушки</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы урока — клик по фразе, перевод всплывёт</h2>
+<div class="card" id="phrBox"></div>
+<div class="card"><h3>Шпаргалка: чья игрушка? — 's</h3>
+<p>Чтобы сказать, <b>чья</b> игрушка, добавь к имени <b>'s</b>:</p>
+<table><tr><th>Правило</th><th>Пример</th></tr>
+<tr><td>Имя + 's = чья-то вещь</td><td>It's <b>Larry's</b> train. — Это поезд Ларри.</td></tr>
+<tr><td>Вопрос «чей?»</td><td><b>Whose</b> is this doll? — Чья это кукла?</td></tr>
+<tr><td>Ответ</td><td>It's <b>Lulu's</b> doll. — Это кукла Лулу.</td></tr>
+<tr><td>У меня есть…</td><td>I've got a ball. — У меня есть мяч.</td></tr></table>
+<p style="color:#4f6f68;margin-top:8px">⚠️ An — перед гласными: <b>an</b> aeroplane, <b>an</b> elephant, <b>an</b> orange. A — перед согласными: <b>a</b> ball, <b>a</b> doll, <b>a</b> train.</p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: лесенка модулей</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Module 1: My Family!</b> Моя семья: мама, папа, сестрёнка Бетси.</div></div>
+<div class="step"><div class="n">2</div><div><b>Module 2: My Birthday!</b> День рождения, подарки и угощения.</div></div>
+<div class="step"><div class="n">3</div><div><b>Module 3: My Animals!</b> Животные и что они любят есть.</div></div>
+<div class="step"><div class="n">4</div><div><b>Module 4: Come in and play! — мы здесь!</b> 7a «Toys for little Betsy»: игрушки и чьи они. Дальше — 7b: this/that и правило чтения Oo.</div></div></div>
+<div class="card"><h3>Правило чтения: гласная Oo</h3>
+<p><b>[ɒ]</b> — короткий «о»: doll, box, robot, on.</p>
+<p><b>[əʊ]</b> — долгий «оу»: go, yo-yo, no, home.</p></div>
+<div class="song">🎵 «Toys for me, toys for you,<br>Toys for everyone!<br>A pink ballerina, a blue toy soldier —<br>We are all having fun!» 🎵</div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: игрушки для Бетси</h2>
+<div class="card">
+<p style="color:#4f6f68">Клик по реплике — перевод всплывёт снизу.</p>
+<div class="line" onclick="tr(this)" data-tr="Смотрите! Это моя маленькая сестрёнка Бетси."><b>Larry:</b> Look! This is my little sister Betsy.</div>
+<div class="line" onclick="tr(this)" data-tr="Привет, Бетси! Что в твоей коробке с игрушками?"><b>Lulu:</b> Hello, Betsy! What's in your toy box?</div>
+<div class="line" onclick="tr(this)" data-tr="Игрушки! Игрушки для меня, игрушки для тебя, игрушки для всех!"><b>Betsy:</b> Toys! Toys for me, toys for you, toys for everyone!</div>
+<div class="line" onclick="tr(this)" data-tr="Чей это поезд?"><b>Larry:</b> Whose is this train?</div>
+<div class="line" onclick="tr(this)" data-tr="Это поезд Ларри! Ту-ту!"><b>Betsy:</b> It's Larry's train! Choo-choo!</div>
+<div class="line" onclick="tr(this)" data-tr="А чья это кукла? Какая хорошенькая!"><b>Lulu:</b> And whose is this doll? It is very nice!</div>
+<div class="line" onclick="tr(this)" data-tr="Это кукла Лулу! А ещё у меня есть качалка-лошадка и чайный набор. Давай играть!"><b>Betsy:</b> It's Lulu's doll! And I've got a rocking horse and a tea set. Let's play a game!</div>
+<div class="line" onclick="tr(this)" data-tr="Отлично! А чей это самолётик?"><b>Larry:</b> Great! And whose is this aeroplane?</div>
+<div class="line" onclick="tr(this)" data-tr="Это старый самолётик папы! Заходи и играй!"><b>Betsy:</b> It's Daddy's old aeroplane! Come in and play!</div>
+<div class="line" onclick="tr(this)" data-tr="Игрушки — это весело! Мы любим играть вместе!"><b>All:</b> Toys are fun! We love playing together!</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Toys for little Betsy</h2>
+<div class="card">
+<p>Little Betsy is five years old. She is Larry's little sister. Betsy has got many toys.</p>
+<p>This is Betsy's doll. It is in the toy box. That is Larry's train. Choo-choo! It is Larry's favourite toy.</p>
+<p>Betsy has got a musical box, a tea set and a rocking horse. Her elephant is grey and very big. Her ballerina is pink and beautiful.</p>
+<p>Betsy's favourite toy is the ballerina. «Come in and play!» says Betsy. Toys are fun! Toys for me, toys for you, toys for everyone!</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. How old is Betsy? — She is <b>five</b>.</p>
+<p>2. Whose little sister is Betsy? — She is <b>Larry's</b> sister.</p>
+<p>3. Where is the doll? — It is <b>in the toy box</b>.</p>
+<p>4. What is Betsy's favourite toy? — It is <b>the ballerina</b>.</p>
+<p>5. What does Betsy say? — «<b>Come in and play!</b>»</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>🧸 Игра: угадай игрушку</h2>
+<p style="color:#4f6f68">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 Игра: a или an?</h2>
+<p style="color:#4f6f68">Выбери правильный артикль — просто клик по кнопке.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🎤 Говори сам: My favourite toy</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовый рассказ.</p>
+<p><b>1. Начало рассказа:</b></p><select id="s1">
+<option value="I have got many toys at home.">many toys at home</option>
+<option value="My toy box is big and full.">big toy box</option>
+<option value="Come into my playroom!">come to my playroom</option></select>
+<p><b>2. Моя любимая игрушка:</b></p><select id="s2">
+<option value="My favourite toy is a teddy bear.">teddy bear</option>
+<option value="My favourite toy is a doll.">doll</option>
+<option value="My favourite toy is a rocking horse.">rocking horse</option>
+<option value="My favourite toy is a train.">train</option></select>
+<p><b>3. Откуда она у меня:</b></p><select id="s3">
+<option value="It is my birthday present from my mum.">present from mum</option>
+<option value="It is my sister's old doll.">sister's old doll</option>
+<option value="It is my Daddy's train.">Daddy's train</option>
+<option value="It is my best friend's ball.">friend's ball</option></select>
+<p><b>4. Какая она:</b></p><select id="s4">
+<option value="It is big and very funny.">big and funny</option>
+<option value="It is small and nice.">small and nice</option>
+<option value="It is pink and beautiful.">pink and beautiful</option>
+<option value="It is old but very kind.">old but kind</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="Toys are fun! I love my toys!">I love my toys</option>
+<option value="Come in and play with me!">come and play</option>
+<option value="We play together every day.">we play every day</option>
+<option value="Toys for me, toys for you, toys for everyone!">toys for everyone</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut" style="background:#e0f7f1;border-radius:12px;padding:12px;margin-top:8px;display:none"></div>
+</div>
+</section>
+
+<section class="tab" id="t9">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t10">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> нарисовать свою любимую игрушку и написать 3–4 предложения по образцу: <i>This is my teddy bear. It is my birthday present from my mum. It is brown and funny. Whose is this train? It's Larry's train.</i> Использовать притяжательный падеж 's хотя бы один раз и не менее 3 слов урока.</p>
+<p><b>Звёздочка (по желанию):</b> сыграть дома в игру «Чья игрушка?»: соберите 3–4 игрушки, спросите *Whose is this…?* — и ответьте: *It's Mummy's ball. It's Dima's car.*</p>
+<p><b>Критерии (6 баллов):</b> рисунок (1), 3–4 предложения (1), притяжательный падеж 's (2), слова урока — не менее 3 (1), аккуратность (1).</p>
+<p><b>Шкала:</b> 6 — «5»; 4–5 — «4»; 3 — «3».</p>
+<p><b>Примечание:</b> онлайн — фото работы в чат; очно — сдаёшь работу в классе. Ошибки в маленьких деталях не страшны — главное, понять, что 's показывает, чья игрушка.</p>
+</div>
+</section>
+
+</main>
+<div id="popup" onclick="hidePop()"><span class="x">✕</span><span id="popTxt"></span></div>
+<script>
+var W1=[["aeroplane","ˈeəpleɪn","самолётик"],["ball","bɔːl","мяч"],["doll","dɒl","кукла"],["elephant","ˈelɪfənt","слон (игрушка)"],["musical box","ˈmjuːzɪkl bɒks","музыкальная шкатулка"],["rocking horse","ˈrɒkɪŋ hɔːs","качалка-лошадка"],["tea set","tiː set","чайный набор"],["train","treɪn","поезд"]];
+var W2=[["teddy bear","ˈtedi beə","плюшевый мишка"],["ballerina","ˌbæləˈriːnə","балерина (игрушка)"],["toy soldier","tɔɪ ˈsəʊldʒə","игрушечный солдатик"],["robot","ˈrəʊbɒt","робот"],["kite","kaɪt","воздушный змей"],["yo-yo","ˈjəʊjəʊ","йо-йо"],["toy box","tɔɪ bɒks","коробка для игрушек"],["playroom","ˈpleɪruːm","игровая комната"]];
+var P=[["Whose is this train?","Чей это поезд?"],["It's Larry's train.","Это поезд Ларри."],["Whose is this doll?","Чья это кукла?"],["It's Lulu's doll.","Это кукла Лулу."],["I've got a ball.","У меня есть мяч."],["Have you got a teddy bear?","У тебя есть плюшевый мишка?"],["Yes, I have.","Да, есть."],["What's your favourite toy?","Какая твоя любимая игрушка?"],["This is Betsy's tea set.","Это чайный набор Бетси."],["Come in and play!","Заходи и играй!"]];
+var R=[["It flies in the sky. It is white and big. Whoosh!",["A train","An aeroplane","A doll"],1],["Choo-choo! It has got a long body and many carriages.",["A train","A ball","A kite"],0],["You can bounce it, kick it and throw it!",["A tea set","A robot","A ball"],2],["A little horse. Rock and rock — swing, swing!",["A rocking horse","An aeroplane","A yo-yo"],0],["It is grey and very big. It has got a long nose.",["A ballerina","An elephant","A teddy bear"],1],["A little girl toy in a beautiful dress.",["A doll","A train","A robot"],0],["Small cups and a teapot — time for toy tea!",["A kite","A tea set","A ball"],1],["Turn the key — and it plays a lovely song!",["A musical box","A toy box","A rocking horse"],0]];
+var T=[["It is ___ aeroplane.",["a","an"],1],["It is ___ doll.",["a","an"],0],["It is ___ elephant.",["a","an"],1],["It is ___ ball.",["a","an"],0],["It is ___ orange.",["a","an"],1],["It is ___ train.",["a","an"],0],["It is ___ apple.",["a","an"],1],["It is ___ rocking horse.",["a","an"],0]];
+var Q=[["Whose is this train? — It's ___.",["Larry's","Larry","Larryes"],0],["I've got ___ elephant.",["a","an"],1],["What is it? — It's a ___.",["doll","tea set","elephant"],0],["Whose ___ this doll?",["is","are"],0],["A rocking horse is...",["качалка-лошадка","поезд","набор посуды"],0],["A musical box is...",["музыкальная шкатулка","почтовый ящик","плита"],0],["«Whose is it?» means...",["Чья это игрушка?","Где игрушка?","Сколько игрушек?"],0],["«This is Lulu's doll» means...",["кукла Лулу","продай куклу","новая кукла"],0],["Have you got a teddy bear? — Yes, ___.",["I have","I am","I do"],0],["I've got two ___.",["train","trains","train's"],1]];
+(function(){var h="",i,w;
+for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w1").innerHTML=h;h="";
+for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"pop('"+w[2]+"');speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w2").innerHTML=h;h="";
+for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"pop('"+P[i][1]+"')\"><i>"+(i+1)+". "+P[i][0]+"</i></div>";}
+document.getElementById("phrBox").innerHTML=h;h="";
+for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("ridBox").innerHTML=h;h="";
+for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("tenseBox").innerHTML=h;h="";
+for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}
+document.getElementById("quizBox").innerHTML=h;})();
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.75;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.75;speechSynthesis.speak(v);},1400);}catch(e){}}
+function pop(txt){var p=document.getElementById("popup");document.getElementById("popTxt").textContent=txt;p.classList.add("on");clearTimeout(pop.t);pop.t=setTimeout(hidePop,5000);}
+function hidePop(){document.getElementById("popup").classList.remove("on");}
+function tr(el){pop(el.getAttribute("data-tr"));}
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My favourite toy.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,700));}
+function checkQuiz(){var ans=[0,1,0,0,0,0,0,0,0,1],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🌟 Отлично! Молодец! ":score>=6?"👍 Хорошо! ":"Повтори слова и правило. ";res.textContent=m+"Твой результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
