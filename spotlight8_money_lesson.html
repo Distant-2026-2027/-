@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 8 — Money Culture</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f2ec;color:#26332b}
+header{background:linear-gradient(120deg,#0b3d2e,#1a6b45,#b8860b);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.93;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#092e22;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#b8860b;color:#fff;font-weight:bold}
+main{max-width:920px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#1a6b45;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(11,61,46,.1);border-top:3px solid #b8860b}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.wcard{background:#edf5ef;border:2px solid #a8cbb4;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#b8860b}
+.wcard b{font-size:1.05em;color:#1a6b45}
+.wcard span{display:block;font-size:.85em;color:#4d5f55;margin-top:4px}
+.phr{border-left:4px solid #b8860b;background:#fdf9ec;padding:10px 14px;margin:6px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#1a6b45}
+.trl{display:none;background:#eef3f0;border-left:4px solid #a8cbb4;padding:8px 14px;margin:4px 0 8px;border-radius:0 10px 10px 0;color:#3a4a41}
+.trl.on{display:block}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#1a6b45;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #b3c9bb;padding:6px 0}
+.rid{background:#fff;border:2px solid #a8cbb4;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #1a6b45;background:#fff;color:#1a6b45;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#1a6b45;color:#fff}
+.opts button.bad{background:#b03a2e;border-color:#b03a2e;color:#fff;opacity:.6}
+select{padding:8px;border-radius:8px;border:2px solid #a8cbb4;font-size:.95em;margin:4px 0;width:100%;max-width:520px}
+.big{background:#b8860b;border:0;color:#fff;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#edf5ef}
+#quizRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #dce5de;padding:8px;font-size:.95em}
+th{background:#e6efe9;color:#1a6b45}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #b8860b}
+.note{background:#fdf9ec;border:2px solid #b8860b;border-radius:12px;padding:12px;margin:10px 0}
+#monoOut{background:#edf5ef;border-radius:10px;padding:12px;margin-top:8px;display:none}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>💷 MONEY &amp; CULTURE!</h1>
+<p>Родная страна и страна изучаемого языка. Деньги • Spotlight 8, Module 3 «Great Minds», Culture Corner 3 «English Banknotes» • 8 класс • 40 минут</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">🇬🇧🇷🇺 Фунты и рубли</button>
+<button onclick="show('t7',this)">🔍 Угадай личность</button>
+<button onclick="show('t8',this)">🧩 Грамматика</button>
+<button onclick="show('t9',this)">🎤 Говори сам</button>
+<button onclick="show('t10',this)">✏️ Тест</button>
+<button onclick="show('t11',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 40 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (3 мин).</b> What money do you use every day? What is on our banknotes?</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (5 мин).</b> Модуль 3 «Great Minds»: выдающиеся люди, used to, Past Passive.</div></div>
+<div class="step"><div class="n">3</div><div><b>Лексика (8 мин).</b> 16 карточек: деньги, банкноты, монеты, валюты.</div></div>
+<div class="step"><div class="n">4</div><div><b>Культура (6 мин).</b> Кто изображён на британских банкнотах и рублях — чтение и обсуждение.</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (5 мин).</b> Обмен валюты в Лондоне: рубли на фунты.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (6 мин).</b> Текст «British Banknotes» + 5 вопросов.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (4 мин).</b> «Угадай личность» и грамматическая игра.</div></div>
+<div class="step"><div class="n">8</div><div><b>Говорение (2 мин).</b> Рассказ «Money in my country and in Britain».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (1 мин + дом. разбор).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС ООО</h2>
+<p><b>Предметные:</b> употребляет ЛЕ по теме «Деньги и банкноты»; называет валюты стран изучаемого языка и России; рассказывает о знаменитых людях на британских банкнотах и сравнивает с рублями; употребляет Past Passive и used to в контексте истории денег.</p>
+<p><b>Метапредметные:</b> сравнивает культуры двух стран, извлекает информацию из культурологического текста, строит высказывание по образцу.</p>
+<p><b>Личностные:</b> интерес к культуре и истории страны изучаемого языка, уважение к культурному наследию, бережное отношение к деньгам.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку, слово прозвучит дважды</h2>
+<div class="card"><h3>Деньги и банкноты (Culture Corner 3)</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Деньги в повседневной жизни</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы: клик по фразе — перевод откроется прямо под ней</h2>
+<div class="card" id="phrBox"><p style="color:#4d5f55">Нажми ещё раз — перевод свернётся.</p></div>
+<div class="card"><h3>Шпаргалка: Past Passive и used to</h3>
+<table><tr><th>Конструкция</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td>was/were + V3</td><td>The note was first issued in 2002.</td><td>Купюра была впервые выпущена в 2002 году.</td></tr>
+<tr><td>is/are + V3</td><td>The Queen is depicted on the front.</td><td>Королева изображена на лицевой стороне.</td></tr>
+<tr><td>used to + V</td><td>People used to pay in cash.</td><td>Раньше люди платили наличными.</td></tr></table>
+<p style="color:#4d5f55;margin-top:8px">Кто что делает: <b>issue</b> — выпускать, <b>depict</b> — изображать, <b>portrait</b> — портрет, <b>the front / the back</b> — лицевая / оборотная сторона.</p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: лесенка модулей</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Module 1: Life &amp; People.</b> Характер и отношения между людьми.</div></div>
+<div class="step"><div class="n">2</div><div><b>Module 2: Food &amp; Shopping.</b> Еда, покупки, деньги в магазине.</div></div>
+<div class="step"><div class="n">3</div><div><b>Module 3: Great Minds — мы здесь!</b> Выдающиеся люди, Past Tenses и used to, а Culture Corner 3 рассказывает о британских банкнотах — на них как раз изображены великие люди!</div></div></div>
+<div class="card"><h3>Пословицы о деньгах</h3>
+<table><tr><th>English</th><th>Русский эквивалент</th></tr>
+<tr><td>Money doesn't buy happiness.</td><td>Не в деньгах счастье.</td></tr>
+<tr><td>Time is money.</td><td>Время — деньги.</td></tr>
+<tr><td>Money makes the world go round.</td><td>Деньги правят миром.</td></tr>
+<tr><td>A penny saved is a penny earned.</td><td>Копейка рубль бережёт.</td></tr>
+<tr><td>Money spent on the brain is never spent in vain.</td><td>Знание — богатство.</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: обмен валюты в Лондоне</h2>
+<div class="card">
+<p style="color:#4d5f55">Клик по реплике — перевод откроется прямо под ней, ещё раз — свернётся.</p>
+<div class="line"><b>Clerk:</b> Good afternoon! How can I help you?</div><div class="trl">Добрый день! Чем могу помочь?</div>
+<div class="line"><b>Maxim:</b> Good afternoon. I would like to change some Russian roubles into pounds, please.</div><div class="trl">Добрый день. Я хотел бы обменять российские рубли на фунты, пожалуйста.</div>
+<div class="line"><b>Clerk:</b> Certainly. How much would you like to change?</div><div class="trl">Конечно. Сколько вы хотели бы обменять?</div>
+<div class="line"><b>Maxim:</b> Five thousand roubles. What is the exchange rate today?</div><div class="trl">Пять тысяч рублей. Какой сегодня курс обмена?</div>
+<div class="line"><b>Clerk:</b> Let me check… Today it is 105 roubles to one pound. That comes to about 47 pounds.</div><div class="trl">Дайте посмотрю… Сегодня 105 рублей за один фунт. Это примерно 47 фунтов.</div>
+<div class="line"><b>Maxim:</b> Great. And can you tell me what is on these banknotes? They look so interesting!</div><div class="trl">Здорово. А можете рассказать, что изображено на этих купюрах? Они такие интересные!</div>
+<div class="line"><b>Clerk:</b> Of course! On the front of every note there is a portrait of the King. On the back you can see famous British people — writers, scientists and economists.</div><div class="trl">Конечно! На лицевой стороне каждой купюры — портрет короля. На оборотной — знаменитые британцы: писатели, учёные и экономисты.</div>
+<div class="line"><b>Maxim:</b> Really? Like who?</div><div class="trl">Правда? Например, кто?</div>
+<div class="line"><b>Clerk:</b> The five-pound note shows Winston Churchill. The ten-pound note has Jane Austen, the famous writer. And on the fifty-pound note there are two great names — engineer James Watt and inventor Matthew Boulton.</div><div class="trl">Купюра в пять фунтов — Уинстон Черчилль. На десятифунтовой — писательница Джейн Остин. А на пятидесятифунтовой — два великих имени: инженер Джеймс Уатт и изобретатель Мэттью Болтон.</div>
+<div class="line"><b>Maxim:</b> Amazing! In Russia our banknotes show cities — the bridge to Russky Island, the cosmodrome Vostochny… And our coins have cities and saints on them.</div><div class="trl">Удивительно! А в России на купюрах — города: мост на остров Русский, космодром Восточный… А на монетах — города и святые.</div>
+<div class="line"><b>Clerk:</b> Every country tells its own story through money. Here are your pounds — have a nice day!</div><div class="trl">Каждая страна рассказывает свою историю через деньги. Вот ваши фунты — хорошего дня!</div>
+<div class="line"><b>Maxim:</b> Thank you very much! Goodbye!</div><div class="trl">Большое спасибо! До свидания!</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: British Banknotes</h2>
+<div class="card">
+<p>British money has a long and interesting history. The currency of the United Kingdom is the pound sterling — one of the oldest currencies in the world. It is divided into 100 pence. There are coins for small amounts and paper (and polymer!) banknotes for larger ones.</p>
+<p>Every British banknote has two sides. On the front there is a portrait of the King. On the back there are portraits of famous British people — and each of them tells a story about British culture.</p>
+<p>The five-pound note shows Winston Churchill, the Prime Minister who led Britain during the Second World War. The ten-pound note is dedicated to Jane Austen, the great writer of «Pride and Prejudice». The twenty-pound note shows J. M. W. Turner, the famous painter of light and sea. And the fifty-pound note depicts James Watt and Matthew Boulton — two engineers who developed the steam engine and changed industry forever.</p>
+<p>In the past, other great people appeared on banknotes. Charles Darwin, the naturalist who developed the theory of evolution, was on the ten-pound note. Elizabeth Fry, who improved living conditions in European prisons, and Adam Smith, the father of modern economics, were also depicted on British money.</p>
+<p>Russian banknotes tell a different story: they show cities and places. The five-thousand-ruble note shows Khabarovsk, the one-thousand-ruble note — Yaroslavl, and the two-thousand-ruble note — the bridge to Russky Island and the Vostochny cosmodrome. So British money celebrates people, while Russian money celebrates the country's geography. Both are wonderful history lessons you can hold in your hand!</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<button class="big" onclick="tgId('readTr')">🌐 Показать / скрыть перевод</button>
+<div class="trl" id="readTr"><p>У британских денег долгая и интересная история. Валюта Соединённого Королевства — фунт стерлингов, одна из старейших валют мира. Он делится на 100 пенсов. Есть монеты для мелких сумм и бумажные (и полимерные!) банкноты для крупных.</p>
+<p>У каждой британской купюры две стороны. На лицевой — портрет короля. На оборотной — портреты знаменитых британцев, и каждый из них рассказывает историю британской культуры.</p>
+<p>Купюра в пять фунтов — Уинстон Черчилль, премьер-министр, который вёл Британию во Второй мировой войне. Десятифунтовая посвящена Джейн Остин, великой писательнице «Гордости и предубеждения». Двадцатифунтовая — живописцу света и моря Уильяму Тёрнеру. А пятидесятифунтовая изображает Джеймса Уатта и Мэттью Болтона — инженеров, которые разработали паровой двигатель и навсегда изменили промышленность.</p>
+<p>В прошлом на банкнотах появлялись и другие великие люди. Чарльз Дарвин, натуралист, разработавший теорию эволюции, был на десятифунтовой купюре. Элизабет Фрай, улучшившая условия жизни в европейских тюрьмах, и Адам Смит, отец современной экономики, тоже изображались на британских деньгах.</p>
+<p>Российские банкноты рассказывают другую историю: на них города и места. Пятитысячная — Хабаровск, тысячная — Ярославль, а двухтысячная — мост на остров Русский и космодром Восточный. Так британские деньги прославляют людей, а российские — географию страны. И те и другие — чудесные уроки истории, которые можно подержать в руке!</p></div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. What is the currency of the UK divided into? — Into 100 <b>pence</b>.</p>
+<p>2. Who is depicted on the front of every British banknote? — A portrait of <b>the King</b>.</p>
+<p>3. Who is on the ten-pound note today? — <b>Jane Austen</b>, the great writer.</p>
+<p>4. Who developed the theory of evolution and was on the old ten-pound note? — <b>Charles Darwin</b>.</p>
+<p>5. What do Russian banknotes show? — Cities and <b>places</b>.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>🇬🇧🇷🇺 Фунты и рубли: сравниваем страны</h2>
+<div class="card"><h3>Валюты и их символы</h3>
+<table><tr><th>Страна</th><th>Валюта</th><th>Делится на</th><th>Что на купюрах</th></tr>
+<tr><td>Великобритания</td><td>pound sterling (£)</td><td>100 pence</td><td>король + знаменитые люди</td></tr>
+<tr><td>Россия</td><td>russian rouble (₽)</td><td>100 kopecks</td><td>города и достопримечательности</td></tr>
+<tr><td>США</td><td>dollar ($)</td><td>100 cents</td><td>президенты</td></tr>
+<tr><td>Страны еврозоны</td><td>euro (€)</td><td>100 cents</td><td>стили архитектуры</td></tr></table></div>
+<div class="card"><h3>Знаменитые люди на британских банкнотах</h3>
+<table><tr><th>Человек</th><th>Чем знаменит</th><th>Купюра</th></tr>
+<tr><td>Winston Churchill</td><td>премьер-министр времён Второй мировой</td><td>£5</td></tr>
+<tr><td>Jane Austen</td><td>писательница, «Гордость и предубеждение»</td><td>£10</td></tr>
+<tr><td>J. M. W. Turner</td><td>живописец</td><td>£20</td></tr>
+<tr><td>James Watt &amp; Matthew Boulton</td><td>паровой двигатель</td><td>£50</td></tr>
+<tr><td>Charles Darwin (в прошлом)</td><td>теория эволюции</td><td>старая £10</td></tr>
+<tr><td>Elizabeth Fry (в прошлом)</td><td>реформа тюрем</td><td>старая £5</td></tr>
+<tr><td>Adam Smith (в прошлом)</td><td>отец современной экономики</td><td>старая £20</td></tr></table>
+<div class="note"><b>Обсудите в классе:</b> кого из знаменитых россиян вы бы поместили на новую банкноту? Почему?</div></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🔍 Игра: угадай личность на банкноте</h2>
+<p style="color:#4d5f55">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🧩 Игра: грамматика денег</h2>
+<p style="color:#4d5f55">Выбери правильный ответ — ошибки не блокируют игру.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t9">
+<h2>🎤 Говори сам: Money in my country and in Britain</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовое высказывание.</p>
+<p><b>1. Валюта моей страны:</b></p><select id="s1">
+<option value="The currency of Russia is the Russian rouble, which is divided into 100 kopecks.">rouble and kopecks</option>
+<option value="In my country we use coins and banknotes every day.">coins and banknotes</option>
+<option value="Russia is a big country with a rich history of money.">rich history of money</option></select>
+<p><b>2. Что на российских купюрах:</b></p><select id="s2">
+<option value="Russian banknotes show beautiful cities: Khabarovsk, Yaroslavl and Vladivostok.">cities: Khabarovsk, Yaroslavl</option>
+<option value="The two-thousand-ruble note shows the bridge to Russky Island and the Vostochny cosmodrome.">bridge and cosmodrome</option>
+<option value="Our money tells the story of Russian geography.">story of geography</option></select>
+<p><b>3. Британские деньги:</b></p><select id="s3">
+<option value="British banknotes show famous people: Churchill, Jane Austen and James Watt.">famous people</option>
+<option value="The pound sterling is one of the oldest currencies in the world.">one of the oldest currencies</option>
+<option value="On the front of every note there is a portrait of the King.">portrait of the King</option></select>
+<p><b>4. Сравнение:</b></p><select id="s4">
+<option value="So British money celebrates people, while Russian money celebrates places.">people vs places</option>
+<option value="Both countries tell their stories through banknotes.">both tell stories</option>
+<option value="Every banknote is like a small history lesson.">small history lesson</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="Money is not only for buying things — it teaches us about culture!">money teaches culture</option>
+<option value="I would love to see a banknote with a Russian scientist on it!">Russian scientist on a note</option>
+<option value="Money connects the past and the present.">past and present</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut"></div>
+</div>
+</section>
+
+<section class="tab" id="t10">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t11">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> мини-сочинение <b>«Money in my country and in Britain»</b> (70–90 слов) по плану: какая валюта в России → что изображено на российских банкнотах → что на британских банкнотах → главное отличие → вывод. Используй не менее 5 слов урока, одну конструкцию Past Passive (was issued / was depicted) и одну фразу used to.</p>
+<p><b>Звёздочка (по желанию):</b> придумай дизайн «банкноты будущего» с знаменитым россиянином или российским городом и подпиши по-английски, кто это и чем он знаменит (2–3 предложения).</p>
+<p><b>Критерии (9 баллов):</b> структура (2), Past Passive (2), used to (1), лексика урока — не менее 5 слов (2), сравнение двух стран (1), оформление (1).</p>
+<p><b>Шкала:</b> 8–9 — «5»; 6–7 — «4»; 4–5 — «3».</p>
+<p><b>Примечание:</b> онлайн — текст в чат или фото рукописной работы; очно — в тетради.</p>
+</div>
+</section>
+
+</main>
+<script>
+var W1=[["banknote","ˈbæŋknəʊt","банкнота"],["coin","kɔɪn","монета"],["currency","ˈkʌrənsi","валюта"],["pound sterling","paʊnd ˈstɜːlɪŋ","фунт стерлингов"],["penny, pence","ˈpeni, pens","пенни, пенсы"],["rouble","ˈruːbl","рубль"],["kopeck","ˈkəʊpek","копейка"],["portrait","ˈpɔːtrət","портрет"],["the front / the back","frʌnt / bæk","лицевая / оборотная сторона"],["issue","ˈɪʃuː","выпускать (деньги)"],["depict","dɪˈpɪkt","изображать"],["naturalist","ˈnætʃrəlɪst","натуралист"]];
+var W2=[["cash","kæʃ","наличные"],["credit card","ˈkredɪt kɑːd","кредитная карта"],["exchange rate","ɪksˈtʃeɪndʒ reɪt","курс обмена"],["spend","spend","тратить"],["save","seɪv","копить, экономить"],["wallet","ˈwɒlɪt","кошелёк"],["purse","pɜːs","кошелёк (женский)"],["salary","ˈsæləri","зарплата"],["price","praɪs","цена"],["change money","tʃeɪndʒ ˈmʌni","обменивать деньги"]];
+var P=[["How can I help you?","Чем могу помочь?"],["I would like to change some roubles into pounds, please.","Я хотел(а) бы обменять рубли на фунты, пожалуйста."],["What is the exchange rate today?","Какой сегодня курс обмена?"],["How much would you like to change?","Сколько вы хотели бы обменять?"],["That comes to about 47 pounds.","Это примерно 47 фунтов."],["The note was first issued in 2002.","Купюра была впервые выпущена в 2002 году."],["The Queen is depicted on the front.","Королева изображена на лицевой стороне."],["Who is shown on the ten-pound note?","Кто изображён на десятифунтовой купюре?"],["It is divided into 100 pence.","Она делится на 100 пенсов."],["Have a nice day!","Хорошего дня!"]];
+var R=[["I was the Prime Minister who led Britain during the Second World War — you can see me on the £5 note.",["Winston Churchill","Charles Darwin","Adam Smith"],0],["I wrote «Pride and Prejudice» and I am on the £10 note.",["Jane Austen","Elizabeth Fry","J. M. W. Turner"],0],["I painted light and sea — my face is on the £20 note.",["James Watt","J. M. W. Turner","Matthew Boulton"],1],["We developed the steam engine and changed industry forever — we are on the £50 note.",["Churchill and Austen","Watt and Boulton","Darwin and Fry"],1],["I was a naturalist and developed the theory of evolution. In the past I was on the ten-pound note.",["Adam Smith","Charles Darwin","Edward Elgar"],1],["I improved living conditions in European prisons — I used to be on the £5 note.",["Elizabeth Fry","Jane Austen","The Queen"],0],["I am called the father of modern economics; my «Wealth of Nations» founded economic science.",["Adam Smith","Winston Churchill","J. M. W. Turner"],0],["I am a Russian banknote. I show a bridge to an island and a cosmodrome.",["The 500-ruble note","The 2000-ruble note","The 100-ruble note"],1]];
+var T=[["The ten-pound note ___ in honour of Jane Austen.",["was issued","is issued being","issued"],0],["The Queen ___ on the front of every note.",["is depicted","depicted","depicts"],0],["People ___ pay only in cash, but now cards are everywhere.",["used to","use","are used"],0],["The currency of the UK ___ into 100 pence.",["is divided","divides","was dividing"],0],["Russian banknotes ___ cities and places.",["show","are shown by","showing"],0],["Charles Darwin ___ the theory of evolution.",["developed","is developing","was developed"],0],["Yesterday I ___ 2000 roubles at the bank.",["changed","was changing","am changed"],0],["The new polymer notes ___ in 2016.",["were introduced","introduced","are introducing"],0]];
+var Q=[["The currency of the UK is…",["the pound sterling","the rouble","the euro"],0],["A pound is divided into…",["100 pence","100 cents","100 kopecks"],0],["Who is on the £5 note today?",["Winston Churchill","Jane Austen","Adam Smith"],0],["Who wrote «Pride and Prejudice»?",["Jane Austen","Elizabeth Fry","J. M. W. Turner"],0],["«Portrait» means…",["портрет","кошелёк","монета"],0],["Russian banknotes show…",["cities and places","only presidents","animals"],0],["«To depict» means…",["изображать","тратить","копить"],0],["The old ten-pound note had…",["Charles Darwin","Winston Churchill","James Watt"],0],["«The exchange rate» means…",["курс обмена","отделение банка","банкомат"],0],["On the front of every British banknote there is…",["a portrait of the King","a city","a poem"],0]];
+(function(){var h="",i,w;
+for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w1").innerHTML=h;h="";
+for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w2").innerHTML=h;h="";
+for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"tg(this)\"><i>"+(i+1)+". "+P[i][0]+"</i></div><div class='trl'>"+P[i][1]+"</div>";}
+document.getElementById("phrBox").innerHTML+=""+h;h="";
+for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("ridBox").innerHTML=h;h="";
+for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("tenseBox").innerHTML=h;h="";
+for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}
+document.getElementById("quizBox").innerHTML=h;})();
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function tg(el){var t=el.nextElementSibling;if(t&&t.classList.contains("trl"))t.classList.toggle("on");}
+function tgId(id){document.getElementById(id).classList.toggle("on");}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.85;speechSynthesis.speak(v);},1400);}catch(e){}}
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("Money in my country and in Britain.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,1100));}
+function checkQuiz(){var ans=[0,0,0,0,0,0,0,0,0,0],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🥇 Отличный результат! ":score>=6?"👍 Хорошо! ":"Потренируйтесь ещё! ";res.textContent=m+"Ваш результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
