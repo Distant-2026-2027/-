@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 10 — Career Launch</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f2f5f9;color:#1a2b45}
+header{background:linear-gradient(120deg,#0f3057,#00587a,#f0a500);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.93;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#0b2340;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#f0a500;color:#0b2340;font-weight:bold}
+main{max-width:920px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#00587a;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(15,48,87,.1);border-top:3px solid #f0a500}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.wcard{background:#eaf3fa;border:2px solid #9dc3e0;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#f0a500}
+.wcard b{font-size:1.05em;color:#00587a}
+.wcard span{display:block;font-size:.85em;color:#4a5b75;margin-top:4px}
+.phr{border-left:4px solid #f0a500;background:#fff9e8;padding:10px 14px;margin:6px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#00587a}
+.trl{display:none;background:#eef3fb;border-left:4px solid #9dc3e0;padding:8px 14px;margin:4px 0 8px;border-radius:0 10px 10px 0;color:#33445e}
+.trl.on{display:block}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#00587a;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #b9cbe8;padding:6px 0}
+.rid{background:#fff;border:2px solid #9dc3e0;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #00587a;background:#fff;color:#00587a;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#00587a;color:#fff}
+.opts button.bad{background:#c0392b;border-color:#c0392b;color:#fff;opacity:.6}
+select{padding:8px;border-radius:8px;border:2px solid #9dc3e0;font-size:.95em;margin:4px 0;width:100%;max-width:520px}
+.big{background:#f0a500;border:0;color:#0b2340;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#eaf3fa}
+#quizRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #dde5f0;padding:8px;font-size:.95em}
+th{background:#e6eef7;color:#00587a}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #f0a500}
+.ad{background:#0f3057;color:#fff;border-radius:14px;padding:16px;margin:12px 0}
+.ad b{color:#f0a500}
+#letterOut{background:#fffdf3;border:2px solid #9dc3e0;border-radius:10px;padding:14px;margin-top:10px;display:none;white-space:pre-wrap;font-size:.98em;line-height:1.5}
+#monoOut{background:#eaf3fa;border-radius:10px;padding:12px;margin-top:8px;display:none}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>💼 CAREER LAUNCH!</h1>
+<p>Профориентация. Современные профессии в мире (урок второй) • Spotlight 10, Module 3 «Schooldays &amp; Work», 3e Writing Skills: Formal Letters • 10 класс</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">💼 Профессии</button>
+<button onclick="show('t7',this)">🧩 Формы будущего</button>
+<button onclick="show('t8',this)">✍️ Собери письмо</button>
+<button onclick="show('t9',this)">🎤 Говори сам</button>
+<button onclick="show('t10',this)">✏️ Тест</button>
+<button onclick="show('t11',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут (второй урок темы)</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (3 мин).</b> What career do you dream about? Modern jobs around the world.</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (4 мин).</b> Юнит 3c: Future Tenses — шесть форм будущего.</div></div>
+<div class="step"><div class="n">3</div><div><b>Лексика (8 мин).</b> 20 карточек: современные профессии и мир работы.</div></div>
+<div class="step"><div class="n">4</div><div><b>Мир работы (6 мин).</b> Формальный стиль: признаки, структура письма-заявки, клише (3e).</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (5 мин).</b> Собеседование в IT-компании: Анна и мистер Барнс.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (6 мин).</b> Статья «Modern Careers Around the World» + 5 вопросов.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (5 мин).</b> «Профессия по описанию» и «Формы будущего».</div></div>
+<div class="step"><div class="n">8</div><div><b>Письмо и говорение (4 мин).</b> Собираем letter of application; мини-высказывание «My career plans».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (4 мин).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС СОО</h2>
+<p><b>Предметные:</b> употребляет ЛЕ по теме «Современные профессии и мир работы»; различает формальный и неформальный стиль; строит письмо-заявку о приёме на работу по модели (обращение, причина обращения, квалификация и опыт, готовность к собеседованию, заключение); употребляет формы будущего времени; извлекает информацию из текста о современных профессиях.</p>
+<p><b>Метапредметные:</b> планирует профессиональный путь, структурирует деловое письмо, оценивает собственные навыки и перспективы.</p>
+<p><b>Личностные:</b> осознанный выбор профессии, ценность труда и профессионального развития, готовность к непрерывному обучению.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку, слово прозвучит дважды</h2>
+<div class="card"><h3>Современные профессии в мире</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Мир работы (3b, 3e)</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы: клик по фразе — перевод откроется прямо под ней</h2>
+<div class="card" id="phrBox"><p style="color:#4a5b75">Нажми ещё раз — перевод свернётся.</p></div>
+<div class="card"><h3>Структура письма-заявки (letter of application)</h3>
+<table><tr><th>Часть письма</th><th>Что пишем</th></tr>
+<tr><td>Адрес и дата</td><td>Свій адрес, дата написания — слева вверху</td></tr>
+<tr><td>Обращение</td><td>Имя известно: <i>Dear Mr Barnes,</i> — имя неизвестно: <i>Dear Sir or Madam,</i></td></tr>
+<tr><td>Абзац 1. Причина обращения</td><td>I am writing to apply for the position of…</td></tr>
+<tr><td>Абзац 2. Квалификация и опыт</td><td>Курсы, навыки, качества, достижения</td></tr>
+<tr><td>Абзац 3. Готовность к собеседованию</td><td>Когда свободен(а), как связаться</td></tr>
+<tr><td>Заключение</td><td>I look forward to hearing from you.</td></tr>
+<tr><td>Подпись</td><td>Имя известно: <i>Yours sincerely,</i> — имя неизвестно: <i>Yours faithfully,</i></td></tr></table></div>
+<div class="card"><h3>Формальный стиль: да или нет?</h3>
+<table><tr><th>Признак</th><th>Формально ✔</th><th>Неформально ✖</th></tr>
+<tr><td>Полные формы</td><td>I am, I would, I have</td><td>I'm, I'd, I've</td></tr>
+<tr><td>Лексика и клише</td><td>I am writing to apply for…</td><td>I want to be in…</td></tr>
+<tr><td>Связки</td><td>For this reason, therefore, however</td><td>So, and, but — подряд</td></tr>
+<tr><td>Пассив</td><td>I can be contacted at…</td><td>You can call me…</td></tr>
+<tr><td>Фразовые глаголы</td><td>редко, лучше точные глаголы</td><td>get in touch, hang out</td></tr></table></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: лесенка модулей и Future Tenses</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Module 1: Our People, Our Planet?</b> Вводный модуль: стиль жизни, знакомство с форматом экзаменов.</div></div>
+<div class="step"><div class="n">2</div><div><b>Module 2: Schooldays &amp; Work — начало.</b> Типы школ, школьная жизнь.</div></div>
+<div class="step"><div class="n">3</div><div><b>3a–3c.</b> Типы школ и занятия → профессии и качества работника → Future Tenses, сравнительная степень, phrasal verb pick.</div></div>
+<div class="step"><div class="n">4</div><div><b>3e — мы здесь!</b> Writing Skills: формальные письма — CV и letter of application. Пишем письмо-заявку о приёме на работу.</div></div>
+<div class="step"><div class="n">5</div><div><b>Впереди:</b> Culture Corner и Going Green модуля 3, затем новые модули.</div></div></div>
+<div class="card"><h3>Шпаргалка: шесть форм будущего (3c)</h3>
+<table><tr><th>Форма</th><th>Когда используем</th><th>Пример</th></tr>
+<tr><td>Future Simple (will)</td><td>Прогнозы, обещания, решения на месте</td><td>I will help you with your CV.</td></tr>
+<tr><td>be going to</td><td>Планы и намерения, прогноз по признакам</td><td>I am going to study IT.</td></tr>
+<tr><td>Present Continuous</td><td>Договорённости на будущее</td><td>I am meeting the recruiter on Monday.</td></tr>
+<tr><td>Present Simple</td><td>Расписания</td><td>The interview starts at 10 am.</td></tr>
+<tr><td>Future Continuous</td><td>Действие в процессе в будущем</td><td>This time next year I will be working.</td></tr>
+<tr><td>Future Perfect</td><td>Действие завершится к сроку</td><td>By 2028 I will have graduated.</td></tr></table></div>
+<div class="card"><h3>Идиомы о работе</h3>
+<table><tr><th>Идиома</th><th>Значение</th><th>Пример</th></tr>
+<tr><td>bring home the bacon</td><td>зарабатывать на жизнь</td><td>He works hard to bring home the bacon.</td></tr>
+<tr><td>follow in one's footsteps</td><td>идти по чьим-то стопам</td><td>She followed in her mother's footsteps and became a doctor.</td></tr>
+<tr><td>jack-of-all-trades</td><td>мастер на все руки</td><td>A modern specialist is a jack-of-all-trades.</td></tr>
+<tr><td>in the same boat</td><td>в одинаковом положении</td><td>We are all in the same boat before exams.</td></tr>
+<tr><td>land a job</td><td>получить работу</td><td>He landed a job at a start-up.</td></tr>
+<tr><td>work one's way up</td><td>пробиваться наверх</td><td>She worked her way up to manager.</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: собеседование в IT-компании</h2>
+<div class="card">
+<p style="color:#4a5b75">Клик по реплике — перевод откроется прямо под ней, ещё раз — свернётся.</p>
+<div class="line"><b>Mr Barnes:</b> Good morning. Please take a seat.</div><div class="trl">Доброе утро. Присаживайтесь, пожалуйста.</div>
+<div class="line"><b>Anna:</b> Good morning, Mr Barnes. Thank you for inviting me.</div><div class="trl">Доброе утро, мистер Барнс. Спасибо за приглашение.</div>
+<div class="line"><b>Mr Barnes:</b> So, Anna, why are you interested in this part-time position as a junior web designer?</div><div class="trl">Итак, Анна, почему вас интересует эта вакансия частичного дня — младшего веб-дизайнера?</div>
+<div class="line"><b>Anna:</b> I am a second-year design student, and I would like to gain some valuable experience working with real projects.</div><div class="trl">Я студентка второго курса дизайн-направления, и я хотела бы получить ценный опыт работы над реальными проектами.</div>
+<div class="line"><b>Mr Barnes:</b> What skills have you got?</div><div class="trl">Какими навыками вы владеете?</div>
+<div class="line"><b>Anna:</b> I have completed courses in graphic design and web development. I have already built two websites for school projects. I am reliable, hard-working and creative.</div><div class="trl">Я окончила курсы графического дизайна и веб-разработки. Я уже создала два сайта для школьных проектов. Я надёжная, трудолюбивая и креативная.</div>
+<div class="line"><b>Mr Barnes:</b> Are you working anywhere at the moment?</div><div class="trl">Вы сейчас где-то работаете?</div>
+<div class="line"><b>Anna:</b> No, I am not. I am going to finish my design course this June, so I will be free in July.</div><div class="trl">Нет, не работаю. В июне я заканчиваю курс дизайна, так что в июле буду свободна.</div>
+<div class="line"><b>Mr Barnes:</b> Excellent. And when could you start if we offer you the position?</div><div class="trl">Отлично. А когда вы могли бы начать, если мы предложим вам эту должность?</div>
+<div class="line"><b>Anna:</b> I am available for an interview at any time, and I could start on the 1st of July.</div><div class="trl">Я готова прийти на собеседование в любое время и могла бы начать с 1 июля.</div>
+<div class="line"><b>Mr Barnes:</b> Perfect. Well, this time next month you will be working with our design team!</div><div class="trl">Прекрасно. Ну что ж, через месяц вы уже будете работать с нашей дизайн-командой!</div>
+<div class="line"><b>Anna:</b> Thank you, Mr Barnes. I look forward to hearing from you.</div><div class="trl">Спасибо, мистер Барнс. С нетерпением жду вашего ответа.</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Modern Careers Around the World</h2>
+<div class="card">
+<p>What job will you have in ten years? It is an interesting question, because the world of work is changing faster than ever before.</p>
+<p>Twenty years ago, nobody imagined a social media manager, a drone pilot or a data analyst. Today these jobs are everywhere, and by 2035 there will be professions we cannot even name yet. Experts believe that robots and artificial intelligence will replace some routine jobs, but they will create new ones: people will design, teach, repair and program the machines.</p>
+<p>However, some things will not change. Employers will still look for reliable, hard-working and creative people. Communication skills, foreign languages and the ability to learn quickly will matter more than ever. This time in five years, millions of school leavers around the world will be studying at universities and colleges, and by their thirties many of them will have changed their profession more than once.</p>
+<p>So how do you prepare for the future? First, study what you truly enjoy — it is difficult to become a good specialist in a field you hate. Second, develop universal skills: languages, teamwork and digital literacy. Third, get experience early: a part-time job, volunteering or a school project will look impressive in your CV. Remember: the best way to predict your career is to build it yourself.</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<button class="big" onclick="tgId('readTr')">🌐 Показать / скрыть перевод</button>
+<div class="trl" id="readTr"><p>Какая работа будет у вас через десять лет? Интересный вопрос, потому что мир труда меняется быстрее, чем когда-либо.</p>
+<p>Двадцать лет назад никто не представлял себе менеджера соцсетей, оператора дронов или аналитика данных. Сегодня эти профессии повсюду, а к 2035 году появятся профессии, которые мы даже пока не можем назвать. Эксперты считают, что роботы и искусственный интеллект заменят часть рутинных работ, но создадут новые: люди будут проектировать, учить, ремонтировать и программировать машины.</p>
+<p>Однако кое-что не изменится. Работодатели всё так же будут искать надёжных, трудолюбивых и креативных людей. Коммуникативные навыки, иностранные языки и умение быстро учиться будут важнее, чем когда-либо. Через пять лет миллионы выпускников школ по всему миру будут учиться в университетах и колледжах, а к своим тридцати многие из них поменяют профессию не один раз.</p>
+<p>Так как же подготовиться к будущему? Во-первых, изучай то, что тебе по-настоящему нравится — трудно стать хорошим специалистом в области, которую ты ненавидишь. Во-вторых, развивай универсальные навыки: языки, командную работу и цифровую грамотность. В-третьих, набирайся опыта рано: подработка, волонтёрство или школьный проект украсят твоё резюме. Помни: лучший способ предсказать свою карьеру — построить её самому.</p></div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. What jobs did not exist twenty years ago? — A social media manager, a drone pilot, a data analyst.</p>
+<p>2. What will robots and AI do with routine jobs? — They will replace some and create new ones.</p>
+<p>3. What qualities will employers still look for? — Reliable, hard-working and creative people.</p>
+<p>4. How many times will many people have changed their profession by their thirties? — More than once.</p>
+<p>5. What is the best way to predict your career? — To build it yourself.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>💼 Игра: профессия по описанию</h2>
+<p style="color:#4a5b75">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 Игра: формы будущего</h2>
+<p style="color:#4a5b75">Выбери правильную форму — ошибки не блокируют игру.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>✍️ Собери письмо-заявку (letter of application)</h2>
+<div class="ad"><b>PART-TIME WEB DESIGNER WANTED</b><br>BrightIT Company is looking for a creative student to design websites for our clients. Design experience is welcome.<br>Contact: hr@brightit.com</div>
+<div class="card">
+<p>Собери ответ на это объявление — выбери по фразе в каждом пункте.</p>
+<p><b>1. Обращение (имя адресата неизвестно):</b></p><select id="l1">
+<option value="Dear Sir or Madam,">Dear Sir or Madam,</option>
+<option value="Dear Mr Barnes,">Dear Mr Barnes,</option>
+<option value="Hi!">Hi!</option></select>
+<p><b>2. Причина обращения:</b></p><select id="l2">
+<option value="I am writing to apply for the position of part-time web designer advertised on your website.">I am writing to apply for the position of part-time web designer advertised on your website.</option>
+<option value="I want to work with you because I need money.">I want to work with you because I need money.</option>
+<option value="Give me this job, please.">Give me this job, please.</option></select>
+<p><b>3. Квалификация и опыт:</b></p><select id="l3">
+<option value="I have completed a course in graphic design and built two websites for school projects.">I have completed a course in graphic design and built two websites for school projects.</option>
+<option value="I know computers well, I play games every day.">I know computers well, I play games every day.</option>
+<option value="I have not got any experience, sorry.">I have not got any experience, sorry.</option></select>
+<p><b>4. Личные качества:</b></p><select id="l4">
+<option value="I am reliable, hard-working and creative, and I learn new tools quickly.">I am reliable, hard-working and creative, and I learn new tools quickly.</option>
+<option value="I am the best designer in the world.">I am the best designer in the world.</option>
+<option value="I am sometimes lazy but usually fine.">I am sometimes lazy but usually fine.</option></select>
+<p><b>5. Готовность и заключение:</b></p><select id="l5">
+<option value="I have enclosed a copy of my CV. I am available for an interview at any time. I look forward to hearing from you. Yours faithfully, Anna Petrova">I have enclosed a copy of my CV. I am available for an interview at any time. I look forward to hearing from you. Yours faithfully, Anna Petrova</option>
+<option value="Call me whenever. Bye! Anna">Call me whenever. Bye! Anna</option>
+<option value="Thank you, that is all. Yours, Anna">Thank you, that is all. Yours, Anna</option></select>
+<button class="big" onclick="buildLetter()">📝 Собрать письмо</button>
+<div id="letterOut"></div>
+</div>
+</section>
+
+<section class="tab" id="t9">
+<h2>🎤 Говори сам: My career plans</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовое высказывание о своих планах.</p>
+<p><b>1. После школы:</b></p><select id="s1">
+<option value="After school I am going to enter a university.">enter a university</option>
+<option value="After school I am going to study at a college.">study at a college</option>
+<option value="After school I am going to take a year and work as a trainee.">take a year and work</option></select>
+<p><b>2. Профессиональная область:</b></p><select id="s2">
+<option value="My career field is information technology.">information technology</option>
+<option value="My career field is medicine.">medicine</option>
+<option value="My career field is design.">design</option>
+<option value="My career field is engineering.">engineering</option></select>
+<p><b>3. К какому сроку:</b></p><select id="s3">
+<option value="By the age of twenty-five I will have got my degree.">will have got a degree</option>
+<option value="By that time I will have started my own small project.">will have started a project</option>
+<option value="By then I will have completed my professional training.">will have completed training</option></select>
+<p><b>4. Что будет через год:</b></p><select id="s4">
+<option value="This time next year I will be studying at university.">will be studying</option>
+<option value="This time next year I will be working as a trainee.">will be working as a trainee</option>
+<option value="This time next year I will be preparing for my exams.">will be preparing for exams</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="The world of work is changing, and I am ready to learn new skills all my life.">ready to learn all my life</option>
+<option value="A modern specialist is a jack-of-all-trades, so I will develop different skills.">jack-of-all-trades</option>
+<option value="The best way to predict your career is to build it yourself.">build it yourself</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut"></div>
+</div>
+</section>
+
+<section class="tab" id="t10">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t11">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное (2 части):</b></p>
+<p><b>Часть 1. CV.</b> Заполни резюме по образцу: Personal information (имя, контакты) → Education (где и что изучаешь) → Skills (2–3 навыка) → Interests (увлечения). Объём — 4–5 строк-пунктов.</p>
+<p><b>Часть 2. Letter of application (80–100 слов).</b> Выбери любое объявление о работе (можно из интернета или придумай своё) и напиши письмо-заявку: обращение → причина обращения → квалификация, опыт и качества → готовность к собеседованию и контакты → заключение. Используй не менее 4 клише урока и формальный стиль: полные формы, без разговорных выражений. Подпись: <i>Yours faithfully</i> (если имя неизвестно) или <i>Yours sincerely</i> (если известно).</p>
+<p><b>Звёздочка (по желанию):</b> запиши или разыграй дома диалог собеседования (8–10 реплик) по образцу из вкладки 🗣.</p>
+<p><b>Критерии (9 баллов):</b> структура письма (2), формальный стиль (2), клише — не менее 4 (2), лексика модуля — не менее 5 слов (2), CV заполнен (не оценивается отдельно, но обязателен) + оформление (1).</p>
+<p><b>Шкала:</b> 8–9 — «5»; 6–7 — «4»; 4–5 — «3».</p>
+<p><b>Примечание:</b> онлайн — письмо и CV текстом в чат или фото рукописной работы; очно — в тетради. Письмо-заявка — готовый образец для раздела «Письмо» в ЕГЭ.</p>
+</div>
+</section>
+
+</main>
+<script>
+var W1=[["software developer","ˈsɒftweə dɪˈveləpə","разработчик ПО"],["data analyst","ˈdeɪtə ˈænəlɪst","аналитик данных"],["web designer","web dɪˈzaɪnə","веб-дизайнер"],["social media manager","ˈsəʊʃl ˈmiːdiə ˈmænɪdʒə","менеджер соцсетей"],["drone pilot","drəʊn ˈpaɪlət","оператор дронов"],["robotics engineer","rəʊˈbɒtɪks ˌendʒɪˈnɪə","инженер-робототехник"],["graphic designer","ˈɡræfɪk dɪˈzaɪnə","графический дизайнер"],["translator","trænzˈleɪtə","переводчик"],["environmental scientist","ɪnˌvaɪərənˈmentl ˈsaɪəntɪst","эколог"],["career coach","kəˈrɪə kəʊtʃ","карьерный консультант"]];
+var W2=[["apply for a job","əˈplaɪ fər ə dʒɒb","подать заявку на работу"],["CV, resume","ˌsiːˈviː","резюме"],["interview","ˈɪntəvjuː","собеседование"],["employer","ɪmˈplɔɪə","работодатель"],["employee","ɪmˈplɔɪiː","сотрудник"],["salary","ˈsæləri","зарплата"],["part-time job","ˌpɑːtˈtaɪm dʒɒb","подработка"],["shift work","ʃɪft wɜːk","сменная работа"],["communication skills","kəˌmjuːnɪˈkeɪʃn skɪlz","коммуникативные навыки"],["qualification","ˌkwɒlɪfɪˈkeɪʃn","квалификация"]];
+var P=[["I am writing to apply for the position of…","Я пишу, чтобы подать заявку на должность…"],["I would like to gain some valuable experience.","Я хотел(а) бы получить ценный опыт."],["I have enclosed a copy of my CV.","Я приложил(а) копию своего резюме."],["I can be contacted at…","Со мной можно связаться по…"],["I am available for an interview at any time.","Я готов(а) прийти на собеседование в любое время."],["I look forward to hearing from you.","С нетерпением жду вашего ответа."],["Dear Sir or Madam,","Уважаемые господа, (если имя неизвестно)"],["Dear Mr Barnes,","Уважаемый мистер Барнс, (если имя известно)"],["Yours faithfully,","С уважением, (если имя неизвестно)"],["Yours sincerely,","С искренним уважением, (если имя известно)"]];
+var R=[["I design pages, buttons and colours — websites appear under my hands.",["A web designer","A drone pilot","A waiter"],0],["I look for patterns in big numbers and help companies make decisions.",["A translator","A data analyst","A hairdresser"],1],["I fly a machine with cameras — but I stay on the ground.",["A pilot of a plane","A drone pilot","A diver"],1],["I build machines that can move and work almost like humans.",["A robotics engineer","A baker","A career coach"],0],["I turn texts from one language into another.",["A journalist","A translator","A gardener"],1],["I help people plan their career path and improve their CV.",["A career coach","A software developer","A nurse"],0],["I draw logos, posters and app icons.",["A graphic designer","An accountant","A vet"],0],["I write programs that make phones and computers do what we need.",["A waiter","A librarian","A software developer"],2]];
+var T=[["Look at the dark clouds! It ___ rain.",["is going to","will","rains"],0],["I ___ to study computer science next year.",["am going","will be","going"],0],["The interview ___ at 10 am tomorrow.",["starts","start","will have started"],0],["This time next month I ___ in the office.",["will be working","work","am working"],0],["By 2030 she ___ from university.",["will have graduated","graduates","will graduate"],0],["Don't worry, I ___ you with your CV.",["will help","am helping","help"],0],["I ___ the recruiter on Saturday — everything is arranged.",["am meeting","will meet","meet"],0],["What ___ after school?",["are you going to do","will you have done","do you do"],0]];
+var Q=[["The letter of application is written in…",["a formal style","an informal style","a joke style"],0],["If you do not know the name, you begin with…",["Dear Sir or Madam,","Dear friend,","Hello there,"],0],["If you do not know the name, you end with…",["Yours faithfully,","Yours sincerely,","Bye-bye,"],0],["«I am writing to apply for the position of…» is used to…",["say why you are writing","describe your hobby","say goodbye"],0],["A CV is…",["резюме","реклама","расписание"],0],["Look at the dark clouds! It ___ rain.",["is going to","will","rains"],0],["A person who works for a company is…",["an employee","an employer","an interview"],0],["This time next year I ___ at university.",["will be studying","study","will have studied"],0],["Which part comes first in a letter of application?",["the reason for writing","the CV","the signature"],0],["«I have enclosed a copy of my CV» means…",["я приложил(а) резюме","я забыл(а) резюме","я прочитал(а) резюме"],0]];
+(function(){var h="",i,w;
+for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w1").innerHTML=h;h="";
+for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w2").innerHTML=h;h="";
+for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"tg(this)\"><i>"+(i+1)+". "+P[i][0]+"</i></div><div class='trl'>"+P[i][1]+"</div>";}
+document.getElementById("phrBox").innerHTML+=""+h;h="";
+for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("ridBox").innerHTML=h;h="";
+for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("tenseBox").innerHTML=h;h="";
+for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}
+document.getElementById("quizBox").innerHTML=h;})();
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function tg(el){var t=el.nextElementSibling;if(t&&t.classList.contains("trl"))t.classList.toggle("on");}
+function tgId(id){document.getElementById(id).classList.toggle("on");}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.9;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.9;speechSynthesis.speak(v);},1500);}catch(e){}}
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildLetter(){var s=document.getElementById("l1").value+"\n\n"+document.getElementById("l2").value+"\n\n"+document.getElementById("l3").value+" "+document.getElementById("l4").value+"\n\n"+document.getElementById("l5").value;var o=document.getElementById("letterOut");o.style.display="block";o.textContent=s;}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My career plans.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,1100));}
+function checkQuiz(){var ans=[0,0,0,0,0,0,0,0,0,0],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🥇 Отличный результат! ":score>=6?"👍 Хорошо! ":"Потренируйтесь ещё! ";res.textContent=m+"Ваш результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
