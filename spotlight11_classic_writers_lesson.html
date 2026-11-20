@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 11 — Classic Writers</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Georgia','Segoe UI',serif;background:#faf6ee;color:#2e2226}
+header{background:linear-gradient(120deg,#4a1226,#7b2d43,#c9a227);color:#fff;padding:26px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.93;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#3a0e1d;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em;font-family:'Segoe UI',sans-serif}
+#tabs button.act{background:#c9a227;color:#3a0e1d;font-weight:bold}
+main{max-width:920px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#7b2d43;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(74,18,38,.1);border-top:3px solid #c9a227}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.wcard{background:#f7efe3;border:2px solid #d9c39a;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#c9a227}
+.wcard b{font-size:1.05em;color:#7b2d43}
+.wcard span{display:block;font-size:.85em;color:#5d4f47;margin-top:4px}
+.phr{border-left:4px solid #c9a227;background:#fdf9ec;padding:10px 14px;margin:6px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#7b2d43}
+.trl{display:none;background:#f2ece0;border-left:4px solid #d9c39a;padding:8px 14px;margin:4px 0 8px;border-radius:0 10px 10px 0;color:#4a3d38}
+.trl.on{display:block}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#7b2d43;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #cbb8a0;padding:6px 0}
+.rid{background:#fff;border:2px solid #d9c39a;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #7b2d43;background:#fff;color:#7b2d43;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#7b2d43;color:#fff}
+.opts button.bad{background:#a33a2e;border-color:#a33a2e;color:#fff;opacity:.6}
+select{padding:8px;border-radius:8px;border:2px solid #d9c39a;font-size:.95em;margin:4px 0;width:100%;max-width:520px}
+.big{background:#c9a227;border:0;color:#3a0e1d;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#f7efe3}
+#quizRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #e6ddcc;padding:8px;font-size:.95em}
+th{background:#f0e6d2;color:#7b2d43}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #c9a227}
+.note{background:#fdf9ec;border:2px solid #c9a227;border-radius:12px;padding:12px;margin:10px 0}
+#monoOut{background:#f7efe3;border-radius:10px;padding:12px;margin-top:8px;display:none}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 GREAT CLASSIC WRITERS!</h1>
+<p>Выдающиеся люди родной страны. Писатели-классики • Spotlight 11, Modules 3–4: 3d Literature «Great Expectations» (Dickens), 4d Literature «Tom Sawyer» (Twain) + Spotlight on Russia «Dostoyevsky» • 11 класс • 40 минут</p>
+</header>
+<nav id="tabs">
+<button class="act" onclick="show('t0',this)">🎯 О уроке</button>
+<button onclick="show('t1',this)">📖 Слова</button>
+<button onclick="show('t2',this)">💬 Фразы</button>
+<button onclick="show('t3',this)">🔁 Повторение</button>
+<button onclick="show('t4',this)">🗣 Диалог</button>
+<button onclick="show('t5',this)">📚 Чтение</button>
+<button onclick="show('t6',this)">🏛 Классики двух стран</button>
+<button onclick="show('t7',this)">🔍 Угадай писателя</button>
+<button onclick="show('t8',this)">🧩 Собирательные</button>
+<button onclick="show('t9',this)">🎤 Говори сам</button>
+<button onclick="show('t10',this)">✏️ Тест</button>
+<button onclick="show('t11',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 40 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (3 мин).</b> Who is your favourite classic writer — Russian or foreign?</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (4 мин).</b> Литературная лесенка: 1d Уайльд, 2d Бронте → 3d Диккенс, 4d Твен.</div></div>
+<div class="step"><div class="n">3</div><div><b>Лексика (8 мин).</b> 24 карточки: писатели, книги, характеры героев.</div></div>
+<div class="step"><div class="n">4</div><div><b>Классики двух стран (6 мин).</b> Диккенс и Твен — против Пушкина, Достоевского, Толстого и Чехова.</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (5 мин).</b> Книжный клуб: обсуждают «Большие надежды» и Достоевского.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (7 мин).</b> Текст «Dickens and the Great Russian Novelist» + 5 вопросов.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (4 мин).</b> «Угадай писателя» и «Собирательные».</div></div>
+<div class="step"><div class="n">8</div><div><b>Говорение (2 мин).</b> Рассказ «My favourite classic writer».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (1 мин + разбор домашки).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС СОО</h2>
+<p><b>Предметные:</b> употребляет ЛЕ по теме «Писатели и классическая литература»; рассказывает о выдающихся писателях родной страны и страны изучаемого языка (Диккенс, Твен, Достоевский, Толстой, Чехов); употребляет собирательные существительные; извлекает информацию из биографического текста; выражает и аргументирует мнение о книге.</p>
+<p><b>Метапредметные:</b> сопоставляет литературные традиции двух стран, анализирует влияние классиков друг на друга, строит развёрнутое высказывание с аргументацией.</p>
+<p><b>Личностные:</b> интерес к классической литературе, осознание культурного наследия родной страны, читательская культура.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку, слово прозвучит дважды</h2>
+<div class="card"><h3>Писатели и книги (3d, 4d)</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Характер героев (Literature)</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы: клик по фразе — перевод откроется прямо под ней</h2>
+<div class="card" id="phrBox"><p style="color:#5d4f47">Нажми ещё раз — перевод свернётся.</p></div>
+<div class="card"><h3>Шпаргалка: собирательные существительные (Literature)</h3>
+<table><tr><th>Собирательное</th><th>С чем употребляется</th><th>Пример</th></tr>
+<tr><td>a flock of</td><td>птицы, овцы</td><td>a flock of birds</td></tr>
+<tr><td>a pack of</td><td>волки, собаки, карты</td><td>a pack of wolves</td></tr>
+<tr><td>a herd of</td><td>крупный скот, олени</td><td>a herd of cattle</td></tr>
+<tr><td>a swarm of</td><td>насекомые</td><td>a swarm of bees</td></tr>
+<tr><td>a bunch of</td><td>ключи, виноград, цветы</td><td>a bunch of keys</td></tr>
+<tr><td>a handful of</td><td>мелкие предметы</td><td>a handful of sweets</td></tr>
+<tr><td>a gang of</td><td>воры, хулиганы</td><td>a gang of thieves</td></tr>
+<tr><td>a sack of</td><td>сыпучее</td><td>a sack of flour</td></tr></table></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: литературная лесенка Spotlight 11</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Module 1 «Relationships», 1d Literature.</b> Оскар Уайльд, «The Devoted Friend»: дружба, предательство, ирония; характеры: devoted, selfish, compassionate.</div></div>
+<div class="step"><div class="n">2</div><div><b>Module 2, 2d Literature.</b> Шарлотта Бронте, отрывок из «Jane Eyre» — Гейтсхед: детство и несправедливость.</div></div>
+<div class="step"><div class="n">3</div><div><b>Module 3 «Responsibility», 3d — мы здесь!</b> Чарльз Диккенс, отрывок из «Great Expectations»: сирота Пип и беглый каторжник на кладбище.</div></div>
+<div class="step"><div class="n">4</div><div><b>Module 4 «Danger!», 4d.</b> Марк Твен, отрывок из «The Adventures of Tom Sawyer»: Том и Беки находят выход из пещеры.</div></div>
+<div class="step"><div class="n">5</div><div><b>Spotlight on Russia «Dostoyevsky» (с. 197).</b> Ф. М. Достоевский — выдающийся писатель родной страны: жизнь, «Преступление и наказание», связи с Диккенсом.</div></div></div>
+<div class="card"><h3>Идиомы о книгах и писателях</h3>
+<table><tr><th>Идиома</th><th>Значение</th><th>Пример</th></tr>
+<tr><td>a household name</td><td>всем известное имя</td><td>Pushkin is a household name in Russia.</td></tr>
+<tr><td>read between the lines</td><td>читать между строк</td><td>You should read between the lines.</td></tr>
+<tr><td>judge a book by its cover</td><td>судить по обложке (обычно: don't)</td><td>Never judge a book by its cover.</td></tr>
+<tr><td>a bestseller</td><td>бестселлер</td><td>The novel became a bestseller.</td></tr>
+<tr><td>page-turner</td><td>книга, которую не оторваться</td><td>Great Expectations is a real page-turner.</td></tr>
+<tr><td>hit the shelves</td><td>выйти в продажу</td><td>The novel hit the shelves in 1860.</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: книжный клуб</h2>
+<div class="card">
+<p style="color:#5d4f47">Клик по реплике — перевод откроется прямо под ней, ещё раз — свернётся.</p>
+<div class="line"><b>Anna:</b> Hi, Kirill! Have you finished the extract from «Great Expectations» for our book club?</div><div class="trl">Привет, Кирилл! Ты дочитал отрывок из «Больших надежд» для нашего книжного клуба?</div>
+<div class="line"><b>Kirill:</b> Yes, I have. The scene in the graveyard gave me goosebumps! Pip is only a boy, and a hungry convict is threatening him.</div><div class="trl">Да. Сцена на кладбище меня аж пробрала! Пип — всего лишь мальчишка, а голодный каторжник ему угрожает.</div>
+<div class="line"><b>Anna:</b> Dickens knew fear and poverty from the inside. As a boy he worked in a factory while his family was in a debtor's prison.</div><div class="trl">Диккенс знал страх и бедность не понаслышке. Мальчиком он работал на фабрике, пока его семья сидела в долговой тюрьме.</div>
+<div class="line"><b>Kirill:</b> No wonder his characters feel so real. And do you know that Dostoevsky admired Dickens greatly?</div><div class="trl">Неудивительно, что его герои такие живые. А ты знаешь, что Достоевский очень уважал Диккенса?</div>
+<div class="line"><b>Anna:</b> Really? I thought their styles were completely different.</div><div class="trl">Правда? А я думала, их стили совершенно разные.</div>
+<div class="line"><b>Kirill:</b> Different styles, but the same heart. Both writers feel for the poor and the insulted. Dostoevsky even wrote that Dickens's characters become almost like family.</div><div class="trl">Стили разные, а сердце одно. Оба писателя сочувствуют бедным и обиженным. Достоевский даже писал, что герои Диккенса становятся почти как родные.</div>
+<div class="line"><b>Anna:</b> And what about Mark Twain? We read his cave scene last month.</div><div class="trl">А как же Марк Твен? Мы ведь читали его сцену в пещере в прошлом месяце.</div>
+<div class="line"><b>Kirill:</b> Twain is laughter, Dickens is tears, Dostoevsky is depth. But they are all classics — and a classic never gets old.</div><div class="trl">Твен — это смех, Диккенс — слёзы, Достоевский — глубина. Но все они классики — а классика никогда не стареет.</div>
+<div class="line"><b>Anna:</b> Well said! So, what shall we say about the Russian classics at the club?</div><div class="trl">Здорово сказано! Тогда что мы скажем о русских классиках на клубе?</div>
+<div class="line"><b>Kirill:</b> That Pushkin is our everything, that Tolstoy shows the whole country in one novel, and that Chekhov makes us laugh and cry at the same time.</div><div class="trl">Что Пушкин — наше всё, что Толстой показывает всю страну в одном романе, а Чехов заставляет смеяться и плакать одновременно.</div>
+<div class="line"><b>Anna:</b> Perfect. Reading classics broadens the mind — see you at the club!</div><div class="trl">Отлично. Чтение классики расширяет кругозор — до встречи на клубе!</div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: Dickens and the Great Russian Novelist</h2>
+<div class="card">
+<p>Charles Dickens (1812–1870) is one of the greatest English novelists of the Victorian age. His childhood was dark: his father went to a debtor's prison, and twelve-year-old Charles had to work long hours in a shoe-polish factory. Later he became a journalist, and then a famous novelist whose books made the whole of Britain — and then the whole world — cry and laugh.</p>
+<p>Dickens created unforgettable characters: the orphan Oliver Twist asking for more soup, the old miser Scrooge, and Pip, the boy from the churchyard in «Great Expectations» (1860–1861). His novels exposed the darkest sides of Victorian England — debtors' prisons, child labour, cruelty to the poor — and helped to change the law itself.</p>
+<p>In Russia, Dickens found a soulmate: Fyodor Dostoevsky (1821–1881), the author of «Crime and Punishment». Dostoevsky admired Dickens greatly and wrote that his characters feel like members of one's own family. Both writers felt deep compassion for the poor and the insulted, both showed the human soul in the darkest circumstances. The difference is in the ending: Dickens, after long suffering, usually leads his heroes to happiness, while Dostoevsky leads them to spiritual awakening.</p>
+<p>The classic writers of our own country also changed the world literature. Alexander Pushkin created the modern Russian literary language. Leo Tolstoy showed an entire epoch in «War and Peace». Anton Chekhov combined laughter and sadness in his stories and plays. And Mark Twain (1835–1910), the American classic whose Tom Sawyer explores a dangerous cave, taught world literature to speak with humour and freedom.</p>
+<p>A classic writer never belongs to one country only. Dickens, Twain, Dostoevsky, Tolstoy and Chekhov belong to all of us — and a classic never gets old.</p>
+<button class="big" onclick="readText()">🔊 Прослушать текст</button>
+</div>
+<button class="big" onclick="tgId('readTr')">🌐 Показать / скрыть перевод</button>
+<div class="trl" id="readTr"><p>Чарльз Диккенс (1812–1870) — один из величайших английских романистов викторианской эпохи. Его детство было мрачным: отец попал в долговую тюрьму, а двенадцатилетнему Чарльзу пришлось долго работать на фабрике гуталина. Позже он стал журналистом, а затем знаменитым романистом, чьи книги заставили плакать и смеяться всю Британию, а затем и весь мир.</p>
+<p>Диккенс создал незабываемых героев: сироту Оливера Твиста, просящего добавки, старого скупца Скруджа и Пипа, мальчика с церковного кладбища из «Больших надежд» (1860–1861). Его романы обнажали тёмные стороны викторианской Англии — долговые тюрьмы, детский труд, жестокость к бедным — и помогали менять сами законы.</p>
+<p>В России Диккенс нашёл родственную душу: Фёдор Достоевский (1821–1881), автор «Преступления и наказания», глубоко уважал Диккенса и писал, что его герои чувствуются как члены собственной семьи. Оба писателя сострадали бедным и обиженным, оба показывали человеческую душу в самых тёмных обстоятельствах. Разница — в финале: Диккенс после долгих страданий обычно приводит героев к счастью, а Достоевский — к духовному пробуждению.</p>
+<p>Классики нашей родной страны тоже меняли мировую литературу. Александр Пушкин создал современный русский литературный язык. Лев Толстой показал целую эпоху в «Войне и мире». Антон Чехов соединил смех и печаль в своих рассказах и пьесах. А Марк Твен (1835–1910), американский классик, чей Том Сойер ищет выход из опасной пещеры, научил мировую литературу говорить с юмором и свободой.</p>
+<p>Классик не принадлежит одной стране. Диккенс, Твен, Достоевский, Толстой и Чехов принадлежат всем нам — а классика никогда не стареет.</p></div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. Where was Dickens's father when the boy worked at the factory? — In a <b>debtor's prison</b>.</p>
+<p>2. What novel gave us the boy Pip from the churchyard? — <b>Great Expectations</b>.</p>
+<p>3. Which Russian writer admired Dickens greatly? — <b>Fyodor Dostoevsky</b>.</p>
+<p>4. How do the endings of Dickens and Dostoevsky differ? — Dickens leads heroes to <b>happiness</b>, Dostoevsky to <b>spiritual awakening</b>.</p>
+<p>5. Who created the modern Russian literary language? — <b>Alexander Pushkin</b>.</p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>🏛 Классики двух стран: сравниваем традиции</h2>
+<div class="card"><h3>Писатели-классики: родная страна и страна изучаемого языка</h3>
+<table><tr><th>Писатель</th><th>Страна</th><th>Годы</th><th>Главные книги</th></tr>
+<tr><td>Alexander Pushkin</td><td>Россия</td><td>1799–1837</td><td>Eugene Onegin, Ruslan and Lyudmila</td></tr>
+<tr><td>Fyodor Dostoevsky</td><td>Россия</td><td>1821–1881</td><td>Crime and Punishment, The Idiot</td></tr>
+<tr><td>Leo Tolstoy</td><td>Россия</td><td>1828–1910</td><td>War and Peace, Anna Karenina</td></tr>
+<tr><td>Anton Chekhov</td><td>Россия</td><td>1860–1904</td><td>The Cherry Orchard, stories</td></tr>
+<tr><td>Charles Dickens</td><td>Англия</td><td>1812–1870</td><td>Great Expectations, Oliver Twist</td></tr>
+<tr><td>Mark Twain</td><td>США</td><td>1835–1910</td><td>The Adventures of Tom Sawyer</td></tr></table></div>
+<div class="card"><h3>Что связывает Диккенса и Достоевского</h3>
+<table><tr><th>Линия</th><th>Диккенс</th><th>Достоевский</th></tr>
+<tr><td>Герой</td><td>сироты, бедняки, маленькие люди</td><td>униженные и оскорблённые, «маленькие люди»</td></tr>
+<tr><td>Место действия</td><td>Лондон: трущобы, тюрьмы, кладбища</td><td>Петербург: каморки, доходные дома</td></tr>
+<tr><td>Главный вопрос</td><td>как выжить добрым?</td><td>что дозволено человеку?</td></tr>
+<tr><td>Финал</td><td>страдание → счастье</td><td>страдание → духовное пробуждение</td></tr></table>
+<div class="note"><b>Обсудите в классе:</b> какого героя Достоевского или Диккенса вы назвали бы «маленьким человеком»? Почему?</div></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🔍 Игра: угадай писателя</h2>
+<p style="color:#5d4f47">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🧩 Игра: собирательные существительные</h2>
+<p style="color:#5d4f47">Выбери правильное слово — ошибки не блокируют игру.</p>
+<div id="tenseBox"></div>
+</section>
+
+<section class="tab" id="t9">
+<h2>🎤 Говори сам: My favourite classic writer</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовое высказывание.</p>
+<p><b>1. Вступление:</b></p><select id="s1">
+<option value="I am fond of classic literature, and my favourite writer is from my own country.">fond of classics, my own country</option>
+<option value="Every nation has great classic writers, and Russia is no exception.">every nation has classics</option>
+<option value="Classics never get old, and I read them with pleasure.">classics never get old</option></select>
+<p><b>2. Писатель:</b></p><select id="s2">
+<option value="My favourite classic writer is Fyodor Dostoevsky.">Dostoevsky</option>
+<option value="My favourite classic writer is Leo Tolstoy.">Tolstoy</option>
+<option value="My favourite classic writer is Alexander Pushkin.">Pushkin</option>
+<option value="My favourite classic writer is Anton Chekhov.">Chekhov</option></select>
+<p><b>3. Краткая справка:</b></p><select id="s3">
+<option value="He was born in Moscow in 1821 and became one of the greatest novelists in the world.">born in Moscow, 1821</option>
+<option value="He was born in 1828 and wrote about the whole of Russian life.">born 1828, whole of Russian life</option>
+<option value="He created the modern Russian literary language in the nineteenth century.">created the literary language</option>
+<option value="He was a doctor before he became a famous writer and playwright.">doctor before writer</option></select>
+<p><b>4. Знаменитая книга:</b></p><select id="s4">
+<option value="His novel «Crime and Punishment» tells the story of a young man who commits a crime and finds redemption through suffering.">Crime and Punishment</option>
+<option value="His epic novel «War and Peace» shows Russia during the war of 1812.">War and Peace</option>
+<option value="His novel in verse «Eugene Onegin» is the encyclopedia of Russian life.">Eugene Onegin</option>
+<option value="His play «The Cherry Orchard» is staged in theatres all over the world.">The Cherry Orchard</option></select>
+<p><b>5. Вывод:</b></p><select id="s5">
+<option value="Reading classics broadens the mind, and I recommend this writer to everyone.">recommend to everyone</option>
+<option value="A classic never gets old — it is always modern.">always modern</option>
+<option value="I am proud that my country has such great writers.">proud of my country</option></select>
+<button class="big" onclick="buildSpeech()">🔊 Собрать и прослушать</button>
+<div id="monoOut"></div>
+</div>
+</section>
+
+<section class="tab" id="t10">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" onclick="checkQuiz()">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t11">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> сообщение <b>«An outstanding classic writer of my country»</b> (80–100 слов) по плану: кто этот писатель → когда родился и жил → главные книги → о чём они → чем он знаменит в мире → почему вы его уважаете. Использовать не менее 6 слов урока и не менее 1 собирательного существительного (a flock of, a bunch of и т. д.).</p>
+<p><b>Звёздочка (по желанию):</b> сравнить любимого русского классика с Диккенсом или Твеном (4–5 предложений): что общего, чем различаются.</p>
+<p><b>Критерии (9 баллов):</b> план сообщения (2), лексика урока — не менее 6 слов (2), собирательное существительное (1), аргументированность мнения (2), оформление (2).</p>
+<p><b>Шкала:</b> 8–9 — «5»; 6–7 — «4»; 4–5 — «3».</p>
+<p><b>Примечание:</b> онлайн — текст в чат или фото рукописной работы; очно — в тетради. Тема готовит к заданию «Монологическое высказывание» устной части ЕГЭ.</p>
+</div>
+</section>
+
+</main>
+<script>
+var W1=[["novelist","ˈnɒvəlɪst","романист"],["author","ˈɔːθə","автор"],["fiction","ˈfɪkʃn","художественная литература"],["classic","ˈklæsɪk","классика"],["plot","plɒt","сюжет"],["character","ˈkærəktə","персонаж"],["orphan","ˈɔːfn","сирота"],["convict","ˈkɒnvɪkt","каторжник"],["tombstone","ˈtuːmstəʊn","надгробный камень"],["debtor's prison","ˈdetəz ˈprɪzn","долговая тюрьма"],["pen name","pen neɪm","псевдоним"],["wit","wɪt","остроумие"]];
+var W2=[["devoted","dɪˈvəʊtɪd","преданный"],["generous","ˈdʒenərəs","щедрый"],["selfish","ˈselfɪʃ","эгоистичный"],["compassionate","kəmˈpæʃənət","сострадательный"],["kind-hearted","ˌkaɪndˈhɑːtɪd","добросердечный"],["vain","veɪn","тщеславный"],["lonely","ˈləʊnli","одинокий"],["humble","ˈhʌmbl","скромный"],["greedy","ˈɡriːdi","жадный"],["hypocritical","ˌhɪpəˈkrɪtɪkl","лицемерный"],["well-mannered","ˌwelˈmænəd","воспитанный"],["noble","ˈnəʊbl","благородный"]];
+var P=[["He is one of the greatest novelists of the nineteenth century.","Он один из величайших романистов девятнадцатого века."],["His novels are still read all over the world.","Его романы до сих пор читают во всём мире."],["The novel tells the story of an orphan boy called Pip.","Роман рассказывает историю мальчика-сироты по имени Пип."],["Charles Dickens was born in 1812.","Чарльз Диккенс родился в 1812 году."],["His family spent some time in a debtor's prison.","Его семья какое-то время провела в долговой тюрьме."],["«Great Expectations» was published in 1860–1861.","«Большие надежды» были опубликованы в 1860–1861 годах."],["Dostoevsky admired Dickens greatly.","Достоевский глубоко уважал Диккенса."],["Literature reflects the life of its time.","Литература отражает жизнь своего времени."],["A classic never gets old.","Классика никогда не стареет."],["Reading classics broadens the mind.","Чтение классики расширяет кругозор."]];
+var R=[["I was born in 1812. As a boy I worked in a shoe-polish factory while my father was in a debtor's prison.",["Charles Dickens","Mark Twain","Anton Chekhov"],0],["My real name was Samuel Clemens, and I was born in Missouri, the USA.",["Charles Dickens","Mark Twain","Leo Tolstoy"],1],["I wrote «Crime and Punishment» and admired Dickens greatly.",["Fyodor Dostoevsky","Alexander Pushkin","Mark Twain"],0],["I created the modern Russian literary language and wrote «Eugene Onegin».",["Anton Chekhov","Alexander Pushkin","Charles Dickens"],1],["My epic novel «War and Peace» shows Russia during the war of 1812.",["Leo Tolstoy","Fyodor Dostoevsky","Mark Twain"],0],["I was a doctor before I became a writer, and my famous play is «The Cherry Orchard».",["Anton Chekhov","Leo Tolstoy","Charles Dickens"],0],["I am an English orphan who asked for more soup in a workhouse.",["Pip","Oliver Twist","Tom Sawyer"],1],["I explored a dangerous cave and found my way out by the light at the end of a tunnel.",["Pip","Hans","Tom Sawyer"],2]];
+var T=[["Look! There is ___ of bees on the flower.",["a swarm","a pack","a herd"],0],["The wolves hunted as ___ in the dark forest.",["a flock","a pack","a bunch"],0],["She has lost ___ of keys again.",["a bunch","a herd","a swarm"],0],["The shepherd keeps a large ___ of sheep.",["flock","gang","sack"],0],["The police arrested ___ of thieves.",["a gang","a herd","a flock"],0],["In the yard there was ___ of cattle.",["a herd","a bunch","a pack"],0],["He brought ___ of flour from the mill.",["a sack","a swarm","a flock"],0],["The children shared ___ of sweets.",["a handful","a herd","a pack"],0]];
+var Q=[["Spotlight 11, 3d Literature is an extract from…",["«Great Expectations» by Charles Dickens","«The Devoted Friend» by Oscar Wilde","«Jane Eyre» by Charlotte Bronte"],0],["4d Literature is an extract from…",["«War and Peace»","«The Adventures of Tom Sawyer» by Mark Twain","«Crime and Punishment»"],1],["Who wrote «Crime and Punishment»?",["Fyodor Dostoevsky","Leo Tolstoy","Charles Dickens"],0],["Who created the modern Russian literary language?",["Alexander Pushkin","Anton Chekhov","Mark Twain"],0],["A «novelist» is…",["романист","каторжник","сирота"],0],["A «pen name» is…",["псевдоним","перо","посылка"],0],["«A pack of wolves» means…",["стая волков","отара овец","рой пчёл"],0],["«A bunch of keys» means…",["связка ключей","мешок муки","стадо коров"],0],["Dostoevsky's attitude to Dickens was…",["admiration","hatred","indifference"],0],["«Reading classics broadens the mind» means…",["чтение классики расширяет кругозор","классика скучна","книги дороги"],0]];
+(function(){var h="",i,w;
+for(i=0;i<W1.length;i++){w=W1[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w1").innerHTML=h;h="";
+for(i=0;i<W2.length;i++){w=W2[i];h+="<div class='wcard' onclick=\"speak('"+w[0]+"')\"><b>"+w[0]+"</b><span>["+w[1]+"] — "+w[2]+"</span></div>";}
+document.getElementById("w2").innerHTML=h;h="";
+for(i=0;i<P.length;i++){h+="<div class='phr' onclick=\"tg(this)\"><i>"+(i+1)+". "+P[i][0]+"</i></div><div class='trl'>"+P[i][1]+"</div>";}
+document.getElementById("phrBox").innerHTML+=""+h;h="";
+for(i=0;i<R.length;i++){var r=R[i],o="";for(var j=0;j<r[1].length;j++){o+="<button onclick=\"guess(this,"+j+",this.parentNode)\">"+r[1][j]+"</button>";}h+="<div class='rid' data-ans='"+r[2]+"'><b>Загадка "+(i+1)+".</b> <i>"+r[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("ridBox").innerHTML=h;h="";
+for(i=0;i<T.length;i++){var t=T[i],o="";for(var m=0;m<t[1].length;m++){o+="<button onclick=\"guess(this,"+m+",this.parentNode)\">"+t[1][m]+"</button>";}h+="<div class='rid' data-ans='"+t[2]+"'><b>"+(i+1)+".</b> <i>"+t[0]+"</i><div class='opts'>"+o+"</div></div>";}
+document.getElementById("tenseBox").innerHTML=h;h="";
+for(i=0;i<Q.length;i++){var q=Q[i],o="";for(var k=0;k<q[1].length;k++){o+="<label><input type='radio' name='q"+i+"' value='"+k+"'> "+q[1][k]+"</label>";}h+="<div class='qz'><p>"+(i+1)+". "+q[0]+"</p>"+o+"</div>";}
+document.getElementById("quizBox").innerHTML=h;})();
+function show(id,btn){var a=document.querySelectorAll(".tab");for(var i=0;i<a.length;i++)a[i].classList.remove("on");document.getElementById(id).classList.add("on");var b=document.querySelectorAll("#tabs button");for(i=0;i<b.length;i++)b[i].classList.remove("act");btn.classList.add("act");window.scrollTo(0,0);}
+function tg(el){var t=el.nextElementSibling;if(t&&t.classList.contains("trl"))t.classList.toggle("on");}
+function tgId(id){document.getElementById(id).classList.toggle("on");}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.9;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){var v=new SpeechSynthesisUtterance(t);v.lang="en-US";v.rate=0.9;speechSynthesis.speak(v);},1500);}catch(e){}}
+function guess(btn,n,box){if(box.dataset.done)return;if(n==box.dataset.ans){box.dataset.done="1";btn.classList.add("ok");var b=box.querySelectorAll("button");for(var i=0;i<b.length;i++)b[i].disabled=true;}else{btn.classList.add("bad");btn.disabled=true;}}
+function buildSpeech(){var s=document.getElementById("s1").value+" "+document.getElementById("s2").value+" "+document.getElementById("s3").value+" "+document.getElementById("s4").value+" "+document.getElementById("s5").value;var o=document.getElementById("monoOut");o.style.display="block";o.textContent=s;speak("My favourite classic writer.");speak(s);}
+function readText(){var t=document.getElementById("t5").querySelector(".card").innerText.replace(/🔊 Прослушать текст/g,"");speak(t.slice(0,1300));}
+function checkQuiz(){var ans=[0,1,0,0,0,0,0,0,0,0],score=0;for(var i=0;i<10;i++){var r=document.querySelectorAll("input[name=q"+i+"]"),v=-1;for(var j=0;j<r.length;j++){if(r[j].checked)v=parseInt(r[j].value);}if(v===ans[i])score++;}var res=document.getElementById("quizRes"),m=score>=9?"🥇 Отличный результат! ":score>=6?"👍 Хорошо! ":"Потренируйтесь ещё! ";res.textContent=m+"Ваш результат: "+score+" из 10.";}
+</script>
+</body>
+</html>
