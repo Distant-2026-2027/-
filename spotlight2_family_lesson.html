@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotlight 2 — My Family!</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff4ef;color:#4a2c3a}
+header{background:linear-gradient(120deg,#e91e63,#ff7043,#ffb300);color:#fff;padding:24px 18px;text-align:center}
+header h1{font-size:1.7em;letter-spacing:1px}
+header p{opacity:.95;margin-top:6px;font-size:.95em}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:12px;background:#c2185b;position:sticky;top:0;z-index:5}
+#tabs button{border:0;background:rgba(255,255,255,.2);color:#fff;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:.9em}
+#tabs button.act{background:#ffd54f;color:#b71c1c;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:18px}
+.tab{display:none}.tab.on{display:block}
+h2{color:#c2185b;margin:10px 0 12px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(194,24,91,.12);border-top:3px solid #ffb300}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.wcard{background:#fdeef3;border:2px solid #f3b0c6;border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+.wcard:hover{transform:translateY(-3px);border-color:#ffb300}
+.wcard b{font-size:1.05em;color:#c2185b}
+.wcard span{display:block;font-size:.85em;color:#6d4a58;margin-top:4px}
+.phr{border-left:4px solid #ffb300;background:#fff8e8;padding:10px 14px;margin:6px 0;border-radius:0 10px 10px 0;cursor:pointer}
+.phr i{color:#c2185b}
+.trl{display:none;background:#fdeef3;border-left:4px solid #f3b0c6;padding:8px 14px;margin:4px 0 8px;border-radius:0 10px 10px 0;color:#5a3a48}
+.trl.on{display:block}
+.step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.step .n{background:#c2185b;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em}
+.line{cursor:pointer;border-bottom:1px dashed #e8c3d0;padding:6px 0}
+.rid{background:#fff;border:2px solid #f3b0c6;border-radius:14px;padding:14px;margin:12px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{border:2px solid #c2185b;background:#fff;color:#c2185b;padding:8px 14px;border-radius:20px;cursor:pointer}
+.opts button.ok{background:#c2185b;color:#fff}
+.opts button.bad{background:#b03a2e;border-color:#b03a2e;color:#fff;opacity:.6}
+select{padding:8px;border-radius:8px;border:2px solid #f3b0c6;font-size:.95em;margin:4px 0;width:100%;max-width:520px}
+.big{background:#ffb300;border:0;color:#5d2c00;font-weight:bold;padding:12px 22px;border-radius:24px;cursor:pointer;margin:10px 0;font-size:1em}
+.qz{margin:12px 0}.qz p{font-weight:600;margin-bottom:6px}
+.qz label{display:block;padding:5px 10px;cursor:pointer;border-radius:8px}
+.qz label:hover{background:#fdeef3}
+#quizRes{font-weight:bold;margin-top:8px;min-height:24px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td,th{border:1px solid #f0dbe2;padding:8px;font-size:.95em}
+th{background:#fce4ec;color:#c2185b}
+.foot{background:#fff;border-radius:14px;padding:14px;margin:12px 0;border:2px dashed #ffb300}
+#monoOut{background:#fdeef3;border-radius:10px;padding:12px;margin-top:8px;display:none}
+@media(max-width:600px){header h1{font-size:1.25em}}
+</style>
+</head>
+<body>
+<header>
+<h1>👨‍👩‍👧 MY FAMILY!</h1>
+<p>Моя семья • Spotlight 2, начальный модуль (Starter Unit a «My Family!») • 2 класс • 45 минут</p>
+</header>
+<nav id="tabs">
+<button class="act" data-tab="t0">🎯 О уроке</button>
+<button data-tab="t1">📖 Слова</button>
+<button data-tab="t2">💬 Фразы</button>
+<button data-tab="t3">🔁 Повторение</button>
+<button data-tab="t4">🗣 Диалог</button>
+<button data-tab="t5">📚 Чтение</button>
+<button data-tab="t6">👨‍👩‍👧 Угадай кто</button>
+<button data-tab="t7">🧩 This is / I love</button>
+<button data-tab="t8">🎵 Песенка</button>
+<button data-tab="t9">🎤 Говори сам</button>
+<button data-tab="t10">✏️ Тест</button>
+<button data-tab="t11">🏠 Домашка</button>
+</nav>
+<main>
+
+<section class="tab on" id="t0">
+<h2>План урока — 45 минут</h2>
+<div class="card"><div class="step"><div class="n">1</div><div><b>Приветствие и разминка (5 мин).</b> Hello! What is your name? Кто у тебя дома: mummy, daddy?</div></div>
+<div class="step"><div class="n">2</div><div><b>Повторение (5 мин).</b> Приветствия, имя, цвета — всё, что уже умеем.</div></div>
+<div class="step"><div class="n">3</div><div><b>Лексика (9 мин).</b> 18 карточек: семья и слова-помощники — слушаем дважды.</div></div>
+<div class="step"><div class="n">4</div><div><b>Фразы (7 мин).</b> This is my… Who's this? I love my family!</div></div>
+<div class="step"><div class="n">5</div><div><b>Диалог (6 мин).</b> Ларри показывает Лулу семейный фотоальбом.</div></div>
+<div class="step"><div class="n">6</div><div><b>Чтение (5 мин).</b> Текст «My Family» + 4 вопроса.</div></div>
+<div class="step"><div class="n">7</div><div><b>Игры (6 мин).</b> «Угадай кто» и «This is / I love».</div></div>
+<div class="step"><div class="n">8</div><div><b>Песенка и говорение (5 мин).</b> Finger Family + рассказ «My family».</div></div>
+<div class="step"><div class="n">9</div><div><b>Тест и домашнее задание (2 мин + дом. разбор).</b></div></div></div>
+<div class="card"><h2>Результаты по ФГОС НОО</h2>
+<p><b>Предметные:</b> называет членов семьи на английском (mummy, daddy, brother, sister, grandma, grandpa, baby); понимает и употребляет фразы This is my…, Who's this?; говорит о членах семьи с опорой на образец.</p>
+<p><b>Метапредметные:</b> слушает и повторяет образец, участвует в диалоге-расспросе, работает по плану урока.</p>
+<p><b>Личностные:</b> любовь и уважение к семье, доброта к близким.</p></div>
+</section>
+
+<section class="tab" id="t1">
+<h2>📖 Слова урока — нажми на карточку, слово прозвучит дважды</h2>
+<div class="card"><h3>Моя семья</h3><div class="words" id="w1"></div></div>
+<div class="card"><h3>Слова-помощники</h3><div class="words" id="w2"></div></div>
+</section>
+
+<section class="tab" id="t2">
+<h2>💬 Фразы: клик по фразе — перевод откроется прямо под ней</h2>
+<div class="card" id="phrBox"><p style="color:#6d4a58">Нажми ещё раз — перевод свернётся.</p></div>
+<div class="card"><h3>Шпаргалка: как говорить о семье</h3>
+<table><tr><th>Фраза</th><th>Когда говорим</th></tr>
+<tr><td>This is my mummy.</td><td>Показываем и называем: это моя мама.</td></tr>
+<tr><td>Who's this?</td><td>Спрашиваем: кто это?</td></tr>
+<tr><td>He is strong.</td><td>О мальчиках и мужчинах: он сильный.</td></tr>
+<tr><td>She is kind.</td><td>О девочках и женщинах: она добрая.</td></tr>
+<tr><td>I love my family!</td><td>Говорим о любви к семье.</td></tr></table>
+<p style="color:#6d4a58;margin-top:8px">Запомни: <b>he</b> — он (папа, брат, дедушка), <b>she</b> — она (мама, сестра, бабушка).</p></div>
+</section>
+
+<section class="tab" id="t3">
+<h2>🔁 Повторение: что мы уже умеем</h2>
+<div class="card">
+<div class="step"><div class="n">1</div><div><b>Приветствия.</b> Hello! Hi! Good morning! How are you? — I am fine, thank you!</div></div>
+<div class="step"><div class="n">2</div><div><b>Имя.</b> What is your name? — My name is Larry. My name is Lulu!</div></div>
+<div class="step"><div class="n">3</div><div><b>Мы здесь!</b> Новая тема — семья: теперь мы можем рассказать о самых близких людях!</div></div></div>
+<div class="card"><h3>Слова-помощники в деле</h3>
+<table><tr><th>Слово</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td>kind</td><td>My mummy is kind.</td><td>добрая</td></tr>
+<tr><td>strong</td><td>My daddy is strong.</td><td>сильный</td></tr>
+<tr><td>funny</td><td>My sister is funny.</td><td>смешная</td></tr>
+<tr><td>nice</td><td>My grandpa is nice.</td><td>милый</td></tr></table></div>
+</section>
+
+<section class="tab" id="t4">
+<h2>🗣 Диалог: семейный фотоальбом Ларри</h2>
+<div class="card">
+<p style="color:#6d4a58">Клик по реплике — перевод откроется прямо под ней, ещё раз — свернётся.</p>
+<div id="dlgBox"></div>
+</div>
+</section>
+
+<section class="tab" id="t5">
+<h2>📚 Чтение: My Family</h2>
+<div class="card">
+<p>Hello! My name is Larry. This is my family.</p>
+<p>This is my mummy. She is kind.</p>
+<p>This is my daddy. He is strong.</p>
+<p>This is my little sister. She is funny. She laughs all day!</p>
+<p>This is my grandma. She makes yummy cakes.</p>
+<p>This is my grandpa. He tells funny stories.</p>
+<p>I love my family!</p>
+<button class="big" id="readBtn">🔊 Прослушать текст</button>
+</div>
+<button class="big" id="readTrBtn">🌐 Показать / скрыть перевод</button>
+<div class="trl" id="readTr"><p>Привет! Меня зовут Ларри. Это моя семья.</p>
+<p>Это моя мама. Она добрая.</p>
+<p>Это мой папа. Он сильный.</p>
+<p>Это моя младшая сестра. Она смешная. Она смеётся целый день!</p>
+<p>Это моя бабушка. Она печёт вкусные торты.</p>
+<p>Это мой дедушка. Он рассказывает смешные истории.</p>
+<p>Я люблю свою семью!</p></div>
+<div class="card"><h3>Вопросы к тексту</h3>
+<p>1. Who is kind? — <b>Larry's mummy.</b></p>
+<p>2. Who is strong? — <b>Larry's daddy.</b></p>
+<p>3. What does grandma make? — <b>Yummy cakes.</b></p>
+<p>4. What does Larry say at the end? — <b>I love my family!</b></p></div>
+</section>
+
+<section class="tab" id="t6">
+<h2>👨‍👩‍👧 Игра: угадай кто</h2>
+<p style="color:#6d4a58">Ошибка не блокирует игру — пробуй снова!</p>
+<div id="ridBox"></div>
+</section>
+
+<section class="tab" id="t7">
+<h2>🧩 Игра: This is / I love</h2>
+<p style="color:#6d4a58">Выбери правильный ответ — ошибки не блокируют игру.</p>
+<div id="gramBox"></div>
+</section>
+
+<section class="tab" id="t8">
+<h2>🎵 Песенка: Finger Family</h2>
+<div class="card">
+<p>Поём пальчиками: один палец — один член семьи! Палец «ходит» и «отвечает».</p>
+<p><b>Daddy finger, daddy finger, where are you?</b><br>Here I am, here I am. How do you do?</p>
+<p><b>Mummy finger, mummy finger, where are you?</b><br>Here I am, here I am. How do you do?</p>
+<p><b>Brother finger, brother finger, where are you?</b><br>Here I am, here I am. How do you do?</p>
+<p><b>Sister finger, sister finger, where are you?</b><br>Here I am, here I am. How do you do?</p>
+<p><b>Baby finger, baby finger, where are you?</b><br>Here I am, here I am. How do you do?</p>
+<button class="big" id="songBtn">🔊 Спеть песенку</button>
+</div>
+<div class="trl" id="songTr"><p><b>Папа-пальчик, папа-пальчик, где ты?</b><br>Вот я, вот я. Как поживаешь?</p>
+<p><b>Мама-пальчик, мама-пальчик, где ты?</b><br>Вот я, вот я. Как поживаешь?</p>
+<p><b>Брат-пальчик, брат-пальчик, где ты?</b><br>Вот я, вот я. Как поживаешь?</p>
+<p><b>Сестра-пальчик, сестра-пальчик, где ты?</b><br>Вот я, вот я. Как поживаешь?</p>
+<p><b>Малыш-пальчик, малыш-пальчик, где ты?</b><br>Вот я, вот я. Как поживаешь?</p></div>
+</section>
+
+<section class="tab" id="t9">
+<h2>🎤 Говори сам: My family</h2>
+<div class="card">
+<p>Выбери в каждом списке — и получи готовый рассказ о семье.</p>
+<p><b>1. Кто в семье:</b></p><select id="s1">
+<option value="This is my mummy, my daddy and my little sister.">mummy, daddy, sister</option>
+<option value="This is my mummy, my daddy, my brother and my baby sister.">mummy, daddy, brother, baby</option>
+<option value="This is my big family: mummy, daddy, grandma and grandpa.">big family with grandma and grandpa</option></select>
+<p><b>2. Мама:</b></p><select id="s2">
+<option value="My mummy is kind.">kind</option>
+<option value="My mummy is nice.">nice</option>
+<option value="My mummy makes yummy cakes.">makes cakes</option></select>
+<p><b>3. Папа:</b></p><select id="s3">
+<option value="My daddy is strong.">strong</option>
+<option value="My daddy is funny.">funny</option>
+<option value="My daddy plays football with me.">plays football</option></select>
+<p><b>4. Сестра или брат:</b></p><select id="s4">
+<option value="My sister is funny.">sister is funny</option>
+<option value="My brother is strong.">brother is strong</option>
+<option value="My baby sister laughs all day.">baby laughs all day</option></select>
+<p><b>5. Конец:</b></p><select id="s5">
+<option value="I love my family!">I love my family!</option>
+<option value="My family is the best!">My family is the best!</option>
+<option value="Hello, family!">Hello, family!</option></select>
+<button class="big" id="speechBtn">🔊 Собрать и прослушать</button>
+<div id="monoOut"></div>
+</div>
+</section>
+
+<section class="tab" id="t10">
+<h2>✏️ Тест: 8 вопросов</h2>
+<div class="card" id="quizBox"></div>
+<div class="card"><button class="big" id="checkBtn">Проверить тест</button><div id="quizRes"></div></div>
+</section>
+
+<section class="tab" id="t11">
+<h2>🏠 Домашнее задание</h2>
+<div class="foot">
+<p><b>Основное:</b> нарисуй свою семью и подпиши каждого по-английски: mummy, daddy, sister, brother, grandma, grandpa. Под рисунком напиши 4 предложения: три по образцу <i>This is my…</i> и последнее — <i>I love my family!</i></p>
+<p><b>Звёздочка (по желанию):</b> спей родителям песенку Finger Family — покажи пальчиками всю семью! И запиши, кто как «ответил».</p>
+<p><b>Критерии (6 баллов):</b> рисунок с подписями (2), 4 предложения (2), This is my без ошибок (1), I love my family! (1).</p>
+<p><b>Шкала отметок:</b> 6 — «5»; 5 — «4»; 4 — «3».</p>
+<p><b>Примечание:</b> онлайн — рисунок и текст фото в чат; очно — в тетради.</p>
+</div>
+</section>
+
+</main>
+<script>
+var W1=[
+["mummy","ˈmʌmi","мама (ласково)"],
+["daddy","ˈdædi","папа (ласково)"],
+["mum","mʌm","мама"],
+["dad","dæd","папа"],
+["brother","ˈbrʌðə","брат"],
+["sister","ˈsɪstə","сестра"],
+["grandma","ˈɡrænmɑː","бабушка"],
+["grandpa","ˈɡrænpɑː","дедушка"],
+["baby","ˈbeɪbi","малыш"],
+["family","ˈfæməli","семья"]
+];
+var W2=[
+["hello","həˈləʊ","привет"],
+["friend","frend","друг"],
+["nice","naɪs","милый, хороший"],
+["kind","kaɪnd","добрый"],
+["strong","strɒŋ","сильный"],
+["funny","ˈfʌni","смешной"],
+["love","lʌv","любить"],
+["look","lʊk","смотреть"]
+];
+var P=[
+["Who is this?","Кто это?"],
+["This is my mummy.","Это моя мама."],
+["This is my daddy.","Это мой папа."],
+["This is my little sister.","Это моя младшая сестра."],
+["I love my family!","Я люблю свою семью!"],
+["My mummy is kind.","Моя мама добрая."],
+["My daddy is strong.","Мой папа сильный."],
+["My sister is funny.","Моя сестра смешная."],
+["Look at my family!","Посмотри на мою семью!"],
+["Hello, family!","Привет, семья!"]
+];
+var D=[
+["Larry:","Look, Lulu! This is my family photo album!","Смотри, Лулу! Это мой семейный фотоальбом!"],
+["Lulu:","Wow! Who is this?","Ого! Кто это?"],
+["Larry:","This is my mummy. She is kind.","Это моя мама. Она добрая."],
+["Lulu:","And who is this?","А это кто?"],
+["Larry:","This is my daddy. He is strong. He plays football with me!","Это мой папа. Он сильный. Он играет с мной в футбол!"],
+["Lulu:","Is this your sister?","А это твоя сестра?"],
+["Larry:","Yes! This is my little sister. She is funny. She laughs all day!","Да! Это моя младшая сестра. Она смешная. Она смеётся целый день!"],
+["Lulu:","And who are these nice people?","А кто эти милые люди?"],
+["Larry:","This is my grandma. She makes yummy cakes. And this is my grandpa. He tells funny stories.","Это моя бабушка. Она печёт вкусные торты. А это мой дедушка. Он рассказывает смешные истории."],
+["Lulu:","You have a lovely family, Larry!","У тебя чудесная семья, Ларри!"],
+["Larry:","Thank you, Lulu! I love my family!","Спасибо, Лулу! Я люблю свою семью!"]
+];
+var R=[
+["She hugs me and reads me fairy tales. Who is she?",["mummy","brother","grandpa"],0],
+["He is big and strong and plays football with me.",["sister","daddy","baby"],1],
+["She is small and laughs all day long.",["grandma","mummy","little sister"],2],
+["She makes yummy cakes and cookies.",["grandma","daddy","friend"],0],
+["He tells funny stories and has a grey moustache.",["baby","grandpa","sister"],1],
+["We are mummy, daddy, sister and me. Together we are a…",["family","friend","team"],0],
+["He is small, he cries and sleeps a lot.",["baby","grandpa","daddy"],0],
+["She has a pink bow and she is very funny.",["Lulu","mummy","grandma"],0]
+];
+var G=[
+["___ my mummy.",["This is","Who is","I love"],0],
+["— ___ this? — This is my daddy.",["What","Who","Where"],1],
+["This is my daddy. ___ is strong.",["She","He","It"],1],
+["This is my mummy. ___ is kind.",["He","She","It"],1],
+["I ___ my family!",["love","am","like"],0],
+["This is my sister. She ___ funny.",["am","is","are"],1],
+["___ at my family!",["Look","Love","Live"],0],
+["This is my grandpa. He ___ funny stories.",["tell","tells","telling"],1]
+];
+var Q=[
+["«Mummy» means…",["мама","сестра","бабушка"],0],
+["«Daddy» means…",["папа","брат","дедушка"],0],
+["«This is my sister» means…",["Это моя сестра","Это мой брат","Кто это?"],0],
+["Как спросить «Кто это?»",["Who is this?","What is this?","Where is it?"],0],
+["«Grandma» means…",["бабушка","дедушка","тётя"],0],
+["This is my daddy. ___ is strong.",["He","She","It"],0],
+["«I love my family» means…",["Я люблю свою семью","У меня большая семья","Моя семья смешная"],0],
+["«Funny» means…",["смешной","сильный","добрый"],0]
+];
+
+function fill(id, arr, kind){
+  var h = "", i, j, o;
+  if(kind === "words"){
+    for(i=0;i<arr.length;i++){
+      h = h + "<div class='wcard' data-w=\"" + arr[i][0] + "\"><b>" + arr[i][0] + "</b><span>[" + arr[i][1] + "] — " + arr[i][2] + "</span></div>";
+    }
+  } else if(kind === "phr"){
+    for(i=0;i<arr.length;i++){
+      h = h + "<div class='phr'><i>" + (i+1) + ". " + arr[i][0] + "</i></div><div class='trl'>" + arr[i][1] + "</div>";
+    }
+  } else if(kind === "dlg"){
+    for(i=0;i<arr.length;i++){
+      h = h + "<div class='line'><b>" + arr[i][0] + "</b> " + arr[i][1] + "</div><div class='trl'>" + arr[i][2] + "</div>";
+    }
+  } else {
+    for(i=0;i<arr.length;i++){
+      o = "";
+      for(j=0;j<arr[i][1].length;j++){
+        o = o + "<button data-i=\"" + j + "\">" + arr[i][1][j] + "</button>";
+      }
+      h = h + "<div class='rid' data-ans=\"" + arr[i][2] + "\"><b>" + (i+1) + ".</b> <i>" + arr[i][0] + "</i><div class='opts'>" + o + "</div></div>";
+    }
+  }
+  document.getElementById(id).innerHTML = h;
+}
+
+fill("w1", W1, "words");
+fill("w2", W2, "words");
+fill("phrBox", P, "phr");
+fill("dlgBox", D, "dlg");
+fill("ridBox", R, "game");
+fill("gramBox", G, "game");
+
+var quizH = "", qi, qj, qo;
+for(qi=0; qi<Q.length; qi++){
+  qo = "";
+  for(qj=0; qj<Q[qi][1].length; qj++){
+    qo = qo + "<label><input type='radio' name='q" + qi + "' value='" + qj + "'> " + Q[qi][1][qj] + "</label>";
+  }
+  quizH = quizH + "<div class='qz'><p>" + (qi+1) + ". " + Q[qi][0] + "</p>" + qo + "</div>";
+}
+document.getElementById("quizBox").innerHTML = quizH;
+
+function showTab(id, btn){
+  var a = document.querySelectorAll(".tab"), i;
+  for(i=0;i<a.length;i++) a[i].classList.remove("on");
+  document.getElementById(id).classList.add("on");
+  var b = document.querySelectorAll("#tabs button");
+  for(i=0;i<b.length;i++) b[i].classList.remove("act");
+  btn.classList.add("act");
+  window.scrollTo(0,0);
+}
+
+document.getElementById("tabs").addEventListener("click", function(e){
+  var b = e.target;
+  while(b && b !== this && !b.hasAttribute("data-tab")) b = b.parentNode;
+  if(b && b.hasAttribute && b.hasAttribute("data-tab")) showTab(b.getAttribute("data-tab"), b);
+});
+
+document.getElementById("w1").addEventListener("click", function(e){
+  var c = e.target;
+  while(c && c !== this && !c.classList.contains("wcard")) c = c.parentNode;
+  if(c && c.classList && c.classList.contains("wcard")) speak(c.getAttribute("data-w"));
+});
+document.getElementById("w2").addEventListener("click", function(e){
+  var c = e.target;
+  while(c && c !== this && !c.classList.contains("wcard")) c = c.parentNode;
+  if(c && c.classList && c.classList.contains("wcard")) speak(c.getAttribute("data-w"));
+});
+
+document.getElementById("phrBox").addEventListener("click", function(e){
+  var c = e.target;
+  while(c && c !== this && !c.classList.contains("phr")) c = c.parentNode;
+  if(c && c.classList && c.classList.contains("phr")) toggleTr(c);
+});
+document.getElementById("dlgBox").addEventListener("click", function(e){
+  var c = e.target;
+  while(c && c !== this && !c.classList.contains("line")) c = c.parentNode;
+  if(c && c.classList && c.classList.contains("line")) toggleTr(c);
+});
+
+function toggleTr(el){
+  var t = el.nextElementSibling;
+  if(t && t.classList.contains("trl")) t.classList.toggle("on");
+}
+
+document.getElementById("ridBox").addEventListener("click", function(e){
+  handleGuess(e, this);
+});
+document.getElementById("gramBox").addEventListener("click", function(e){
+  handleGuess(e, this);
+});
+function handleGuess(e, box){
+  var btn = e.target;
+  if(!btn || btn.tagName !== "BUTTON") return;
+  var card = btn.parentNode;
+  while(card && card !== box && !card.classList.contains("rid")) card = card.parentNode;
+  if(!card || !card.classList || !card.classList.contains("rid") || card.getAttribute("data-done")) return;
+  if(parseInt(btn.getAttribute("data-i"),10) === parseInt(card.getAttribute("data-ans"),10)){
+    card.setAttribute("data-done","1");
+    btn.classList.add("ok");
+    var all = card.querySelectorAll("button"), i;
+    for(i=0;i<all.length;i++) all[i].disabled = true;
+  } else {
+    btn.classList.add("bad");
+    btn.disabled = true;
+  }
+}
+
+function speak(text){
+  try{
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US"; u.rate = 0.8;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+    setTimeout(function(){
+      try{
+        var v = new SpeechSynthesisUtterance(text);
+        v.lang = "en-US"; v.rate = 0.8;
+        window.speechSynthesis.speak(v);
+      }catch(err){}
+    }, 1600);
+  }catch(err){}
+}
+
+document.getElementById("readBtn").addEventListener("click", function(){
+  speak("Hello! My name is Larry. This is my family. This is my mummy. She is kind. This is my daddy. He is strong. This is my little sister. She is funny. This is my grandma. She makes yummy cakes. This is my grandpa. He tells funny stories. I love my family!");
+});
+document.getElementById("readTrBtn").addEventListener("click", function(){
+  document.getElementById("readTr").classList.toggle("on");
+});
+document.getElementById("songBtn").addEventListener("click", function(){
+  speak("Daddy finger, daddy finger, where are you? Here I am, here I am. How do you do? Mummy finger, mummy finger, where are you? Here I am, here I am. How do you do? Brother finger, brother finger, where are you? Here I am, here I am. How do you do? Sister finger, sister finger, where are you? Here I am, here I am. How do you do? Baby finger, baby finger, where are you? Here I am, here I am. How do you do?");
+});
+document.getElementById("songTr").style.display = "block";
+document.getElementById("songTr").style.display = "none";
+document.getElementById("songTr").addEventListener("click", function(){ this.classList.toggle("on"); });
+
+document.getElementById("speechBtn").addEventListener("click", function(){
+  var s = document.getElementById("s1").value + " " + document.getElementById("s2").value + " " + document.getElementById("s3").value + " " + document.getElementById("s4").value + " " + document.getElementById("s5").value;
+  var o = document.getElementById("monoOut");
+  o.style.display = "block";
+  o.textContent = s;
+  speak("My family.");
+  speak(s);
+});
+
+document.getElementById("checkBtn").addEventListener("click", function(){
+  var score = 0, i, j, radios, val;
+  for(i=0;i<Q.length;i++){
+    radios = document.getElementsByName("q" + i);
+    val = -1;
+    for(j=0;j<radios.length;j++){
+      if(radios[j].checked) val = parseInt(radios[j].value, 10);
+    }
+    if(val === Q[i][2]) score++;
+  }
+  var res = document.getElementById("quizRes");
+  var m = (score === 8) ? "🥇 Молодец! Всё верно! " : (score >= 5) ? "👍 Хорошо! " : "Потренируйся ещё! ";
+  res.textContent = m + "Твой результат: " + score + " из 8.";
+});
+</script>
+</body>
+</html>
