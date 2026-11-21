@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotlight 2 — Unit 2a «Where's Chuckles?» — Моя семья. Комнаты в нашем доме</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Comic Sans MS','Segoe UI',sans-serif; background:#e8f4fb; color:#1a3a5c; }
+  .container { max-width:900px; margin:0 auto; padding:10px; }
+  header { background:linear-gradient(135deg,#1a7fc1,#4aa8e8); color:#fff; border-radius:0 0 24px 24px; padding:22px 16px 18px; text-align:center; }
+  header h1 { font-size:1.7em; letter-spacing:1px; }
+  header .sub { margin-top:6px; font-size:1.05em; opacity:.95; }
+  header .meta { margin-top:8px; font-size:.85em; opacity:.85; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:14px 0; }
+  nav button { border:none; padding:9px 14px; border-radius:20px; background:#fff; color:#1a7fc1; font-family:inherit; font-size:.95em; font-weight:bold; cursor:pointer; box-shadow:0 2px 5px rgba(26,127,193,.25); transition:all .2s; }
+  nav button.active, nav button:hover { background:#1a7fc1; color:#fff; }
+  .tab { display:none; background:#fff; border-radius:16px; padding:20px; box-shadow:0 4px 14px rgba(26,127,193,.15); }
+  .tab.active { display:block; }
+  h2 { color:#1a7fc1; margin-bottom:12px; }
+  h3 { color:#1a7fc1; margin:16px 0 8px; }
+  .words-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; }
+  .word-card { background:linear-gradient(135deg,#e3f2fd,#f3fbff); border:2px solid #b3dcf5; border-radius:14px; padding:12px; cursor:pointer; transition:transform .15s; }
+  .word-card:hover { transform:scale(1.04); }
+  .word-card .en { font-size:1.2em; font-weight:bold; color:#1a7fc1; }
+  .word-card .tr { font-size:.85em; color:#5b87a8; }
+  .word-card .ru { margin-top:5px; font-size:.95em; color:#123; display:none; }
+  .word-card.open .ru { display:block; }
+  .phrase-list .phrase { background:#f3fbff; border-left:5px solid #4aa8e8; border-radius:0 12px 12px 0; padding:10px 14px; margin:8px 0; cursor:pointer; }
+  .phrase-list .phrase:hover { background:#e3f2fd; }
+  .phrase .en { font-weight:bold; }
+  .phrase .ru { display:none; margin-top:5px; color:#1a7fc1; font-style:italic; }
+  .phrase.open .ru { display:block; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; }
+  th,td { border:1px solid #b3dcf5; padding:8px; text-align:left; }
+  th { background:#e3f2fd; color:#1a7fc1; }
+  .dialog .replica { background:#f3fbff; border-radius:12px; padding:10px 14px; margin:8px 0; cursor:pointer; }
+  .dialog .replica:hover { background:#e3f2fd; }
+  .dialog .who { font-weight:bold; color:#1a7fc1; }
+  .dialog .ru { display:none; margin-top:5px; color:#1a7fc1; font-style:italic; }
+  .dialog .replica.open .ru { display:block; }
+  .text-block { background:#f3fbff; border-radius:12px; padding:14px; line-height:1.7; }
+  .btn { display:inline-block; border:none; background:#1a7fc1; color:#fff; padding:10px 18px; border-radius:20px; font-family:inherit; font-size:1em; font-weight:bold; cursor:pointer; margin:8px 4px 0 0; }
+  .btn:hover { background:#0f5f97; }
+  .quiz-q { margin:14px 0; }
+  .opts { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+  .opt { border:2px solid #b3dcf5; background:#fff; border-radius:12px; padding:8px 14px; cursor:pointer; font-family:inherit; font-size:.95em; }
+  .opt.correct { background:#c8e6c9; border-color:#4caf50; }
+  .opt.wrong { background:#ffcdd2; border-color:#e57373; }
+  .result { margin-top:14px; font-weight:bold; font-size:1.1em; color:#1a7fc1; }
+  .medal { text-align:center; font-size:2.2em; margin-top:8px; display:none; }
+  .riddle { background:#f3fbff; border-radius:12px; padding:12px; margin:10px 0; }
+  .riddle .answer { display:none; margin-top:6px; color:#1a7fc1; font-weight:bold; }
+  .riddle.open .answer { display:block; }
+  footer { text-align:center; padding:16px; color:#5b87a8; font-size:.85em; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>🐵 WHERE'S CHUCKLES?</h1>
+  <div class="sub">Моя семья. Комнаты в нашем доме • Spotlight 2, Module 1, Unit 2a</div>
+  <div class="meta">Английский язык • 2 класс • 45 минут</div>
+</header>
+<nav id="nav"></nav>
+
+<section class="tab" id="t-about">
+  <h2>🎯 О уроке</h2>
+  <p><b>Тема:</b> Моя семья. Комнаты в нашем доме (Spotlight 2, Module 1 «My Family!», Unit 2a «Where's Chuckles?»).</p>
+  <p><b>План на 45 минут:</b></p>
+  <table>
+    <tr><th>№</th><th>Этап</th><th>Время</th><th>Что делаем</th></tr>
+    <tr><td>1</td><td>Приветствие и разминка</td><td>5 мин</td><td>Hello! Где прячется Чаклз?</td></tr>
+    <tr><td>2</td><td>Повторение</td><td>5 мин</td><td>Семья из прошлого урока</td></tr>
+    <tr><td>3</td><td>Лексика</td><td>9 мин</td><td>18 карточек: комнаты и слова-помощники</td></tr>
+    <tr><td>4</td><td>Структуры</td><td>6 мин</td><td>Where's…? He's/She's/It's in the…</td></tr>
+    <tr><td>5</td><td>Диалог</td><td>6 мин</td><td>Прятки с Чаклзом по всему дому</td></tr>
+    <tr><td>6</td><td>Чтение</td><td>6 мин</td><td>Текст «Our House» + 5 вопросов</td></tr>
+    <tr><td>7</td><td>Игры</td><td>6 мин</td><td>«Угадай комнату» и «Where's / It's in»</td></tr>
+    <tr><td>8</td><td>Песенка и говорение</td><td>5 мин</td><td>Рифмовка + рассказ «My house»</td></tr>
+    <tr><td>9</td><td>Тест и домашка</td><td>3 мин</td><td>Тест из 10 вопросов</td></tr>
+  </table>
+  <h3>Результаты по ФГОС НОО</h3>
+  <ul>
+    <li><b>Предметные:</b> называет комнаты дома; спрашивает Where's…? и отвечает He's/She's/It's in the…; различает in, on, under.</li>
+    <li><b>Метапредметные:</b> ориентируется в пространстве дома, следует плану, проверяет себя в играх.</li>
+    <li><b>Личностные:</b> любовь к своему дому, помощь семье, аккуратность в комнатах.</li>
+  </ul>
+</section>
+
+<section class="tab" id="t-words">
+  <h2>📖 Слова — кликни на карточку, слово прозвучит дважды!</h2>
+  <div class="words-grid" id="words"></div>
+</section>
+
+<section class="tab" id="t-phrases">
+  <h2>💬 Фразы — кликни, перевод откроется под фразой</h2>
+  <div class="phrase-list" id="phrases"></div>
+  <h3>Шпаргалка: Where's = Where is</h3>
+  <table>
+    <tr><th>Структура</th><th>Пример</th><th>Перевод</th></tr>
+    <tr><td>Where's Chuckles?</td><td>Where's Chuckles? — He's in the garden.</td><td>Где Чаклз? — Он в саду.</td></tr>
+    <tr><td>He's / She's / It's</td><td>It's under the bed.</td><td>Оно под кроватью.</td></tr>
+    <tr><td>in</td><td>in the living room</td><td>в (гостиной)</td></tr>
+    <tr><td>on</td><td>on the table</td><td>на (столе)</td></tr>
+    <tr><td>under</td><td>under the bed</td><td>под (кроватью)</td></tr>
+  </table>
+  <h3>Кто что делает в комнатах?</h3>
+  <table>
+    <tr><th>Комната</th><th>Кто там</th><th>Что делает</th></tr>
+    <tr><td>kitchen</td><td>mummy</td><td>makes cakes (печёт торты)</td></tr>
+    <tr><td>living room</td><td>the family</td><td>watches TV (смотрит телевизор)</td></tr>
+    <tr><td>bedroom</td><td>brother</td><td>sleeps (спит)</td></tr>
+    <tr><td>bathroom</td><td>sister</td><td>plays with water (плещется)</td></tr>
+    <tr><td>garden</td><td>Chuckles</td><td>hides on the tree (прячется на дереве)</td></tr>
+  </table>
+</section>
+
+<section class="tab" id="t-repeat">
+  <h2>🔁 Повторение — семья в комнатах!</h2>
+  <p>В прошлом уроке мы выучили семью. Теперь члены семьи «прячутся» по комнатам:</p>
+  <table>
+    <tr><th>Кто</th><th>Где</th><th>По-английски</th></tr>
+    <tr><td>мама</td><td>на кухне</td><td>Mummy is in the kitchen.</td></tr>
+    <tr><td>папа</td><td>в саду</td><td>Daddy is in the garden.</td></tr>
+    <tr><td>сестра</td><td>в ванной</td><td>Sister is in the bathroom.</td></tr>
+    <tr><td>брат</td><td>в спальне</td><td>Brother is in the bedroom.</td></tr>
+    <tr><td>бабушка</td><td>в гостиной</td><td>Grandma is in the living room.</td></tr>
+  </table>
+  <p>Скажи по-английски: где твоя мама? А папа? А Чаклз? 🐵</p>
+</section>
+
+<section class="tab" id="t-dialog">
+  <h2>🗣 Диалог — прятки с Чаклзом (клик по реплике — перевод)</h2>
+  <div class="dialog" id="dialog"></div>
+</section>
+
+<section class="tab" id="t-read">
+  <h2>📚 Чтение — «Our House»</h2>
+  <div class="text-block" id="textEn">
+    <p>This is our house. It is big and nice.</p>
+    <p>Look! This is the living room. The family watches TV here.</p>
+    <p>This is the kitchen. Mummy makes cakes in the kitchen.</p>
+    <p>This is my bedroom. My ball is under the bed!</p>
+    <p>This is the bathroom. Chuckles loves water!</p>
+    <p>And where is Chuckles? Where is he? Look! He is in the garden, on the tree! Silly Chuckles!</p>
+  </div>
+  <button class="btn" id="trBtn">Показать перевод 🇷🇺</button>
+  <div class="text-block" id="textRu" style="display:none;">
+    <p>Это наш дом. Он большой и красивый.</p>
+    <p>Смотри! Это гостиная. Здесь семья смотрит телевизор.</p>
+    <p>Это кухня. Мама печёт торты на кухне.</p>
+    <p>Это моя спальня. Мой мяч под кроватью!</p>
+    <p>Это ванная. Чаклз обожает воду!</p>
+    <p>А где Чаклз? Где он? Смотри! Он в саду, на дереве! Глупый Чаклз!</p>
+  </div>
+  <h3>Вопросы</h3>
+  <div class="quiz" id="readQuiz"></div>
+</section>
+
+<section class="tab" id="t-game1">
+  <h2>🔍 «Угадай комнату» — 8 загадок</h2>
+  <div id="riddles"></div>
+</section>
+
+<section class="tab" id="t-game2">
+  <h2>🧩 «Where's / It's in» — клик по ответу</h2>
+  <div class="quiz" id="g2"></div>
+</section>
+
+<section class="tab" id="t-song">
+  <h2>🎵 Рифмовка «Where's Chuckles?»</h2>
+  <div class="text-block">
+    <p>Where, where is Chuckles? 🐵<br>
+    Chuckles is in the house!<br>
+    Where, where is Chuckles?<br>
+    Chuckles is in the kitchen!<br>
+    Where, where is Chuckles?<br>
+    Chuckles is in the garden!</p>
+  </div>
+  <button class="btn" id="songBtn">🔊 Послушать</button>
+  <p style="margin-top:8px;"><i>Где-где Чаклз? Чаклз в доме! Где-где Чаклз? Чаклз на кухне! Где-где Чаклз? Чаклз в саду!</i></p>
+  <h3>Скороговорка про звук [h]</h3>
+  <p><b>He hides in the hall. He hides in the house.</b> — Он прячется в холле. Он прячется в доме. Скажи 3 раза быстро!</p>
+</section>
+
+<section class="tab" id="t-speak">
+  <h2>🎤 Говори сам — «My house»</h2>
+  <p>Собери рассказ по плану — жми кнопки по очереди, слушай и повторяй:</p>
+  <div class="phrase-list" id="speak"></div>
+</section>
+
+<section class="tab" id="t-test">
+  <h2>✏️ Тест — 10 вопросов</h2>
+  <div class="quiz" id="test"></div>
+  <div class="result" id="testResult"></div>
+  <div class="medal" id="medal">🥇</div>
+</section>
+
+<section class="tab" id="t-hw">
+  <h2>🏠 Домашнее задание</h2>
+  <p><b>Основное:</b> нарисуй свой дом и подпиши комнаты по-английски (living room, bedroom, kitchen, bathroom, garden) + напиши 4 предложения: <b>This is my house.</b> + три пары <i>Where's…? — He's/She's in the…</i> (про семью или игрушку).</p>
+  <p><b>Звёздочка (по желанию):</b> сыграй дома в прятки и называй место по-английски: <i>He's in the kitchen! She's under the table!</i></p>
+  <h3>Критерии (6 баллов)</h3>
+  <table>
+    <tr><th>Что</th><th>Баллы</th></tr>
+    <tr><td>Рисунок с подписями комнат</td><td>2</td></tr>
+    <tr><td>4 предложения по плану</td><td>2</td></tr>
+    <tr><td>Where's / in the без ошибок</td><td>1</td></tr>
+    <tr><td>Старание и оформление</td><td>1</td></tr>
+  </table>
+  <p><i>Шкала: 6 — «5», 5 — «4», 4 — «3».</i></p>
+</section>
+
+<footer>Spotlight 2 • Module 1 • Unit 2a «Where's Chuckles?» • Интерактивный урок</footer>
+</div>
+
+<script>
+(function(){
+  var TABS = [
+    ["t-about","🎯 О уроке"],["t-words","📖 Слова"],["t-phrases","💬 Фразы"],["t-repeat","🔁 Повторение"],
+    ["t-dialog","🗣 Диалог"],["t-read","📚 Чтение"],["t-game1","🔍 Угадай комнату"],["t-game2","🧩 Where's"],
+    ["t-song","🎵 Песенка"],["t-speak","🎤 Говори сам"],["t-test","✏️ Тест"],["t-hw","🏠 Домашка"]
+  ];
+  var WORDS = [
+    ["house","[haʊs]","дом"],["garden","[ˈɡɑːdn]","сад"],["living room","[ˈlɪvɪŋ ruːm]","гостиная"],
+    ["bedroom","[ˈbedruːm]","спальня"],["kitchen","[ˈkɪtʃɪn]","кухня"],["bathroom","[ˈbɑːθruːm]","ванная"],
+    ["hall","[hɔːl]","холл, прихожая"],["tree","[triː]","дерево"],["door","[dɔː]","дверь"],
+    ["where","[weə]","где"],["in","[ɪn]","в"],["on","[ɒn]","на"],
+    ["under","[ˈʌndə]","под"],["hide","[haɪd]","прятаться"],["find","[faɪnd]","находить"],
+    ["jump","[dʒʌmp]","прыгать"],["now","[naʊ]","сейчас"],["look","[lʊk]","смотреть"]
+  ];
+  var PHRASES = [
+    ["Where's Chuckles?","Где Чаклз?"],
+    ["He's in the garden!","Он в саду!"],
+    ["She's in the kitchen.","Она на кухне."],
+    ["It's under the bed.","Оно под кроватью."],
+    ["Let's play hide and seek!","Давай играть в прятки!"],
+    ["Look! I can see Chuckles!","Смотри! Я вижу Чаклза!"],
+    ["Silly Chuckles!","Глупый Чаклз!"],
+    ["Welcome to my house!","Добро пожаловать в мой дом!"],
+    ["Where's mummy? — She's in the living room.","Где мама? — Она в гостиной."],
+    ["I love my house!","Я люблю мой дом!"]
+  ];
+  var DIALOG = [
+    ["Lulu","Hello, Larry! Let's play hide and seek with Chuckles!","Привет, Ларри! Давай играть в прятки с Чаклзом!"],
+    ["Larry","Great idea! Where's Chuckles?","Отличная идея! Где Чаклз?"],
+    ["Lulu","Is he in the kitchen?","Он на кухне?"],
+    ["Larry","No! Mummy is in the kitchen. She makes cakes.","Нет! На кухне мама. Она печёт торты."],
+    ["Lulu","Is he in the bathroom? I can hear water!","Он в ванной? Я слышу воду!"],
+    ["Larry","Splash, splash! No, it's only water. Silly me!","Шлёп-шлёп! Нет, это просто вода. Глупый я!"],
+    ["Lulu","Look under the bed!","Посмотри под кровать!"],
+    ["Larry","It's my ball under the bed, not Chuckles!","Это мой мяч под кроватью, а не Чаклз!"],
+    ["Lulu","Where's Chuckles now?","А теперь где Чаклз?"],
+    ["Larry","Look! In the garden! He's on the tree!","Смотри! В саду! Он на дереве!"],
+    ["Lulu","Silly Chuckles! Jump, Chuckles, jump!","Глупый Чаклз! Прыгай, Чаклз, прыгай!"]
+  ];
+  var RIDDLES = [
+    ["I am in the house. Mummy makes cakes here. It smells so good!","kitchen (кухня)"],
+    ["We splash and sing here. Chuckles loves water here!","bathroom (ванная)"],
+    ["We sleep under the blanket here. My ball is under the bed.","bedroom (спальня)"],
+    ["The whole family watches TV here.","living room (гостиная)"],
+    ["There are trees and flowers here. Chuckles hides on the tree!","garden (сад)"],
+    ["I am in the house. You can open me and go in.","door (дверь)"],
+    ["We take off our boots here. Where is my hat?","hall (прихожая)"],
+    ["I am green and big. Birds sing in me. Where am I?","tree (дерево)"]
+  ];
+  var G2 = [
+    ["Where's Chuckles? — ___ in the garden.","It's","He's","She's"],
+    ["Where's mummy? — She's in the ___.","kitchen","under","jump"],
+    ["The ball is ___ the bed.","in","on","under"],
+    ["Where's daddy? — He's in the ___.","garden","bathroom","hall"],
+    ["The TV is ___ the living room.","in","under","on"],
+    ["Chuckles is ___ the tree.","in","on","under"],
+    ["Where's sister? — She's in the ___.","bathroom","tree","door"],
+    ["The cat is ___ the table.","under","house","garden"]
+  ];
+  var ANSWERS2 = [1,0,2,0,0,1,0,0];
+  var SPEAK = [
+    ["Hello! This is my house!","Привет! Это мой дом!"],
+    ["This is the living room. The family watches TV here.","Это гостиная. Здесь семья смотрит телевизор."],
+    ["This is the kitchen. Mummy makes cakes here.","Это кухня. Мама печёт торты здесь."],
+    ["This is my bedroom. My ball is under the bed.","Это моя спальня. Мой мяч под кроватью."],
+    ["And where's Chuckles? He's in the garden!","А где Чаклз? Он в саду!"],
+    ["Welcome to my house!","Добро пожаловать в мой дом!"]
+  ];
+  var TEST = [
+    ["Как по-английски «кухня»?","living room","kitchen","garden",1],
+    ["Как по-английски «спальня»?","bathroom","hall","bedroom",2],
+    ["Как по-английски «сад»?","garden","door","tree",0],
+    ["Как по-английски «ванная»?","kitchen","bathroom","bedroom",1],
+    ["Где Чаклз? (переведи)","Where's Chuckles?","Who's Chuckles?","Hello, Chuckles!",0],
+    ["He's ___ the garden.","in","under","on",0],
+    ["The ball is ___ the bed.","on","under","in",1],
+    ["Where's mummy? — ___ in the kitchen.","He's","It's","She's",2],
+    ["Where's daddy? — He's in the ___.","bathroom","garden","bedroom",1],
+    ["Chuckles is ___ the tree.","on","in","under",0]
+  ];
+  var READQ = [
+    ["Where is the family?","In the garden","In the living room","In the hall",1],
+    ["Where does mummy make cakes?","In the bathroom","In the bedroom","In the kitchen",2],
+    ["What is under the bed?","A ball","Chuckles","A cat",0],
+    ["Who loves water?","Chuckles","Larry","Mummy",0],
+    ["Where is Chuckles at the end?","In the kitchen","On the tree in the garden","Under the bed",1]
+  ];
+
+  function el(id){ return document.getElementById(id); }
+  function makeBtn(label,fn){ var b=document.createElement("button"); b.className="opt"; b.textContent=label; b.addEventListener("click",fn); return b; }
+
+  // nav
+  var nav=el("nav");
+  TABS.forEach(function(t,i){
+    var b=document.createElement("button"); b.textContent=t[1];
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".tab").forEach(function(s){s.classList.remove("active");});
+      nav.querySelectorAll("button").forEach(function(x){x.classList.remove("active");});
+      el(t[0]).classList.add("active"); b.classList.add("active");
+      window.scrollTo(0,0);
+    });
+    nav.appendChild(b);
+  });
+  nav.firstChild.classList.add("active");
+  el("t-about").classList.add("active");
+
+  // words
+  var wg=el("words");
+  WORDS.forEach(function(w){
+    var c=document.createElement("div"); c.className="word-card";
+    c.innerHTML='<div class="en">'+w[0]+'</div><div class="tr">'+w[1]+'</div><div class="ru">'+w[2]+'</div>';
+    c.addEventListener("click",function(){
+      c.classList.toggle("open");
+      try{ var u=new SpeechSynthesisUtterance(w[0]); u.lang="en-GB"; u.rate=0.75;
+        speechSynthesis.cancel(); speechSynthesis.speak(u);
+        var u2=new SpeechSynthesisUtterance(w[0]); u2.lang="en-GB"; u2.rate=0.75;
+        speechSynthesis.speak(u2);
+      }catch(e){}
+    });
+    wg.appendChild(c);
+  });
+
+  // phrases + speak
+  function fillPhrases(container,arr){
+    arr.forEach(function(p){
+      var d=document.createElement("div"); d.className="phrase";
+      d.innerHTML='<div class="en">'+p[0]+'</div><div class="ru">'+p[1]+'</div>';
+      d.addEventListener("click",function(){
+        d.classList.toggle("open");
+        try{ var u=new SpeechSynthesisUtterance(p[0]); u.lang="en-GB"; u.rate=0.8; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){}
+      });
+      container.appendChild(d);
+    });
+  }
+  fillPhrases(el("phrases"),PHRASES);
+  fillPhrases(el("speak"),SPEAK);
+
+  // dialog
+  var dg=el("dialog");
+  DIALOG.forEach(function(r){
+    var d=document.createElement("div"); d.className="replica";
+    d.innerHTML='<div class="who">'+r[0]+':</div><div class="en">'+r[1]+'</div><div class="ru">'+r[2]+'</div>';
+    d.addEventListener("click",function(){ d.classList.toggle("open"); });
+    dg.appendChild(d);
+  });
+
+  // riddles
+  var rg=el("riddles");
+  RIDDLES.forEach(function(r){
+    var d=document.createElement("div"); d.className="riddle";
+    d.innerHTML='<div>🧩 '+r[0]+'</div><div class="answer">Ответ: '+r[1]+'</div>';
+    d.addEventListener("click",function(){ d.classList.toggle("open"); });
+    rg.appendChild(d);
+  });
+
+  // generic quiz
+  function buildQuiz(container,questions,opts){
+    var score=0, done=0;
+    questions.forEach(function(q){
+      var wrap=document.createElement("div"); wrap.className="quiz-q";
+      wrap.innerHTML='<div class="en">'+q[0]+'</div>';
+      var optsBox=document.createElement("div"); optsBox.className="opts";
+      q.slice(1,-1).forEach(function(ans,idx){
+        var b=makeBtn(ans,function(){
+          if(optsBox.dataset.locked)return; optsBox.dataset.locked="1";
+          var correct=q[q.length-1];
+          if(idx===correct){ b.classList.add("correct"); score++; }
+          else { b.classList.add("wrong"); optsBox.children[correct].classList.add("correct"); }
+          done++;
+          if(done===questions.length && opts.onFinish) opts.onFinish(score,questions.length);
+        });
+        optsBox.appendChild(b);
+      });
+      wrap.appendChild(optsBox); container.appendChild(wrap);
+    });
+  }
+
+  buildQuiz(el("g2"),G2,{});
+  buildQuiz(el("readQuiz"),READQ,{});
+  buildQuiz(el("test"),TEST,{
+    onFinish:function(s,n){
+      el("testResult").textContent="Результат: "+s+" из "+n+". "+(s>=9?"Отлично! Золотая медаль!":(s>=7?"Хорошо!":"Попробуй ещё раз!"));
+      if(s>=9) el("medal").style.display="block";
+    }
+  });
+
+  // translate text
+  el("trBtn").addEventListener("click",function(){
+    var ru=el("textRu");
+    var show=ru.style.display==="none";
+    ru.style.display=show?"block":"none";
+    this.textContent=show?"Скрыть перевод 🔙":"Показать перевод 🇷🇺";
+  });
+
+  // song
+  el("songBtn").addEventListener("click",function(){
+    try{
+      var lines=["Where, where is Chuckles?","Chuckles is in the house!","Where, where is Chuckles?","Chuckles is in the kitchen!","Where, where is Chuckles?","Chuckles is in the garden!"];
+      speechSynthesis.cancel();
+      lines.forEach(function(l){
+        var u=new SpeechSynthesisUtterance(l); u.lang="en-GB"; u.rate=0.8; speechSynthesis.speak(u);
+      });
+    }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
