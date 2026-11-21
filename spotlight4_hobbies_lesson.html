@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hobbies — Spotlight 4, Module 2, Units 4a-4b</title>
+<style>
+:root{--main1:#ff9a3d;--main2:#ff5e62;--accent:#2fbf71;--dark:#4a2c1a;--soft:#fff7ef;--card:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Verdana,sans-serif;background:linear-gradient(160deg,#fff3e6,#ffe4ec);color:var(--dark);min-height:100vh;}
+.wrap{max-width:960px;margin:0 auto;padding:16px;}
+header{background:linear-gradient(120deg,var(--main1),var(--main2));border-radius:0 0 28px 28px;padding:26px 18px;text-align:center;color:#fff;box-shadow:0 6px 18px rgba(255,94,98,.35);}
+header h1{font-size:1.9em;letter-spacing:2px;text-shadow:1px 2px 4px rgba(0,0,0,.25);}
+header p{margin-top:6px;font-size:1.02em;}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 6px;}
+nav button{border:none;background:#fff;border-radius:14px;padding:9px 14px;font-size:.95em;font-weight:600;color:var(--dark);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.2s;}
+nav button:hover{transform:translateY(-2px);}
+nav button.active{background:linear-gradient(120deg,var(--main1),var(--main2));color:#fff;}
+section{display:none;background:var(--card);border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 4px 14px rgba(0,0,0,.08);}
+section.active{display:block;animation:fade .3s;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+h2{color:var(--main2);margin-bottom:12px;font-size:1.35em;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.card{background:var(--soft);border:2px solid #ffd9c0;border-radius:16px;padding:14px 12px;text-align:center;cursor:pointer;transition:.2s;}
+.card:hover{border-color:var(--main2);transform:translateY(-3px);box-shadow:0 6px 14px rgba(255,94,98,.25);}
+.card .en{font-size:1.2em;font-weight:700;}
+.card .tr{color:#8a6a55;font-size:.88em;margin:4px 0;}
+.card .ru{font-size:.95em;}
+.card .hint{font-size:.75em;color:#b58a6f;margin-top:6px;}
+.phr{border:1.5px solid #ffd9c0;border-radius:14px;padding:12px 14px;margin:10px 0;cursor:pointer;background:#fff;transition:.2s;}
+.phr:hover{border-color:var(--main2);background:var(--soft);}
+.phr .en{font-weight:700;font-size:1.05em;}
+.phr .ru{display:none;margin-top:8px;color:var(--main2);font-weight:600;border-top:1px dashed #ffcdb6;padding-top:6px;}
+.phr.open .ru{display:block;}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95em;}
+.tbl th{background:linear-gradient(120deg,var(--main1),var(--main2));color:#fff;padding:8px;}
+.tbl td{border:1px solid #ffe0cf;padding:7px 9px;background:#fff;}
+.tbl tr:nth-child(even) td{background:#fffaf5;}
+.note{background:#fff4d6;border-left:4px solid var(--main1);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:.95em;}
+.dline{border-left:4px solid var(--main1);border-radius:10px;padding:10px 14px;margin:9px 0;background:#fff;cursor:pointer;}
+.dline .who{font-weight:700;color:var(--main2);}
+.dline .ru{display:none;margin-top:6px;color:#6b4d38;font-size:.95em;}
+.dline.open .ru{display:block;}
+.btn{border:none;border-radius:12px;padding:10px 18px;font-size:1em;font-weight:700;color:#fff;background:linear-gradient(120deg,var(--main1),var(--main2));cursor:pointer;margin:6px 4px;box-shadow:0 3px 8px rgba(255,94,98,.3);}
+.btn.green{background:linear-gradient(120deg,#2fbf71,#27a35f);}
+.answer{display:none;background:#eafaf1;border-left:4px solid var(--accent);border-radius:8px;padding:8px 12px;margin-top:8px;font-weight:600;}
+.answer.show{display:block;}
+.riddle{background:var(--soft);border-radius:14px;padding:14px;margin:12px 0;border:1.5px solid #ffd9c0;}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.opt{border:2px solid #ffd9c0;background:#fff;border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600;transition:.2s;}
+.opt:hover{border-color:var(--main2);}
+.opt.ok{background:#d8f5e6;border-color:var(--accent);color:#1d7a4b;}
+.opt.no{background:#ffe1e1;border-color:#ff5e62;color:#b3242c;}
+.song{background:linear-gradient(120deg,#fff4d6,#ffe6ee);border-radius:16px;padding:16px;margin:12px 0;font-style:italic;line-height:1.7;}
+.big{font-size:1.1em;line-height:1.6;}
+.speakline{background:#fff;border:1.5px dashed var(--main1);border-radius:10px;padding:10px 14px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.pill{border:2px solid #ffd9c0;background:#fff;border-radius:20px;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.9em;}
+.pill.sel{background:linear-gradient(120deg,var(--main1),var(--main2));color:#fff;border-color:var(--main2);}
+#buildout{background:var(--soft);border-radius:14px;padding:14px;margin:12px 0;font-size:1.05em;line-height:1.7;min-height:60px;}
+.q{margin:14px 0;padding:12px;background:var(--soft);border-radius:12px;}
+.q p{font-weight:700;margin-bottom:8px;}
+#result{margin-top:12px;font-size:1.2em;font-weight:800;text-align:center;}
+.medal{font-size:2.2em;text-align:center;margin-top:8px;}
+.tabs12{color:#8a6a55;font-size:.85em;text-align:center;margin-bottom:8px;}
+@media(max-width:600px){header h1{font-size:1.4em;}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}}
+</style>
+</head>
+<body>
+<header>
+<h1>🏀 MY HOBBIES!</h1>
+<p>Spotlight 4 • Module 2 «A working day!» • Units 4a–4b «Work and play!» • Любимые занятия (увлечения моих одноклассников) • 4 класс</p>
+</header>
+<div class="wrap">
+<nav id="nav"></nav>
+<div id="sections"></div>
+</div>
+<script>
+const DATA={"words": [{"en": "football", "ru": "футбол", "tr": "ˈfʊtbɔːl"}, {"en": "basketball", "ru": "баскетбол", "tr": "ˈbɑːskɪtbɔːl"}, {"en": "tennis", "ru": "теннис", "tr": "ˈtenɪs"}, {"en": "volleyball", "ru": "волейбол", "tr": "ˈvɒlibɔːl"}, {"en": "swimming", "ru": "плавание", "tr": "ˈswɪmɪŋ"}, {"en": "dancing", "ru": "танцы", "tr": "ˈdɑːnsɪŋ"}, {"en": "karate", "ru": "каратэ", "tr": "kəˈrɑːti"}, {"en": "gymnastics", "ru": "гимнастика", "tr": "dʒɪmˈnæstɪks"}, {"en": "riding a bike", "ru": "катание на велосипеде", "tr": "ˈraɪdɪŋ ə baɪk"}, {"en": "chess", "ru": "шахматы", "tr": "tʃes"}, {"en": "skating", "ru": "катание на коньках", "tr": "ˈskeɪtɪŋ"}, {"en": "painting", "ru": "рисование", "tr": "ˈpeɪntɪŋ"}, {"en": "music class", "ru": "музыкальная студия", "tr": "ˈmjuːzɪk klɑːs"}, {"en": "drama class", "ru": "театральная студия", "tr": "ˈdrɑːmə klɑːs"}, {"en": "hobby", "ru": "хобби, увлечение", "tr": "ˈhɒbi"}, {"en": "free time", "ru": "свободное время", "tr": "friː taɪm"}, {"en": "weekend", "ru": "выходные", "tr": "ˌwiːkˈend"}, {"en": "favourite", "ru": "любимый", "tr": "ˈfeɪvərɪt"}], "phrases": [{"en": "What do you do in your free time?", "ru": "Что ты делаешь в свободное время?"}, {"en": "My hobby is football.", "ru": "Моё хобби — футбол."}, {"en": "I like dancing. It's fun!", "ru": "Я люблю танцевать. Это весело!"}, {"en": "I don't like volleyball.", "ru": "Я не люблю волейбол."}, {"en": "How often do you go swimming?", "ru": "Как часто ты ходишь на плавание?"}, {"en": "Twice a week.", "ru": "Два раза в неделю."}, {"en": "I always ride my bike on Saturday.", "ru": "Я всегда катаюсь на велосипеде в субботу."}, {"en": "She sometimes plays chess with her dad.", "ru": "Она иногда играет в шахматы с папой."}, {"en": "I have to do my homework first.", "ru": "Сначала я должен сделать уроки."}, {"en": "Let's play together!", "ru": "Давай играть вместе!"}], "dialog": [{"who": "Максим", "en": "Hi, Diana! What do you do in your free time?", "ru": "Привет, Диана! Что ты делаешь в свободное время?"}, {"who": "Диана", "en": "Hi, Max! I like dancing. I go to a dance class on Monday.", "ru": "Привет, Максим! Я люблю танцевать. Я хожу на танцы в понедельник."}, {"who": "Максим", "en": "How often do you dance?", "ru": "Как часто ты занимаешься танцами?"}, {"who": "Диана", "en": "Twice a week. And what about you?", "ru": "Два раза в неделю. А ты?"}, {"who": "Максим", "en": "I'm keen on basketball. I play it three times a week.", "ru": "Я увлекаюсь баскетболом. Я играю три раза в неделю."}, {"who": "Диана", "en": "Cool! Can you play chess?", "ru": "Класс! А ты умеешь играть в шахматы?"}, {"who": "Максим", "en": "No, I can't. But I sometimes play tennis with my dad.", "ru": "Нет, не умею. Но я иногда играю в теннис с папой."}, {"who": "Диана", "en": "And my little brother? He always plays computer games!", "ru": "А мой младший брат? Он всегда играет в компьютерные игры!"}, {"who": "Максим", "en": "Ha! He has to do his homework first!", "ru": "Ха! Сначала он должен сделать уроки!"}], "reading": {"title": "Our Free Time", "text": "Every day after school Russian children have free time. What do they do in their free time? Masha likes painting. She paints beautiful pictures twice a week. Timofey is keen on karate. He goes to a martial arts class on Tuesday and Thursday. Sonya sometimes plays chess with her grandpa. She is very good at it! Ivan has to help his mum, but he always finds time for football. Hobbies make our life interesting!", "q": [{"q": "What does Masha like?", "a": "She likes painting."}, {"q": "When does Timofey go to his martial arts class?", "a": "On Tuesday and Thursday."}, {"q": "Who does Sonya play chess with?", "a": "With her grandpa."}, {"q": "How often does Masha paint?", "a": "Twice a week."}, {"q": "What does Ivan always find time for?", "a": "For football."}]}, "riddles": [{"t": "Round ball, green field, big goals. Players kick the ball with their feet!", "a": "football", "o": ["football", "chess", "swimming"]}, {"t": "White and black squares. A king, a queen, horses and towers on the board!", "a": "chess", "o": ["tennis", "chess", "dancing"]}, {"t": "Water, a cap and goggles. You move your arms and legs in the pool!", "a": "swimming", "o": ["karate", "painting", "swimming"]}, {"t": "Beautiful dresses and music. We spin and jump to the rhythm!", "a": "dancing", "o": ["dancing", "football", "chess"]}, {"t": "Two rackets, a net and a yellow ball over the net!", "a": "tennis", "o": ["basketball", "tennis", "gymnastics"]}, {"t": "A helmet, two wheels and a ride in the park!", "a": "riding a bike", "o": ["skating", "riding a bike", "swimming"]}, {"t": "A kimono, a belt and punches. Hi-yah!", "a": "karate", "o": ["karate", "tennis", "dancing"]}, {"t": "Ice, warm gloves and skates. Winter fun on the rink!", "a": "skating", "o": ["swimming", "skating", "volleyball"]}], "gq": [{"q": "He ___ basketball every Sunday.", "a": "play", "o": ["play", "plays"]}, {"q": "How ___ do you dance?", "a": "often", "o": ["often", "much"]}, {"q": "I go swimming ___ a week.", "a": "twice", "o": ["twice", "two"]}, {"q": "They ___ to do their homework first.", "a": "have", "o": ["have", "has"]}, {"q": "She sometimes ___ chess with her grandpa.", "a": "plays", "o": ["play", "plays"]}, {"q": "I ___ like volleyball.", "a": "don't", "o": ["don't", "doesn't"]}, {"q": "We always ride our bikes ___ Sunday.", "a": "on", "o": ["on", "in"]}, {"q": "It's ___ past seven.", "a": "half", "o": ["half", "quarter"]}], "test": [{"q": "Как переводится football?", "a": "футбол", "o": ["футбол", "коллекция", "готовка"]}, {"q": "How often do you dance? — ___ a week.", "a": "Twice", "o": ["Twice", "Two", "Second"]}, {"q": "He ___ basketball every Sunday.", "a": "plays", "o": ["play", "plays", "playing"]}, {"q": "I like ___ — это весело!", "a": "dancing", "o": ["dance", "dances", "dancing"]}, {"q": "Как переводится слово hobby?", "a": "хобби, увлечение", "o": ["хобби, увлечение", "праздник", "урок"]}, {"q": "I ___ play chess — я никогда не играю.", "a": "never", "o": ["never", "always", "often"]}, {"q": "It's half ___ six. — Полседьмого.", "a": "past", "o": ["past", "to", "at"]}, {"q": "She is in a ___ class. Она в танцевальной студии.", "a": "dance", "o": ["dance", "dances", "danced"]}, {"q": "They ___ to help their mum.", "a": "have", "o": ["have", "has", "had"]}, {"q": "always — это…", "a": "всегда", "o": ["всегда", "иногда", "никогда"]}]};
+const TABS=["🎯 О уроке","📖 Слова","💬 Фразы","🔁 Повторение","🗣 Диалог","📚 Чтение","🎲 Угадай хобби","🧩 Как часто?","🎵 Песенка","🎤 Говори сам","✏️ Тест","🏠 Домашка"];
+const nav=document.getElementById('nav');
+TABS.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t;b.onclick=()=>showTab(i);nav.appendChild(b);});
+function showTab(i){document.querySelectorAll('nav button').forEach((b,j)=>b.classList.toggle('active',i===j));document.querySelectorAll('section').forEach((s,j)=>s.classList.toggle('active',i===j));}
+const sections=document.getElementById('sections');
+function mk(id,inner){const s=document.createElement('section');s.id=id;s.innerHTML=inner;sections.appendChild(s);return s;}
+
+/* ---------- 0 ABOUT ---------- */
+mk('about',`
+<h2>🎯 О уроке</h2>
+<p class="big"><b>УМК:</b> Английский в фокусе (Spotlight), 4 класс — Н. И. Быкова, Д. Дули, М. Д. Поспелова, В. Эванс<br>
+<b>Модуль 2:</b> «A working day!» • <b>Юниты 4a–4b:</b> «Work and play!»<br>
+<b>Тема по ФРП:</b> Любимые занятия (увлечения моих одноклассников)<br>
+<b>Уровень:</b> Movers • <b>Длительность:</b> 45 минут</p>
+<h3 style="color:var(--main2);margin-top:14px;">План урока — 45 минут</h3>
+<table class="tbl"><tr><th>№</th><th>Этап</th><th>Время</th><th>Вкладка</th></tr>
+<tr><td>1</td><td>Приветствие и разминка</td><td>3 мин</td><td>🎯 О уроке</td></tr>
+<tr><td>2</td><td>Повторение модуля 1</td><td>4 мин</td><td>🔁 Повторение</td></tr>
+<tr><td>3</td><td>Лексика: спорт и увлечения</td><td>8 мин</td><td>📖 Слова</td></tr>
+<tr><td>4</td><td>Грамматика: Present Simple, наречия, время</td><td>7 мин</td><td>💬 Фразы</td></tr>
+<tr><td>5</td><td>Диалог о хобби</td><td>5 мин</td><td>🗣 Диалог</td></tr>
+<tr><td>6</td><td>Чтение «Our Free Time»</td><td>6 мин</td><td>📚 Чтение</td></tr>
+<tr><td>7</td><td>Игры</td><td>5 мин</td><td>🎲 🧩</td></tr>
+<tr><td>8</td><td>Песенка и говорение</td><td>4 мин</td><td>🎵 🎤</td></tr>
+<tr><td>9</td><td>Тест и домашнее задание</td><td>3 мин</td><td>✏️ 🏠</td></tr></table>
+<h3 style="color:var(--main2);margin-top:14px;">Результаты по ФГОС НОО</h3>
+<table class="tbl"><tr><th>Группа</th><th>Результаты</th></tr>
+<tr><td><b>Предметные</b></td><td>Называет виды спорта и увлечения; рассказывает, что любит делать в свободное время; спрашивает и отвечает How often…?; употребляет Present Simple, наречия частотности, have to; называет время по часам</td></tr>
+<tr><td><b>Метапредметные</b></td><td>Проводит мини-опрос одноклассников о хобби, записывает ответы; сравнивает свои увлечения с чужими</td></tr>
+<tr><td><b>Личностные</b></td><td>Ценность свободного времени, здоровый образ жизни, уважение к увлечениям других</td></tr></table>`);
+
+/* ---------- 1 WORDS ---------- */
+mk('words',`
+<h2>📖 Слова урока</h2>
+<p class="tabs12">18 слов — клик по карточке: слово прозвучит дважды 🔊</p>
+<div class="grid" id="wordgrid"></div>`);
+document.getElementById('wordgrid').innerHTML=DATA.words.map(w=>`<div class="card" data-en="${w.en.replace(/"/g,'&quot;')}"><div class="en">${w.en}</div><div class="tr">[${w.tr}]</div><div class="ru">${w.ru}</div><div class="hint">нажми 🔊</div></div>`).join('');
+document.querySelectorAll('.card').forEach(c=>c.onclick=()=>speakTwice(c.dataset.en));
+
+/* ---------- 2 PHRASES ---------- */
+mk('phr',`
+<h2>💬 Фразы урока</h2>
+<p class="tabs12">Нажми на фразу — перевод откроется прямо под ней. Ещё раз — свернётся.</p>
+<div id="phrlist"></div>
+<h3 style="color:var(--main2);margin-top:16px;">📌 Шпаргалка</h3>
+<table class="tbl"><tr><th>Правило</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td><b>like + -ing</b></td><td>I like dancing. He likes swimming.</td><td>Я люблю танцевать. Он любит плавание.</td></tr>
+<tr><td><b>Present Simple: -s/-es</b></td><td>He plays football. She watches TV.</td><td>Он играет в футбол. Она смотрит телевизор.</td></tr>
+<tr><td><b>Наречия частотности</b></td><td>always → usually → often → sometimes → never</td><td>всегда → обычно → часто → иногда → никогда (стоят перед глаголом)</td></tr>
+<tr><td><b>How often…?</b></td><td>How often do you swim? — Once/Twice/Three times a week.</td><td>Как часто ты плаваешь? — Раз/два/три раза в неделю.</td></tr>
+<tr><td><b>have to / has to</b></td><td>I have to do my homework. He has to help his mum.</td><td>Я должен сделать уроки. Он должен помочь маме.</td></tr>
+<tr><td><b>Время на часах</b></td><td>It's half past six. It's quarter to eight.</td><td>Полседьмого. Без четверти восемь.</td></tr></table>`);
+document.getElementById('phrlist').innerHTML=DATA.phrases.map(p=>`<div class="phr"><div class="en">${p.en}</div><div class="ru">🇷🇺 ${p.ru}</div></div>`).join('');
+document.querySelectorAll('.phr').forEach(p=>p.onclick=()=>p.classList.toggle('open'));
+
+/* ---------- 3 REPEAT ---------- */
+mk('repeat',`
+<h2>🔁 Повторение — модуль 1 «Family and Friends»</h2>
+<p class="big">В модуле 1 мы говорили о семье и друзьях. Вспомним слова — они пригодятся, чтобы рассказать об увлечениях близких:</p>
+<table class="tbl"><tr><th>Слово</th><th>Перевод</th><th>Слово</th><th>Перевод</th></tr>
+<tr><td>mum</td><td>мама</td><td>dad</td><td>папа</td></tr>
+<tr><td>sister</td><td>сестра</td><td>brother</td><td>брат</td></tr>
+<tr><td>grandma</td><td>бабушка</td><td>grandpa</td><td>дедушка</td></tr>
+<tr><td>happy</td><td>счастливый</td><td>kind</td><td>добрый</td></tr>
+<tr><td>funny</td><td>смешной</td><td>clever</td><td>умный</td></tr></table>
+<div class="note">💡 Лайфхак: рассказывая о хобби семьи, используй <b>Present Simple</b>: <i>My mum likes dancing. My grandpa always plays chess.</i> А ещё дни недели: <i>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</i> — понедельник, вторник, среда, четверг, пятница, суббота, воскресенье!</div>`);
+
+/* ---------- 4 DIALOG ---------- */
+mk('dialog',`
+<h2>🗣 Диалог: «What's your hobby?»</h2>
+<p class="tabs12">Диана и Максим говорят о любимых занятиях. Нажми на реплику — появится перевод.</p>
+<div id="dlg"></div>`);
+document.getElementById('dlg').innerHTML=DATA.dialog.map(d=>`<div class="dline"><span class="who">${d.who}:</span> ${d.en}<div class="ru">🇷🇺 ${d.ru}</div></div>`).join('');
+document.querySelectorAll('.dline').forEach(d=>d.onclick=()=>d.classList.toggle('open'));
+
+/* ---------- 5 READING ---------- */
+mk('reading',`
+<h2>📚 Чтение: ${DATA.reading.title}</h2>
+<div class="note" id="readtext">${DATA.reading.text}</div>
+<button class="btn green" id="readbtn">🌍 Показать перевод</button>
+<div class="answer" id="readtr">Каждый день после школы у российских детей есть свободное время. Что они делают в свободное время? Маша любит рисовать. Она рисует красивые картины два раза в неделю. Тимофей увлекается каратэ. Он ходит в секцию единоборств по вторникам и четвергам. Соня иногда играет в шахматы с дедушкой. Она очень хорошо играет! Иван должен помогать маме, но он всегда находит время для футбола. Хобби делают нашу жизнь интересной!</div>
+<h3 style="color:var(--main2);margin-top:16px;">Вопросы — кликни, чтобы увидеть ответ</h3>
+<div id="rqs"></div>`);
+document.getElementById('rqs').innerHTML=DATA.reading.q.map(q=>`<div class="phr"><div class="en">❓ ${q.q}</div><div class="ru">✅ ${q.a}</div></div>`).join('');
+document.getElementById('readbtn').onclick=()=>{document.getElementById('readtr').classList.toggle('show');};
+document.querySelectorAll('#rqs .phr').forEach(p=>p.onclick=()=>p.classList.toggle('open'));
+
+/* ---------- 6 RIDDLES ---------- */
+mk('riddles',`
+<h2>🎲 Игра «Угадай хобби»</h2>
+<p class="tabs12">8 загадок — выбери правильный ответ! Не угадал с первого раза? Попробуй ещё 😊</p>
+<div id="ridlist"></div>`);
+document.getElementById('ridlist').innerHTML=DATA.riddles.map((r,i)=>`<div class="riddle"><b>Загадка ${i+1}:</b> ${r.t}<div class="opts" data-a="${r.a}">${r.o.map(o=>`<button class="opt">${o}</button>`).join('')}</div></div>`).join('');
+document.querySelectorAll('.riddle .opts').forEach(g=>{const a=g.dataset.a;g.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{g.querySelectorAll('.opt').forEach(x=>x.classList.remove('ok','no'));o.classList.add(o.textContent===a?'ok':'no');});});
+
+/* ---------- 7 GRAMMAR GAME ---------- */
+mk('gq',`
+<h2>🧩 Игра «Как часто?»</h2>
+<p class="tabs12">8 предложений — выбери правильное слово: Present Simple, наречия частотности, время на часах.</p>
+<div id="gqlist"></div>`);
+document.getElementById('gqlist').innerHTML=DATA.gq.map((g,i)=>`<div class="riddle"><b>${i+1}.</b> ${g.q}<div class="opts" data-a="${g.a}">${g.o.map(o=>`<button class="opt">${o}</button>`).join('')}</div></div>`).join('');
+document.querySelectorAll('#gqlist .opts').forEach(g=>{const a=g.dataset.a;g.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{g.querySelectorAll('.opt').forEach(x=>x.classList.remove('ok','no'));o.classList.add(o.textContent===a?'ok':'no');});});
+
+/* ---------- 8 SONG ---------- */
+mk('song',`
+<h2>🎵 Песенка про хобби</h2>
+<div class="song">One, two, three — play with me!<br>I like swimming in the sea!<br>Four, five, six — do your tricks!<br>Basketball and football — that's the mix!<br>Seven, eight, nine — dancing is fine!<br>Free time, hobbies — you and me!</div>
+<button class="btn" id="songbtn">🔊 Послушать</button>
+<div class="note" id="songtr" style="display:none;margin-top:10px;">🇷🇺 Раз, два, три — играй со мной!<br>Я люблю плавать в море!<br>Четыре, пять, шесть — сделай трюки!<br>Баскетбол и футбол — вот это микс!<br>Семь, восемь, девять — танцы прекрасны!<br>Свободное время, хобби — ты и я!</div>
+<h3 style="color:var(--main2);margin-top:16px;">🗣 Скороговорка: звук [aɪ]</h3>
+<p class="big"><i>I like nine bikes and five kites!</i> — Мне нравятся девять велосипедов и пять воздушных змеев!</p>
+<button class="btn green" id="twbtn">🔊 Послушать</button>`);
+document.getElementById('songbtn').onclick=()=>{document.getElementById('songtr').style.display='block';speakTwice("One, two, three, play with me! I like swimming in the sea! Four, five, six, do your tricks! Basketball and football, that's the mix! Seven, eight, nine, dancing is fine! Free time, hobbies, you and me!");};
+document.getElementById('twbtn').onclick=()=>speakTwice("I like nine bikes and five kites!");
+
+/* ---------- 9 SPEAK ---------- */
+mk('speak',`
+<h2>🎤 Говори сам: «My Hobbies»</h2>
+<p class="tabs12">Выбери по одному варианту в каждой строке — собери рассказ и прослушай его!</p>
+<div id="builder"></div>
+<button class="btn" id="buildbtn">🔊 Собрать и прослушать</button>
+<div id="buildout">…</div>`);
+const opts=[
+ ["Hi! My name is Anna.","Hi! My name is Sergey."],
+ ["I like dancing.","I like swimming.","I like playing football.","I like painting.","I like playing chess."],
+ ["I always do it on Saturday.","I usually do it twice a week.","I often do it three times a week.","I sometimes do it on Sunday."],
+ ["I don't like volleyball.","I don't like dancing.","I don't like chess.","I don't like skating."],
+ ["Hobbies make our life interesting!","Free time is great time!","Let's play together!"]
+];
+const sel=opts.map(o=>0);
+document.getElementById('builder').innerHTML=opts.map((o,i)=>`<div class="speakline"><span>Выбор ${i+1}:</span><span class="pills" data-i="${i}">${o.map((t,j)=>`<button class="pill ${j===0?'sel':''}">${t}</button>`).join('')}</span></div>`).join('');
+document.querySelectorAll('.pills').forEach(p=>{const i=+p.dataset.i;p.querySelectorAll('.pill').forEach((b,j)=>b.onclick=()=>{sel[i]=j;p.querySelectorAll('.pill').forEach((x,k)=>x.classList.toggle('sel',k===j));});});
+document.getElementById('buildbtn').onclick=()=>{const t=opts.map((o,i)=>o[sel[i]]).join(' ');document.getElementById('buildout').textContent=t;speakTwice(t);};
+
+/* ---------- 10 TEST ---------- */
+mk('test',`
+<h2>✏️ Тест: 10 вопросов</h2>
+<p class="tabs12">9–10 правильных ответов — золотая медаль 🥇</p>
+<div id="testlist"></div>
+<button class="btn" id="checkbtn">Проверить!</button>
+<div id="result"></div>
+<div class="medal" id="medal"></div>`);
+document.getElementById('testlist').innerHTML=DATA.test.map((t,i)=>`<div class="q"><p>${i+1}. ${t.q}</p><div class="opts" data-a="${t.a}">${t.o.map(o=>`<button class="opt">${o}</button>`).join('')}</div></div>`).join('');
+document.querySelectorAll('#testlist .opts').forEach(g=>{g.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{g.dataset.pick=o.textContent;g.querySelectorAll('.opt').forEach(x=>x.classList.remove('ok','no'));o.classList.add('ok');});});
+document.getElementById('checkbtn').onclick=()=>{let s=0;document.querySelectorAll('#testlist .opts').forEach(g=>{const pick=g.dataset.pick;g.querySelectorAll('.opt').forEach(x=>x.classList.remove('no'));if(pick===g.dataset.a){s++;}else if(pick){[...g.querySelectorAll('.opt')].find(o=>o.textContent===pick).classList.add('no');}});const r=document.getElementById('result');const m=document.getElementById('medal');r.textContent='Твой результат: '+s+' из 10';if(s>=9){m.textContent='🥇 Золотая медаль!';}else if(s>=7){m.textContent='🥈 Молодец! Почти готово!';}else{m.textContent='💪 Ещё раз пройди игры — и всё получится!';}};
+
+/* ---------- 11 HOMEWORK ---------- */
+mk('hw',`
+<h2>🏠 Домашнее задание</h2>
+<div class="note"><b>Основное:</b> узнай, как проводят свободное время двое твоих друзей или одноклассников. Задай вопрос: <i>What do you do in your free time? How often do you…?</i> — и напиши <b>5 предложений</b> об увлечениях одноклассников: <i>Max likes playing football. He plays it three times a week.</i> В конце добавь предложение о себе: <i>I like… I always…</i></div>
+<div class="note" style="background:#eafaf1;border-left-color:var(--accent);"><b>⭐ Звёздочка (по желанию):</b> узнай у родителей, какое хобби у них было в детстве, и запиши 2 предложения: <i>My mum liked skating when she was a child.</i></div>
+<h3 style="color:var(--main2);">Критерии оценивания — 6 баллов</h3>
+<table class="tbl"><tr><th>Критерий</th><th>Баллы</th></tr>
+<tr><td>Мини-опрос проведён, ответы друзей записаны</td><td>1</td></tr>
+<tr><td>5 предложений по плану</td><td>2</td></tr>
+<tr><td>Present Simple и наречия частотности без ошибок</td><td>2</td></tr>
+<tr><td>Старание и оформление</td><td>1</td></tr></table>
+<div class="note">Шкала: 6 — «5» • 5 — «4» • 4 — «3»<br>Онлайн — текст в чат; очно — в тетради.</div>`);
+
+/* ---------- SPEECH ---------- */
+function speakTwice(text){try{if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=0.8;speechSynthesis.speak(u);setTimeout(()=>{const v=new SpeechSynthesisUtterance(text);v.lang='en-GB';v.rate=0.8;speechSynthesis.speak(v);},1600);}catch(e){}}
+showTab(0);
+</script>
+</body>
+</html>
