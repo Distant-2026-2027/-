@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Favourite Food — интерактивный урок (4 класс, Spotlight 4, Module 3)</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, 'Segoe UI', sans-serif; background:#fff8ec; color:#2d2a26; padding-bottom:60px; }
+  header { background:#e8541f; color:#fff; padding:18px 24px; text-align:center; }
+  header h1 { font-size:1.7em; }
+  header p { opacity:.95; margin-top:4px; font-size:.95em; }
+  .bar { position:sticky; top:0; background:#fff; border-bottom:2px solid #f3d9a4; padding:8px 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; z-index:5; }
+  .tabbtn { border:1px solid #e8c98a; background:#fffdf5; color:#9a6b1f; font-size:.92em; padding:7px 12px; border-radius:20px; cursor:pointer; font-weight:bold; }
+  .tabbtn.on { background:#e8541f; border-color:#e8541f; color:#fff; }
+  .score { font-size:.9em; color:#7a6a52; margin-left:8px; }
+  .timerbar { background:#f3d9a4; padding:8px 14px; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
+  .timerbar b { font-size:1.05em; }
+  .timerbtn { background:#fff; border:1px solid #d8b76a; border-radius:14px; padding:4px 12px; cursor:pointer; font-weight:bold; color:#8a5b12; }
+  main { max-width:960px; margin:0 auto; padding:20px 16px; }
+  .tab { display:none; }
+  .tab.on { display:block; }
+  h2 { color:#c14a10; margin:6px 0 12px; font-size:1.35em; }
+  .card { background:#fff; border:1px solid #f0dcb4; border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 6px rgba(180,140,60,.08); }
+  .card h3 { color:#8a5b12; margin-bottom:8px; font-size:1.08em; }
+  .tr { border-bottom:1px dotted #c99a3a; cursor:pointer; }
+  .tr:hover { background:#fff3d6; }
+  .rt { display:none; color:#b0453a; font-size:.95em; }
+  .open .rt { display:inline; }
+  .big { font-size:1.05em; line-height:1.55; }
+  ul.flow { list-style:none; }
+  ul.flow li { margin:8px 0; line-height:1.5; }
+  .qz { margin:10px 0; }
+  .qz p { font-weight:bold; margin-bottom:6px; }
+  .opt { display:inline-block; border:2px solid #e8c98a; background:#fffdf5; border-radius:12px; padding:6px 14px; margin:4px 8px 4px 0; cursor:pointer; font-size:.98em; }
+  .opt:hover { background:#fff3d6; }
+  .opt.ok { border-color:#3d9a4e; background:#e4f6e7; color:#20622e; font-weight:bold; }
+  .opt.bad { border-color:#d9534f; background:#fdeceb; color:#8c2320; }
+  .match { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+  .mcol { display:flex; flex-direction:column; gap:8px; min-width:210px; }
+  .mcard { border:2px solid #e8c98a; background:#fffdf5; border-radius:12px; padding:8px 12px; cursor:pointer; text-align:center; font-size:1em; }
+  .mcard.sel { border-color:#e8541f; background:#ffe9dd; font-weight:bold; }
+  .mcard.done { border-color:#3d9a4e; background:#e4f6e7; color:#20622e; cursor:default; }
+  .mcard.err { border-color:#d9534f; }
+  .gline { margin:12px 0; }
+  .gline .sent { margin-bottom:6px; font-size:1.05em; }
+  .inp { width:170px; border:2px solid #e8c98a; border-radius:10px; padding:6px 10px; font-size:1em; }
+  .inp.ok { border-color:#3d9a4e; background:#e4f6e7; }
+  .inp.bad { border-color:#d9534f; background:#fdeceb; }
+  .checkbtn { background:#3d9a4e; color:#fff; border:none; border-radius:12px; padding:9px 20px; font-size:1em; font-weight:bold; cursor:pointer; margin-top:8px; }
+  .tnote { margin-top:10px; }
+  .tnote > button { background:#f0e4c8; border:1px solid #d8c08a; border-radius:10px; padding:5px 12px; cursor:pointer; font-size:.88em; color:#7a5a1a; }
+  .tnote .tn { display:none; background:#fdf6e3; border-left:4px solid #d8b76a; padding:8px 12px; margin-top:6px; border-radius:0 8px 8px 0; font-size:.92em; }
+  .tnote.open .tn { display:block; }
+  .hint { color:#a08560; font-size:.88em; margin-top:6px; }
+  .hw { background:#fdeceb; border-left:4px solid #d9534f; padding:10px 14px; border-radius:0 10px 10px 0; }
+  .emoji-strip { font-size:2em; text-align:center; margin:6px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🍽️ My Favourite Food — Tasty Treats!</h1>
+  <p>Английский язык • 4 класс • Spotlight 4, Module 3 «Tasty Treats», Unit 5a • 40 минут</p>
+</header>
+
+<div class="timerbar">
+  <button class="timerbtn" onclick="setTimer(0)">Warm-up 5 мин</button>
+  <button class="timerbtn" onclick="setTimer(1)">Vocabulary 8 мин</button>
+  <button class="timerbtn" onclick="setTimer(2)">Food talk 10 мин</button>
+  <button class="timerbtn" onclick="setTimer(3)">Grammar 7 мин</button>
+  <button class="timerbtn" onclick="setTimer(4)">Speaking 7 мин</button>
+  <button class="timerbtn" onclick="setTimer(5)">Wrap-up 3 мин</button>
+  <b id="tmin">05:00</b>
+  <button class="timerbtn" onclick="toggleTimer()">▶/⏸</button>
+</div>
+
+<div class="bar">
+  <button class="tabbtn on" onclick="showTab(0,this)">1. Warm-up</button>
+  <button class="tabbtn" onclick="showTab(1,this)">2. Vocabulary</button>
+  <button class="tabbtn" onclick="showTab(2,this)">3. Food talk</button>
+  <button class="tabbtn" onclick="showTab(3,this)">4. Grammar</button>
+  <button class="tabbtn" onclick="showTab(4,this)">5. Speaking</button>
+  <button class="tabbtn" onclick="showTab(5,this)">6. Wrap-up</button>
+  <span class="score">⭐ Баллы: <b id="score">0</b></span>
+</div>
+
+<main>
+
+<section class="tab on" id="tab0">
+  <h2>1. Warm-up — Let's talk about food! (5 мин)</h2>
+  <div class="card">
+    <p class="big">Учитель спрашивает — вы отвечаете. Нажмите на фразу, чтобы увидеть перевод 🙂</p>
+    <ul class="flow big">
+      <li>• <span class="tr" onclick="tr(this)">Do you like pizza?<span class="rt">— Ты любишь пиццу?</span></span></li>
+      <li>• <span class="tr" onclick="tr(this)">What is your favourite food?<span class="rt">— Какая твоя любимая еда?</span></span></li>
+      <li>• <span class="tr" onclick="tr(this)">What do you have for breakfast?<span class="rt">— Что ты ешь на завтрак?</span></span></li>
+      <li>• <span class="tr" onclick="tr(this)">Do you like vegetables? Why (not)?<span class="rt">— Ты любишь овощи? Почему (да/нет)?</span></span></li>
+    </ul>
+    <div class="hint">Полезные фразы: <span class="tr" onclick="tr(this)">I like… / I don't like…<span class="rt">Я люблю… / Я не люблю…</span></span> &nbsp;
+    <span class="tr" onclick="tr(this)">Yummy!<span class="rt">Вкуснятина!</span></span> &nbsp;
+    <span class="tr" onclick="tr(this)">Yucky!<span class="rt">Фу, невкусно!</span></span> &nbsp;
+    <span class="tr" onclick="tr(this)">Me too!<span class="rt">Я тоже!</span></span></div>
+    <div class="tnote"><button onclick="tn(this)">For teacher</button><div class="tn">Быстрый опрос цепочкой: ученик отвечает и задаёт вопрос соседу. Хвалите за полные ответы: "I like pizza because it is yummy". Ожидаемые ответы: pizza, apples, ice cream, chocolate, milk.</div></div>
+  </div>
+</section>
+
+<section class="tab" id="tab1">
+  <h2>2. Vocabulary — Food groups (8 мин)</h2>
+  <div class="card">
+    <h3>Task 1. Match the word and the group. Кликните слово, потом кликните группу!</h3>
+    <div class="match">
+      <div class="mcol" id="mwords"></div>
+      <div class="mcol" id="mgroups"></div>
+    </div>
+    <p class="hint" id="mmes">Слов: 8. Найдите каждой еде её группу 🍎</p>
+  </div>
+  <div class="card">
+    <h3>Task 2. Новые слова — нажмите на фразу, чтобы увидеть перевод</h3>
+    <ul class="flow big">
+      <li>🍎 <span class="tr" onclick="tr(this)">fruits — an apple, a banana, an orange<span class="rt">фрукты — яблоко, банан, апельсин</span></span></li>
+      <li>🥕 <span class="tr" onclick="tr(this)">vegetables — a potato, a tomato, a carrot<span class="rt">овощи — картошка, помидор, морковь</span></span></li>
+      <li>🥛 <span class="tr" onclick="tr(this)">dairy products — milk, cheese, butter<span class="rt">молочные продукты — молоко, сыр, масло</span></span></li>
+      <li>🍰 <span class="tr" onclick="tr(this)">sweets — chocolate, ice cream, a cake, a biscuit<span class="rt">сладости — шоколад, мороженое, торт, печенье</span></span></li>
+      <li>🍗 <span class="tr" onclick="tr(this)">meat and fish — chicken, a burger, fish<span class="rt">мясо и рыба — курица, бургер, рыба</span></span></li>
+      <li>🍞 <span class="tr" onclick="tr(this)">other food — bread, an egg, rice, pasta<span class="rt">другая еда — хлеб, яйцо, рис, макароны</span></span></li>
+      <li>🥤 <span class="tr" onclick="tr(this)">drinks — water, juice, tea<span class="rt">напитки — вода, сок, чай</span></span></li>
+    </ul>
+    <div class="tnote"><button onclick="tn(this)">For teacher</button><div class="tn">Показывайте карточки или картинки, хором повторяйте слова. Игра "Touch the picture" или "What's missing?". Проверка: дети раскладывают слова по группам вслух.</div></div>
+  </div>
+</section>
+
+<section class="tab" id="tab2">
+  <h2>3. Food talk — читаем диалог и говорим (10 мин)</h2>
+  <div class="card">
+    <h3>Task 1. Read the dialogue. Нажмите на фразу — перевод раскроется под ней.</h3>
+    <ul class="flow big">
+      <li><b>Anna:</b> <span class="tr" onclick="tr(this)">Hi, Tom! What are you eating?<span class="rt">— Привет, Том! Что ты ешь?</span></span></li>
+      <li><b>Tom:</b> <span class="tr" onclick="tr(this)">Hi, Anna! I'm eating a cheese sandwich. Yummy!<span class="rt">— Привет, Анна! Я ем сырный сэндвич. Вкуснятина!</span></span></li>
+      <li><b>Anna:</b> <span class="tr" onclick="tr(this)">Do you like cheese?<span class="rt">— Ты любишь сыр?</span></span></li>
+      <li><b>Tom:</b> <span class="tr" onclick="tr(this)">Yes, I do! Cheese is my favourite food. And what about you?<span class="rt">— Да! Сыр — моя любимая еда. А у тебя?</span></span></li>
+      <li><b>Anna:</b> <span class="tr" onclick="tr(this)">I like ice cream. It's sweet and cold. But I don't like fish.<span class="rt">— Я люблю мороженое. Оно сладкое и холодное. А вот рыбу я не люблю.</span></span></li>
+      <li><b>Tom:</b> <span class="tr" onclick="tr(this)">Is ice cream healthy?<span class="rt">— А мороженое полезное?</span></span></li>
+      <li><b>Anna:</b> <span class="tr" onclick="tr(this)">Not really! But it is very tasty. Sweets are OK sometimes.<span class="rt">— Не очень! Но оно очень вкусное. Сладости иногда — это нормально.</span></span></li>
+      <li><b>Tom:</b> <span class="tr" onclick="tr(this)">Right! We need fruit and vegetables every day.<span class="rt">— Верно! Нам нужны фрукты и овощи каждый день.</span></span></li>
+    </ul>
+    <div class="tnote"><button onclick="tn(this)">For teacher</button><div class="tn">Чтение по ролям 2 раза (пары меняются ролями). Обратите внимание на короткие ответы: Yes, I do / No, I don't.</div></div>
+  </div>
+  <div class="card">
+    <h3>Task 2. Quiz — выберите правильный ответ!</h3>
+    <div id="quiz"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab3">
+  <h2>4. Grammar — some / any и Do you like…? (7 мин)</h2>
+  <div class="card">
+    <p class="big">Правило-подсказка:</p>
+    <ul class="flow">
+      <li>🔸 <b>some</b> = немного, несколько — <b>в утвердительных</b> предложениях: <i>I have <b>some</b> apples.</i></li>
+      <li>🔸 <b>any</b> — <b>в вопросах и отрицаниях</b>: <i>Do you have <b>any</b> milk? — No, I don't have <b>any</b> milk.</i></li>
+      <li>🔸 <b>like / likes</b>: I like pizza. He <b>likes</b> pizza. Вопрос: <b>Do</b> you like pizza? — Yes, I do / No, I don't.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Task. Вставьте слово: some, any, like, likes, Do, Does. Потом нажмите «Check»!</h3>
+    <div id="gram"></div>
+    <button class="checkbtn" onclick="checkGram()">Check ✅</button>
+    <p class="hint" id="gmes"></p>
+    <div class="tnote"><button onclick="tn(this)">For teacher</button><div class="tn">Ответы: 1 any; 2 some; 3 like; 4 likes; 5 Do; 6 Does. Слабым ученикам дайте опору-карточку с правилом. Дополнительно: устно составить по 1 предложению со словом some.</div></div>
+  </div>
+</section>
+
+<section class="tab" id="tab4">
+  <h2>5. Speaking — Pair work (7 мин)</h2>
+  <div class="card">
+    <h3>Спросите партнёра и запишите его ответы!</h3>
+    <ul class="flow big">
+      <li>1. <span class="tr" onclick="tr(this)">What is your favourite food?<span class="rt">— Какая твоя любимая еда?</span></span></li>
+      <li>2. <span class="tr" onclick="tr(this)">Do you like fruit or vegetables more?<span class="rt">— Ты больше любишь фрукты или овощи?</span></span></li>
+      <li>3. <span class="tr" onclick="tr(this)">What food is unhealthy?<span class="rt">— Какая еда неполезная?</span></span></li>
+      <li>4. <span class="tr" onclick="tr(this)">What do you have for lunch at school?<span class="rt">— Что ты ешь на обед в школе?</span></span></li>
+      <li>5. <span class="tr" onclick="tr(this)">Can you cook? What can you make?<span class="rt">— Ты умеешь готовить? Что ты можешь приготовить?</span></span></li>
+      <li>6. <span class="tr" onclick="tr(this)">Your dream dish — what is it?<span class="rt">— Твоё блюдо мечты — что это?</span></span></li>
+    </ul>
+    <div class="hint">Фразы для ответов: <span class="tr" onclick="tr(this)">My favourite food is…<span class="rt">Моя любимая еда — это…</span></span> &nbsp;
+    <span class="tr" onclick="tr(this)">I like… because it is tasty / sweet / healthy.<span class="rt">Я люблю… потому что это вкусно / сладко / полезно.</span></span> &nbsp;
+    <span class="tr" onclick="tr(this)">I don't like… because…<span class="rt">Я не люблю… потому что…</span></span></div>
+    <div class="tnote"><button onclick="tn(this)">For teacher</button><div class="tn">Работа в парах, потом 2–3 пары показывают диалог классу. Следите за because — это главный критерий развёрнутого ответа.</div></div>
+  </div>
+</section>
+
+<section class="tab" id="tab5">
+  <h2>6. Wrap-up — что мы узнали? (3 мин)</h2>
+  <div class="card">
+    <h3>Рефлексия — отметьте, что получилось (кликните по строке):</h3>
+    <ul class="flow big" id="refl">
+      <li>☐ Я знаю слова: fruits, vegetables, sweets, drinks 🍎</li>
+      <li>☐ Я могу спросить: <i>Do you like…?</i> и ответить: <i>Yes, I do / No, I don't</i></li>
+      <li>☐ Я знаю, когда писать <i>some</i>, а когда <i>any</i></li>
+      <li>☐ Я могу рассказать о своей любимой еде с <i>because</i></li>
+    </ul>
+  </div>
+  <div class="card hw">
+    <h3>🏠 Homework — Домашнее задание</h3>
+    <p class="big">Draw or write about <b>your dream dish</b> (5–6 sentences).<br>
+    Используйте: <i>My favourite food is… / I like… because… / I have … for breakfast</i>.<br>
+    Обязательно: 3 слова из разных групп (fruit, vegetable, sweet…) и 1 предложение с <i>some</i> или <i>any</i>.</p>
+    <div class="emoji-strip">🍎🥕🍰🥛🍗</div>
+  </div>
+  <div class="card">
+    <button class="checkbtn" style="background:#d9534f" onclick="resetAll()">🔄 Reset — начать урок заново</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+function tr(el){ el.classList.toggle('open'); }
+function tn(btn){ btn.parentElement.classList.toggle('open'); }
+var score=0;
+function addScore(n){ score+=n; document.getElementById('score').textContent=score; }
+
+function showTab(i,btn){
+  var tabs=document.querySelectorAll('.tab');
+  for(var k=0;k<tabs.length;k++) tabs[k].classList.remove('on');
+  tabs[i].classList.add('on');
+  document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  window.scrollTo(0,0);
+}
+
+/* Timer */
+var tsec=300, trun=false, tcur=0, tints=[[300,5],[480,8],[600,10],[420,7],[420,7],[180,3]];
+function setTimer(i){ clearInterval(trun); trun=false; tcur=i; tsec=tints[i][0]*60; draw(); }
+function toggleTimer(){
+  if(trun){ clearInterval(trun); trun=null; }
+  else { trun=setInterval(function(){ if(tsec>0){tsec--; draw();} },1000); }
+}
+function draw(){ var m=Math.floor(tsec/60), s=tsec%60; document.getElementById('tmin').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+setTimer(0);
+
+/* Matching */
+var words=['apple 🍎','carrot 🥕','chocolate 🍫','milk 🥛','chicken 🍗','bread 🍞','juice 🥤','cheese 🧀'];
+var groups=['Fruits','Vegetables','Sweets','Dairy products','Meat','Other food','Drinks','Dairy products'];
+var selWord=null, done=0;
+function initMatch(){
+  var w=document.getElementById('mwords'), g=document.getElementById('mgroups');
+  var wIdx=[0,1,2,3,4,5,6,7], gIdx=[0,1,2,3,4,5,6,7];
+  wIdx.sort(function(){return Math.random()-.5}); gIdx.sort(function(){return Math.random()-.5});
+  wIdx.forEach(function(i){ var d=document.createElement('div'); d.className='mcard'; d.textContent=words[i]; d.dataset.g=i; d.onclick=function(){ pickW(d); }; w.appendChild(d); });
+  gIdx.forEach(function(i){ var d=document.createElement('div'); d.className='mcard'; d.textContent=groups[i]; d.dataset.g=i; d.onclick=function(){ pickG(d); }; g.appendChild(d); });
+}
+function pickW(d){ if(d.classList.contains('done'))return; document.querySelectorAll('#mwords .mcard').forEach(function(x){x.classList.remove('sel')}); selWord=d; d.classList.add('sel'); }
+function pickG(d){
+  if(!selWord||d.classList.contains('done'))return;
+  if(selWord.dataset.g===d.dataset.g){
+    selWord.classList.remove('sel'); selWord.classList.add('done'); d.classList.add('done');
+    selWord.onclick=null; done++; addScore(1); selWord=null;
+    document.getElementById('mmes').textContent='Правильно! Найдено пар: '+done+' из 8 ⭐';
+    if(done===8) document.getElementById('mmes').textContent='Отлично! Все пары найдены! 🎉';
+  } else { d.classList.add('err'); setTimeout(function(){d.classList.remove('err')},500); }
+}
+initMatch();
+
+/* Quiz */
+var quiz=[
+ {q:'1. Tom eats a…', opts:['cheese sandwich','chocolate cake','banana'], a:0},
+ {q:'2. Anna likes…', opts:['fish','ice cream','carrots'], a:1},
+ {q:"3. Anna doesn't like…", opts:['fish','sweets','pizza'], a:0},
+ {q:"4. Cheese is Tom's… food.", opts:['least','favourite','bad'], a:1},
+ {q:'5. We need fruit and vegetables…', opts:['every year','never','every day'], a:2}
+];
+quiz.forEach(function(item){
+  var d=document.createElement('div'); d.className='qz';
+  d.innerHTML='<p>'+item.q+'</p>';
+  item.opts.forEach(function(o,j){
+    var b=document.createElement('span'); b.className='opt'; b.textContent=o;
+    b.onclick=function(){
+      if(d.dataset.done)return; d.dataset.done=1;
+      if(j===item.a){ b.classList.add('ok'); addScore(2); } else { b.classList.add('bad'); d.querySelectorAll('.opt')[item.a].classList.add('ok'); }
+    };
+    d.appendChild(b);
+  });
+  document.getElementById('quiz').appendChild(d);
+});
+
+/* Grammar */
+var gram=[
+ {s:'1. Do you have ___ bread at home?', a:'any', h:'some / any'},
+ {s:'2. I have ___ apples in my bag.', a:'some', h:'some / any'},
+ {s:"3. I ___ pizza. It's yummy!", a:'like', h:'like / likes'},
+ {s:'4. He ___ ice cream.', a:'likes', h:'like / likes'},
+ {s:'5. ___ you like carrots?', a:'Do', h:'Do / Does'},
+ {s:'6. ___ she like chocolate?', a:'Does', h:'Do / Does'}
+];
+gram.forEach(function(g){
+  var d=document.createElement('div'); d.className='gline';
+  d.innerHTML='<div class="sent">'+g.s+' <span class="hint">('+g.h+')</span></div><input class="inp" data-a="'+g.a+'">';
+  document.getElementById('gram').appendChild(d);
+});
+function checkGram(){
+  var ok=0, all=document.querySelectorAll('#gram .inp');
+  all.forEach(function(inp){
+    var v=inp.value.trim().toLowerCase();
+    if(v===inp.dataset.a.toLowerCase()){ inp.classList.remove('bad'); inp.classList.add('ok'); ok++; }
+    else { inp.classList.remove('ok'); inp.classList.add('bad'); }
+  });
+  document.getElementById('gmes').textContent='Правильно: '+ok+' из '+all.length+(ok===all.length?' — супер! 🎉':' — исправьте ошибки в красных полях');
+  addScore(ok*2);
+}
+
+/* Reflection checkboxes */
+document.querySelectorAll('#refl li').forEach(function(li){
+  li.style.cursor='pointer';
+  li.onclick=function(){
+    if(li.dataset.c){ li.textContent=li.textContent.replace('✅','☐'); li.dataset.c=''; }
+    else { li.textContent=li.textContent.replace('☐','✅'); li.dataset.c='1'; }
+  };
+});
+
+function resetAll(){ location.reload(); }
+</script>
+</body>
+</html>
