@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Средства массовой информации: интернет — Spotlight 7, Module 4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef4fb;color:#22303d;padding-bottom:40px}
+header{background:linear-gradient(135deg,#0d47a1,#00acc1);color:#fff;padding:26px 16px;text-align:center}
+header h1{font-size:28px;letter-spacing:3px}
+header p{margin-top:6px;font-size:15px;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;background:#fff;position:sticky;top:0;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:5}
+nav button{border:none;border-radius:20px;padding:8px 12px;background:#e3f2fd;color:#0d47a1;font-size:13px;cursor:pointer}
+nav button.act{background:#0d47a1;color:#fff}
+main{max-width:780px;margin:0 auto;padding:16px}
+section{display:none}
+section.act{display:block}
+h2{color:#0d47a1;margin:16px 0 8px;font-size:22px}
+.card{background:#fff;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 2px 8px rgba(13,71,161,.12)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+th,td{border:1px solid #cfdfee;padding:6px 8px;text-align:left}
+th{background:#e3f2fd;color:#0d47a1}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.wcard{background:#fff;border-radius:12px;padding:12px;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(13,71,161,.12)}
+.wcard:active{background:#e1f5fe}
+.wcard .en{font-size:16px;font-weight:600;color:#0d47a1}
+.wcard .ru{font-size:13px;color:#777;margin-top:4px}
+.wcard .tip{font-size:11px;color:#90b8d8;margin-top:6px}
+.ph{background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0;cursor:pointer;box-shadow:0 2px 8px rgba(13,71,161,.12)}
+.ph .en{font-size:16px;font-weight:600;color:#01579b}
+.ph .ru{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed #b3d4f0;color:#555;font-size:15px}
+.ph.open .ru{display:block}
+.ph .hint{font-size:11px;color:#90b8d8;margin-top:4px}
+.line{margin:10px 0}
+.who{font-size:11px;color:#999}
+.bub{display:inline-block;background:#e1f5fe;border-radius:12px 12px 12px 3px;padding:8px 12px;max-width:90%;font-size:15px}
+.bub.me{background:#e8eaf6;border-radius:12px 12px 3px 12px}
+.tbtn{border:none;background:#0288d1;color:#fff;font-size:11px;border-radius:10px;padding:3px 10px;cursor:pointer;margin:4px 6px 0 0}
+.tr{display:none;color:#666;font-size:14px;margin:4px 0 0 8px}
+.tr.show{display:block}
+.opt{display:block;width:100%;text-align:left;border:1px solid #b3d4f0;background:#fff;border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.opt.ok{background:#c8e6c9;border-color:#4caf50}
+.opt.bad{background:#ffcdd2;border-color:#e53935}
+.res{background:#fff8e1;border-radius:12px;padding:14px;font-size:16px;text-align:center}
+.spk{border:none;background:#00acc1;color:#fff;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;margin:4px 4px 0 0}
+.chip{display:inline-block;border:1px solid #b3d4f0;border-radius:16px;padding:5px 10px;margin:3px;cursor:pointer;font-size:13px;background:#fff}
+.chip.sel{background:#0d47a1;color:#fff}
+.story{background:#e1f5fe;border-radius:12px;padding:12px;margin-top:8px;font-size:15px}
+.note{font-size:12px;color:#5d7d9a;margin-top:6px}
+ul{margin:6px 0 6px 20px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>IN THE NEWS 🌐</h1>
+<p>Средства массовой информации: интернет<br>Spotlight 7 • Module 4 «In the news» • Unit 4a «News stories» + подтема Internet • 40 минут</p>
+</header>
+<nav>
+<button class="act" onclick="go('about',this)">🎯 О уроке</button>
+<button onclick="go('rep',this)">🔁 Повторение</button>
+<button onclick="go('words',this)">📖 Слова</button>
+<button onclick="go('phr',this)">💬 Фразы</button>
+<button onclick="go('dial',this)">🗣 Диалоги</button>
+<button onclick="go('read',this)">📚 Чтение</button>
+<button onclick="go('media',this)">🎲 Тип СМИ</button>
+<button onclick="go('past',this)">🧩 Past Continuous</button>
+<button onclick="go('rhyme',this)">🎵 Рифмовка</button>
+<button onclick="go('speak',this)">🎤 Говори сам</button>
+<button onclick="go('test',this)">✏️ Тест</button>
+<button onclick="go('hw',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section id="about" class="act">
+<h2>🎯 План урока — 40 минут</h2>
+<div class="card">
+<p><b>УМК:</b> Spotlight 7 «Английский в фокусе» (Ю. Е. Ваулина, Д. Дули, О. Е. Подоляко, В. Эванс), Module 4 «In the news»: юнит 4a «News stories» (лексика СМИ, Past Continuous) + подтема «Internet».</p>
+<p><b>Тема по ФРП:</b> Средства массовой информации (интернет).</p>
+<p><b>Тип урока:</b> урок введения и первичного закрепления лексики по теме «СМИ. Интернет» с элементами монологической и диалогической речи.</p>
+</div>
+<div class="card"><table>
+<tr><th>Этап</th><th>Время</th><th>Что делаем</th></tr>
+<tr><td>1. Разминка</td><td>3 мин</td><td>What's your favourite type of media?</td></tr>
+<tr><td>2. Повторение</td><td>4 мин</td><td>Виды СМИ, мостик Past Simple → Past Continuous</td></tr>
+<tr><td>3. Слова</td><td>8 мин</td><td>18 карточек: интернет и пресса</td></tr>
+<tr><td>4. Фразы</td><td>6 мин</td><td>The Internet provides us with… I was surfing the Net…</td></tr>
+<tr><td>5. Диалоги</td><td>5 мин</td><td>Типы СМИ; новость «Храбрый питомец»</td></tr>
+<tr><td>6. Чтение</td><td>6 мин</td><td>«The Internet: Friend or Foe?» + 5 вопросов</td></tr>
+<tr><td>7. Игры</td><td>4 мин</td><td>«Тип СМИ» (8) + «Past Continuous» (8)</td></tr>
+<tr><td>8. Говорение</td><td>3 мин</td><td>Рифмовка + «Мой любимый вид СМИ»</td></tr>
+<tr><td>9. Итог</td><td>1 мин</td><td>Тест и домашнее задание</td></tr>
+</table></div>
+<div class="card"><b>Планируемые результаты (ФГОС ООО):</b><ul>
+<li><b>Предметные:</b> называет виды СМИ по-английски; употребляет Past Continuous (was/were + V-ing); рассказывает о любимом виде СМИ и правилах интернет-безопасности.</li>
+<li><b>Метапредметные:</b> сравнивает источники информации, оценивает достоверность (fake news), проверяет себя в играх и тесте.</li>
+<li><b>Личностные:</b> цифровая грамотность, критическое мышление, бережное отношение ко времени онлайн.</li></ul></div>
+</section>
+
+<section id="rep">
+<h2>🔁 Повторение: виды СМИ и мостик в прошедшее</h2>
+<div class="card"><b>Виды средств массовой информации</b> — нажми и послушай:
+<p><span class="chip" onclick='say("television")'>📺 television</span>
+<span class="chip" onclick='say("radio")'>📻 radio</span>
+<span class="chip" onclick='say("newspapers")'>📰 newspapers</span>
+<span class="chip" onclick='say("magazines")'> magazines</span>
+<span class="chip" onclick='say("the Internet")'>🌐 the Internet</span></p>
+<p class="note">— What's your favourite type of media? — My favourite type of media is the Internet.</p>
+</div>
+<div class="card"><b>Мостик: Past Simple → Past Continuous</b><table>
+<tr><th>Past Simple — событие</th><th>Past Continuous — процесс</th></tr>
+<tr><td>go — went (ходил)</td><td>was/were going — шёл (в момент)</td></tr>
+<tr><td>see — saw (увидел)</td><td>was/were seeing — видел (в момент)</td></tr>
+<tr><td>make — made (сделал)</td><td>was/were making — делал</td></tr>
+<tr><td>ring — rang (звонок прозвенел)</td><td>was/were ringing — звонил</td></tr>
+</table>
+<p>The phone <b>rang</b> — короткое событие. I <b>was watching</b> TV — процесс в этот момент.</p>
+<p><b>Маркеры:</b> while + процесс (Past Continuous), when + событие (Past Simple), at 5 pm yesterday, all day long.</p></div>
+</section>
+
+<section id="words">
+<h2>📖 Слова урока — нажми, слово прозвучит дважды</h2>
+<div id="wordBox" class="words"></div>
+<p class="note">Если звука нет — нажми на карточку ещё раз. Проверь, не выключен ли звук на устройстве.</p>
+</section>
+
+<section id="phr">
+<h2>💬 Фразы урока — нажми на фразу: перевод откроется под ней</h2>
+<div class="ph" onclick="tg(this)"><div class="en">What's your favourite type of media?</div><div class="ru">Какой у тебя любимый вид СМИ?</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">The Internet provides us with the latest news.</div><div class="ru">Интернет даёт нам самые свежие новости.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">I was surfing the Internet at 6 pm yesterday.</div><div class="ru">Вчера в 6 вечера я сидел в интернете.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Did you hear about the news?</div><div class="ru">Ты слышал эту новость?</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">You won't believe what happened!</div><div class="ru">Ты не поверишь, что случилось!</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It made headlines.</div><div class="ru">Это попало в заголовки.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Log on to the school website.</div><div class="ru">Зайди на сайт школы.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Check the weather forecast online.</div><div class="ru">Проверь прогноз погоды в интернете.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">No news is good news.</div><div class="ru">Отсутствие новостей — хорошая новость.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Fake news spreads fast.</div><div class="ru">Фейковые новости распространяются быстро.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="card"><b>Шпаргалка: was/were + V-ing</b><ol>
+<li>Один действующий: I was surfing the Net at 6 pm.</li>
+<li>Отрицание: She wasn't listening to the radio.</li>
+<li>Вопрос: Were you doing your homework at 8 pm?</li>
+<li>Два параллельных: While dad was reading a newspaper, grandpa was sleeping.</li>
+<li>Прерывание: While I was reading, the bell rang. (while — процесс, when/rang — событие)</li>
+</ol>
+<p class="note">Фразовые глаголы модуля: go off — испортиться / зазвенеть, go on — продолжать, go with — сочетаться. Зависимые предлоги: be proud of, take part in, come up with, ask for.</p></div>
+</section>
+
+<section id="dial">
+<h2>🗣 Диалоги из урока</h2>
+<div class="card"><b>Диалог 1. Анна и Макс: газета против интернета</b>
+<div class="line"><div class="who">Anna</div><span class="bub">Max, what's your favourite type of media?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Макс, какой твой любимый вид СМИ?</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">The Internet, of course! The news is always fresh there.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Интернет, конечно! Новости там всегда свежие.</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">But newspapers are classic. My grandpa reads one every morning.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Но газеты — это классика. Мой дедушка читает их каждое утро.</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">While he was reading his paper yesterday, I was downloading three news apps!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Пока он вчера читал свою газету, я скачал три новостных приложения!</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">Does the Internet provide us with everything?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Интернет даёт нам всё?</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">Almost — news, weather reports, documentaries, chat shows…</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Почти — новости, прогнозы погоды, документальные фильмы, интервью-шоу…</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">But be careful: fake news spreads fast online.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Но будь осторожен: в сети фейковые новости распространяются быстро.</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">True. I always check two or three websites.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Верно. Я всегда проверяю два-три сайта.</div></div>
+</div>
+<div class="card"><b>Диалог 2. Кейт и Том: новость про храброго питомца</b>
+<div class="line"><div class="who">Kate</div><span class="bub">Tom, did you hear about the news?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Том, ты слышал эту новость?</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub me">What news? You look excited!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Какую новость? Ты выглядишь взволнованной!</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub">A brave pet saved its owner! The story made headlines.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Храбрый питомец спас хозяина! История попала в заголовки.</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub me">Really? Tell me more!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Серьёзно? Рассказывай!</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub">The family was watching TV when the fire started.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Семья смотрела телевизор, когда начался пожар.</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub me">Oh no! What happened next?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">О нет! Что случилось потом?</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub">The dog was barking and pulling the girl to the door while dad was calling for help.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Собака лаяла и тянула девочку к двери, пока папа звал на помощь.</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub me">You won't believe it — such a hero! I saw the video online yesterday.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Ты не поверишь — вот герой! Я видел это видео в интернете вчера.</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub">No wonder they say: a dog is man's best friend!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Недаром говорят: собака — лучший друг человека!</div></div>
+</div>
+</section>
+
+<section id="read">
+<h2>📚 Чтение: «The Internet: Friend or Foe?»</h2>
+<div class="card">
+<p><b>The Internet: Friend or Foe?</b></p>
+<p>The Internet is the youngest type of mass media. It is a way to communicate with a partner who might be a thousand miles away. Websites, e-mails, social networks, blogs and video calls make the Internet the fastest source of news today. The news there can be local, national or international. Online you can check weather reports, read interesting articles, watch documentaries and chat shows. But the Internet has its downsides: it takes a lot of your time, and not all the news is true — fake news spreads very fast. So use the Internet wisely: choose official news websites, check your facts and don't believe everything you read!</p>
+<button class="tbtn" onclick="rev(this)">перевод текста</button>
+<div class="tr">Интернет — самый молодой вид СМИ. Это способ общаться с человеком, который может быть за тысячу миль. Сайты, электронная почта, соцсети, блоги и видеозвонки делают интернет самым быстрым источником новостей сегодня. Новости там могут быть местными, национальными или международными. В сети можно проверить прогноз погоды, читать интересные статьи, смотреть документальные фильмы и интервью-шоу. Но у интернета есть минусы: он отнимает много времени, и не все новости правдивы — фейковые новости распространяются очень быстро. Так что пользуйтесь интернетом с умом: выбирайте официальные новостные сайты, проверяйте факты и не верьте всему, что читаете!</div>
+</div>
+<div class="card"><b>Вопросы — нажми «Ответ» и проверь себя</b>
+<div class="line">1. What is the youngest type of mass media?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">The Internet. — Интернет.</div></div>
+<div class="line">2. What makes the Internet the fastest source of news?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">Websites, e-mails, social networks, blogs and video calls. — Сайты, почта, соцсети, блоги и видеозвонки.</div></div>
+<div class="line">3. What types of news can the Internet give?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">Local, national and international news. — Местные, национальные и международные.</div></div>
+<div class="line">4. What are the downsides of the Internet?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">It takes a lot of time, and fake news spreads fast. — Отнимает много времени, и фейки распространяются быстро.</div></div>
+<div class="line">5. How can we use the Internet wisely?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">Choose official websites and check your facts. — Выбирать официальные сайты и проверять факты.</div></div>
+</div>
+</section>
+
+<section id="media">
+<h2>🎲 Игра «Тип СМИ»</h2>
+<div id="mediaBox"></div>
+<p class="note">Читай описание — выбери вид СМИ или материал. Всего 8 раундов!</p>
+</section>
+
+<section id="past">
+<h2>🧩 Игра «Past Continuous»</h2>
+<div id="pastBox"></div>
+</section>
+
+<section id="rhyme">
+<h2>🎵 Рифмовка</h2>
+<div class="card">
+<p style="font-size:18px;line-height:1.7"><b>Surf, surf the Internet,<br>The freshest news — you won't forget!<br>While I was browsing the Net,<br>I found the news you can't forget.<br>Log on, click, check it fast —<br>Real news always lasts!</b></p>
+<button class="spk" onclick='say("Surf, surf the Internet, The freshest news — you will not forget! While I was browsing the Net, I found the news you cannot forget. Log on, click, check it fast — Real news always lasts!")'>🔊 Послушать</button>
+<button class="tbtn" onclick="rev(this)">перевод</button>
+<div class="tr">Сёрф, сёрф по интернету,<br>Самые свежие новости — не забудешь!<br>Пока я бродил по сети,<br>Я нашёл новости, которые не забыть.<br>Заходи, кликай, проверяй быстро —<br>Настоящие новости всегда остаются!</div>
+<p class="note">Скороговорка: <span class="chip" onclick='say("She was chatting, he was clicking, while the news was busy ticking!")'>She was chatting, he was clicking, while the news was busy ticking!</span> — Она болтала, он кликал, а новости тикали в это время!</p>
+</div>
+</section>
+
+<section id="speak">
+<h2>🎤 Говори сам: мой любимый вид СМИ</h2>
+<div id="speakBox"></div>
+<div class="card">
+<div id="story" class="story">Выбери по одной фразе в каждом ряду — рассказ соберётся здесь.</div>
+<button class="spk" onclick="speakStory()">🔊 Прослушать рассказ</button>
+</div>
+<p class="note">Этот рассказ — заготовка для домашнего мини-сочинения!</p>
+</section>
+
+<section id="test">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div id="testBox"></div>
+</section>
+
+<section id="hw">
+<h2>🏠 Домашнее задание</h2>
+<div class="card"><b>Основное:</b> напиши мини-сочинение «The Internet in my life» по плану урока (5 предложений):<ol>
+<li>My favourite type of media is…</li>
+<li>I use it for…</li>
+<li>Yesterday I was surfing the Internet when… (Past Continuous!)</li>
+<li>The Internet provides us with…</li>
+<li>But don't forget: check your facts — fake news spreads fast!</li></ol>
+<b>Звёздочка (по желанию):</b> спроси у родителей их любимый вид СМИ и запиши 2 предложения: <i>While I was doing my homework, my mum was watching the news.</i></div>
+<div class="card"><b>Критерии оценивания — 6 баллов:</b><ul>
+<li>5 предложений по плану — 3 балла</li>
+<li>фразы урока (provides, was surfing, fake news) — 1 балл</li>
+<li>Past Continuous без ошибок — 1 балл</li>
+<li>старание и оформление — 1 балл</li></ul>
+<p>Шкала: 6 баллов — «5», 5 — «4», 4 — «3».</p>
+<p class="note">Онлайн — отправь сочинение текстом в чат; очно — в тетради.</p></div>
+</section>
+
+</main>
+<script>
+function go(id,btn){document.querySelectorAll('main>section').forEach(function(s){s.classList.remove('act')});document.getElementById(id).classList.add('act');document.querySelectorAll('nav button').forEach(function(b){b.classList.remove('act')});btn.classList.add('act');window.scrollTo(0,0);}
+function say(t,n){n=n||2;try{speechSynthesis.cancel();for(var i=0;i<n;i++){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u);}}catch(e){}}
+function tg(el){el.classList.toggle('open');}
+function rev(btn){btn.nextElementSibling.classList.toggle('show');}
+var words=[["website","сайт"],["search engine","поисковик"],["download","скачивать"],["upload","загружать в сеть"],["online","в сети"],["browse","просматривать"],["click","нажимать, кликать"],["log on","заходить на сайт"],["social network","социальная сеть"],["blog","блог"],["e-mail","электронная почта"],["video call","видеозвонок"],["newspaper","газета"],["headline","заголовок"],["article","статья"],["reporter","репортёр"],["weather report","прогноз погоды"],["chat show","интервью-шоу"]];
+var wb=document.getElementById('wordBox');
+words.forEach(function(w){var d=document.createElement('div');d.className='wcard';d.innerHTML='<div class="en">'+w[0]+'</div><div class="ru">'+w[1]+'</div><div class="tip">нажми — послушай</div>';d.onclick=function(){say(w[0],2)};wb.appendChild(d);});
+function quiz(id,data,gold){var el=document.getElementById(id),i=0,sc=0;
+function q(){if(i>=data.length){var m=sc>=gold?'🥇 Золотая медаль!':(sc>=7?'👏 Молодец!':'💪 Потренируйся ещё!');el.innerHTML='<div class="res">Ваш результат: '+sc+' из '+data.length+'. '+m+'</div>';return;}
+var d=data[i],h='<div class="card"><b>'+(i+1)+'. '+d[0]+'</b><div class="opts">';
+for(var j=0;j<d[1].length;j++)h+='<button class="opt" onclick="'+id+'Pick(this,'+j+')">'+d[1][j]+'</button>';
+el.innerHTML=h+'</div></div>';}
+window[id+'Pick']=function(btn,j){var d=data[i];if(j===d[2]){sc++;btn.className='opt ok';}else{btn.className='opt bad';}i++;setTimeout(q,600);};
+q();}
+quiz('pastBox',[["I ___ TV when the phone rang.",["was watching","watched","am watching"],0],["They ___ football at 5 pm yesterday.",["were playing","was playing","played"],0],["While I ___ the Internet, mum called me.",["was surfing","surfed","surf"],0],["She ___ to the radio at that moment.",["wasn't listening","didn't listen","isn't listening"],0],["___ you ___ your homework at 8 pm yesterday?",["Were… doing","Did… doing","Was… doing"],0],["While dad was reading a newspaper, grandpa ___ .",["was sleeping","slept","sleeps"],0],["He ___ an article while I was browsing websites.",["was downloading","downloaded","downloads"],0],["While I was reading, the bell ___ .",["rang","was ringing","rings"],0]],9);
+quiz('testBox',[["The Internet ___ us with the latest news.",["provides","provide","providing"],0],["Поиск по-английски — search…",["engine","machine","engineer"],0],["I ___ the Internet at 6 o'clock yesterday.",["was surfing","surf","am surfing"],0],["While mum ___ dinner, I was downloading the film.",["was cooking","cooked","cooks"],0],["Что идёт сегодня по ТВ? Открой TV…",["guide","clock","gossip"],0],["___ you watching the news when the bell rang?",["Were","Was","Did"],0],["Celebrity ___ — сплетни о звёздах.",["gossip","goodies","reports"],0],["Зайди на сайт — ___ on to the website.",["Log","Look","Go"],0],["No ___ is good news.",["news","newsy","new"],0],["Программа о природе и животных — a…",["documentary","cartoon strip","horoscope"],0]],9);
+quiz('mediaBox',[["Бумага, которую печатают и продают обычно ежедневно или еженедельно, с новостями и рекламой.",["newspaper","radio","the Internet","TV guide"],0],["Процесс отправки и получения сообщений по воздуху — слушают программы и музыку.",["radio","newspaper","blog","e-mail"],0],["Способ общаться с человеком за тысячу миль с помощью компьютера.",["the Internet","TV","cartoon strip","documentary"],0],["Здесь показывают новости, шоу и рекламу — смотрят на экране.",["TV","horoscope","newspaper","search engine"],0],["Предсказание, которое печатают каждый день.",["daily horoscope","weather report","celebrity gossip","headline"],0],["Рассказывает, какой будет погода завтра.",["weather report","TV guide","advertisement","interview"],0],["Программа с интервью и разговорами со знаменитостями.",["chat show","cartoon strip","documentary","local news"],0],["Информация о звёздах: кто с кем и что случилось.",["celebrity gossip","fashion advice","e-mail","weather report"],0]],8);
+var SB=[["My favourite type of media is the Internet.","My favourite type of media is TV.","My favourite type of media is radio.","My favourite type of media is newspapers."],["I use it for news and music.","I use it for games and videos.","I use it for school projects.","I use it for chatting with friends."],["Yesterday I was surfing the Internet at 6 pm.","Yesterday I was watching a documentary at 8 pm.","Yesterday I was reading a magazine at 5 pm."],["The Internet provides us with the latest news.","TV provides us with documentaries and chat shows.","Radio provides us with music and interviews."],["But don't spend too much time online!","But always check your facts — fake news spreads fast!","It's a great way to learn new things!"]];
+var SBsel=[-1,-1,-1,-1,-1];
+function buildSpeak(){var el=document.getElementById('speakBox'),h='';
+for(var k=0;k<SB.length;k++){h+='<div class="slot"><b>'+(k+1)+'.</b><br>';for(var j=0;j<SB[k].length;j++){var sel=SBsel[k]===j?' sel':'';h+='<span class="chip'+sel+'" onclick="sbPick('+k+','+j+')">'+SB[k][j]+'</span>';}h+='</div>';}
+el.innerHTML=h;}
+function sbPick(k,j){SBsel[k]=j;buildSpeak();showStory();}
+function showStory(){var ok=SBsel.every(function(v){return v>-1});var st=document.getElementById('story');
+if(!ok){st.textContent='Выбери по одной фразе в каждом ряду — рассказ соберётся здесь.';return;}
+st.textContent=SBsel.map(function(v,k){return SB[k][v]}).join(' ');}
+function speakStory(){var ok=SBsel.every(function(v){return v>-1});if(!ok){alert('Сначала выбери все 5 фраз!');return;}say(SBsel.map(function(v,k){return SB[k][v]}).join(' '),1);}
+buildSpeak();
+</script>
+</body>
+</html>
