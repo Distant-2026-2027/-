@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Job — Interactive Lesson (Grade 10, Spotlight 3)</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', Arial, sans-serif; background:#f0f4f8; color:#1e2a3a; padding-bottom:60px; }
+  header { background:linear-gradient(135deg,#1a3a5c,#2d6a9f); color:#fff; padding:20px 24px; text-align:center; }
+  header h1 { font-size:1.6em; }
+  header p { opacity:.85; margin-top:4px; font-size:.95em; }
+  .scorebar { background:#0e2a47; color:#fff; text-align:center; padding:8px; font-size:.95em; }
+  .scorebar b { color:#ffd166; }
+  .tabs { display:flex; flex-wrap:wrap; background:#123356; }
+  .tabs button { flex:1; min-width:120px; padding:12px 8px; background:none; border:none; color:#bcd3e8; font-size:.95em; cursor:pointer; border-bottom:4px solid transparent; }
+  .tabs button.active { color:#fff; border-bottom-color:#ffd166; background:#1a3a5c; font-weight:bold; }
+  .timerbar { background:#fff; border-bottom:2px solid #dbe6f0; padding:10px 24px; display:flex; align-items:center; gap:14px; justify-content:center; }
+  .timerbar .tlabel { font-weight:bold; color:#1a3a5c; }
+  #timer { font-size:1.4em; font-weight:bold; color:#c0392b; min-width:80px; }
+  .timerbar button { padding:6px 14px; border:none; border-radius:6px; background:#2d6a9f; color:#fff; cursor:pointer; font-weight:bold; }
+  .timerbar button.reset { background:#7f8c8d; }
+  .section { display:none; padding:22px; max-width:900px; margin:0 auto; }
+  .section.active { display:block; }
+  .section h2 { color:#1a3a5c; border-left:5px solid #ffd166; padding-left:12px; margin-bottom:14px; }
+  .card { background:#fff; border-radius:10px; padding:18px; margin-bottom:16px; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+  .q { margin:10px 0; font-size:1.05em; }
+  .hint { background:#eef5fb; border-left:4px solid #2d6a9f; padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:.95em; }
+  /* --- inline click translation --- */
+  .tr { background:#fff3cd; border-bottom:1px dashed #b58900; cursor:pointer; padding:0 2px; border-radius:3px; transition:background .15s; }
+  .tr:hover { background:#ffe28a; }
+  .tr-open { background:#ffe28a; }
+  .translation { display:block; color:#7d5a00; font-size:.92em; font-style:italic; margin:2px 0; }
+  /* --- matching --- */
+  .match-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .match-item { padding:10px 14px; border:2px solid #bcd3e8; border-radius:8px; cursor:pointer; background:#fff; font-size:1em; transition:.15s; }
+  .match-item.sel { border-color:#2d6a9f; background:#dcebf7; font-weight:bold; }
+  .match-item.done { border-color:#27ae60; background:#e8f8f0; cursor:default; opacity:.75; }
+  .match-item.err { animation:shake .3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+  /* --- quiz --- */
+  .quiz-q { margin:14px 0; }
+  .opt { display:block; padding:10px 14px; margin:6px 0; border:2px solid #dbe6f0; border-radius:8px; cursor:pointer; background:#fff; transition:.15s; }
+  .opt:hover { border-color:#2d6a9f; }
+  .opt.correct { border-color:#27ae60; background:#e8f8f0; font-weight:bold; }
+  .opt.wrong { border-color:#c0392b; background:#fdecea; }
+  /* --- grammar input --- */
+  .gap { width:170px; padding:6px 10px; border:2px solid #dbe6f0; border-radius:6px; font-size:1em; margin:0 4px; }
+  .gap.good { border-color:#27ae60; background:#e8f8f0; }
+  .gap.bad { border-color:#c0392b; background:#fdecea; }
+  .btn { display:inline-block; padding:10px 22px; margin-top:12px; border:none; border-radius:8px; background:#2d6a9f; color:#fff; font-size:1em; font-weight:bold; cursor:pointer; }
+  .btn:hover { background:#1a3a5c; }
+  .btn.warn { background:#c0392b; }
+  .feedback { margin-top:10px; font-weight:bold; }
+  .teacher-btn { background:#7f8c8d; color:#fff; border:none; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:.85em; margin-top:8px; }
+  .teacher-notes { display:none; background:#fffbe6; border:1px dashed #b58900; padding:10px 14px; border-radius:8px; margin-top:8px; font-size:.92em; }
+  table.phrases { width:100%; border-collapse:collapse; margin-top:10px; }
+  table.phrases td { border:1px solid #dbe6f0; padding:8px 12px; font-size:.98em; }
+  table.phrases td:first-child { font-weight:bold; color:#1a3a5c; width:35%; }
+  footer { text-align:center; color:#7f8c8d; font-size:.85em; padding:16px; }
+  .checklist label { display:block; margin:8px 0; font-size:1.02em; cursor:pointer; }
+  .hw { background:#fff8e6; border:2px dashed #f0a500; }
+</style>
+</head>
+<body>
+<header>
+  <h1>💼 Dream Job: Choosing a Profession</h1>
+  <p>English • Grade 10 • Spotlight 10, Module 3 — Citizenship across the Curriculum • 40 minutes</p>
+</header>
+<div class="scorebar">Score: <b id="score">0</b> pts &nbsp;|&nbsp; Interactive lesson</div>
+
+<div class="tabs">
+  <button class="active" onclick="show('s0',this)">🏠 Warm-up</button>
+  <button onclick="show('s1',this)">📖 Vocabulary</button>
+  <button onclick="show('s2',this)">✈ Reading</button>
+  <button onclick="show('s3',this)">✏ Grammar</button>
+  <button onclick="show('s4',this)">💬 Speaking</button>
+  <button onclick="show('s5',this)">🏁 Wrap-up</button>
+</div>
+
+<div class="timerbar">
+  <span class="tlabel">⏱ Stage timer:</span>
+  <span id="timer">00:00</span>
+  <button onclick="startTimer(300)">Warm-up 5:00</button>
+  <button onclick="startTimer(480)">Vocab 8:00</button>
+  <button onclick="startTimer(600)">Reading 10:00</button>
+  <button onclick="startTimer(420)">Grammar 7:00</button>
+  <button onclick="startTimer(420)">Speaking 7:00</button>
+  <button onclick="startTimer(180)">Wrap-up 3:00</button>
+  <button class="reset" onclick="stopTimer()">■</button>
+</div>
+
+<!-- WARM-UP -->
+<div class="section active" id="s0">
+  <h2>Warm-up (5 min)</h2>
+  <div class="card">
+    <p><b>Discuss with your partner:</b></p>
+    <div class="q">1. <span class="tr" data-tr="Какая работа ваша мечта? Почему?">What is your dream job? Why?</span></div>
+    <div class="q">2. <span class="tr" data-tr="Насколько важно, чтобы работа приносила удовольствие?">How important is it to enjoy your job?</span></div>
+    <div class="q">3. <span class="tr" data-tr="Что важнее: высокая зарплата или полезность обществу?">Which matters more: a high salary or being useful to society?</span></div>
+    <div class="q">4. <span class="tr" data-tr="Что влияет на выбор профессии: интерес, деньги, советы родителей?">What influences career choice: interest, money, parents' advice?</span></div>
+    <div class="hint">💡 Useful language: <i>I'd love to… / I'm keen on… / For me, the priority is… / It depends on…</i></div>
+    <button class="teacher-btn" onclick="toggleNotes(this)">For teacher</button>
+    <div class="teacher-notes">Elicit ideas, accept all answers. Board: "dream job — работа мечты". Push for full sentences. Link to Module 3 theme: jobs and responsibility to society.</div>
+  </div>
+</div>
+
+<!-- VOCABULARY -->
+<div class="section" id="s1">
+  <h2>Vocabulary (8 min)</h2>
+  <div class="card">
+    <p><b>Task 1. Match the word and its definition.</b> Click a word, then click a definition.</p>
+    <div class="match-grid" id="matchGrid"></div>
+    <div class="feedback" id="matchFb"></div>
+  </div>
+  <div class="card">
+    <p><b>Task 2. Collocations — verb + noun.</b> Read and translate aloud (click a phrase for translation):</p>
+    <table class="phrases">
+      <tr><td><span class="tr" data-tr="подавать заявление о работе">apply for a job</span></td><td><span class="tr" data-tr="работать сверхурочно">work overtime</span></td></tr>
+      <tr><td><span class="tr" data-tr="принять решение">make a decision</span></td><td><span class="tr" data-tr="зарабатывать на жизнь">earn a living</span></td></tr>
+      <tr><td><span class="tr" data-tr="получить опыт">gain experience</span></td><td><span class="tr" data-tr="сменить работу">change careers</span></td></tr>
+      <tr><td><span class="tr" data-tr="подать в отставку">resign from a position</span></td><td><span class="tr" data-tr="встретиться с серьёзным вызовом">face a challenge</span></td></tr>
+    </table>
+    <button class="teacher-btn" onclick="toggleNotes(this)">For teacher</button>
+    <div class="teacher-notes">Matching: students work in pairs, 3 min. Then drill collocations chorally. Extension: one student makes a sentence with a collocation, the class guesses which.</div>
+  </div>
+</div>
+
+<!-- READING -->
+<div class="section" id="s2">
+  <h2>Reading (10 min)</h2>
+  <div class="card">
+    <p><b>Choosing a Career: My Dream Job</b> — click any highlighted phrase to see the translation inline.</p>
+    <p style="margin-top:10px; line-height:1.9;">
+      Every teenager faces the moment when they must <span class="tr" data-tr="сделать выбор, который определяет всю их жизнь">make a choice that will shape their whole life</span>. Choosing a profession is not just about money — it is about <span class="tr" data-tr="поиск равновесия между личными интересами и потребностями общества">finding a balance between personal interests and the needs of society</span>. Doctors save lives, teachers educate the next generation, engineers build the future. <span class="tr" data-tr="Каждая профессия вносит вклад в развитие страны">Every profession contributes to the development of the country</span>.
+    </p>
+    <p style="margin-top:10px; line-height:1.9;">
+      My dream job is to become <span class="tr" data-tr="инженером-программистом">a software engineer</span>. I have always been <span class="tr" data-tr="увлечён технологиями и тем, как они меняют мир">passionate about technology and the way it changes the world</span>. To achieve my goal, I need to <span class="tr" data-tr="получить хорошее образование и практический опыт">get a good education and gain practical experience</span>. First, I will <span class="tr" data-tr="сдать выпускные экзамены и поступить в университет">take my final exams and enter a university</span>, where I will study programming and mathematics.
+    </p>
+    <p style="margin-top:10px; line-height:1.9;">
+      Of course, <span class="tr" data-tr="путь к работе мечты нелёгкий">the path to a dream job is not easy</span>. Young people often <span class="tr" data-tr="сталкиваются с серьёзной конкуренцией">face tough competition</span> when they <span class="tr" data-tr="подавать заявление о первой работе">apply for their first job</span>. Employers want candidates with experience, but how can you get experience without a job? <span class="tr" data-tr="Решение — начать со стажировок и волонтёрства">The answer is to start with internships and volunteering</span>.
+    </p>
+    <p style="margin-top:10px; line-height:1.9;">
+      In conclusion, I believe that <span class="tr" data-tr="выбирать профессию следует сердцем, но проверять головой">a profession should be chosen with the heart but checked with the head</span>. If you love what you do, you will never <span class="tr" data-tr="считать работу тяжёлой обязанностью">treat work as a burden</span>. And if your job is useful to other people, you will <span class="tr" data-tr="чувствовать, что ваша жизнь имеет значение">feel that your life truly matters</span>.
+    </p>
+  </div>
+  <div class="card">
+    <p><b>Comprehension check — 5 questions:</b></p>
+    <div id="quiz"></div>
+    <div class="feedback" id="quizFb"></div>
+  </div>
+</div>
+
+<!-- GRAMMAR -->
+<div class="section" id="s3">
+  <h2>Grammar: Infinitive vs Gerund (7 min)</h2>
+  <div class="card">
+    <div class="hint">📌 <b>Remember:</b> <i>decide to do, want to do, hope to do, manage to do</i> BUT <i>enjoy doing, avoid doing, keep doing, be interested in doing, be good at doing.</i> After prepositions → <b>-ing</b>.</div>
+    <p>Complete the sentences. Type the correct form (to + verb or verb-ing):</p>
+    <div id="grammar" style="margin-top:14px; line-height:2.4;"></div>
+    <button class="btn" onclick="checkGrammar()">Check answers</button>
+    <div class="feedback" id="gramFb"></div>
+    <button class="teacher-btn" onclick="toggleNotes(this)">For teacher</button>
+    <div class="teacher-notes">Answers: 1) to apply 2) working 3) to make 4) earning 5) in choosing 6) to gain 7) facing 8) to become. Fast finishers: write 2 sentences about their own career plans using both patterns.</div>
+  </div>
+</div>
+
+<!-- SPEAKING -->
+<div class="section" id="s4">
+  <h2>Speaking: Pair Work (7 min)</h2>
+  <div class="card">
+    <p><b>Ask and answer with your partner:</b></p>
+    <div class="q">1. What qualities does a good software engineer / teacher / doctor need?</div>
+    <div class="q">2. Would you like to work abroad or in your home town? Why?</div>
+    <div class="q">3. Is it better to love your job or to earn a lot?</div>
+    <div class="q">4. Who influences your career choice most — you, your parents or society?</div>
+    <div class="q">5. What jobs will disappear in 20 years? What jobs will appear?</div>
+    <div class="q">6. Should students start working while still at school? Why (not)?</div>
+    <div class="hint">💡 Useful language:</div>
+    <table class="phrases">
+      <tr><td>Giving opinion</td><td><i>In my opinion… / I believe… / As far as I'm concerned…</i></td></tr>
+      <tr><td>Agreeing</td><td><i>I couldn't agree more. / That's a good point. / Exactly.</i></td></tr>
+      <tr><td>Disagreeing</td><td><i>I see your point, but… / I'm not sure about that. / On the other hand…</i></td></tr>
+    </table>
+    <button class="teacher-btn" onclick="toggleNotes(this)">For teacher</button>
+    <div class="teacher-notes">Pairs A/B. Monitor and note errors for delayed correction. Nominate 2 pairs to report: "My partner thinks that…"</div>
+  </div>
+</div>
+
+<!-- WRAP-UP -->
+<div class="section" id="s5">
+  <h2>Wrap-up (3 min)</h2>
+  <div class="card checklist">
+    <p><b>Tick what you learned today:</b></p>
+    <label><input type="checkbox"> New job vocabulary and collocations</label>
+    <label><input type="checkbox"> Infinitive vs gerund rules</label>
+    <label><input type="checkbox"> Phrases for expressing opinions</label>
+    <label><input type="checkbox"> A clearer idea of my own career path</label>
+  </div>
+  <div class="card hw">
+    <p><b>🏠 Homework:</b> Write a mini-essay <i>"My dream job and why"</i> — 80–100 words. Use at least: 2 collocations, 1 infinitive construction, 1 gerund.</p>
+  </div>
+  <div class="card" style="text-align:center;">
+    <button class="btn warn" onclick="resetAll()">🔄 Reset lesson (for the next class)</button>
+  </div>
+</div>
+
+<footer>Interactive lesson • Spotlight 10, Module 3 • Designed for classroom projection</footer>
+
+<script>
+let score = 0;
+function addScore(n){ score += n; document.getElementById('score').textContent = score; }
+
+function show(id, btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  stopTimer();
+}
+
+/* inline translations */
+document.querySelectorAll('.tr').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    if(el.dataset.open==='1'){ el.classList.remove('tr-open'); const t=el.nextElementSibling; if(t&&t.classList.contains('translation')) t.remove(); el.dataset.open='0'; }
+    else{ el.classList.add('tr-open'); const t=document.createElement('span'); t.className='translation'; t.textContent='→ '+el.dataset.tr; el.after(t); el.dataset.open='1'; }
+  });
+});
+
+/* matching */
+const pairs = [
+  ["salary","the money you get for your work"],
+  ["qualification","a diploma or certificate that proves your skills"],
+  ["challenging","difficult but interesting to do"],
+  ["rewarding","making you feel satisfied because it is useful"],
+  ["internship","a period of work experience for students"],
+  ["employee","a person who works for a company"],
+  ["skills","abilities you have learned to do well"],
+  ["career","the profession you follow through your life"]
+];
+let shuffled = pairs.map((p,i)=>[p[1],i]).sort(()=>Math.random()-0.5);
+let selWord = null;
+function initMatch(){
+  const g = document.getElementById('matchGrid'); g.innerHTML='';
+  pairs.forEach((p,i)=>{
+    const w=document.createElement('div'); w.className='match-item'; w.textContent=p[0]; w.dataset.k='w'+i;
+    w.onclick=()=>select(w); g.appendChild(w);
+  });
+  shuffled.forEach((d)=>{ const el=document.createElement('div'); el.className='match-item'; el.textContent=d[0]; el.dataset.k='d'+d[1]; el.onclick=()=>select(el); g.appendChild(el); });
+}
+function select(el){
+  if(el.classList.contains('done')) return;
+  if(el.dataset.k[0]==='w'){ document.querySelectorAll('.match-item').forEach(x=>{ if(x.dataset.k[0]==='w') x.classList.remove('sel'); }); el.classList.add('sel'); selWord=el; }
+  else{
+    if(!selWord) return;
+    if(selWord.dataset.k.slice(1)===el.dataset.k.slice(1)){
+      selWord.classList.remove('sel'); selWord.classList.add('done'); el.classList.add('done'); selWord=null; addScore(1);
+      document.getElementById('matchFb').textContent='✅ Correct! ('+countDone()+'/8)'; document.getElementById('matchFb').style.color='#27ae60';
+    } else {
+      el.classList.add('err'); setTimeout(()=>el.classList.remove('err'),350);
+      document.getElementById('matchFb').textContent='❌ Try again!'; document.getElementById('matchFb').style.color='#c0392b';
+    }
+  }
+}
+function countDone(){ return document.querySelectorAll('.match-item.done').length/2; }
+initMatch();
+
+/* quiz */
+const quizData = [
+  ["What is the author's dream job?","a doctor","a software engineer","a teacher",1],
+  ["What must the author do first to reach the goal?","take final exams and enter a university","start working overtime","find a well-paid job at once",0],
+  ["Why is it hard for young people to find a job?","employers want candidates with experience","young people are lazy","there are no vacancies",0],
+  ["What does the author suggest to get experience?","internships and volunteering","buying a diploma","waiting for luck",0],
+  ["What is the main idea of the text?","choose a profession with the heart but check it with the head","money matters more than interest","parents must decide for you",0]
+];
+quizData.forEach((q,i)=>{
+  const d=document.createElement('div'); d.className='quiz-q';
+  d.innerHTML='<p><b>'+(i+1)+'.</b> '+q[0]+'</p>';
+  q.slice(1,4).forEach((opt,j)=>{
+    const o=document.createElement('div'); o.className='opt'; o.textContent=opt;
+    o.onclick=()=>{
+      if(d.dataset.done) return;
+      d.dataset.done=1;
+      if(j===q[4]){ o.classList.add('correct'); addScore(2); }
+      else{ o.classList.add('wrong'); d.querySelectorAll('.opt')[q[4]].classList.add('correct'); }
+    };
+    d.appendChild(o);
+  });
+  document.getElementById('quiz').appendChild(d);
+});
+
+/* grammar */
+const gram=[
+ ["I have decided ","to apply"," for a summer internship."],
+ ["She is interested in ","working"," for an international company."],
+ ["We hope ","to make"," the right career choice."],
+ ["He enjoys ","earning"," his own money."],
+ ["Are you good at ","choosing"," gifts for people?"],
+ ["They want ","to gain"," experience before university."],
+ ["I can't imagine ","facing"," so much competition."],
+ ["She managed ","to become"," a doctor at 24."]
+];
+gram.forEach((g,i)=>{
+  const d=document.createElement('div');
+  d.innerHTML=(i+1)+'. '+g[0]+'<input class="gap" id="g'+i+'" autocomplete="off">'+g[2];
+  document.getElementById('grammar').appendChild(d);
+});
+function checkGrammar(){
+  let ok=0;
+  gram.forEach((g,i)=>{
+    const inp=document.getElementById('g'+i);
+    const v=inp.value.trim().toLowerCase().replace(/^to /,'');
+    const ans=g[1].replace(/^to /,'');
+    if(v===ans){ inp.classList.remove('bad'); inp.classList.add('good'); ok++; }
+    else { inp.classList.remove('good'); inp.classList.add('bad'); inp.value=''; inp.placeholder=g[1]; }
+  });
+  const fb=document.getElementById('gramFb');
+  fb.textContent='Score: '+ok+'/8 correct ✅'; fb.style.color = ok>=6?'#27ae60':'#c0392b';
+  if(ok>0) addScore(ok);
+}
+
+/* teacher notes */
+function toggleNotes(btn){ const n=btn.nextElementSibling; n.style.display = n.style.display==='block'?'none':'block'; }
+
+/* timer */
+let tId=null, tLeft=0;
+function fmt(s){ const m=Math.floor(s/60), r=s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0'); }
+function startTimer(sec){ stopTimer(); tLeft=sec; tick(); tId=setInterval(tick,1000); }
+function tick(){ document.getElementById('timer').textContent=fmt(tLeft); if(tLeft<=0){ stopTimer(); document.getElementById('timer').textContent='TIME!'; } tLeft--; }
+function stopTimer(){ if(tId) clearInterval(tId); tId=null; }
+
+/* reset */
+function resetAll(){
+  score=0; document.getElementById('score').textContent='0';
+  document.querySelectorAll('.match-item').forEach(x=>x.classList.remove('done','sel'));
+  document.getElementById('matchFb').textContent='';
+  document.querySelectorAll('.quiz-q').forEach(d=>{ delete d.dataset.done; d.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong')); });
+  document.querySelectorAll('.gap').forEach(g=>{ g.value=''; g.classList.remove('good','bad'); });
+  document.getElementById('gramFb').textContent='';
+  document.querySelectorAll('.translation').forEach(t=>t.remove());
+  document.querySelectorAll('.tr').forEach(t=>{ t.classList.remove('tr-open'); t.dataset.open='0'; });
+  document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+}
+</script>
+</body>
+</html>
