@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Выбор профессии. Зов сердца — Spotlight 11, Module 3</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f2f8f5;color:#1f2d28;padding-bottom:40px}
+header{background:linear-gradient(135deg,#004d40,#1b8a5a);color:#fff;padding:26px 16px;text-align:center}
+header h1{font-size:28px;letter-spacing:2px}
+header p{margin-top:6px;font-size:15px;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;background:#fff;position:sticky;top:0;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:5}
+nav button{border:none;border-radius:20px;padding:8px 12px;background:#e3f2ec;color:#004d40;font-size:13px;cursor:pointer}
+nav button.act{background:#004d40;color:#fff}
+main{max-width:800px;margin:0 auto;padding:16px}
+section{display:none}
+section.act{display:block}
+h2{color:#004d40;margin:16px 0 8px;font-size:22px}
+.card{background:#fff;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 2px 8px rgba(0,77,64,.1)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+th,td{border:1px solid #cde8dc;padding:6px 8px;text-align:left}
+th{background:#e3f2ec;color:#004d40}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.wcard{background:#fff;border-radius:12px;padding:12px;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,77,64,.1)}
+.wcard:active{background:#e3f2ec}
+.wcard .en{font-size:15px;font-weight:600;color:#004d40}
+.wcard .ru{font-size:13px;color:#666;margin-top:4px}
+.wcard .tip{font-size:11px;color:#93b8a8;margin-top:6px}
+.ph{background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0;cursor:pointer;box-shadow:0 2px 8px rgba(0,77,64,.1)}
+.ph .en{font-size:16px;font-weight:600;color:#00332b}
+.ph .ru{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed #b2d8c6;color:#555;font-size:15px}
+.ph.open .ru{display:block}
+.ph .hint{font-size:11px;color:#93b8a8;margin-top:4px}
+.line{margin:10px 0}
+.who{font-size:11px;color:#999}
+.bub{display:inline-block;background:#e3f2ec;border-radius:12px 12px 12px 3px;padding:8px 12px;max-width:90%;font-size:15px}
+.bub.me{background:#e8eaf6;border-radius:12px 12px 3px 12px}
+.tbtn{border:none;background:#1b8a5a;color:#fff;font-size:11px;border-radius:10px;padding:3px 10px;cursor:pointer;margin:4px 6px 0 0}
+.tr{display:none;color:#666;font-size:14px;margin:4px 0 0 8px}
+.tr.show{display:block}
+.opt{display:block;width:100%;text-align:left;border:1px solid #b2d8c6;background:#fff;border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.opt.ok{background:#c8e6c9;border-color:#4caf50}
+.opt.bad{background:#ffcdd2;border-color:#e53935}
+.res{background:#fff8e1;border-radius:12px;padding:14px;font-size:16px;text-align:center}
+.spk{border:none;background:#00796b;color:#fff;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;margin:4px 4px 0 0}
+.chip{display:inline-block;border:1px solid #b2d8c6;border-radius:16px;padding:5px 10px;margin:3px;cursor:pointer;font-size:13px;background:#fff}
+.chip.sel{background:#004d40;color:#fff}
+.story{background:#e3f2ec;border-radius:12px;padding:12px;margin-top:8px;font-size:15px}
+.note{font-size:12px;color:#5d7a6e;margin-top:6px}
+ul,ol{margin:6px 0 6px 20px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>FOLLOW YOUR HEART 💼</h1>
+<p>Выбор профессии. Зов сердца<br>Spotlight 11 • Module 3 «Responsibility», Unit 3e Writing Skills (с. 54–56) • 40 минут • уровень B2</p>
+</header>
+<nav>
+<button class="act" onclick="go('about',this)">🎯 О уроке</button>
+<button onclick="go('rep',this)">🔁 Повторение</button>
+<button onclick="go('words',this)">📖 Слова</button>
+<button onclick="go('phr',this)">💬 Фразы</button>
+<button onclick="go('dial',this)">🗣 Диалоги</button>
+<button onclick="go('read',this)">📚 Чтение</button>
+<button onclick="go('prof',this)">🎲 Угадай профессию</button>
+<button onclick="go('gram',this)">🧩 Gerund/Infinitive</button>
+<button onclick="go('rhyme',this)">🎵 Рифмовка</button>
+<button onclick="go('speak',this)">🎤 Говори сам</button>
+<button onclick="go('test',this)">✏️ Тест</button>
+<button onclick="go('hw',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section id="about" class="act">
+<h2>🎯 План урока — 40 минут</h2>
+<div class="card">
+<p><b>УМК:</b> Spotlight 11 «Английский в фокусе» (О. В. Афанасьева, Д. Дули, И. В. Михеева, В. Эванс), Module 3 «Responsibility», юнит 3e Writing Skills (с. 54–56): эссе-мнение о работе подростков (200–250 слов). Грамматика модуля — герундий и инфинитив (с. 50).</p>
+<p><b>Тема по ФРП:</b> Выбор профессии. Зов сердца.</p>
+<p><b>Тип урока:</b> урок развития говорения и письма с элементами введения лексики (уровень B2, опора на формат ЕГЭ).</p>
+</div>
+<div class="card"><table>
+<tr><th>Этап</th><th>Время</th><th>Что делаем</th></tr>
+<tr><td>1. Разминка</td><td>3 мин</td><td>What do you want to do after school? Head or heart?</td></tr>
+<tr><td>2. Повторение</td><td>4 мин</td><td>Базовая лексика работы; глаголы + gerund/infinitive</td></tr>
+<tr><td>3. Слова</td><td>8 мин</td><td>18 карточек: карьера и призвание</td></tr>
+<tr><td>4. Фразы</td><td>6 мин</td><td>Follow your heart… It's a rewarding career</td></tr>
+<tr><td>5. Диалоги</td><td>6 мин</td><td>«Родители или сердце?»; собеседование Димы</td></tr>
+<tr><td>6. Чтение</td><td>6 мин</td><td>«Follow Your Heart» + 5 вопросов</td></tr>
+<tr><td>7. Игры</td><td>4 мин</td><td>«Угадай профессию» + «Gerund or Infinitive»</td></tr>
+<tr><td>8. Говорение</td><td>2 мин</td><td>Монолог «My career choice»</td></tr>
+<tr><td>9. Итог</td><td>1 мин</td><td>Тест, объяснение домашнего эссе</td></tr>
+</table></div>
+<div class="card"><b>Планируемые результаты (ФГОС СОО):</b><ul>
+<li><b>Предметные:</b> употребляет лексику карьеры; строит эссе-мнение по плану; различает глаголы + gerund/infinitive; аргументирует выбор профессии</li>
+<li><b>Метапредметные:</b> анализирует и аргументирует, планирует карьерное решение, проверяет себя в тесте</li>
+<li><b>Личностные:</b> осознанный выбор профессии, баланс призвания и практичности, уважение к труду</li></ul>
+<p><b>Межпредметные связи:</b> обществознание (рынок труда), психология (самоопределение), русский язык (структура эссе).</p></div>
+</section>
+
+<section id="rep">
+<h2>🔁 Повторение: работа и мостик в грамматику</h2>
+<div class="card"><b>Базовая лексика работы</b> — нажми и послушай:
+<p><span class="chip" onclick="say('job')">job</span>
+<span class="chip" onclick="say('work')">work</span>
+<span class="chip" onclick="say('earn money')">earn money</span>
+<span class="chip" onclick="say('full-time job')">full-time job</span>
+<span class="chip" onclick="say('part-time job')">part-time job</span>
+<span class="chip" onclick="say('study hard')">study hard</span>
+<span class="chip" onclick="say('university')">university</span>
+<span class="chip" onclick="say('skills')">skills</span></p>
+</div>
+<div class="card"><b>Мостик: глаголы + герундий и инфинитив (с. 50)</b><table>
+<tr><th>V + gerund (-ing)</th><th>V + infinitive (to do)</th></tr>
+<tr><td>enjoy doing</td><td>decide to do</td></tr>
+<tr><td>avoid doing</td><td>hope to do</td></tr>
+<tr><td>keep doing</td><td>want to do</td></tr>
+<tr><td>suggest doing</td><td>promise to do</td></tr>
+<tr><td>mind doing</td><td>refuse to do</td></tr>
+<tr><td>consider doing</td><td>manage to do</td></tr>
+</table><p class="note">Ловушки: like / love / start / continue — можно и то, и другое. Тренируем в игре «Gerund/Infinitive».</p></div>
+</section>
+
+<section id="words">
+<h2>📖 Слова урока — нажми, слово прозвучит дважды</h2>
+<div id="wordBox" class="words"></div>
+<p class="note">Если звука нет — нажми на карточку ещё раз.</p>
+</section>
+
+<section id="phr">
+<h2>💬 Фразы урока — нажми на фразу: перевод откроется под ней</h2>
+<div class="ph" onclick="tg(this)"><div class="en">Choose a job you love, and you will never work a day in your life.</div><div class="ru">Выбери работу, которую любишь, — и тебе не придётся работать ни одного дня в жизни. (приписывается Конфуцию)</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Follow your heart — it knows the way.</div><div class="ru">Следуй зову сердца — оно знает путь.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">A career is more than a salary — it's a calling.</div><div class="ru">Карьера — это больше, чем зарплата, это призвание.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">I want to apply for a job in my field.</div><div class="ru">Я хочу подать заявку на работу по специальности.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Teaching is a demanding but rewarding job.</div><div class="ru">Учительство — трудная, но благодарная работа.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">I've always dreamt of becoming a doctor.</div><div class="ru">Я всегда мечтал(а) стать врачом.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It's not easy to make a living as an artist.</div><div class="ru">Непросто зарабатывать на жизнь художнику.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Work experience counts more than grades in some fields.</div><div class="ru">В некоторых сферах опыт работы значит больше, чем оценки.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Don't give up on your dreams — pursue them!</div><div class="ru">Не отказывайся от мечты — добивайся её!</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">In my opinion, passion and practicality should go hand in hand.</div><div class="ru">По моему мнению, страсть и практичность должны идти рука об руку.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="card"><b>Шпаргалка: эссе-мнение формата ЕГЭ (по 3e, 200–250 слов)</b><ol>
+<li><b>Introduction:</b> Nowadays… / It is often said that… (тема, без своего мнения)</li>
+<li><b>My opinion + 2–3 аргумента:</b> In my opinion… Firstly, … Secondly, … For example, …</li>
+<li><b>Opposing view:</b> However, some people believe that… because…</li>
+<li><b>Counter-argument:</b> Nevertheless, I disagree with this view, because…</li>
+<li><b>Conclusion:</b> In conclusion, I would argue that…</li></ol>
+<p class="note">Связки: firstly, secondly, moreover, for instance, however, nevertheless, on the other hand, in conclusion.</p></div>
+</section>
+
+<section id="dial">
+<h2>🗣 Диалоги урока</h2>
+<div class="card"><b>Диалог 1. Родители или сердце?</b>
+<div class="line"><div class="who">Anna</div><span class="bub">Liza, have you decided what to study at university?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Лиза, ты решила, на что поступать?</div></div>
+<div class="line"><div class="who">Liza</div><span class="bub me">My parents want me to become a doctor, like my mum. But honestly, I dream of becoming a graphic designer.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Родители хотят, чтобы я стала врачом, как мама. Но честно, я мечтаю о дизайне.</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">Medicine is a safe choice — a good salary, a stable career.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Медицина — надёжный выбор: хорошая зарплата, стабильная карьера.</div></div>
+<div class="line"><div class="who">Liza</div><span class="bub me">True. But a career is more than a salary. If I follow my heart, I'll enjoy my work every day.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Верно. Но карьера — это больше, чем зарплата. Если пойду за зовом сердца, буду радоваться работе каждый день.</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">Have you talked to your parents about it?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Ты разговаривала с родителями об этом?</div></div>
+<div class="line"><div class="who">Liza</div><span class="bub me">Not yet. I'm going to make a presentation about graphic design and show them real job openings. Maybe they will see my point.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Ещё нет. Я хочу сделать презентацию о дизайне и показать им реальные вакансии. Может, они меня поймут.</div></div>
+<div class="line"><div class="who">Anna</div><span class="bub">Good plan! Passion and practicality can go hand in hand.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Отличный план! Страсть и практичность могут идти рука об руку.</div></div>
+</div>
+<div class="card"><b>Диалог 2. Дима на собеседовании</b>
+<div class="line"><div class="who">Manager</div><span class="bub">Good morning. Have a seat. Why do you want this part-time job?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Доброе утро. Присаживайтесь. Почему вы хотите эту подработку?</div></div>
+<div class="line"><div class="who">Dima</div><span class="bub me">I enjoy working with people, and I hope to gain work experience before university.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Мне нравится работать с людьми, и я надеюсь получить опыт до университета.</div></div>
+<div class="line"><div class="who">Manager</div><span class="bub">Have you got a CV?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">У вас есть резюме?</div></div>
+<div class="line"><div class="who">Dima</div><span class="bub me">Yes, here it is. I keep busy — I study hard and do sports, but I can work at weekends.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Да, вот оно. Я и учусь, и занимаюсь спортом, но могу работать по выходным.</div></div>
+<div class="line"><div class="who">Manager</div><span class="bub">Our shifts start at 9 am on Saturdays. Are you punctual?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Смены начинаются в 9 утра по субботам. Вы пунктуальны?</div></div>
+<div class="line"><div class="who">Dima</div><span class="bub me">Absolutely. I never miss deadlines at school.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Безусловно. Я никогда не нарушаю сроки в школе.</div></div>
+<div class="line"><div class="who">Manager</div><span class="bub">Very good. We'll call you within a week.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Очень хорошо. Мы позвоним вам в течение недели.</div></div>
+<div class="line"><div class="who">Dima</div><span class="bub me">Thank you! Have a nice day.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Спасибо! Хорошего дня.</div></div>
+</div>
+</section>
+
+<section id="read">
+<h2>📚 Чтение: «Follow Your Heart»</h2>
+<div class="card">
+<p><b>Follow Your Heart</b></p>
+<p>Mark is seventeen, and everyone expects him to become a lawyer, like his father. Law is a well-paid profession, and the family tradition is strong. But Mark has always been fascinated by the sea. Last summer he took a diving course and saw coral reefs, turtles and thousands of colourful fish. Since then, he has dreamt of becoming a marine biologist.</p>
+<p>His friends say that marine biology is not practical: it is hard to make a living, and there are few job openings. His father says that Mark should think about his future family. But Mark believes that a career is more than a salary. «If you love your job, you never really work,» he says. He has already started studying biology harder, and his teacher says he has real talent.</p>
+<p>Mark is going to apply for a marine biology programme, but he has a backup plan: if it doesn't work out, he will get a degree in environmental science. «Follow your heart, but keep your eyes open,» is his motto. After all, passion and practicality should go hand in hand.</p>
+<button class="tbtn" onclick="rev(this)">перевод текста</button>
+<div class="tr">Марку семнадцать, и все ждут, что он станет юристом, как отец. Юриспруденция — хорошо оплачиваемая профессия, и семейная традиция сильна. Но Марка всегда манило море. Прошлым летом он прошёл курс дайвинга и увидел коралловые рифы, черепах и тысячи разноцветных рыб. С тех пор он мечтает стать морским биологом. Друзья говорят, что морская биология непрактична: трудно заработать на жизнь, и вакансий мало. Отец говорит, что Марку нужно думать о будущей семье. Но Марк верит, что карьера — это больше, чем зарплата. «Если любишь свою работу, ты по-настоящему и не работаешь», — говорит он. Он уже начал усерднее заниматься биологией, и учитель говорит, что у него настоящий талант. Марк собирается подать заявку на программу морской биологии, но у него есть запасной план: если не выйдет, получит диплом по экологической науке. «Следуй за сердцем, но держи глаза открытыми», — его девиз. В конце концов, страсть и практичность должны идти рука об руку.</div>
+</div>
+<div class="card"><b>Вопросы — нажми «Ответ» и проверь себя</b>
+<div class="line">1. What profession does Mark's family expect him to choose?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">Law — he is expected to become a lawyer, like his father. — Юриспруденцию, как отец.</div></div>
+<div class="line">2. What changed Mark's mind last summer?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">A diving course — he saw coral reefs and sea animals. — Курс дайвинга: коралловые рифы и морские животные.</div></div>
+<div class="line">3. Why do his friends think marine biology is not practical?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">It is hard to make a living, and there are few job openings. — Трудно заработать, вакансий мало.</div></div>
+<div class="line">4. What is Mark's backup plan?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">A degree in environmental science. — Диплом по экологической науке.</div></div>
+<div class="line">5. What is Mark's motto?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">«Follow your heart, but keep your eyes open.» — «Следуй за сердцем, но держи глаза открытыми».</div></div>
+</div>
+</section>
+
+<section id="prof">
+<h2>🎲 Игра «Угадай профессию»</h2>
+<div id="profBox"></div>
+<p class="note">Читай описание — выбери профессию. Всего 8 раундов!</p>
+</section>
+
+<section id="gram">
+<h2>🧩 Игра «Gerund или Infinitive»</h2>
+<div id="gramBox"></div>
+</section>
+
+<section id="rhyme">
+<h2>🎵 Рифмовка</h2>
+<div class="card">
+<p style="font-size:18px;line-height:1.7"><b>Follow your heart, do what you love,<br>The stars are shining up above!<br>A job you choose with all your soul<br>Will make your future bright and whole!</b></p>
+<button class="spk" onclick="say('Follow your heart, do what you love, The stars are shining up above! A job you choose with all your soul Will make your future bright and whole!')">🔊 Послушать</button>
+<button class="tbtn" onclick="rev(this)">перевод</button>
+<div class="tr">Следуй за сердцем, делай, что любишь,<br>Звёзды сияют над тобой!<br>Дело, что выбрал всей душой,<br>Сделает будущее светлей и цельней!</div>
+<p class="note">Скороговорка: <span class="chip" onclick="say('Surely the sailor earns a salary for every sea he sails!')">Surely the sailor earns a salary for every sea he sails!</span></p>
+</div>
+</section>
+
+<section id="speak">
+<h2>🎤 Говори сам: My career choice</h2>
+<div id="speakBox"></div>
+<div class="card">
+<div id="story" class="story">Выбери по одной фразе в каждом ряду — монолог соберётся здесь.</div>
+<button class="spk" onclick="speakStory()">🔊 Прослушать монолог</button>
+</div>
+<p class="note">Этот монолог — заготовка для устной части экзамена и домашнего эссе!</p>
+</section>
+
+<section id="test">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div id="testBox"></div>
+</section>
+
+<section id="hw">
+<h2>🏠 Домашнее задание</h2>
+<div class="card"><b>Основное:</b> эссе-мнение (200–250 слов) по плану юнита 3e:<br><b>«Follow your heart or your head when choosing a career?»</b><ol>
+<li>Introduction: тема, без своего мнения</li>
+<li>My opinion + 2 аргумента (In my opinion… Firstly… Secondly…)</li>
+<li>Opposing view (However, some people believe…)</li>
+<li>Counter-argument (Nevertheless, I disagree…)</li>
+<li>Conclusion (In conclusion…)</li></ol>
+Требования: минимум 5 слов урока (calling, rewarding, make a living, apply for a job, pursue…), минимум 2 предложения с gerund или infinitive.</div>
+<div class="card"><b>Звёздочка (по желанию):</b> спросить у родителей, как они выбирали профессию — сердце или расчёт, — и записать 2 предложения об их выборе.</div>
+<div class="card"><b>Критерии оценивания — 6 баллов:</b><ul>
+<li>структура эссе по плану 3e — 2 балла</li>
+<li>лексика урока (5 слов) — 1 балл</li>
+<li>герундий/инфинитив без ошибок — 1 балл</li>
+<li>объём 200–250 слов — 1 балл</li>
+<li>старание и оформление — 1 балл</li></ul>
+<p>Шкала: 6 — «5»; 5 — «4»; 4 — «3».</p>
+<p class="note">Онлайн — эссе текстом в чат; очно — в тетради. Отметки — по положению школы.</p></div>
+</section>
+
+</main>
+<script>
+function go(id,btn){document.querySelectorAll('main>section').forEach(function(s){s.classList.remove('act')});document.getElementById(id).classList.add('act');document.querySelectorAll('nav button').forEach(function(b){b.classList.remove('act')});btn.classList.add('act');window.scrollTo(0,0);}
+function say(t,n){n=n||2;try{speechSynthesis.cancel();for(var i=0;i<n;i++){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u);}}catch(e){}}
+function tg(el){el.classList.toggle('open');}
+function rev(btn){btn.nextElementSibling.classList.toggle('show');}
+var words=[["career","карьера"],["calling","призвание"],["apply for a job","подать заявку на работу"],["CV (resume)","резюме"],["job interview","собеседование"],["employer","работодатель"],["employee","работник"],["salary","зарплата"],["promotion","повышение"],["demanding","трудный, требующий усилий"],["rewarding","благодарный, приносящий радость"],["fulfilling","приносящий удовлетворение"],["make a living","зарабатывать на жизнь"],["pursue a dream","идти к мечте"],["give up","сдаваться, отказываться"],["job opening","вакансия"],["work experience","опыт работы"],["well-paid","хорошо оплачиваемый"]];
+var wb=document.getElementById('wordBox');
+words.forEach(function(w){var d=document.createElement('div');d.className='wcard';d.innerHTML='<div class="en">'+w[0]+'</div><div class="ru">'+w[1]+'</div><div class="tip">нажми — послушай</div>';d.onclick=function(){say(w[0],2)};wb.appendChild(d);});
+function quiz(id,data,good,ok){var el=document.getElementById(id),i=0,sc=0;
+function q(){if(i>=data.length){var m=sc>=9?'🥇 Золотая медаль!':(sc>=7?'👏 Отлично!':'💪 Потренируйся ещё!');el.innerHTML='<div class="res">Ваш результат: '+sc+' из '+data.length+'. '+m+'</div>';return;}
+var d=data[i],h='<div class="card"><b>'+(i+1)+'. '+d[0]+'</b><div class="opts">';
+for(var j=0;j<d[1].length;j++)h+='<button class="opt" onclick="'+id+'Pick(this,'+j+')">'+d[1][j]+'</button>';
+el.innerHTML=h+'</div></div>';}
+window[id+'Pick']=function(btn,j){var d=data[i];if(j===d[2]){sc++;btn.className='opt ok';}else{btn.className='opt bad';}i++;setTimeout(q,600);};
+q();}
+quiz('gramBox',[["I enjoy ___ with people.",["working","to work"],0],["We decided ___ a medical programme.",["joining","to join"],1],["He hopes ___ a marine biologist.",["to become","becoming"],0],["Avoid ___ decisions in a hurry.",["to make","making"],1],["She promised ___ her best at the interview.",["to do","doing"],0],["I don't mind ___ extra shifts.",["to work","working"],1],["They refused ___ my CV without experience.",["to accept","accepting"],0],["He keeps ___ about his dream job.",["to dream","dreaming"],1]]);
+quiz('testBox',[["«Призвание» по-английски:",["a calling","a salary","a shift"],0],["Подать заявку на работу:",["apply for a job","ask for a CV","follow a job"],0],["Teaching is demanding but ___ — it gives joy.",["rewarding","boring","cheap"],0],["Зарабатывать на жизнь:",["to make a living","to make an interview","to take a calling"],0],["I enjoy ___ biology.",["studying","to study"],0],["She decided ___ for a marine biology programme.",["to apply","applying"],0],["Работодатель — это:",["an employer","an employee","a calling"],0],["Не сдавайся! — Don't ___ on your dreams!",["give up","give in for","give over"],0],["I hope ___ work experience this summer.",["to gain","gaining"],0],["Повышение по службе:",["a promotion","a position","an opening"],0]]);
+var PROFS=["a doctor","a firefighter","a journalist","a graphic designer","a marine biologist","a lawyer","a programmer","a teacher"];
+var pd=[["Тушит пожары и спасает людей из огня.","a firefighter"],["Пишет статьи и берёт интервью.","a journalist"],["Создаёт логотипы и оформление сайтов.","a graphic designer"],["Изучает коралловые рифы и морских животных.","a marine biologist"],["Защищает клиентов в суде.","a lawyer"],["Пишет код и создаёт приложения.","a programmer"],["Лечит пациентов и дежурит по ночам.","a doctor"],["Учит детей и проверяет тетради.","a teacher"]];
+var pi=0,ps=0;
+function profQ(){var el=document.getElementById('profBox');
+if(pi>=pd.length){el.innerHTML='<div class="res">Игра пройдена! Результат: '+ps+' из '+pd.length+'. '+(ps>=7?'🥇 Отличный профориентатор!':'💪 Сыграй ещё раз!')+'</div>';return;}
+var h='<div class="card"><b>Раунд '+(pi+1)+' из '+pd.length+'</b><p style="margin:6px 0">'+pd[pi][0]+'</p><div class="opts">';
+for(var j=0;j<PROFS.length;j++)h+='<button class="opt" onclick="profPick(this,'+j+')">'+PROFS[j]+'</button>';
+el.innerHTML=h+'</div></div>';}
+function profPick(btn,j){if(PROFS[j]===pd[pi][1]){ps++;btn.className='opt ok';}else{btn.className='opt bad';}pi++;setTimeout(profQ,600);}
+profQ();
+var SB=[["After school I want to become a…","I dream of becoming a…","My parents want me to become a…"],["a doctor","a programmer","a teacher","a graphic designer"],["This job is rewarding because I can help people.","This job is well-paid and creative.","This job is demanding but fulfilling."],["I have already started studying harder.","I keep learning new skills every day.","I enjoy working with people."],["In my opinion, passion and practicality should go hand in hand.","Follow your heart — but keep your eyes open!","A career is more than a salary — it's a calling."]];
+var SBsel=[-1,-1,-1,-1,-1];
+function buildSpeak(){var el=document.getElementById('speakBox'),h='';
+for(var k=0;k<SB.length;k++){h+='<div class="slot"><b>'+(k+1)+'.</b><br>';for(var j=0;j<SB[k].length;j++){var sel=SBsel[k]===j?' sel':'';h+='<span class="chip'+sel+'" onclick="sbPick('+k+','+j+')">'+SB[k][j]+'</span>';}h+='</div>';}
+el.innerHTML=h;}
+function sbPick(k,j){SBsel[k]=j;buildSpeak();showStory();}
+function showStory(){var ok=SBsel.every(function(v){return v>-1});var st=document.getElementById('story');
+if(!ok){st.textContent='Выбери по одной фразе в каждом ряду — монолог соберётся здесь.';return;}
+st.textContent=SBsel.map(function(v,k){return SB[k][v]}).join(' ');}
+function speakStory(){var ok=SBsel.every(function(v){return v>-1});if(!ok){alert('Сначала выбери все 5 фраз!');return;}say(SBsel.map(function(v,k){return SB[k][v]}).join(' '),1);}
+buildSpeak();
+</script>
+</body>
+</html>
