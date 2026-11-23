@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Моё свободное время: кино — Spotlight 5, Unit 9c</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f1fb;color:#2d2a32;padding-bottom:40px}
+header{background:linear-gradient(135deg,#6a1b9a,#c2185b);color:#fff;padding:26px 16px;text-align:center}
+header h1{font-size:28px;letter-spacing:3px}
+header p{margin-top:6px;font-size:15px;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;background:#fff;position:sticky;top:0;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:5}
+nav button{border:none;border-radius:20px;padding:8px 12px;background:#f0e7f8;color:#6a1b9a;font-size:13px;cursor:pointer}
+nav button.act{background:#6a1b9a;color:#fff}
+main{max-width:780px;margin:0 auto;padding:16px}
+section{display:none}
+section.act{display:block}
+h2{color:#6a1b9a;margin:16px 0 8px;font-size:22px}
+.card{background:#fff;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 2px 8px rgba(106,27,154,.1)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+th,td{border:1px solid #e1d5ee;padding:6px 8px;text-align:left}
+th{background:#f0e7f8;color:#4a148c}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.wcard{background:#fff;border-radius:12px;padding:12px;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(106,27,154,.1)}
+.wcard:active{background:#f3e5f5}
+.wcard .en{font-size:16px;font-weight:600;color:#6a1b9a}
+.wcard .ru{font-size:13px;color:#777;margin-top:4px}
+.wcard .tip{font-size:11px;color:#b9a8d0;margin-top:6px}
+.ph{background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0;cursor:pointer;box-shadow:0 2px 8px rgba(106,27,154,.1)}
+.ph .en{font-size:16px;font-weight:600;color:#4a148c}
+.ph .ru{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed #d1c4e9;color:#555;font-size:15px}
+.ph.open .ru{display:block}
+.ph .hint{font-size:11px;color:#b9a8d0;margin-top:4px}
+.line{margin:10px 0}
+.who{font-size:11px;color:#999}
+.bub{display:inline-block;background:#f3e5f5;border-radius:12px 12px 12px 3px;padding:8px 12px;max-width:90%;font-size:15px}
+.bub.me{background:#e8eaf6;border-radius:12px 12px 3px 12px}
+.tbtn{border:none;background:#8e24aa;color:#fff;font-size:11px;border-radius:10px;padding:3px 10px;cursor:pointer;margin:4px 6px 0 0}
+.tr{display:none;color:#666;font-size:14px;margin:4px 0 0 8px}
+.tr.show{display:block}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d1c4e9;background:#fff;border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.opt.ok{background:#c8e6c9;border-color:#4caf50}
+.opt.bad{background:#ffcdd2;border-color:#e53935}
+.res{background:#fff8e1;border-radius:12px;padding:14px;font-size:16px;text-align:center}
+.spk{border:none;background:#c2185b;color:#fff;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;margin:4px 4px 0 0}
+.chip{display:inline-block;border:1px solid #d1c4e9;border-radius:16px;padding:5px 10px;margin:3px;cursor:pointer;font-size:13px;background:#fff}
+.chip.sel{background:#6a1b9a;color:#fff}
+.story{background:#f3e5f5;border-radius:12px;padding:12px;margin-top:8px;font-size:15px}
+.note{font-size:12px;color:#8d6e63;margin-top:6px}
+ul{margin:6px 0 6px 20px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>DON'T MISS IT! 🎬</h1>
+<p>Моё свободное время: кино<br>Spotlight 5 • Module 9 «Modern living», Unit 9c (с. 110) + Unit 6c «Weekends» (с. 80) • 40 минут</p>
+</header>
+<nav>
+<button class="act" onclick="go('about',this)">🎯 О уроке</button>
+<button onclick="go('rep',this)">🔁 Повторение</button>
+<button onclick="go('words',this)">📖 Слова</button>
+<button onclick="go('phr',this)">💬 Фразы</button>
+<button onclick="go('dial',this)">🗣 Диалоги</button>
+<button onclick="go('read',this)">📚 Чтение</button>
+<button onclick="go('genre',this)">🎲 Угадай жанр</button>
+<button onclick="go('past',this)">🧩 Прошедшее время</button>
+<button onclick="go('rhyme',this)">🎵 Рифмовка</button>
+<button onclick="go('speak',this)">🎤 Говори сам</button>
+<button onclick="go('test',this)">✏️ Тест</button>
+<button onclick="go('hw',this)">🏠 Домашка</button>
+</nav>
+<main>
+
+<section id="about" class="act">
+<h2>🎯 План урока — 40 минут</h2>
+<div class="card">
+<p><b>УМК:</b> Spotlight 5 «Английский в фокусе» (Быкова, Дули, Подоляко, Эванс), Module 9 «Modern living», Unit 9c «Don't miss it!» (с. 110) + Unit 6c «Weekends» (с. 80).</p>
+<p><b>Тема по ФРП:</b> Моё свободное время (кино).</p>
+<p><b>Тип урока:</b> введение и первичное закрепление лексики по теме «Кино» с элементами монологической речи (обзор фильма).</p>
+</div>
+<div class="card"><table>
+<tr><th>Этап</th><th>Время</th><th>Что делаем</th></tr>
+<tr><td>1. Разминка</td><td>3 мин</td><td>What do you do at the weekend? Do you like films?</td></tr>
+<tr><td>2. Повторение</td><td>4 мин</td><td>Занятия выходных, мостик was/were → Past Simple</td></tr>
+<tr><td>3. Слова</td><td>8 мин</td><td>18 карточек: жанры и кино</td></tr>
+<tr><td>4. Фразы</td><td>6 мин</td><td>The last film I saw was… It's a must-see!</td></tr>
+<tr><td>5. Диалоги</td><td>5 мин</td><td>Том и Кейт идут в кино; обзор фильма</td></tr>
+<tr><td>6. Чтение</td><td>6 мин</td><td>«Fly Away Home» + 5 вопросов</td></tr>
+<tr><td>7. Игры</td><td>4 мин</td><td>«Угадай жанр» + «Прошедшее время»</td></tr>
+<tr><td>8. Говорение</td><td>3 мин</td><td>Обзор любимого фильма</td></tr>
+<tr><td>9. Итог</td><td>1 мин</td><td>Тест и домашнее задание</td></tr>
+</table></div>
+<div class="card"><b>Планируемые результаты (ФГОС НОО):</b><ul>
+<li><b>Предметные:</b> называет жанры фильмов по-английски; рассказывает о любимом фильме по плану; употребляет Past Simple (неправильные глаголы).</li>
+<li><b>Метапредметные:</b> планирует своё свободное время; сравнивает и классифицирует; проверяет себя в играх и тесте.</li>
+<li><b>Личностные:</b> культура досуга, интерес к кино, умение советовать и делиться мнением.</li></ul></div>
+</section>
+
+<section id="rep">
+<h2>🔁 Повторение: выходные и мостик в прошлое</h2>
+<div class="card"><b>Занятия выходных (Unit 6c «Weekends»)</b> — нажми и послушай:
+<p><span class="chip" onclick="say('watch TV')">watch TV</span>
+<span class="chip" onclick="say('play football')">play football</span>
+<span class="chip" onclick="say('read books')">read books</span>
+<span class="chip" onclick="say('go shopping')">go shopping</span>
+<span class="chip" onclick="say('visit friends')">visit friends</span>
+<span class="chip" onclick="say('listen to music')">listen to music</span>
+<span class="chip" onclick="say('play computer games')">play computer games</span></p>
+<p class="note">— What do you do at the weekend? — I play football and watch TV.</p>
+</div>
+<div class="card"><b>Мостик: was/were → Past Simple (Unit 9b)</b><table>
+<tr><th>Настоящее/прошедшее was-were</th><th>Past Simple</th></tr>
+<tr><td>go — иду</td><td><b>went</b> [went] — ходил</td></tr>
+<tr><td>see — вижу</td><td><b>saw</b> [sɔː] — видел</td></tr>
+<tr><td>have — имею</td><td><b>had</b> [hæd] — имел</td></tr>
+<tr><td>take — беру</td><td><b>took</b> [tʊk] — взял</td></tr>
+<tr><td>read [riːd] — читаю</td><td><b>read</b> [red] — прочитал (пишется так же!)</td></tr>
+<tr><td>be — am/is/are</td><td><b>was / were</b></td></tr>
+</table><p>Last Saturday I <b>was</b> at the cinema. I <b>went</b> there with my friend. We <b>saw</b> a great film!</p></div>
+<div class="card"><b>Приглашение:</b> <span class="chip" onclick="say(\"Let's go to the cinema!\")">Let's go to the cinema!</span> — Пойдём в кино!</div>
+</section>
+
+<section id="words">
+<h2>📖 Слова урока — нажми, слово прозвучит дважды</h2>
+<div id="wordBox" class="words"></div>
+<p class="note">Если звука нет — нажми на карточку ещё раз. Проверь, не выключен ли звук на устройстве.</p>
+</section>
+
+<section id="phr">
+<h2>💬 Фразы урока (Unit 9c) — нажми на фразу: перевод откроется под ней</h2>
+<div class="ph" onclick="tg(this)"><div class="en">The last film I saw was «Home Alone».</div><div class="ru">Последний фильм, который я смотрел, — «Один дома».</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Who stars in the film?</div><div class="ru">Кто играет главную роль в фильме?</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It's a must-see!</div><div class="ru">Его обязательно нужно посмотреть!</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">What's on at the cinema?</div><div class="ru">Что идёт в кинотеатре?</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Let's go to the cinema!</div><div class="ru">Пойдём в кино!</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">The acting is great.</div><div class="ru">Актёрская игра прекрасна.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It made me laugh.</div><div class="ru">Он заставил меня смеяться.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It's based on a true story.</div><div class="ru">Он основан на реальной истории.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">It's about a journey to Australia.</div><div class="ru">Он о путешествии в Австралию.</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="ph" onclick="tg(this)"><div class="en">Don't miss it!</div><div class="ru">Не пропустите!</div><div class="hint">нажми — откроется перевод</div></div>
+<div class="card"><b>Шпаргалка: план обзора фильма</b><ol>
+<li>Название: The last film I saw was…</li>
+<li>Жанр: It's a comedy / fantasy / animated film.</li>
+<li>О чём: It's about…</li>
+<li>Мнение: The acting is great. It made me laugh.</li>
+<li>Совет: It's a must-see!</li></ol></div>
+</section>
+
+<section id="dial">
+<h2>🗣 Диалоги из урока</h2>
+<div class="card"><b>Диалог 1. Том приглашает Кейт в кино</b>
+<div class="line"><div class="who">Tom</div><span class="bub">Hi, Kate! What are you doing at the weekend?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Привет, Кейт! Что делаешь на выходных?</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub me">Nothing special. Why?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Ничего особенного. А что?</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub">Let's go to the cinema! There's a new fantasy film on.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Пойдём в кино! Идёт новый фэнтези-фильм.</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub me">Great idea! Who stars in it?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Отличная идея! Кто играет в нём главную роль?</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub">Emma Watson. The acting is great!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Эмма Уотсон. Актёрская игра прекрасная!</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub me">What time shall we meet?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Во сколько встретимся?</div></div>
+<div class="line"><div class="who">Tom</div><span class="bub">At 5 o'clock at the cinema. Don't be late!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">В 5 часов у кинотеатра. Не опаздывай!</div></div>
+<div class="line"><div class="who">Kate</div><span class="bub me">OK! See you on Saturday!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Договорились! До встречи в субботу!</div></div>
+</div>
+<div class="card"><b>Диалог 2. Мия и Макс: обзор фильма</b>
+<div class="line"><div class="who">Mia</div><span class="bub">Max, I need a film review for my homework.</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Макс, мне нужен обзор фильма для домашнего задания.</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">No problem! The last film I saw was «Fly Away Home».</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Без проблем! Последний фильм, который я смотрел, — «Улетая домой».</div></div>
+<div class="line"><div class="who">Mia</div><span class="bub">What's it about?</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">О чём он?</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">It's about a girl and some geese. She teaches them to fly!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Он о девочке и гусях. Она учит их летать!</div></div>
+<div class="line"><div class="who">Mia</div><span class="bub">Sounds exciting!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Звучит захватывающе!</div></div>
+<div class="line"><div class="who">Max</div><span class="bub me">It's based on a true story. It's a must-see!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Он основан на реальной истории. Обязательно посмотри!</div></div>
+<div class="line"><div class="who">Mia</div><span class="bub">Thanks, Max!</span><button class="tbtn" onclick="rev(this)">перевод</button><div class="tr">Спасибо, Макс!</div></div>
+</div>
+</section>
+
+<section id="read">
+<h2>📚 Чтение: «Fly Away Home»</h2>
+<div class="card">
+<p><b>Fly Away Home</b></p>
+<p>Amy is 13. She lives with her father in Canada. One autumn day she finds some goose eggs near the lake. The eggs hatch into little geese! Now Amy is their mother. The birds grow up, but they can't fly south for the winter. So Amy and her father make a great journey: they fly to the South on their small aircraft, and the geese follow them! It's an exciting and kind film. It's based on a true story. The acting is great. It's a must-see for the whole family!</p>
+<button class="tbtn" onclick="rev(this)">перевод текста</button>
+<div class="tr">Эми 13 лет. Она живёт с отцом в Канаде. Однажды осенним днём она находит возле озера гусиные яйца. Из яиц вылупляются гусята! Теперь Эми — их мама. Птицы подрастают, но не могут улететь на юг к зиме. Тогда Эми и её отец отправляются в большое путешествие: они летят на юг на своём маленьком самолёте, а гуси летят за ними! Это захватывающий и добрый фильм. Он основан на реальной истории. Актёрская игра прекрасна. Его обязательно стоит посмотреть всей семьёй!</div>
+</div>
+<div class="card"><b>Вопросы — нажми «Ответ» и проверь себя</b>
+<div class="line">1. Where does Amy live?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">She lives in Canada. — Она живёт в Канаде.</div></div>
+<div class="line">2. What does she find near the lake?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">She finds some goose eggs. — Она находит гусиные яйца.</div></div>
+<div class="line">3. Who is Amy for the geese?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">She is their mother. — Она их мама.</div></div>
+<div class="line">4. How do the geese get to the South?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">They follow Amy and her father on their aircraft. — Они летят за Эми и её отцом на самолёте.</div></div>
+<div class="line">5. Why is the film a must-see?<br><button class="tbtn" onclick="rev(this)">Ответ</button><div class="tr">Because it's exciting, kind and based on a true story. — Потому что он захватывающий, добрый и основан на реальной истории.</div></div>
+</div>
+</section>
+
+<section id="genre">
+<h2>🎲 Игра «Угадай жанр»</h2>
+<div id="genreBox"></div>
+<p class="note">Читай описание — выбери жанр. Всего 8 раундов!</p>
+</section>
+
+<section id="past">
+<h2>🧩 Игра «Прошедшее время»</h2>
+<div id="pastBox"></div>
+</section>
+
+<section id="rhyme">
+<h2>🎵 Рифмовка</h2>
+<div class="card">
+<p style="font-size:18px;line-height:1.7"><b>Action, comedy, horror too,<br>Fantasy, romance — for me and you!<br>Cartoons and films — a must-see treat,<br>A weekend at the cinema can't be beat!</b></p>
+<button class="spk" onclick="say('Action, comedy, horror too, Fantasy, romance — for me and you! Cartoons and films — a must-see treat, A weekend at the cinema cannot be beat!')">🔊 Послушать</button>
+<button class="tbtn" onclick="rev(this)">перевод</button>
+<div class="tr">Боевик, комедия, ужасы тоже,<br>Фэнтези и мелодрама — для меня и тебя!<br>Мультфильмы и кино — обязательное удовольствие,<br>Выходные в кинотеатре не сравнятся ни с чем!</div>
+<p class="note">Скороговорка: <span class="chip" onclick="say('This film is a big hit!')">This film is a big hit!</span> — Этот фильм — большой хит!</p>
+</div>
+</section>
+
+<section id="speak">
+<h2>🎤 Говори сам: обзор фильма</h2>
+<div id="speakBox"></div>
+<div class="card">
+<div id="story" class="story">Выбери по одной фразе в каждом ряду — рассказ соберётся здесь.</div>
+<button class="spk" onclick="speakStory()">🔊 Прослушать рассказ</button>
+</div>
+<p class="note">Этот рассказ — заготовка для домашнего обзора любимого фильма!</p>
+</section>
+
+<section id="test">
+<h2>✏️ Тест: 10 вопросов</h2>
+<div id="testBox"></div>
+</section>
+
+<section id="hw">
+<h2>🏠 Домашнее задание</h2>
+<div class="card"><b>Основное:</b> напиши обзор любимого фильма по плану урока (5 предложений):<ol>
+<li>The last film I saw was…</li>
+<li>It's a… (жанр).</li>
+<li>It's about…</li>
+<li>The acting is… / It made me…</li>
+<li>It's a must-see!</li></ol>
+<b>Звёздочка (по желанию):</b> порекомендуй фильм другу фразами урока (Don't miss it!) и узнай любимый фильм родителей — запиши 2 предложения.</div>
+<div class="card"><b>Критерии оценивания — 6 баллов:</b><ul>
+<li>5 предложений по плану — 3 балла</li>
+<li>фразы урока (must-see, stars in, based on) — 1 балл</li>
+<li>Past Simple без ошибок — 1 балл</li>
+<li>старание и оформление — 1 балл</li></ul>
+<p>Шкала: 6 баллов — «5», 5 — «4», 4 — «3».</p>
+<p class="note">Онлайн — отправь обзор текстом в чат; очно — в тетради.</p></div>
+</section>
+
+</main>
+<script>
+function go(id,btn){document.querySelectorAll('main>section').forEach(function(s){s.classList.remove('act')});document.getElementById(id).classList.add('act');document.querySelectorAll('nav button').forEach(function(b){b.classList.remove('act')});btn.classList.add('act');window.scrollTo(0,0);}
+function say(t,n){n=n||2;try{speechSynthesis.cancel();for(var i=0;i<n;i++){var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.8;speechSynthesis.speak(u);}}catch(e){}}
+function tg(el){el.classList.toggle('open');}
+function rev(btn){btn.nextElementSibling.classList.toggle('show');}
+var words=[["action film","боевик"],["comedy","комедия"],["horror","фильм ужасов"],["fantasy","фэнтези"],["animated film","мультфильм"],["romance","фильм о любви"],["film","фильм"],["cinema","кинотеатр"],["acting","актёрская игра"],["star","звезда"],["witness","свидетель"],["journey","путешествие"],["battle","битва"],["exciting","захватывающий"],["must-see","обязательно к просмотру"],["weekend","выходные"],["screen","экран"],["ticket","билет"]];
+var wb=document.getElementById('wordBox');
+words.forEach(function(w){var d=document.createElement('div');d.className='wcard';d.innerHTML='<div class="en">'+w[0]+'</div><div class="ru">'+w[1]+'</div><div class="tip">нажми — послушай</div>';d.onclick=function(){say(w[0],2)};wb.appendChild(d);});
+function quiz(id,data){var el=document.getElementById(id),i=0,sc=0;
+function q(){if(i>=data.length){var m=sc>=9?'🥇 Золотая медаль!':(sc>=7?'👏 Молодец!':'💪 Потренируйся ещё!');el.innerHTML='<div class="res">Ваш результат: '+sc+' из '+data.length+'. '+m+'</div>';return;}
+var d=data[i],h='<div class="card"><b>'+(i+1)+'. '+d[0]+'</b><div class="opts">';
+for(var j=0;j<d[1].length;j++)h+='<button class="opt" onclick="'+id+'Pick(this,'+j+')">'+d[1][j]+'</button>';
+el.innerHTML=h+'</div></div>';}
+window[id+'Pick']=function(btn,j){var d=data[i];if(j===d[2]){sc++;btn.className='opt ok';}else{btn.className='opt bad';}i++;setTimeout(q,600);};
+q();}
+quiz('pastBox',[["I ___ to the cinema yesterday.",["went","go","goes"],0],["She ___ a new comedy last week.",["see","saw","sees"],1],["We ___ popcorn at the cinema.",["have","has","had"],2],["He ___ his ticket before the film.",["took","take","takes"],0],["I ___ this review yesterday. (читается как «ред»)",["read","red","reads"],0],["They ___ the horror film. It was boring!",["didn't like","not liked","don't like"],0],["___ you ___ the new fantasy film?",["Did… watch","Do… watched","Did… watched"],0],["The film ___ really exciting!",["was","were","is"],0]]);
+quiz('testBox',[["Боевик по-английски:",["action film","adventure film","cartoon"],0],["The last film I saw ___ «Home Alone».",["was","is","were"],0],["Комедия — это…",["comedy","country","cinema"],0],["Who ___ in the film?",["stars","star","starring"],0],["Обязательно посмотрите! — It's a ___!",["must-see","good-see","see-must"],0],["I ___ to the cinema last Saturday.",["went","go","goes"],0],["Фильм ужасов — это…",["horror","hurrah","happy"],0],["She ___ the birds to fly.",["taught","teached","teaches"],0],["Пойдём в кино! — Let's ___ to the cinema!",["go","went","goes"],0],["Мы ели попкорн. — We ___ popcorn.",["had","has","have"],0]]);
+var GENS=["action film","comedy","horror","fantasy","animated film","romance"];
+var gd=[["Много драк и погонь. Герой спасает мир!","action film"],["Фильм смешной — смеёшься весь сеанс!","comedy"],["Привидения и вампиры. Очень страшно!","horror"],["Волшебники, драконы и заклинания.","fantasy"],["Рисованный фильм с забавными зверями.","animated film"],["Мальчик и девочка влюбляются друг в друга.","romance"],["Роботы и космические битвы.","action film"],["Принцесса и её волшебная палочка.","fantasy"]];
+var gi=0,gs=0;
+function genQ(){var el=document.getElementById('genreBox');
+if(gi>=gd.length){el.innerHTML='<div class="res">Игра пройдена! Результат: '+gs+' из '+gd.length+'. '+(gs>=7?'🥇 Отличный киновед!':'💪 Сыграй ещё раз!')+'</div>';return;}
+var h='<div class="card"><b>Раунд '+(gi+1)+' из '+gd.length+'</b><p style="margin:6px 0">'+gd[gi][0]+'</p><div class="opts">';
+for(var j=0;j<GENS.length;j++)h+='<button class="opt" onclick="genPick(this,'+j+')">'+GENS[j]+'</button>';
+el.innerHTML=h+'</div></div>';}
+function genPick(btn,j){if(GENS[j]===gd[gi][1]){gs++;btn.className='opt ok';}else{btn.className='opt bad';}gi++;setTimeout(genQ,600);}
+genQ();
+var SB=[["The last film I saw was «Home Alone».","The last film I saw was «Fly Away Home».","The last film I saw was «Shrek».","The last film I saw was «Titanic»."],["It's a comedy.","It's a fantasy film.","It's an animated film.","It's an action film."],["It's about a family of geese.","It's about a magic school.","It's about a trip to the South.","It's about a superhero."],["The acting is great.","The acting is funny.","The acting is exciting."],["It's a must-see!","Don't miss it!","See it with your family!"]];
+var SBsel=[-1,-1,-1,-1,-1];
+function buildSpeak(){var el=document.getElementById('speakBox'),h='';
+for(var k=0;k<SB.length;k++){h+='<div class="slot"><b>'+(k+1)+'.</b><br>';for(var j=0;j<SB[k].length;j++){var sel=SBsel[k]===j?' sel':'';h+='<span class="chip'+sel+'" onclick="sbPick('+k+','+j+')">'+SB[k][j]+'</span>';}h+='</div>';}
+el.innerHTML=h;}
+function sbPick(k,j){SBsel[k]=j;buildSpeak();showStory();}
+function showStory(){var ok=SBsel.every(function(v){return v>-1});var st=document.getElementById('story');
+if(!ok){st.textContent='Выбери по одной фразе в каждом ряду — рассказ соберётся здесь.';return;}
+st.textContent=SBsel.map(function(v,k){return SB[k][v]}).join(' ');}
+function speakStory(){var ok=SBsel.every(function(v){return v>-1});if(!ok){alert('Сначала выбери все 5 фраз!');return;}say(SBsel.map(function(v,k){return SB[k][v]}).join(' '),1);}
+buildSpeak();
+</script>
+</body>
+</html>
