@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotlight 6 — City & Country: Making an appointment</title>
+<style>
+:root{--main:#0d7a5f;--main2:#1a9c7a;--accent:#f4a623;--bg:#f2faf7;--card:#ffffff;--shadow:0 4px 14px rgba(13,122,95,.15);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#22333a;line-height:1.55;}
+header{background:linear-gradient(120deg,#0d7a5f,#1a9c7a 55%,#7fd0b5);color:#fff;padding:26px 16px 20px;text-align:center;}
+header h1{font-size:1.9em;letter-spacing:2px;margin-bottom:6px;}
+header .sub{font-size:1.05em;opacity:.95;}
+header .meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+header .meta span{background:rgba(255,255,255,.18);border-radius:20px;padding:5px 14px;font-size:.85em;}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;padding:12px 8px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+nav button{border:2px solid var(--main);background:#fff;color:var(--main);border-radius:22px;padding:8px 14px;font-size:.92em;cursor:pointer;font-weight:600;transition:.2s;}
+nav button:hover{background:#e3f6ee;}
+nav button.active{background:var(--main);color:#fff;}
+main{max-width:980px;margin:0 auto;padding:22px 14px 60px;}
+.tab{display:none;}
+.tab.active{display:block;}
+h2{color:var(--main);margin:18px 0 10px;font-size:1.35em;}
+h3{color:var(--main2);margin:14px 0 8px;}
+.note{background:#fff8e6;border-left:5px solid var(--accent);padding:10px 14px;border-radius:8px;margin:12px 0;font-size:.95em;}
+.box{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:18px;margin:14px 0;}
+table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff;}
+th,td{border:1px solid #cfe6dc;padding:7px 10px;font-size:.95em;text-align:left;}
+th{background:#dff3ea;color:#0b5c48;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:12px 14px;cursor:pointer;transition:.15s;border-top:4px solid var(--accent);}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(13,122,95,.25);}
+.card .w{font-size:1.25em;font-weight:700;color:var(--main);display:block;}
+.card .tr{color:#7a8b90;font-size:.85em;}
+.card .ru{display:block;color:#44555c;font-size:.92em;margin-top:3px;}
+.phrase{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:12px 16px;margin:10px 0;cursor:pointer;border-left:5px solid var(--main);}
+.phrase .en{font-size:1.1em;font-weight:600;}
+.phrase .ru{color:#5a6b72;font-size:.95em;margin-top:6px;padding-top:6px;border-top:1px dashed #cfe6dc;}
+.hidden{display:none;}
+.dialog .line{padding:9px 14px;margin:6px 0;border-radius:12px;cursor:pointer;max-width:85%;}
+.dialog .a{background:#e3f6ee;}
+.dialog .b{background:#fdf1da;margin-left:auto;}
+.dialog .line .ru{color:#5a6b72;font-size:.9em;margin-top:4px;border-top:1px dashed #cfe6dc;padding-top:4px;}
+.btn{display:inline-block;background:var(--main);color:#fff;border:none;border-radius:24px;padding:10px 22px;font-size:1em;cursor:pointer;font-weight:600;margin:4px 6px 4px 0;transition:.2s;}
+.btn:hover{background:var(--main2);}
+.btn.alt{background:var(--accent);color:#5c3d00;}
+.btn.ghost{background:#fff;color:var(--main);border:2px solid var(--main);}
+.q{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;margin:12px 0;}
+.q p{font-weight:600;margin-bottom:8px;}
+.opts button{display:block;width:100%;text-align:left;margin:6px 0;padding:9px 14px;border-radius:10px;border:2px solid #cfe6dc;background:#fff;cursor:pointer;font-size:.98em;transition:.15s;}
+.opts button:hover{border-color:var(--main);}
+.opts button.ok{background:#d9f4e6;border-color:var(--main);}
+.opts button.bad{background:#fde3e0;border-color:#e2604d;}
+.scorebox{background:var(--main);color:#fff;border-radius:12px;padding:10px 16px;margin-top:10px;font-weight:700;display:inline-block;}
+.song{background:linear-gradient(120deg,#e9fbf4,#fdf6e3);border-radius:14px;padding:18px;margin:12px 0;box-shadow:var(--shadow);}
+.song .verse{font-size:1.15em;font-weight:600;color:var(--main);margin:6px 0;white-space:pre-line;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.chip{background:#fff;border:2px solid var(--main2);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.92em;}
+.chip.sel{background:var(--main2);color:#fff;}
+.plan td:first-child{font-weight:700;color:var(--main);white-space:nowrap;}
+footer{text-align:center;color:#7a8b90;padding:24px;font-size:.85em;}
+.hint{font-size:.85em;color:#7a8b90;margin-top:4px;}
+.badge{display:inline-block;background:var(--accent);color:#5c3d00;border-radius:20px;padding:3px 12px;font-weight:700;font-size:.85em;margin:2px 4px 2px 0;}
+ul.cheats{margin:8px 0 8px 20px;}
+ul.cheats li{margin:5px 0;}
+@media(max-width:600px){header h1{font-size:1.4em;}.dialog .line{max-width:100%;}}
+</style>
+</head>
+<body>
+<header>
+<h1>🌆 CITY &amp; COUNTRY 🌾</h1>
+<div class="sub">Жизнь в городе и сельской местности — договариваемся о встрече</div>
+<div class="meta"><span>Spotlight 6 • Модуль 5 • Юнит 5a (с. 42)</span><span>Английский язык • 6 класс</span><span>Уровень A1+/A2</span><span>40 минут</span></div>
+</header>
+<nav>
+<button class="active" data-t="t1" onclick="showTab('t1')">🎯 О уроке</button>
+<button data-t="t2" onclick="showTab('t2')">🔁 Повторение</button>
+<button data-t="t3" onclick="showTab('t3')">📖 Слова</button>
+<button data-t="t4" onclick="showTab('t4')">💬 Фразы</button>
+<button data-t="t5" onclick="showTab('t5')">🗣 Диалоги</button>
+<button data-t="t6" onclick="showTab('t6')">📚 Чтение</button>
+<button data-t="t7" onclick="showTab('t7')">🔍 Город или село?</button>
+<button data-t="t8" onclick="showTab('t8')">🧩 Назначь встречу</button>
+<button data-t="t9" onclick="showTab('t9')">🎵 Рифмовка</button>
+<button data-t="t10" onclick="showTab('t10')">🎤 Говори сам</button>
+<button data-t="t11" onclick="showTab('t11')">✏️ Тест</button>
+<button data-t="t12" onclick="showTab('t12')">🏠 Домашка</button>
+</nav>
+<main>
+
+<section id="t1" class="tab active">
+<h2>🎯 О уроке</h2>
+<div class="box">
+<p><b>УМК:</b> «Английский в фокусе» (Spotlight 6), новое издание (М.: Просвещение, 2024). Авторы: Н. И. Быкова, Дж. Дули, О. Е. Подоляко, В. Эванс.</p>
+<p><b>Модуль 5, юнит 5a</b> (с. 42): делаем и отменяем встречу — <i>make an appointment / cancel an appointment</i>.</p>
+<p><b>Тема по ФРП:</b> Жизнь в городе и сельской местности. Описание родного города (села). Транспорт — договариваемся о встрече.</p>
+<p><span class="badge">⏱ 40 минут</span> <span class="badge">ФГОС ООО</span> <span class="badge">Перевод — по клику на фразу</span></p>
+</div>
+<h3>План урока</h3>
+<table class="plan">
+<tr><th>№</th><th>Этап</th><th>Время</th><th>Вкладка</th></tr>
+<tr><td>1</td><td>Приветствие и разминка</td><td>3 мин</td><td>🎯</td></tr>
+<tr><td>2</td><td>Повторение: телефонный этикет и время</td><td>4 мин</td><td>🔁</td></tr>
+<tr><td>3</td><td>Лексика: город и село</td><td>8 мин</td><td>📖</td></tr>
+<tr><td>4</td><td>Фразы: назначаем и отменяем встречу</td><td>6 мин</td><td>💬</td></tr>
+<tr><td>5</td><td>Диалоги по учебнику (с. 42)</td><td>6 мин</td><td>🗣</td></tr>
+<tr><td>6</td><td>Чтение «City or Village?»</td><td>5 мин</td><td>📚</td></tr>
+<tr><td>7</td><td>Игры</td><td>4 мин</td><td>🔍 🧩</td></tr>
+<tr><td>8</td><td>Рифмовка и говорение</td><td>2 мин</td><td>🎵 🎤</td></tr>
+<tr><td>9</td><td>Тест и домашнее задание</td><td>2 мин</td><td>✏️ 🏠</td></tr>
+</table>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Группа</th><th>Результаты</th></tr>
+<tr><td>Предметные</td><td>Называет места в городе и сельской местности; назначает встречу (<i>Are you free…? How about…? Shall we say…?</i>) и вежливо отменяет её (<i>I'm afraid I can't make it</i>); употребляет предлоги at, on, in со временем и местом</td></tr>
+<tr><td>Метапредметные</td><td>Ведёт диалог-расспрос и диалог-договорённость; принимает решения «по переговорам»; проверяет себя в играх и тесте</td></tr>
+<tr><td>Личностные</td><td>Уважительное речевое поведение, вежливость в общении, любовь к родному краю — городу и селу</td></tr>
+</table>
+<div class="note">💡 Разминка в начале урока: <i>Hello! How are you? Are you free today?</i> — учитель «назначает» встречу прямо с классом, дети отвечают по-английски.</div>
+</section>
+
+<section id="t2" class="tab">
+<h2>🔁 Повторение</h2>
+<div class="box">
+<p>Чтобы договариваться о встрече, нужно уметь звонить по телефону и называть время. Повторяем!</p>
+<h3>📞 По телефону</h3>
+<ul class="cheats">
+<li><b>Hi, it's John!</b> — Привет, это Джон! (говорим <i>it's</i>, а не «I am»)</li>
+<li><b>Hello?</b> — Алло? (так отвечают на звонок)</li>
+<li><b>How are you?</b> — <i>Fine, and you?</i></li>
+</ul>
+<h3>🕐 Время и дни</h3>
+<ul class="cheats">
+<li><b>10 o'clock</b> — ровно 10 часов</li>
+<li><b>half past twelve</b> — полпервого (12:30)</li>
+<li><b>in the morning / in the afternoon / at night</b> — утром / днём / вечером-ночью</li>
+<li><b>on Friday</b> — в пятницу (день — всегда <i>on</i>)</li>
+</ul>
+<h3>🧠 Мини-задание: собери время</h3>
+<div class="q"><p>Соедини: как назвать 12:30?</p>
+<div class="opts">
+<button onclick="ans(this,1)">half past twelve</button>
+<button onclick="ans(this,0)">twelve half past</button>
+<button onclick="ans(this,0)">half to twelve</button>
+</div></div>
+<div class="q"><p>Как сказать «в пятницу вечером»?</p>
+<div class="opts">
+<button onclick="ans(this,0)">on Friday night</button>
+<button onclick="ans(this,0)">in Friday night</button>
+<button onclick="ans(this,0)">at Friday night</button>
+</div></div>
+<div class="note">💡 Спросите класс: <i>What do you do at the weekend?</i> — это подводка к назначению встречи.</div>
+</div>
+</section>
+
+<section id="t3" class="tab">
+<h2>📖 Слова — 18 карточек</h2>
+<div class="note">👆 Нажми на карточку — слово прозвучит дважды. Первые 10 слов — про город и село, последние 8 — про встречи.</div>
+<h3>🌆 Город и село</h3>
+<div class="cards">
+<div class="card" onclick="speak('city')"><span class="w">city</span><span class="tr">[ˈsɪti]</span><span class="ru">большой город</span></div>
+<div class="card" onclick="speak('town')"><span class="w">town</span><span class="tr">[taʊn]</span><span class="ru">городок</span></div>
+<div class="card" onclick="speak('village')"><span class="w">village</span><span class="tr">[ˈvɪlɪdʒ]</span><span class="ru">деревня, село</span></div>
+<div class="card" onclick="speak('countryside')"><span class="w">countryside</span><span class="tr">[ˈkʌntrisaɪd]</span><span class="ru">сельская местность</span></div>
+<div class="card" onclick="speak('capital')"><span class="w">capital</span><span class="tr">[ˈkæpɪtl]</span><span class="ru">столица</span></div>
+<div class="card" onclick="speak('neighbourhood')"><span class="w">neighbourhood</span><span class="tr">[ˈneɪbəhʊd]</span><span class="ru">район, соседство</span></div>
+<div class="card" onclick="speak('square')"><span class="w">square</span><span class="tr">[skweə]</span><span class="ru">площадь</span></div>
+<div class="card" onclick="speak('bridge')"><span class="w">bridge</span><span class="tr">[brɪdʒ]</span><span class="ru">мост</span></div>
+<div class="card" onclick="speak('farm')"><span class="w">farm</span><span class="tr">[fɑːm]</span><span class="ru">ферма</span></div>
+<div class="card" onclick="speak('fields')"><span class="w">fields</span><span class="tr">[fiːldz]</span><span class="ru">поля</span></div>
+</div>
+<h3>📅 Назначаем встречу</h3>
+<div class="cards">
+<div class="card" onclick="speak('appointment')"><span class="w">appointment</span><span class="tr">[əˈpɔɪntmənt]</span><span class="ru">встреча, договорённость</span></div>
+<div class="card" onclick="speak('to meet')"><span class="w">to meet</span><span class="tr">[miːt]</span><span class="ru">встречаться</span></div>
+<div class="card" onclick="speak('to cancel')"><span class="w">to cancel</span><span class="tr">[ˈkænsəl]</span><span class="ru">отменять</span></div>
+<div class="card" onclick="speak('free')"><span class="w">free</span><span class="tr">[friː]</span><span class="ru">свободный</span></div>
+<div class="card" onclick="speak('busy')"><span class="w">busy</span><span class="tr">[ˈbɪzi]</span><span class="ru">занятый; шумный</span></div>
+<div class="card" onclick="speak('afraid')"><span class="w">afraid</span><span class="tr">[əˈfreɪd]</span><span class="ru">I'm afraid — боюсь, что…</span></div>
+<div class="card" onclick="speak('train station')"><span class="w">train station</span><span class="tr">[ˈtreɪn ˌsteɪʃn]</span><span class="ru">вокзал</span></div>
+<div class="card" onclick="speak('instead')"><span class="w">instead</span><span class="tr">[ɪnˈsted]</span><span class="ru">вместо этого</span></div>
+</div>
+</section>
+
+<section id="t4" class="tab">
+<h2>💬 Фразы — 10 штук</h2>
+<div class="note">👆 Нажми на фразу — под ней откроется перевод. Нажми ещё раз — свернётся. Кнопка 🔊 озвучит фразу дважды.</div>
+<div id="phrases"></div>
+<h3>📐 Шпаргалка</h3>
+<div class="box">
+<h3>✔️ Назначаем встречу</h3>
+<ul class="cheats">
+<li><b>Are you free tomorrow?</b> — спрашиваем о свободном времени</li>
+<li><b>When would you like to meet?</b> — узнаём время</li>
+<li><b>How about 10 o'clock?</b> — предлагаем время</li>
+<li><b>Shall we say 12:30 at the train station?</b> — договариваемся окончательно</li>
+<li><b>Sounds great! / I'd love to. / Sure.</b> — соглашаемся</li>
+</ul>
+<h3>✖️ Отменяем вежливо</h3>
+<ul class="cheats">
+<li><b>I'm afraid I can't make it.</b> — «боюсь, не смогу» — никогда просто «I can't»!</li>
+<li><b>We'll do it some other time.</b> — оставляем дверь открытой</li>
+<li><b>How about Friday night then?</b> — предлагаем замену</li>
+<li><b>Get well soon.</b> — если друг болеет</li>
+</ul>
+<h3>📍 Предлоги</h3>
+<ul class="cheats">
+<li><b>at</b> + точное время и место: <i>at 12:30, at the train station</i></li>
+<li><b>on</b> + день недели: <i>on Friday, on Saturday night</i></li>
+<li><b>in</b> + отрезок времени: <i>in the morning, in the afternoon</i></li>
+</ul>
+</div>
+</section>
+
+<section id="t5" class="tab">
+<h2>🗣 Диалоги по учебнику (с. 42)</h2>
+<div class="note">👆 Нажми на реплику — откроется перевод. Прочитай диалоги в парах: один — за первого героя, другой — за второго.</div>
+<h3>📞 Диалог 1. Джон назначает встречу</h3>
+<div class="dialog box">
+<div class="line a" onclick="tg(this)"><div>John: Hi, Anna, it's John. How are you?</div><div class="ru hidden">Привет, Анна, это Джон. Как дела?</div></div>
+<div class="line b" onclick="tg(this)"><div>Anna: Fine, and you?</div><div class="ru hidden">Отлично, а у тебя?</div></div>
+<div class="line a" onclick="tg(this)"><div>John: Fine. Are you free tomorrow to help me choose Tina's birthday present?</div><div class="ru hidden">Отлично. Ты свободна завтра помочь мне выбрать подарок для Тины на день рождения?</div></div>
+<div class="line b" onclick="tg(this)"><div>Anna: Yeah, I'd love to. When would you like to meet?</div><div class="ru hidden">Да, с удовольствием. Когда ты хочешь встретиться?</div></div>
+<div class="line a" onclick="tg(this)"><div>John: How about 10 o'clock in the morning?</div><div class="ru hidden">Как насчёт 10 утра?</div></div>
+<div class="line b" onclick="tg(this)"><div>Anna: I have an Italian class until 12, so we can meet after that.</div><div class="ru hidden">У меня урок итальянского до 12, так что можем встретиться после.</div></div>
+<div class="line a" onclick="tg(this)"><div>John: OK. Shall we say 12:30 at the train station?</div><div class="ru hidden">Хорошо. Скажем, в 12:30 у вокзала?</div></div>
+<div class="line b" onclick="tg(this)"><div>Anna: Sure. See you there!</div><div class="ru hidden">Конечно. Увидимся там!</div></div>
+<div class="line a" onclick="tg(this)"><div>John: Thanks, Anna. Bye!</div><div class="ru hidden">Спасибо, Анна. Пока!</div></div>
+</div>
+<h3>📞 Диалог 2. Марк отменяет встречу</h3>
+<div class="dialog box">
+<div class="line b" onclick="tg(this)"><div>Dave: Hello?</div><div class="ru hidden">Алло?</div></div>
+<div class="line a" onclick="tg(this)"><div>Mark: Hi, Dave, it's Mark.</div><div class="ru hidden">Привет, Дэйв, это Марк.</div></div>
+<div class="line b" onclick="tg(this)"><div>Dave: Oh, hi, Mark. How are you?</div><div class="ru hidden">О, привет, Марк. Как ты?</div></div>
+<div class="line a" onclick="tg(this)"><div>Mark: Not that well, actually. I've got a terrible toothache.</div><div class="ru hidden">Вообще-то не очень. У меня ужасная зубная боль.</div></div>
+<div class="line b" onclick="tg(this)"><div>Dave: Oh, no!</div><div class="ru hidden">О нет!</div></div>
+<div class="line a" onclick="tg(this)"><div>Mark: I'm afraid I can't make it to the cinema tonight.</div><div class="ru hidden">Боюсь, я не смогу пойти в кино сегодня вечером.</div></div>
+<div class="line b" onclick="tg(this)"><div>Dave: Don't worry about it, we'll do it some other time.</div><div class="ru hidden">Не переживай, сделаем это в другой раз.</div></div>
+<div class="line a" onclick="tg(this)"><div>Mark: How about Friday night then?</div><div class="ru hidden">Как насчёт вечера пятницы тогда?</div></div>
+<div class="line b" onclick="tg(this)"><div>Dave: Sure. Get well soon.</div><div class="ru hidden">Конечно. Выздоравливай скорее.</div></div>
+<div class="line a" onclick="tg(this)"><div>Mark: Thanks!</div><div class="ru hidden">Спасибо!</div></div>
+</div>
+<div class="note">🎯 Задание по учебнику (упр. 2, с. 42): кто назначает встречу, а кто отменяет? — Джон и Анна назначают, Марк отменяет.</div>
+</section>
+
+<section id="t6" class="tab">
+<h2>📚 Чтение — «City or Village?»</h2>
+<div class="box">
+<p><i>Hi! My name is Polina. I live in a small town, but my grandpa and grandma live in a village in the countryside. My town is busy and noisy. There are many cars in the streets, a big cinema and a nice park. I can meet my friends at the café. The village is very different. It is quiet and peaceful. There is fresh air, green fields and a small river. Grandpa has a farm with cows and sheep. In summer I ride my bike in the village. I love both places — the busy town and the quiet countryside!</i></p>
+<div class="ru hidden" style="margin-top:10px;border-top:1px dashed #cfe6dc;padding-top:8px;">
+Привет! Меня зовут Полина. Я живу в маленьком городке, а мои дедушка и бабушка живут в деревне, в сельской местности. Мой городок шумный и оживлённый. На улицах много машин, есть большой кинотеатр и красивый парк. Я могу встретиться с друзьями в кафе. Деревня совсем другая: она тихая и спокойная. Там свежий воздух, зелёные поля и маленькая река. У дедушки ферма с коровами и овцами. Летом я катаюсь на велосипеде в деревне. Я люблю оба места — и шумный городок, и тихую сельскую местность!
+</div>
+<p class="hint">👆 Нажмите на абзац перевода, чтобы показать/скрыть его ученикам.</p>
+</div>
+<h3>❓ 5 вопросов — нажми на вопрос, откроется ответ</h3>
+<div class="q" onclick="tg(this)"><p>1. Where does Polina live?</p><div class="ru hidden">She lives in a small town. — В маленьком городке.</div></div>
+<div class="q" onclick="tg(this)"><p>2. Who lives in the village?</p><div class="ru hidden">Her grandpa and grandma. — Её дедушка и бабушка.</div></div>
+<div class="q" onclick="tg(this)"><p>3. What is there in Polina's town?</p><div class="ru hidden">Many cars, a big cinema and a nice park. — Много машин, большой кинотеатр и красивый парк.</div></div>
+<div class="q" onclick="tg(this)"><p>4. Why is the village peaceful?</p><div class="ru hidden">Because there is fresh air, green fields and a small river — no noise. — Потому что там свежий воздух, зелёные поля и маленькая река, нет шума.</div></div>
+<div class="q" onclick="tg(this)"><p>5. What animals are there on grandpa's farm?</p><div class="ru hidden">Cows and sheep. — Коровы и овцы.</div></div>
+</section>
+
+<section id="t7" class="tab">
+<h2>🔍 Игра «Город или село?»</h2>
+<div class="note">Прочитай утверждение и реши: это про город (city) или про село (country)? 8 раундов!</div>
+<div class="box">
+<p style="font-weight:700;margin-bottom:8px;">Раунд <span id="g1n">1</span> из 8</p>
+<p id="g1q" style="font-size:1.1em;">There are many cars, traffic and noise in the streets.</p>
+<div style="margin-top:10px;">
+<button class="btn" onclick="g1(this,1)">🌆 City</button>
+<button class="btn alt" onclick="g1(this,0)">🌾 Country</button>
+</div>
+<p id="g1fb" style="margin-top:8px;font-weight:600;"></p>
+<div class="scorebox hidden" id="g1score"></div>
+</div>
+</section>
+
+<section id="t8" class="tab">
+<h2>🧩 Игра «Назначь встречу»</h2>
+<div class="note">Выбери правильный ответ на реплику собеседника. 8 вопросов!</div>
+<div class="box">
+<p style="font-weight:700;margin-bottom:8px;">Вопрос <span id="g2n">1</span> из 8</p>
+<p id="g2q" style="font-size:1.1em;">— Are you free tomorrow?</p>
+<div class="opts" id="g2o"></div>
+<p id="g2fb" style="margin-top:8px;font-weight:600;"></p>
+<div class="scorebox hidden" id="g2score"></div>
+</div>
+</section>
+
+<section id="t9" class="tab">
+<h2>🎵 Рифмовка со звучкой</h2>
+<div class="song">
+<div class="verse">City, city — big and tall,
+Village, village — fields and all!
+Shall we meet at half past three?
+At the station — you and me!</div>
+<button class="btn" onclick="speak('City, city — big and tall. Village, village — fields and all. Shall we meet at half past three? At the station — you and me!')">🔊 Послушать</button>
+<div class="ru hidden" style="margin-top:10px;">Город, город — большой и высокий,<br>Деревня, деревня — поля и всё вокруг!<br>Встретимся в пол четвёртого?<br>На вокзале — ты и я!</div>
+<p class="hint">👆 Нажмите на перевод, чтобы открыть/скрыть его.</p>
+</div>
+<div class="note">💡 Повторите рифмовку хором два раза: медленно, затем в нормальном темпе. Звук [aɪ] — city, night, ride — тяните красиво!</div>
+</section>
+
+<section id="t10" class="tab">
+<h2>🎤 Говори сам — «My town / My village»</h2>
+<div class="note">Выбери по одной фразе из каждого ряда — получится маленький рассказ. Потом нажми 🔊 и прослушай его целиком!</div>
+<div class="box">
+<h3>1️⃣ Приветствие</h3>
+<div class="chips" data-row="0">
+<span class="chip" onclick="pick(this)">Hi! Let me tell you about my town.</span>
+<span class="chip" onclick="pick(this)">Hi! Let me tell you about my village.</span>
+</div>
+<h3>2️⃣ Где я живу</h3>
+<div class="chips" data-row="1">
+<span class="chip" onclick="pick(this)">I live in a small town.</span>
+<span class="chip" onclick="pick(this)">I live in the capital.</span>
+<span class="chip" onclick="pick(this)">I live in a quiet village.</span>
+</div>
+<h3>3️⃣ Что там есть</h3>
+<div class="chips" data-row="2">
+<span class="chip" onclick="pick(this)">There is a park, a café and a cinema.</span>
+<span class="chip" onclick="pick(this)">There are green fields and a small river.</span>
+<span class="chip" onclick="pick(this)">There is a big square and a bridge.</span>
+</div>
+<h3>4️⃣ Приглашаем на встречу</h3>
+<div class="chips" data-row="3">
+<span class="chip" onclick="pick(this)">Let's meet at the train station at 12:30!</span>
+<span class="chip" onclick="pick(this)">How about meeting at the café on Friday?</span>
+</div>
+<h3>5️⃣ Вывод</h3>
+<div class="chips" data-row="4">
+<span class="chip" onclick="pick(this)">Welcome to my town!</span>
+<span class="chip" onclick="pick(this)">Welcome to my village!</span>
+</div>
+<p style="margin-top:10px;"><button class="btn" onclick="speakTalk()">🔊 Рассказать целиком</button> <button class="btn ghost" onclick="clearTalk()">Очистить</button></p>
+<p id="talkOut" style="font-weight:600;margin-top:8px;"></p>
+</div>
+</section>
+
+<section id="t11" class="tab">
+<h2>✏️ Тест — 10 вопросов</h2>
+<div class="note">За 9–10 правильных ответов — золотая медаль 🥇, за 7–8 — серебряная 🥈, за 5–6 — бронзовая 🥉.</div>
+<div id="test"></div>
+<p><button class="btn" onclick="testResult()">Показать результат</button></p>
+<div class="scorebox hidden" id="tscore"></div>
+</section>
+
+<section id="t12" class="tab">
+<h2>🏠 Домашнее задание</h2>
+<div class="box">
+<p><b>Основное:</b> запишите (или разыграйте перед родными) свой телефонный диалог на 6–8 реплик: сначала <b>назначьте встречу</b> (<i>Are you free…? How about…? Shall we say…?</i>), а потом <b>вежливо отмените</b> её (<i>I'm afraid I can't make it…</i>). Плюс 4 предложения о своём городе или селе с <i>There is / There are</i>.</p>
+<p><b>Звёздочка (по желанию):</b> позвоните бабушке, дедушке или другу и договоритесь о встрече по-английски. Спросите у родных, чем жизнь в селе отличается от жизни в городе, и запишите 3 фразы-впечатления.</p>
+<h3>Критерии оценивания (6 баллов)</h3>
+<table>
+<tr><th>Критерий</th><th>Баллы</th></tr>
+<tr><td>Диалог 6–8 реплик: и назначение, и вежливая отмена</td><td>2</td></tr>
+<tr><td>Фразы make/cancel appointment без ошибок</td><td>1</td></tr>
+<tr><td>4 предложения о городе/селе с There is / There are</td><td>2</td></tr>
+<tr><td>Оформление и старание</td><td>1</td></tr>
+</table>
+<p><b>Шкала:</b> 6 баллов — «5»; 5 — «4»; 4 — «3».</p>
+<div class="note">📎 Онлайн — аудио или текст диалога в чат; очно — в тетради. Отметки — по решению школы, можно за звёздочки-достижения.</div>
+</div>
+</section>
+
+</main>
+<footer>Spotlight 6 • Модуль 5 • Юнит 5a • «Жизнь в городе и сельской местности (договариваемся о встрече)» • 40 минут • 12 вкладок</footer>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.t===id));
+  window.scrollTo(0,0);
+}
+function speak(text){
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.85;
+    speechSynthesis.speak(u);
+    setTimeout(()=>{const u2=new SpeechSynthesisUtterance(text);u2.lang='en-US';u2.rate=0.85;speechSynthesis.speak(u2);},1700);
+  }catch(e){}
+}
+function tg(el){el.querySelector('.ru').classList.toggle('hidden');}
+function ans(btn,ok){
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ok','bad'));
+  btn.classList.add(ok?'ok':'bad');
+  if(!ok){const first=btn.parentElement.querySelector('button');}
+}
+/* Фразы */
+const phrases=[
+ ["Are you free tomorrow?","Ты свободен завтра?"],
+ ["When would you like to meet?","Когда ты хотел бы встретиться?"],
+ ["How about 10 o'clock in the morning?","Как насчёт 10 утра?"],
+ ["Shall we say 12:30 at the train station?","Скажем, в 12:30 у вокзала?"],
+ ["Sounds great!","Звучит здорово!"],
+ ["I'd love to.","С удовольствием."],
+ ["I'm afraid I can't make it.","Боюсь, я не смогу прийти."],
+ ["We'll do it some other time.","Сделаем это в другой раз."],
+ ["How about Friday night then?","Как насчёт вечера пятницы?"],
+ ["See you there!","Увидимся там!"]
+];
+document.getElementById('phrases').innerHTML=phrases.map((p,i)=>
+ `<div class="phrase" onclick="tg(this)"><div class="en">${p[0]}</div><div class="ru hidden">${p[1]}</div></div>`
+).join('');
+/* Игра 1: город или село */
+const g1data=[
+ ["There are many cars, traffic and noise in the streets.",1,"В городе много машин, движения и шума."],
+ ["The air is fresh and the fields are green.",0,"В селе свежий воздух и зелёные поля."],
+ ["There are many museums, cinemas and cafés.",1,"В городе много музеев, кинотеатров и кафе."],
+ ["There are cows and sheep on the farm.",0,"На ферме коровы и овцы — это село."],
+ ["People live in tall blocks of flats.",1,"Люди живут в многоэтажках — это город."],
+ ["People live in small farmhouses.",0,"Люди живут в небольших фермерских домах."],
+ ["The streets are busy and noisy.",1,"Улицы шумные и оживлённые — это город."],
+ ["It is quiet and peaceful here.",0,"Здесь тихо и спокойно — это село."]
+];
+let g1i=0,g1s=0;
+function renderG1(){
+  document.getElementById('g1n').textContent=g1i+1;
+  document.getElementById('g1q').textContent=g1data[g1i][0];
+  document.getElementById('g1fb').textContent='';
+}
+function g1(btn,answ){
+  const ok=(answ===g1data[g1i][1]);
+  document.getElementById('g1fb').textContent=ok?'✔ Верно! '+g1data[g1i][2]:'✖ Неверно. Правильно: '+(g1data[g1i][1]?'City':'Country')+'. '+g1data[g1i][2];
+  if(ok)g1s++;
+  g1i++;
+  if(g1i<8){renderG1();}else{document.getElementById('g1q').textContent='Игра пройдена!';document.getElementById('g1score').classList.remove('hidden');document.getElementById('g1score').textContent='Результат: '+g1s+' из 8 '+(g1s>=7?'🏆 Отлично!':g1s>=5?'👍 Хорошо!':'💪 Ещё потренируйся!');}
+}
+renderG1();
+/* Игра 2: назначь встречу */
+const g2data=[
+ ["— Are you free tomorrow?",["Yes, I am. Why?","It is Monday today.","I like Friday."],0,"Отвечаем: да, я свободен — Yes, I am."],
+ ["— When would you like to meet?",["I have a cat.","How about 10 o'clock?","Yes, sure."],1,"Время предлагаем через How about…"],
+ ["— Shall we say 12:30 at the train station?",["I'm afraid I can't swim.","Sounds great!","There is a park."],1,"Соглашаемся: Sounds great!"],
+ ["— How about going to the cinema tonight?",["I'm afraid I can't make it.","Yes, it is a cinema.","No, in the morning."],0,"Вежливо отказываемся: I'm afraid I can't make it."],
+ ["— I can't come tonight.",["Why not? The cinema is big.","Don't worry, we'll do it some other time.","See you at school."],1,"Успокаиваем друга: сделаем это в другой раз."],
+ ["— I've got a terrible toothache.",["Sounds great!","Get well soon!","Shall we say 12:30?"],1,"Если друг болеет: Get well soon!"],
+ ["— See you at 5!",["OK, see you there!","I'm free not.","It is a train."],0,"Договариваемся: OK, see you there!"],
+ ["— How about Friday night then?",["That would be great.","I am twelve years old.","The village is quiet."],0,"Соглашаемся на новое время: That would be great."]
+];
+let g2i=0,g2s=0;
+function renderG2(){
+  document.getElementById('g2n').textContent=g2i+1;
+  document.getElementById('g2q').textContent=g2data[g2i][0];
+  const opts=g2data[g2i][1].map((o,i)=>`<button onclick="g2(this,${i})">${o}</button>`).join('');
+  document.getElementById('g2o').innerHTML=opts;
+  document.getElementById('g2fb').textContent='';
+}
+function g2(btn,i){
+  const ok=(i===g2data[g2i][2]);
+  btn.parentElement.querySelectorAll('button').forEach((b,j)=>{if(j===g2data[g2i][2])b.classList.add('ok');else if(b===btn)b.classList.add('bad');});
+  document.getElementById('g2fb').textContent=ok?'✔ Верно! '+g2data[g2i][3]:'✖ Неверно. '+g2data[g2i][3];
+  if(ok)g2s++;
+  g2i++;
+  if(g2i<8){setTimeout(renderG2,900);}else{document.getElementById('g2q').textContent='Игра пройдена!';document.getElementById('g2score').classList.remove('hidden');document.getElementById('g2score').textContent='Результат: '+g2s+' из 8 '+(g2s>=7?'🏆 Отлично!':g2s>=5?'👍 Хорошо!':'💪 Ещё потренируйся!');}
+}
+renderG2();
+/* Говорение */
+let talk=['','','','',''];
+function pick(chip){
+  const row=+chip.parentElement.dataset.row;
+  chip.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+  chip.classList.add('sel');talk[row]=chip.textContent;
+  showTalk();
+}
+function showTalk(){document.getElementById('talkOut').textContent=talk.filter(Boolean).join(' ');}
+function clearTalk(){talk=['','','','',''];document.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));document.getElementById('talkOut').textContent='';}
+function speakTalk(){
+  const t=talk.filter(Boolean).join(' ');
+  if(!t){alert('Сначала выбери фразы в каждом ряду!');return;}
+  speak(t);
+}
+/* Тест */
+const test=[
+ ["In the ___ there are many cars and people.",["countryside","city","river"],1],
+ ["The village is quiet and the ___ is fresh.",["water","air","noise"],1],
+ ["— Are you free tomorrow? — Yes, ___.",["I am","I do","it is"],0],
+ ["— When would you like to ___?",["cancel","meet","make"],1],
+ ["___ we say 12:30 at the train station?",["How","Let","Shall"],2],
+ ["— How about 10 o'clock? — ___ great!",["Sounds","Looks","Does"],0],
+ ["I'm afraid I ___ make it tonight.",["can't","don't","am not"],0],
+ ["We'll do it some other ___.",["day time","time","hour"],1],
+ ["Мы встретимся в 12:30 — по-английски:",["in 12:30","at 12:30","on 12:30"],1],
+ ["«Отменить встречу» по-английски:",["make an appointment","cancel an appointment","do an appointment"],1]
+];
+let tAns=[];
+function renderTest(){
+  document.getElementById('test').innerHTML=test.map((q,i)=>
+   `<div class="q"><p>${i+1}. ${q[0]}</p><div class="opts">${q[1].map((o,j)=>`<button onclick="tAns[${i}]=${j};this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ok','bad'));this.classList.add('ok');">${o}</button>`).join('')}</div></div>`
+  ).join('');
+  tAns=Array(test.length).fill(null);
+}
+renderTest();
+function testResult(){
+  if(tAns.includes(null)){alert('Ответь на все вопросы!');return;}
+  let s=0;tAns.forEach((a,i)=>{if(a===test[i][2])s++;});
+  const el=document.getElementById('tscore');el.classList.remove('hidden');
+  el.textContent='Результат: '+s+' из 10 — '+(s>=9?'🥇 Золотая медаль!':s>=7?'🥈 Серебро! Отличный результат!':s>=5?'🥉 Бронза! Хорошо!':'💪 Повтори слова и фразы — всё получится!');
+}
+</script>
+</body>
+</html>
