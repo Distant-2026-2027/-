@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тест: Имя прилагательное — 4 класс</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eaf4fd;color:#20344a;padding-bottom:60px}
+header{background:linear-gradient(135deg,#1565c0,#42a5f5);color:#fff;padding:24px 16px;text-align:center}
+header h1{font-size:26px}
+header p{margin-top:6px;font-size:14px;opacity:.95}
+main{max-width:760px;margin:0 auto;padding:16px}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 10px rgba(21,101,192,.12)}
+.q{margin:12px 0;font-size:16px}
+.q b{color:#1565c0}
+.opt{display:block;width:100%;text-align:left;border:2px solid #bbdefb;background:#fff;border-radius:12px;padding:10px 14px;margin:7px 0;cursor:pointer;font-size:15px}
+.opt:hover{background:#e3f2fd}
+.opt.ok{background:#c8e6c9;border-color:#43a047}
+.opt.bad{background:#ffcdd2;border-color:#e53935}
+.opt.dis{pointer-events:none;opacity:.9}
+input[type=text]{border:2px solid #bbdefb;border-radius:10px;padding:8px 12px;font-size:15px;margin:4px 0;width:100%;max-width:420px}
+input.ok{border-color:#43a047;background:#e8f5e9}
+input.bad{border-color:#e53935;background:#ffebee}
+.hint{font-size:13px;color:#5d7a8e;margin-top:4px}
+button.act{border:none;background:#1565c0;color:#fff;border-radius:20px;padding:9px 20px;cursor:pointer;font-size:15px;margin:8px 6px 0 0}
+button.act:hover{background:#0d47a1}
+.res{background:#fff8e1;border:2px solid #ffd54f;border-radius:14px;padding:16px;font-size:17px;text-align:center;margin:14px 0}
+.note{font-size:13px;color:#5d7a8e}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+th,td{border:1px solid #bbdefb;padding:6px 8px;text-align:left}
+th{background:#e3f2fd;color:#1565c0}
+select{border:2px solid #bbdefb;border-radius:8px;padding:4px 8px;font-size:14px;margin:2px 4px}
+select.ok{border-color:#43a047;background:#e8f5e9}
+select.bad{border-color:#e53935;background:#ffebee}
+h2{color:#1565c0;margin:4px 0 8px;font-size:20px}
+.line{margin:10px 0;line-height:1.9;font-size:16px}
+.gap{display:inline-block;min-width:90px;border-bottom:2px dashed #90caf9;margin:0 4px;text-align:center;font-weight:600;color:#1565c0}
+</style>
+</head>
+<body>
+<header>
+<h1>Тест: Имя прилагательное 📝</h1>
+<p>Русский язык • 4 класс • Время работы: 15–20 минут</p>
+</header>
+<main>
+
+<div class="card" id="intro">
+<h2>Инструкция</h2>
+<p class="line">Выполни задания трёх частей. В части 1 выбирай один правильный вариант — нажимай на него. В части 2 и 3 впиши ответы в поля. Нажми <b>«Проверить тест»</b> в конце — система покажет правильные ответы и посчитает баллы. Удачи! 🍀</p>
+<button class="act" onclick="startTimer()">⏱ Начать работу</button>
+<span id="timer" class="hint"></span>
+</div>
+
+<div class="card">
+<h2>Часть 1. Выбери один правильный вариант ответа</h2>
+<div class="q" id="q1"><b>1.</b> Имя прилагательное — это часть речи, которая…<div id="q1o"></div></div>
+<div class="q" id="q2"><b>2.</b> В какой строке записаны только имена прилагательные?<div id="q2o"></div></div>
+<div class="q" id="q3"><b>3.</b> Укажи словосочетание, где имя прилагательное стоит в женском роде, единственном числе.<div id="q3o"></div></div>
+<div class="q" id="q4"><b>4.</b> В каком словосочетании имя прилагательное согласуется с существительным в роде, числе и падеже?<div id="q4o"></div></div>
+<div class="q" id="q5"><b>5.</b> Как определить падеж имени прилагательного?<div id="q5o"></div></div>
+</div>
+
+<div class="card">
+<h2>Часть 2. Задания с кратким ответом</h2>
+<div class="q"><b>6.</b> Запиши начальную форму прилагательного «сладкая» (чай).<br>
+<input type="text" id="a6" placeholder="твой ответ">
+<div class="hint" id="h6"></div></div>
+<div class="q"><b>7.</b> Подбери к слову «холодный» сначала синоним, потом антоним.<br>
+Синоним: <input type="text" id="a7s" style="max-width:240px" placeholder="синоним"><br>
+Антоним: <input type="text" id="a7a" style="max-width:240px" placeholder="антоним">
+<div class="hint" id="h7"></div></div>
+<div class="q"><b>8.</b> Вставь пропущенные окончания и укажи падеж прилагательного.<br>
+<span class="line">На высок<span class="gap" id="g8a"></span> дереве поют птицы.</span>
+<input type="text" id="a8a" style="max-width:110px" placeholder="окончание">
+<select id="s8a"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h8a"></div>
+<span class="line">Мы гуляли по тенист<span class="gap" id="g8b"></span> аллее.</span>
+<input type="text" id="a8b" style="max-width:110px" placeholder="окончание">
+<select id="s8b"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h8b"></div>
+<span class="line">Я люблю свеж<span class="gap" id="g8c"></span> сок.</span>
+<input type="text" id="a8c" style="max-width:110px" placeholder="окончание">
+<select id="s8c"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h8c"></div></div>
+<div class="q"><b>9.</b> Найди в предложении все имена прилагательные и выпиши их (через запятую).<br>
+<i>«В лесу стояла старая избушка, а рядом бежала прозрачная речка.»</i><br>
+<input type="text" id="a9" placeholder="слова через запятую">
+<div class="hint" id="h9"></div></div>
+<div class="q"><b>10.</b> Составь одно словосочетание «существительное + прилагательное» и запиши его. Затем измени это словосочетание так, чтобы прилагательное было во множественном числе.<br>
+Пример: красный мяч — красные мячи.<br>
+Твой пример: <input type="text" id="a10a" style="max-width:300px" placeholder="ед. число"> — <input type="text" id="a10b" style="max-width:300px" placeholder="мн. число">
+<div class="hint" id="h10"></div></div>
+</div>
+
+<div class="card">
+<h2>Часть 3. Практическое задание</h2>
+<p class="q"><b>11.</b> Прочитай текст. Найди и выпиши три словосочетания «существительное + прилагательное». Укажи род, число и падеж прилагательного.</p>
+<p class="line"><i>Ранним утром на зелёной лужайке дети играли в весёлую игру. Тёплый ветер тихо шевелил листья на деревьях.</i></p>
+<p class="note">Образец: ранним утром (ср. р., ед. ч., Т. п.)</p>
+<div class="line">
+<input type="text" id="a11a" style="max-width:260px" placeholder="словосочетание 1">
+<select id="r11a"><option value="">род</option><option>м. р.</option><option>ж. р.</option><option>ср. р.</option></select>
+<select id="n11a"><option value="">число</option><option>ед. ч.</option><option>мн. ч.</option></select>
+<select id="p11a"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h11a"></div>
+<input type="text" id="a11b" style="max-width:260px" placeholder="словосочетание 2">
+<select id="r11b"><option value="">род</option><option>м. р.</option><option>ж. р.</option><option>ср. р.</option></select>
+<select id="n11b"><option value="">число</option><option>ед. ч.</option><option>мн. ч.</option></select>
+<select id="p11b"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h11b"></div>
+<input type="text" id="a11c" style="max-width:260px" placeholder="словосочетание 3">
+<select id="r11c"><option value="">род</option><option>м. р.</option><option>ж. р.</option><option>ср. р.</option></select>
+<select id="n11c"><option value="">число</option><option>ед. ч.</option><option>мн. ч.</option></select>
+<select id="p11c"><option value="">падеж</option><option>И. п.</option><option>Р. п.</option><option>Д. п.</option><option>В. п.</option><option>Т. п.</option><option>П. п.</option></select>
+<div class="hint" id="h11c"></div>
+</div>
+</div>
+
+<button class="act" onclick="checkAll()">✅ Проверить тест</button>
+<button class="act" style="background:#546e7a" onclick="location.reload()">🔄 Начать заново</button>
+<div id="result"></div>
+
+<p class="note" style="margin-top:14px">Максимум — 19 баллов: Часть 1 — 5, Часть 2 — 11, Часть 3 — 3. 17–19 — «5», 13–16 — «4», 9–12 — «3», меньше — нужно повторить тему.</p>
+
+</main>
+<script>
+var MC=[[["q1o",["обозначает предмет и отвечает на вопросы «кто?», «что?»","обозначает признак предмета и отвечает на вопросы «какой?», «какая?», «какое?», «какие?»","обозначает действие и отвечает на вопросы «что делать?», «что сделать?»"],1],["q2o",["синий, синева, синеть","весёлый, яркий, добрый","книга, умный, читать"],1],["q3o",["тёплое солнце","высокие горы","интересная книга"],2],["q4o",["бегать быстро","зелёная трава","чашка чая"],1],["q5o",["по вопросу, который задаём к существительному","по падежу существительного, с которым оно связано","по окончанию самого прилагательного без учёта существительного"],1]]];
+var mcState=[-1,-1,-1,-1,-1];
+MC[0].forEach(function(item,idx){
+var box=document.getElementById(item[0]),h='';
+for(var j=0;j<item[1].length;j++){
+var l=String.fromCharCode(1072+j);
+h+='<button class="opt" onclick="mcPick('+idx+','+j+',this)">'+l+') '+item[1][j]+'</button>';}
+box.innerHTML=h;});
+function mcPick(idx,j,btn){
+if(mcState[idx]>-1)return;
+mcState[idx]=j;
+var box=document.getElementById(MC[0][idx][0]);
+box.querySelectorAll('.opt').forEach(function(b){b.classList.add('dis')});
+btn.classList.add(mcState[idx]===MC[0][idx][2]?'ok':'bad');}
+function norm(s){return s.toLowerCase().replace(/ё/g,'е').replace(/[^а-яa-z\s-]/gi,'').replace(/\s+/g,' ').trim();}
+function mark(inputId,hintId,ok,ansText){
+var inp=document.getElementById(inputId);
+if(inp){inp.classList.remove('ok','bad');inp.classList.add(ok?'ok':'bad');
+if(!ok&&inp.value.trim()===''){inp.classList.add('bad');}}
+var h=document.getElementById(hintId);
+if(h){h.innerHTML=ok?'✔ Верно!':'✘ Правильный ответ: '+ansText;h.style.color=ok?'#2e7d32':'#c62828';}}
+function checkAll(){
+var sc=0,total=19;
+// Часть 1: 5 баллов
+MC[0].forEach(function(item,idx){
+if(mcState[idx]===item[2])sc++;});
+// 6: сладкий — 1 балл
+var a6=norm(document.getElementById('a6').value);
+if(a6==='сладкий'){sc++;mark('a6','h6',true);}
+else mark('a6','h6',false,'сладкий');
+// 7: синоним и антоним — 2 балла
+var syn=['прохладный','зимний','студеный','морозный','ледяной','стылый'];
+var ant=['теплый','горячий','жаркий','тёплый','горячий','жгучий'];
+var vs=norm(document.getElementById('a7s').value),va=norm(document.getElementById('a7a').value);
+var okS=syn.some(function(w){return vs.indexOf(w)>-1}),okA=ant.some(function(w){return va.indexOf(w)>-1});
+if(okS)sc++;if(okA)sc++;
+mark('a7s','h7s',okS,'например: прохладный, зимний, студёный');
+mark('a7a','h7a',okA,'например: тёплый, горячий, жаркий');
+// 8: три окончания и падежа — 6 баллов (по 1 за окончание, по 1 за падеж)
+var e8a=norm(document.getElementById('a8a').value),p8a=document.getElementById('s8a').value;
+var okE8a=(e8a==='ом'||e8a==='ем'),okP8a=(p8a==='П. п.');
+if(okE8a)sc++;if(okP8a)sc++;
+mark('a8a','h8a',okE8a,'-ом (высоком)');mark('s8a','h8ap',okP8a,'П. п.');
+var e8b=norm(document.getElementById('a8b').value),p8b=document.getElementById('s8b').value;
+var okE8b=(e8b==='ой'||e8b==='ою'),okP8b=(p8b==='Д. п.');
+if(okE8b)sc++;if(okP8b)sc++;
+mark('a8b','h8b',okE8b,'-ой (тенистой)');mark('s8b','h8bp',okP8b,'Д. п.');
+var e8c=norm(document.getElementById('a8c').value),p8c=document.getElementById('s8c').value;
+var okE8c=(e8c==='ий'||e8c==='ий '),okP8c=(p8c==='В. п.');
+if(okE8c)sc++;if(okP8c)sc++;
+mark('a8c','h8c',okE8c,'-ий (свежий)');mark('s8c','h8cp',okP8c,'В. п.');
+// 9: старая, прозрачная — 1 балл
+var a9=norm(document.getElementById('a9').value);
+var ok9=(a9.indexOf('старая')>-1&&a9.indexOf('прозрачная')>-1);
+if(ok9)sc++;
+mark('a9','h9',ok9,'старая, прозрачная');
+// 10: свободный ответ — самопроверка, 0–1 балл
+var a10a=norm(document.getElementById('a10a').value),a10b=norm(document.getElementById('a10b').value);
+var ok10=(a10a.length>3&&a10b.length>3&&a10b!==a10a);
+if(ok10)sc++;
+mark('a10a','h10',ok10,'любое словосочетание, где прилагательное изменилось: ед. ч. — мн. ч. (красный мяч — красные мячи)');
+// 11: три словосочетания — 3 балла
+var c11=[['зеленой лужайке','ж. р.','Д. п.'],['веселую игру','ж. р.','В. п.'],['теплый ветер','м. р.','И. п.']];
+var got=[];
+c11.forEach(function(cc){got.push(false)});
+[['a11a','h11a','r11a','n11a','p11a',0],['a11b','h11b','r11b','n11b','p11b',1],['a11c','h11c','r11c','n11c','p11c',2]].forEach(function(cfg){
+var val=norm(document.getElementById(cfg[0]).value);
+var idx=cfg[5];
+var found=false;
+c11.forEach(function(cc,i){
+var base=cc[0].split(' ')[0];
+if(val.indexOf(base)>-1&&!got[i]){
+if(document.getElementById(cfg[2]).value===cc[1]&&document.getElementById(cfg[3]).value==='ед. ч.'&&document.getElementById(cfg[4]).value===cc[2]){
+sc++;got[i]=true;found=true;}
+}});
+mark(cfg[0],cfg[1],found,'зелёной лужайке (ж. р., ед. ч., Д. п.), весёлую игру (ж. р., ед. ч., В. п.), тёплый ветер (м. р., ед. ч., И. п.)');});
+// Результат
+var grade=sc>=17?'5':(sc>=13?'4':(sc>=9?'3':'2'));
+var sm=sc>=17?'🌟 Превосходно! Ты отлично знаешь имя прилагательное!':(sc>=13?'👍 Молодец! Почти всё верно!':(sc>=9?'🙂 Хорошо, но тему стоит повторить ещё раз.':'📚 Повтори правило и попробуй снова!'));
+document.getElementById('result').innerHTML='<div class="res"><b>Результат: '+sc+' из '+total+' баллов</b><br>Отметка: <b>'+grade+'</b><br>'+sm+'</div>';
+document.getElementById('result').scrollIntoView({behavior:'smooth'});}
+function startTimer(){
+var t=20*60;
+var el=document.getElementById('timer');
+var iv=setInterval(function(){
+var m=Math.floor(t/60),s=t%60;
+el.textContent='⏱ Осталось: '+m+':'+(s<10?'0':'')+s;
+if(t<=0){clearInterval(iv);el.textContent='⏱ Время вышло! Нажми «Проверить тест».';}
+t--;},1000);}
+</script>
+</body>
+</html>
