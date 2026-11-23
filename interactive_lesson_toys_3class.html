@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Toys and Games — интерактивный урок (3 класс, Spotlight 4b/7b)</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#fff8f0;color:#1e2a3a;margin:0;padding:0;}
+  .wrap{max-width:900px;margin:0 auto;padding:16px;}
+  header{background:linear-gradient(135deg,#ff9a56,#ff6f91);color:#fff;padding:24px 18px;border-radius:0 0 18px 18px;text-align:center;}
+  header h1{margin:0;font-size:1.7em;}
+  header .ru{opacity:.9;margin-top:6px;}
+  .badges{margin-top:10px;}
+  .badge{display:inline-block;background:#ffffff33;border:1px solid #ffffff66;border-radius:20px;padding:4px 12px;margin:3px;font-size:.85em;}
+  .score{position:fixed;top:12px;right:12px;background:#2d6a9f;color:#fff;padding:8px 16px;border-radius:24px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:50;}
+  nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0;}
+  nav button{border:none;padding:10px 16px;border-radius:24px;background:#ffe3d0;color:#a34a1f;cursor:pointer;font-size:.95em;font-weight:bold;}
+  nav button.active{background:#ff6f91;color:#fff;}
+  section{display:none;background:#fff;border:1px solid #ffd8c2;border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 10px rgba(255,150,90,.12);}
+  section.active{display:block;}
+  h2{color:#ff6f91;margin-top:0;}
+  .timer{float:right;background:#2d6a9f;color:#fff;border-radius:20px;padding:4px 14px;font-weight:bold;font-size:.9em;}
+  .ru-tr{color:#7a6a58;font-style:italic;font-size:.92em;}
+  .word{display:inline-block;background:#fff3e6;border:2px solid #ffcfa8;border-radius:12px;padding:10px 14px;margin:5px;cursor:pointer;font-weight:bold;transition:.2s;}
+  .word:active,.word.playing{background:#ff6f91;color:#fff;}
+  .match-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+  .mcard{padding:10px 14px;border-radius:10px;border:2px solid #ffcfa8;background:#fff;cursor:pointer;font-weight:bold;}
+  .mcard.sel{border-color:#ff6f91;background:#ffeaf1;}
+  .mcard.done{opacity:.45;pointer-events:none;background:#d8f3d8;border-color:#5cb85c;}
+  .dialog p{cursor:pointer;padding:8px 12px;border-radius:10px;margin:6px 0;background:#fdf4ec;}
+  .dialog p:hover{background:#ffe9db;}
+  .tr{display:none;color:#7a6a58;font-style:italic;font-size:.92em;padding-left:14px;}
+  .quiz button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px;border-radius:10px;border:2px solid #ffd8c2;background:#fff;cursor:pointer;}
+  .quiz button.ok{background:#d8f3d8;border-color:#5cb85c;}
+  .quiz button.bad{background:#fde0e0;border-color:#e06060;}
+  input.g{width:70%;padding:8px;border:2px solid #ffd8c2;border-radius:8px;font-size:1em;}
+  .gbtn{padding:8px 16px;border:none;border-radius:8px;background:#ff6f91;color:#fff;cursor:pointer;font-weight:bold;margin-left:6px;}
+  .res{margin-top:8px;font-weight:bold;}
+  .note{margin-top:14px;background:#eef6ff;border-left:4px solid #2d6a9f;padding:10px 14px;border-radius:8px;font-size:.9em;cursor:pointer;}
+  .note b{color:#2d6a9f;}
+  .note .body{display:none;margin-top:8px;}
+  .check{cursor:pointer;padding:6px 10px;border-radius:8px;display:block;}
+  .check:hover{background:#fff3e6;}
+  .reset{display:block;margin:20px auto;background:#fff;border:2px solid #ff6f91;color:#ff6f91;padding:10px 24px;border-radius:24px;cursor:pointer;font-weight:bold;}
+  @media(max-width:600px){header h1{font-size:1.3em;}}
+</style>
+</head>
+<body>
+<div class="score" id="score">⭐ 0</div>
+<header>
+  <h1>🧸 My Toys and Games</h1>
+  <div class="ru">Любимые игры и игрушки моих друзей — интерактивный урок</div>
+  <div class="badges"><span class="badge">3 класс</span><span class="badge">Spotlight 3 · Module 4 · Unit 7b</span><span class="badge">⭐ собирай баллы!</span></div>
+</header>
+<div class="wrap">
+<nav id="nav"></nav>
+
+<section data-t="Warm-up" data-m="5">
+  <div class="timer">⏱ 5 мин</div>
+  <h2>1. Warm-up — Разминка</h2>
+  <p>Ответь по цепочке:</p>
+  <p class="q">1. Have you got a teddy bear? <span class="ru-tr">— У тебя есть плюшевый мишка?</span></p>
+  <p class="q">2. What is your favourite toy? <span class="ru-tr">— Какая у тебя любимая игрушка?</span></p>
+  <p class="q">3. What games do you play with your friends? <span class="ru-tr">— В какие игры ты играешь с друзьями?</span></p>
+  <p class="q">4. Is your ball new or old? <span class="ru-tr">— Твой мяч новый или старый?</span></p>
+  <p>Опоры: <b>Me too! — Мне тоже!</b> · <b>Cool! — Круто!</b> · <b>Really? — Правда?</b></p>
+</section>
+
+<section data-t="Vocabulary" data-m="8">
+  <div class="timer">⏱ 8 мин</div>
+  <h2>2. Vocabulary — Новые слова. Кликни — слово прозвучит дважды</h2>
+  <div id="vocab"></div>
+  <div class="note"><b>For teacher:</b><div class="body">Хором повторяем каждое слово после звучка. Затем закройте экран — дети называют слова по памяти.</div></div>
+</section>
+
+<section data-t="Matching" data-m="5">
+  <div class="timer">⏱ 5 мин</div>
+  <h2>3. Game — Собери пары: слово ↔ перевод</h2>
+  <p>Кликни слово, потом его перевод. Пара станет зелёной!</p>
+  <div class="match-row" id="mEN"></div>
+  <div class="match-row" id="mRU"></div>
+  <div class="res" id="mres"></div>
+</section>
+
+<section data-t="Dialogue" data-m="10">
+  <div class="timer">⏱ 10 мин</div>
+  <h2>4. Dialogue — Даша и Сэм о игрушках</h2>
+  <p class="ru-tr">Кликни по фразе — откроется перевод. Кликни ещё раз — свернётся.</p>
+  <div class="dialog" id="dlg"></div>
+  <h3>Проверь себя: 5 вопросов</h3>
+  <div class="quiz" id="quiz"></div>
+  <div class="res" id="qres"></div>
+</section>
+
+<section data-t="Grammar" data-m="7">
+  <div class="timer">⏱ 7 мин</div>
+  <h2>5. Grammar — his / her и have got</h2>
+  <p><b>his</b> — его (принадлежит мальчику), <b>her</b> — её (принадлежит девочке).<br>
+  <b>Have you got…?</b> — У тебя есть…? Ответ: <b>Yes, I have. / No, I haven't.</b></p>
+  <div id="grammar"></div>
+  <div class="res" id="gres"></div>
+</section>
+
+<section data-t="Speaking" data-m="7">
+  <div class="timer">⏱ 7 мин</div>
+  <h2>6. Speaking — Говори в парах</h2>
+  <p>Опоры: <b>My favourite toy is… — Моя любимая игрушка…</b> · <b>I've got… — У меня есть…</b> · <b>It can… — Она умеет…</b></p>
+  <p class="q">1. What toys have you got? <span class="ru-tr">— Какие игрушки у тебя есть?</span></p>
+  <p class="q">2. What is your favourite toy? Why? <span class="ru-tr">— Твоя любимая игрушка? Почему?</span></p>
+  <p class="q">3. Have you got a bike? What colour is it? <span class="ru-tr">— У тебя есть велосипед? Какого он цвета?</span></p>
+  <p class="q">4. What games do your friends like? <span class="ru-tr">— Какие игры нравятся твоим друзьям?</span></p>
+  <p class="q">5. Do you play puzzles or ball games? <span class="ru-tr">— Ты собираешь пазлы или играешь с мячом?</span></p>
+  <p class="q">6. What toy do you want for your birthday? <span class="ru-tr">— Какую игрушку ты хочешь на день рождения?</span></p>
+</section>
+
+<section data-t="Wrap-up" data-m="3">
+  <div class="timer">⏱ 3 мин</div>
+  <h2>7. Wrap-up — Итоги</h2>
+  <p>Отметь, чему ты научился:</p>
+  <span class="check">☐ Я знаю 12 слов про игрушки</span>
+  <span class="check">☐ Я умею спрашивать Have you got…?</span>
+  <span class="check">☐ Я умею говорить his / her</span>
+  <h3>🏠 Homework — Домашнее задание</h3>
+  <p>Нарисуй свою любимую игрушку и напиши 4–5 предложений о ней (I've got a… It is… It can…).<br>
+  ⭐ Звёздочка: спроси у родителей, какая игрушка была любимой у них в детстве, — сравните ответы!</p>
+</section>
+
+<button class="reset" onclick="location.reload()">🔄 Начать урок заново</button>
+</div>
+<script>
+let score=0;const add=n=>{score+=n;document.getElementById('score').textContent='⭐ '+score;};
+
+// nav
+const secs=[...document.querySelectorAll('section')];const nav=document.getElementById('nav');
+secs.forEach((s,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+s.dataset.t;b.onclick=()=>{secs.forEach(x=>x.classList.remove('active'));s.classList.add('active');[...nav.children].forEach(x=>x.classList.remove('active'));b.classList.add('active');};if(i===0)b.classList.add('active');nav.appendChild(b);});
+secs[0].classList.add('active');
+
+// teacher notes
+document.querySelectorAll('.note').forEach(n=>n.onclick=()=>n.querySelector('.body').style.display=n.querySelector('.body').style.display==='block'?'none':'block');
+// checklist
+document.querySelectorAll('.check').forEach(c=>c.onclick=()=>{if(c.textContent.startsWith('☐')){c.textContent=c.textContent.slice(1);c.style.background='#d8f3d8';}});
+
+// vocabulary
+const words=[['teddy bear','плюшевый мишка'],['doll','кукла'],['ball','мяч'],['kite','воздушный змей'],['robot','робот'],['car','машинка'],['train','поезд'],['puzzle','пазл'],['plane','самолётик'],['guitar','гитара'],['drum','барабан'],['bike','велосипед']];
+const v=document.getElementById('vocab');
+words.forEach(([w,r])=>{const s=document.createElement('span');s.className='word';s.textContent=w+' 🧸';s.onclick=()=>{say(w);s.classList.add('playing');setTimeout(()=>s.classList.remove('playing'),700);setTimeout(()=>say(w),900);};v.appendChild(s);const d=document.createElement('span');d.className='ru-tr';d.textContent=r+'  ';v.appendChild(d);});
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.8;speechSynthesis.speak(u);}catch(e){}}
+
+// matching
+const pairs=words.slice(0,8);const en=[...pairs],ru=[...pairs].sort(()=>Math.random()-.5);
+const mEN=document.getElementById('mEN'),mRU=document.getElementById('mRU');let sel=null,done=0;
+function mk(list,side){list.forEach(x=>{const b=document.createElement('button');b.className='mcard';b.dataset.k=side==='en'?x[0]:x[0];b.textContent=side==='en'?x[0]:x[1];b.onclick=()=>pick(b,side);(side==='en'?mEN:mRU).appendChild(b);});}
+mk(en,'en');mk(ru,'ru');
+function pick(b,side){if(sel&&sel.side!==side&&sel.b.dataset.k===b.dataset.k){sel.b.classList.add('done');b.classList.add('done');add(2);done++;say(sel.b.dataset.k);sel=null;if(done===8)document.getElementById('mres').textContent='🎉 Все 8 пар собраны!';}
+ else{if(sel)sel.b.classList.remove('sel');sel={b,side};b.classList.add('sel');}}
+
+// dialogue
+const dlg=[['Hello, Dasha! Have you got a favourite toy?','Привет, Даша! Есть у тебя любимая игрушка?'],
+['Yes, I have! I\'ve got a beautiful doll. Her name is Lily.','Да, есть! У меня есть красивая кукла. Её зовут Лили.'],
+['Cool! My favourite toy is my robot. His name is Sparky. He can walk and talk!','Круто! Моя любимая игрушка — робот. Его зовут Спарки. Он умеет ходить и говорить!'],
+['Wow! Have you got a bike too?','Ого! А велосипед у тебя тоже есть?'],
+['Yes, I have. It is new and it is blue. My friends and I ride our bikes after school.','Да, есть. Он новый и синий. Мы с друзьями катаемся на велосипедах после школы.'],
+['And what games do you like?','А какие игры тебе нравятся?'],
+['I like puzzles and ball games. Let\'s play football together!','Я люблю пазлы и игры с мячом. Давай поиграем в футбол вместе!'],
+['Great idea! Me too!','Отличная идея! Мне тоже!']];
+const dEl=document.getElementById('dlg');
+dlg.forEach(([en,t],i)=>{const p=document.createElement('p');p.innerHTML='<b>'+(i%2?'Sam:':'Dasha:')+'</b> '+en;const tr=document.createElement('div');tr.className='tr';tr.textContent=t;p.onclick=()=>{tr.style.display=tr.style.display==='block'?'none':'block';};dEl.appendChild(p);dEl.appendChild(tr);});
+
+// quiz
+const quiz=[['What is Dasha\'s favourite toy?',['A doll','A robot','A kite'],0],
+['What is the robot\'s name?',['Max','Sparky','Bim'],1],
+['What colour is Sam\'s bike?',['Red','Green','Blue'],2],
+['What games does Sam like?',['Puzzles and ball games','Computer games','Chess'],0],
+['What do the friends do at the end?',['They go home','They play football','They watch TV'],1]];
+const qEl=document.getElementById('quiz');let qDone=0;
+quiz.forEach(([q,opts,ok])=>{const d=document.createElement('div');d.innerHTML='<b>'+q+'</b>';opts.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;if(i===ok){b.classList.add('ok');add(3);}else{b.classList.add('bad');d.children[ok+1].classList.add('ok');}qDone++;if(qDone===5)document.getElementById('qres').textContent='Викторина пройдена! Проверь ответы с учителем.';};d.appendChild(b);});qEl.appendChild(d);});
+
+// grammar
+const gram=[['This is ___ robot. (his/her — мальчик)',['his']],['This is ___ doll. (his/her — девочка)',['her']],['___ you got a kite? (Have/Has)',['Have']],['I ___ got a drum. (have/has)',['have']],['___ he got a puzzle? (Have/Has)',['Has']],['These are his ___ . (car/cars)',['cars']]];
+const gEl=document.getElementById('grammar');let gDone=0;
+gram.forEach(([q,ans])=>{const d=document.createElement('div');d.style.margin='10px 0';d.innerHTML='<b>'+q+'</b><br>';const inp=document.createElement('input');inp.className='g';const btn=document.createElement('button');btn.className='gbtn';btn.textContent='Проверить';btn.onclick=()=>{if(inp.value.trim().toLowerCase()===ans[0]){inp.style.borderColor='#5cb85c';inp.style.background='#d8f3d8';add(2);}else{inp.style.borderColor='#e06060';inp.style.background='#fde0e0';}gDone++;if(gDone===6)document.getElementById('gres').textContent='Готово! Верно: his robot, her doll, Have you got, I have, Has he got, cars.';};d.appendChild(inp);d.appendChild(btn);gEl.appendChild(d);});
+</script>
+</body>
+</html>
