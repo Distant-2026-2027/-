@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок: Жизнь в городе. Договариваемся о встрече — Spotlight 6, 8b</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f2f4f8;margin:0;padding:16px;color:#223}
+.wrap{max-width:920px;margin:0 auto}
+h1{font-size:1.4em;color:#1a3c6e;margin:.2em 0}
+.sub{color:#556;margin:.2em 0 1em}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{padding:9px 14px;border:1px solid #c4d0e0;background:#fff;border-radius:8px;cursor:pointer;font-size:.95em}
+.tab.active{background:#1a3c6e;color:#fff;border-color:#1a3c6e}
+.panel{display:none;background:#fff;border-radius:12px;padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.panel.active{display:block}
+.hint{color:#4a5a74;font-size:.92em}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:10px}
+.wcard{border:1px solid #d3dcea;border-radius:10px;padding:10px 12px;cursor:pointer;background:#fbfcff}
+.wcard:active{background:#eef3fb}
+.wtop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.snd{border:none;background:#e8f0ff;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:1.05em}
+.wru{margin-top:8px;color:#333;font-weight:600}
+.whint{font-weight:400;color:#667;font-size:.88em;margin-top:4px}
+.gwrap{display:flex;flex-wrap:wrap;gap:8px;perspective:600px;margin-top:12px}
+.tile{min-width:130px;flex:1 1 130px;text-align:center;padding:14px 8px;border-radius:10px;border:1px solid #c9d6e8;background:#fff;cursor:pointer;font-size:1em}
+.tile.sel{background:#cfe0ff;border-color:#1a3c6e}
+.tile.ok{background:#d6f2d6;border-color:#3d9a3d;pointer-events:none}
+.tile.bad{background:#ffd9d9;border-color:#c0392b}
+.dline{padding:9px 12px;border-left:3px solid #1a3c6e;background:#f7f9fd;border-radius:6px;margin:8px 0;cursor:pointer}
+.who{font-weight:700;color:#1a3c6e}
+.ru{display:none;color:#444;margin-top:4px;font-size:.95em}
+.dline.open .ru{display:block}
+.cheat{background:#fdf6e3;border:1px solid #e8d9a0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:.95em}
+.qblock{margin:12px 0;padding:10px 14px;border:1px solid #dfe6ef;border-radius:10px}
+.qopt{display:block;margin:6px 0;padding:8px 12px;border:1px solid #c9d6e8;border-radius:8px;cursor:pointer;background:#fff}
+.qopt.ok{background:#d6f2d6;border-color:#3d9a3d}
+.qopt.bad{background:#ffd9d9;border-color:#c0392b}
+.grow{margin:10px 0}
+.gin{width:130px;padding:6px 8px;border:1px solid #c9d6e8;border-radius:8px;font-size:1em}
+.gin.ok{border-color:#3d9a3d;background:#d6f2d6}
+.gin.bad{border-color:#c0392b;background:#ffd9d9}
+.spk{margin:12px 0;padding:10px 14px;background:#f3f7ff;border-radius:10px;border:1px solid #d6e2f5}
+.tnote{background:#fff8dc;border:1px solid #ecdf9f;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.93em}
+.tnote summary{cursor:pointer;font-weight:600;color:#7a641f}
+table{border-collapse:collapse;width:100%;margin-top:10px;font-size:.93em}
+th,td{border:1px solid #d3dcea;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#eef3fb}
+.chk{margin:6px 0;font-size:1em}
+.bigbtn{margin-top:16px;padding:10px 18px;background:#1a3c6e;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:1em}
+.goal{margin:8px 0 14px}
+.goal b{color:#1a3c6e}
+.fb{font-weight:600;margin-top:8px;min-height:1.2em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🏙 Жизнь в городе: договариваемся о встрече</h1>
+<p class="sub">Английский язык, 6 класс · Spotlight 6, Module 8b «Shall we?» · Урок обобщения и закрепления · 40 минут · Уровень A2</p>
+<div class="tabs" id="tabs"><button class="tab" id="tab0" onclick="showTab(0)">Цели и задачи</button><button class="tab" id="tab1" onclick="showTab(1)">Ход урока</button><button class="tab" id="tab2" onclick="showTab(2)">Разминка</button><button class="tab" id="tab3" onclick="showTab(3)">Новые слова</button><button class="tab" id="tab4" onclick="showTab(4)">Игра: пары</button><button class="tab" id="tab5" onclick="showTab(5)">Диалог</button><button class="tab" id="tab6" onclick="showTab(6)">Грамматика</button><button class="tab" id="tab7" onclick="showTab(7)">Говорение</button><button class="tab" id="tab8" onclick="showTab(8)">Итоги</button></div>
+<div class="panel active" id="panel0">
+<h2>🎯 Цели и задачи урока</h2>
+<div class="goal"><b>Цель урока:</b> обобщить и закрепить лексику по теме «Места в городе» и умение договариваться о встрече (приглашение, согласие, вежливый отказ) на основе Spotlight 6, Module 8b.</div>
+<div class="goal"><b>Обучающие задачи:</b> активизировать лексику Places in town (12 единиц); отработать формулы Shall we…? / How about…? / Great idea! / Sorry, I cannot; закрепить степени сравнения прилагательных в речи.</div>
+<div class="goal"><b>Развивающие задачи:</b> развивать умение вести диалог-побуждение к действию, языковую догадку и память через игру «Собери пары».</div>
+<div class="goal"><b>Воспитательные задачи:</b> воспитывать культуру вежливого общения и интерес к родному городу.</div>
+<div class="goal"><b>Планируемые результаты (ФГОС ООО / ФРП):</b> личностные — осознание ценности общения и дружбы; метапредметные — планирование совместного действия, работа с интерактивными заданиями; предметные — ведение этикетного диалога с приглашением и отказом, употребление степеней сравнения, письмо-приглашение с опорой.</div>
+<div class="goal"><b>Оборудование:</b> компьютер/проектор или телефоны учеников; файл урока открывается в любом браузере, работает офлайн.</div>
+<details class="tnote"><summary>For teacher</summary>Урок построен как обобщение: если тема 8b уже пройдена по учебнику, вкладки служат закреплением; если нет — используйте вкладку «Новые слова» как введение лексики, а грамматику объясните по таблице во вкладке «Грамматика».</details>
+</div>
+
+<div class="panel" id="panel1">
+<h2>🗺 Ход урока (40 минут)</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>1. Организационный + разминка</td><td>4 мин</td><td>Приветствует, включает вкладку «Разминка», задаёт вопросы цепочкой</td><td>Отвечают полными предложениями с опорами I think… / In my opinion…</td></tr>
+<tr><td>2. Введение/актуализация лексики</td><td>8 мин</td><td>Открывает вкладку «Новые слова», включает звучку, просит повторить хором</td><td>Слушают, повторяют, открывают переводы кликом</td></tr>
+<tr><td>3. Игра «Собери пары»</td><td>5 мин</td><td>Переключает на игру, следит за сменой пар</td><td>Соединяют слово и перевод, играют по очереди</td></tr>
+<tr><td>4. Работа с диалогом</td><td>8 мин</td><td>Читает диалог по ролям, открывает переводы, задаёт вопросы викторины</td><td>Читают по ролям, проверяют себя викториной из 5 вопросов</td></tr>
+<tr><td>5. Грамматическая тренировка</td><td>6 мин</td><td>Разбирает таблицу степеней сравнения</td><td>Вставляют слова в 6 предложений, проверяют себя</td></tr>
+<tr><td>6. Говорение в парах</td><td>6 мин</td><td>Делит на пары, показывает вопросы</td><td>Разыгрывают 6 мини-диалогов, меняются ролями</td></tr>
+<tr><td>7. Рефлексия и домашнее задание</td><td>3 мин</td><td>Открывает вкладку «Итоги», комментирует домашку</td><td>Отмечают пункты чек-листа, записывают домашку</td></tr>
+</table>
+<details class="tnote"><summary>For teacher</summary>Если класс слабый — сократите говорение до 3 вопросов. Если сильный — добавьте на вкладке «Говорение» условие: в каждом ответе должна быть степень сравнения.</details>
+</div>
+
+<div class="panel" id="panel2">
+<h2>🔥 Разминка (4 мин)</h2>
+<p class="hint">Ответьте полным предложением. Используйте опоры: I think…, In my opinion…, I like… because…</p>
+<div class="dline"><span class="who">1.</span> Do you like your town? Why?<div class="ru">Тебе нравится твой город? Почему?</div></div>
+<div class="dline"><span class="who">2.</span> What places do you go to at the weekend?<div class="ru">Куда ты ходишь по выходным?</div></div>
+<div class="dline"><span class="who">3.</span> When do you usually meet your friends?<div class="ru">Когда ты обычно встречаешься с друзьями?</div></div>
+<div class="dline"><span class="who">4.</span> What is the most interesting place in your town?<div class="ru">Какое самое интересное место в твоём городе?</div></div>
+<details class="tnote"><summary>For teacher</summary>Ожидаемые опоры ответов: I like my town because it is green and clean. At the weekend I go to the park and to the cinema. In my opinion, the most interesting place is the museum.</details>
+</div>
+<div class="panel" id="panel3"><h2>🔤 Новые слова: Places in town (8 мин)</h2><p class="hint">Клик по 🔊 — слово звучит дважды. Клик по карточке — откроется перевод.</p><div class="wgrid"><div class="wcard" onclick="flip(this)"><div class="wtop"><b>park</b><button class="snd" onclick="speak('park')">🔊</button></div><div class="wru" hidden>парк<div class="whint">Здесь гуляют, катаются на велосипедах</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>zoo</b><button class="snd" onclick="speak('zoo')">🔊</button></div><div class="wru" hidden>зоопарк<div class="whint">Место, где живут животные</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>museum</b><button class="snd" onclick="speak('museum')">🔊</button></div><div class="wru" hidden>музей<div class="whint">История и экспонаты за стеклом</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>art gallery</b><button class="snd" onclick="speak('art gallery')">🔊</button></div><div class="wru" hidden>картинная галерея<div class="whint">Здесь висят картины</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>theatre</b><button class="snd" onclick="speak('theatre')">🔊</button></div><div class="wru" hidden>театр<div class="whint">Сцена, зрительный зал, спектакль</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>cinema</b><button class="snd" onclick="speak('cinema')">🔊</button></div><div class="wru" hidden>кинотеатр<div class="whint">Попкорн и большой экран</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>library</b><button class="snd" onclick="speak('library')">🔊</button></div><div class="wru" hidden>библиотека<div class="whint">Книги выдают здесь</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>stadium</b><button class="snd" onclick="speak('stadium')">🔊</button></div><div class="wru" hidden>стадион<div class="whint">Футбол и беговые дорожки</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>gym</b><button class="snd" onclick="speak('gym')">🔊</button></div><div class="wru" hidden>спортивный зал<div class="whint">Тренажёры и физкультура</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>fast food restaurant</b><button class="snd" onclick="speak('fast food restaurant')">🔊</button></div><div class="wru" hidden>ресторан быстрого питания<div class="whint">Бургеры и картошка фри</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>fun fair</b><button class="snd" onclick="speak('fun fair')">🔊</button></div><div class="wru" hidden>парк аттракционов<div class="whint">Карусели — НЕ обычный парк!</div></div></div><div class="wcard" onclick="flip(this)"><div class="wtop"><b>shopping centre</b><button class="snd" onclick="speak('shopping centre')">🔊</button></div><div class="wru" hidden>торговый центр<div class="whint">Магазины под одной крышей</div></div></div></div><details class="tnote"><summary>For teacher</summary>Подсказка для обсуждения: discovery — открытие (то, что уже существовало), invention — изобретение (то, что создали). Здесь аналогия: fun fair — аттракционы, park — обычный парк для прогулок. Попросите детей повторить каждое слово хором после звучка.</details><details class="tnote"><summary>Ключи (подсказки)</summary>Проверьте, что дети открыли перевод у всех 12 карточек, прежде чем переходить к игре.</details></div>
+<div class="panel" id="panel4">
+<h2>🃏 Игра: собери пары (5 мин)</h2>
+<p class="hint">Откройте два плитки: английское слово и его перевод. Игра начинается сразу, плитки перемешаны.</p>
+<div class="gwrap" id="gameBoard"></div>
+<div class="fb" id="gameFb">Найдено пар: 0 из 8</div>
+<button class="bigbtn" onclick="resetGame()">Начать заново</button>
+</div>
+
+<div class="panel" id="panel5">
+<h2>🗣 Диалог: Кира и Марк планируют субботу (8 мин)</h2>
+<p class="hint">Клик по реплике — откроется перевод. Потом прочитайте по ролям.</p>
+<div class="dline"><span class="who">Kira:</span> Hi, Mark! Are you free on Saturday?<div class="ru">Привет, Марк! Ты свободен в субботу?</div></div>
+<div class="dline"><span class="who">Mark:</span> Hi, Kira! Yes, I am. Why?<div class="ru">Привет, Кира! Да. А что?</div></div>
+<div class="dline"><span class="who">Kira:</span> Shall we go to the new museum? It is great!<div class="ru">Может, сходим в новый музей? Он замечательный!</div></div>
+<div class="dline"><span class="who">Mark:</span> Good idea! How about going to the fun fair after that?<div class="ru">Отличная идея! А после этого сходить в парк аттракционов?</div></div>
+<div class="dline"><span class="who">Kira:</span> Sounds great! Shall we invite Anna too?<div class="ru">Звучит здорово! Пригласим и Анну?</div></div>
+<div class="dline"><span class="who">Mark:</span> Sure! Let us meet near the cinema at 11 o&#39;clock.<div class="ru">Конечно! Давай встретимся у кинотеатра в 11 часов.</div></div>
+<div class="dline"><span class="who">Kira:</span> Let us make it 12 — I have my gym class in the morning.<div class="ru">Давай лучше в 12 — у меня утром спортивный зал.</div></div>
+<div class="dline"><span class="who">Mark:</span> No problem. See you on Saturday at 12 near the cinema!<div class="ru">Без проблем. До встречи в субботу в 12 у кинотеатра!</div></div>
+<div class="cheat"><b>Шпаргалка формул:</b><br>
+Приглашение: <b>Shall we go to…?</b> · <b>How about going to…?</b> · <b>Let us meet…</b><br>
+Согласие: <b>Great idea!</b> · <b>Sounds great!</b> · <b>Sure!</b><br>
+Вежливый отказ: <b>Sorry, I cannot. I have to…</b> · <b>Let us make it…</b></div>
+<h3>Проверьте себя: викторина по диалогу</h3>
+<div id="quizBox"></div>
+<div class="fb" id="quizFb"></div>
+</div>
+
+<div class="panel" id="panel6">
+<h2>✏️ Грамматика: степени сравнения (6 мин)</h2>
+<table>
+<tr><th>Прилагательное</th><th>Сравнительная</th><th>Превосходная</th></tr>
+<tr><td>big</td><td>bigger (than)</td><td>the biggest</td></tr>
+<tr><td>busy</td><td>busier (than)</td><td>the busiest</td></tr>
+<tr><td>quiet</td><td>quieter (than)</td><td>the quietest</td></tr>
+<tr><td>interesting</td><td>more interesting (than)</td><td>the most interesting</td></tr>
+<tr><td>exciting</td><td>more exciting (than)</td><td>the most exciting</td></tr>
+</table>
+<p class="hint">Короткие слова: окончание -er / -est. Длинные слова (3 слога и больше): more / the most. Сравнение — than, превосходная — the.</p>
+<p class="hint">Впишите слово в пропуск и нажмите «Проверить».</p>
+<div id="gbox"></div>
+<button class="bigbtn" onclick="checkGrammar()">Проверить</button>
+<div class="fb" id="gFb"></div>
+<details class="tnote"><summary>For teacher · Ключи</summary>1) bigger 2) most 3) busier 4) most 5) quieter 6) most</details>
+</div>
+
+<div class="panel" id="panel7">
+<h2>💬 Говорение в парах (6 мин)</h2>
+<p class="hint">Задайте вопросы друг другу по очереди, потом поменяйтесь ролями. Используйте формулы из шпаргалки.</p>
+<div class="spk"><b>1.</b> What places are there in your town? — There is… / There are…</div>
+<div class="spk"><b>2.</b> What is your favourite place? Why? — My favourite place is… because…</div>
+<div class="spk"><b>3.</b> Shall we go to the cinema? — Great idea! / Sorry, I cannot. I have to…</div>
+<div class="spk"><b>4.</b> How about going to the park? — Sounds great! / Let us make it tomorrow.</div>
+<div class="spk"><b>5.</b> What is bigger: the zoo or the park? — In my opinion, the … is bigger.</div>
+<div class="spk"><b>6.</b> Where do you like to meet your friends? — I like to meet my friends at/in…</div>
+<details class="tnote"><summary>For teacher</summary>Сильным парам добавьте условие: в каждом ответе — одна степень сравнения (bigger, the best, more interesting).</details>
+</div>
+
+<div class="panel" id="panel8">
+<h2>🏁 Итоги урока и домашнее задание (3 мин)</h2>
+<p><b>Отметьте, чему вы научились сегодня:</b></p>
+<label class="chk"><input type="checkbox"> Я знаю 12 мест в городе по-английски</label><br>
+<label class="chk"><input type="checkbox"> Я умею приглашать: Shall we…? / How about…?</label><br>
+<label class="chk"><input type="checkbox"> Я умею соглашаться и вежливо отказываться</label><br>
+<label class="chk"><input type="checkbox"> Я могу сравнить места: bigger than, the most interesting</label><br>
+<label class="chk"><input type="checkbox"> Я могу договориться о месте и времени встречи</label>
+<p style="margin-top:14px"><b>🏠 Домашнее задание:</b> напишите приглашение другу в одно место вашего города — 4–5 предложений. Используйте одну формулу приглашения (Shall we…? / How about…?) и одно сравнение (bigger than / the most interesting).</p>
+<p>⭐ <b>Звёздочка:</b> подпишите по-английски 3 самых интересных места нашего города — оформим стенд «Places in our town».</p>
+</div>
+
+<p style="text-align:center;margin-top:20px"><button class="bigbtn" onclick="location.reload()">Полный сброс</button></p>
+</div>
+<script>
+
+function showTab(i){
+  var ps=document.querySelectorAll('.panel');
+  for(var j=0;j<ps.length;j++){ps[j].classList.remove('active');}
+  document.getElementById('panel'+i).classList.add('active');
+  var ts=document.querySelectorAll('.tab');
+  for(var k=0;k<ts.length;k++){ts[k].classList.remove('active');}
+  document.getElementById('tab'+i).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function speak(w){
+  if(!window.speechSynthesis){return;}
+  var u=new SpeechSynthesisUtterance(w);
+  u.lang='en-US'; u.rate=0.85;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+  u.onend=function(){ setTimeout(function(){ speechSynthesis.speak(new SpeechSynthesisUtterance(w)); u.lang='en-US'; u.rate=0.85; },350); };
+  var u2=u;
+  setTimeout(function(){ if(!speechSynthesis.speaking){ var v=new SpeechSynthesisUtterance(w); v.lang='en-US'; v.rate=0.85; speechSynthesis.speak(v);} },1200);
+}
+function flip(el){ var r=el.querySelector('.wru'); if(r){ r.hidden=!r.hidden; } }
+function toggleLine(el){ el.classList.toggle('open'); }
+
+var PAIRS=[["museum", "музей"], ["cinema", "кинотеатр"], ["library", "библиотека"], ["theatre", "театр"], ["stadium", "стадион"], ["zoo", "зоопарк"], ["fun fair", "парк аттракционов"], ["shopping centre", "торговый центр"]];
+var tiles=[]; var first=null; var found=0; var lock=false;
+function buildGame(){
+  tiles=[];
+  for(var i=0;i<PAIRS.length;i++){
+    tiles.push({t:PAIRS[i][0],key:i,lang:'en'});
+    tiles.push({t:PAIRS[i][1],key:i,lang:'ru'});
+  }
+  for(var j=tiles.length-1;j>0;j--){var m=Math.floor(Math.random()*(j+1));var tmp=tiles[j];tiles[j]=tiles[m];tiles[m]=tmp;}
+  var b=document.getElementById('gameBoard'); b.innerHTML='';
+  for(var k=0;k<tiles.length;k++){
+    var d=document.createElement('div');
+    d.className='tile'; d.textContent=tiles[k].t; d.dataset.key=tiles[k].key;
+    d.onclick=function(){ tileClick(this); };
+    b.appendChild(d);
+  }
+  found=0; lock=false; first=null;
+  document.getElementById('gameFb').textContent='Найдено пар: 0 из 8';
+}
+function tileClick(el){
+  if(lock||el.classList.contains('ok')){return;}
+  el.classList.add('sel');
+  if(!first){ first=el; return; }
+  if(first===el){ return; }
+  if(first.dataset.key===el.dataset.key){
+    first.classList.remove('sel'); first.classList.add('ok'); el.classList.add('ok');
+    found++; first=null;
+    document.getElementById('gameFb').textContent='Найдено пар: '+found+' из 8';
+    if(found===PAIRS.length){ document.getElementById('gameFb').textContent='Все 8 пар найдены. Отлично!'; }
+  } else {
+    var f=first; lock=true;
+    setTimeout(function(){ f.classList.remove('sel'); el.classList.remove('sel'); lock=false; },700);
+    first=null;
+  }
+}
+function resetGame(){ buildGame(); }
+
+var QUIZ=[{"q": "What do Kira and Mark want to visit first?", "opts": ["the new museum", "the zoo", "the library"], "a": 0}, {"q": "Where do they want to go after the museum?", "opts": ["the fun fair", "the stadium", "home"], "a": 0}, {"q": "Who do they invite?", "opts": ["Anna", "Oleg", "the teacher"], "a": 0}, {"q": "Where do they meet?", "opts": ["near the cinema", "at school", "at the bus stop"], "a": 0}, {"q": "What time do they meet?", "opts": ["at 12", "at 10", "at 2"], "a": 0}];
+function buildQuiz(){
+  var box=document.getElementById('quizBox'); box.innerHTML='';
+  for(var i=0;i<QUIZ.length;i++){
+    var q=QUIZ[i]; var d=document.createElement('div'); d.className='qblock';
+    d.innerHTML='<b>'+(i+1)+'. '+q.q+'</b>';
+    for(var j=0;j<q.opts.length;j++){
+      var b=document.createElement('button');
+      b.className='qopt'; b.textContent=q.opts[j];
+      b.dataset.correct=(j===q.a)?'1':'0';
+      b.onclick=(function(btn){ return function(){ quizClick(btn); }; })(b);
+      d.appendChild(b);
+    }
+    box.appendChild(d);
+  }
+}
+function quizClick(btn){
+  var block=btn.parentNode; var opts=block.querySelectorAll('.qopt');
+  for(var i=0;i<opts.length;i++){ opts[i].classList.remove('ok','bad'); opts[i].disabled=true; }
+  if(btn.dataset.correct==='1'){ btn.classList.add('ok'); }
+  else { btn.classList.add('bad'); var all=block.querySelectorAll('.qopt');
+    for(var j=0;j<all.length;j++){ if(all[j].dataset.correct==='1'){ all[j].classList.add('ok'); } } }
+}
+
+function buildGrammar(){
+  var GR=["The park is <input class='gin' data-a='bigger'> than the museum.", "The museum is the <input class='gin' data-a='most'> interesting place in our city.", "The shopping centre is <input class='gin' data-a='busier'> than the library.", "The cinema is the <input class='gin' data-a='most'> popular place in town.", "My street is <input class='gin' data-a='quieter'> than yours.", "This fun fair is the <input class='gin' data-a='most'> exciting of all."];
+  var box=document.getElementById('gbox'); box.innerHTML='';
+  for(var i=0;i<GR.length;i++){
+    var d=document.createElement('div'); d.className='grow';
+    d.innerHTML=(i+1)+'. '+GR[i];
+    box.appendChild(d);
+  }
+}
+function checkGrammar(){
+  var ins=document.querySelectorAll('.gin'); var ok=0;
+  for(var i=0;i<ins.length;i++){
+    var v=ins[i].value.trim().toLowerCase();
+    if(v===ins[i].dataset.a){ ins[i].classList.remove('bad'); ins[i].classList.add('ok'); ok++; }
+    else { ins[i].classList.remove('ok'); ins[i].classList.add('bad'); }
+  }
+  document.getElementById('gFb').textContent='Правильно: '+ok+' из 6.';
+}
+
+buildGame(); buildQuiz(); buildGrammar(); showTab(0);
+
+</script>
+</body>
+</html>
