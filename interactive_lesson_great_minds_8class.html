@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 8 класс — Great Minds (обобщение)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(160deg,#eef4ff,#fdf6ec);color:#2c3e50;padding:16px;max-width:900px;margin:0 auto}
+header{text-align:center;padding:18px 10px 10px}
+header h1{font-size:1.5em;color:#1a4d8f}
+header p{color:#666;margin-top:6px;font-size:.95em}
+.badge{display:inline-block;background:#1a4d8f;color:#fff;border-radius:20px;padding:4px 14px;font-size:.8em;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0}
+.tab{background:#fff;border:2px solid #d5e3f2;border-radius:12px;padding:9px 13px;cursor:pointer;font-size:.9em;font-weight:600;color:#4a6a8a;transition:.2s}
+.tab.active{background:#1a4d8f;color:#fff;border-color:#1a4d8f}
+.panel{display:none;background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:20px}
+.panel.active{display:block}
+.panel h2{color:#1a4d8f;font-size:1.25em;margin-bottom:6px}
+.time{display:inline-block;background:#eaf3fd;color:#1a4d8f;border-radius:10px;padding:3px 10px;font-size:.8em;font-weight:700;margin-bottom:12px}
+.q{background:#f7fafd;border-left:4px solid #7fb2e5;border-radius:8px;padding:10px 14px;margin:10px 0;cursor:pointer}
+.q .tr{display:none;color:#7a6a2f;font-size:.9em;margin-top:5px}
+.q.open .tr{display:block}
+.support{background:#fff8e8;border:1px solid #f0e2b0;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:.9em;color:#7a6a2f}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:12px 0}
+.word{background:#fff;border:2px solid #d5e3f2;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:.2s}
+.word:hover{border-color:#1a4d8f;transform:translateY(-2px)}
+.word .en{font-weight:700;font-size:1.1em;color:#1a4d8f}
+.word .ru{color:#777;font-size:.85em;margin-top:4px;min-height:1.2em}
+.word.spoken{border-color:#2e9e5b;background:#f0faf4}
+.hint{background:#eafaf0;border-left:4px solid #2e9e5b;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:.9em;color:#2d6a45}
+.tile{background:#fff;border:2px solid #d5e3f2;border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;font-weight:600;font-size:.95em;transition:.2s;min-height:52px;display:flex;align-items:center;justify-content:center}
+.tile.sel{border-color:#e8a13c;background:#fff6e6}
+.tile.ok{border-color:#2e9e5b;background:#eafaf0;color:#2d6a45;cursor:default;pointer-events:none}
+.tile.no{border-color:#d9534f;background:#fdecec}
+.controls{text-align:center;margin:14px 0}
+.btn{background:#1a4d8f;color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:1em;cursor:pointer;font-weight:600}
+.btn.green{background:#2e9e5b}
+.btn:hover{opacity:.9}
+.line{background:#f7fafd;border-radius:10px;padding:10px 14px;margin:10px 0;cursor:pointer;border-left:4px solid #7fb2e5}
+.line .who{font-weight:700;color:#1a4d8f;font-size:.9em}
+.line .tr{display:none;color:#7a6a2f;font-size:.92em;margin-top:5px}
+.line.open .tr{display:block}
+.quiz{margin-top:16px}
+.quiz .qq{background:#fff;border:1px solid #e3e9f0;border-radius:10px;padding:12px;margin:10px 0}
+.quiz .opt{display:block;width:100%;text-align:left;background:#f7fafd;border:1px solid #d5e3f2;border-radius:8px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:.95em}
+.quiz .opt:hover{border-color:#1a4d8f}
+.quiz .opt.right{background:#eafaf0;border-color:#2e9e5b;color:#2d6a45;font-weight:700}
+.quiz .opt.wrong{background:#fdecec;border-color:#d9534f}
+.fb{font-size:.85em;margin-top:5px;min-height:1.2em}
+.gram{background:#fff;border:1px solid #e3e9f0;border-radius:10px;padding:12px;margin:10px 0}
+.gram input{width:130px;border:2px solid #d5e3f2;border-radius:8px;padding:6px 10px;font-size:1em;margin:0 4px}
+.gram input.ok{border-color:#2e9e5b;background:#f0faf4}
+.gram input.no{border-color:#d9534f;background:#fdecec}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92em}
+th{background:#1a4d8f;color:#fff;padding:8px}
+td{border:1px solid #e3e9f0;padding:8px;text-align:center}
+tr:nth-child(even) td{background:#f7fafd}
+.note{background:#f0f4ff;border-left:4px solid #1a4d8f;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.9em}
+details{margin:14px 0}
+details summary{cursor:pointer;font-weight:700;color:#8a5a1a;font-size:.9em}
+details .nb{background:#fff8e8;border-radius:8px;padding:10px 14px;margin-top:8px;font-size:.9em}
+.check{list-style:none;margin:10px 0}
+.check li{padding:8px 12px;background:#f7fafd;border-radius:8px;margin:6px 0;cursor:pointer}
+.check li.done{text-decoration:line-through;color:#2e9e5b;background:#eafaf0}
+.hw{background:#fff3e0;border-left:4px solid #e8a13c;border-radius:8px;padding:12px 14px;margin:12px 0}
+.star{background:#fdf0ff;border-left:4px solid #b04fd9;border-radius:8px;padding:12px 14px;margin:12px 0}
+footer{text-align:center;color:#999;font-size:.85em;padding:10px}
+@media(max-width:600px){.tabs{gap:4px}.tab{padding:7px 9px;font-size:.8em}.panel{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+<h1>🧠 Great Minds: Outstanding People</h1>
+<p>Урок-обобщение: выдающиеся люди России и стран изучаемого языка</p>
+<span class="badge">Английский язык • 8 класс • Spotlight 8, Module 3</span>
+</header>
+
+<div class="tabs">
+<button class="tab active" data-p="p1">Разминка</button>
+<button class="tab" data-p="p2">Новые слова</button>
+<button class="tab" data-p="p3">Игра: пары</button>
+<button class="tab" data-p="p4">Диалог</button>
+<button class="tab" data-p="p5">Грамматика</button>
+<button class="tab" data-p="p6">Говорение</button>
+<button class="tab" data-p="p7">Итоги</button>
+</div>
+
+<!-- РАЗМИНКА -->
+<section class="panel active" id="p1">
+<h2>Разминка</h2><span class="time">4 минуты</span>
+<p>Ответьте по цепочке. Кликните по вопросу — появится перевод.</p>
+<div class="q"><p>1. Who is a famous scientist from our country? What did he or she do?</p><p class="tr">Кто известный учёный из нашей страны? Что он или она сделали?</p></div>
+<div class="q"><p>2. Do you like reading about famous people? Why or why not?</p><p class="tr">Тебе нравится читать о знаменитых людях? Почему да или нет?</p></div>
+<div class="q"><p>3. What qualities does a great person have?</p><p class="tr">Какими качествами обладает великий человек?</p></div>
+<div class="q"><p>4. Would you like to be famous one day? Why?</p><p class="tr">Хотел(а) бы ты однажды стать знаменитым? Почему?</p></div>
+<div class="support"><b>Опоры для ответа:</b> I think… / In my opinion… / To my mind… / I believe… (клик — перевод)</div>
+<div class="q"><p><b>I think…</b></p><p class="tr">Я думаю…</p></div>
+<div class="q"><p><b>In my opinion…</b></p><p class="tr">По моему мнению…</p></div>
+<div class="q"><p><b>To my mind…</b></p><p class="tr">По моим мыслям…</p></div>
+<div class="q"><p><b>I believe…</b></p><p class="tr">Я уверен(а)…</p></div>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Ученики отвечают по цепочке, 1–2 предложения на вопрос. Приём «снежный ком»: каждый следующий повторяет ответ предыдущего и добавляет свой. Опоры вывести на доску или держать на экране.</div></details>
+</section>
+
+<!-- НОВЫЕ СЛОВА -->
+<section class="panel" id="p2">
+<h2>Новые слова</h2><span class="time">8 минут</span>
+<p>Клик по карточке — слово прозвучит дважды. Второй клик — покажется перевод.</p>
+<div class="grid">
+<div class="word" data-w="scientist"><div class="en">scientist</div><div class="ru">учёный</div></div>
+<div class="word" data-w="writer"><div class="en">writer</div><div class="ru">писатель</div></div>
+<div class="word" data-w="poet"><div class="en">poet</div><div class="ru">поэт</div></div>
+<div class="word" data-w="artist"><div class="en">artist</div><div class="ru">художник</div></div>
+<div class="word" data-w="composer"><div class="en">composer</div><div class="ru">композитор</div></div>
+<div class="word" data-w="athlete"><div class="en">athlete</div><div class="ru">спортсмен</div></div>
+<div class="word" data-w="achievement"><div class="en">achievement</div><div class="ru">достижение</div></div>
+<div class="word" data-w="discovery"><div class="en">discovery</div><div class="ru">открытие</div></div>
+<div class="word" data-w="invention"><div class="en">invention</div><div class="ru">изобретение</div></div>
+<div class="word" data-w="award"><div class="en">award</div><div class="ru">награда</div></div>
+<div class="word" data-w="genius"><div class="en">genius</div><div class="ru">гений</div></div>
+<div class="word" data-w="outstanding"><div class="en">outstanding</div><div class="ru">выдающийся</div></div>
+</div>
+<div class="hint"><b>Подсказка:</b> <i>discovery</i> — это то, что уже существовало и было найдено (научное открытие), а <i>invention</i> — то, что создано впервые (изобретение). Кликните для перевода.</div>
+<div class="q"><p>discovery = открытие того, что уже существует в мире (закон, планета, явление)</p><p class="tr">Например: the discovery of the Periodic Law — открытие Периодического закона.</p></div>
+<div class="q"><p>invention = создание того, чего раньше не было (прибор, машина, вещь)</p><p class="tr">Например: the invention of the radio — изобретение радио.</p></div>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Вариант работы: 1) хором повторяем за звучкой; 2) ученики закрывают глаза — учитель называет слово по-русски, дети поднимают карточку/руку со словом по-английски; 3) мини-игра «Кто это?»: учитель описывает профессию, дети называют слово (He writes books — a writer).</div></details>
+</section>
+
+<!-- ИГРА ПАРЫ -->
+<section class="panel" id="p3">
+<h2>Игра: пары</h2><span class="time">5 минут</span>
+<p>Открывайте две плитки и находите пару «слово — перевод». Все 16 плиток уже на поле!</p>
+<div class="controls"><button class="btn" id="shuffleBtn">🔄 Новая игра</button></div>
+<div class="grid" id="matchField" style="grid-template-columns:repeat(4,1fr)">
+<div class="tile" data-key="k1">scientist</div>
+<div class="tile" data-key="k1">учёный</div>
+<div class="tile" data-key="k2">writer</div>
+<div class="tile" data-key="k2">писатель</div>
+<div class="tile" data-key="k3">achievement</div>
+<div class="tile" data-key="k3">достижение</div>
+<div class="tile" data-key="k4">discovery</div>
+<div class="tile" data-key="k4">открытие</div>
+<div class="tile" data-key="k5">invention</div>
+<div class="tile" data-key="k5">изобретение</div>
+<div class="tile" data-key="k6">award</div>
+<div class="tile" data-key="k6">награда</div>
+<div class="tile" data-key="k7">genius</div>
+<div class="tile" data-key="k7">гений</div>
+<div class="tile" data-key="k8">outstanding</div>
+<div class="tile" data-key="k8">выдающийся</div>
+</div>
+<p id="matchMsg" style="text-align:center;font-weight:600;min-height:1.4em">Найдите все 8 пар!</p>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Работа в парах: один ученик открывает плитку и называет слово вслух, второй — решает. Кнопка «Новая игра» перемешивает плитки — можно играть несколько раундов. Контроль: пары должны быть названы вслух по-английски, не просто найдены.</div></details>
+</section>
+
+<!-- ДИАЛОГ -->
+<section class="panel" id="p4">
+<h2>Диалог</h2><span class="time">8 минут</span>
+<p>Прочитайте диалог. Клик по реплике — откроется перевод, ещё клик — свернётся. Затем ответьте на вопросы.</p>
+<div class="line"><p class="who">Kira:</p><p>Hi, Mark! What are you doing?</p><p class="tr">Привет, Марк! Чем занимаешься?</p></div>
+<div class="line"><p class="who">Mark:</p><p>Hi! I'm making a poster for our school project — "Great People".</p><p class="tr">Привет! Делаю плакат для школьного проекта «Выдающиеся люди».</p></div>
+<div class="line"><p class="who">Kira:</p><p>Cool! Who is on your list?</p><p class="tr">Круто! Кто в твоём списке?</p></div>
+<div class="line"><p class="who">Mark:</p><p>Mendeleev — the chemist who created the Periodic Table in 1869. And Leo Tolstoy, the writer of "War and Peace".</p><p class="tr">Менделеев — химик, который создал Периодическую таблицу в 1869 году. И Лев Толстой, автор «Войны и мира».</p></div>
+<div class="line"><p class="who">Kira:</p><p>Great choices! I admire Russian scientists too. What about British people?</p><p class="tr">Отличный выбор! Я тоже восхищаюсь российскими учёными. А британцы?</p></div>
+<div class="line"><p class="who">Mark:</p><p>Charles Dickens — "Oliver Twist" was written by him in 1838. And The Beatles were formed in Liverpool in 1960!</p><p class="tr">Чарльз Диккенс — «Оливер Твист» был написан им в 1838 году. А «Битлз» были образованы в Ливерпуле в 1960-м!</p></div>
+<div class="line"><p class="who">Kira:</p><p>And what about sport?</p><p class="tr">А спорт?</p></div>
+<div class="line"><p class="who">Mark:</p><p>Maria Sharapova — she won Wimbledon at the age of 17! Outstanding!</p><p class="tr">Мария Шарапова — она выиграла Уимблдон в 17 лет! Выдающаяся!</p></div>
+<div class="quiz">
+<h2 style="font-size:1.05em;margin-top:8px">Проверь себя</h2>
+<div class="qq"><p><b>1.</b> Who created the Periodic Table?</p>
+<button class="opt" data-ok="0">Isaac Newton</button>
+<button class="opt" data-ok="1">Dmitri Mendeleev</button>
+<button class="opt" data-ok="0">Charles Dickens</button>
+<div class="fb"></div></div>
+<div class="qq"><p><b>2.</b> Who wrote "War and Peace"?</p>
+<button class="opt" data-ok="0">Mark Twain</button>
+<button class="opt" data-ok="1">Leo Tolstoy</button>
+<button class="opt" data-ok="0">William Shakespeare</button>
+<div class="fb"></div></div>
+<div class="qq"><p><b>3.</b> "Oliver Twist" was written by…</p>
+<button class="opt" data-ok="1">Charles Dickens</button>
+<button class="opt" data-ok="0">Lewis Carroll</button>
+<button class="opt" data-ok="0">Arthur Conan Doyle</button>
+<div class="fb"></div></div>
+<div class="qq"><p><b>4.</b> Where were The Beatles formed?</p>
+<button class="opt" data-ok="0">in London</button>
+<button class="opt" data-ok="0">in Manchester</button>
+<button class="opt" data-ok="1">in Liverpool</button>
+<div class="fb"></div></div>
+<div class="qq"><p><b>5.</b> Maria Sharapova won Wimbledon at the age of…</p>
+<button class="opt" data-ok="0">15</button>
+<button class="opt" data-ok="1">17</button>
+<button class="opt" data-ok="0">21</button>
+<div class="fb"></div></div>
+</div>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">1-е чтение — с закрытыми переводами, целиком. 2-е — по ролям (Кира и Марк). Затем викторина. Ключи: 1 Mendeleev, 2 Leo Tolstoy, 3 Charles Dickens, 4 in Liverpool, 5 17. Факты в диалоге настоящие: Периодическая таблица — 1869, «Оливер Твист» — 1838, «Битлз» — Ливерпуль, 1960, Уимблдон Шараповой — 2004, в 17 лет.</div></details>
+</section>
+
+<!-- ГРАММАТИКА -->
+<section class="panel" id="p5">
+<h2>Грамматика: биографии</h2><span class="time">6 минут</span>
+<p>В биографиях великих людей живут Past Simple и страдательный залог. Вставьте правильную форму глагола и нажмите «Проверить».</p>
+<table>
+<tr><th>Форма</th><th>Как образуется</th><th>Пример</th></tr>
+<tr><td>Past Simple (актив)</td><td>V2 (2-я форма глагола)</td><td>Mendeleev <b>created</b> the Periodic Table.</td></tr>
+<tr><td>Past Simple Passive (страдательный залог)</td><td>was / were + V3</td><td>The Periodic Table <b>was created</b> in 1869.</td></tr>
+<tr><td>Past Perfect</td><td>had + V3</td><td>He <b>had finished</b> school before the war began.</td></tr>
+</table>
+<div class="gram"><p>1. Pushkin <input type="text" data-a="was born" size="10"> in Moscow.</p></div>
+<div class="gram"><p>2. "War and Peace" <input type="text" data-a="was written" size="12"> by Tolstoy.</p></div>
+<div class="gram"><p>3. The Periodic Table <input type="text" data-a="was created" size="12"> in 1869.</p></div>
+<div class="gram"><p>4. The Beatles <input type="text" data-a="were formed" size="13"> in Liverpool.</p></div>
+<div class="gram"><p>5. The first Olympic Games <input type="text" data-a="were held" size="11"> in Greece.</p></div>
+<div class="gram"><p>6. Coca-Cola <input type="text" data-a="was invented" size="13"> by John Pemberton.</p></div>
+<div class="controls"><button class="btn green" id="gramCheck">✅ Проверить</button></div>
+<p id="gramMsg" style="text-align:center;font-weight:600;min-height:1.4em"></p>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Ключи: 1 was born; 2 was written; 3 was created; 4 were formed; 5 were held; 6 was invented. Правило подсказки: WHO сделал действие — актив (Past Simple); ВАЖНО, ЧТО сделано — пассив (was/were + V3). Обратите внимание на were formed / were held — множественное число.</div></details>
+</section>
+
+<!-- ГОВОРЕНИЕ -->
+<section class="panel" id="p6">
+<h2>Говорение</h2><span class="time">6 минут</span>
+<p>Работайте в парах: задавайте вопросы друг другу и отвечайте развёрнуто, 2–3 предложения.</p>
+<div class="q"><p>1. Who is your favourite Russian writer or poet? Why do you like him or her?</p><p class="tr">Кто твой любимый русский писатель или поэт? Почему он тебе нравится?</p></div>
+<div class="q"><p>2. What discovery do you think is the most important in history?</p><p class="tr">Какое открытие ты считаешь самым важным в истории?</p></div>
+<div class="q"><p>3. Who is a famous British scientist you know? What did he do?</p><p class="tr">Какого известного британского учёного ты знаешь? Что он сделал?</p></div>
+<div class="q"><p>4. What famous athletes from our country do you know?</p><p class="tr">Каких знаменитых спортсменов нашей страны ты знаешь?</p></div>
+<div class="q"><p>5. What invention changed the world the most?</p><p class="tr">Какое изобретение изменило мир больше всего?</p></div>
+<div class="q"><p>6. Which is more important: talent or hard work? Why?</p><p class="tr">Что важнее: талант или трудолюбие? Почему?</p></div>
+<div class="support"><b>Опоры:</b> I think… / In my opinion… / I believe… / For example… / That's why… (клик — перевод)</div>
+<div class="q"><p><b>For example…</b></p><p class="tr">Например…</p></div>
+<div class="q"><p><b>That's why…</b></p><p class="tr">Вот почему…</p></div>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Смена партнёров после 3 вопросов, если есть время. Финальный круг: 2–3 пары озвучивают лучший ответ классу. Слушающие задают по одному уточняющему вопросу — это тренирует диалог, а не монолог.</div></details>
+</section>
+
+<!-- ИТОГИ -->
+<section class="panel" id="p7">
+<h2>Итоги урока</h2><span class="time">3 минуты</span>
+<p>Отметьте, чему вы научились сегодня. Клик по строке — отметка.</p>
+<ul class="check">
+<li>Я знаю 12 слов по теме «Выдающиеся люди»</li>
+<li>Я могу рассказать о великом человеке в Past Simple</li>
+<li>Я умею строить страдательный залог: was/were + V3</li>
+<li>Я могу выразить мнение с опорами I think… / In my opinion…</li>
+<li>Я узнал(а) новые факты о выдающихся людях России и Великобритании</li>
+</ul>
+<div class="hw"><b>🏠 Домашнее задание:</b> напишите сообщение для стенда «Great People of Our Country» — 5–7 предложений о выдающемся человеке России (учёном, писателе, поэте, художнике, музыканте или спортсмене). Используйте Past Simple и хотя бы одну пассивную конструкцию (…was created / …was written / …was invented).</div>
+<div class="star"><b>⭐ Звёздочка (по желанию):</b> принесите на следующий урок один интересный факт о британском писателе, поэте или композиторе — расскажем классу.</div>
+<details><summary>📋 Заметка для учителя</summary><div class="nb">Рефлексия по клику на строки — быстрый опрос. Соответствие ФГОС ООО и ФРП: чтение и аудирование с пониманием запрошенной информации, говорение с опорами, продуктивное письмо с опорой на изученную грамматику, межпредметная связь (история, литература).</div></details>
+<div class="controls"><button class="btn" id="resetBtn">🔁 Сбросить урок</button></div>
+</section>
+
+<footer>Урок-обобщение • Spotlight 8, Module 3 «Great Minds» • Вкладки подписаны на русском</footer>
+
+<script>
+// вкладки
+var tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+tabs.forEach(function(t){t.addEventListener('click',function(){
+tabs.forEach(function(x){x.classList.remove('active')});panels.forEach(function(x){x.classList.remove('active')});
+t.classList.add('active');document.getElementById(t.dataset.p).classList.add('active');
+});});
+// перевод по клику
+document.querySelectorAll('.q,.line').forEach(function(el){el.addEventListener('click',function(e){
+if(e.target.tagName==='INPUT'||e.target.tagName==='BUTTON')return;el.classList.toggle('open');});});
+// звучка слов
+document.querySelectorAll('.word').forEach(function(w){w.addEventListener('click',function(){
+var ru=w.querySelector('.ru');ru.style.opacity=ru.style.opacity==='1'||ru.style.opacity===''?'0':'1';
+var s=w.dataset.w;
+try{var u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=.8;
+speechSynthesis.speak(u);speechSynthesis.speak(new SpeechSynthesisUtterance(s));}catch(e){}
+w.classList.add('spoken');});});
+// игра пары
+var sel=[],lock=false;
+function shuffleField(){var f=document.getElementById('matchField');
+Array.prototype.slice.call(f.children).sort(function(){return Math.random()-.5}).forEach(function(t){f.appendChild(t)});
+f.querySelectorAll('.tile').forEach(function(t){t.classList.remove('ok','sel','no')});sel=[];lock=false;
+document.getElementById('matchMsg').textContent='Найдите все 8 пар!';}
+document.getElementById('shuffleBtn').addEventListener('click',shuffleField);
+document.getElementById('matchField').addEventListener('click',function(e){
+var t=e.target.closest('.tile');if(!t||lock||t.classList.contains('ok'))return;
+t.classList.add('sel');sel.push(t);
+if(sel.length===2){lock=true;
+if(sel[0].dataset.key===sel[1].dataset.key){sel.forEach(function(s){s.classList.remove('sel');s.classList.add('ok')});
+sel=[];lock=false;
+var left=document.querySelectorAll('.tile:not(.ok)').length;
+document.getElementById('matchMsg').textContent=left===0?'🎉 Все пары найдены! Молодцы!':'Пара найдена! Осталось: '+left/2;
+}else{var a=sel;setTimeout(function(){a.forEach(function(s){s.classList.remove('sel','no')});lock=false},700);
+a.forEach(function(s){s.classList.add('no')});sel=[];}}});
+// викторина
+document.querySelectorAll('.qq').forEach(function(qq){qq.querySelectorAll('.opt').forEach(function(o){
+o.addEventListener('click',function(){var fb=qq.querySelector('.fb');
+if(o.dataset.ok==='1'){o.classList.add('right');fb.textContent='✅ Верно!';fb.style.color='#2d6a45';}
+else{o.classList.add('wrong');fb.textContent='❌ Не совсем. Попробуйте ещё раз.';fb.style.color='#d9534f';}});});});
+// грамматика
+document.getElementById('gramCheck').addEventListener('click',function(){
+var ok=0,all=document.querySelectorAll('#p5 input');
+all.forEach(function(i){var v=i.value.trim().toLowerCase();
+if(v===i.dataset.a){i.className='ok';ok++;}else{i.className='no';}});
+var m=document.getElementById('gramMsg');
+if(ok===all.length){m.textContent='🎉 Отлично! Все '+all.length+' предложений верны!';m.style.color='#2d6a45';}
+else{m.textContent='Верно: '+ok+' из '+all.length+'. Красные поля исправьте и проверьте снова.';m.style.color='#c0392b';}});
+// рефлексия
+document.querySelectorAll('.check li').forEach(function(li){li.addEventListener('click',function(){li.classList.toggle('done')});});
+// сброс
+document.getElementById('resetBtn').addEventListener('click',function(){
+document.querySelectorAll('.q,.line').forEach(function(x){x.classList.remove('open')});
+document.querySelectorAll('.word .ru').forEach(function(x){x.style.opacity=''});
+document.querySelectorAll('.word').forEach(function(x){x.classList.remove('spoken')});
+document.querySelectorAll('.tile').forEach(function(x){x.classList.remove('ok','sel','no')});
+document.querySelectorAll('.opt').forEach(function(x){x.classList.remove('right','wrong')});
+document.querySelectorAll('.fb').forEach(function(x){x.textContent=''});
+document.querySelectorAll('#p5 input').forEach(function(x){x.value='';x.className=''});
+document.querySelectorAll('.check li').forEach(function(x){x.classList.remove('done')});
+document.getElementById('gramMsg').textContent='';document.getElementById('matchMsg').textContent='Найдите все 8 пар!';
+sel=[];lock=false;});
+</script>
+</body>
+</html>
