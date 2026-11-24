@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mass Media: Newspapers — Spotlight 7, Module 4</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1f2a3a;padding:12px}
+.header{background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff;border-radius:14px;padding:22px 18px;text-align:center;margin-bottom:14px}
+.header h1{font-size:26px;margin-bottom:6px}
+.header p{font-size:14px;opacity:.9}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{padding:9px 13px;border-radius:10px;border:none;background:#d5e3f0;color:#1f2a3a;font-size:14px;cursor:pointer;font-weight:600}
+.tab.active{background:#1a5276;color:#fff}
+.panel{display:none;background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.panel.active{display:block}
+h2{color:#1a5276;font-size:20px;margin-bottom:4px}
+.timing{color:#7b8794;font-size:13px;margin-bottom:12px}
+.wordcard{display:inline-block;margin:5px;padding:10px 12px;border:2px solid #2e86c1;border-radius:10px;background:#eaf4fd;cursor:pointer;font-size:15px}
+.wordcard .tr{display:none;color:#555;font-size:13px}
+.wordcard.open .tr{display:inline}
+.btn{background:#f39c12;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;font-weight:600}
+.q{margin:10px 0;padding:10px;border-left:4px solid #2e86c1;background:#f6fafd;border-radius:6px}
+.quiz-opt{display:inline-block;margin:4px 6px 0 0;padding:7px 12px;border:1.5px solid #b9cde0;border-radius:8px;cursor:pointer;background:#fff;font-size:14px}
+.quiz-opt.ok{background:#d4efdf;border-color:#27ae60}
+.quiz-opt.bad{background:#fadbd8;border-color:#e74c3c}
+.inp{padding:6px 8px;border:1.5px solid #b9cde0;border-radius:6px;font-size:14px;width:130px}
+.check{font-size:13px;margin-left:6px;font-weight:700}
+.match-cell{padding:8px 10px;border:1.5px solid #b9cde0;border-radius:8px;cursor:pointer;margin:3px;font-size:14px;background:#fff}
+.match-cell.sel{border-color:#f39c12;background:#fef5e7}
+.match-cell.done{background:#d4efdf;border-color:#27ae60;cursor:default}
+.note{margin-top:12px;padding:10px;background:#fdf6e3;border-left:4px solid #f1c40f;border-radius:6px;font-size:13px;color:#6b5d1e;display:none}
+.score{position:fixed;top:10px;right:12px;background:#1a5276;color:#fff;padding:7px 14px;border-radius:20px;font-size:14px;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.reset{position:fixed;bottom:10px;right:12px;background:#95a5a6;color:#fff;border:none;border-radius:16px;padding:6px 12px;font-size:12px;cursor:pointer}
+.dlg{margin:8px 0;cursor:pointer;padding:9px 12px;background:#f6fafd;border-left:4px solid #2e86c1;border-radius:6px}
+.dlg .who{font-weight:700;color:#1a5276}
+.dlg .tr{display:none;color:#555;font-size:14px;margin-top:4px}
+.dlg.open .tr{display:block}
+.speak-q{margin:8px 0;padding:9px 12px;background:#f6fafd;border-radius:6px;border-left:4px solid #8e44ad}
+.speak-q .sup{color:#7d3c98;font-size:13px}
+.ref{margin:4px 0;font-size:15px}
+@media(max-width:600px){.header h1{font-size:20px}.tab{padding:8px 9px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="score" id="score">★ Баллы: 0</div>
+<button class="reset" onclick="if(confirm('Сбросить все ответы и баллы?'))location.reload()">Сброс</button>
+
+<div class="header">
+<h1>📰 Mass Media: Newspapers</h1>
+<p>Английский язык · 7 класс · Spotlight 7, Module 4 «In the news», 4a «Read all about it!» · Past Continuous</p>
+</div>
+
+<div class="tabs">
+<button class="tab active" data-p="p1">Разминка</button>
+<button class="tab" data-p="p2">Новые слова</button>
+<button class="tab" data-p="p3">Игра: пары</button>
+<button class="tab" data-p="p4">Диалог</button>
+<button class="tab" data-p="p5">Грамматика</button>
+<button class="tab" data-p="p6">Говорение</button>
+<button class="tab" data-p="p7">Итоги</button>
+</div>
+
+<div class="panel active" id="p1">
+<h2>Разминка</h2><div class="timing">4 минуты · отвечаем цепочкой, полными предложениями</div>
+<div class="q">1. Do you read newspapers? How often? <i>(Опоры: I think… / Sometimes… / Never!)</i></div>
+<div class="q">2. Do you prefer news on the Internet or in newspapers? Why?</div>
+<div class="q">3. What sections do you like: sport, cartoons, horoscope, weather?</div>
+<div class="q">4. Did you read any news yesterday? What was it about?</div>
+<div class="note">For teacher: ключ — свободные ответы, поощряем полные предложения. Клик по заголовку заметки показывает её.</div>
+</div>
+
+<div class="panel" id="p2">
+<h2>Новые слова</h2><div class="timing">8 минут · клик по карточке: слово прозвучит дважды, повторный клик покажет перевод</div>
+<span class="wordcard" onclick="say(this,'newspaper')">newspaper <span class="tr">— газета</span></span>
+<span class="wordcard" onclick="say(this,'headline')">headline <span class="tr">— заголовок</span></span>
+<span class="wordcard" onclick="say(this,'article')">article <span class="tr">— статья</span></span>
+<span class="wordcard" onclick="say(this,'interview')">interview <span class="tr">— интервью</span></span>
+<span class="wordcard" onclick="say(this,'advertisement')">advertisement <span class="tr">— реклама, объявление</span></span>
+<span class="wordcard" onclick="say(this,'horoscope')">horoscope <span class="tr">— гороскоп</span></span>
+<span class="wordcard" onclick="say(this,'weather report')">weather report <span class="tr">— прогноз погоды</span></span>
+<span class="wordcard" onclick="say(this,'cartoon strip')">cartoon strip <span class="tr">— комикс</span></span>
+<span class="wordcard" onclick="say(this,'TV guide')">TV guide <span class="tr">— телепрограмма</span></span>
+<span class="wordcard" onclick="say(this,'celebrity gossip')">celebrity gossip <span class="tr">— сплетни о знаменитостях</span></span>
+<span class="wordcard" onclick="say(this,'local news')">local news <span class="tr">— местные новости</span></span>
+<span class="wordcard" onclick="say(this,'national news')">national news <span class="tr">— общенациональные новости</span></span>
+<div class="note">For teacher: отрабатываем хором, затем по цепочке. Ключи произношения: newspaper /ˈnjuːzpeɪpə/, headline /ˈhedlaɪn/, horoscope /ˈhɒrəskəʊp/.</div>
+</div>
+
+<div class="panel" id="p3">
+<h2>Игра: пары</h2><div class="timing">5 минут · соедините слово и перевод, кликая по клеткам</div>
+<p style="margin-bottom:8px">Слово: <span id="mw" style="font-weight:700"></span></p>
+<div id="mgrid"></div>
+<p id="mmsg" style="margin-top:8px;font-weight:600"></p>
+<div class="note">For teacher: ключи — newspaper: газета, headline: заголовок, article: статья, interview: интервью, horoscope: гороскоп, advertisement: реклама, weather report: прогноз погоды, cartoon strip: комикс.</div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Диалог: школьная газета</h2><div class="timing">8 минут · клик по реплике — откроется перевод, ещё клик — спрячется</div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Kira:</span> Mark, the school newspaper needs a new article. Have you got any ideas? <span class="tr">— Марк, школьной газете нужна новая статья. Есть идеи?</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Mark:</span> What about our football team? They won the cup on Saturday! <span class="tr">— Как насчёт нашей футбольной команды? Они выиграли кубок в субботу!</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Kira:</span> Great! I was thinking about the headline while you were talking. «Our Team Is Ready!» <span class="tr">— Отлично! Я обдумывала заголовок, пока ты говорил. «Наша команда готова!»</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Mark:</span> Cool! And I was interviewing Mr Brown, the PE teacher, at lunchtime. He gave me a great quote. <span class="tr">— Круто! А я брал интервью у мистера Брауна, учителя физкультуры, в обед. Он дал мне отличную цитату.</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Kira:</span> Perfect. While you were talking to him, I was taking photos of the match. <span class="tr">— Идеально. Пока ты с ним разговаривал, я фотографировала матч.</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Mark:</span> Teamwork! What about a weather report and a cartoon strip on the last page? <span class="tr">— Командная работа! А прогноз погоды и комикс на последней странице?</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Kira:</span> Sure. And don't forget the advertisement for the school party! <span class="tr">— Конечно. И не забудь объявление о школьной вечеринке!</span></div>
+<div class="dlg" onclick="this.classList.toggle('open')"><span class="who">Mark:</span> I'll write it tonight. Read all about it next Monday! <span class="tr">— Напишу его сегодня вечером. Читайте всё об этом в следующий понедельник!</span></div>
+<h3 style="margin:14px 0 6px">Проверьте себя: викторина</h3>
+<div class="q">1. What did the football team win on Saturday?
+<button class="quiz-opt" onclick="quiz(this,0)">a cup</button><button class="quiz-opt" onclick="quiz(this,1)">a book</button><button class="quiz-opt" onclick="quiz(this,1)">a car</button></div>
+<div class="q">2. What was Kira thinking about while Mark was talking?
+<button class="quiz-opt" onclick="quiz(this,1)">the weather</button><button class="quiz-opt" onclick="quiz(this,0)">the headline</button><button class="quiz-opt" onclick="quiz(this,1)">the party</button></div>
+<div class="q">3. Who did Mark interview at lunchtime?
+<button class="quiz-opt" onclick="quiz(this,0)">Mr Brown, the PE teacher</button><button class="quiz-opt" onclick="quiz(this,1)">the head teacher</button></div>
+<div class="q">4. What was Kira doing while Mark was talking to Mr Brown?
+<button class="quiz-opt" onclick="quiz(this,1)">writing an article</button><button class="quiz-opt" onclick="quiz(this,0)">taking photos of the match</button></div>
+<div class="q">5. What will Mark write tonight?
+<button class="quiz-opt" onclick="quiz(this,0)">an advertisement for the school party</button><button class="quiz-opt" onclick="quiz(this,1)">a horoscope</button></div>
+<div class="note">For teacher: ключи викторины — 1a, 2b, 3a, 4b, 5a. Проверка понимания: спросите, что делал каждый герой, пока другой был занят (Past Continuous в контексте).</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Грамматика: Past Continuous</h2><div class="timing">6 минут · was/were + глагол с -ing: действие длилось, и его прервало короткое</div>
+<p style="margin-bottom:8px"><b>Формула:</b> I/he/she/it <b>was</b> + V-ing &nbsp;·&nbsp; we/you/they <b>were</b> + V-ing<br>
+Пример: I <b>was reading</b> the article when you <b>called</b>. (долгое действие — прерванное)</p>
+<div class="q">1. I <input class="inp" id="g1" placeholder="was reading"> (read) a magazine when Mum came home. <span class="check" id="c1"></span></div>
+<div class="q">2. We <input class="inp" id="g2" placeholder="were playing"> (play) football when it started to rain. <span class="check" id="c2"></span></div>
+<div class="q">3. She <input class="inp" id="g3" placeholder="was watching"> (watch) TV while her brother was doing homework. <span class="check" id="c3"></span></div>
+<div class="q">4. They <input class="inp" id="g4" placeholder="were writing"> (write) the article when the bell rang. <span class="check" id="c4"></span></div>
+<div class="q">5. He <input class="inp" id="g5" placeholder="was taking"> (take) photos while I was interviewing the coach. <span class="check" id="c5"></span></div>
+<div class="q">6. You <input class="inp" id="g6" placeholder="were reading"> (read) the horoscope when I saw you. <span class="check" id="c6"></span></div>
+<button class="btn" onclick="checkGrammar()">Проверить</button>
+<div class="note">For teacher: ключи — 1 was reading, 2 were playing, 3 was watching, 4 were writing, 5 was taking, 6 were reading. Обратите внимание: «when + Past Simple» прерывает, «while + Past Continuous» — фон.</div>
+</div>
+
+<div class="panel" id="p6">
+<h2>Говорение: работаем в парах</h2><div class="timing">6 минут · задайте друг другу вопросы, отвечайте полными предложениями</div>
+<div class="speak-q">1. Do you read newspapers or get news from the Internet? <span class="sup">Опора: I usually get news from…</span></div>
+<div class="speak-q">2. What is your favourite section of a newspaper? <span class="sup">Опора: My favourite section is…</span></div>
+<div class="speak-q">3. Would you like to work for the school newspaper? <span class="sup">Опора: I would like to be a… (reporter / photographer)</span></div>
+<div class="speak-q">4. What was the last news story you heard about? <span class="sup">Опора: The last story I heard was about…</span></div>
+<div class="speak-q">5. Do you believe celebrity gossip? Why (not)? <span class="sup">Опора: I think… / I don't believe… because…</span></div>
+<div class="speak-q">6. If you wrote a headline about our class, what would it be? <span class="sup">Опора: My headline is «…»</span></div>
+<div class="note">For teacher: следите за полными предложениями. Сильным парам — задание придумать заголовок для придуманного события.</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Итоги урока</h2><div class="timing">3 минуты · отметьте, чему вы научились</div>
+<div class="ref"><input type="checkbox" onclick="addPoint(this)"> Я знаю 12 слов по теме «Газеты»</div>
+<div class="ref"><input type="checkbox" onclick="addPoint(this)"> Я понимаю диалог о школьной газете</div>
+<div class="ref"><input type="checkbox" onclick="addPoint(this)"> Я умею строить Past Continuous: was/were + V-ing</div>
+<div class="ref"><input type="checkbox" onclick="addPoint(this)"> Я могу рассказать о любимом разделе газеты</div>
+<h3 style="margin:14px 0 6px">🏠 Домашнее задание</h3>
+<div class="q">Напишите заметку для школьной газеты (5–6 предложений) о любом событии в школе. Используйте минимум <b>2 предложения в Past Continuous</b>.<br>⭐ Звёздочка: принесите из настоящей газеты или журнала один заголовок и один прогноз погоды — обсудим на уроке!</div>
+<div class="note">For teacher: критерии оценки — 5–6 предложений (1 б.), 2 Past Continuous (1 б.), лексика урока (1 б.), оформление как заметка (1 б.).</div>
+</div>
+
+<script>
+function say(el,w){el.classList.toggle('open');try{var u=new SpeechSynthesisUtterance(w);u.lang='en-GB';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u);setTimeout(function(){try{speechSynthesis.speak(u)}catch(e){}},900);}catch(e){}}
+var pts=0;function addScore(n){pts+=n;document.getElementById('score').textContent='★ Баллы: '+pts}
+function addPoint(cb){if(cb.checked)addScore(1)}
+function quiz(btn,ok){if(ok){btn.classList.add('ok');addScore(1)}else{btn.classList.add('bad')}}
+function checkGrammar(){var a=['was reading','were playing','was watching','were writing','was taking','were reading'];for(var i=1;i<=6;i++){var v=document.getElementById('g'+i).value.trim().toLowerCase();var ok=v===a[i-1]||v===a[i-1].replace(' ','');document.getElementById('c'+i).textContent=ok?'✓':'✗ '+a[i-1];document.getElementById('c'+i).style.color=ok?'#27ae60':'#e74c3c';if(ok)addScore(1)}}
+var pairs=[['newspaper','газета'],['headline','заголовок'],['article','статья'],['interview','интервью'],['horoscope','гороскоп'],['advertisement','реклама'],['weather report','прогноз погоды'],['cartoon strip','комикс']];
+var order=[0,1,2,3,4,5,6,7].sort(function(){return Math.random()-.5});
+var mgrid=document.getElementById('mgrid'),sel=null,done=0;
+order.forEach(function(i){var d=document.createElement('div');d.className='match-cell';d.textContent=pairs[i][1];d.dataset.p=i;d.onclick=function(){pick(d,false)};mgrid.appendChild(d)});
+order.slice().sort(function(){return Math.random()-.5}).forEach(function(i){var d=document.createElement('div');d.className='match-cell';d.textContent=pairs[i][0];d.dataset.p=i;d.onclick=function(){pick(d,true)};mgrid.appendChild(d)});
+function pick(d,isEn){if(d.classList.contains('done'))return;if(isEn){if(sel)sel.classList.remove('sel');sel=d;d.classList.add('sel');document.getElementById('mw').textContent=d.textContent;return}
+if(!sel)return;
+if(d.dataset.p===sel.dataset.p){d.classList.add('done');sel.classList.add('done');sel.classList.remove('sel');sel=null;done++;addScore(1);document.getElementById('mmsg').textContent=done===8?'Отлично! Все 8 пар собраны! 🎉':'Верно! Пар собрано: '+done+'/8'}else{d.style.background='#fadbd8';setTimeout(function(){d.style.background=''},400);document.getElementById('mmsg').textContent='Не пара, попробуйте ещё'}}
+document.querySelectorAll('.tab').forEach(function(t){t.onclick=function(){document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});t.classList.add('active');document.getElementById(t.dataset.p).classList.add('active')}});
+</script>
+</body>
+</html>
