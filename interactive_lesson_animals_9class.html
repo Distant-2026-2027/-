@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Урок английского языка, 9 класс — Природа: домашние животные</title>
+<style>
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#eef5ea;color:#223}
+header{background:#2e7d32;color:#fff;padding:14px 18px}
+header h1{margin:0 0 4px;font-size:22px}
+header .sub{font-size:13px;opacity:.9}
+nav{padding:10px 12px;text-align:center}
+.tb{display:inline-block;padding:9px 13px;margin:3px;border-radius:10px;cursor:pointer;background:#fff;border:1px solid #a5c8a0;font-size:14px}
+.tb.on{background:#2e7d32;color:#fff;border-color:#2e7d32}
+main{max-width:900px;margin:0 auto;padding:0 12px 30px}
+.pg{display:none;padding:16px;border:1px solid #cfe0c8;border-radius:12px;background:#fbfff9;margin-bottom:14px}
+.pg.on{display:block}
+h2{margin-top:0;color:#2e7d32;font-size:19px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border:1px solid #b7d4a8;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#e2efdc}
+ul{margin:6px 0;padding-left:22px}
+.card{display:inline-block;width:215px;margin:6px;padding:10px;border-radius:10px;background:#fff;border:1px solid #cfe0c8;cursor:pointer;text-align:center;vertical-align:top}
+.card .ru{display:none;margin-top:6px;color:#444}
+.card.open .ru{display:block}
+.sp{border:none;background:none;font-size:18px;cursor:pointer}
+.tile{display:inline-block;width:45%;min-width:150px;margin:4px;padding:12px 8px;border-radius:10px;border:2px solid #b7d4a8;background:#fff;cursor:pointer;font-size:15px}
+.tile.sel{border-color:#2e7d32;background:#e7f5e0}
+.tile.done{opacity:.45;border-color:#2e7d32;pointer-events:none}
+.line{cursor:pointer;padding:7px 10px;border-radius:8px;margin:8px 0}
+.line:hover{background:#f0f7ec}
+.line .ru{display:none;color:#555;font-style:italic}
+.line.open .ru{display:block}
+.trbtn{border:1px solid #a5c8a0;background:#fff;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:13px}
+.trbox{background:#eef5ea;border-radius:8px;padding:8px;margin-top:6px;color:#444}
+.q{padding:8px;border-bottom:1px dashed #c0d4ba;margin:8px 0}
+.opt{display:block;margin:4px 0;padding:8px;width:100%;text-align:left;border-radius:8px;border:1px solid #b7d4a8;background:#fff;cursor:pointer;font-size:14px}
+.opt.ok{background:#c8e6c9;border-color:#2e7d32}
+.opt.bad{background:#ffcdd2;border-color:#c62828}
+.fb{font-size:14px;font-weight:bold}
+.okr{color:#2e7d32}.badr{color:#c62828}
+.g{margin:10px 0;padding:10px;border:1px solid #cfe0c8;border-radius:8px;background:#fff}
+.g input{padding:6px;border:1px solid #b7d4a8;border-radius:6px;font-size:14px}
+.g button{margin-left:6px;border:1px solid #a5c8a0;background:#e2efdc;border-radius:8px;padding:6px 10px;cursor:pointer}
+.cheat{background:#e2efdc;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14px}
+details{background:#fff8dc;border:1px solid #e6d68a;border-radius:8px;padding:10px;margin:10px 0}
+summary{cursor:pointer;font-weight:bold}
+.sup{background:#eef5ea;border-radius:8px;padding:6px 10px;font-size:13px;color:#555;margin:4px 0}
+footer{text-align:center;padding:14px}
+footer button{border:1px solid #c62828;color:#c62828;background:#fff;border-radius:8px;padding:8px 16px;cursor:pointer}
+.win{background:#c8e6c9;border-radius:10px;padding:10px;font-weight:bold;margin:8px 0}
+.hint{font-size:13px;color:#777;margin-top:6px}
+</style>
+</head>
+<body>
+<header>
+<h1>🐾 Природа: домашние животные</h1>
+<div class="sub">Английский язык • 9 класс • Spotlight 9, Module 7 «Staying Safe» + Culture Corner 7 • 40 минут • ФГОС ООО и ФРП</div>
+</header>
+<nav>
+<button class="tb" onclick="showTab(0)">Цели и задачи</button>
+<button class="tb" onclick="showTab(1)">Ход урока</button>
+<button class="tb" onclick="showTab(2)">Разминка</button>
+<button class="tb" onclick="showTab(3)">Новые слова</button>
+<button class="tb" onclick="showTab(4)">Игра: пары</button>
+<button class="tb" onclick="showTab(5)">Диалог</button>
+<button class="tb" onclick="showTab(6)">Грамматика</button>
+<button class="tb" onclick="showTab(7)">Говорение</button>
+<button class="tb" onclick="showTab(8)">Итоги</button>
+</nav>
+<main>
+
+<section class="pg">
+<h2>Цели и задачи урока</h2>
+<p><b>Тема:</b> Домашние и дикие животные. Безопасность при общении с животными (Spotlight 9, Module 7 «Staying Safe», Culture Corner 7 «Beware the USA Dangerous Wild Animals»; лексика животных — повторение модуля 2).</p>
+<p><b>Цель:</b> научить обсуждать домашних и диких животных и правила безопасности при общении с ними, используя лексику темы, модальные глаголы must / must not / should и условные предложения 1-го типа.</p>
+<p><b>Задачи:</b></p>
+<ul>
+<li><b>обучающие:</b> активизировать лексику по теме «Животные»; тренировать модальные глаголы и условные предложения 1-го типа; развивать умения диалогической речи;</li>
+<li><b>развивающие:</b> развивать языковую догадку, память, умение работать в паре и осуществлять самопроверку;</li>
+<li><b>воспитательные:</b> воспитывать ответственное отношение к животным и природе, культуру безопасного поведения.</li>
+</ul>
+<p><b>Планируемые результаты (ФГОС ООО, ФРП):</b></p>
+<ul>
+<li><b>личностные:</b> осознание ценности живой природы, ответственное отношение к питомцам;</li>
+<li><b>метапредметные:</b> умение ставить учебную задачу, работать в паре, проверять себя;</li>
+<li><b>предметные:</b> употребление лексики по теме, must / must not / should, условных предложений 1-го типа; ведение диалога-расспроса.</li>
+</ul>
+<p><b>Оборудование:</b> компьютер, планшет или проектор; страница урока на GitHub; учебник Spotlight 9.</p>
+</section>
+
+<section class="pg">
+<h2>Ход урока (40 минут)</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Орг. момент и мотивация</td><td>2 мин</td><td>Приветствует, объявляет тему урока</td><td>Настраиваются на работу</td></tr>
+<tr><td>Разминка</td><td>4 мин</td><td>Задаёт вопросы цепочкой, открывает опоры</td><td>Отвечают полными предложениями с опорами</td></tr>
+<tr><td>Новая лексика</td><td>8 мин</td><td>Открывает вкладку «Новые слова», включает звучку, проверяет понимание</td><td>Слушают, повторяют хором и индивидуально, записывают слова</td></tr>
+<tr><td>Игра «Пары»</td><td>5 мин</td><td>Организует мэтчинг, следит за временем</td><td>Соединяют слово и перевод, работают в парах</td></tr>
+<tr><td>Диалог + викторина</td><td>8 мин</td><td>Читает диалог по ролям, контролирует понимание</td><td>Читают по ролям, кликают переводы, отвечают на вопросы викторины</td></tr>
+<tr><td>Грамматика</td><td>6 мин</td><td>Объясняет must / must not / should и условные предложения 1-го типа</td><td>Выполняют 6 заданий с автопроверкой</td></tr>
+<tr><td>Говорение</td><td>6 мин</td><td>Организует парную работу по вопросам</td><td>Задают вопросы друг другу, меняются ролями</td></tr>
+<tr><td>Итоги и домашнее задание</td><td>3 мин</td><td>Проводит рефлексию, объясняет домашку</td><td>Оценивают себя, записывают домашнее задание</td></tr>
+</table>
+</section>
+
+<section class="pg">
+<h2>Разминка (4 минуты)</h2>
+<p>Отвечаем цепочкой, полными предложениями. Клик по вопросу — перевод.</p>
+<p class="line" onclick="this.classList.toggle('open')"><b>1.</b> Have you got a pet? What is it like? <span class="ru">У тебя есть питомец? Какой он?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>2.</b> What animals can you see in your town? <span class="ru">Каких животных можно увидеть в твоём городе?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>3.</b> Would you like to have an unusual pet? Why (not)? <span class="ru">Хотел бы ты завести необычного питомца? Почему (да / нет)?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>4.</b> What wild animals live in Russia? Are any of them in danger? <span class="ru">Какие дикие животные живут в России? Есть ли среди них те, кому грозит опасность?</span></p>
+<div class="sup">Опоры: I have got… / It is… / In my town I can see… / I would like… because… / I believe…</div>
+<details><summary>For teacher</summary>Ожидаемые ответы: I have got a cat / a dog / a hamster. It is funny and cuddly. In my town I can see dogs, cats and birds. In Russia there are tigers, bears and wolves. The Amur tiger is in danger.</details>
+</section>
+
+<section class="pg">
+<h2>Новые слова (8 минут)</h2>
+<p>Нажми 🔊 — слово прозвучит дважды. Клик по карточке — перевод. Повторяем хором, потом по одному.</p>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('ferocious');event.stopPropagation()">🔊</button><b>ferocious</b><div class="ru">свирепый, лютый</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('cuddly');event.stopPropagation()">🔊</button><b>cuddly</b><div class="ru">милый, мягкий, приятный на ощупь</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('cub');event.stopPropagation()">🔊</button><b>cub</b><div class="ru">детёныш (хищного зверя)</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('wild animal');event.stopPropagation()">🔊</button><b>wild animal</b><div class="ru">дикое животное</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('endangered species');event.stopPropagation()">🔊</button><b>endangered species</b><div class="ru">исчезающий вид</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('habitat');event.stopPropagation()">🔊</button><b>habitat</b><div class="ru">среда обитания</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('to destroy');event.stopPropagation()">🔊</button><b>to destroy</b><div class="ru">разрушать, уничтожать</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('to threaten');event.stopPropagation()">🔊</button><b>to threaten</b><div class="ru">угрожать</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('poisonous');event.stopPropagation()">🔊</button><b>poisonous</b><div class="ru">ядовитый</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('to protect');event.stopPropagation()">🔊</button><b>to protect</b><div class="ru">защищать</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('common sense');event.stopPropagation()">🔊</button><b>common sense</b><div class="ru">здравый смысл</div></div>
+<div class="card" onclick="this.classList.toggle('open')"><button class="sp" type="button" onclick="sp('to keep as a pet');event.stopPropagation()">🔊</button><b>to keep as a pet</b><div class="ru">держать в качестве питомца</div></div>
+<div class="hint">💡 Подсказка: a pet — животное, которое живёт с человеком; a wild animal — животное, которое живёт в природе. Cuddly — то, чего хочется коснуться: котята и щенки cuddly, змеи — обычно нет!</div>
+<details><summary>For teacher</summary>Попросите учеников составить с новыми словами по одному предложению: My kitten is cuddly. A tiger is a ferocious wild animal. Cheetahs are endangered species.</details>
+</section>
+
+<section class="pg">
+<h2>Игра: пары (5 минут)</h2>
+<p>Найди 8 пар: слово и его перевод. Клик по плитке — открыть. Две совпавшие — зелёные.</p>
+<div id="board"></div>
+<div class="win" id="winmsg" hidden>🎉 Все 8 пар найдены — отлично!</div>
+<p><button class="trbtn" type="button" onclick="buildGame()">Начать заново</button></p>
+</section>
+
+<section class="pg">
+<h2>Диалог (8 минут)</h2>
+<p>Читаем по ролям: Кира и Марк. Клик по реплике — перевод.</p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Kira:</b> Hi Mark! Guess what? We have got a new kitten — Simba! <span class="ru">Привет, Марк! Представляешь? У нас появился новый котёнок — Симба!</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Mark:</b> How lovely! What is he like? <span class="ru">Как здорово! Какой он?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Kira:</b> He is so cuddly! But he can be quite ferocious when he plays. <span class="ru">Он такой милый! Но когда играет, бывает довольно свирепым.</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Mark:</b> Ferocious! He is just a cub! <span class="ru">Свирепый! Да он же просто детёныш!</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Kira:</b> Well, he thinks he is a tiger! Speaking of which — my cousin keeps a snake as a pet. A python! <span class="ru">Ну, он думает, что он тигр! Кстати — у моего двоюродного брата дома живёт змея. Питон!</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Mark:</b> A python? That is dangerous! Some wild animals should never be kept as pets. <span class="ru">Питон? Это опасно! Некоторые дикие животные вообще нельзя держать дома.</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Kira:</b> You are right. Wild animals belong in their natural habitat. If people keep buying them, the species will become endangered. <span class="ru">Ты прав. Дикие животные должны жить в своей среде обитания. Если люди продолжат их покупать, виды окажутся под угрозой исчезновения.</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>Mark:</b> Exactly. We must protect them, not keep them in flats. You must not buy exotic pets — use your common sense! <span class="ru">Именно. Мы должны защищать их, а не держать в квартирах. Нельзя покупать экзотических питомцев — включи здравый смысл!</span></p>
+<div class="cheat"><b>Шпаргалка формул:</b> You must not keep a tiger as a pet. — Нельзя держать тигра дома. / We should protect wild animals. — Нам следует защищать диких животных. / If you meet a wild animal, do not run. — Если встретишь дикое животное, не убегай.</div>
+<h3>Викторина по диалогу</h3>
+<div class="q">
+<b>1.</b> What is the kitten's name?
+<button class="opt" type="button" onclick="ck(this,false)">Tom</button>
+<button class="opt" type="button" onclick="ck(this,true)" data-ok="1">Simba</button>
+<button class="opt" type="button" onclick="ck(this,false)">Rex</button>
+<span class="fb"></span>
+<div><button class="trbtn" type="button" onclick="tg(this)">перевод</button></div>
+<div class="trbox" hidden>Как зовут котёнка?</div>
+</div>
+<div class="q">
+<b>2.</b> How does Kira describe the kitten?
+<button class="opt" type="button" onclick="ck(this,true)" data-ok="1">cuddly</button>
+<button class="opt" type="button" onclick="ck(this,false)">ferocious</button>
+<button class="opt" type="button" onclick="ck(this,false)">poisonous</button>
+<span class="fb"></span>
+<div><button class="trbtn" type="button" onclick="tg(this)">перевод</button></div>
+<div class="trbox" hidden>Как Кира описывает котёнка?</div>
+</div>
+<div class="q">
+<b>3.</b> What does Kira's cousin keep as a pet?
+<button class="opt" type="button" onclick="ck(this,false)">a tiger</button>
+<button class="opt" type="button" onclick="ck(this,false)">a parrot</button>
+<button class="opt" type="button" onclick="ck(this,true)" data-ok="1">a python</button>
+<span class="fb"></span>
+<div><button class="trbtn" type="button" onclick="tg(this)">перевод</button></div>
+<div class="trbox" hidden>Кого держит как питомца двоюродный брат Киры?</div>
+</div>
+<div class="q">
+<b>4.</b> Where do wild animals belong, according to Mark?
+<button class="opt" type="button" onclick="ck(this,false)">in flats</button>
+<button class="opt" type="button" onclick="ck(this,true)" data-ok="1">in their natural habitat</button>
+<button class="opt" type="button" onclick="ck(this,false)">in shops</button>
+<span class="fb"></span>
+<div><button class="trbtn" type="button" onclick="tg(this)">перевод</button></div>
+<div class="trbox" hidden>Где, по мнению Марка, место диких животных?</div>
+</div>
+<div class="q">
+<b>5.</b> What must you not do, according to Mark?
+<button class="opt" type="button" onclick="ck(this,true)" data-ok="1">buy exotic pets</button>
+<button class="opt" type="button" onclick="ck(this,false)">feed cats</button>
+<button class="opt" type="button" onclick="ck(this,false)">walk dogs</button>
+<span class="fb"></span>
+<div><button class="trbtn" type="button" onclick="tg(this)">перевод</button></div>
+<div class="trbox" hidden>Чего, по мнению Марка, делать нельзя?</div>
+</div>
+<details><summary>For teacher</summary>Ключи викторины: 1 — Simba, 2 — cuddly, 3 — a python, 4 — in their natural habitat, 5 — buy exotic pets. Прочитайте диалог вдвоём с сильным учеником, затем пары читают сами. После викторины спросите: Why is it a bad idea to keep a python at home?</details>
+</section>
+
+<section class="pg">
+<h2>Грамматика (6 минут)</h2>
+<div class="cheat">
+<b>Модальные глаголы:</b><br>
+must — должен (сильная необходимость, правило): You <b>must</b> be careful with wild animals.<br>
+must not — нельзя, запрещено: You <b>must not</b> buy exotic pets.<br>
+should / should not — следует (совет): You <b>should</b> feed your pet every day.<br><br>
+<b>Условное предложение 1-го типа (реальное условие):</b> If + Present Simple, will + инфинитив.<br>
+If people <b>keep</b> buying exotic pets, species <b>will become</b> endangered.
+</div>
+<div class="g"><b>1.</b> You ___ keep a tiger as a pet. It is dangerous. <input id="g1" placeholder="must not / can / should"> <button type="button" onclick="gc(this,'must not')">Проверить</button> <span class="res"></span></div>
+<div class="g"><b>2.</b> If you meet a wild animal in the forest, you ___ stay calm and walk away slowly. <input id="g2" placeholder="must / should / must not"> <button type="button" onclick="gc(this,'should')">Проверить</button> <span class="res"></span></div>
+<div class="g"><b>3.</b> If people ___ buying exotic pets, many species will become endangered. <input id="g3" placeholder="will keep / keep / kept"> <button type="button" onclick="gc(this,'keep')">Проверить</button> <span class="res"></span></div>
+<div class="g"><b>4.</b> We ___ protect endangered animals — it is our duty. <input id="g4" placeholder="must / must not / cannot"> <button type="button" onclick="gc(this,'must')">Проверить</button> <span class="res"></span></div>
+<div class="g"><b>5.</b> If the habitat disappears, the animals ___ survive. <input id="g5" placeholder="will not / do not / did not"> <button type="button" onclick="gc(this,'will not')">Проверить</button> <span class="res"></span></div>
+<div class="g"><b>6.</b> You ___ feed wild animals in the park — it is against the rules. <input id="g6" placeholder="must not / must / can"> <button type="button" onclick="gc(this,'must not')">Проверить</button> <span class="res"></span></div>
+<details><summary>For teacher</summary>Ключи: 1 — must not; 2 — should; 3 — keep; 4 — must; 5 — will not; 6 — must not. Обратите внимание: после if — Present Simple, а will — во второй части.</details>
+</section>
+
+<section class="pg">
+<h2>Говорение (6 минут)</h2>
+<p>Работаем в парах: задайте друг другу вопросы, ответьте развёрнуто, потом поменяйтесь ролями.</p>
+<p class="line" onclick="this.classList.toggle('open')"><b>1.</b> Have you got a pet? What is it like? <span class="ru">Есть ли у тебя питомец? Какой он?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>2.</b> What pets are popular in Russia? <span class="ru">Какие питомцы популярны в России?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>3.</b> Why is it a bad idea to keep wild animals as pets? <span class="ru">Почему плохая идея держать диких животных дома?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>4.</b> What must you never do if you meet a wild animal? <span class="ru">Чего нельзя делать, если встретил дикое животное?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>5.</b> How can we protect endangered species? <span class="ru">Как мы можем защищать исчезающие виды?</span></p>
+<p class="line" onclick="this.classList.toggle('open')"><b>6.</b> Which Russian animals are in danger? <span class="ru">Какие российские животные в опасности?</span></p>
+<div class="sup">Опоры: I think… / In my opinion… / You must not… / We should… / For example… / Because…</div>
+<details><summary>For teacher</summary>Ожидаемые идеи: wild animals need their habitat; they can be ferocious and even poisonous; we must not buy exotic pets; we should support nature parks; the Amur tiger and the polar bear are in danger in Russia.</details>
+</section>
+
+<section class="pg">
+<h2>Итоги урока (3 минуты)</h2>
+<p><b>Рефлексия</b> — отметьте, что получилось:</p>
+<ul>
+<li>☐ Я знаю 12 новых слов по теме «Животные»</li>
+<li>☐ Я могу сказать, что можно и нельзя делать с животными (must / must not / should)</li>
+<li>☐ Я могу построить условное предложение (If … , will …)</li>
+<li>☐ Я могу обсудить с партнёром тему питомцев и безопасности</li>
+<li>☐ Мне было интересно на уроке</li>
+</ul>
+<p><b>Домашнее задание:</b> напишите сообщение для стенда «Pets and Safety» — 5–7 предложений: какие питомцы у вас или ваших друзей, что можно и что нельзя делать с животными (must / must not / should) и одно условное предложение (If … , will …).</p>
+<p>⭐ Звёздочка (по желанию): найдите и запишите интересный факт о диких животных, которых запрещено держать как питомцев (Culture Corner 7).</p>
+</section>
+
+</main>
+<footer>
+<button type="button" onclick="resetAll()">Полный сброс</button>
+</footer>
+<script>
+var PAIRS=[["ferocious","свирепый"],["cuddly","милый, мягкий"],["cub","детёныш зверя"],["habitat","среда обитания"],["poisonous","ядовитый"],["to protect","защищать"],["endangered species","исчезающий вид"],["to destroy","уничтожать"]];
+var openTiles=[],found=0,busy=false;
+function showTab(i){var bs=document.querySelectorAll(".tb"),ps=document.querySelectorAll(".pg");for(var k=0;k<bs.length;k++){bs[k].classList.remove("on");ps[k].classList.remove("on");}bs[i].classList.add("on");ps[i].classList.add("on");}
+function sp(w){try{var u=new SpeechSynthesisUtterance(w);u.lang="en-US";u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);var u2=new SpeechSynthesisUtterance(w);u2.lang="en-US";u2.rate=0.85;speechSynthesis.speak(u2);}catch(e){}}
+function tg(el){var t=el.nextElementSibling;if(t){t.hidden=!t.hidden;}}
+function buildGame(){var board=document.getElementById("board");board.innerHTML="";var tiles=[],i,j,d;for(i=0;i<PAIRS.length;i++){tiles.push({v:PAIRS[i][0],k:i});tiles.push({v:PAIRS[i][1],k:i});}tiles.sort(function(){return Math.random()-0.5;});for(j=0;j<tiles.length;j++){d=document.createElement("button");d.setAttribute("type","button");d.className="tile";d.dataset.k=tiles[j].k;d.textContent=tiles[j].v;d.addEventListener("click",flip,false);board.appendChild(d);}openTiles=[];found=0;busy=false;document.getElementById("winmsg").hidden=true;}
+function flip(){if(busy||this.classList.contains("done")||this.classList.contains("sel")){return;}this.classList.add("sel");openTiles.push(this);if(openTiles.length===2){var a=openTiles[0],b=openTiles[1];if(a.dataset.k===b.dataset.k){a.classList.remove("sel");b.classList.remove("sel");a.classList.add("done");b.classList.add("done");found++;openTiles=[];if(found===PAIRS.length){document.getElementById("winmsg").hidden=false;}}else{busy=true;setTimeout(function(){a.classList.remove("sel");b.classList.remove("sel");openTiles=[];busy=false;},600);}}}
+function ck(btn,ok){var q=btn.parentNode,f=q.querySelector(".fb");if(q.classList.contains("done")){return;}q.classList.add("done");if(ok){btn.classList.add("ok");f.textContent="Верно!";f.className="fb okr";}else{btn.classList.add("bad");var bs=q.querySelectorAll(".opt");for(var i=0;i<bs.length;i++){if(bs[i].dataset.ok){bs[i].classList.add("ok");}}f.textContent="Ошибка. Правильный ответ выделен зелёным.";f.className="fb badr";}}
+function gc(btn,ans){var box=btn.parentNode,inp=box.querySelector("input"),res=box.querySelector(".res"),v=(inp.value||"").trim().toLowerCase().replace(/\s+/g," ");if(v===ans){res.textContent="Верно!";res.className="res okr";}else{res.textContent="Неверно. Правильно: "+ans;res.className="res badr";}}
+function resetAll(){location.reload();}
+buildGame();
+showTab(0);
+</script>
+</body>
+</html>
