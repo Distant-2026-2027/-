@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Birthday Party — интерактивный урок (2 класс, Spotlight 2)</title>
+<style>
+:root{--pink:#ff7eb6;--deep:#c9457f;--yellow:#ffd166;--cream:#fff6ec;--blue:#4f9cf9;--green:#5cc98f;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--cream);color:#33263a;padding-bottom:60px;}
+header{background:linear-gradient(135deg,var(--pink),#ffb347);color:#fff;padding:24px 20px;text-align:center;}
+header h1{font-size:2em;margin-bottom:6px;}
+header p{opacity:.95;font-size:1.05em;}
+.badges{margin-top:10px;}
+.badge{display:inline-block;background:rgba(255,255,255,.25);border-radius:20px;padding:4px 14px;margin:3px;font-size:.9em;}
+.scorebox{position:fixed;top:12px;right:12px;background:#fff;color:var(--deep);border:3px solid var(--pink);border-radius:30px;padding:8px 18px;font-weight:bold;font-size:1.1em;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:50;}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 8px;background:#fff;position:sticky;top:0;z-index:40;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.tab-btn{border:none;background:#f3e3f0;color:#6b4a66;padding:10px 16px;border-radius:25px;cursor:pointer;font-size:1em;font-weight:600;}
+.tab-btn.active{background:var(--pink);color:#fff;}
+main{max-width:900px;margin:0 auto;padding:20px;}
+.stage{display:none;}
+.stage.active{display:block;}
+.stage h2{color:var(--deep);margin-bottom:4px;}
+.stage .sub{color:#8a6f80;margin-bottom:14px;}
+.timerbar{background:#fff;border:2px solid var(--yellow);border-radius:14px;padding:10px 16px;display:flex;align-items:center;gap:12px;margin:12px 0;}
+.timerbar b{font-size:1.2em;color:#b8860b;min-width:70px;}
+.tbtn{border:none;border-radius:18px;padding:6px 14px;cursor:pointer;font-weight:600;background:var(--yellow);color:#6b4a00;}
+.card{background:#fff;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 3px 10px rgba(0,0,0,.07);}
+.qline{font-size:1.25em;margin:10px 0;padding:10px 14px;background:#fdf1f6;border-radius:12px;cursor:pointer;}
+.qline .ru{display:none;color:var(--deep);font-size:.85em;margin-top:4px;}
+.qline.open .ru{display:block;}
+.qline::before{content:'🔊 ';opacity:.5;}
+.wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+.wordcard{background:linear-gradient(160deg,#fff,#ffe9f2);border:2px solid var(--pink);border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer;transition:transform .15s;}
+.wordcard:hover{transform:scale(1.04);}
+.wordcard .en{font-size:1.3em;font-weight:bold;color:var(--deep);}
+.wordcard .ru{color:#7a6a72;font-size:.95em;margin-top:4px;}
+.wordcard .emo{font-size:2em;}
+.matchwrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+.matchcol{display:flex;flex-direction:column;gap:10px;}
+.mbtn{border:2px solid var(--pink);background:#fff;border-radius:14px;padding:10px 18px;cursor:pointer;font-size:1.1em;min-width:150px;}
+.mbtn.done{background:var(--green);border-color:var(--green);color:#fff;cursor:default;}
+.mbtn.wrong{background:#ffd6d6;border-color:#e05b5b;}
+.dline{padding:10px 14px;margin:8px 0;border-radius:12px;cursor:pointer;font-size:1.15em;}
+.dline.who{font-weight:bold;color:#fff;display:inline-block;padding:2px 12px;border-radius:12px;font-size:.85em;margin-bottom:2px;}
+.lu .who{background:var(--pink);} .la .who{background:var(--blue);} .na .who{background:var(--green);}
+.dline .ru{display:none;color:#666;font-size:.85em;}
+.dline.open .ru{display:block;}
+.quizq{margin:14px 0;}
+.qopts button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:12px;border:2px solid #e8d8e2;background:#fff;cursor:pointer;font-size:1.05em;}
+.qopts button.ok{background:var(--green);border-color:var(--green);color:#fff;}
+.qopts button.no{background:#ffd6d6;border-color:#e05b5b;}
+.gin{border:2px solid var(--pink);border-radius:10px;padding:8px 12px;font-size:1.05em;width:130px;text-align:center;}
+.grow{margin:12px 0;font-size:1.15em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.gcheck{margin-top:8px;padding:6px 18px;}
+.oklbl{color:var(--green);font-weight:bold;} .nolbl{color:#e05b5b;font-weight:bold;}
+.cardpaper{background:#fffdf0;border:3px dashed var(--yellow);border-radius:18px;padding:20px;font-size:1.2em;}
+.cardpaper input{border:none;border-bottom:2px solid var(--pink);font-size:1.1em;text-align:center;width:180px;color:var(--deep);background:transparent;outline:none;}
+.cnum{width:70px!important;}
+.tq{font-size:1.2em;margin:12px 0;background:#fdeef7;padding:12px 16px;border-radius:12px;cursor:pointer;}
+details{margin-top:10px;background:#fff8e6;border-radius:12px;padding:10px 14px;}
+summary{cursor:pointer;font-weight:bold;color:#a9772e;}
+.checkrow{display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:10px 14px;margin:8px 0;cursor:pointer;font-size:1.1em;}
+.checkrow .box{width:26px;height:26px;border:2px solid var(--pink);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:var(--green);font-weight:bold;font-size:1.3em;}
+footer{text-align:center;color:#a98ca0;padding:18px;font-size:.95em;}
+.reset{position:fixed;bottom:12px;left:12px;background:#fff;border:2px solid var(--pink);color:var(--deep);border-radius:20px;padding:6px 14px;cursor:pointer;font-weight:600;z-index:50;}
+.numchip{display:inline-block;background:#fff;border:2px solid var(--blue);color:var(--blue);border-radius:14px;padding:4px 12px;margin:3px;font-weight:bold;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="scorebox">⭐ Score: <span id="score">0</span></div>
+<header>
+<h1>🎈 Happy Birthday!</h1>
+<p>День рождения моего друга — учимся поздравлять и писать открытку</p>
+<div class="badges"><span class="badge">2 класс</span><span class="badge">Spotlight 2 · Unit «My Birthday!»</span><span class="badge">Reading · Speaking · Writing</span></div>
+</header>
+<nav>
+<button class="tab-btn active" data-tab="warm">1 Warm-up</button>
+<button class="tab-btn" data-tab="words">2 New words</button>
+<button class="tab-btn" data-tab="game">3 Game</button>
+<button class="tab-btn" data-tab="dialog">4 Story</button>
+<button class="tab-btn" data-tab="gram">5 Grammar</button>
+<button class="tab-btn" data-tab="card">6 Birthday card</button>
+<button class="tab-btn" data-tab="wrap">7 Wrap-up</button>
+</nav>
+<main>
+
+<section class="stage active" id="warm">
+<h2>1. Warm-up 🔥</h2>
+<div class="sub">Отвечаем цепочкой. Нажми на вопрос — увидишь перевод.</div>
+<div class="timerbar">⏱ <b id="t-warm">05:00</b><button class="tbtn" data-t="warm">Старт</button><button class="tbtn" data-t="warm-p">Пауза</button><button class="tbtn" data-t="warm-r">Сброс</button></div>
+<div class="card">
+<div class="qline" onclick="this.classList.toggle('open');speak('Hello! How are you today?')">Hello! How are you today?<div class="ru">Привет! Как у тебя дела?</div></div>
+<div class="qline" onclick="this.classList.toggle('open');speak('How old are you?')">How old are you?<div class="ru">Сколько тебе лет?</div></div>
+<div class="qline" onclick="this.classList.toggle('open');speak('When is your birthday?')">When is your birthday?<div class="ru">Когда у тебя день рождения?</div></div>
+<div class="qline" onclick="this.classList.toggle('open');speak('Do you like parties?')">Do you like parties?<div class="ru">Ты любишь праздники?</div></div>
+<p style="margin-top:10px;color:#8a6f80;">Опоры: I'm eight! / Me too! / Cool! / Yes, I do!</p>
+</div>
+<details><summary>For teacher</summary>Дети отвечают по цепочке. Попросите назвать возраст по-английски: How old are you, Masha? — I'm eight! Затем спросите: When is Lulu's birthday? — это подводка к истории урока.</details>
+</section>
+
+<section class="stage" id="words">
+<h2>2. New words 📚</h2>
+<div class="sub">Нажми на карточку — слово прозвучит дважды.</div>
+<div class="timerbar">⏱ <b id="t-words">08:00</b><button class="tbtn" data-t="words">Старт</button><button class="tbtn" data-t="words-p">Пауза</button><button class="tbtn" data-t="words-r">Сброс</button></div>
+<div class="card"><div class="wordgrid">
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="birthday"><div class="emo">🎂</div><div class="en">birthday</div><div class="ru">день рождения</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="cake"><div class="emo">🍰</div><div class="en">cake</div><div class="ru">торт</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="candles"><div class="emo">🕯️</div><div class="en">candles</div><div class="ru">свечи</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="party"><div class="emo">🎉</div><div class="en">party</div><div class="ru">вечеринка, праздник</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="happy"><div class="emo">😀</div><div class="en">happy</div><div class="ru">счастливый, радостный</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="sad"><div class="emo">😢</div><div class="en">sad</div><div class="ru">грустный</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="surprise"><div class="emo">🎁</div><div class="en">surprise</div><div class="ru">сюрприз</div></div>
+<div class="wordcard" onclick="speak2(this.dataset.w)" data-w="present"><div class="emo">🎈</div><div class="en">present</div><div class="ru">подарок</div></div>
+</div>
+<p style="margin-top:12px;"><b>Числа вспомним:</b> <span id="numchips"></span></p>
+</div>
+<details><summary>For teacher</summary>Вводите слова с картинками и мимикой: happy — улыбаемся, sad — грустим. Обратите внимание: candles — свечей много, а candle — одна свеча (окончание -s — множественное число, оно пригодится в grammar). Числа повторите движениями: Stand up! Five — jump!</details>
+</section>
+
+<section class="stage" id="game">
+<h2>3. Game: Собери пары 🃏</h2>
+<div class="sub">Кликни английское слово, потом его перевод. +1 балл за пару!</div>
+<div class="timerbar">⏱ <b id="t-game">05:00</b><button class="tbtn" data-t="game">Старт</button><button class="tbtn" data-t="game-p">Пауза</button><button class="tbtn" data-t="game-r">Сброс</button></div>
+<div class="card"><div class="matchwrap">
+<div class="matchcol" id="colA"></div>
+<div class="matchcol" id="colB"></div>
+</div>
+<p id="matchmsg" style="text-align:center;margin-top:12px;font-size:1.1em;color:var(--green);"></p>
+</div>
+<details><summary>For teacher</summary>Работа в парах: один называет слово, другой ищет пару. После игры — хоровое чтение всех слов ещё раз.</details>
+</section>
+
+<section class="stage" id="dialog">
+<h2>4. Story: Lulu's birthday 🗣</h2>
+<div class="sub">Нажми на фразу — перевод откроется прямо под ней. Ещё раз — свернётся.</div>
+<div class="timerbar">⏱ <b id="t-dialog">10:00</b><button class="tbtn" data-t="dialog">Старт</button><button class="tbtn" data-t="dialog-p">Пауза</button><button class="tbtn" data-t="dialog-r">Сброс</button></div>
+<div class="card">
+<div class="dline lu"><span class="who">Lulu</span><div>It's my birthday today! I'm five!</div><div class="ru">Сегодня мой день рождения! Мне пять лет!</div></div>
+<div class="dline la" onclick="this.classList.toggle('open');speak('Happy birthday to you, Lulu!')"><span class="who">Larry</span><div>Happy birthday to you, Lulu!</div><div class="ru">С днём рождения, Лулу!</div></div>
+<div class="dline lu" onclick="this.classList.toggle('open');speak('Thank you! Look! A big cake!')"><span class="who">Lulu</span><div>Thank you! Look! A big cake!</div><div class="ru">Спасибо! Смотри! Большой торт!</div></div>
+<div class="dline la" onclick="this.classList.toggle('open');speak('How many candles?')"><span class="who">Larry</span><div>How many candles?</div><div class="ru">Сколько свечей?</div></div>
+<div class="dline lu" onclick="this.classList.toggle('open');speak('One, two, three, four, five. Five candles!')"><span class="who">Lulu</span><div>One, two, three, four, five. Five candles!</div><div class="ru">Один, два, три, четыре, пять. Пять свечей!</div></div>
+<div class="dline la" onclick="this.classList.toggle('open');speak('Close your eyes! A surprise for you!')"><span class="who">Larry</span><div>Close your eyes! A surprise for you!</div><div class="ru">Закрой глаза! Сюрприз для тебя!</div></div>
+<div class="dline lu" onclick="this.classList.toggle('open');speak('Wow! A present! A teddy bear! I am so happy!')"><span class="who">Lulu</span><div>Wow! A present! A teddy bear! I'm so happy!</div><div class="ru">Ух ты! Подарок! Плюшевый мишка! Я так счастлива!</div></div>
+<div class="dline la" onclick="this.classList.toggle('open');speak('Let's go to the party!')"><span class="who">Larry</span><div>Let's go to the party!</div><div class="ru">Идём на праздник!</div></div>
+<p style="margin:8px 0;color:#8a6f80;">Роли: Лулу 🎀 и Ларри 🧢. Прочитайте диалог по ролям дважды — потом поменяйтесь!</p>
+</div>
+<div class="card"><h3>📝 Викторина по истории</h3><div id="quizbox"></div></div>
+<details><summary>For teacher</summary>Ключи викторины: 1) Lulu 2) five 3) five candles 4) a teddy bear 5) happy. Диалог можно инсценировать: добавьте шляпу как реквизит и «включите» песню Happy birthday в конце сцены.</details>
+</section>
+
+<section class="stage" id="gram">
+<h2>5. Grammar: How old are you? 🔧</h2>
+<div class="sub">Правило-подсказка: спрашиваем возраст — How old are you? Отвечаем — I'm восемь = eight. А чтобы сказать «две свечи» — добавляем -s: candles.</div>
+<div class="timerbar">⏱ <b id="t-gram">07:00</b><button class="tbtn" data-t="gram">Старт</button><button class="tbtn" data-t="gram-p">Пауза</button><button class="tbtn" data-t="gram-r">Сброс</button></div>
+<div class="card">
+<div class="grow"><b>1.</b> How old <input class="gin" data-ans="are"> you? <span class="res"></span></div>
+<div class="grow"><b>2.</b> I <input class="gin" data-ans="am"> eight. <span class="res"></span></div>
+<div class="grow"><b>3.</b> I <input class="gin" data-ans="am"> five today! <span class="res"></span></div>
+<div class="grow"><b>4.</b> one candle → two <input class="gin" data-ans="candles"> <span class="res"></span></div>
+<div class="grow"><b>5.</b> one present → three <input class="gin" data-ans="presents"> <span class="res"></span></div>
+<div class="grow"><b>6.</b> one balloon → four <input class="gin" data-ans="balloons"> <span class="res"></span></div>
+<button class="tbtn gcheck" onclick="checkGram()">Проверить ✔</button>
+</div>
+<details><summary>For teacher</summary>Ключи: 1) are 2) am 3) am 4) candles 5) presents 6) balloons. Правило -s показывайте на доске: candle → candles. Для сильных: попросите добавить свои примеры (one cake → two cakes).</details>
+</section>
+
+<section class="stage" id="card">
+<h2>6. Birthday card ✏️</h2>
+<div class="sub">Соберём поздравительную открытку для друга. Заполни все окошки — и открытка готова!</div>
+<div class="timerbar">⏱ <b id="t-card">07:00</b><button class="tbtn" data-t="card">Старт</button><button class="tbtn" data-t="card-p">Пауза</button><button class="tbtn" data-t="card-r">Сброс</button></div>
+<div class="card cardpaper">
+<p style="text-align:center;font-size:1.4em;color:var(--deep);"><b>🎂 Happy Birthday Card 🎂</b></p>
+<p style="margin-top:14px;">Dear <input id="c1" placeholder="имя друга">,</p>
+<p style="margin-top:10px;">Happy birthday to you! 🎉</p>
+<p>You are <input id="c2" class="cnum" placeholder="7? 8?"> years old today.</p>
+<p>You are my <input id="c3" placeholder="good / best"> friend.</p>
+<p style="margin-top:10px;">Love,<br><input id="c4" placeholder="твоё имя"></p>
+<div style="text-align:center;margin-top:14px;"><button class="tbtn" style="padding:10px 24px;font-size:1.05em;" onclick="checkCard()">Проверить открытку ✔</button></div>
+<p id="cardmsg" style="text-align:center;margin-top:10px;font-weight:bold;"></p>
+</div>
+<div class="card">
+<h3>🗣 Speaking в парах</h3>
+<p>Расспроси друга о его дне рождения. Опоры: My birthday is in… / I'm… / I like…</p>
+<div class="qline" onclick="this.classList.toggle('open')">When is your birthday?<div class="ru">Когда у тебя день рождения?</div></div>
+<div class="qline" onclick="this.classList.toggle('open')">How old are you?<div class="ru">Сколько тебе лет?</div></div>
+<div class="qline" onclick="this.classList.toggle('open')">What do you like about a party?<div class="ru">Что тебе нравится на празднике?</div></div>
+<div class="qline" onclick="this.classList.toggle('open')">What is your favourite present?<div class="ru">Какой подарок твой любимый?</div></div>
+<div class="qline" onclick="this.classList.toggle('open')">What cake do you like?<div class="ru">Какой торт тебе нравится?</div></div>
+<div class="qline" onclick="this.classList.toggle('open')">Who do you celebrate with?<div class="ru">С кем ты празднуешь?</div></div>
+</div>
+<details><summary>For teacher</summary>Проверка открытки: все 4 поля заполнены — открытка «отправлена». Для сильных — добавить своё предложение с новым словом урока (surprise, candles, party). Открытку потом можно нарисовать и подписать на бумаге — это вариант домашнего задания.</details>
+</section>
+
+<section class="stage" id="wrap">
+<h2>7. Wrap-up 🏁</h2>
+<div class="sub">Отметь, что сегодня получилось. Клик по строке — галочка!</div>
+<div class="timerbar">⏱ <b id="t-wrap">03:00</b><button class="tbtn" data-t="wrap">Старт</button><button class="tbtn" data-t="wrap-p">Пауза</button><button class="tbtn" data-t="wrap-r">Сброс</button></div>
+<div class="card">
+<div class="checkrow" onclick="tick(this)"><span class="box"></span> Я знаю слова: birthday, cake, candles, party, happy, sad, surprise, present</div>
+<div class="checkrow" onclick="tick(this)"><span class="box"></span> Я умею спрашивать: How old are you? и отвечать: I'm eight!</div>
+<div class="checkrow" onclick="tick(this)"><span class="box"></span> Я умею говорить: Happy birthday to you!</div>
+<div class="checkrow" onclick="tick(this)"><span class="box"></span> Я написал(а) открытку для друга</div>
+<div class="checkrow" onclick="tick(this)"><span class="box"></span> Я помню: множественное число = слово + -s (candles)</div>
+</div>
+<div class="card" style="background:#fff3d6;">
+<h3>🏠 Домашнее задание</h3>
+<p style="margin:8px 0;">Сделай настоящую открытку: нарисуй её и подпиши по-английски:</p>
+<p style="margin:8px 0;">Dear …, <b>Happy birthday to you!</b> You are … today. Love, …</p>
+<p style="margin:8px 0;">⭐ <b>Звёздочка:</b> спроси у родителей, как они праздновали день рождения в детстве — и расскажи нам на следующем уроке!</p>
+</div>
+</section>
+
+</main>
+<footer>Interactive lesson · Spotlight 2 · Unit «My Birthday!» · для урока и домашнего повторения 🎈</footer>
+<button class="reset" onclick="location.reload()">🔄 Сбросить всё</button>
+
+<script>
+var score=0, totalscore=0;
+function addScore(n){score+=n;document.getElementById('score').textContent=score;}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+function speak2(w){speak(w);setTimeout(function(){speak(w);},900);}
+document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.stage').forEach(function(s){s.classList.remove('active');});b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');});});
+// timers
+var timers={};
+document.querySelectorAll('.tbtn').forEach(function(b){b.addEventListener('click',function(){var id=b.dataset.t;
+if(id.endsWith('-p')){clearInterval(timers[id.slice(0,-2)]);}
+else if(id.endsWith('-r')){clearInterval(timers[id.slice(0,-2)]);var m=Math.floor(300),n=id.slice(0,-2);if(n==='warm')m=300;if(n==='words')m=480;if(n==='dialog')m=600;if(n==='gram')m=420;if(n==='card')m=420;if(n==='wrap')m=180;document.getElementById('t-'+n).textContent=fmt(m);}
+else{var n2=id;clearInterval(timers[n2]);timers[n2]=setInterval(function(){var el=document.getElementById('t-'+n2);var p=el.textContent.split(':');var s=+p[0]*60+ +p[1];if(s<=0){clearInterval(timers[n2]);return;}s--;el.textContent=fmt(s);},1000);}
+});});
+function fmt(s){var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
+// numbers chips
+(function(){var nums=['one','two','three','four','five','six','seven','eight','nine','ten'];var w=document.getElementById('numchips');nums.forEach(function(n){var s=document.createElement('span');s.className='numchip';s.textContent=n;s.onclick=function(){speak(n);};w.appendChild(s);});})();
+// matching game
+var pairs=[['birthday','день рождения'],['cake','торт'],['candles','свечи'],['party','праздник'],['happy','счастливый'],['sad','грустный'],['surprise','сюрприз'],['present','подарок']];
+var selA=null,selB=null,matched=0;
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function buildMatch(){var A=document.getElementById('colA'),B=document.getElementById('colB');A.innerHTML='';B.innerHTML='';var a=shuffle(pairs.slice()),b=shuffle(pairs.slice());
+a.forEach(function(p,i){var btn=document.createElement('button');btn.className='mbtn';btn.textContent=p[0];btn.dataset.k=p[0];btn.onclick=function(){selA=btn;tryMatch();};A.appendChild(btn);});
+b.forEach(function(p,i){var btn=document.createElement('button');btn.className='mbtn';btn.textContent=p[1];btn.dataset.k=p[0];btn.onclick=function(){selB=btn;tryMatch();};B.appendChild(btn);});
+matched=0;selA=null;selB=null;document.getElementById('matchmsg').textContent='';}
+function tryMatch(){if(!selA||!selB)return;
+if(selA.dataset.k===selB.dataset.k){selA.classList.add('done');selB.classList.add('done');selA.classList.remove('wrong');selB.classList.remove('wrong');selA.onclick=null;selB.onclick=null;matched++;addScore(1);document.getElementById('matchmsg').textContent=matched===pairs.length?'🎉 Все пары собраны! Отлично!':'Пара найдена! +' + matched + '/8';speak(selA.dataset.k);}
+else{selA.classList.add('wrong');selB.classList.add('wrong');setTimeout(function(){selA&&selA.classList.remove('wrong');selB&&selB.classList.remove('wrong');selA=null;selB=null;},400);}
+selA=null;selB=null;}
+buildMatch();
+// quiz
+var quiz=[
+{q:'1. Who has a birthday?',o:['Lulu','Larry','Nanny Shine'],a:0},
+{q:'2. How old is Lulu?',o:['four','five','six'],a:1},
+{q:'3. How many candles are on the cake?',o:['three','four','five'],a:2},
+{q:'4. What is the present?',o:['a ball','a teddy bear','a bike'],a:1},
+{q:'5. How does Lulu feel?',o:['sad','happy','angry'],a:1}];
+(function(){var box=document.getElementById('quizbox');quiz.forEach(function(item){var d=document.createElement('div');d.className='quizq';d.innerHTML='<b>'+item.q+'</b>';var opts=document.createElement('div');opts.className='qopts';item.o.forEach(function(o,oi){var btn=document.createElement('button');btn.textContent=o;btn.onclick=function(){if(oi===item.a){btn.classList.add('ok');addScore(2);}else{btn.classList.add('no');}opts.querySelectorAll('button').forEach(function(x){x.onclick=null;});};opts.appendChild(btn);});d.appendChild(opts);box.appendChild(d);});})();
+// grammar check
+function checkGram(){document.querySelectorAll('#gram .gin').forEach(function(inp){var ok=inp.value.trim().toLowerCase()===inp.dataset.ans;inp.style.borderColor=ok?'var(--green)':'#e05b5b';inp.nextElementSibling.textContent=ok?'✔ +1':'✘ ('+inp.dataset.ans+')';inp.nextElementSibling.className='res '+(ok?'oklbl':'nolbl');if(ok)addScore(1);});}
+// card check
+function checkCard(){var ok=true;['c1','c2','c3','c4'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.style.borderBottomColor='#e05b5b';ok=false;}else{el.style.borderBottomColor='var(--green)';}});
+var m=document.getElementById('cardmsg');if(ok){m.textContent='💌 Открытка готова! Happy birthday to you!';m.style.color='var(--green)';addScore(3);speak('Happy birthday to you!');}else{m.textContent='Заполни все окошки!';m.style.color='#e05b5b';}}
+// checklist
+function tick(row){var box=row.querySelector('.box');if(box.textContent==='✔'){box.textContent='';}else{box.textContent='✔';}}
+</script>
+</body>
+</html>
