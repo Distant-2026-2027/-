@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecological Problems: Waste Disposal — Spotlight 9, Going Green 4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef5ee;color:#1f2a24;padding:14px;font-size:17px}
+.wrap{max-width:900px;margin:0 auto}
+header{background:linear-gradient(135deg,#1b5e20,#388e3c);color:#fff;border-radius:16px;padding:22px 20px;margin-bottom:14px}
+header h1{font-size:26px;margin-bottom:6px}
+header p{opacity:.92;font-size:15px}
+.chips span{display:inline-block;background:rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;margin:6px 6px 0 0;font-size:13px}
+.score{position:fixed;top:12px;right:12px;background:#ff8f00;color:#fff;font-weight:bold;padding:8px 14px;border-radius:24px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tab-btn{flex:1 1 auto;border:none;background:#fff;color:#1b5e20;font-weight:bold;padding:11px 10px;border-radius:12px;cursor:pointer;font-size:15px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.tab-btn.active{background:#1b5e20;color:#fff}
+.tab{display:none;background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.1)}
+.tab.active{display:block}
+.tab h2{color:#1b5e20;font-size:21px;margin-bottom:4px}
+.time{color:#689f38;font-size:14px;font-weight:bold;margin-bottom:14px}
+.ph{background:#f1f8f1;border-left:4px solid #66bb6a;border-radius:8px;padding:10px 12px;margin:8px 0;cursor:pointer;font-size:17px}
+.ph:hover{background:#e3f2e3}
+.tr{display:none;color:#1b5e20;font-size:15px;margin-top:6px;font-style:italic}
+.tr.show{display:block}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.wcard{background:#f1f8f1;border:2px solid #a5d6a7;border-radius:12px;padding:12px;text-align:center;cursor:pointer}
+.wcard:hover{background:#dcf5dc;transform:translateY(-2px)}
+.wcard .en{font-size:18px;font-weight:bold;color:#1b5e20}
+.wcard .tr2{color:#555;font-size:14px;margin-top:4px}
+.hint{background:#fff8e1;border-left:4px solid #ffb300;padding:10px 12px;border-radius:8px;margin:12px 0;font-size:15px}
+.support{background:#e8f5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:15px}
+.support b{color:#1b5e20}
+button.act{background:#1b5e20;color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:16px;cursor:pointer;font-weight:bold;margin-top:10px}
+button.act:hover{background:#2e7d32}
+table.gr{width:100%;border-collapse:collapse;margin:10px 0}
+table.gr td,table.gr th{border:1px solid #c8e6c9;padding:8px;font-size:15px}
+table.gr th{background:#e8f5e9;color:#1b5e20}
+.inp{padding:8px;border:2px solid #a5d6a7;border-radius:8px;font-size:16px;width:230px}
+.task{background:#f1f8f1;border-radius:10px;padding:12px;margin:10px 0;font-size:17px}
+.ok{color:#2e7d32;font-weight:bold}
+.bad{color:#c62828;font-weight:bold}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.mchip{background:#f1f8f1;border:2px solid #a5d6a7;border-radius:10px;padding:10px;text-align:center;cursor:pointer;font-size:16px}
+.mchip.sel{border-color:#ff8f00;background:#fff3e0}
+.mchip.done{border-color:#2e7d32;background:#c8e6c9;cursor:default}
+.mchip.err{border-color:#c62828;background:#ffebee}
+.refl label{display:block;background:#f1f8f1;border-radius:8px;padding:10px;margin:6px 0;cursor:pointer;font-size:16px}
+details{background:#f9f4e7;border-radius:10px;padding:10px 14px;margin:14px 0}
+summary{cursor:pointer;font-weight:bold;color:#8d6e00}
+footer{text-align:center;color:#557;color:#4b6b4b;font-size:14px;margin:16px 0;padding:10px}
+@media(max-width:600px){header h1{font-size:21px}.inp{width:170px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="score">&#9878;&#65039; Баллы: <span id="score">0</span></div>
+<header>
+<h1>&#127807; Ecological Problems. Waste Disposal</h1>
+<p>Проблемы экологии: утилизация отходов &#8212; Speak about recycling!</p>
+<div class="chips"><span>9 класс</span><span>Spotlight 9 &#183; Module 4 &#171;Technology&#187; &#183; Going Green 4: E-Waste</span><span>Уровень A2&#8211;B1</span></div>
+</header>
+
+<nav>
+<button class="tab-btn active" data-tab="t1">&#128075; Разминка</button>
+<button class="tab-btn" data-tab="t2">&#128218; Новые слова</button>
+<button class="tab-btn" data-tab="t3">&#129513; Игра: пары</button>
+<button class="tab-btn" data-tab="t4">&#128172; Диалог</button>
+<button class="tab-btn" data-tab="t5">&#9997;&#65039; Грамматика</button>
+<button class="tab-btn" data-tab="t6">&#128483; Говорение</button>
+<button class="tab-btn" data-tab="t7">&#127937; Итоги</button>
+</nav>
+
+<!-- РАЗМИНКА -->
+<section class="tab active" id="t1">
+<h2>Warm-up. Разминка &#8212; 4 мин</h2>
+<div class="time">&#9201;&#65039; 4 минуты &#183; отвечаем по цепочке</div>
+<p>Нажмите на вопрос &#8212; откроется перевод. Отвечаем полным предложением.</p>
+<p class="ph" onclick="tt('w1')">What is rubbish? What do people throw away every day?<span class="tr" id="w1">Что такое мусор? Что люди выбрасывают каждый день?</span></p>
+<p class="ph" onclick="tt('w2')">Do you sort your rubbish at home?<span class="tr" id="w2">Ты сортируешь мусор дома?</span></p>
+<p class="ph" onclick="tt('w3')">Where does our rubbish go after the bin?<span class="tr" id="w3">Куда попадает мусор после мусорного ведра?</span></p>
+<p class="ph" onclick="tt('w4')">Do you know the three Rs: Reduce, Reuse, Recycle?<span class="tr" id="w4">Знаешь ли ты три &#171;П&#187;: сократи, используй повторно, переработай?</span></p>
+<div class="support"><b>Опоры для ответов:</b> I think&#8230; &#183; In my opinion&#8230; &#183; I usually&#8230; &#183; For example&#8230; &#183; I believe that&#8230;</div>
+<details><summary>For teacher &#8212; заметки учителя</summary><p>Цель этапа &#8212; вовлечь в тему без подготовки. Ключевые слова, которые ждём в ответах: rubbish, throw away, recycle. Если класс молчит &#8212; спросите: &#171;What is in your bin right now?&#187;. Три R записываются на доску: Reduce, Reuse, Recycle &#8212; они понадобятся в диалоге и на письме.</p></details>
+</section>
+
+<!-- ЛЕКСИКА -->
+<section class="tab" id="t2">
+<h2>New words. Новые слова &#8212; 8 мин</h2>
+<div class="time">&#9201;&#65039; 8 минут &#183; нажимай на карточку &#8212; слово прозвучит дважды</div>
+<div class="words">
+<div class="wcard" onclick="speak('rubbish')"><div class="en">rubbish</div><div class="tr2">мусор, отходы</div></div>
+<div class="wcard" onclick="speak('litter')"><div class="en">litter</div><div class="tr2">мусор на улицах</div></div>
+<div class="wcard" onclick="speak('recycle')"><div class="en">recycle</div><div class="tr2">перерабатывать</div></div>
+<div class="wcard" onclick="speak('reuse')"><div class="en">reuse</div><div class="tr2">использовать повторно</div></div>
+<div class="wcard" onclick="speak('reduce')"><div class="en">reduce</div><div class="tr2">сокращать</div></div>
+<div class="wcard" onclick="speak('throw away')"><div class="en">throw away</div><div class="tr2">выбрасывать</div></div>
+<div class="wcard" onclick="speak('sort')"><div class="en">sort</div><div class="tr2">сортировать</div></div>
+<div class="wcard" onclick="speak('landfill')"><div class="en">landfill</div><div class="tr2">свалка, полигон</div></div>
+<div class="wcard" onclick="speak('bin')"><div class="en">bin</div><div class="tr2">мусорный бак</div></div>
+<div class="wcard" onclick="speak('pollute')"><div class="en">pollute</div><div class="tr2">загрязнять</div></div>
+<div class="wcard" onclick="speak('environment')"><div class="en">environment</div><div class="tr2">окружающая среда</div></div>
+<div class="wcard" onclick="speak('harmful chemicals')"><div class="en">harmful chemicals</div><div class="tr2">вредные химикаты</div></div>
+</div>
+<div class="hint">&#128161; Способ образования слов: re- + глагол = &#171;снова сделать&#187;: reuse = use again, recycle = process again. Сравните: rubbish &#8212; любой мусор, litter &#8212; мусор в общественных местах, waste &#8212; отходы (в том числе промышленности).</div>
+<details><summary>For teacher &#8212; заметки учителя</summary><p>Сначала хором с доски, затем каждый щёлкает по карточке. Ключевой минимум для грамматики ниже: recycle, collect, throw, use, take, give (третья форма: recycled, collected, thrown, used, taken, given &#8212; это V3 для пассивного залога).</p></details>
+</section>
+
+<!-- ИГРА -->
+<section class="tab" id="t3">
+<h2>Game. Собери пары &#8212; 5 мин</h2>
+<div class="time">&#9201;&#65039; 5 минут &#183; английское слово + русский перевод</div>
+<p>Кликни слово слева, затем его перевод справа. Пара сошлась &#8212; обе карточки становятся зелёными.</p>
+<div class="match" id="matcharea">
+<div class="mchip" data-key="1" onclick="pick(this)">recycle</div>
+<div class="mchip" data-key="5" onclick="pick(this)">загрязнять</div>
+<div class="mchip" data-key="2" onclick="pick(this)">свалка, полигон</div>
+<div class="mchip" data-key="6" onclick="pick(this)">выбрасывать</div>
+<div class="mchip" data-key="3" onclick="pick(this)">сокращать</div>
+<div class="mchip" data-key="7" onclick="pick(this)">перерабатывать</div>
+<div class="mchip" data-key="4" onclick="pick(this)">использовать повторно</div>
+<div class="mchip" data-key="8" onclick="pick(this)">сортировать</div>
+<div class="mchip" data-key="1" onclick="pick(this)">перерабатывать</div>
+<div class="mchip" data-key="5" onclick="pick(this)">pollute</div>
+<div class="mchip" data-key="2" onclick="pick(this)">landfill</div>
+<div class="mchip" data-key="6" onclick="pick(this)">throw away</div>
+<div class="mchip" data-key="3" onclick="pick(this)">reduce</div>
+<div class="mchip" data-key="7" onclick="pick(this)">мусор, отходы</div>
+<div class="mchip" data-key="4" onclick="pick(this)">reuse</div>
+<div class="mchip" data-key="8" onclick="pick(this)">sort</div>
+</div>
+<div class="hint">&#128161; В этой игре 8 пар: recycle, landfill, reduce, reuse, throw away, pollute, sort, rubbish. Каждое слово встречается и слева, и справа.</div>
+<p id="mresult" style="font-weight:bold;color:#1b5e20;margin-top:10px"></p>
+<details><summary>For teacher &#8212; заметки учителя</summary><p>Пары в ключах: recycle &#8212; перерабатывать; landfill &#8212; свалка; reduce &#8212; сокращать; reuse &#8212; использовать повторно; throw away &#8212; выбрасывать; pollute &#8212; загрязнять; sort &#8212; сортировать; rubbish &#8212; мусор. Организуйте как гонку: ряд на ряд.</p></details>
+</section>
+
+<!-- ДИАЛОГ -->
+<section class="tab" id="t4">
+<h2>Dialogue. Диалог + викторина &#8212; 8 мин</h2>
+<div class="time">&#9201;&#65039; 8 минут &#183; нажми на реплику &#8212; перевод откроется под ней, второй клик &#8212; свернётся</div>
+<p class="ph"><b>Kira:</b> Mark, have you heard about the new recycling project at school?<span class="tr" onclick="event.stopPropagation()">Марк, ты слышал о новом проекте по переработке в школе?</span></p>
+<p class="ph"><b>Mark:</b> Yes! We put plastic bottles and paper into different bins.<span class="tr" onclick="event.stopPropagation()">Да! Мы кладём пластиковые бутылки и бумагу в разные баки.</span></p>
+<p class="ph"><b>Kira:</b> Why is it so important?<span class="tr" onclick="event.stopPropagation()">Почему это так важно?</span></p>
+<p class="ph"><b>Mark:</b> Because rubbish doesn&#8217;t end up in a landfill. It is recycled into new things.<span class="tr" onclick="event.stopPropagation()">Потому что мусор не попадает на свалку. Его перерабатывают в новые вещи.</span></p>
+<p class="ph"><b>Kira:</b> And what about old phones and computers?<span class="tr" onclick="event.stopPropagation()">А что насчёт старых телефонов и компьютеров?</span></p>
+<p class="ph"><b>Mark:</b> E-waste is dangerous &#8212; it contains harmful chemicals. It must be taken to special recycling points.<span class="tr" onclick="event.stopPropagation()">Электронные отходы опасны &#8212; в них вредные химикаты. Их нужно сдавать в специальные пункты приёма.</span></p>
+<p class="ph"><b>Kira:</b> So what can we do every day?<span class="tr" onclick="event.stopPropagation()">Что же мы можем делать каждый день?</span></p>
+<p class="ph"><b>Mark:</b> Follow the three Rs: reduce, reuse and recycle!<span class="tr" onclick="event.stopPropagation()">Следуй трём &#171;R&#187;: сокращай, используй повторно, перерабатывай!</span></p>
+<div class="support"><b>Ключевая фраза:</b> The three Rs: <b>Reduce, Reuse, Recycle</b> &#8212; запомни её, она нужна в домашнем задании.</div>
+<div class="hint"><b>Викторина по диалогу:</b> выбери правильный ответ и нажми &#171;Проверить&#187;.</div>
+<div class="task">1. What do they put into different bins?
+<label style="display:block"><input type="radio" name="q1" value="0"> food</label>
+<label style="display:block"><input type="radio" name="q1" value="1"> plastic bottles and paper</label>
+<label style="display:block"><input type="radio" name="q1" value="2"> old phones</label></div>
+<div class="task">2. Where does rubbish end up without recycling?
+<label style="display:block"><input type="radio" name="q2" value="0"> in a landfill</label>
+<label style="display:block"><input type="radio" name="q2" value="1"> in a shop</label>
+<label style="display:block"><input type="radio" name="q2" value="2"> at school</label></div>
+<div class="task">3. Why is e-waste dangerous?
+<label style="display:block"><input type="radio" name="q3" value="0"> it is heavy</label>
+<label style="display:block"><input type="radio" name="q3" value="1"> it is expensive</label>
+<label style="display:block"><input type="radio" name="q3" value="2"> it contains harmful chemicals</label></div>
+<div class="task">4. What are the three Rs?
+<label style="display:block"><input type="radio" name="q4" value="0"> Read, Rest, Relax</label>
+<label style="display:block"><input type="radio" name="q4" value="1"> Reduce, Reuse, Recycle</label>
+<label style="display:block"><input type="radio" name="q4" value="2"> Run, Ride, Roll</label></div>
+<div class="task">5. Where must e-waste go?
+<label style="display:block"><input type="radio" name="q5" value="0"> to special recycling points</label>
+<label style="display:block"><input type="radio" name="q5" value="1"> to the nearest bin</label>
+<label style="display:block"><input type="radio" name="q5" value="2"> into the river</label></div>
+<button class="act" onclick="checkQuiz()">Проверить викторину</button>
+<p id="qres" style="margin-top:10px;font-weight:bold"></p>
+<details><summary>For teacher &#8212; ключи викторины</summary><p>1 &#8212; plastic bottles and paper; 2 &#8212; in a landfill; 3 &#8212; it contains harmful chemicals; 4 &#8212; Reduce, Reuse, Recycle; 5 &#8212; to special recycling points. После викторины попросите пересказать диалог парами по ролям.</p></details>
+</section>
+
+<!-- ГРАММАТИКА -->
+<section class="tab" id="t5">
+<h2>Grammar. Пассивный залог &#8212; 6 мин</h2>
+<div class="time">&#9201;&#65039; 6 минут &#183; впиши форму и нажми &#171;Проверить&#187;</div>
+<p>Сегодня главный помощник темы &#8212; <b>пассивный залог</b>: чтобы показать, что мусор <i>перерабатывают</i> (не мы, а над ним совершают действие).</p>
+<table class="gr">
+<tr><th>Утверждение</th><th>Отрицание</th><th>Вопрос</th></tr>
+<tr><td>Rubbish <b>is</b> recycled.</td><td>Rubbish <b>is not</b> recycled.</td><td><b>Is</b> rubbish recycled?</td></tr>
+<tr><td>Bottles <b>are</b> recycled.</td><td>Bottles <b>are not</b> recycled.</td><td><b>Are</b> bottles recycled?</td></tr>
+</table>
+<div class="hint">&#128161; Формула: am/is/are + V3. Одно &#8212; is, много &#8212; are. Модальные глаголы тоже работают: must be taken = &#171;должен быть сдан&#187;.</div>
+<div class="task">1. Plastic bottles <input class="inp" data-a="are recycled"> (recycle) into new things.</div>
+<div class="task">2. Paper <input class="inp" data-a="is collected"> (collect) every Monday.</div>
+<div class="task">3. Food waste <input class="inp" data-a="is used"> (use) to produce energy.</div>
+<div class="task">4. E-waste <input class="inp" data-a="is taken"> (take) to special recycling points.</div>
+<div class="task">5. A lot of rubbish <input class="inp" data-a="is thrown"> (throw) away every day.</div>
+<div class="task">6. Old clothes <input class="inp" data-a="are given"> (give) a second life.</div>
+<button class="act" onclick="checkGrammar()">Проверить грамматику</button>
+<p id="gres" style="margin-top:10px;font-weight:bold"></p>
+<details><summary>For teacher &#8212; ключи</summary><p>1 are recycled &#183; 2 is collected &#183; 3 is used &#183; 4 is taken &#183; 5 is thrown &#183; 6 are given. Если остаётся время: пусть класс переделает предложения в вопросы (Is paper collected&#8230;?).</p></details>
+</section>
+
+<!-- ГОВОРЕНИЕ -->
+<section class="tab" id="t6">
+<h2>Speaking. Говорение в парах &#8212; 6 мин</h2>
+<div class="time">&#9201;&#65039; 6 минут &#183; задайте друг другу все шесть вопросов</div>
+<div class="support"><b>Опоры:</b> In my opinion&#8230; &#183; As for me&#8230; &#183; To my mind&#8230; &#183; For example&#8230; &#183; I am sure that&#8230;</div>
+<p class="ph" onclick="tt('s1')">What kinds of rubbish do you throw away every day?<span class="tr" id="s1">Какой мусор ты выбрасываешь каждый день?</span></p>
+<p class="ph" onclick="tt('s2')">Is there a recycling point near your home? What can people recycle there?<span class="tr" id="s2">Есть ли рядом с вашим домом пункт приёма? Что там принимают?</span></p>
+<p class="ph" onclick="tt('s3')">What do you do with old clothes and toys?<span class="tr" id="s3">Что ты делаешь со старой одеждой и игрушками?</span></p>
+<p class="ph" onclick="tt('s4')">Which is better for the planet: paper bags or plastic bags? Why?<span class="tr" id="s4">Что лучше для планеты: бумажные или пластиковые пакеты? Почему?</span></p>
+<p class="ph" onclick="tt('s5')">How can your family reduce waste at home?<span class="tr" id="s5">Как твоя семья может сократить отходы дома?</span></p>
+<p class="ph" onclick="tt('s6')">Do you think recycling is a real solution to the rubbish problem?<span class="tr" id="s6">Думаешь ли ты, что переработка &#8212; настоящее решение проблемы мусора?</span></p>
+<div class="hint">&#128161; Цель &#8212; 3&#8211;4 предложения на вопрос. Используй пассивный залог: &#171;Plastic is recycled into new things&#187; &#8212; это поднимет балл за речь.</div>
+<details><summary>For teacher &#8212; заметки учителя</summary><p>Разделите класс на пары A/B, вопросы 1&#8211;3 у A, 4&#8211;6 у B, потом меняются. Слушатели отмечают по одному факту из ответа партнёра &#8212; затем 2&#8211;3 пары рассказывают классу, что узнали о партнёре.</p></details>
+</section>
+
+<!-- ИТОГИ -->
+<section class="tab" id="t7">
+<h2>Wrap-up. Итоги урока &#8212; 3 мин</h2>
+<div class="time">&#9201;&#65039; 3 минуты &#183; отметь, чему научился</div>
+<div class="refl">
+<label><input type="checkbox" onchange="addScore(this,5)"> &#128218; Я запомнил(а) 12 слов по теме утилизации отходов</label>
+<label><input type="checkbox" onchange="addScore(this,5)"> &#128172; Я могу рассказать о трёх Rs: Reduce, Reuse, Recycle</label>
+<label><input type="checkbox" onchange="addScore(this,5)"> &#9997;&#65039; Я умею строить пассивный залог: is/are + V3</label>
+<label><input type="checkbox" onchange="addScore(this,5)"> &#127807; Я знаю, куда сдавать электронные отходы</label>
+</div>
+<div class="hint">&#127775; <b>Домашнее задание:</b> напиши короткое обращение (5&#8211;6 предложений) для школьного стенда &#171;Save Our Planet&#187;: что происходит с отходами и что каждый из нас может сделать. Используй не меньше двух слов с пассивным залогом (Rubbish is recycled&#8230;) и три Rs. <br>&#11088; <b>Звёздочка:</b> узнай у родителей или в интернете, куда в вашем городе можно сдать батарейки и старую технику &#8212; расскажи на следующем уроке.</div>
+<details><summary>For teacher &#8212; заметки учителя</summary><p>Критерии для домашнего обращения: 5&#8211;6 предложений, минимум 2 пассивные конструкции, 2&#8211;3 слова нового словаря, призыв к действию. Мини-итог: попросите 3 учеников сказать по одному предложению с пассивом.</p></details>
+<button class="act" onclick="if(confirm('Сбросить всё и начать урок заново?'))location.reload()">&#128260; Сбросить всё</button>
+</section>
+
+<footer>Урок соответствует ФГОС ООО и ФРП (9 класс, уровень A2&#8211;B1) &#183; Spotlight 9 &#183; Module 4 &#183; Going Green 4: E-Waste</footer>
+</div>
+
+<script>
+var score=0;
+function updScore(n){score+=n;document.getElementById("score").textContent=score;}
+function addScore(el,n){if(el.checked){updScore(n);}else{score-=n;document.getElementById("score").textContent=score;}}
+function tt(id){var el=document.getElementById(id);el.classList.toggle("show");}
+document.querySelectorAll(".ph").forEach(function(p){p.addEventListener("click",function(){var t=p.querySelector(".tr");if(t)t.classList.toggle("show");updScore(1);});});
+document.querySelectorAll(".tab-btn").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".tab-btn").forEach(function(x){x.classList.remove("active");});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active");});b.classList.add("active");document.getElementById(b.dataset.tab).classList.add("active");window.scrollTo(0,0);});});
+function speak(text){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(text);u.lang="en-GB";u.rate=0.85;window.speechSynthesis.speak(u);setTimeout(function(){window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));window.speechSynthesis.speaking;},0);var u2=null;}
+function pick(el){if(el.classList.contains("done"))return;var s=document.querySelector(".mchip.sel");if(!s){el.classList.add("sel");return;}if(s===el){el.classList.remove("sel");return;}if(s.dataset.key===el.dataset.key){s.classList.remove("sel");s.classList.add("done");el.classList.add("done");updScore(10);var left=document.querySelectorAll(".mchip.done").length;if(left===16){document.getElementById("mresult").textContent="Поздравляем! Все 8 пар собраны! ";}}else{s.classList.remove("sel");el.classList.add("err");s.classList.add("err");setTimeout(function(){el.classList.remove("err");s.classList.remove("err");},600);}}
+function checkQuiz(){var r=0;var keys={q1:"1",q2:"0",q3:"2",q4:"1",q5:"0"};for(var k in keys){var sel=document.querySelector("input[name="+k+"]:checked");if(sel&&sel.value===keys[k]){r++;updScore(5);}}document.getElementById("qres").textContent="Правильных ответов: "+r+" из 5"+(r===5?" Excellent work!":". Попробуй перечитать диалог ещё раз.");}
+function checkGrammar(){var ok=0,total=6;var inputs=document.querySelectorAll(".inp");for(var i=0;i<inputs.length;i++){var v=inputs[i].value.toLowerCase().replace(/\s+/g," ").trim();if(v===inputs[i].dataset.a){inputs[i].style.borderColor="#2e7d32";ok++;updScore(5);}else{inputs[i].style.borderColor="#c62828";}}document.getElementById("gres").textContent="Правильных форм: "+ok+" из "+total+(ok===total?" Great job!":". Проверь: is/are + V3.");}
+</script>
+</body>
+</html>
