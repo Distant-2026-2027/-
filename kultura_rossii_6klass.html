@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерактивная книга: Культурные сокровища России</title>
+<style>
+  :root {
+    --main: #1d3557;
+    --accent: #e63946;
+    --gold: #f4a261;
+    --bg: #f1faee;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Verdana, sans-serif;
+    background: linear-gradient(180deg, #a8dadc 0%, #f1faee 100%);
+    color: #1d3557;
+    min-height: 100vh;
+  }
+  header {
+    background: var(--main);
+    color: #fff;
+    text-align: center;
+    padding: 24px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  }
+  header h1 { font-size: 1.9em; letter-spacing: 1px; }
+  header p { margin-top: 8px; font-size: 1.05em; opacity: .9; }
+  nav {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 10px; padding: 16px; background: #457b9d; position: sticky; top: 0; z-index: 10;
+  }
+  nav button {
+    background: #fff; color: var(--main); border: 2px solid var(--main);
+    border-radius: 24px; padding: 10px 20px; font-size: 1em; font-weight: 600;
+    cursor: pointer; transition: all .25s;
+  }
+  nav button:hover { background: var(--gold); transform: translateY(-2px); }
+  nav button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+  section { display: none; animation: fadeIn .4s ease; }
+  section.visible { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: none;} }
+  h2 { text-align: center; font-size: 1.6em; margin-bottom: 6px; color: var(--main); }
+  .intro { text-align: center; max-width: 700px; margin: 0 auto 24px; font-size: 1.05em; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border-radius: 16px; padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.12); border-top: 6px solid var(--gold);
+    cursor: pointer; transition: transform .25s, box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+  .card h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.15em; }
+  .card .city { display: inline-block; background: var(--main); color: #fff; border-radius: 12px; padding: 3px 12px; font-size: .8em; margin-bottom: 10px; }
+  .fact {
+    margin-top: 12px; background: #fff3e0; border-left: 4px solid var(--gold);
+    padding: 10px 12px; border-radius: 8px; font-size: .95em; display: none;
+  }
+  .card.open .fact { display: block; animation: fadeIn .3s; }
+  .hint { text-align: center; color: #6d6875; font-size: .9em; margin-top: 14px; font-style: italic; }
+  /* Викторина */
+  .quiz { background: var(--card); border-radius: 18px; padding: 26px; max-width: 640px; margin: 0 auto; box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+  .quiz h3 { margin-bottom: 14px; color: var(--main); }
+  .q { margin-bottom: 20px; }
+  .q p { font-weight: 600; margin-bottom: 8px; }
+  .q button {
+    display: block; width: 100%; text-align: left; margin: 6px 0; padding: 10px 14px;
+    background: #edf2f7; border: 2px solid #cbd5e0; border-radius: 10px;
+    cursor: pointer; font-size: .98em; transition: all .2s; font-family: inherit;
+  }
+  .q button:hover { border-color: var(--gold); background: #fff8ec; }
+  .q button.correct { background: #d8f3dc; border-color: #40916c; color: #1b4332; font-weight: 600; }
+  .q button.wrong { background: #ffe0e0; border-color: var(--accent); }
+  #result {
+    text-align: center; font-size: 1.2em; font-weight: 700; margin-top: 16px;
+    padding: 14px; border-radius: 12px; display: none;
+  }
+  footer { text-align: center; padding: 18px; background: var(--main); color: #fff; font-size: .9em; }
+  .emoji-big { font-size: 2.2em; display: block; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏛️ Культурные сокровища России</h1>
+  <p>Интерактивная книга для 6 класса · музеи · галереи · театры · зоопарки · библиотеки</p>
+</header>
+
+<nav id="nav">
+  <button class="active" data-sec="start">🏠 Начало</button>
+  <button data-sec="museums">🖼️ Музеи</button>
+  <button data-sec="galleries">🎨 Галереи</button>
+  <button data-sec="theaters">🎭 Театры</button>
+  <button data-sec="zoos">🦁 Зоопарки</button>
+  <button data-sec="libraries">📚 Библиотеки</button>
+  <button data-sec="quiz">🧠 Викторина</button>
+</nav>
+
+<main>
+
+<section id="start" class="visible">
+  <h2>Добро пожаловать в путешествие!</h2>
+  <p class="intro">Россия — огромная страна с богатейшей культурой. В этой книге ты отправишься в заочное путешествие по самым знаменитым музеям, картинным галереям, театрам, зоопаркам и библиотекам нашей Родины.<br><br>
+  <b>Как пользоваться книгой:</b> выбирай раздел в меню сверху, читай карточки и <b>нажимай на них</b> — откроется удивительный факт! А в конце проверь себя в викторине. Готов? Тогда в путь! 🚀</p>
+  <div class="cards">
+    <div class="card"><span class="emoji-big">🖼️</span><h3>Более 2500 музеев</h3><p>В России работают тысячи музеев — от всемирно известных Эрмитажа и Третьяковки до маленьких сельских музеев пряника и самовара.</p></div>
+    <div class="card"><span class="emoji-big">🎭</span><h3>Театральная держава</h3><p>Русский балет и оперный театр славятся на весь мир. Большой театр в Москве — один из главных символов страны.</p></div>
+    <div class="card"><span class="emoji-big">📚</span><h3>Сокровища знаний</h3><p>Российская национальная библиотека в Санкт-Петербурге хранит более 35 миллионов документов — одна из крупнейших в мире!</p></div>
+  </div>
+</section>
+
+<section id="museums">
+  <h2>🖼️ Главные музеи России</h2>
+  <p class="intro">Музей — это место, где хранятся памятники истории и культуры. Нажми на карточку, чтобы узнать удивительный факт!</p>
+  <div class="cards">
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Государственный Эрмитаж</h3><span class="city">Санкт-Петербург</span>
+      <p>Один из крупнейших музеев мира. Основан Екатериной II в 1764 году. Занимает несколько зданий, главное — Зимний дворец.</p>
+      <div class="fact">💡 В Эрмитаже живут кошки! С эпохи Екатерины II они охраняют залы от мышей. У них даже есть свой «день кошек Эрмитажа».</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Государственный Русский музей</h3><span class="city">Санкт-Петербург</span>
+      <p>Крупнейшее в мире собрание русского искусства: более 400 тысяч произведений — иконы, картины, скульптура.</p>
+      <div class="fact">💡 Главная жемчужина музея — «Богатыри» Виктора Васнецова. Полотно огромное: чтобы увидеть его целиком, нужно отойти далеко!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Политехнический музей</h3><span class="city">Москва</span>
+      <p>Музей науки и техники: здесь можно увидеть первые автомобили, космические аппараты и старинные механизмы.</p>
+      <div class="fact">💡 В коллекции хранится первый советский радиоприёмник и техника, с которой связывали связь космонавтов с Землёй.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Музей-квартира А. С. Пушкина</h3><span class="city">Санкт-Петербург</span>
+      <p>Последняя квартира великого поэта на набережной реки Мойки, где он жил в 1836–1837 годах.</p>
+      <div class="fact">💡 Здесь сохранены подлинные вещи поэта: письменный стол, чернильница и даже сюртук Пушкина.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Дарвиновский музей</h3><span class="city">Москва</span>
+      <p>Крупнейший в Европе музей естественной истории: тысячи экспонатов о живой природе и эволюции.</p>
+      <div class="fact">💡 В музее работает интерактивный центр, где можно «прочувствовать» размеры животных и понаблюдать за живыми муравьями-листорезами!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Кунсткамера</h3><span class="city">Санкт-Петербург</span>
+      <p>Первый музей России, основанный Петром I в 1714 году. Музей антропологии и этнографии.</p>
+      <div class="fact">💡 Пётр I собирал редкости со всего мира. По легенде, он приказал бесплатно пускать в музей всех желающих — и даже угощать гостей!</div>
+    </div>
+  </div>
+</section>
+
+<section id="galleries">
+  <h2>🎨 Картинные галереи</h2>
+  <p class="intro">Галерея — это музей живописи и искусства. Здесь хранятся шедевры великих художников.</p>
+  <div class="cards">
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Третьяковская галерея</h3><span class="city">Москва</span>
+      <p>Главный музей русского изобразительного искусства. Основана купцом Павлом Третьяковым, который дарил собрание городу.</p>
+      <div class="fact">💡 Знаменитые «Богатыри», «Девочка с персиками», «Утро в сосновом лесу» — всё здесь! Медведей Шишкина знаешь? Они «живут» именно в Третьяковке.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Новая Третьяковка</h3><span class="city">Москва</span>
+      <p>Отдел галереи с искусством XX–XXI веков: авангард, современная живопись, инсталляции.</p>
+      <div class="fact">💡 Здесь выставлены работы Казимира Малевича, включая легендарный «Чёрный квадрат».</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Государственный музей А. С. Пушкина (Изобразительного искусства)</h3><span class="city">Москва</span>
+      <p>Музей мирового искусства: слепки античных скульптур, египетские древности, картины французских импрессионистов.</p>
+      <div class="fact">💡 В музее хранятся подлинники Клода Моне, Ван Гога и Пикассо — можно «путешествовать» по эпохам без визы!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Русский музей — Михайловский дворец</h3><span class="city">Санкт-Петербург</span>
+      <p>Главное здание Русского музея — великолепный дворец XIX века с парадными залами.</p>
+      <div class="fact">💡 Рядом — Сад Михайловского дворца, где можно отдохнуть среди скульптур и фонтанов после экскурсии.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Музей изобразительных искусств Республики Татарстан</h3><span class="city">Казань</span>
+      <p>Богатая коллекция русского и татарского искусства, картины Айвазовского, Репина и местных мастеров.</p>
+      <div class="fact">💡 Казанский музей — один из старейших в провинции: открыт ещё в 1895 году!</div>
+    </div>
+  </div>
+</section>
+
+<section id="theaters">
+  <h2>🎭 Знаменитые театры России</h2>
+  <p class="intro">Театр — это волшебный мир, где оживают сказки, музыка и история. Занавес поднимается — поехали!</p>
+  <div class="cards">
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Большой театр</h3><span class="city">Москва</span>
+      <p>Главный театр оперы и балета страны, основан в 1776 году. Символ российской культуры.</p>
+      <div class="fact">💡 На фронтоне Большого театра — бронзовая колесница Аполлона. Кони «несутся» над зданием уже почти 200 лет!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Мариинский театр</h3><span class="city">Санкт-Петербург</span>
+      <p>Легендарный театр оперы и балета. Здесь танцевали великие Анна Павлова, Галина Уланова, Рудольф Нуреев.</p>
+      <div class="fact">💡 Именно здесь впервые прозвучали балеты Чайковского «Щелкунчик» и «Лебединое озеро».</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Малый театр</h3><span class="city">Москва</span>
+      <p>Старейший драматический театр России, основан в 1806 году. Его называли «вторым университетом» русского общества.</p>
+      <div class="fact">💡 Здесь играли великие актёры: Михаил Щепкин, Павел Мочалов. Театр дал название площади — Театральной!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Театр Наций</h3><span class="city">Москва</span>
+      <p>Современный театр, где ставят спектакли лучшие режиссёры страны. Входит в знаменитый театральный квартал.</p>
+      <div class="fact">💡 В этом здании раньше работал Коршевский театр — здесь выступала ещё легенда сцен XIX века!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Московский театр кукол им. Образцова</h3><span class="city">Москва</span>
+      <p>Крупнейший театр кукол в мире. Знаменит своими сказочными спектаклями и уникальными куклами.</p>
+      <div class="fact">💡 На фасаде театра работают волшебные механические часы-куклы: каждые 15 минут они показывают маленький спектакль!</div>
+    </div>
+  </div>
+</section>
+
+<section id="zoos">
+  <h2>🦁 Зоопарки России</h2>
+  <p class="intro">Зоопарк — это место, где животные живут под заботой человека, а мы можем узнать о них много нового.</p>
+  <div class="cards">
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Московский зоопарк</h3><span class="city">Москва</span>
+      <p>Один из старейших зоопарков Европы — открыт в 1864 году. Более 1000 видов животных!</p>
+      <div class="fact">💡 Здесь живёт знаменитая семья больших панд — Жуи, Диндин и Руру. Они прилетели из Китая в знак дружбы между странами.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Ленинградский зоопарк</h3><span class="city">Санкт-Петербург</span>
+      <p>Старейший зоопарк России, основан в 1865 году. Работал даже в блокадном Ленинграде.</p>
+      <div class="fact">💡 Во время блокады сотрудники спасали животных, а знаменитая бегемотиха Красавица выжила благодаря заботе смотрительницы!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Новосибирский зоопарк</h3><span class="city">Новосибирск</span>
+      <p>Один из крупнейших зоопарков России: около 11 000 животных, 770 видов. Известен успешным разведением редких кошек.</p>
+      <div class="fact">💡 Талисман зоопарка — снежный барс Ирбис. Здесь успешно выводят редких ирбисов в программе сохранения вида!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Краснодарский зоопарк «Сафари-парк»</h3><span class="city">Краснодарский край</span>
+      <p>Животные живут в просторных вольерах в условиях, максимально близких к природе.</p>
+      <div class="fact">💡 Здесь можно увидеть амурских тигров — самых больших кошек на планете!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Казанский зооботсад</h3><span class="city">Казань</span>
+      <p>Уникальное место: зоопарк и ботанический сад вместе. Один из старейших в России — с 1805 года.</p>
+      <div class="fact">💡 Тут живут «малыши-долгожители»: необычные виды растений растут рядом с животными уже больше двух веков!</div>
+    </div>
+  </div>
+</section>
+
+<section id="libraries">
+  <h2>📚 Великие библиотеки России</h2>
+  <p class="intro">Библиотека — это «сокровищница знаний». Здесь хранятся книги, которые пережили века.</p>
+  <div class="cards">
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Российская государственная библиотека</h3><span class="city">Москва</span>
+      <p>Одна из крупнейших библиотек мира. Более 47 миллионов единиц хранения!</p>
+      <div class="fact">💡 Если разложить все книги РГБ в одну линию, получится коридор длиной примерно 350 км — почти от Москвы до Тамбова!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Российская национальная библиотека</h3><span class="city">Санкт-Петербург</span>
+      <p>Одна из первых публичных библиотек России, основана в 1795 году Екатериной II.</p>
+      <div class="fact">💡 В фонде хранятся рукописи XI века, черновики Пушкина и даже «высочайшие» письма русских императоров.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Библиотека имени Ленина (РГБ)</h3><span class="city">Москва</span>
+      <p>Так в народе называют Российскую государственную библиотеку — главную библиотеку страны.</p>
+      <div class="fact">💡 Её читальные залы огромны: за год здесь бывают тысячи читателей. Многие школьники готовят здесь олимпиадные проекты!</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Государственная публичная историческая библиотека</h3><span class="city">Москва</span>
+      <p>Крупнейшая библиотека исторического профиля: книги по истории России и всего мира.</p>
+      <div class="fact">💡 Здесь можно найти книги, изданные ещё при Петре I, и редкие карты старой России.</div>
+    </div>
+    <div class="card" onclick="this.classList.toggle('open')">
+      <h3>Библиотека имени Горького (Научная библиотека СПбГУ)</h3><span class="city">Санкт-Петербург</span>
+      <p>Одна из старейших университетских библиотек России, хранит редкие научные издания.</p>
+      <div class="fact">💡 Фонды пополнялись ещё с XVIII века: среди подарков — книги от самого императора Александра I.</div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>🧠 Проверь себя!</h2>
+  <p class="intro">Ответь на 5 вопросов и узнай свой результат. Можно перечитать разделы — это не запрещено, а поощряется! 😉</p>
+  <div class="quiz" id="quizBox">
+    <div class="q" data-answer="1">
+      <p>1. Какой музей основала Екатерина II в 1764 году?</p>
+      <button>Третьяковская галерея</button>
+      <button>Эрмитаж</button>
+      <button>Кунсткамера</button>
+    </div>
+    <div class="q" data-answer="2">
+      <p>2. Где живут знаменитые панды Жуи и Диндин?</p>
+      <button>Ленинградский зоопарк</button>
+      <button>Новосибирский зоопарк</button>
+      <button>Московский зоопарк</button>
+    </div>
+    <div class="q" data-answer="0">
+      <p>3. В каком театре впервые поставили «Щелкунчика»?</p>
+      <button>Мариинский театр</button>
+      <button>Большой театр</button>
+      <button>Малый театр</button>
+    </div>
+    <div class="q" data-answer="2">
+      <p>4. Кто основал Третьяковскую галерею?</p>
+      <button>Императрица Елизавета</button>
+      <button>Сергей Эйзенштейн</button>
+      <button>Купец Павел Третьяков</button>
+    </div>
+    <div class="q" data-answer="1">
+      <p>5. В каком городе находится Российская национальная библиотека?</p>
+      <button>В Москве</button>
+      <button>В Санкт-Петербурге</button>
+      <button>В Казани</button>
+    </div>
+    <div id="result"></div>
+    <button id="restart" style="display:none; margin:14px auto 0; padding:10px 24px; border-radius:12px; border:2px solid var(--main); background:#fff; cursor:pointer; font-weight:600;">Попробовать снова 🔄</button>
+  </div>
+</section>
+
+</main>
+
+<footer>Составлено специально для 6 класса · Изучай культуру России с интересом! 🇷🇺</footer>
+
+<script>
+// Навигация
+document.querySelectorAll('#nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('main section').forEach(s => s.classList.remove('visible'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.sec).classList.add('visible');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+// Викторина
+let answered = {}, total = document.querySelectorAll('.q').length;
+document.querySelectorAll('.q').forEach((q, i) => {
+  const answer = +q.dataset.answer;
+  q.querySelectorAll('button').forEach((b, j) => {
+    b.addEventListener('click', () => {
+      if (answered[i]) return;
+      answered[i] = true;
+      if (j === answer) b.classList.add('correct');
+      else { b.classList.add('wrong'); q.querySelectorAll('button')[answer].classList.add('correct'); }
+      checkResult();
+    });
+  });
+});
+function checkResult(){
+  if (Object.keys(answered).length === total){
+    const score = Object.entries(answered).filter(([i,a]) => {
+      return document.querySelector('.q[data-answer="' + a + '"]') && (+document.querySelector('.q[data-answer="' + (i) + '"]').dataset.answer) !== undefined;
+    }).length;
+    let correct = 0;
+    document.querySelectorAll('.q').forEach((q,i) => { if (answered[i] && q.querySelector('.correct') && q.querySelector('button.correct') === q.querySelector('button:nth-child(2)')) {} });
+    // точный подсчёт
+    correct = 0;
+    document.querySelectorAll('.q').forEach((q,i) => {
+      const ans = +q.dataset.answer;
+      if (answered[i]) {
+        const btns = q.querySelectorAll('button');
+        if (btns[ans].classList.contains('correct') && btns[ans].classList.contains('correct')) {
+          // определить, был ли клик по правильной кнопке: если wrong нет — клик верный
+        }
+        if (!q.querySelector('button.wrong')) correct++;
+      }
+    });
+    const res = document.getElementById('result');
+    res.style.display = 'block';
+    let msg;
+    if (correct === total) msg = `🏆 Блестяще! ${correct} из ${total} — ты настоящий знаток культуры России!`;
+    else if (correct >= 3) msg = `👏 Отличный результат! ${correct} из ${total}. Так держать!`;
+    else msg = `📖 Твой результат: ${correct} из ${total}. Перечитай разделы — и всё получится!`;
+    res.textContent = msg;
+    res.style.background = correct >= 3 ? '#d8f3dc' : '#fff3e0';
+    document.getElementById('restart').style.display = 'block';
+  }
+}
+document.getElementById('restart').addEventListener('click', () => {
+  answered = {};
+  document.querySelectorAll('.q button').forEach(b => b.classList.remove('correct','wrong'));
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('restart').style.display = 'none';
+});
+</script>
+</body>
+</html>
