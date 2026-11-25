@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 6 класс — Жизнь в городе: заказ по телефону и через интернет</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#eef3f8;color:#22303c;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#1d3557,#457b9d);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:24px;margin-bottom:6px}
+.meta{font-size:13px;opacity:.92}
+.badge{display:inline-block;background:#f1a50e;color:#1d3557;font-weight:700;border-radius:20px;padding:3px 12px;font-size:13px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#d7e3ef;color:#1d3557;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#1d3557;color:#fff}
+.panel{display:none;background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(30,50,80,.08)}
+.panel.on{display:block}
+.panel h2{color:#1d3557;font-size:20px;margin-bottom:10px}
+.panel h3{color:#2a6f97;font-size:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+th,td{border:1px solid #cdd9e5;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#e8f0f7;color:#1d3557}
+.card{background:#f4f8fb;border:1px solid #d7e3ef;border-radius:10px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#1d3557;font-size:16px}
+.snd{background:#f1a50e;border:none;border-radius:7px;padding:3px 9px;cursor:pointer;font-size:14px;margin-left:8px}
+.tr{display:none;color:#2a6f97;margin-top:5px;font-size:14px}
+.hint{background:#fff7e0;border-left:4px solid #f1a50e;padding:8px 12px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+.dline{background:#f4f8fb;border:1px solid #d7e3ef;border-radius:9px;padding:8px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.speaker{font-weight:700;color:#c1440e}
+.quiz{margin:8px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#f4f8fb;border:1px solid #cdd9e5;border-radius:8px;padding:7px 11px;margin:4px 0;cursor:pointer;font-size:14px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#e8f0f7;border:1px solid #b9cfe0;border-radius:9px;padding:9px 12px;margin:4px;cursor:pointer;font-size:14px;font-weight:600;min-width:120px;text-align:center}
+.tile.sel{background:#f1a50e;color:#fff;border-color:#d18f00}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.75}
+.gap{width:130px;border:1px solid #b9cfe0;border-radius:7px;padding:5px 8px;font-size:14px;margin:4px}
+.check{background:#1d3557;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;font-weight:600;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.fb{background:#f4f8fb;border:1px solid #d7e3ef;border-radius:10px;padding:10px 14px;margin:8px 0;cursor:pointer;font-size:15px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:13px;color:#5a6b7a}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🎭 Английский язык • 6 класс</h1>
+<div style="font-size:19px;font-weight:600">Жизнь в городе: заказ по телефону и через интернет</div>
+<div class="meta">Spotlight 6 • Module 8 «Rules and regulations» • English in Use 8 «Booking theatre tickets» (стр. 82) • ФГОС ООО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Диалог</button>
+<button class="tab" data-p="p7">Фразы заказа</button>
+<button class="tab" data-p="p8">Заказ онлайн</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться заказывать билеты и товары по телефону и через интернет на английском языке.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику заказа (to book, seat, cash, credit card, delivery); отработать речевые формулы телефонного заказа и онлайн-покупки.</li>
+<li><b>Развивающие:</b> развивать умения диалогической речи, аудирования и языковой догадки.</li>
+<li><b>Воспитательные:</b> формировать культуру вежливого общения и осознанное поведение онлайн-покупателя.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Ведёт диалог этикетного характера (заказ по телефону); использует новую лексику и структуры I&#39;d like to…, How would you like to pay?</td><td>Ставит учебную задачу, планирует действия, работает в паре, осуществляет самопроверку</td><td>Осознаёт ценность вежливого общения, ответственно относится к онлайн-покупкам</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 6.</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы, показывает вкладку «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют, записывают слова</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Работа с диалогом</td><td>8 мин</td><td>Читает диалог по ролям, задаёт вопросы викторины</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>Формулы заказа</td><td>5 мин</td><td>Разбирает таблицу фраз, выполняет задания</td><td>Вставляют слова, проверяют себя</td></tr>
+<tr><td>Заказ через интернет</td><td>5 мин</td><td>Разбирает 5 шагов онлайн-заказа, мини-диалог</td><td>Читают, проговаривают шаги</td></tr>
+<tr><td>Говорение (пары)</td><td>3 мин</td><td>Организует ролевую игру «заказ по телефону»</td><td>Разыгрывают диалоги, меняются ролями</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию, объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте 5 минут на фонетическую зарядку — звуки [əʊ] (know, coach, tone) и [aʊ] (now, couch, town) из упр. 4, стр. 82.</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод. Отвечайте по опорам.</p>
+<div class="dline">1. Do you like shopping in your city?<div class="tr">Тебе нравится делать покупки в своём городе?</div></div>
+<div class="dline">2. Have you ever ordered something online?<div class="tr">Ты когда-нибудь заказывал что-нибудь через интернет?</div></div>
+<div class="dline">3. What do people usually book by phone?<div class="tr">Что люди обычно заказывают по телефону? (Опора: tickets, a table at a restaurant, a taxi)</div></div>
+<div class="dline">4. I would like to order…<div class="tr">Я хотел бы заказать… (закончи предложение: pizza, a book, tickets)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Обратите внимание: pay <b>by</b> card — платить картой, но pay <b>in</b> cash — платить наличными.</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте два плитки: слово и его перевод. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Диалог: заказ билетов по телефону</h2>
+<p class="small">Диалог из учебника (English in Use 8). Мистер Дарси заказывает билеты на «Ромео и Джульетту». Нажмите на реплику — откроется перевод.</p>
+<div id="dialogue"></div>
+<div class="hint">💡 Шпаргалка: How can I help you? — Чем могу помочь? | I&#39;d like to book… — Я хотел бы забронировать… | How would you like to pay? — Как вы будете платить?</div>
+<h3>Викторина по диалогу</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Фразы заказа: по телефону и через интернет</h2>
+<table>
+<tr><th>По телефону 📞</th><th>Через интернет 💻</th></tr>
+<tr><td>Good afternoon. How can I help you?</td><td>Welcome to our website!</td></tr>
+<tr><td>I&#39;d like to book two tickets, please.</td><td>Choose a product and add it to the cart.</td></tr>
+<tr><td>Which performance? / Which day?</td><td>Enter your name, address and phone number.</td></tr>
+<tr><td>How would you like to pay?</td><td>Choose delivery or pick up.</td></tr>
+<tr><td>By card, please. / In cash, please.</td><td>Pay online and wait for your order!</td></tr>
+</table>
+<h3>Вставь пропущенное слово</h3>
+<div id="gaps"></div>
+<button class="check" id="gcheck">Проверить</button>
+<div class="msg" id="gpmsg"></div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Заказ через интернет — 5 шагов</h2>
+<table>
+<tr><th>Шаг</th><th>По-английски</th></tr>
+<tr><td>1. Выбери товар</td><td>Choose a product</td></tr>
+<tr><td>2. Добавь в корзину</td><td>Add to cart</td></tr>
+<tr><td>3. Введи данные</td><td>Enter your name and address</td></tr>
+<tr><td>4. Выбери доставку или самовывоз</td><td>Choose delivery or pick up</td></tr>
+<tr><td>5. Оплати</td><td>Pay by card online</td></tr>
+</table>
+<h3>Мини-диалог: пицца с доставкой</h3>
+<div id="pizza"></div>
+<div class="hint">💡 delivery — доставка, pick up — самовывоз (забрать самому), to order — заказывать.</div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — работа в парах</h2>
+<p class="small">Прочитайте вопрос, обсудите с партнёром, затем поменяйтесь ролями. Нажмите на вопрос — откроется перевод.</p>
+<div id="speak"></div>
+<p><b>Ролевая игра:</b> Один из вас — receptionist (администратор театра), второй — customer (клиент). Закажите 2 билета на вечерний спектакль по телефону. Потом поменяйтесь ролями!</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> заказывать билеты по телефону на английском;</li>
+<li> называть 12 новых слов по теме заказа;</li>
+<li> описывать 5 шагов онлайн-заказа;</li>
+<li> вежливо разговаривать по телефону: How can I help you? — I&#39;d like to book…</li>
+</ul>
+<h3>Домашнее задание</h3>
+<p>📝 Напишите диалог заказа по телефону (8 реплик): вы заказываете билеты в кино или театр. Используйте фразы из вкладки «Фразы заказа».</p>
+<p>⭐ Звёздочка: опишите 3 шага заказа пиццы через сайт пиццерии (по-английски, по образцу вкладки «Заказ онлайн»).</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+document.querySelectorAll(".fb").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-US";u.rate=0.85;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1400);}
+
+var WORDS=[["to book","бронировать, заказывать","I would like to book two tickets."],
+["ticket","билет","How much is a ticket?"],
+["seat","место","I want a seat in row five."],
+["row","ряд","Our seats are in row three."],
+["performance","спектакль, представление","The performance starts at 7 pm."],
+["receptionist","администратор","The receptionist answered the phone."],
+["customer","покупатель, клиент","The customer wants two tickets."],
+["cash","наличные","Can I pay in cash?"],
+["credit card","кредитная карта","I will pay by credit card."],
+["to pay","платить","How would you like to pay?"],
+["delivery","доставка","Delivery is free today!"],
+["to collect","забирать","You can collect the tickets at the box office."]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span><button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[1]+"</b><br><i>"+w[2]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["to book","бронировать"],["seat","место"],["cash","наличные"],["receptionist","администратор"],["delivery","доставка"],["performance","спектакль"],["customer","клиент"],["to pay","платить"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var DLG=[["Receptionist","Good afternoon. Apollo Theatre. How can I help you?","Добрый день. Театр «Аполло». Чем могу помочь?"],
+["Mr Darcy","Good afternoon. I would like to book two tickets for Romeo and Juliet, please.","Добрый день. Я хотел бы забронировать два билета на «Ромео и Джульетту», пожалуйста."],
+["Receptionist","Certainly. Which day would you like to come?","Конечно. На какой день вы хотели бы прийти?"],
+["Mr Darcy","Saturday, the 14th of June.","Суббота, 14 июня."],
+["Receptionist","The performance starts at 7:30 pm. Where would you like to sit?","Спектакль начинается в 19:30. Где вы хотели бы сидеть?"],
+["Mr Darcy","In the stalls, please. Somewhere in the middle.","В партере, пожалуйста. Где-нибудь в середине."],
+["Receptionist","OK. Row eight, seats fifteen and sixteen.","Хорошо. Восьмой ряд, места пятнадцать и шестнадцать."],
+["Mr Darcy","Perfect. How much is that?","Отлично. Сколько это будет стоить?"],
+["Receptionist","That is forty pounds, please. How would you like to pay?","Сорок фунтов, пожалуйста. Как вы будете платить?"],
+["Mr Darcy","By credit card, please.","Кредитной картой, пожалуйста."],
+["Receptionist","Thank you. You can collect the tickets at the box office.","Спасибо. Вы можете забрать билеты в кассе."],
+["Mr Darcy","Great. Thank you very much. Goodbye!","Отлично. Большое спасибо. До свидания!"]];
+var dbox=document.getElementById("dialogue");
+DLG.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+dbox.appendChild(d);});
+
+var QUIZ=[["What does Mr Darcy want to book?","two tickets for Romeo and Juliet","a pizza","a taxi"],
+["Which day does he choose?","Saturday, the 14th of June","Monday, the 3rd of May","Sunday, the 20th of July"],
+["Where are his seats?","row eight, seats fifteen and sixteen","row one, seats one and two","row twelve, seats five and six"],
+["How does he pay?","by credit card","in cash","by cheque"],
+["Where can he collect the tickets?","at the box office","at the cinema","by delivery"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Хорошая работа, перечитайте диалог ещё раз!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var GAPS=[["I would like to ___ two tickets, please.","book"],
+["Can I pay ___ cash?","in"],
+["How much ___ a ticket?","is"],
+["You can collect the tickets at the box ___.","office"],
+["I will pay by ___ card.","credit"],
+["Choose delivery or pick ___ .","up"]];
+var gapbox=document.getElementById("gaps");
+GAPS.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+gapbox.appendChild(row);});
+document.getElementById("gcheck").addEventListener("click",function(){
+var ok=0;var inputs=gapbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("gpmsg").textContent="Правильно: "+ok+" из "+GAPS.length+(ok===GAPS.length?" — превосходно! 🎉":"");});
+
+var PIZZA=[["Customer","Hello! I would like to order a large pepperoni pizza, please.","Здравствуйте! Я хотел бы заказать большую пиццу «Пепперони», пожалуйста."],
+["Assistant","Certainly. What is your address?","Конечно. Какой у вас адрес?"],
+["Customer","15 Green Street, flat four.","Улица Грин, 15, квартира четыре."],
+["Assistant","That is twelve pounds. Delivery in thirty minutes.","Это двенадцать фунтов. Доставка через тридцать минут."],
+["Customer","Can I pay by card?","Можно оплатить картой?"],
+["Assistant","Of course. Thank you for your order!","Конечно. Спасибо за ваш заказ!"]];
+var pbox=document.getElementById("pizza");
+PIZZA.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+pbox.appendChild(d);});
+
+var SPEAK=["1. What places do you like to visit in your city?","2. Do you prefer shopping in shops or online? Why?","3. Have you ever booked tickets by phone?","4. What was your last online order?","5. Would you like to work as a receptionist? Why (not)?","6. What is better: delivery or pick up? Why?"];
+var TRS=["Какие места тебе нравится посещать в своём городе?","Что ты предпочитаешь: покупки в магазинах или онлайн? Почему?","Ты когда-нибудь заказывал билеты по телефону?","Какой твой последний онлайн-заказ?","Хотел бы ты работать администратором? Почему (да/нет)?","Что лучше: доставка или самовывоз? Почему?"];
+var sbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+sbox.appendChild(d);});
+</script>
+</body>
+</html>
