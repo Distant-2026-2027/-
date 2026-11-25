@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career Opportunities. Writing a CV — 10 класс</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:"Segoe UI",Arial,sans-serif;background:#eef3f8;color:#223;margin:0;padding:16px}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:26px;color:#1a3c6e;margin:6px 0}
+h3{color:#1a3c6e}
+.sub{color:#456;font-size:14px;margin-bottom:14px}
+#nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tabbtn{padding:8px 12px;border:1px solid #b8c9dd;background:#fff;border-radius:20px;cursor:pointer;font-size:14px}
+.tabbtn.active{background:#1a6fd4;color:#fff;border-color:#1a6fd4}
+.panel{display:none;background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.panel.active{display:block}
+h2{font-size:20px;color:#1a3c6e;margin-top:0}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0}
+th,td{border:1px solid #c8d4e2;padding:6px 8px;vertical-align:top}
+th{background:#e8f0fa;text-align:left}
+.q{background:#f2f6fb;border-left:4px solid #1a6fd4;padding:10px 12px;margin:8px 0;border-radius:6px;cursor:pointer}
+.tr{display:none;color:#555;font-style:italic;margin-top:6px}
+.open .tr{display:block}
+.wordcard{display:flex;align-items:center;gap:10px;background:#f2f6fb;border-left:4px solid #1a6fd4;padding:10px 12px;margin:8px 0;border-radius:6px;cursor:pointer;flex-wrap:wrap}
+.word{font-weight:bold;font-size:16px;color:#123}
+.speakbtn{border:none;background:#1a6fd4;color:#fff;border-radius:50%;width:34px;height:34px;font-size:15px;cursor:pointer;flex:0 0 34px}
+#game{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.tile{min-height:56px;display:flex;align-items:center;justify-content:center;background:#1a6fd4;color:#fff;border-radius:10px;cursor:pointer;font-size:14px;text-align:center;padding:6px}
+.tile.flip{background:#fff;color:#223;border:2px solid #1a6fd4}
+.tile.done{background:#d9f2e2;color:#1c7a3f;border:2px solid #2e9e5b;cursor:default}
+.btn{display:inline-block;padding:8px 14px;background:#1a6fd4;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:14px;margin:4px 4px 4px 0}
+.opt{display:block;background:#f2f6fb;border:1px solid #c8d4e2;border-radius:8px;padding:8px;margin:6px 0;cursor:pointer;font-size:14px}
+.opt.ok{background:#d9f2e2;border-color:#2e9e5b}
+.opt.bad{background:#fde3e3;border-color:#d9534f}
+.gr-item{margin:10px 0}
+.gr-item input{padding:8px;border:1px solid #b8c9dd;border-radius:8px;font-size:14px}
+.mark{font-weight:bold;margin-left:8px}
+.note{background:#fff6d8;border-left:4px solid #e0b400;padding:10px 12px;margin:10px 0;border-radius:6px;font-size:14px}
+.note summary{cursor:pointer;font-weight:bold}
+.cvbox{background:#f7f9fc;border:1px dashed #9fb4cc;border-radius:10px;padding:12px;font-size:14px;line-height:1.7}
+.ok-msg{display:none;color:#1c7a3f;font-weight:bold;margin-top:8px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Career Opportunities. Writing a CV</h1>
+<p class="sub">Английский язык • 10 класс • Spotlight 10, Module 3 «Schooldays &amp; Work», Unit 3e «Writing Skills: Formal Letters» • 40 минут • урок развития письменной речи</p>
+<div id="nav">
+<button class="tabbtn active" onclick="showTab('p1',this)">Цели и задачи</button>
+<button class="tabbtn" onclick="showTab('p2',this)">Ход урока</button>
+<button class="tabbtn" onclick="showTab('p3',this)">Разминка</button>
+<button class="tabbtn" onclick="showTab('p4',this)">Новые слова</button>
+<button class="tabbtn" onclick="showTab('p5',this)">Игра: пары</button>
+<button class="tabbtn" onclick="showTab('p6',this)">Диалог</button>
+<button class="tabbtn" onclick="showTab('p7',this)">Грамматика</button>
+<button class="tabbtn" onclick="showTab('p8',this)">Резюме: структура</button>
+<button class="tabbtn" onclick="showTab('p9',this)">Говорение</button>
+<button class="tabbtn" onclick="showTab('p10',this)">Итоги</button>
+</div>
+<section class="panel active" id="p1">
+<h2>Цели и задачи урока</h2>
+<p><b>Тема:</b> Career opportunities. Writing a CV — «Карьерные возможности. Написание резюме».</p>
+<p><b>УМК:</b> Spotlight 10, Module 3 «Schooldays &amp; Work», Unit 3e «Writing Skills: Formal Letters» (стр. 54–55).</p>
+<p><b>Тип урока:</b> урок развития письменной речи и систематизации материала.</p>
+<p><b>Цель:</b> к концу урока ученики смогут составить простое CV по образцу и оформить письмо-заявление о работе в формальном стиле.</p>
+<p><b>Обучающие задачи:</b> активизировать лексику по теме «Работа и карьера»; изучить структуру CV; отработать формальный стиль письма.</p>
+<p><b>Развивающие задачи:</b> развивать умение анализировать объявления о вакансиях и структурировать информацию о себе.</p>
+<p><b>Воспитательные задачи:</b> формировать ответственное отношение к профессиональному будущему и уважение к труду.</p>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные (ФРП)</th><td>знают и употребляют лексику по теме «Работа и карьера»; знают структуру CV; пишут простое резюме и письмо-заявление в формальном стиле</td></tr>
+<tr><th>Метапредметные (ФГОС СОО)</th><td>планируют письменное высказывание, работают в парах, осуществляют самопроверку по ключу</td></tr>
+<tr><th>Личностные</th><td>осознают связь учёбы с будущей профессией, оценивают свои сильные стороны</td></tr>
+</table>
+<p><b>Оборудование:</b> проектор или интерактивная доска, телефоны или компьютеры учащихся, шаблон CV.</p>
+</section>
+<section class="panel" id="p2">
+<h2>Ход урока (40 минут)</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>1. Орг. момент</td><td>1 мин</td><td>Приветствует, объявляет тему урока</td><td>Настраиваются на работу</td></tr>
+<tr><td>2. Разминка</td><td>4 мин</td><td>Задаёт вопросы цепочкой, следит за опорами</td><td>Отвечают полными предложениями</td></tr>
+<tr><td>3. Новые слова</td><td>7 мин</td><td>Включает звучку, проверяет понимание</td><td>Слушают, повторяют, открывают переводы</td></tr>
+<tr><td>4. Игра «Пары»</td><td>5 мин</td><td>Организует игру-мэтчинг</td><td>Собирают пары слово — перевод</td></tr>
+<tr><td>5. Диалог + викторина</td><td>8 мин</td><td>Читает диалог по ролям, проводит викторину</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>6. Грамматика: формальный стиль</td><td>5 мин</td><td>Объясняет таблицу преобразований</td><td>Выполняют задания с автопроверкой</td></tr>
+<tr><td>7. Структура резюме</td><td>4 мин</td><td>Разбирает разделы CV и образец</td><td>Изучают образец резюме Марка</td></tr>
+<tr><td>8. Говорение в парах</td><td>4 мин</td><td>Раздаёт вопросы, следит за сменой ролей</td><td>Спрашивают друг друга, меняются ролями</td></tr>
+<tr><td>9. Итоги и домашка</td><td>2 мин</td><td>Проводит рефлексию, объясняет домашнее задание</td><td>Отмечают пункты чек-листа, записывают домашку</td></tr>
+</table>
+</section>
+<section class="panel" id="p3">
+<h2>Разминка (4 мин)</h2>
+<p>Вопросы задаём цепочкой. Отвечаем полными предложениями с опорами:</p>
+<p><b>Опоры:</b> I have worked as… • I am good at… • I would like to… • I think that…</p>
+<div class="q transable"><b>1. Do you have any work experience?</b><div class="tr">Есть ли у тебя какой-то опыт работы?</div></div>
+<div class="q transable"><b>2. What are you good at?</b><div class="tr">Что у тебя хорошо получается?</div></div>
+<div class="q transable"><b>3. What job attracts you in the future?</b><div class="tr">Какая работа привлекает тебя в будущем?</div></div>
+<div class="q transable"><b>4. Why is a CV important when you look for a job?</b><div class="tr">Почему резюме важно при поиске работы?</div></div>
+<details class="note"><summary>For teacher</summary>Ожидаемые ответы: 1 — Yes, I have. I helped in the school canteen. / No, I have not. 2 — I am good at cooking / computers / languages. 3 — I would like to be a doctor / programmer / designer. 4 — Because the employer wants to know about your skills and experience.</details>
+</section>
+<section class="panel" id="p4">
+<h2>Новые слова (7 мин)</h2>
+<p>Клик по кнопке со значком — слово прозвучит дважды. Клик по карточке — откроются перевод и пример.</p>
+<div class="wordcard transable"><button class="speakbtn" data-word="CV, curriculum vitae">🔊</button><span class="word">CV (curriculum vitae)</span><div class="tr">резюме, автобиография — Please send your CV to the company.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="qualification">🔊</button><span class="word">qualification</span><div class="tr">квалификация — She has a qualification in marketing.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="work experience">🔊</button><span class="word">work experience</span><div class="tr">опыт работы — He has two years of work experience.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="skills">🔊</button><span class="word">skills</span><div class="tr">навыки, умения — Good communication skills are important.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="employer">🔊</button><span class="word">employer</span><div class="tr">работодатель — The employer read his CV.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="employee">🔊</button><span class="word">employee</span><div class="tr">работник, сотрудник — Employees must be polite and hard-working.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="to apply for a job">🔊</button><span class="word">to apply for a job</span><div class="tr">подавать заявление о приёме на работу — I want to apply for the position of a waiter.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="position">🔊</button><span class="word">position</span><div class="tr">должность — What position are you applying for?</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="to enclose">🔊</button><span class="word">to enclose</span><div class="tr">прилагать (к письму) — I enclose my CV with the letter.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="reference">🔊</button><span class="word">reference</span><div class="tr">рекомендация — Ask your teacher for a reference.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="interview">🔊</button><span class="word">interview</span><div class="tr">собеседование — I have an interview on Monday.</div></div>
+<div class="wordcard transable"><button class="speakbtn" data-word="to pursue a career">🔊</button><span class="word">to pursue a career</span><div class="tr">делать карьеру — She wants to pursue a career in IT.</div></div>
+<details class="note"><summary>Подсказка: employer и employee</summary>Слова похожи, но это две стороны трудовых отношений. Employer — работодатель, тот, кто нанимает: суффикс -er значит «тот, кто делает». Employee — работник, тот, кого нанимают: суффикс -ee значит «тот, над кем действие совершают». Так же различаются interviewer (тот, кто проводит собеседование) и interviewee (тот, кто на нём отвечает).</details>
+</section>
+<section class="panel" id="p5">
+<h2>Игра «Пары» (5 мин)</h2>
+<p>Клик по плитке — откроется слово или перевод. Найдите 8 пар: слово и его перевод. Совпавшие плитки зеленеют.</p>
+<div id="game"></div>
+<button class="btn" onclick="resetGame()">Начать заново</button>
+<div class="ok-msg" id="gameOk">Молодец! Все 8 пар собраны! Excellent job!</div>
+<details class="note"><summary>For teacher: ключи игры</summary>CV — резюме • qualification — квалификация • work experience — опыт работы • skills — навыки • employer — работодатель • employee — работник • position — должность • reference — рекомендация</details>
+</section>
+<section class="panel" id="p6">
+<h2>Диалог (8 мин)</h2>
+<p><b>Mark wants a summer job.</b> Марк нашёл объявление о летней работе в кафе. Кира объясняет ему, как написать резюме и письмо-заявление. Клик по реплике — перевод.</p>
+<div class="q transable"><b>Kira:</b> Hi Mark! Why do you look so happy?<div class="tr">Привет, Марк! Почему ты такой довольный?</div></div>
+<div class="q transable"><b>Mark:</b> I found a summer job! A cafe needs a waiter.<div class="tr">Я нашёл летнюю работу! Кафе ищет официанта.</div></div>
+<div class="q transable"><b>Kira:</b> Great! Do you know how to apply for the job?<div class="tr">Отлично! Ты знаешь, как подать заявление о приёме на работу?</div></div>
+<div class="q transable"><b>Mark:</b> Not really. What do I need?<div class="tr">Не очень. Что мне нужно?</div></div>
+<div class="q transable"><b>Kira:</b> First, write a CV. It is a short document about you: your personal details, education, work experience and skills.<div class="tr">Сначала напиши резюме. Это короткий документ о тебе: личные данные, образование, опыт работы и навыки.</div></div>
+<div class="q transable"><b>Mark:</b> I do not have much work experience.<div class="tr">У меня не так много опыта работы.</div></div>
+<div class="q transable"><b>Kira:</b> That is OK. Write that you helped in the school canteen and that you walk the dog of your neighbours. Then enclose the CV in a formal letter.<div class="tr">Это нормально. Напиши, что помогал в школьной столовой и выгуливал собаку соседей. Потом приложи резюме к формальному письму.</div></div>
+<div class="q transable"><b>Mark:</b> How does a formal letter begin?<div class="tr">Как начинается формальное письмо?</div></div>
+<div class="q transable"><b>Kira:</b> You write «Dear Sir or Madam,» if you do not know the name, and you finish with «Yours faithfully,».<div class="tr">Пишешь «Dear Sir or Madam», если не знаешь имени, а заканчиваешь «Yours faithfully».</div></div>
+<div class="q transable"><b>Mark:</b> Thanks, Kira! Now I can apply for the position of a waiter.<div class="tr">Спасибо, Кира! Теперь я могу подать заявление на должность официанта.</div></div>
+<h3>Шпаргалка: формальные фразы</h3>
+<table>
+<tr><th>Фраза</th><th>Перевод</th></tr>
+<tr><td>Dear Sir or Madam,</td><td>Здравствуйте (если не знаем имени)</td></tr>
+<tr><td>I am writing to apply for the position of…</td><td>Пишу, чтобы подать заявление на должность…</td></tr>
+<tr><td>I enclose my CV.</td><td>Прилагаю своё резюме.</td></tr>
+<tr><td>I have good communication skills.</td><td>У меня хорошие навыки общения.</td></tr>
+<tr><td>I look forward to hearing from you.</td><td>С нетерпением жду вашего ответа.</td></tr>
+<tr><td>Yours faithfully,</td><td>С уважением (если не знаем имени)</td></tr>
+</table>
+<h3>Викторина по диалогу</h3>
+<div class="gr-item quizq transable"><b>1. How does a formal letter begin?</b><div class="tr">Как начинается формальное письмо?</div><label class="opt" onclick="grade(this,0)">Hi!</label><label class="opt" onclick="grade(this,1)">Dear Sir or Madam,</label><label class="opt" onclick="grade(this,0)">Hello!</label></div>
+<div class="gr-item quizq transable"><b>2. What position does Mark want to apply for?</b><div class="tr">На какую должность хочет подать заявление Марк?</div><label class="opt" onclick="grade(this,1)">A waiter</label><label class="opt" onclick="grade(this,0)">A manager</label><label class="opt" onclick="grade(this,0)">A teacher</label></div>
+<div class="gr-item quizq transable"><b>3. How does a formal letter finish if you do not know the name?</b><div class="tr">Как заканчивают формальное письмо, если не знаешь имени адресата?</div><label class="opt" onclick="grade(this,0)">Best wishes,</label><label class="opt" onclick="grade(this,0)">Love,</label><label class="opt" onclick="grade(this,1)">Yours faithfully,</label></div>
+<div class="gr-item quizq transable"><b>4. What does Mark enclose with the letter?</b><div class="tr">Что Марк прикладывает к письму?</div><label class="opt" onclick="grade(this,0)">Money</label><label class="opt" onclick="grade(this,1)">His CV</label><label class="opt" onclick="grade(this,0)">A photo of his dog</label></div>
+<div class="gr-item quizq transable"><b>5. Who can give Mark a reference?</b><div class="tr">Кто может дать Марку рекомендацию?</div><label class="opt" onclick="grade(this,0)">His dog</label><label class="opt" onclick="grade(this,0)">A shop assistant</label><label class="opt" onclick="grade(this,1)">His maths teacher</label></div>
+<details class="note"><summary>For teacher: ключи викторины</summary>1 — Dear Sir or Madam, • 2 — A waiter • 3 — Yours faithfully, • 4 — His CV • 5 — His maths teacher.</details>
+</section>
+<section class="panel" id="p7">
+<h2>Грамматика: формальный стиль (5 мин)</h2>
+<p>В формальном письме и резюме не используются сокращения и разговорные фразы. Сравните:</p>
+<table>
+<tr><th>Разговорный стиль</th><th>Формальный стиль</th><th>Пример</th></tr>
+<tr><td>I&#39;m</td><td>I am</td><td>I am writing to apply for the job.</td></tr>
+<tr><td>don&#39;t</td><td>do not</td><td>I do not have work experience.</td></tr>
+<tr><td>can&#39;t</td><td>cannot</td><td>I cannot work on Sundays.</td></tr>
+<tr><td>Thanks</td><td>Thank you</td><td>Thank you for your advertisement.</td></tr>
+<tr><td>I want</td><td>I would like</td><td>I would like to work as a waiter.</td></tr>
+<tr><td>Hi!</td><td>Dear Sir or Madam,</td><td>обращение в начале письма</td></tr>
+<tr><td>Write back soon.</td><td>I look forward to hearing from you.</td><td>завершение письма</td></tr>
+</table>
+<h3>Задания: перефразируйте в формальном стиле</h3>
+<p>Впишите пропущенное слово и нажмите «Проверить».</p>
+<div class="gr-item">1. I am 16 years old. → I <input data-answer="am" size="10"> 16 years old.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<div class="gr-item">2. I do not have experience. → I <input data-answer="do not" size="10"> have experience.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<div class="gr-item">3. I cannot work in the evenings. → I <input data-answer="cannot" size="10"> work in the evenings.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<div class="gr-item">4. Thank you for your advertisement. → <input data-answer="thank" size="10"> you for your advertisement.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<div class="gr-item">5. I would like to apply for the position. → I would <input data-answer="like" size="10"> to apply for the position.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<div class="gr-item">6. I look forward to hearing from you. → I look forward to <input data-answer="hearing" size="10"> from you.<button class="btn" onclick="checkAns(this)">Проверить</button><span class="mark"></span></div>
+<details class="note"><summary>For teacher: ключи</summary>1 — am • 2 — do not • 3 — cannot • 4 — thank • 5 — like • 6 — hearing.</details>
+</section>
+<section class="panel" id="p8">
+<h2>Резюме: структура (4 мин)</h2>
+<p><b>CV (curriculum vitae)</b> — короткий документ о себе для работодателя. Стандартные разделы:</p>
+<table>
+<tr><th>Раздел</th><th>Что писать</th></tr>
+<tr><td>Personal details</td><td>полное имя, возраст, адрес, телефон, e-mail</td></tr>
+<tr><td>Objective (по желанию)</td><td>1–2 предложения: на какую должность претендуешь и почему</td></tr>
+<tr><td>Education</td><td>школа, класс, любимые предметы</td></tr>
+<tr><td>Work experience</td><td>подработки, помощь в семье, волонтёрство</td></tr>
+<tr><td>Skills</td><td>навыки: computer skills, teamwork, communication skills</td></tr>
+<tr><td>Languages</td><td>языки и уровень: English (native), French (basic)</td></tr>
+<tr><td>Interests</td><td>хобби — 1–2 строки</td></tr>
+<tr><td>References</td><td>кто может дать рекомендацию, или available on request</td></tr>
+</table>
+<h3>Образец: CV Марка</h3>
+<div class="cvbox">
+<b>MARK SMITH</b><br>
+<b>Personal details:</b> Mark Smith, 16 years old; 12 Green Street, London; phone 07700 900123; mark.smith@mail.com<br>
+<b>Education:</b> Green Hill Secondary School, Year 10<br>
+<b>Work experience:</b> helped in the school canteen (summer 2025); dog walking for neighbours<br>
+<b>Skills:</b> good communication skills, basic computer skills, teamwork<br>
+<b>Languages:</b> English (native), French (basic)<br>
+<b>Interests:</b> football, cooking<br>
+<b>References:</b> available on request (Mr Brown, maths teacher)
+</div>
+<h3>Полезные фразы для CV</h3>
+<ul>
+<li><b>Responsible for…</b> — отвечаю за…</li>
+<li><b>Good at…</b> — силён в…</li>
+<li><b>Fluent in English</b> — свободно владею английским</li>
+<li><b>Hard-working and reliable</b> — трудолюбивый и надёжный</li>
+<li><b>Available from June</b> — могу приступить с июня</li>
+</ul>
+<details class="note"><summary>For teacher</summary>Обратите внимание учеников: в CV не пишут сокращения (I am, а не I&#39;m), не ставят эмодзи и следят за орфографией — работодатель видит документ, а не сообщение другу.</details>
+</section>
+<section class="panel" id="p9">
+<h2>Говорение (4 мин)</h2>
+<p>Работаем в парах. Спросите друг друга по очереди, затем поменяйтесь ролями.</p>
+<div class="q transable"><b>1. Would you like to have a part-time job? Why?</b><div class="tr">Хотел бы ты подрабатывать? Почему? — Опора: Yes, because… / No, because I need time for…</div></div>
+<div class="q transable"><b>2. What job attracts you?</b><div class="tr">Какая работа тебя привлекает? — Опора: I am interested in… because…</div></div>
+<div class="q transable"><b>3. What skills do employers want to see?</b><div class="tr">Какие навыки хотят видеть работодатели? — Опора: They want to see… skills.</div></div>
+<div class="q transable"><b>4. Is it easy for teenagers to find a job? Why?</b><div class="tr">Легко ли подросткам найти работу? Почему? — Опора: I think it is easy / difficult because…</div></div>
+<div class="q transable"><b>5. How should you prepare for an interview?</b><div class="tr">Как готовиться к собеседованию? — Опора: First… Then… Also…</div></div>
+<div class="q transable"><b>6. What career do you want to pursue?</b><div class="tr">Какую карьеру ты хочешь построить? — Опора: I want to pursue a career in…</div></div>
+</section>
+<section class="panel" id="p10">
+<h2>Итоги и домашнее задание (2 мин)</h2>
+<h3>Рефлексия: отметьте, что умеете</h3>
+<ul>
+<li>☐ Я знаю 12 новых слов по теме «Работа и карьера»</li>
+<li>☐ Я могу назвать разделы резюме</li>
+<li>☐ Я умею переводить фразы в формальный стиль</li>
+<li>☐ Я могу рассказать о своих навыках по-английски</li>
+</ul>
+<h3>Домашнее задание</h3>
+<p><b>Основное:</b> составьте своё CV по разделам из вкладки «Резюме: структура» — Personal details, Education, Work experience, Skills, Languages, Interests, References. Личные данные можно указать условные.</p>
+<p><b>Звёздочка ⭐:</b> найдите объявление о вакансии для подростков и напишите письмо-заявление (60–80 слов) в формальном стиле: начните с Dear Sir or Madam, объясните, на какую должность претендуете и почему подходите, закончите Yours faithfully.</p>
+</section>
+<button class="btn" onclick="fullReset()">Полный сброс</button>
+</div>
+<script>
+function showTab(id, btn){
+  var ps = document.querySelectorAll(".panel");
+  for(var i=0; i<ps.length; i++){ ps[i].classList.remove("active"); }
+  var bs = document.querySelectorAll(".tabbtn");
+  for(var j=0; j<bs.length; j++){ bs[j].classList.remove("active"); }
+  document.getElementById(id).classList.add("active");
+  btn.classList.add("active");
+  window.scrollTo(0, 0);
+}
+function speakWord(w){
+  if(!window.speechSynthesis){ return; }
+  window.speechSynthesis.cancel();
+  var u1 = new SpeechSynthesisUtterance(w);
+  u1.lang = "en-GB"; u1.rate = 0.9;
+  window.speechSynthesis.speak(u1);
+  var u2 = new SpeechSynthesisUtterance(w);
+  u2.lang = "en-GB"; u2.rate = 0.9;
+  window.speechSynthesis.speak(u2);
+}
+document.addEventListener("click", function(e){
+  var opt = e.target.closest(".opt");
+  if(opt){ return; }
+  var sb = e.target.closest(".speakbtn");
+  if(sb){ speakWord(sb.getAttribute("data-word")); return; }
+  var tw = e.target.closest(".transable");
+  if(tw){ tw.classList.toggle("open"); }
+});
+var pairs = [
+  ["CV", "резюме"],
+  ["qualification", "квалификация"],
+  ["work experience", "опыт работы"],
+  ["skills", "навыки"],
+  ["employer", "работодатель"],
+  ["employee", "работник"],
+  ["position", "должность"],
+  ["reference", "рекомендация"]
+];
+var first = null, lock = false;
+function buildGame(){
+  var tiles = [];
+  for(var i=0; i<pairs.length; i++){
+    tiles.push({k: "w" + i, t: pairs[i][0]});
+    tiles.push({k: "w" + i, t: pairs[i][1]});
+  }
+  for(var j = tiles.length - 1; j > 0; j--){
+    var m = Math.floor(Math.random() * (j + 1));
+    var tmp = tiles[j]; tiles[j] = tiles[m]; tiles[m] = tmp;
+  }
+  var g = document.getElementById("game");
+  g.innerHTML = "";
+  for(var n=0; n<tiles.length; n++){
+    var d = document.createElement("div");
+    d.className = "tile";
+    d.setAttribute("data-key", tiles[n].k);
+    d.setAttribute("data-text", tiles[n].t);
+    d.innerHTML = "?";
+    d.onclick = flipTile;
+    g.appendChild(d);
+  }
+  document.getElementById("gameOk").style.display = "none";
+}
+function flipTile(){
+  if(lock || this.classList.contains("done") || this.classList.contains("flip")){ return; }
+  this.textContent = this.getAttribute("data-text");
+  this.classList.add("flip");
+  if(!first){ first = this; return; }
+  var a = first, b = this;
+  first = null;
+  if(a.getAttribute("data-key") === b.getAttribute("data-key") && a !== b){
+    a.classList.add("done"); b.classList.add("done");
+    a.classList.remove("flip"); b.classList.remove("flip");
+    var done = document.querySelectorAll(".tile.done").length;
+    if(done === 16){ document.getElementById("gameOk").style.display = "block"; }
+  } else {
+    lock = true;
+    setTimeout(function(){
+      a.textContent = "?"; b.textContent = "?";
+      a.classList.remove("flip"); b.classList.remove("flip");
+      lock = false;
+    }, 600);
+  }
+}
+function resetGame(){ buildGame(); }
+function checkAns(btn){
+  var box = btn.parentNode;
+  var inp = box.querySelector("input");
+  var ok = inp.getAttribute("data-answer");
+  var v = inp.value.trim().toLowerCase().replace(/\s+/g, " ");
+  var mark = box.querySelector(".mark");
+  if(v === ok){
+    mark.textContent = "✔ верно";
+    mark.style.color = "#1c7a3f";
+  } else {
+    mark.textContent = "✘ попробуй ещё: " + ok;
+    mark.style.color = "#c0392b";
+  }
+}
+function grade(el, ok){
+  var box = el.parentNode;
+  var os = box.querySelectorAll(".opt");
+  for(var i=0; i<os.length; i++){
+    os[i].classList.remove("ok");
+    os[i].classList.remove("bad");
+  }
+  if(ok){ el.classList.add("ok"); } else { el.classList.add("bad"); }
+}
+function fullReset(){
+  var is = document.querySelectorAll("input");
+  for(var i=0; i<is.length; i++){ is[i].value = ""; }
+  var ms = document.querySelectorAll(".mark");
+  for(var j=0; j<ms.length; j++){ ms[j].textContent = ""; }
+  var os = document.querySelectorAll(".opt");
+  for(var k=0; k<os.length; k++){ os[k].classList.remove("ok"); os[k].classList.remove("bad"); }
+  buildGame();
+}
+buildGame();
+</script>
+</body>
+</html>
