@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 7 класс — Средства массовой информации: журналы</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#f2eff6;color:#2b2440;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#4a1f66,#8e44ad);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:24px;margin-bottom:6px}
+.meta{font-size:13px;opacity:.92}
+.badge{display:inline-block;background:#ffd54f;color:#4a1f66;font-weight:700;border-radius:20px;padding:3px 12px;font-size:13px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#e3d9ef;color:#4a1f66;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#4a1f66;color:#fff}
+.panel{display:none;background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(60,30,90,.08)}
+.panel.on{display:block}
+.panel h2{color:#4a1f66;font-size:20px;margin-bottom:10px}
+.panel h3{color:#7b3fa0;font-size:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+th,td{border:1px solid #d8cde6;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f0e8f7;color:#4a1f66}
+.card{background:#f8f5fc;border:1px solid #d8cde6;border-radius:10px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#4a1f66;font-size:16px}
+.snd{background:#ffd54f;border:none;border-radius:7px;padding:3px 9px;cursor:pointer;font-size:14px;margin-left:8px}
+.tr{display:none;color:#6a3b8f;margin-top:5px;font-size:14px}
+.hint{background:#fff9e0;border-left:4px solid #ffd54f;padding:8px 12px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+.dline{background:#f8f5fc;border:1px solid #d8cde6;border-radius:9px;padding:8px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.quiz{margin:8px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#f8f5fc;border:1px solid #d8cde6;border-radius:8px;padding:7px 11px;margin:4px 0;cursor:pointer;font-size:14px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#ece3f5;border:1px solid #c4b0da;border-radius:9px;padding:9px 12px;margin:4px;cursor:pointer;font-size:14px;font-weight:600;min-width:120px;text-align:center}
+.tile.sel{background:#ffd54f;color:#4a1f66;border-color:#e0a800}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.75}
+.gap{width:150px;border:1px solid #c4b0da;border-radius:7px;padding:5px 8px;font-size:14px;margin:4px}
+.check{background:#4a1f66;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;font-weight:600;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:13px;color:#6b5f7d}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>📰 Английский язык • 7 класс</h1>
+<div style="font-size:19px;font-weight:600">Средства массовой информации: журналы</div>
+<div class="meta">Spotlight 7 • Module 4 «In the news» • Culture Corner 4d «British Teenage Magazines» (стр. 41) • ФГОС ООО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Текст: журналы</button>
+<button class="tab" data-p="p7">Грамматика</button>
+<button class="tab" data-p="p8">Сленг журналов</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться рассказывать о журналах и СМИ на английском языке: описывать разделы журнала, читать и понимать текст о британских подростковых журналах.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику темы «Журналы» (magazine, glossy, article, celebrity, gossip); отработать словообразование (-ing, -ful, -able, -ous, -ive); познакомить со сленгом британских журналов.</li>
+<li><b>Развивающие:</b> развивать умения поискового чтения, аудирования и монологической речи.</li>
+<li><b>Воспитательные:</b> формировать критическое отношение к информации в СМИ и культуру чтения.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Использует новую лексику и суффиксы прилагательных; понимает текст о британских журналах; сравнивает журналы разных стран</td><td>Планирует работу, работает в паре, проводит опрос и самопроверку</td><td>Критически оценивает информацию СМИ, бережно относится к языку</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 7.</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы, показывает вкладку «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют, записывают слова</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Работа с текстом</td><td>8 мин</td><td>Читают текст о британских журналах, проверяют понимание викториной</td><td>Читают, отвечают на вопросы</td></tr>
+<tr><td>Грамматика: словообразование</td><td>6 мин</td><td>Разбирает таблицу суффиксов, выполняет задания</td><td>Образуют прилагательные, проверяют себя</td></tr>
+<tr><td>Сленг журналов</td><td>4 мин</td><td>Разбирает сленговые слова из учебника</td><td>Соотносят сленг с полными формами</td></tr>
+<tr><td>Говорение: опрос</td><td>3 мин</td><td>Организует опрос в парах, как в упр. 5</td><td>Задают вопросы, строят график результатов</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию, объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте 5 минут на обсуждение обложек журналов (упр. 1, стр. 41): какие журналы вы знаете, что на обложке, кого читатели зовут celebs.</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод. Отвечайте по опорам.</p>
+<div class="dline">1. Do you read magazines? Which ones?<div class="tr">Ты читаешь журналы? Какие? (Опора: Yes, I read… / sports magazines, fashion magazines)</div></div>
+<div class="dline">2. Do you prefer magazines or the Internet? Why?<div class="tr">Что тебе больше нравится: журналы или интернет? Почему?</div></div>
+<div class="dline">3. What can you find in a teenage magazine?<div class="tr">Что можно найти в подростковом журнале? (Опора: articles, quizzes, horoscopes, advice)</div></div>
+<div class="dline">4. Who is your favourite celebrity?<div class="tr">Кто твой любимый селебрити? (Опора: My favourite celebrity is… because…)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Обратите внимание: advice — неисчисляемое, поэтому some advice (не advices). Issue — и «выпуск журнала», и «проблема».</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте две плитки: слово и его перевод. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Текст: British Teenage Magazines</h2>
+<p class="small">Нажмите на абзац — откроется перевод. Читайте и сравнивайте с российскими журналами.</p>
+<div class="dline"><b>1.</b> British teenagers love magazines. The most popular glossy magazines for girls are Sugar and Bliss. They are full of colourful pictures of fashionable clothes and attractive celebrities.<div class="tr">Британские подростки обожают журналы. Самые популярные глянцевые журналы для девочек — Sugar и Bliss. Они полны ярких картинок модной одежды и привлекательных селебрити.</div></div>
+<div class="dline"><b>2.</b> Every issue has articles about fashion, music and famous stars. There are also problem pages where readers write about their problems and get advice from experts.<div class="tr">В каждом выпуске есть статьи о моде, музыке и знаменитостях. Есть и страницы проблем, где читатели пишут о своих проблемах и получают советы специалистов.</div></div>
+<div class="dline"><b>3.</b> Teenage magazines also have quizzes, horoscopes and crosswords. Girls and boys can do quizzes about their favourite stars and read gossip about celebrities.<div class="tr">В подростковых журналах есть также викторины, гороскопы и кроссворды. Девочки и мальчики могут пройти викторины о любимых звёздах и почитать сплетни о селебрити.</div></div>
+<div class="dline"><b>4.</b> British teens use special slang in magazines and chats: a celeb is a celebrity, fave is favourite, fab is fabulous. Russian magazines are similar — but do they have the same slang? What do you think?<div class="tr">Британские подростки используют особый сленг в журналах и чатах: celeb — это celebrity, fave — favourite, fab — fabulous. Российские журналы похожи — но есть ли там такой же сленг? Как вы думаете?</div></div>
+<h3>Викторина по тексту</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Грамматика: словообразование</h2>
+<table>
+<tr><th>Суффикс</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td>-ing</td><td>fashion → fashioning → fascinating</td><td> fascинующий</td></tr>
+<tr><td>-ful</td><td>colour → colourful</td><td>красочный</td></tr>
+<tr><td>-able</td><td>fashion → fashionable</td><td>модный</td></tr>
+<tr><td>-ous</td><td>fame → famous</td><td>знаменитый</td></tr>
+<tr><td>-ive</td><td>attract → attractive</td><td>привлекательный</td></tr>
+</table>
+<h3>Образуй прилагательное и вставь</h3>
+<div id="gaps"></div>
+<button class="check" id="gcheck">Проверить</button>
+<div class="msg" id="gpmsg"></div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Сленг британских журналов</h2>
+<p class="small">Эти слова живут на страницах подростковых журналов и в чатах. Нажмите на строку — откроется перевод.</p>
+<table>
+<tr><th>Сленг</th><th>Полное слово</th><th>Перевод</th></tr>
+<tr class="dline"><td>celeb</td><td>celebrity</td><td>знаменитость<div class="tr">celeb — сокращение от celebrity, знаменитость</div></td></tr>
+<tr class="dline"><td>fave</td><td>favourite</td><td>любимый<div class="tr">fave — сокращение от favourite, любимый</div></td></tr>
+<tr class="dline"><td>fab</td><td>fabulous</td><td>потрясающий<div class="tr">fab — сокращение от fabulous, потрясающий, классный</div></td></tr>
+<tr class="dline"><td>dosh</td><td>money</td><td>деньги, бабки<div class="tr">dosh — сленг для money, деньги</div></td></tr>
+<tr class="dline"><td>natter</td><td>chat</td><td>болтать<div class="tr">natter — сленг для chat, болтать, судачить</div></td></tr>
+<tr class="dline"><td>lads</td><td>boys</td><td>парни<div class="tr">lads — парни, мальчишки</div></td></tr>
+</table>
+<h3>Мини-викторина по сленгу</h3>
+<div id="slangquiz"></div>
+<div class="msg" id="smsg"></div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — опрос в парах</h2>
+<p class="small">Задайте вопросы партнёру, отметьте ответы, постройте график результатов класса — как в упр. 5, стр. 41. Нажмите на вопрос — откроется перевод.</p>
+<div id="speak"></div>
+<p class="small"><b>График:</b> посчитайте ответы класса по каждому вопросу и нарисуйте столбики: How many teens read glossy magazines?</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> называть 12 слов по теме «Журналы и СМИ»;</li>
+<li> читать и понимать текст о британских подростковых журналах;</li>
+<li> образовывать прилагательные суффиксами -ful, -able, -ous, -ive;</li>
+<li> понимать сленг: celeb, fave, fab, dosh, natter, lads.</li>
+</ul>
+<h3>Домашнее задание</h3>
+<p>📝 Создай страницу журнала своего класса (60–80 слов): раздел, название, 1 статья или совет. Используй минимум 4 новых слова урока.</p>
+<p>⭐ Звёздочка: запиши полные версии трёх сленговых слов и придумай с каждым предложение ⭐</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.85;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1400);}
+
+var WORDS=[["magazine","журнал","I read this magazine every week."],
+["glossy","глянцевый","She bought a glossy magazine."],
+["article","статья","This article is about fashion."],
+["celebrity","знаменитость","The magazine has photos of celebrities."],
+["gossip","сплетни","They love reading gossip about stars."],
+["fashion","мода","Fashion changes every season."],
+["horoscope","гороскоп","My horoscope says good luck!"],
+["quiz","викторина, тест","Do this quiz about music."],
+["crossword","кроссворд","I finished the crossword today."],
+["problem page","страница проблем","Readers write letters to the problem page."],
+["advice","совет","The expert gives good advice."],
+["issue","выпуск","The new issue is out today!"]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span><button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[1]+"</b><br><i>"+w[2]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["magazine","журнал"],["glossy","глянцевый"],["gossip","сплетни"],["celebrity","знаменитость"],["horoscope","гороскоп"],["advice","совет"],["issue","выпуск"],["crossword","кроссворд"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var QUIZ=[["Which magazines are popular with British girls?","Sugar and Bliss","Masha and Medved","Dasha and Vera"],
+["What can readers find on problem pages?","advice from experts","a crossword only","weather news"],
+["What do teens do with quizzes?","learn about their favourite stars","buy clothes","cook dinner"],
+["What does the slang word fave mean?","favourite","fabulous","famous"],
+["What is a celeb?","a celebrity","a crossword","a comic book"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Хорошая работа, перечитай текст ещё раз!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var GAPS=[["This magazine is very ___ (fashion).","fashionable"],
+["The star is really ___ (fame).","famous"],
+["The dress looks ___ (attract).","attractive"],
+["What a ___ (colour) cover!","colourful"],
+["The story is ___ (fascinate).","fascinating"],
+["The pictures are ___ (gloss).","glossy"]];
+var gapbox=document.getElementById("gaps");
+GAPS.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+gapbox.appendChild(row);});
+document.getElementById("gcheck").addEventListener("click",function(){
+var ok=0;var inputs=gapbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("gpmsg").textContent="Правильно: "+ok+" из "+GAPS.length+(ok===GAPS.length?" — превосходно! 🎉":"");});
+
+var SQUIZ=[["What does dosh mean?","money","a magazine","a star"],
+["What does natter mean?","to chat","to read","to buy"],
+["What does fab mean?","fabulous","famous","fashionable"],
+["Who are the lads?","boys","girls","experts"],
+["What does celeb mean?","celebrity","crossword","cover"]];
+var sbox=document.getElementById("slangquiz"),sScore=0,sDone=0;
+SQUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";sDone++;
+if(o===right){b.classList.add("ok");sScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(sDone===SQUIZ.length){document.getElementById("smsg").textContent="Результат: "+sScore+" из 5. "+(sScore===5?"Ты настоящий редактор! Fab!":"Перечитай таблицу сленга ещё раз!");}
+});div.appendChild(b);});sbox.appendChild(div);});
+
+var SPEAK=["1. How often do you read magazines?","2. What is your fave magazine? Why?","3. Do you read gossip about celebs?","4. Do you do quizzes and crosswords in magazines?","5. Would you like to write an article for a magazine?","6. Are British magazines similar to Russian ones?"];
+var TRS=["Как часто ты читаешь журналы?","Какой твой любимый журнал? Почему?","Читаешь ли ты сплетни о знаменитостях?","Проходишь ли викторины и кроссворды в журналах?","Хотел бы ты написать статью для журнала?","Похожи ли британские журналы на российские?"];
+var spbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+spbox.appendChild(d);});
+</script>
+</body>
+</html>
