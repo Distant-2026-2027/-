@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 2 класс — Любимая еда моей семьи</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#fff6ec;color:#4a2c12;line-height:1.55;font-size:17px}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#c2571a,#e8842c);color:#fff;border-radius:16px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:26px;margin-bottom:6px}
+.meta{font-size:14px;opacity:.94}
+.badge{display:inline-block;background:#ffe08a;color:#8a3b00;font-weight:700;border-radius:20px;padding:4px 14px;font-size:14px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#f8e3c8;color:#8a3b00;padding:9px 14px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600}
+.tab.on{background:#c2571a;color:#fff}
+.panel{display:none;background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 2px 8px rgba(140,70,20,.1)}
+.panel.on{display:block}
+.panel h2{color:#c2571a;font-size:21px;margin-bottom:10px}
+.panel h3{color:#e07b1f;font-size:17px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}
+th,td{border:1px solid #eed9bd;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#fdf0dd;color:#8a3b00}
+.card{background:#fffaf2;border:2px solid #f2dcc0;border-radius:12px;padding:11px 13px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#c2571a;font-size:19px}
+.snd{background:#ffe08a;border:none;border-radius:8px;padding:4px 11px;cursor:pointer;font-size:16px;margin-left:8px}
+.tr{display:none;color:#9a5a1a;margin-top:6px;font-size:15px}
+.hint{background:#fff4d6;border-left:4px solid #e0a800;padding:9px 13px;border-radius:0 9px 9px 0;margin:10px 0;font-size:15px}
+.dline{background:#fffaf2;border:2px solid #f2dcc0;border-radius:10px;padding:9px 13px;margin:6px 0;cursor:pointer;font-size:16px}
+.speaker{font-weight:700;color:#b03a1a}
+.emo{font-size:26px;margin-right:6px}
+.quiz{margin:9px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#fffaf2;border:2px solid #eed9bd;border-radius:9px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:15px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#fdf0dd;border:2px solid #e8cba0;border-radius:10px;padding:9px 13px;margin:4px;cursor:pointer;font-size:18px;font-weight:700;min-width:110px;text-align:center}
+.tile.sel{background:#ffe08a;border-color:#d09500}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.8}
+.check{background:#c2571a;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-size:15px;font-weight:700;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px;font-size:16px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:14px;color:#8a6a4a}
+.big{font-size:20px;font-weight:700;color:#c2571a;min-height:34px;margin:10px 0}
+.modebtn{border:2px solid #e8cba0;background:#fffaf2;border-radius:10px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;margin:3px}
+.modebtn.on{background:#c2571a;color:#fff}
+.foodbtn{border:2px solid #e8cba0;background:#fdf0dd;border-radius:10px;padding:8px 13px;font-size:15px;cursor:pointer;margin:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🍰 Английский язык • 2 класс</h1>
+<div style="font-size:20px;font-weight:600">Любимая еда моей семьи</div>
+<div class="meta">Spotlight 2 • Module 5 «Yummy Chocolate!» • 5a • ФГОС НОО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Песенка</button>
+<button class="tab" data-p="p7">Я люблю / не люблю</button>
+<button class="tab" data-p="p8">Еда моей семьи</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться называть еду на английском языке и рассказывать, что любят я и моя семья.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику по теме «Еда»; научить говорить I like… / I don&#39;t like…, спрашивать Do you like…? и отвечать Yes, I do / No, I don&#39;t.</li>
+<li><b>Развивающие:</b> развивать умение слушать и понимать речь учителя, говорить короткими предложениями, узнавать слова со звучкой.</li>
+<li><b>Воспитательные:</b> воспитывать интерес к английскому языку и внимание к вкусам и предпочтениям членов семьи.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Называет продукты по-английски; говорит о своих вкусах: I like… / I don&#39;t like…; задаёт вопрос Do you like…? и отвечает кратко</td><td>Слушает инструкцию, работает в паре, проверяет себя, делает простые выводы</td><td>Радуется общению на английском, уважает вкусы своей семьи и одноклассников</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 2, стр. 48–49.</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы, показывает вкладку «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют хором и индивидуально</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Песенка про шоколад</td><td>4 мин</td><td>Показывает вкладку «Песенка», поёт вместе с детьми</td><td>Слушают, подпевают, сопровождают движениями</td></tr>
+<tr><td>Структуры I like / I don&#39;t like</td><td>7 мин</td><td>Разбирает вкладку «Я люблю / не люблю»</td><td>Строят предложения, слушают звучку</td></tr>
+<tr><td>Еда моей семьи</td><td>6 мин</td><td>Читает мини-диалог, задаёт вопросы викторины</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>Говорение (пары)</td><td>4 мин</td><td>Организует вопрос-ответ по цепочке</td><td>Спрашивают и отвечают в парах</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию «букет для Лулу», объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте фонетическую зарядку-скороговорку I scream, you scream, we all scream ice cream! и счёт до 10 с продуктами (two apples, five bananas).</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод и опора. Отвечайте по цепочке.</p>
+<div class="dline"><span class="emo">👋</span>1. Do you like chocolate?<div class="tr">Ты любишь шоколад? (Опора: Yes, I do! / No, I don&#39;t)</div></div>
+<div class="dline"><span class="emo">🍎</span>2. What food do you like?<div class="tr">Какую еду ты любишь? (Опора: I like… pizza / apples / ice cream)</div></div>
+<div class="dline"><span class="emo">👨‍👩‍👧</span>3. What does your mum like?<div class="tr">Что любит твоя мама? (Опора: My mum likes… cheese / cake)</div></div>
+<div class="dline"><span class="emo">🎂</span>4. Yummy… or yucky…?<div class="tr">Вкусно… или невкусно…? (Покажи продукт и скажи: Chips, yummy! / Chocolate, yummy!)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Обратите внимание: apples, bananas, burgers, chips, sandwiches — предметов много, поэтому -s. Chocolate и milk — так не говорят: chocolate, milk.</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте две плитки: слово и его картинку. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Песенка про шоколад</h2>
+<p class="small">Нажмите 🔊 — строка прозвучит дважды. Повторяйте хором и хлопайте в ритме!</p>
+<div id="song"></div>
+<div class="hint">💡 yummy — вкусно, give me more — дай мне ещё. Песенка из учебника: счёт от 1 до 10 и любимая еда!</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Я люблю / не люблю</h2>
+<p class="small">Выберите кнопку I like или I don&#39;t like, потом нажмите на еду — услышите своё предложение!</p>
+<div style="margin:6px 0">
+<button class="modebtn on" id="like1">😊 I like</button>
+<button class="modebtn" id="like2">🙁 I don&#39;t like</button>
+</div>
+<div id="foods"></div>
+<div class="big" id="sentence">I like chocolate!</div>
+<button class="check" id="says">🔊 Скажи ещё раз</button>
+<div class="hint">💡 I like apples. — Я люблю яблоки. I don&#39;t like cheese. — Я не люблю сыр. А ещё: yummy! — вкусно! yucky! — невкусно!</div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Еда моей семьи</h2>
+<p class="small">Нажмите на фразу — откроется перевод. Потом читайте по ролям с другом!</p>
+<div id="family"></div>
+<h3>Диалог: Лулу и Чаклз</h3>
+<div id="dialogue"></div>
+<h3>Викторина по диалогу</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — работа в парах</h2>
+<p class="small">Спросите друг друга по очереди. Нажмите на вопрос — откроется перевод.</p>
+<div id="speak"></div>
+<p class="small"><b>Игра «Угадай вкус»:</b> один загадывает продукт, второй спрашивает: Do you like…? — Yes, I do / No, I don&#39;t. Кто угадал первым — победил!</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> 😋 называть 12 продуктов на английском;</li>
+<li> 😊 говорить I like… / I don&#39;t like…;</li>
+<li> ❓ спрашивать Do you like…? и отвечать Yes, I do / No, I don&#39;t;</li>
+<li> 👨‍👩‍👧 рассказывать, что любит моя семья.</li>
+</ul>
+<h3>Рефлексия: собери букет для Лулу</h3>
+<p class="small">Нажми на цветок: зелёный — всё понятно, жёлтый — не всё понятно, красный — нужна помощь.</p>
+<div>
+<button class="modebtn" id="fl1">🟩 Всё понятно!</button>
+<button class="modebtn" id="fl2">🟨 Не всё понятно</button>
+<button class="modebtn" id="fl3">🟥 Нужна помощь</button>
+</div>
+<div class="msg" id="fmsg"></div>
+<h3>Домашнее задание</h3>
+<p>📝 Нарисуй любимую еду своей семьи и напиши 2–3 предложения: My mum likes… My dad likes… My favourite food is…</p>
+<p>⭐ Звёздочка: выучи песенку про шоколад наизусть и спой дома! ⭐</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.75;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1400);}
+
+var WORDS=[["chocolate 🍫","шоколад","Yummy chocolate! I like chocolate."],
+["ice cream 🍦","мороженое","I like ice cream. It is yummy!"],
+["milk 🥛","молоко","I drink milk every day."],
+["cheese 🧀","сыр","My mum likes cheese."],
+["apples 🍎","яблоки","Do you like apples?"],
+["bananas 🍌","бананы","Monkeys like bananas!"],
+["cake 🍰","торт, пирог","My favourite food is cake."],
+["burgers 🍔","бургеры","My dad likes burgers."],
+["chips 🍟","картошка фри","Chips, yummy!"],
+["sandwiches 🥪","бутерброды","I take two sandwiches to school."],
+["pizza 🍕","пицца","We eat pizza on Sunday."],
+["juice 🧃","сок","Orange juice, please!"]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span><button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[1]+"</b><br><i>"+w[2]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0].split(" ")[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["chocolate","🍫"],["ice cream","🍦"],["milk","🥛"],["cheese","🧀"],["apples","🍎"],["bananas","🍌"],["cake","🍰"],["chips","🍟"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var SONG=[["One, two, three, four,","Раз, два, три, четыре,"],
+["Yummy chocolate, give me more!","Вкусный шоколад, дай мне ещё!"],
+["Five, six, seven, eight,","Пять, шесть, семь, восемь,"],
+["My favourite food is chocolate!","Моя любимая еда — шоколад!"],
+["I scream, you scream,","Я кричу, ты кричишь,"],
+["We all scream ice cream!","Мы все кричим: мороженое!"]];
+var sbox=document.getElementById("song");
+SONG.forEach(function(s){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<button class=\"snd\">🔊</button> <b>"+s[0]+"</b><div class=\"tr\">"+s[1]+"</div>";
+d.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(s[0]);});
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+sbox.appendChild(d);});
+
+var FOODS=[["chocolate","chocolate"],["ice cream","ice cream"],["milk","milk"],["cheese","cheese"],["apples","apples"],["bananas","bananas"],["cake","cake"],["burgers","burgers"],["chips","chips"],["pizza","pizza"],["juice","juice"],["sandwiches","sandwiches"]];
+var EMOJI={chocolate:"🍫","ice cream":"🍦",milk:"🥛",cheese:"🧀",apples:"🍎",bananas:"🍌",cake:"🍰",burgers:"🍔",chips:"🍟",pizza:"🍕",juice:"🧃",sandwiches:"🥪"};
+var fbox=document.getElementById("foods"),likeWord="like",curSentence="I like chocolate!";
+FOODS.forEach(function(f){var b=document.createElement("button");b.className="foodbtn";
+b.innerHTML=EMOJI[f[0]]+" "+f[1];
+b.addEventListener("click",function(){curSentence="I "+likeWord+" "+f[1]+"!";
+document.getElementById("sentence").textContent=curSentence;say(curSentence);});
+fbox.appendChild(b);});
+document.getElementById("like1").addEventListener("click",function(){
+likeWord="like";this.classList.add("on");document.getElementById("like2").classList.remove("on");
+curSentence="I like chocolate!";document.getElementById("sentence").textContent=curSentence;});
+document.getElementById("like2").addEventListener("click",function(){
+likeWord="don&#39;t like";this.classList.add("on");document.getElementById("like1").classList.remove("on");
+curSentence="I don&#39;t like cheese!";document.getElementById("sentence").textContent=curSentence;});
+document.getElementById("says").addEventListener("click",function(){say(curSentence);});
+
+var FAM=[["My mum likes cheese. 🧀","Моя мама любит сыр."],
+["My dad likes burgers. 🍔","Мой папа любит бургеры."],
+["My sister likes ice cream. 🍦","Моя сестра любит мороженое."],
+["My brother likes chips. 🍟","Мой брат любит фри."],
+["My grandma likes apples. 🍎","Моя бабушка любит яблоки."],
+["My grandpa likes bananas. 🍌","Мой дедушка любит бананы."],
+["My favourite food is cake! 🍰","Моя любимая еда — торт!"]];
+var fabox=document.getElementById("family");
+FAM.forEach(function(f){var d=document.createElement("div");d.className="dline";d.innerHTML=f[0]+"<div class=\"tr\">"+f[1]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+fabox.appendChild(d);});
+
+var DLG=[["Lulu","Hello, Chuckles! Do you like chocolate?","Привет, Чаклз! Ты любишь шоколад?"],
+["Chuckles","Yes, I do! Chocolate, yummy!","Да! Шоколад — вкусно!"],
+["Lulu","Do you like milk?","Ты любишь молоко?"],
+["Chuckles","Yes, I do! I drink milk every day.","Да! Я пью молоко каждый день."],
+["Lulu","Do you like cheese?","Ты любишь сыр?"],
+["Chuckles","No, I don&#39;t. I don&#39;t like cheese.","Нет, не люблю. Я не люблю сыр."],
+["Lulu","What is your favourite food?","Какая твоя любимая еда?"],
+["Chuckles","My favourite food is bananas!","Моя любимая еда — бананы!"],
+["Lulu","Yummy! My favourite food is cake.","Вкусно! Моя любимая еда — торт."],
+["Chuckles","Let us eat together!","Давай есть вместе!"]];
+var dbox=document.getElementById("dialogue");
+DLG.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+dbox.appendChild(d);});
+
+var QUIZ=[["Does Chuckles like chocolate?","Yes, he does!","No, he does not.","He does not know."],
+["Does Chuckles like cheese?","No, he does not.","Yes, he does!","He eats cheese."],
+["What is the favourite food of Chuckles?","bananas","cheese","milk"],
+["What is the favourite food of Lulu?","cake","bananas","chips"],
+["What does Chuckles drink every day?","milk","juice","water"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Молодцы, послушайте диалог ещё раз!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var SPEAK=["1. Do you like chocolate?","2. Do you like apples?","3. What is your favourite food?","4. What does your mum like?","5. What does your dad like?","6. Do you like milk or juice?"];
+var TRS=["Ты любишь шоколад? (Yes, I do / No, I don&#39;t)","Ты любишь яблоки?","Какая твоя любимая еда? (My favourite food is…)","Что любит твоя мама? (My mum likes…)","Что любит твой папа? (My dad likes…)","Ты любишь молоко или сок?"];
+var spbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+spbox.appendChild(d);});
+
+var msg1="Зелёный цветок — Лулу очень рада! Молодец! 🌼";
+var msg2="Жёлтый цветок — ещё чуть-чуть, и всё получится! 🌻";
+var msg3="Красный цветок — Лулу поможет, спроси учителя! 🌹";
+document.getElementById("fl1").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg1;});
+document.getElementById("fl2").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg2;});
+document.getElementById("fl3").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg3;});
+</script>
+</body>
+</html>
