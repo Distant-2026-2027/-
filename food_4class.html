@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 4 класс — Моя любимая еда: продукты в магазине</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#eef7ec;color:#1d3a22;line-height:1.55;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#1b5e20,#43a047);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:25px;margin-bottom:6px}
+.meta{font-size:13px;opacity:.93}
+.badge{display:inline-block;background:#ffd54f;color:#1b5e20;font-weight:700;border-radius:20px;padding:4px 14px;font-size:13px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#d5e8d4;color:#1b5e20;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#1b5e20;color:#fff}
+.panel{display:none;background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(30,80,40,.1)}
+.panel.on{display:block}
+.panel h2{color:#1b5e20;font-size:20px;margin-bottom:10px}
+.panel h3{color:#2e7d32;font-size:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+th,td{border:1px solid #c8e0c6;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#e8f3e7;color:#1b5e20}
+.card{background:#f6fbf5;border:2px solid #d5e8d4;border-radius:11px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#1b5e20;font-size:18px}
+.snd{background:#ffd54f;border:none;border-radius:7px;padding:3px 10px;cursor:pointer;font-size:15px;margin-left:8px}
+.tr{display:none;color:#2e7d32;margin-top:5px;font-size:14px}
+.hint{background:#fff7d6;border-left:4px solid #e0a800;padding:8px 12px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+.dline{background:#f6fbf5;border:2px solid #d5e8d4;border-radius:9px;padding:8px 12px;margin:6px 0;cursor:pointer;font-size:15px}
+.speaker{font-weight:700;color:#b71c1c}
+.emo{font-size:24px;margin-right:6px}
+.quiz{margin:8px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#f6fbf5;border:2px solid #c8e0c6;border-radius:8px;padding:7px 11px;margin:4px 0;cursor:pointer;font-size:14px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#e8f3e7;border:2px solid #b6d3b4;border-radius:9px;padding:9px 12px;margin:4px;cursor:pointer;font-size:15px;font-weight:700;min-width:110px;text-align:center}
+.tile.sel{background:#ffd54f;border-color:#d09500}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.8}
+.gap{width:140px;border:1px solid #b6d3b4;border-radius:7px;padding:5px 8px;font-size:14px;margin:4px}
+.check{background:#1b5e20;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;font-weight:700;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px;font-size:15px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:13px;color:#5a7a60}
+.modebtn{border:2px solid #b6d3b4;background:#f6fbf5;border-radius:9px;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer;margin:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🍓 Английский язык • 4 класс</h1>
+<div style="font-size:20px;font-weight:600">Моя любимая еда: продукты в магазине</div>
+<div class="meta">Spotlight 4 • Module 3 «Tasty treats!» • 3a «Pirate&#39;s fruit salad!» + 3b «Make a meal of it!» (стр. 42–47) • ФГОС НОО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Продукты в магазине</button>
+<button class="tab" data-p="p7">Много и мало</button>
+<button class="tab" data-p="p8">Диалог в магазине</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться называть продукты и их упаковки на английском языке и делать покупки в магазине.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику «Продукты» и «Упаковки»; отработать much / many / a lot of; научить вести диалог «В магазине».</li>
+<li><b>Развивающие:</b> развивать умения диалогической речи, чтения и языковой догадки.</li>
+<li><b>Воспитательные:</b> формировать культуру вежливого общения в магазине и осознанное отношение к еде.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Называет продукты и упаковки; употребляет much / many / a lot of; ведёт диалог покупки по образцу</td><td>Составляет список покупок, работает в паре, проверяет себя, делает выводы</td><td>Вежливо общается, с уважением относится к труду продавца, бережно относится к продуктам</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 4, картинки продуктов.</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы, показывает вкладку «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют хором и индивидуально</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Продукты в магазине</td><td>7 мин</td><td>Разбирает упаковки: a kilo of, a carton of…</td><td>Соотносят продукты и упаковки, составляют список покупок</td></tr>
+<tr><td>Грамматика: much / many</td><td>6 мин</td><td>Разбирает таблицу, выполняет задания</td><td>Вставляют слова, проверяют себя</td></tr>
+<tr><td>Диалог в магазине</td><td>7 мин</td><td>Читает диалог по ролям, задаёт вопросы викторины</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>Говорение (пары)</td><td>1 мин</td><td>Организует ролевую игру «В магазине»</td><td>Разыгрывают покупки, меняются ролями</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию, объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте фонетическую зарядку — звуки [ʌ] (butter, much, lunch) и [ɒ] (shop, bottle, box), повторите счёт: two tomatoes, five lemons.</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод и опора. Отвечайте по цепочке.</p>
+<div class="dline"><span class="emo">🍓</span>1. What is your favourite food?<div class="tr">Какая твоя любимая еда? (Опора: My favourite food is… pizza / ice cream / apples)</div></div>
+<div class="dline"><span class="emo">🛒</span>2. Do you go shopping with your family?<div class="tr">Ты ходишь в магазин с семьёй? (Опора: Yes, I do. I go shopping with my mum.)</div></div>
+<div class="dline"><span class="emo">🥔</span>3. What do you buy every week?<div class="tr">Что вы покупаете каждую неделю? (Опора: bread, milk, eggs, potatoes)</div></div>
+<div class="dline"><span class="emo">🥭</span>4. I would like to buy…<div class="tr">Я хотел бы купить… (закончи предложение: a mango, a chocolate bar, some apples)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Обратите внимание: lemon, beans, mango, butter, coconut, flour, olive oil, sugar, salt, pepper, tomato, pineapple — все эти продукты живут на стр. 42–43 в юните про фруктовый салат пиратов!</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте две плитки: слово и его перевод. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Продукты в магазине: упаковки</h2>
+<p class="small">В магазине продукты продаются в упаковках. Нажмите на строку — откроется перевод.</p>
+<table>
+<tr><th>Английский</th><th>Русский</th></tr>
+<tr class="dline"><td>a packet of biscuits 🍪</td><td>пачка печенья<div class="tr">packet — пачка</div></td></tr>
+<tr class="dline"><td>a bar of chocolate 🍫</td><td>плитка шоколада<div class="tr">bar — плитка</div></td></tr>
+<tr class="dline"><td>a kilo of potatoes 🥔</td><td>килограмм картофеля<div class="tr">kilo — килограмм</div></td></tr>
+<tr class="dline"><td>a loaf of bread 🍞</td><td>буханка хлеба<div class="tr">loaf — буханка, булка</div></td></tr>
+<tr class="dline"><td>a jar of jam 🍯</td><td>банка варенья<div class="tr">jar — банка (варенье, мёд)</div></td></tr>
+<tr class="dline"><td>a carton of milk 🥛</td><td>пакет молока<div class="tr">carton — пакет (молоко, сок)</div></td></tr>
+<tr class="dline"><td>a bottle of Coke 🥤</td><td>бутылка колы<div class="tr">bottle — бутылка</div></td></tr>
+<tr class="dline"><td>a tin of beans 🥫</td><td>банка бобов<div class="tr">tin — жестяная банка (консервы)</div></td></tr>
+</table>
+<div class="hint">💡 Список покупок — shopping list: напиши продукты и их упаковки перед походом в магазин!</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Много и мало: much, many, a lot of</h2>
+<table>
+<tr><th>Слово</th><th>Когда использовать</th><th>Пример</th></tr>
+<tr><td>much</td><td>с неисчисляемыми: milk, sugar, bread</td><td>How much milk do you need?</td></tr>
+<tr><td>many</td><td>с исчисляемыми: eggs, tomatoes, lemons</td><td>How many eggs are there?</td></tr>
+<tr><td>a lot of</td><td>с обоими видами</td><td>There is a lot of jam. There are a lot of beans.</td></tr>
+</table>
+<h3>Вставь пропущенное слово</h3>
+<div id="gaps"></div>
+<button class="check" id="gcheck">Проверить</button>
+<div class="msg" id="gpmsg"></div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Диалог: в продуктовом магазине</h2>
+<p class="small">Нажмите на реплику — откроется перевод. Потом читайте по ролям!</p>
+<div id="dialogue"></div>
+<div class="hint">💡 Шпаргалка: How can I help you? — Чем могу помочь? | Can I have…, please? — Можно мне…? | Here you are. — Пожалуйста (вот). | How much is that? — Сколько это стоит?</div>
+<h3>Викторина по диалогу</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — работа в парах</h2>
+<p class="small">Спросите друг друга по очереди. Нажмите на вопрос — откроется перевод.</p>
+<div id="speak"></div>
+<p class="small"><b>Ролевая игра «В магазине»:</b> один из вас — продавец (shop assistant), второй — покупатель (customer). Купите продукты для любимого блюда: Can I have a kilo of potatoes, please? — Here you are! Потом поменяйтесь ролями!</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> 🍓 называть 12 продуктов на английском;</li>
+<li> 🛒 говорить о продуктах в упаковках: a carton of milk, a bar of chocolate;</li>
+<li> ⚖️ правильно употреблять much / many / a lot of;</li>
+<li> 🛍 вести диалог покупки: Can I have…, please? — Here you are!</li>
+</ul>
+<h3>Рефлексия: наполним корзинку</h3>
+<p class="small">Нажми на кружок: зелёный — всё понятно, жёлтый — не всё понятно, красный — нужна помощь.</p>
+<div>
+<button class="modebtn" id="fl1">🟩 Всё понятно!</button>
+<button class="modebtn" id="fl2">🟨 Не всё понятно</button>
+<button class="modebtn" id="fl3">🟥 Нужна помощь</button>
+</div>
+<div class="msg" id="fmsg"></div>
+<h3>Домашнее задание</h3>
+<p>📝 Составь shopping list для любимого блюда: 5–6 продуктов с упаковками (a carton of milk, a kilo of flour…) и напиши 2 предложения, что любит твоя семья.</p>
+<p>⭐ Звёздочка: напиши 3 вопроса How much / How many о продуктах на своей кухне ⭐</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.8;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1400);}
+
+var WORDS=[["lemon","🍋","лимон","I would like a lemon for my tea."],
+["beans","🥫","фасоль","There is a tin of beans in the shop."],
+["mango","🥭","манго","The mango is sweet and juicy."],
+["butter","🧈","масло сливочное","We need some butter for the cake."],
+["coconut","🥥","кокос","The pirate found a coconut!"],
+["flour","🌾","мука","Mum buys a bag of flour."],
+["pineapple","🍍","ананас","I like pineapple in my salad."],
+["olive oil","🫒","оливковое масло","Add some olive oil to the salad."],
+["sugar","🍬","сахар","How much sugar do you need?"],
+["salt","🧂","соль","Do not forget the salt!"],
+["pepper","🌶","перец","The pepper is hot!"],
+["tomato","🍅","помидор","Tomatoes are red and yummy."]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span> "+w[1]+"<button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[2]+"</b><br><i>"+w[3]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["lemon","лимон"],["sugar","сахар"],["flour","мука"],["tomato","помидор"],["butter","масло"],["salt","соль"],["pepper","перец"],["pineapple","ананас"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var GAPS=[["How ___ sugar do you need?","much"],
+["How ___ tomatoes are there?","many"],
+["There is a ___ of chocolate on the table.","bar"],
+["I need a ___ of milk for the cake.","carton"],
+["How ___ eggs are there?","many"],
+["Can I have a ___ of bread, please?","loaf"]];
+var gapbox=document.getElementById("gaps");
+GAPS.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+gapbox.appendChild(row);});
+document.getElementById("gcheck").addEventListener("click",function(){
+var ok=0;var inputs=gapbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("gpmsg").textContent="Правильно: "+ok+" из "+GAPS.length+(ok===GAPS.length?" — превосходно! 🎉":"");});
+
+var DLG=[["Shop assistant","Good morning! How can I help you?","Доброе утро! Чем могу помочь?"],
+["Customer","Good morning! I would like to buy some food for my favourite cake.","Доброе утро! Я хотел бы купить продукты для своего любимого торта."],
+["Shop assistant","What do you need?","Что вам нужно?"],
+["Customer","I need a kilo of potatoes, a loaf of bread and a bar of chocolate.","Мне нужен килограмм картофеля, буханка хлеба и плитка шоколада."],
+["Shop assistant","Here you are. Anything else?","Вот, пожалуйста. Что-нибудь ещё?"],
+["Customer","Yes, please. A carton of milk and a jar of jam.","Да, пожалуйста. Пакет молока и банка варенья."],
+["Shop assistant","How many eggs? We have fresh eggs today.","Сколько яиц? У нас сегодня свежие яйца."],
+["Customer","Six eggs, please. How much is that?","Шесть яиц, пожалуйста. Сколько это стоит?"],
+["Shop assistant","That is fifteen pounds, please.","Пятнадцать фунтов, пожалуйста."],
+["Customer","Thank you very much! Goodbye!","Большое спасибо! До свидания!"]];
+var dbox=document.getElementById("dialogue");
+DLG.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+dbox.appendChild(d);});
+
+var QUIZ=[["What does the customer want to buy?","food for a cake","a toy car","a book"],
+["How much is that?","fifteen pounds","five pounds","fifty pounds"],
+["How many eggs does the customer buy?","six","two","ten"],
+["What container does milk come in?","a carton","a tin","a jar"],
+["Who helps the customer?","the shop assistant","the baker","the teacher"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Хорошая работа, перечитайте диалог ещё раз!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var SPEAK=["1. What food do you like?","2. What do you usually buy at the shop?","3. How much sugar do you like in your tea?","4. How many tomatoes are there at home?","5. What is your favourite fruit?","6. What can you buy in a bottle?"];
+var TRS=["Какая еда тебе нравится?","Что ты обычно покупаешь в магазине?","Сколько сахара ты любишь в чае?","Сколько помидоров дома?","Какой твой любимый фрукт?","Что можно купить в бутылке?"];
+var spbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+spbox.appendChild(d);});
+
+var msg1="Корзинка полная — ты отлично поработал! Молодец! 🛒";
+var msg2="Ещё чуть-чуть, и корзинка будет полная! 🛒";
+var msg3="Спроси учителя — и корзинка снова наполнится! 🛒";
+document.getElementById("fl1").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg1;});
+document.getElementById("fl2").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg2;});
+document.getElementById("fl3").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg3;});
+</script>
+</body>
+</html>
