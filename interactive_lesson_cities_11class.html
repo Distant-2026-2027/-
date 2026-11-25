@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Достопримечательности родной страны. Крупные города — 11 класс</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#f0f4f8;color:#22303f;line-height:1.5}
+header{background:linear-gradient(135deg,#1a3c6e,#2e6da4,#5a9bd5);color:#fff;padding:26px 20px;text-align:center}
+header h1{font-size:1.55em;margin-bottom:6px}
+header p{opacity:.92;font-size:.95em}
+.badge{display:inline-block;background:#ffd54a;color:#22303f;font-weight:700;padding:4px 14px;border-radius:20px;margin-top:10px;font-size:.9em}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 10px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);position:sticky;top:0;z-index:5}
+.tabbtn{border:1px solid #2e6da4;background:#fff;color:#1a3c6e;padding:8px 14px;border-radius:22px;cursor:pointer;font-size:.9em;font-weight:600}
+.tabbtn.active{background:#1a3c6e;color:#fff}
+main{max-width:960px;margin:0 auto;padding:20px}
+.panel{display:none;background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.panel.active{display:block}
+.panel h2{color:#1a3c6e;font-size:1.3em;margin-bottom:14px;border-bottom:3px solid #ffd54a;padding-bottom:8px}
+.panel h3{color:#2e6da4;margin:16px 0 8px;font-size:1.05em}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th,td{border:1px solid #cdd9e5;padding:8px 10px;text-align:left;vertical-align:top;font-size:.93em}
+th{background:#e3edf6;color:#1a3c6e}
+ul,ol{margin:8px 0 8px 22px}
+li{margin:5px 0}
+.q{background:#f2f7fc;border-left:4px solid #2e6da4;padding:10px 14px;border-radius:8px;margin:10px 0;cursor:pointer}
+.tr{display:none;background:#fff8dc;border-radius:8px;padding:8px 12px;margin-top:8px;font-style:italic;color:#6b5b00}
+.transable.open .tr{display:block}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.wcard{background:#f2f7fc;border:1px solid #cdd9e5;border-radius:10px;padding:12px 14px;cursor:pointer}
+.wcard .w{font-weight:700;font-size:1.08em;color:#1a3c6e;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.spk{border:none;background:#ffd54a;border-radius:50%;width:34px;height:34px;font-size:1.05em;cursor:pointer;flex-shrink:0}
+.hint{background:#e8f5e9;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:.92em}
+#gamebox{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0}
+.tile{background:#2e6da4;color:#fff;border-radius:10px;padding:16px 12px;text-align:center;cursor:pointer;font-weight:600;min-height:64px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.tile.open{background:#5a9bd5}
+.tile.matched{background:#43a047;opacity:.75;cursor:default}
+.tile.en{font-size:1.05em}
+.tile.ru{font-size:.95em}
+#gamewin{display:none;background:#43a047;color:#fff;text-align:center;border-radius:10px;padding:14px;font-weight:700;margin:10px 0}
+.btn{background:#1a3c6e;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.9em;font-weight:600;margin:6px 6px 6px 0}
+.btn.green{background:#43a047}
+.gtask{background:#f2f7fc;border-radius:10px;padding:12px 14px;margin:10px 0}
+.gtask input{border:2px solid #cdd9e5;border-radius:8px;padding:7px 10px;font-size:.95em;width:170px}
+.gtask input.ok{border-color:#43a047;background:#e8f5e9}
+.gtask input.bad{border-color:#c62828;background:#ffebee}
+.opt{display:inline-block;border:2px solid #cdd9e5;background:#fff;border-radius:8px;padding:7px 14px;margin:5px 8px 5px 0;cursor:pointer;font-size:.92em}
+.opt.correct{border-color:#43a047;background:#e8f5e9;font-weight:700}
+.opt.wrong{border-color:#c62828;background:#ffebee}
+.cheat{background:#fff8dc;border:1px dashed #c8a800;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.95em}
+.note{background:#fff8dc;border-left:4px solid #c8a800;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.92em}
+.note summary{font-weight:700;color:#8a6d00;cursor:pointer}
+.refl{display:flex;flex-direction:column;gap:8px}
+.refl label{background:#f2f7fc;border-radius:8px;padding:9px 12px}
+footer{text-align:center;padding:18px;font-size:.85em;color:#789}
+.reset{background:#c62828;color:#fff;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-weight:700;margin:10px 0}
+@media(max-width:640px){.words{grid-template-columns:1fr}#gamebox{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<h1>Достопримечательности родной страны. Крупные города</h1>
+<p>Английский язык • 11 класс • Spotlight 11 • Module 8 &laquo;Travel&raquo; • Culture Corner 8 + Spotlight on Russia</p>
+<span class="badge">Урок обобщения и закрепления • 40 минут • ФГОС СОО и ФРП</span>
+</header>
+<nav>
+<button class="tabbtn" data-tab="goals">Цели и задачи</button>
+<button class="tabbtn" data-tab="plan">Ход урока</button>
+<button class="tabbtn" data-tab="warm">Разминка</button>
+<button class="tabbtn" data-tab="words">Новые слова</button>
+<button class="tabbtn" data-tab="game">Игра: пары</button>
+<button class="tabbtn" data-tab="dialog">Диалог</button>
+<button class="tabbtn" data-tab="grammar">Грамматика</button>
+<button class="tabbtn" data-tab="cities">Крупные города</button>
+<button class="tabbtn" data-tab="speak">Говорение</button>
+<button class="tabbtn" data-tab="final">Итоги</button>
+</nav>
+<main>
+
+<section class="panel" id="p-goals">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Обобщение и систематизация лексики и речевых структур по теме «Достопримечательности родной страны. Крупные города»; развитие умений описывать города и места на английском языке.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> активизировать лексику по теме; закрепить структуры to be situated, to be founded in, to be famous for, It is worth visiting; совершенствовать навыки устной речи.</li>
+<li><b>Развивающие:</b> развивать умения сравнивать, обобщать и строить монологическое высказывание с опорой.</li>
+<li><b>Воспитательные:</b> воспитывать уважение к культурному наследию родной страны, интерес к её истории и географии.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<ul>
+<li><b>Личностные:</b> осознание ценности культурного наследия России, готовность рассказать о ней на английском языке.</li>
+<li><b>Метапредметные:</b> умение работать с информацией, ставить учебную задачу и оценивать результат.</li>
+<li><b>Предметные:</b> употребление лексики модуля и структур описания города в устной и письменной речи.</li>
+</ul>
+<h3>Оборудование</h3>
+<p>Компьютер, проектор или интерактивная доска, раздаточные карточки, доступ к странице интерактивного урока.</p>
+</section>
+
+<section class="panel" id="p-plan">
+<h2>Ход урока</h2>
+<table>
+<tr><th>№</th><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>1</td><td>Организационный момент</td><td>2 мин</td><td>Приветствует, создаёт настрой, объявляет тему</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>2</td><td>Разминка</td><td>3 мин</td><td>Задаёт вопросы цепочкой, активизирует известную лексику</td><td>Отвечают полными предложениями с опорами</td></tr>
+<tr><td>3</td><td>Целеполагание</td><td>1 мин</td><td>Наводящими вопросами подводит к цели урока</td><td>Формулируют цель урока</td></tr>
+<tr><td>4</td><td>Новые слова</td><td>8 мин</td><td>Организует работу с карточками со звучкой</td><td>Слушают, повторяют, читают примеры</td></tr>
+<tr><td>5</td><td>Игра «Пары»</td><td>5 мин</td><td>Объясняет правила, контролирует игру</td><td>Играют в мэтчинг слово — перевод</td></tr>
+<tr><td>6</td><td>Диалог + викторина</td><td>8 мин</td><td>Организует чтение диалога, затем викторину</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>7</td><td>Грамматика</td><td>6 мин</td><td>Разбирает структуры, организует тренировку</td><td>Выполняют задания с автопроверкой</td></tr>
+<tr><td>8</td><td>Говорение в парах</td><td>3 мин</td><td>Раздаёт вопросы, меняет пары</td><td>Обсуждают вопросы в парах, меняются ролями</td></tr>
+<tr><td>9</td><td>Итоги. Рефлексия. Домашнее задание</td><td>4 мин</td><td>Организует рефлексию, объясняет домашку</td><td>Оценивают свой результат, записывают задание</td></tr>
+</table>
+<details class="note"><summary>For teacher</summary>При 45 минутах добавьте 5 минут на этап «Говорение» или на чтение диалога вторым составом. Звучка работает в Chrome и Edge; если звука нет — проговаривайте слова сами, карточки работают и без аудио.</details>
+</section>
+
+<section class="panel" id="p-warm">
+<h2>Разминка — Warm-up (3 мин)</h2>
+<p>Отвечаем цепочкой, полными предложениями. Клик по вопросу открывает опору и перевод.</p>
+<div class="transable"><div class="q">1. Do you like travelling? Why?</div><div class="tr">Опора: I am keen on travelling because… / Yes, I do. I like to see new places.</div></div>
+<div class="transable"><div class="q">2. What cities of our country have you been to?</div><div class="tr">Опора: I have been to… It is situated in…</div></div>
+<div class="transable"><div class="q">3. What is the capital of Russia famous for?</div><div class="tr">Опора: It is famous for… The Kremlin, Red Square, museums…</div></div>
+<div class="transable"><div class="q">4. Would you like to visit a big city or a small town? Why?</div><div class="tr">Опора: I would rather visit… because… / In my opinion…</div></div>
+</section>
+
+<section class="panel" id="p-words">
+<h2>Новые слова — Vocabulary (8 мин)</h2>
+<p>Клик по кнопке со значком произносит слово дважды. Клик по карточке открывает перевод и пример.</p>
+<div class="words">
+<div class="transable wcard"><div class="w"><span>sight</span><button class="spk" data-word="sight">&#128266;</button></div><div class="tr">вид; достопримечательность — The Red Square is the most famous sight in Moscow.</div></div>
+<div class="transable wcard"><div class="w"><span>landmark</span><button class="spk" data-word="landmark">&#128266;</button></div><div class="tr">заметная достопримечательность, ориентир — Big Ben is a famous landmark.</div></div>
+<div class="transable wcard"><div class="w"><span>ancient</span><button class="spk" data-word="ancient">&#128266;</button></div><div class="tr">древний, старинный — The Kazan Kremlin is an ancient fortress.</div></div>
+<div class="transable wcard"><div class="w"><span>cathedral</span><button class="spk" data-word="cathedral">&#128266;</button></div><div class="tr">собор — St Basil&#39;s Cathedral is on Red Square.</div></div>
+<div class="transable wcard"><div class="w"><span>fortress</span><button class="spk" data-word="fortress">&#128266;</button></div><div class="tr">крепость — An ancient fortress stands on the hill.</div></div>
+<div class="transable wcard"><div class="w"><span>to be situated</span><button class="spk" data-word="to be situated">&#128266;</button></div><div class="tr">располагаться — St Petersburg is situated on the Neva River.</div></div>
+<div class="transable wcard"><div class="w"><span>to be founded</span><button class="spk" data-word="to be founded">&#128266;</button></div><div class="tr">быть основанным — Moscow was founded in 1147.</div></div>
+<div class="transable wcard"><div class="w"><span>breathtaking</span><button class="spk" data-word="breathtaking">&#128266;</button></div><div class="tr">захватывающий дух — The view from the tower was breathtaking.</div></div>
+<div class="transable wcard"><div class="w"><span>bustling</span><button class="spk" data-word="bustling">&#128266;</button></div><div class="tr">шумный, оживлённый — Nevsky Prospect is a bustling street.</div></div>
+<div class="transable wcard"><div class="w"><span>heritage</span><button class="spk" data-word="heritage">&#128266;</button></div><div class="tr">наследие — The Kremlin is part of our national heritage.</div></div>
+<div class="transable wcard"><div class="w"><span>skyscraper</span><button class="spk" data-word="skyscraper">&#128266;</button></div><div class="tr">небоскрёб — Moscow City is full of skyscrapers.</div></div>
+<div class="transable wcard"><div class="w"><span>to get around</span><button class="spk" data-word="to get around">&#128266;</button></div><div class="tr">передвигаться (по городу) — It is easy to get around the city by metro.</div></div>
+</div>
+<div class="hint">&#128161; Не путайте: to be founded — быть основанным (о городе), to find — находить. А to be situated отвечает на вопрос «где находится?»: is situated ON the river, IN the south.</div>
+</section>
+
+<section class="panel" id="p-game">
+<h2>Игра «Пары» (5 мин)</h2>
+<p>Откройте две плитки: английское слово и его перевод должны совпасть. Совпавшие пары зеленеют.</p>
+<div id="gamebox"></div>
+<div id="gamewin">&#127881; Поздравляем! Все 8 пар собраны!</div>
+<button class="btn green" onclick="resetGame()">&#8635; Начать заново</button>
+<details class="note"><summary>For teacher</summary>Ключи пар: sight — достопримечательность; landmark — ориентир; ancient — древний; cathedral — собор; fortress — крепость; breathtaking — захватывающий дух; bustling — оживлённый; skyscraper — небоскрёб.</details>
+</section>
+
+<section class="panel" id="p-dialog">
+<h2>Диалог (8 мин)</h2>
+<p>Клик по реплике открывает перевод. Читаем по ролям: Марк вернулся из поездки по России.</p>
+<div class="transable"><div class="q"><b>Mark:</b> Hi, Kira! Guess what — I have just come back from Moscow!</div><div class="tr">Привет, Кира! Представляешь — я только что вернулся из Москвы!</div></div>
+<div class="transable"><div class="q"><b>Kira:</b> Really? Did you like it?</div><div class="tr">Правда? Тебе понравилось?</div></div>
+<div class="transable"><div class="q"><b>Mark:</b> It was breathtaking! The Kremlin and Red Square are truly amazing.</div><div class="tr">Это было захватывающе! Кремль и Красная площадь действительно потрясающие.</div></div>
+<div class="transable"><div class="q"><b>Kira:</b> Moscow was founded in 1147, you know. It is one of the oldest cities in Russia.</div><div class="tr">Москва, между прочим, основана в 1147 году. Это один из самых старых городов России.</div></div>
+<div class="transable"><div class="q"><b>Mark:</b> And I visited St Petersburg too. The Hermitage is a must!</div><div class="tr">А ещё я побывал в Санкт-Петербурге. Эрмитаж — обязательно к посещению!</div></div>
+<div class="transable"><div class="q"><b>Kira:</b> St Petersburg is called the second capital. It is situated on the Neva River.</div><div class="tr">Санкт-Петербург называют второй столицей. Он расположен на реке Неве.</div></div>
+<div class="transable"><div class="q"><b>Mark:</b> What about Kazan? Is it worth visiting?</div><div class="tr">А как насчёт Казани? Её стоит посетить?</div></div>
+<div class="transable"><div class="q"><b>Kira:</b> Certainly! The Kazan Kremlin is a UNESCO World Heritage Site. And Sochi is perfect for those who love the sea and the mountains.</div><div class="tr">Конечно! Казанский кремль — объект Всемирного наследия ЮНЕСКО. А Сочи идеален для тех, кто любит море и горы.</div></div>
+<div class="transable"><div class="q"><b>Mark:</b> Sounds fantastic! I want to travel around Russia again.</div><div class="tr">Звучит здорово! Хочу снова путешествовать по России.</div></div>
+<div class="cheat"><b>Полезные структуры:</b> It is situated on/in… &bull; It was founded in… &bull; It is famous for… &bull; It is worth visiting &bull; It is called… &bull; a must (place)</div>
+<h3>Викторина по диалогу</h3>
+<div class="gtask"><p>1. When was Moscow founded?</p>
+<button class="opt" data-ok="0">in 1703</button><button class="opt" data-ok="1">in 1147</button><button class="opt" data-ok="0">in 1005</button>
+<div class="transable"><span class="q">перевод вопроса</span><div class="tr">Когда была основана Москва?</div></div></div>
+<div class="gtask"><p>2. What river is St Petersburg situated on?</p>
+<button class="opt" data-ok="0">the Volga</button><button class="opt" data-ok="1">the Neva</button><button class="opt" data-ok="0">the Moskva</button>
+<div class="transable"><span class="q">перевод вопроса</span><div class="tr">На какой реке расположен Санкт-Петербург?</div></div></div>
+<div class="gtask"><p>3. What is a must in St Petersburg?</p>
+<button class="opt" data-ok="1">the Hermitage</button><button class="opt" data-ok="0">the Kremlin</button><button class="opt" data-ok="0">the Ferris wheel</button>
+<div class="transable"><span class="q">перевод вопроса</span><div class="tr">Что обязательно стоит увидеть в Санкт-Петербурге?</div></div></div>
+<div class="gtask"><p>4. Which city is a UNESCO World Heritage Site according to Kira?</p>
+<button class="opt" data-ok="1">the Kazan Kremlin</button><button class="opt" data-ok="0">the Moscow metro</button>
+<div class="transable"><span class="q">перевод вопроса</span><div class="tr">Что, по словам Киры, является объектом Всемирного наследия ЮНЕСКО?</div></div></div>
+<div class="gtask"><p>5. Where should people who love the sea and the mountains go?</p>
+<button class="opt" data-ok="1">Sochi</button><button class="opt" data-ok="0">Kazan</button><button class="opt" data-ok="0">St Petersburg</button>
+<div class="transable"><span class="q">перевод вопроса</span><div class="tr">Куда должны поехать те, кто любит море и горы?</div></div></div>
+<details class="note"><summary>For teacher — ключи викторины</summary>1) in 1147; 2) the Neva; 3) the Hermitage; 4) the Kazan Kremlin; 5) Sochi.</details>
+</section>
+
+<section class="panel" id="p-grammar">
+<h2>Грамматика: описываем город (6 мин)</h2>
+<h3>Таблица структур</h3>
+<table>
+<tr><th>Структура</th><th>Перевод</th><th>Пример</th></tr>
+<tr><td>to be situated on/in</td><td>располагаться на/в</td><td>Sochi is situated in the south of Russia.</td></tr>
+<tr><td>to be founded in</td><td>быть основанным в</td><td>Kazan was founded in 1005.</td></tr>
+<tr><td>to be famous for</td><td>быть известным чем-либо</td><td>Our city is famous for its ancient fortress.</td></tr>
+<tr><td>There is / There are</td><td>есть, находится</td><td>There are many cathedrals in the city.</td></tr>
+<tr><td>It is worth + V-ing</td><td>стоит (что-то сделать)</td><td>The Hermitage is worth visiting.</td></tr>
+<tr><td>прилагательные -ing / -ed</td><td>впечатление / состояние</td><td>The trip was amazing (ing) — We were amazed (ed).</td></tr>
+</table>
+<h3>Задания с автопроверкой</h3>
+<div class="gtask">1. Moscow <input data-answer="was founded" placeholder="..."> in 1147. <button class="gbtn btn">Проверить</button></div>
+<div class="gtask">2. St Petersburg is situated <input data-answer="on" placeholder="..."> the Neva River. <button class="gbtn btn">Проверить</button></div>
+<div class="gtask">3. The Kazan Kremlin is <input data-answer="famous" placeholder="..."> for its ancient walls. <button class="gbtn btn">Проверить</button></div>
+<div class="gtask">4. The Hermitage is worth <input data-answer="visiting" placeholder="..."> . <button class="gbtn btn">Проверить</button></div>
+<div class="gtask">5. There <input data-answer="are" placeholder="..."> many beautiful cathedrals in Russian cities. <button class="gbtn btn">Проверить</button></div>
+<div class="gtask">6. The view from the Ferris wheel was <input data-answer="breathtaking|amazing|stunning" placeholder="..."> . <button class="gbtn btn">Проверить</button></div>
+<details class="note"><summary>For teacher — ключи</summary>1) was founded; 2) on; 3) famous; 4) visiting; 5) are; 6) breathtaking / amazing / stunning.</details>
+</section>
+
+<section class="panel" id="p-cities">
+<h2>Крупные города России</h2>
+<table>
+<tr><th>Город</th><th>Основан</th><th>Знаменитые места</th></tr>
+<tr><td>Москва</td><td>1147</td><td>Красная площадь, Московский Кремль, ВДНХ</td></tr>
+<tr><td>Санкт-Петербург</td><td>1703</td><td>Эрмитаж, Невский проспект, разводные мосты</td></tr>
+<tr><td>Казань</td><td>1005</td><td>Казанский кремль, мечеть Кул-Шариф</td></tr>
+<tr><td>Сочи</td><td>1838</td><td>Красная Поляна, Олимпийский парк</td></tr>
+<tr><td>Симферополь</td><td>1784</td><td>«Ворота Крыма», Ак-Мечеть</td></tr>
+</table>
+<div class="hint">&#128161; Полезные фразы: It attracts tourists from all over the world — он привлекает туристов со всего мира; Don&#39;t miss… — не пропустите…; a must-see place — место, которое обязательно нужно увидеть.</div>
+<details class="note"><summary>For teacher</summary>Спросите: какой из этих городов вы бы показали иностранному гостю и почему? Это мостик к этапу «Говорение».</details>
+</section>
+
+<section class="panel" id="p-speak">
+<h2>Говорение в парах (3 мин)</h2>
+<p>Задавайте вопросы по очереди, затем поменяйтесь ролями. Клик по вопросу открывает опору.</p>
+<div class="transable"><div class="q">1. What Russian cities have you been to?</div><div class="tr">Опора: I have been to… / I have never been to…</div></div>
+<div class="transable"><div class="q">2. What is your favourite place in our region?</div><div class="tr">Опора: My favourite place is… It is situated…</div></div>
+<div class="transable"><div class="q">3. What sights would you show to a foreign guest?</div><div class="tr">Опора: I would show… because…</div></div>
+<div class="transable"><div class="q">4. Which do you prefer: an ancient city or a modern city? Why?</div><div class="tr">Опора: I prefer… because… / In my opinion…</div></div>
+<div class="transable"><div class="q">5. What is more interesting: travelling or reading about places?</div><div class="tr">Опора: I think… because… / Both are interesting, but…</div></div>
+<div class="transable"><div class="q">6. What heritage sites are there in your area?</div><div class="tr">Опора: There is / There are… in our area.</div></div>
+</section>
+
+<section class="panel" id="p-final">
+<h2>Итоги урока (4 мин)</h2>
+<h3>Рефлексия — отметьте, чему научились</h3>
+<div class="refl">
+<label><input type="checkbox"> Я могу назвать 8–10 достопримечательностей на английском</label>
+<label><input type="checkbox"> Я могу рассказать, где расположен город и когда он основан</label>
+<label><input type="checkbox"> Я умею советовать место: It is worth visiting</label>
+<label><input type="checkbox"> Я могу спросить и ответить о путешествиях</label>
+</div>
+<h3>Домашнее задание</h3>
+<p><b>Основное:</b> сделайте листовку <b>&laquo;Visit our city!&raquo;</b> для иностранных туристов: 80–100 слов, опишите ваш город или край, обязательно используйте минимум 4 структуры из таблицы грамматики (to be situated, to be founded in, to be famous for, There is/are, It is worth visiting).</p>
+<p><b>Звёздочка ⭐:</b> найдите три факта о российском городе из списка Всемирного наследия ЮНЕСКО и подготовьте мини-сообщение (4–5 предложений).</p>
+</section>
+
+<button class="reset" onclick="resetAll()">&#128465; Полный сброс</button>
+
+</main>
+<footer>Английский язык • 11 класс • Достопримечательности родной страны. Крупные города • Spotlight 11, Module 8</footer>
+<script>
+var pairs=[["sight","достопримечательность"],["landmark","заметный ориентир"],["ancient","древний"],["cathedral","собор"],["fortress","крепость"],["breathtaking","захватывающий дух"],["bustling","оживлённый"],["skyscraper","небоскрёб"]];
+var first=null,lock=false,matched=0;
+function activateTab(id){
+var bs=document.querySelectorAll(".tabbtn");
+var ps=document.querySelectorAll(".panel");
+for(var i=0;i<bs.length;i++){if(bs[i].getAttribute("data-tab")===id){bs[i].classList.add("active");}else{bs[i].classList.remove("active");}}
+for(var j=0;j<ps.length;j++){if(ps[j].id==="p-"+id){ps[j].classList.add("active");}else{ps[j].classList.remove("active");}}
+}
+function sayWord(w){
+if(!window.speechSynthesis){return;}
+window.speechSynthesis.cancel();
+var u=new SpeechSynthesisUtterance(w);
+u.lang="en-GB";u.rate=0.85;
+window.speechSynthesis.speak(u);
+u.onend=function(){var u2=new SpeechSynthesisUtterance(w);u2.lang="en-GB";u2.rate=0.85;window.speechSynthesis.speak(u2);};
+}
+function buildGame(){
+var box=document.getElementById("gamebox");
+if(!box){return;}
+box.innerHTML="";
+var tiles=[];
+for(var i=0;i<pairs.length;i++){
+tiles.push({k:i,txt:pairs[i][0],cls:"en"});
+tiles.push({k:i,txt:pairs[i][1],cls:"ru"});
+}
+for(var s=tiles.length-1;s>0;s--){var r=Math.floor(Math.random()*(s+1));var tmp=tiles[s];tiles[s]=tiles[r];tiles[r]=tmp;}
+for(var t=0;t<tiles.length;t++){
+var d=document.createElement("div");
+d.className="tile "+tiles[t].cls;
+d.setAttribute("data-key",String(tiles[t].k));
+var f=document.createElement("div");
+f.className="tface";
+f.textContent=tiles[t].txt;
+d.appendChild(f);
+box.appendChild(d);
+}
+var msg=document.getElementById("gamewin");
+if(msg){msg.style.display="none";}
+}
+function pickTile(tile){
+if(lock||tile.classList.contains("matched")||tile.classList.contains("open")){return;}
+tile.classList.add("open");
+if(!first){first=tile;return;}
+var a=first;
+first=null;
+if(a.getAttribute("data-key")===tile.getAttribute("data-key")){
+a.classList.add("matched");
+tile.classList.add("matched");
+matched++;
+if(matched===pairs.length){var w=document.getElementById("gamewin");if(w){w.style.display="block";}}
+}else{
+lock=true;
+setTimeout(function(){a.classList.remove("open");tile.classList.remove("open");lock=false;},600);
+}
+}
+function resetGame(){matched=0;buildGame();}
+function resetAll(){
+resetGame();
+var is=document.querySelectorAll("input");
+for(var i=0;i<is.length;i++){if(is[i].type==="checkbox"){is[i].checked=false;}else{is[i].value="";is[i].classList.remove("ok","bad");}}
+var os=document.querySelectorAll(".opt");
+for(var k=0;k<os.length;k++){os[k].classList.remove("correct","wrong");}
+var trs=document.querySelectorAll(".transable.open");
+for(var m=0;m<trs.length;m++){trs[m].classList.remove("open");}
+activateTab("goals");
+}
+document.addEventListener("click",function(e){
+var t=e.target;
+function up(c){var n=t;while(n&&n!==document){if(n.classList&&n.classList.contains(c)){return n;}n=n.parentNode;}return null;}
+var tb=up("tabbtn");
+if(tb){activateTab(tb.getAttribute("data-tab"));return;}
+var sp=up("spk");
+if(sp){sayWord(sp.getAttribute("data-word"));return;}
+var op=up("opt");
+if(op){var q=op.parentNode;var os=q.querySelectorAll(".opt");for(var i=0;i<os.length;i++){os[i].classList.remove("correct","wrong");}
+if(op.getAttribute("data-ok")==="1"){op.classList.add("correct");}else{op.classList.add("wrong");}
+return;}
+var gb=up("gbtn");
+if(gb){var cell=gb.parentNode;var inp=cell.querySelector("input");
+if(!inp){return;}
+var ans=inp.getAttribute("data-answer").split("|");
+var v=inp.value.trim().toLowerCase();
+var ok=false;
+for(var j=0;j<ans.length;j++){if(ans[j]===v){ok=true;}}
+inp.classList.remove("ok","bad");
+if(ok){inp.classList.add("ok");}else{inp.classList.add("bad");}
+return;}
+var tile=up("tile");
+if(tile){pickTile(tile);return;}
+var tr=up("transable");
+if(tr){tr.classList.toggle("open");return;}
+});
+buildGame();
+activateTab("goals");
+</script>
+</body>
+</html>
