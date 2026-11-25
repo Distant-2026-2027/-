@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 3 класс — Мой день рождения: идеи для подарков</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#fdf0f6;color:#4a1230;line-height:1.55;font-size:17px}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#b0216b,#e0447c);color:#fff;border-radius:16px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:26px;margin-bottom:6px}
+.meta{font-size:14px;opacity:.94}
+.badge{display:inline-block;background:#ffd54f;color:#8a1b4f;font-weight:700;border-radius:20px;padding:4px 14px;font-size:14px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#f6d7e6;color:#8a1b4f;padding:9px 14px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600}
+.tab.on{background:#b0216b;color:#fff}
+.panel{display:none;background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 2px 8px rgba(150,30,90,.1)}
+.panel.on{display:block}
+.panel h2{color:#b0216b;font-size:21px;margin-bottom:10px}
+.panel h3{color:#d13a74;font-size:17px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}
+th,td{border:1px solid #eccad9;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#fae6ef;color:#8a1b4f}
+.card{background:#fdf7fa;border:2px solid #f0d4e2;border-radius:12px;padding:11px 13px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#b0216b;font-size:19px}
+.snd{background:#ffd54f;border:none;border-radius:8px;padding:4px 11px;cursor:pointer;font-size:16px;margin-left:8px}
+.tr{display:none;color:#a3346a;margin-top:6px;font-size:15px}
+.hint{background:#fff7d6;border-left:4px solid #e0a800;padding:9px 13px;border-radius:0 9px 9px 0;margin:10px 0;font-size:15px}
+.dline{background:#fdf7fa;border:2px solid #f0d4e2;border-radius:10px;padding:9px 13px;margin:6px 0;cursor:pointer;font-size:16px}
+.speaker{font-weight:700;color:#c2185b}
+.emo{font-size:26px;margin-right:6px}
+.quiz{margin:9px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#fdf7fa;border:2px solid #eccad9;border-radius:9px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:15px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#fae6ef;border:2px solid #e6b6cb;border-radius:10px;padding:9px 13px;margin:4px;cursor:pointer;font-size:18px;font-weight:700;min-width:110px;text-align:center}
+.tile.sel{background:#ffd54f;border-color:#d09500}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.8}
+.gap{width:140px;border:1px solid #e6b6cb;border-radius:7px;padding:5px 8px;font-size:15px;margin:4px}
+.check{background:#b0216b;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-size:15px;font-weight:700;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px;font-size:16px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:14px;color:#8a5570}
+.big{font-size:20px;font-weight:700;color:#b0216b;min-height:34px;margin:10px 0}
+.modebtn{border:2px solid #e6b6cb;background:#fdf7fa;border-radius:10px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;margin:3px}
+.modebtn.on{background:#b0216b;color:#fff}
+.giftbtn{border:2px solid #e6b6cb;background:#fae6ef;border-radius:10px;padding:8px 13px;font-size:15px;cursor:pointer;margin:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🎂 Английский язык • 3 класс</h1>
+<div style="font-size:20px;font-weight:600">Мой день рождения: идеи для подарков</div>
+<div class="meta">Spotlight 3 • Модуль 4 «Come in and play!» • Spotlight on Russia «Everybody likes presents!» • конструкция I&#39;d like to… • ФГОС НОО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Песенка</button>
+<button class="tab" data-p="p7">Идеи для подарков</button>
+<button class="tab" data-p="p8">Праздник Лулу</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться говорить о дне рождения на английском языке: поздравлять, называть подарки и говорить, какой подарок хотелось бы получить.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику по теме «День рождения и подарки»; отработать конструкцию I&#39;d like to get… и фразы вручения подарка This is for you!</li>
+<li><b>Развивающие:</b> развивать умения диалогической речи, аудирования и языковой догадки.</li>
+<li><b>Воспитательные:</b> воспитывать культуру поздравления, умение благодарить и дарить радость друзьям и семье.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Называет подарки и атрибуты праздника по-английски; строит высказывание I&#39;d like to get…; поздравляет и вручает подарок по образцу</td><td>Слушает инструкцию, работает в паре, проверяет себя, разыгрывает роли</td><td>Радуется общению на английском, ценит заботу и подарки близких, поздравляет друзей</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 3, картинки подарков.</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы, показывает вкладку «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют хором и индивидуально</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Песенка Happy Birthday</td><td>4 мин</td><td>Показывает вкладку «Песенка», поёт вместе с детьми</td><td>Слушают, подпевают, поздравляют друг друга</td></tr>
+<tr><td>Конструкция I&#39;d like to get…</td><td>7 мин</td><td>Разбирает вкладку «Идеи для подарков», образцы</td><td>Строят предложения, слушают звучку</td></tr>
+<tr><td>Праздник Лулу: диалог</td><td>7 мин</td><td>Читает диалог по ролям, задаёт вопросы викторины</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>Говорение (пары)</td><td>3 мин</td><td>Организует ролевую игру «вручение подарка»</td><td>Разыгрывают диалоги, меняются ролями</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию «шарики», объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте фонетическую зарядку — звуки [ɜː] (birthday, bird, girl) и [eə] (bear, chair, air), повторите месяцы и дату рождения: My birthday is in May.</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод и опора. Отвечайте по цепочке.</p>
+<div class="dline"><span class="emo">🎂</span>1. When is your birthday?<div class="tr">Когда у тебя день рождения? (Опора: My birthday is in May / on the third of May)</div></div>
+<div class="dline"><span class="emo">🎉</span>2. Do you like birthdays?<div class="tr">Ты любишь дни рождения? (Опора: Yes, I do! Birthdays are fun!)</div></div>
+<div class="dline"><span class="emo">🎁</span>3. What presents do you like?<div class="tr">Какие подарки тебе нравятся? (Опора: I like… toys / books / games)</div></div>
+<div class="dline"><span class="emo">🧸</span>4. I would like to get…<div class="tr">Я хотел бы получить… (закончи предложение: a teddy bear, a bike, a puzzle)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Обратите внимание: перед одним предметом стоит a — a ball, a puzzle, a teddy bear. Present — и «подарок», и «настоящее время»!</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте две плитки: слово и его картинку. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Песенка Happy Birthday</h2>
+<p class="small">Нажмите 🔊 — строка прозвучит дважды. Повторяйте хором и похлопывайте в ритме!</p>
+<div id="song"></div>
+<div class="hint">💡 Happy — счастливый, радостный. Так поздравляют друг друга во всём мире: Happy birthday to you!</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Идеи для подарков: I&#39;d like to get…</h2>
+<p class="small">Нажмите на подарок — услышите своё предложение: I would like to get = I&#39;d like to get — Я хотел бы получить…</p>
+<div id="gifts"></div>
+<div class="big" id="sentence">I&#39;d like to get a teddy bear!</div>
+<button class="check" id="says">🔊 Скажи ещё раз</button>
+<table>
+<tr><th>Фраза</th><th>Перевод</th></tr>
+<tr><td>I would like to get a bike. = I&#39;d like to get a bike.</td><td>Я хотел бы получить велосипед.</td></tr>
+<tr><td>This is for you!</td><td>Это тебе!</td></tr>
+<tr><td>Thank you very much!</td><td>Большое спасибо!</td></tr>
+<tr><td>Happy birthday to you!</td><td>С днём рождения тебя!</td></tr>
+<tr><td>What is it? — It is a puzzle!</td><td>Что это? — Это пазл!</td></tr>
+</table>
+<div class="hint">💡 Идеи подарков из учебника: a scooter, a puzzle, a player, a teddy bear, a doll, roller skates — а что бы выбрал(а) ты?</div>
+<h3>Вставь пропущенное слово</h3>
+<div id="gaps"></div>
+<button class="check" id="gcheck">Проверить</button>
+<div class="msg" id="gpmsg"></div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Праздник Лулу: диалог</h2>
+<p class="small">Нажмите на реплику — откроется перевод. Потом читайте по ролям!</p>
+<div id="dialogue"></div>
+<h3>Викторина по диалогу</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — работа в парах</h2>
+<p class="small">Спросите друг друга по очереди. Нажмите на вопрос — откроется перевод.</p>
+<div id="speak"></div>
+<p class="small"><b>Ролевая игра:</b> один из вас — именинник, второй — гость. Поздравьте, вручите подарок (This is for you! It is a ball!) и спойте песенку. Потом поменяйтесь ролями!</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> 🎂 называть 12 слов по теме «День рождения и подарки»;</li>
+<li> 🎁 говорить, какой подарок я хочу: I&#39;d like to get…;</li>
+<li> 🎉 поздравлять друга: Happy birthday to you!;</li>
+<li> 🎀 вручить подарок: This is for you! — Thank you!</li>
+</ul>
+<h3>Рефлексия: укрась праздник шариками</h3>
+<p class="small">Нажми на шарик: зелёный — всё понятно, жёлтый — не всё понятно, красный — нужна помощь.</p>
+<div>
+<button class="modebtn" id="bl1">🟩 Всё понятно!</button>
+<button class="modebtn" id="bl2">🟨 Не всё понятно</button>
+<button class="modebtn" id="bl3">🟥 Нужна помощь</button>
+</div>
+<div class="msg" id="fmsg"></div>
+<h3>Домашнее задание</h3>
+<p>📝 Нарисуй подарок для друга и напиши 2–3 предложения: I would like to give my friend… / This is for you! / It is a…</p>
+<p>⭐ Звёздочка: выучи песенку Happy Birthday наизусть и спой дома! ⭐</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.75;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1400);}
+
+var WORDS=[["birthday","🎂","день рождения","My birthday is in May."],
+["party","🎉","вечеринка, праздник","Welcome to my party!"],
+["present","🎁","подарок","This present is for you!"],
+["candle","🕯","свеча","There are nine candles on the cake."],
+["balloon","🎈","воздушный шарик","Red balloons are my favourite!"],
+["cake","🍰","торт","The birthday cake is yummy!"],
+["card","💌","открытка","I make a birthday card for Mum."],
+["teddy bear","🧸","плюшевый мишка","I would like to get a teddy bear!"],
+["ball","⚽","мяч","The ball is new and blue."],
+["puzzle","🧩","пазл","This puzzle has many pieces."],
+["bike","🚲","велосипед","My present is a new bike!"],
+["doll","👧","кукла","Her doll is very pretty."]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span> "+w[1]+"<button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[2]+"</b><br><i>"+w[3]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["birthday","🎂"],["present","🎁"],["balloon","🎈"],["cake","🍰"],["teddy bear","🧸"],["puzzle","🧩"],["bike","🚲"],["card","💌"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var SONG=[["Happy birthday to you,","С днём рождения тебя,"],
+["Happy birthday to you,","С днём рождения тебя,"],
+["Happy birthday, dear Lulu,","С днём рождения, дорогая Лулу,"],
+["Happy birthday to you!","С днём рождения тебя!"],
+["How old are you today?","Сколько тебе лет сегодня?"],
+["I am nine years old today!","Мне девять лет сегодня!"]];
+var sbox=document.getElementById("song");
+SONG.forEach(function(s){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<button class=\"snd\">🔊</button> <b>"+s[0]+"</b><div class=\"tr\">"+s[1]+"</div>";
+d.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(s[0]);});
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+sbox.appendChild(d);});
+
+var GIFTS=[["teddy bear","🧸","a teddy bear"],["ball","⚽","a ball"],["puzzle","🧩","a puzzle"],["bike","🚲","a bike"],["doll","👧","a doll"],["scooter","🛴","a scooter"],["book","📚","a book"],["game","🎮","a game"]];
+var gbox=document.getElementById("gifts");
+GIFTS.forEach(function(g){var b=document.createElement("button");b.className="giftbtn";
+b.innerHTML=g[1]+" "+g[0];
+b.addEventListener("click",function(){curSentence="I would like to get "+g[2]+"!";
+document.getElementById("sentence").textContent=curSentence;say("I would like to get "+g[2]+"!");});
+gbox.appendChild(b);});
+var curSentence="I would like to get a teddy bear!";
+document.getElementById("says").addEventListener("click",function(){say(curSentence);});
+
+var DLG=[["Lulu","Hello, everyone! Welcome to my birthday party!","Привет всем! Добро пожаловать на мой день рождения!"],
+["Larry","Happy birthday, Lulu! This present is for you!","С днём рождения, Лулу! Этот подарок для тебя!"],
+["Lulu","Thank you, Larry! What is it?","Спасибо, Ларри! Что это?"],
+["Larry","Open it! It is a puzzle!","Открой! Это пазл!"],
+["Lulu","Wow! I love puzzles! Thank you very much!","Ух ты! Я обожаю пазлы! Большое спасибо!"],
+["Chuckles","This is for you, Lulu. It is a teddy bear!","А это тебе, Лулу. Это плюшевый мишка!"],
+["Lulu","A teddy bear! How lovely! Thank you, Chuckles!","Плюшевый мишка! Как прелестно! Спасибо, Чаклз!"],
+["Nanny Shine","Happy birthday, Lulu! Make a wish and blow the candles!","С днём рождения, Лулу! Загадай желание и задуй свечи!"],
+["Lulu","I would like to have a great party with my friends!","Я хочу отличный праздник со своими друзьями!"],
+["Everyone","Hooray! Happy birthday, dear Lulu!","Ура! С днём рождения, дорогая Лулу!"]];
+var dbox=document.getElementById("dialogue");
+DLG.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+dbox.appendChild(d);});
+
+var QUIZ=[["Whose birthday is it?","Lulu","Larry","Chuckles"],
+["What does Larry give to Lulu?","a puzzle","a teddy bear","a bike"],
+["Who gives the teddy bear?","Chuckles","Nanny Shine","Larry"],
+["How old is Lulu?","nine","eight","ten"],
+["What does Lulu want?","a great party with friends","a new scooter","a big cake"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Молодцы, прочитайте диалог ещё раз!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var GAPS=[["I would like to ___ a new bike.","get"],
+["This present is ___ you!","for"],
+["Happy ___ to you!","birthday"],
+["What ___ it? — It is a puzzle!","is"],
+["How ___ are you? — I am nine.","old"],
+["Make a ___ and blow the candles!","wish"]];
+var gapbox=document.getElementById("gaps");
+GAPS.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+gapbox.appendChild(row);});
+document.getElementById("gcheck").addEventListener("click",function(){
+var ok=0;var inputs=gapbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("gpmsg").textContent="Правильно: "+ok+" из "+GAPS.length+(ok===GAPS.length?" — превосходно! 🎉":"");});
+
+var SPEAK=["1. When is your birthday?","2. What present would you like to get?","3. What do you give to your friends?","4. Do you like birthday cakes?","5. What games do you play at a party?","6. How old are you?"];
+var TRS=["Когда у тебя день рождения? (My birthday is in…)","Какой подарок ты хотел бы получить? (I would like to get…)","Что ты даришь своим друзьям?","Ты любишь праздничные торты?","В какие игры вы играете на празднике?","Сколько тебе лет? (I am nine.)"];
+var spbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+spbox.appendChild(d);});
+
+var msg1="Зелёный шарик — праздник удался! Молодец! 🎈";
+var msg2="Жёлтый шарик — ещё чуть-чуть, и всё получится! 🎈";
+var msg3="Красный шарик — спроси учителя, и праздник продолжится! 🎈";
+document.getElementById("bl1").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg1;});
+document.getElementById("bl2").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg2;});
+document.getElementById("bl3").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg3;});
+</script>
+</body>
+</html>
