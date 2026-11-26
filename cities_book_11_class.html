@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерактивная книга, 11 класс — Достопримечательности и крупные города</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,Segoe UI,serif;background:#101b2d;color:#e8e4d8;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:18px}
+header{background:linear-gradient(135deg,#0d2440,#1d4e7a 60%,#2a6ea6);color:#fff;border-radius:16px;padding:26px 28px;margin-bottom:14px;border:2px solid #c9a227}
+header h1{font-size:27px;margin-bottom:6px;color:#f5d76e}
+.meta{font-size:13px;opacity:.92;font-family:Segoe UI,Arial,sans-serif}
+.badge{display:inline-block;background:#c9a227;color:#101b2d;font-weight:700;border-radius:20px;padding:4px 14px;font-size:13px;margin-top:10px;font-family:Segoe UI,Arial,sans-serif}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;font-family:Segoe UI,Arial,sans-serif}
+.tab{border:1px solid #2a4a6e;background:#16263d;color:#cfd8e3;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#c9a227;color:#101b2d;border-color:#c9a227}
+.panel{display:none;background:#16263d;border-radius:14px;padding:22px 24px;box-shadow:0 3px 12px rgba(0,0,0,.35);border:1px solid #2a4a6e}
+.panel.on{display:block}
+.panel h2{color:#f5d76e;font-size:22px;margin-bottom:10px}
+.panel h3{color:#7ec3e8;font-size:17px;margin:16px 0 6px}
+.landmark{background:#1d3250;border:1px solid #35577d;border-radius:14px;padding:16px 18px;margin:14px 0}
+.hero{font-size:44px;text-align:center;margin-bottom:6px}
+.lm-en{font-size:19px;font-weight:700;color:#f5d76e;font-family:Segoe UI,Arial,sans-serif}
+.lm-ru{font-size:15px;color:#9fb8d0;font-family:Segoe UI,Arial,sans-serif;margin-bottom:8px}
+.snd{background:#c9a227;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:14px;font-weight:700;color:#101b2d;margin:4px 6px 4px 0;font-family:Segoe UI,Arial,sans-serif}
+.rubtn{background:#2a4a6e;color:#cfd8e3;border:1px solid #35577d;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:14px;font-family:Segoe UI,Arial,sans-serif}
+.desc{color:#dce8f5;font-family:Segoe UI,Arial,sans-serif;font-size:15px;margin-top:6px}
+.ru{display:none;background:#12233b;border-left:4px solid #c9a227;border-radius:0 10px 10px 0;padding:10px 14px;margin-top:8px;color:#e8e4d8;font-family:Segoe UI,Arial,sans-serif;font-size:15px}
+.fact{background:#12233b;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:14px;color:#ffd97a;font-family:Segoe UI,Arial,sans-serif}
+.card{background:#1d3250;border:1px solid #35577d;border-radius:11px;padding:11px 13px;margin:9px 0;cursor:pointer;font-family:Segoe UI,Arial,sans-serif}
+.card.tame{cursor:default}
+.word{font-weight:700;color:#f5d76e;font-size:17px}
+.snd2{background:#c9a227;border:none;border-radius:7px;padding:3px 10px;cursor:pointer;font-size:14px;margin-left:8px;color:#101b2d}
+.tr{display:none;color:#9fb8d0;margin-top:5px;font-size:14px}
+.dline{background:#1d3250;border:1px solid #35577d;border-radius:10px;padding:9px 13px;margin:7px 0;cursor:pointer;font-size:15px;font-family:Segoe UI,Arial,sans-serif}
+.hint{background:#243b57;border-left:4px solid #c9a227;padding:9px 13px;border-radius:0 9px 9px 0;margin:12px 0;font-size:14px;font-family:Segoe UI,Arial,sans-serif}
+.qbtn{display:block;width:100%;text-align:left;background:#1d3250;border:1px solid #35577d;border-radius:9px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:15px;color:#e8e4d8;font-family:Segoe UI,Arial,sans-serif}
+.qbtn.ok{background:#1e5e33;border-color:#43a047}
+.qbtn.bad{background:#6e2a2a;border-color:#e57373}
+.q{font-weight:700;margin:12px 0 4px;color:#7ec3e8;font-family:Segoe UI,Arial,sans-serif}
+.check{background:#c9a227;color:#101b2d;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-size:15px;font-weight:700;margin-top:10px;font-family:Segoe UI,Arial,sans-serif}
+.msg{color:#7ee8a0;font-weight:700;margin-top:8px;font-size:16px;font-family:Segoe UI,Arial,sans-serif}
+ul{margin:8px 0 8px 24px}
+li{margin:5px 0}
+.small{font-size:13px;color:#9fb8d0;font-family:Segoe UI,Arial,sans-serif}
+.big{font-size:22px;font-weight:700;color:#f5d76e;margin:12px 0;text-align:center;font-family:Georgia,serif}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;font-family:Segoe UI,Arial,sans-serif}
+th,td{border:1px solid #35577d;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#243b57;color:#f5d76e}
+.chip{display:inline-block;background:#243b57;border:1px solid #35577d;border-radius:20px;padding:5px 13px;font-size:13px;margin:3px;font-family:Segoe UI,Arial,sans-serif}
+.gap{width:150px;border:1px solid #35577d;background:#12233b;color:#e8e4d8;border-radius:7px;padding:5px 8px;font-size:14px;margin:4px;font-family:Segoe UI,Arial,sans-serif}
+.leaf{background:#1d3250;border:1px solid #c9a227;border-radius:12px;padding:14px 16px;margin:12px 0;font-family:Georgia,serif;font-size:16px;line-height:1.65;min-height:60px}
+.cover{text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🏛 Interactive Book • Достопримечательности и крупные города</h1>
+<div class="meta">Landmarks of Russia and the English-speaking world • Английский язык, 11 класс • ФГОС СОО и ФРП • Spotlight 11</div>
+<div class="badge">🌍 Москва • Санкт-Петербург • Казань • Лондон • Нью-Йорк • Вашингтон</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Обложка</button>
+<button class="tab" data-p="p2">Словарь</button>
+<button class="tab" data-p="p3">Москва</button>
+<button class="tab" data-p="p4">Санкт-Петербург</button>
+<button class="tab" data-p="p5">Казань</button>
+<button class="tab" data-p="p6">Лондон</button>
+<button class="tab" data-p="p7">Нью-Йорк</button>
+<button class="tab" data-p="p8">Вашингтон</button>
+<button class="tab" data-p="p9">Тест</button>
+<button class="tab" data-p="p10">Листовка</button>
+<button class="tab" data-p="p11">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<div class="cover">
+<h2>Discovering Great Cities</h2>
+<p style="font-size:18px;margin:10px 0">Откройте эту книгу — и отправьтесь в путешествие по самым ярким городам России и стран изучаемого языка.</p>
+<p class="big">Cities of wonders await you!</p>
+<div>
+<span class="chip">🇷🇺 Москва — Red Square</span>
+<span class="chip">🇷🇺 Санкт-Петербург — The Hermitage</span>
+<span class="chip">🇷🇺 Казань — Kul Sharif</span>
+<span class="chip">🇬🇧 Лондон — Big Ben</span>
+<span class="chip">🇺🇸 Нью-Йорк — Liberty</span>
+<span class="chip">🇺🇸 Вашингтон — The White House</span>
+</div>
+<h3>Как читать эту книгу</h3>
+<ul>
+<li>🔊 Кнопка Listen — слушай описание достопримечательности по-английски (озвучка синтезом речи, Chrome и Edge);</li>
+<li>🇷🇺 Кнопка RU — открой перевод и сравни два языка;</li>
+<li>💡 Жёлтые строки — факты и цифры для дискуссии на уроке;</li>
+<li>📝 В конце — словарь, тест и «Мастерская листовок»: собери свою листовку Visit our city!</li>
+</ul>
+<div class="hint">💡 Навыки книги: монолог-описание достопримечательности, сравнение культур, словообразование, аудирование и письмо-листовка для туристов. Тема соотносится с Module Spotlight 11 и эссе «Describe a place worth visiting».</div>
+</div>
+</div>
+
+<div class="panel" id="p2">
+<h2>Словарь путешественника — 12 слов со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Фразы для описания места: It is worth visiting… — Его стоит посетить. It attracts millions of tourists. — Он привлекает миллионы туристов. It dates back to… — Он восходит к… (дате основания).</div>
+</div>
+
+<div class="panel" id="p3">
+<h2>🇷🇺 Москва / Moscow</h2>
+<p class="small">Столица России, более 12 миллионов жителей — один из крупнейших городов Европы.</p>
+<div class="landmark">
+<div class="hero">🔴</div>
+<div class="lm-en">Red Square and the Kremlin</div>
+<div class="lm-ru">Красная площадь и Кремль</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Red Square is the heart of Moscow and the symbol of Russia. You can see the Kremlin with its red walls and twenty towers, the Spasskaya Tower with its famous clock and the legendary GUM department store. Since 1990 the square has been a UNESCO World Heritage Site.</div>
+<div class="ru">Красная площадь — сердце Москвы и символ всей России. Здесь стоят Кремль с красными стенами и двадцатью башнями, Спасская башня с курантами и знаменитый универмаг ГУМ. С 1990 года площадь входит в список Всемирного наследия ЮНЕСКО.</div>
+<div class="fact">💡 The Kremlin has 20 towers. The Spasskaya Tower clock strikes every 15 minutes.</div>
+</div>
+<div class="landmark">
+<div class="hero">⛪</div>
+<div class="lm-en">St Basil&#39;s Cathedral</div>
+<div class="lm-ru">Собор Василия Блаженного</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">St Basil&#39;s Cathedral with its ten colourful domes was built in 1555–1561 by order of Ivan the Terrible to celebrate the capture of Kazan. Every dome is unique, and today the cathedral is one of the most recognisable symbols of Russia.</div>
+<div class="ru">Собор с десятью разноцветными куполами построили в 1555–1561 годах по приказу Ивана Грозного в честь взятия Казани. Каждый купол неповторим, а сам собор — один из самых узнаваемых символов России в мире.</div>
+<div class="fact">💡 Built in 1555–1561. Legend says Ivan the Terrible blinded the architect so he could never create anything so beautiful again.</div>
+</div>
+<div class="landmark">
+<div class="hero">🎭</div>
+<div class="lm-en">The Bolshoi Theatre</div>
+<div class="lm-ru">Большой театр</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The Bolshoi Theatre opened its historical stage in 1825 and is considered one of the best ballet and opera stages in the world. Its golden hall and famous eight-column portico have been welcoming audiences for two centuries.</div>
+<div class="ru">Историческая сцена Большого театра открылась в 1825 году и считается одним из лучших театров балета и оперы в мире. Золотой зал, знаменитая восьмиколонная ротонда и партер на 1745 мест принимают зрителей уже два века.</div>
+<div class="fact">💡 Opened in 1825. The theatre survived a fire in 1856 and was rebuilt by architect Albert Cavos.</div>
+</div>
+</div>
+
+<div class="panel" id="p4">
+<h2>🇷🇺 Санкт-Петербург / St Petersburg</h2>
+<p class="small">Северная столица, «музей под открытым небом», основана Петром I в 1703 году.</p>
+<div class="landmark">
+<div class="hero">🖼</div>
+<div class="lm-en">The Hermitage</div>
+<div class="lm-ru">Эрмитаж (Зимний дворец)</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The Winter Palace, the residence of the Russian tsars, became one of the largest museums in the world. Founded by Catherine the Great in 1764, the Hermitage keeps over three million exhibits, from Leonardo da Vinci to Matisse.</div>
+<div class="ru">Зимний дворец, резиденция российских императоров, стал одним из крупнейших музеев мира. Основанный Екатериной II в 1764 году, Эрмитаж хранит более трёх миллионов экспонатов — от Леонардо да Винчи до Матисса.</div>
+<div class="fact">💡 Founded in 1764. The museum owns over 3 million exhibits — if you spend a minute at each one, you would need about 11 years of non-stop walking!</div>
+</div>
+<div class="landmark">
+<div class="hero">⛲</div>
+<div class="lm-en">Peterhof Fountains</div>
+<div class="lm-ru">Фонтаны Петергофа</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Peterhof is often called the Russian Versailles: Peter the Great built its palaces, parks and dozens of fountains. The famous Grand Cascade works without a single pump — water flows down the hills by gravity.</div>
+<div class="ru">Петергоф называют «русским Версалем»: дворцы, парки и десятки фонтанов построены Петром I. Знаменитая каскадная лестница «Большой каскад» работает без единого насоса — вода течёт самотёком с холмов.</div>
+<div class="fact">💡 The fountains work without pumps — gravity does all the job, just as in the 18th century.</div>
+</div>
+<div class="landmark">
+<div class="hero">🌉</div>
+<div class="lm-en">Drawbridges over the Neva</div>
+<div class="lm-ru">Разводные мосты над Невой</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">At night the bridges of St Petersburg rise to let ships pass along the Neva, and tourists from all over the world come to watch this show. The Peter and Paul Fortress, the symbol of the city, was founded on the day the city itself was born.</div>
+<div class="ru">Ночью мосты Петербурга поднимаются, чтобы по Неве прошли корабли, — на это съезжаются смотреть туристы со всего мира. Дворцовый мост поднимается около 1:10 ночи, а символ города — Петропавловская крепость — был заложен в день основания города.</div>
+<div class="fact">💡 The city was founded on 27 May 1703. The Peter and Paul Fortress is the oldest building of St Petersburg.</div>
+</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>🇷🇺 Казань / Kazan</h2>
+<p class="small">Столица Татарстана, где встречаются Восток и Запад — тысячелетний город на Волге.</p>
+<div class="landmark">
+<div class="hero">🕌</div>
+<div class="lm-en">Kazan Kremlin and Kul Sharif Mosque</div>
+<div class="lm-ru">Казанский Кремль и мечеть Кул-Шариф</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The white-stone Kremlin of Kazan is a UNESCO World Heritage Site. The Kul Sharif Mosque with its turquoise minarets is one of the largest in Europe, and the Annunciation Cathedral stands nearby: two religions have lived side by side in this city for more than four centuries.</div>
+<div class="ru">Белокаменный Кремль Казани — объект Всемирного наследия ЮНЕСКО. Мечеть Кул-Шариф с бирюзовыми минаретами — одна из крупнейших в Европе, а рядом стоит Благовещенский собор: две религии соседствуют в одном городе уже более четырёх веков.</div>
+<div class="fact">💡 UNESCO World Heritage since 2000. Kul Sharif can hold about 1,500 worshippers.</div>
+</div>
+<div class="landmark">
+<div class="hero">🐉</div>
+<div class="lm-en">The Kazan Family Centre (Chasha)</div>
+<div class="lm-ru">Центр семьи «Казань» — «Чаша»</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The huge bronze cauldron on Palace Square has become the symbol of Kazan: legend says the city was founded here around a cauldron — qazan in Tatar. The registry office works inside the building, and its top offers a great view of the Volga.</div>
+<div class="ru">Огромный бронзовый казан на Дворцовой площади стал символом города: по легенде, здесь вырыли «чашу» — казан — и основали город. Внутри центра семьи работает ЗАГС, а сверху открывается вид на Волгу.</div>
+<div class="fact">💡 The name Kazan may come from the Tatar word qazan — a cauldron. The dragon Zilant is the symbol of the city.</div>
+</div>
+</div>
+
+<div class="panel" id="p6">
+<h2>🇬🇧 Лондон / London</h2>
+<p class="small">Столица Великобритании, около 9 миллионов жителей — город, где история встречается с будущим.</p>
+<div class="landmark">
+<div class="hero">🕰</div>
+<div class="lm-en">Big Ben and the Houses of Parliament</div>
+<div class="lm-ru">Биг-Бен и Вестминстерский дворец</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Big Ben is actually the name of the great bell inside the clock of the Palace of Westminster, not the tower itself. Since 2012 the tower has been officially called the Elizabeth Tower, in honour of Queen Elizabeth II. The clock is still one of the most accurate in the world.</div>
+<div class="ru">Биг-Бен — имя большого колокола в часах Вестминстерского дворца, а не самой башни. С 2012 года башня официально называется Башней Елизаветы — в честь Елизаветы II. Часы до сих пор одни из самых точных в мире.</div>
+<div class="fact">💡 Big Ben is the bell, not the tower. The tower has been called the Elizabeth Tower since 2012.</div>
+</div>
+<div class="landmark">
+<div class="hero">🏰</div>
+<div class="lm-en">Tower Bridge and the Tower of London</div>
+<div class="lm-ru">Тауэрский мост и Тауэр</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Tower Bridge opened in 1894: its middle part rises to let ships pass under it. Nearby stands the Tower, an 11th-century fortress and prison where queens were kept; today the Crown Jewels are kept there.</div>
+<div class="ru">Тауэрский мост открыли в 1894 году: его средняя часть поднимается, чтобы под мостом прошли корабли. Рядом стоит Тауэр — крепость XI века, тюрьма, где содержали королев, а сегодня здесь хранятся драгоценности Британской короны.</div>
+<div class="fact">💡 Tower Bridge opened in 1894. The Crown Jewels are kept in the Tower of London — and the ravens never leave it: legend says the Kingdom will fall if they do.</div>
+</div>
+<div class="landmark">
+<div class="hero">🎡</div>
+<div class="lm-en">The London Eye</div>
+<div class="lm-ru">Лондонский глаз</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The giant observation wheel, 135 metres high, was built for the millennium in 2000. A full turn takes about thirty minutes, and on a clear day you can see the whole centre of London from the capsule.</div>
+<div class="ru">Гигантское колесо обозрения высотой 135 метров было построено к миллениуму в 2000 году. Полный оборот занимает около 30 минут, а в ясный день с кабин видно весь центр Лондона.</div>
+<div class="fact">💡 135 metres high, opened in 2000. One full turn takes about 30 minutes.</div>
+</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>🇺🇸 Нью-Йорк / New York</h2>
+<p class="small">Самый большой город США, «город, который не спит», — свыше 8 миллионов жителей.</p>
+<div class="landmark">
+<div class="hero">🗽</div>
+<div class="lm-en">The Statue of Liberty</div>
+<div class="lm-ru">Статуя Свободы</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">France gave the Statue of Liberty to the USA in 1886 to celebrate the centenary of American independence. She holds a torch in her right hand and a tablet with the date July 4, 1776 in her left hand. The statue is 93 metres high with its pedestal.</div>
+<div class="ru">Статую Свободы Франция подарила США в 1886 году в честь столетия американской независимости. В правой руке — факел свободы, в левой — табличка с датой 4 июля 1776 года. Высота с пьедесталом — 93 метра.</div>
+<div class="fact">💡 A gift from France, opened in 1886. 93 metres high with the pedestal. Her official name is Liberty Enlightening the World.</div>
+</div>
+<div class="landmark">
+<div class="hero">🌆</div>
+<div class="lm-en">Times Square</div>
+<div class="lm-ru">Таймс-сквер</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Times Square is called the Crossroads of the World. Every New Year up to a million people gather here to watch the famous Ball Drop from a 43-metre height.</div>
+<div class="ru">«Перекрёсток мира» — так называют Таймс-сквер. Каждый Новый год здесь собираются до миллиона человек, чтобы увидеть спуск знаменитого шара с 43-метровой высоты.</div>
+<div class="fact">💡 Up to a million people gather here on New Year Eve to watch the Ball Drop.</div>
+</div>
+<div class="landmark">
+<div class="hero">🌳</div>
+<div class="lm-en">Central Park</div>
+<div class="lm-ru">Центральный парк</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">Central Park is the green heart of Manhattan: 341 hectares among skyscrapers. The park opened in 1858 and today welcomes about 42 million visitors a year.</div>
+<div class="ru">Центральный парк — «зелёное сердце» Манхэттена: 341 гектар среди небоскрёбов. Парк открыли в 1858 году, и сегодня он принимает около 42 миллионов посетителей в год.</div>
+<div class="fact">💡 341 hectares, opened in 1858, about 42 million visitors a year.</div>
+</div>
+</div>
+
+<div class="panel" id="p8">
+<h2>🇺🇸 Вашингтон / Washington, D.C.</h2>
+<p class="small">Столица США — D.C. означает District of Columbia, город не принадлежит ни одному штату.</p>
+<div class="landmark">
+<div class="hero">🏠</div>
+<div class="lm-en">The White House</div>
+<div class="lm-ru">Белый дом</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The White House has been the residence and office of the US President since 1800. The building has 132 rooms, and it became white after the fire of 1814, when it was freshly painted again.</div>
+<div class="ru">Белый дом — резиденция и рабочий кабинет президента США с 1800 года. В здании 132 комнаты, а белым дом стал после пожара 1814 года, когда его заново отштукатурили.</div>
+<div class="fact">💡 The president has lived and worked here since 1800. 132 rooms, 35 bathrooms.</div>
+</div>
+<div class="landmark">
+<div class="hero">🏛</div>
+<div class="lm-en">The Lincoln Memorial</div>
+<div class="lm-ru">Мемориал Линкольна</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The marble statue of Abraham Lincoln, the 16th president, sits in a hall almost 20 metres high. It was here that Martin Luther King delivered his famous speech I have a dream in 1963.</div>
+<div class="ru">Мраморная статуя 16-го президента Авраама Линкольна сидит в зале высотой почти 20 метров. Именно здесь Мартин Лютер Кинг произнёс знаменитую речь «I have a dream» в 1963 году.</div>
+<div class="fact">💡 Here Martin Luther King delivered his famous speech I have a dream in 1963.</div>
+</div>
+<div class="landmark">
+<div class="hero">🗼</div>
+<div class="lm-en">The Washington Monument</div>
+<div class="lm-ru">Вашингтонский монумент</div>
+<button class="snd">🔊 Listen</button><button class="rubtn">🇷🇺 RU</button>
+<div class="desc">The 169-metre obelisk honours the first president of the USA. For over thirty years it was the tallest building in the world, and today fairs and kite festivals take place around it.</div>
+<div class="ru">Обелиск высотой 169 метров — камень в честь первого президента США. Более 30 лет он был самым высоким зданием мира, а сегодня вокруг него собираются праздничные ярмарки и запуски воздушных змеев.</div>
+<div class="fact">💡 169 metres — the tallest building in the world from 1884 to 1889.</div>
+</div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Тест: 8 вопросов о городах</h2>
+<p class="small">Прочитайте вопрос и выберите ответ. Проверка мгновенная!</p>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p10">
+<h2>Мастерская листовок: Visit our city!</h2>
+<p class="small">Соберите листовку для иностранных туристов: заполните данные города, выберите структуры — конструктор соберёт текст, посчитает слова и проверит норму: 80–100 слов и минимум 4 структуры.</p>
+
+<h3>Шаг 1. Данные города</h3>
+<div class="card tame">
+<p><label>Город: <input class="gap" id="lcity" value="Kazan"></label> &nbsp;
+<label>Лучший сезон: <select class="gap" id="lseason"><option>in May</option><option>in winter</option><option>in summer</option><option>in autumn</option><option>in spring</option></select></label></p>
+<p><label>Достопримечательность 1: <input class="gap" id="l1" value="the white-stone Kremlin" style="width:250px"></label></p>
+<p><label>Достопримечательность 2: <input class="gap" id="l2" value="the Kul Sharif Mosque" style="width:250px"></label></p>
+<p><label>Что турист может сделать: <input class="gap" id="lact" value="walk along the Volga embankment and taste chak-chak" style="width:380px"></label></p>
+<p><label>Если турист любит…: <input class="gap" id="llike" value="legends" style="width:200px"></label></p>
+</div>
+
+<h3>Шаг 2. Структуры листовки (минимум 4)</h3>
+<div class="card tame">
+<label><input type="checkbox" id="c1" checked> Imperative: Start your journey at …</label><br>
+<label><input type="checkbox" id="c2" checked> Don&#39;t miss …, which attracts …</label><br>
+<label><input type="checkbox" id="c3" checked> You can …</label><br>
+<label><input type="checkbox" id="c4" checked> If you like …, … is exactly the place that …</label><br>
+<label><input type="checkbox" id="c5"> Придаточное с which: landmarks which remember …</label><br>
+<label><input type="checkbox" id="c6" checked> … is worth visiting …</label>
+</div>
+<p><button class="check" id="lbuild">📝 Собрать листовку</button> <button class="check" id="llisten">🔊 Listen</button></p>
+<div class="leaf" id="lout">Заполните данные и нажмите «Собрать листовку» — текст появится здесь.</div>
+<div class="msg" id="lmsg"></div>
+<div class="hint">💡 Структуры для оценки: Imperative · Don&#39;t miss … · You can … · If you like … · придаточное с which/that · is worth visiting. Чек-лист: 80–100 слов, минимум 4 структуры, 5 слов из словаря книги, один факт с цифрой.</div>
+
+<h3>Образцы листовок — читайте и анализируйте структуры</h3>
+<div class="card tame"><b>Visit Kazan!</b> Welcome to Kazan, the capital of Tatarstan, where East meets West! Start your journey at the white-stone Kremlin — a UNESCO World Heritage Site. Don&#39;t miss the Kul Sharif Mosque, one of the largest in Europe. If you like legends, look for the bronze cauldron that gave the city its name. You can walk along the Volga embankment, taste chak-chak and listen to Tatar music. Come in May, when the city celebrates its birthday. Kazan is waiting for you!</div>
+<div class="card tame"><b>Visit St Petersburg!</b> Discover the Northern capital of Russia, founded by Peter the Great in 1703! Visit the Hermitage, one of the biggest museums in the world, and spend hours among three million exhibits. Don&#39;t forget to watch the bridges rise over the Neva at night. You can also enjoy the fountains of Peterhof, which work without pumps. Take a boat trip and see the city from the water. St Petersburg is worth visiting at any season. See you in the Venice of the North!</div>
+<div class="card tame"><b>Visit Moscow!</b> Welcome to Moscow, the capital of Russia and one of the largest cities in Europe! Begin your trip on Red Square, the heart of the city. Admire St Basil&#39;s Cathedral with its ten colourful domes and take a photo near the Kremlin towers. You can watch a ballet at the Bolshoi Theatre or ride the famous Metro, which looks like a museum. If you come in winter, go skating in Gorky Park. Moscow never stops surprising its guests!</div>
+
+<h3>Звёздочка ⭐: города России из списка Всемирного наследия ЮНЕСКО</h3>
+<div class="card tame"><b>Казанский Кремль</b> — в списке ЮНЕСКО с 2000 года. Единственная сохранившаяся татарская крепость в России, построена после взятия города Иваном Грозным в 1556–1568 годах. Башня Сююмбике наклонена почти на два метра, как Пизанская, а мечеть Кул-Шариф при открытии в 2005 году была одной из крупнейших в Европе.</div>
+<div class="card tame"><b>Дербент</b> — один из древнейших городов России, ему более 5000 лет. В списке ЮНЕСКО с 2003 года: крепость Нарин-Кала и стены VI века тянутся от гор до Каспийского моря на 40 километров.</div>
+<div class="card tame"><b>Ярославль</b> — исторический центр внесён в список ЮНЕСКО в 2005 году. Здесь в 1750 году Фёдор Волков открыл первый в России публичный театр, а церковь Ильи Пророка расписана фресками XVII века целиком, без белых пятен.</div>
+<div class="hint">💡 Важно: Херсонес Таврический и Генуэзская крепость в Судаке пока находятся только в предварительном списке ЮНЕСКО (tentative list) — в звёздочке не называйте их объектами Всемирного наследия.</div>
+</div>
+
+<div class="panel" id="p11">
+<h2>Итоги книги</h2>
+<h3>Теперь я могу…</h3>
+<ul>
+<li> 🗽 описывать достопримечательность на английском (It is worth visiting…, It dates back to…);</li>
+<li> 🌆 сравнивать города России и англоязычных стран;</li>
+<li> 📖 работать с двуязычным текстом: находить эквиваленты;</li>
+<li> 🎧 понимать на слух описание места (озвучка книги);</li>
+<li> 📝 писать листовку для туристов с 4 структурами (Мастерская листовок).</li>
+</ul>
+<h3>Домашнее задание</h3>
+<p>📝 Соберите листовку Visit our city! в Мастерской листовок (вкладка «Листовка»): 80–100 слов, минимум 4 структуры, 5 слов из словаря. Оформите листовку на бумаге или в презентации — с картинками и одним фактом с цифрой.</p>
+<p>⭐ Звёздочка: добавьте в листовку 2 факта о городе из списка Всемирного наследия ЮНЕСКО и подготовьте 2-минутную «экскурсию» по своему городу на английском ⭐</p>
+<h3>Рефлексия</h3>
+<p class="small">Зелёный — книга открыла новые города; жёлтый — было трудно, но интересно; красный — нужна помощь.</p>
+<div class="msg" id="rmsg"></div>
+<div>
+<button class="check" id="r1">🟩 Открыл новые города!</button>
+<button class="check" id="r2">🟨 Было трудно, но интересно</button>
+<button class="check" id="r3">🟥 Нужна помощь</button>
+</div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".landmark .snd").forEach(function(b){b.addEventListener("click",function(){
+var lm=b.closest(".landmark");var desc=lm.querySelector(".desc").textContent;say(desc);});});
+
+document.querySelectorAll(".rubtn").forEach(function(b){b.addEventListener("click",function(){
+var ru=b.parentElement.querySelector(".ru");
+ru.style.display=ru.style.display==="block"?"none":"block";});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.9;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1600);}
+
+var WORDS=[["landmark","достопримечательность","The Kremlin is a famous landmark."],
+["cathedral","собор","St Basil&#39;s Cathedral has ten domes."],
+["palace","дворец","The Winter Palace was an imperial residence."],
+["tower","башня","The Spasskaya Tower is the symbol of Moscow."],
+["bridge","мост","Tower Bridge opens for ships."],
+["fountain","фонтан","Peterhof is famous for its fountains."],
+["museum","музей","The Hermitage is a world-famous museum."],
+["monument","монумент, памятник","The Washington Monument is an obelisk."],
+["skyscraper","небоскрёб","New York is full of skyscrapers."],
+["square","площадь","Red Square is the heart of Moscow."],
+["embankment","набережная","Walk along the Neva embankment."],
+["sightseeing","осмотр достопримечательностей","We went sightseeing in London."]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span><button class=\"snd2\">🔊</button><div class=\"tr\"><b>"+w[1]+"</b><br><i>"+w[2]+"</i></div>";
+c.querySelector(".snd2").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var QUIZ=[
+["What is the heart of Moscow?","Red Square","Times Square","Trafalgar Square"],
+["When was St Basil&#39;s Cathedral built?","1555–1561","1855–1861","1703–1710"],
+["Who founded the Hermitage?","Catherine the Great","Peter the Great","Ivan the Terrible"],
+["Why do the fountains of Peterhof work without pumps?","gravity carries the water","electric engines","wind power"],
+["What is Big Ben exactly?","the big bell of the clock","the whole tower","a parliament member"],
+["Which country gave the Statue of Liberty to the USA?","France","Great Britain","Russia"],
+["What is hidden in the Tower of London today?","the Crown Jewels","the American flag","the oldest map of London"],
+["Who spoke at the Lincoln Memorial in 1963?","Martin Luther King","Abraham Lincoln","George Washington"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");
+div.innerHTML="<div class=\"q\">"+q[0]+"</div>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 8. "+(qScore===8?"Отлично! Excellent!":"Хорошая работа, перечитайте главы книги!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+function lw(t){return t.trim().split(/\s+/).filter(Boolean).length;}
+function buildLeaflet(){
+var city=document.getElementById("lcity").value.trim()||"Kazan";
+var l1=document.getElementById("l1").value.trim()||"the main landmark";
+var l2=document.getElementById("l2").value.trim()||"the famous museum";
+var act=document.getElementById("lact").value.trim()||"walk along the embankment";
+var like=document.getElementById("llike").value.trim()||"history";
+var season=document.getElementById("lseason").value;
+var parts=["Welcome to "+city+" — a city with a great history and warm people!"];
+var n=0;
+if(document.getElementById("c1").checked){parts.push("Start your journey at "+l1+", because this place keeps the spirit of the whole city.");n++;}
+if(document.getElementById("c2").checked){parts.push("Don't miss "+l2+", which attracts thousands of tourists from different countries every year.");n++;}
+if(document.getElementById("c3").checked){parts.push("You can "+act+" after an exciting day in the city centre.");n++;}
+if(document.getElementById("c4").checked){parts.push("If you like "+like+", "+city+" is exactly the place that will impress you.");n++;}
+if(document.getElementById("c5").checked){parts.push("The streets of the old town are full of landmarks which remember centuries of history.");n++;}
+if(document.getElementById("c6").checked){parts.push(city+" is worth visiting "+season+", so plan your trip and book your tickets in advance!");n++;}
+parts.push(city+" is waiting for you!");
+var text=parts.join(" ");
+document.getElementById("lout").textContent=text;
+var w=lw(text);
+var msg="Слов: "+w+" • Структур: "+n+" из 6. ";
+if(w<80){msg+="Маловато — добавьте ещё одну структуру! ";}
+else if(w>100){msg+="Перебор — уберите одну структуру или сократите фразы! ";}
+if(n<4){msg+="Выбрано меньше 4 структур — добавьте ещё!";}
+else if(w>=80&&w<=100){msg+="Листовка готова! 🎉";}
+document.getElementById("lmsg").textContent=msg;
+}
+document.getElementById("lbuild").addEventListener("click",buildLeaflet);
+document.getElementById("llisten").addEventListener("click",function(){
+var cur=document.getElementById("lout").textContent;
+if(cur.indexOf("Welcome to")!==0){buildLeaflet();}
+say(document.getElementById("lout").textContent);
+});
+
+var msgs=["Книга открыла новые города — отличная работа! 🌍","Было трудно, но интересно — так рождаются знания! 🌍","Спросите учителя — и путешествие продолжится! 🌍"];
+document.getElementById("r1").addEventListener("click",function(){document.getElementById("rmsg").textContent=msgs[0];});
+document.getElementById("r2").addEventListener("click",function(){document.getElementById("rmsg").textContent=msgs[1];});
+document.getElementById("r3").addEventListener("click",function(){document.getElementById("rmsg").textContent=msgs[2];});
+</script>
+</body>
+</html>
