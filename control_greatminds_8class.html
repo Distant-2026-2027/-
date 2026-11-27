@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 8 класс — Контроль знаний: выдающиеся люди (Spotlight 8, Module 3)</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#eef1f5;color:#22293a;line-height:1.55;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#2c3e50,#4b6584);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:24px;margin-bottom:6px}
+.meta{font-size:13px;opacity:.93}
+.badge{display:inline-block;background:#ffd54f;color:#2c3e50;font-weight:700;border-radius:20px;padding:4px 14px;font-size:13px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#d6dce6;color:#2c3e50;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#2c3e50;color:#fff}
+.panel{display:none;background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(44,62,80,.1)}
+.panel.on{display:block}
+.panel h2{color:#2c3e50;font-size:20px;margin-bottom:10px}
+.panel h3{color:#4b6584;font-size:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+th,td{border:1px solid #ccd4e0;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#e9edf4;color:#2c3e50}
+.reading{background:#f7f9fc;border:2px solid #ccd4e0;border-radius:11px;padding:12px 14px;margin:10px 0;font-size:15px}
+.q{font-weight:700;margin:12px 0 4px;color:#4b6584}
+.qbtn{display:block;width:100%;text-align:left;background:#f7f9fc;border:2px solid #ccd4e0;border-radius:9px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:15px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tfbtn{border:2px solid #ccd4e0;background:#f7f9fc;border-radius:9px;padding:8px 18px;cursor:pointer;font-size:15px;font-weight:700;margin:4px 6px 0 0}
+.tfbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.tfbtn.bad{background:#fde0dc;border-color:#e57373}
+.bank{background:#fff7d6;border:1px dashed #d0a600;border-radius:10px;padding:9px 12px;margin:8px 0;font-size:15px;font-weight:600}
+.gap{width:200px;border:1px solid #b9c2d4;border-radius:7px;padding:6px 9px;font-size:14px;margin:5px 0}
+.sel{border:1px solid #b9c2d4;border-radius:7px;padding:6px 9px;font-size:14px;margin:3px 0;max-width:420px}
+.check{background:#2c3e50;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-size:15px;font-weight:700;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px;font-size:15px}
+.hint{background:#fff7d6;border-left:4px solid #e0a800;padding:9px 13px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px}
+.cap{font-weight:700;color:#c2571a;letter-spacing:.5px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:13px;color:#5d6b80}
+textarea{width:100%;min-height:190px;border:2px solid #ccd4e0;border-radius:10px;padding:10px 12px;font-size:15px;font-family:Segoe UI,Arial,sans-serif;resize:vertical}
+.model{display:none;background:#f7f9fc;border:2px dashed #4b6584;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px}
+.speakcard{background:#f7f9fc;border:2px solid #ccd4e0;border-radius:11px;padding:11px 13px;margin:9px 0}
+.totalbox{background:#eef3fa;border:2px solid #2c3e50;border-radius:12px;padding:14px 16px;margin:10px 0;font-size:15px}
+.grade{font-size:22px;font-weight:700;color:#2c3e50;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>📝 Английский язык • 8 класс — Контроль знаний</h1>
+<div style="font-size:19px;font-weight:600">Родная страна и страны изучаемого языка. Выдающиеся люди: учёные, писатели, поэты, художники, музыканты, спортсмены</div>
+<div class="meta">Spotlight 8 • Module 3 «Great Minds» (стр. 42–57) • контрольная работа • ФГОС ООО и ФРП</div>
+<div class="badge">⏱ 40–45 минут • автоматическая проверка • отметка по шкале</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Пояснения</button>
+<button class="tab" data-p="p2">Аудирование</button>
+<button class="tab" data-p="p3">Чтение</button>
+<button class="tab" data-p="p4">Лексика</button>
+<button class="tab" data-p="p5">Грамматика</button>
+<button class="tab" data-p="p6">Словообразование</button>
+<button class="tab" data-p="p7">Письмо</button>
+<button class="tab" data-p="p8">Говорение</button>
+<button class="tab" data-p="p9">Ключи</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Пояснения для учителя</h2>
+<h3>Цель контроля</h3>
+<p>Проверить освоение Module 3 «Great Minds»: лексика «Наука и выдающиеся люди», Past Tenses (Past Simple, Past Continuous, Past Perfect) и used to, словообразование, умения аудирования, чтения, письма (биография) и говорения.</p>
+<h3>Что проверяется (по ФГОС ООО и ФРП)</h3>
+<table>
+<tr><th>Секция</th><th>Проверяемое умение</th><th>Баллы</th><th>Проверка</th></tr>
+<tr><td>Аудирование</td><td>понимание на слух с выборочным извлечением информации (True/False)</td><td>5</td><td>автоматически</td></tr>
+<tr><td>Чтение</td><td>понимание прочитанного с извлечением фактической информации</td><td>5</td><td>автоматически</td></tr>
+<tr><td>Лексика</td><td>употребление лексики модуля в контексте</td><td>8</td><td>автоматически</td></tr>
+<tr><td>Грамматика</td><td>Past Simple, Past Continuous, Past Perfect, used to</td><td>6</td><td>автоматически</td></tr>
+<tr><td>Словообразование</td><td>суффиксы существительных и прилагательных (-ist, -er, -ian, -ion)</td><td>5</td><td>автоматически</td></tr>
+<tr><td>Письмо</td><td>биография выдающегося человека, 100–140 слов</td><td>оценивает учитель</td><td>по критериям K1–K4</td></tr>
+<tr><td>Говорение</td><td>монолог-описание выдающегося человека (карточка-тема)</td><td>оценивает учитель</td><td>по критериям K1–K4</td></tr>
+</table>
+<h3>Критерии письма и говорения</h3>
+<ul>
+<li><b>K1 Содержание:</b> выполнены все пункты плана, объём 100–140 слов — 1 балл;</li>
+<li><b>K2 Организация:</b> логичная структура, средства связи (also, however, in my opinion) — 1 балл;</li>
+<li><b>K3 Лексика:</b> использовано не менее 6 слов модуля (scientist, discovery, theory, poet…) — 1 балл;</li>
+<li><b>K4 Грамматика:</b>Past Tenses и used to без ошибок, влияющих на понимание — 1 балл.</li>
+</ul>
+<h3>Шкала перевода в отметку (автосекции, 29 баллов)</h3>
+<table>
+<tr><th>Процент</th><th>26–29 баллов</th><th>22–25 баллов</th><th>17–21 балл</th><th>0–16 баллов</th></tr>
+<tr><td>Отметка</td><td>«5» отлично</td><td>«4» хорошо</td><td>«3» удовлетворительно</td><td>«2» повторить модуль</td></tr>
+</table>
+<p class="small">Итоговая отметка за урок = автосекции (шкала выше) + письмо и говорение (по K1–K4, добавляет учитель). Результат виден во вкладке «Итоги» сразу после выполнения секций.</p>
+<div class="hint">💡 Порядок работы: аудирование (текст звучит дважды) → чтение → лексика → грамматика → словообразование → письмо → говорение. В «Ключи» заглядывайте только для самопроверки после выполнения!</div>
+</div>
+
+<div class="panel" id="p2">
+<h2>Секция 1. Аудирование — 5 баллов</h2>
+<p class="small">Нажмите «Прослушать» — текст прозвучит дважды. Затем отметьте, верны ли утверждения (True / False). Отвечайте внимательно: после нажатия ответ не меняется!</p>
+<p><button class="check" id="lplay">🔊 Прослушать текст (дважды)</button></p>
+<div id="lq"></div>
+<div class="msg" id="lmsg"></div>
+<div class="hint">💡 Совет: слушайте с первого раза «для понимания», со второго — записывайте ключевые факты: даты, имена, названия.</div>
+</div>
+
+<div class="panel" id="p3">
+<h2>Секция 2. Чтение — 5 баллов</h2>
+<p class="small">Прочитайте текст и выберите правильный ответ. Читайте внимательно: ответ на каждый вопрос есть в тексте!</p>
+<div class="reading">
+<b>Great minds of two countries</b><br><br>
+Russia and Britain have given the world many great people. Pyotr Tchaikovsky composed the wonderful ballets Swan Lake and The Nutcracker. Alexander Pushkin, the great Russian poet, wrote the novel Eugene Onegin. Dmitry Mendeleev created the famous periodic table of chemical elements. Yuri Gagarin became the first man in space in 1961. Ivan Aivazovsky painted thousands of beautiful seascapes.<br><br>
+Britain is proud of William Shakespeare, who wrote 37 plays and 154 sonnets. Isaac Newton discovered the law of gravity. Alexander Fleming made one of the most important medical discoveries — penicillin. Agatha Christie, the queen of detective novels, wrote more than 70 books. Charles Darwin changed our understanding of life on Earth with his theory of evolution.
+</div>
+<div id="rq"></div>
+<div class="msg" id="rmsg"></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Секция 3. Лексика — 8 баллов</h2>
+<p class="small">Вставьте подходящее слово из банка. Пишите слово в нужной форме без артиклей.</p>
+<div class="bank">Слова для вставки: discovery • theory • research • scientist • poet • athlete • musician • prize</div>
+<div id="vg"></div>
+<button class="check" id="vgcheck">Проверить</button>
+<div class="msg" id="vgmsg"></div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Секция 4. Грамматика: Past Tenses и used to — 6 баллов</h2>
+<p class="small">Выберите правильную форму глагола в каждом предложении.</p>
+<div id="gq"></div>
+<button class="check" id="gcheck">Проверить</button>
+<div class="msg" id="gmsg"></div>
+<div class="hint">💡 Памятка: Past Simple — факт в прошлом (wrote, won). Past Continuous — процесс в момент (was studying). Past Perfect — действие ДО другого действия в прошлом (had finished, had already collected). used to + инфинитив — привычка в прошлом (used to work).</div>
+</div>
+
+<div class="panel" id="p6">
+<h2>Секция 5. Словообразование — 5 баллов</h2>
+<p class="small">Образуйте нужное слово от слова в скобках и запишите его.</p>
+<div id="wf"></div>
+<button class="check" id="wfcheck">Проверить</button>
+<div class="msg" id="wfmsg"></div>
+<div class="hint">💡 Подсказка: -ist и -er — профессии (scientist, writer); -ian — национальность и профессии (musician, Russian); -ion — предметы и события (invention).</div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Секция 6. Письмо: биография великого человека — 4 балла</h2>
+<p class="small"><b>Задание:</b> напишите биографию выдающегося человека России или Великобритании (100–140 слов). Расскажите: кто он, когда и где родился, чем прославился, за что вы им восхищаетесь.</p>
+<h3>План биографии</h3>
+<ul>
+<li>1 абзац — кто это и чем известен (a great Russian composer / the famous English writer);</li>
+<li>2 абзац — рождение и образование (was born in…, entered…);</li>
+<li>3 абзац — достижения (composed…, wrote…, discovered…);</li>
+<li>4 абзац — почему вы им восхищаетесь (I admire him because…).</li>
+</ul>
+<div class="hint">💡 Чек-лист: 100–140 слов · минимум 6 слов модуля · 2 факта с датой · Past Tenses · вывод-мнение в конце.</p></div>
+<p><textarea id="wtext" placeholder="Напишите биографию здесь…"></textarea></p>
+<p><button class="check" id="wcount">📊 Посчитать слова</button> <button class="check" id="wmodel">📖 Показать образец</button> <button class="check" id="wlisten">🔊 Послушать образец</button></p>
+<div class="msg" id="wmsg"></div>
+<div class="model" id="wm"><b>Образец: Pyotr Tchaikovsky (105 слов)</b><br>Pyotr Tchaikovsky was a great Russian composer. He was born in 1840 in Votkinsk. As a child, he loved music, but his parents wanted him to become a lawyer. Later, he entered the St Petersburg Conservatory and studied music professionally. Tchaikovsky composed six symphonies, ten operas and the world-famous ballets Swan Lake, The Nutcracker and Sleeping Beauty. His music is full of deep feelings, and people all over the world love and play it today. Tchaikovsky died in 1893, but his music lives on. I admire this great musician because he showed that Russian music can conquer the whole world.</div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Секция 7. Говорение: карточки-темы</h2>
+<p class="small">Выберите карточку и подготовьте монолог (1,5–2 минуты). Оценивает учитель по критериям K1–K4.</p>
+<div class="speakcard"><b>Карточка 1. A famous person of my country</b>
+<ul>
+<li>Who is this person? What is he or she famous for?</li>
+<li>What facts about his or her life do you know?</li>
+<li>What can we learn from this person?</li>
+</ul></div>
+<div class="speakcard"><b>Карточка 2. Great minds of Britain</b>
+<ul>
+<li>Which British writer, scientist or musician do you know?</li>
+<li>Why is this person famous all over the world?</li>
+<li>Would you like to visit the places connected with him or her?</li>
+</ul></div>
+<div class="speakcard"><b>Карточка 3. My future profession and my idol</b>
+<ul>
+<li>What profession attracts you and why?</li>
+<li>What famous person would you like to be like?</li>
+<li>What qualities do you need to achieve this?</li>
+</ul></div>
+<div class="hint">💡 Опоры для монолога: He was born in… · He is famous for… · He made an important discovery… · I admire him because… · His example teaches us that…</div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Ключи — только после выполнения!</h2>
+<div class="reading">
+<b>Аудирование:</b> 1 True · 2 False · 3 True · 4 False · 5 True.<br><br>
+<b>Чтение:</b> 1 Pyotr Tchaikovsky · 2 the periodic table of chemical elements · 3 in 1961 · 4 37 · 5 Alexander Fleming.<br><br>
+<b>Лексика:</b> 1 discovery · 2 theory · 3 research · 4 scientist · 5 poet · 6 athlete · 7 musician · 8 prize.<br><br>
+<b>Грамматика:</b> 1 won · 2 had already collected · 3 discovered · 4 used to · 5 was studying · 6 had finished.<br><br>
+<b>Словообразование:</b> 1 scientist · 2 writer · 3 musician · 4 Russian · 5 invention.
+</div>
+<p class="small">Письмо и говорение оцениваются учителем по критериям K1–K4 из вкладки «Пояснения». Шкала автосекций — во вкладке «Итоги».</p>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги контрольной</h2>
+<div class="totalbox" id="tots"></div>
+<div class="hint">💡 Отметка считается по автосекциям (29 баллов): 90–100% — «5», 75–89% — «4», 60–74% — «3», ниже 60% — «2». Письмо и говорение добавляет учитель (по 4 балла, критерии K1–K4). Секции можно перепройти: обновите страницу.</div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+function sayOnce(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.88;speechSynthesis.speak(u);}
+function say(w){sayOnce(w);setTimeout(function(){sayOnce(w);},1700);}
+
+var TOTALS={l:0,r:0,v:0,g:0,wf:0};
+function upd(){
+var s=TOTALS.l+TOTALS.r+TOTALS.v+TOTALS.g+TOTALS.wf;
+var m=29;var p=Math.round(s/m*100);
+var gr=p>=90?"5 (отлично)":p>=75?"4 (хорошо)":p>=60?"3 (удовлетворительно)":"2 (нужно повторить модуль)";
+var rows=[["Аудирование",TOTALS.l,5],["Чтение",TOTALS.r,5],["Лексика",TOTALS.v,8],["Грамматика",TOTALS.g,6],["Словообразование",TOTALS.wf,5]];
+var html="<table><tr><th>Секция</th><th>Баллы</th></tr>";
+rows.forEach(function(rw){html+="<tr><td>"+rw[0]+"</td><td>"+rw[1]+" из "+rw[2]+"</td></tr>";});
+html+="<tr><td><b>Итого (автосекции)</b></td><td><b>"+s+" из "+m+" — "+p+"%</b></td></tr></table>";
+html+="<div class=\"grade\">Предварительная отметка: "+gr+"</div>";
+html+="<p class=\"small\">Письмо и говорение оцениваются учителем по критериям K1–K4 (до 4 баллов за каждое). Итоговая отметка = автосекции + эти секции.</p>";
+document.getElementById("tots").innerHTML=html;
+}
+
+var LISTENTEXT="Today we are talking about great minds. Our guest, Doctor Emily Carter, studies the life of Charles Darwin. Charles Darwin was born in England in 1809. As a young man, he first studied medicine, but he loved nature more. In 1831, he joined a voyage around the world on the ship Beagle. He collected thousands of plants and animals and wrote pages of notes. Twenty years later, in 1859, he published his famous book On the Origin of Species, and his theory of evolution changed science forever. Darwin died in 1882 and is buried in Westminster Abbey, near other great people of Britain.";
+document.getElementById("lplay").addEventListener("click",function(){say(LISTENTEXT);});
+
+var TFQ=[["Darwin was born in the nineteenth century.",true],
+["He always wanted to be a doctor.",false],
+["The ship that took him around the world was called the Beagle.",true],
+["He published his famous book immediately after the voyage.",false],
+["Darwin is buried in Westminster Abbey.",true]];
+var lqbox=document.getElementById("lq"),lDone=0,lOk=0;
+TFQ.forEach(function(q,ix){var div=document.createElement("div");div.className="q";
+div.innerHTML=(ix+1)+". "+q[0]+"<br>";
+[["True",true],["False",false]].forEach(function(o){var b=document.createElement("button");b.className="tfbtn";b.textContent=o[0];
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";lDone++;
+if(o[1]===q[1]){b.classList.add("ok");lOk++;TOTALS.l=lOk;}
+else{b.classList.add("bad");
+div.querySelectorAll(".tfbtn").forEach(function(x){var right=(x.textContent==="True")===q[1];if(right)x.classList.add("ok");});}
+document.getElementById("lmsg").textContent="Аудирование: отвечено "+lDone+" из 5, правильных "+lOk+".";
+upd();
+});div.appendChild(b);});
+lqbox.appendChild(div);});
+
+var RQ=[["Who wrote the ballets Swan Lake and The Nutcracker?","Pyotr Tchaikovsky","Alexander Pushkin","Ivan Aivazovsky"],
+["What did Dmitry Mendeleev create?","the periodic table of chemical elements","the theory of evolution","the law of gravity"],
+["When did Yuri Gagarin fly into space?","in 1961","in 1861","in 1916"],
+["How many plays did Shakespeare write?","37","54","70"],
+["Who made the discovery of penicillin?","Alexander Fleming","Isaac Newton","Charles Darwin"]];
+var rqbox=document.getElementById("rq"),rDone=0,rOk=0;
+RQ.forEach(function(q,ix){var div=document.createElement("div");div.className="q";
+div.innerHTML=(ix+1)+". "+q[0];
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";rDone++;
+if(o===right){b.classList.add("ok");rOk++;TOTALS.r=rOk;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+document.getElementById("rmsg").textContent="Чтение: отвечено "+rDone+" из 5, правильных "+rOk+".";
+upd();
+});div.appendChild(b);});
+rqbox.appendChild(div);});
+
+var VG=[["Alexander Fleming made an important ___ — penicillin saved millions of lives.","discovery"],
+["Isaac Newton developed the ___ of gravity.","theory"],
+["Darwin spent years of scientific ___ on the Galapagos Islands.","research"],
+["A ___ studies the natural world and makes experiments.","scientist"],
+["Pushkin is the greatest Russian ___.","poet"],
+["Usain Bolt is a world-famous ___.","athlete"],
+["Tchaikovsky was a brilliant ___ — his ballets are famous all over the world.","musician"],
+["Marie Curie received the Nobel ___ twice.","prize"]];
+var vgbox=document.getElementById("vg");
+VG.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+vgbox.appendChild(row);});
+document.getElementById("vgcheck").addEventListener("click",function(){
+var ok=0;var inputs=vgbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+TOTALS.v=ok;
+document.getElementById("vgmsg").textContent="Лексика: правильно "+ok+" из 8.";
+upd();});
+
+var GQ=[["Marie Curie ___ two Nobel Prizes.",["won","had won","was winning"],"won"],
+["By 1859 Darwin ___ thousands of specimens.",["had already collected","already collected","has already collected"],"had already collected"],
+["Columbus ___ America in 1492.",["discovered","was discovering","had discovered"],"discovered"],
+["My grandfather ___ work as a teacher.",["used to","use to","was used to"],"used to"],
+["While Fleming ___ bacteria, he noticed the mould.",["was studying","studied","had studied"],"was studying"],
+["After Mendeleev ___ university, he became a professor.",["had finished","finished","was finishing"],"had finished"]];
+var gqbox=document.getElementById("gq");
+GQ.forEach(function(g,ix){var div=document.createElement("div");div.className="q";
+div.innerHTML=(ix+1)+". "+g[0]+"<br>";
+var s=document.createElement("select");s.className="sel";s.dataset.a=g[2];
+s.innerHTML="<option value=\"\">— выберите —</option>"+g[1].map(function(o){return "<option>"+o+"</option>";}).join("");
+div.appendChild(s);gqbox.appendChild(div);});
+document.getElementById("gcheck").addEventListener("click",function(){
+var ok=0;var sels=gqbox.querySelectorAll("select");
+sels.forEach(function(s){if(s.value===s.dataset.a){ok++;s.style.borderColor="#4caf50";}else{s.style.borderColor="#c62828";}});
+TOTALS.g=ok;
+document.getElementById("gmsg").textContent="Грамматика: правильно "+ok+" из 6.";
+upd();});
+
+var WF=[["Alexander Fleming was a famous ___ (SCIENCE).","scientist"],
+["William Shakespeare is the greatest English ___ (WRITE).","writer"],
+["Tchaikovsky was a brilliant ___ (MUSIC).","musician"],
+["Lomonosov was a great ___ (RUSSIA) scientist and poet.","Russian"],
+["The ___ (INVENT) of the telephone changed our lives.","invention"]];
+var wfbox=document.getElementById("wf");
+WF.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+wfbox.appendChild(row);});
+document.getElementById("wfcheck").addEventListener("click",function(){
+var ok=0;var inputs=wfbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a.toLowerCase()){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+TOTALS.wf=ok;
+document.getElementById("wfmsg").textContent="Словообразование: правильно "+ok+" из 5.";
+upd();});
+
+function lw(t){return t.trim().split(/\s+/).filter(Boolean).length;}
+document.getElementById("wcount").addEventListener("click",function(){
+var n=lw(document.getElementById("wtext").value);
+document.getElementById("wmsg").textContent="Слов: "+n+". Норма — 100–140 слов."+(n<100?" Добавьте 1–2 предложения о достижениях или о своём мнении!":n>140?" Сократите: уберите повторяющиеся факты.":" Объём в норме! Проверьте чек-лист: 6 слов модуля, 2 даты, вывод-мнение.");});
+document.getElementById("wmodel").addEventListener("click",function(){
+var m=document.getElementById("wm");m.style.display=m.style.display==="block"?"none":"block";});
+document.getElementById("wlisten").addEventListener("click",function(){sayOnce(document.getElementById("wm").textContent);});
+
+upd();
+</script>
+</body>
+</html>
