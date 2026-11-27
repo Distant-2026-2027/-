@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский язык, 9 класс — Природа: флора и фауна. Опасные животные</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#eaf4ec;color:#16322a;line-height:1.55;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#1b4d2e,#2e7d4f);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:14px}
+header h1{font-size:25px;margin-bottom:6px}
+.meta{font-size:13px;opacity:.93}
+.badge{display:inline-block;background:#ffd54f;color:#1b4d2e;font-weight:700;border-radius:20px;padding:4px 14px;font-size:13px;margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{border:none;background:#d2e6d4;color:#1b4d2e;padding:8px 13px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600}
+.tab.on{background:#1b4d2e;color:#fff}
+.panel{display:none;background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(27,77,46,.1)}
+.panel.on{display:block}
+.panel h2{color:#1b4d2e;font-size:20px;margin-bottom:10px}
+.panel h3{color:#2e7d4f;font-size:16px;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+th,td{border:1px solid #c8dfd0;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#e6f2e8;color:#1b4d2e}
+.card{background:#f5faf6;border:2px solid #d2e6d4;border-radius:11px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.word{font-weight:700;color:#1b4d2e;font-size:18px}
+.snd{background:#ffd54f;border:none;border-radius:7px;padding:3px 10px;cursor:pointer;font-size:15px;margin-left:8px}
+.tr{display:none;color:#2e7d4f;margin-top:5px;font-size:14px}
+.hint{background:#fff7d6;border-left:4px solid #e0a800;padding:9px 13px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px}
+.dline{background:#f5faf6;border:2px solid #d2e6d4;border-radius:10px;padding:9px 13px;margin:6px 0;cursor:pointer;font-size:15px}
+.speaker{font-weight:700;color:#b35c00}
+.emo{font-size:24px;margin-right:6px}
+.animal{background:#f5faf6;border:2px solid #9dc4a5;border-radius:12px;padding:13px 15px;margin:11px 0}
+.animal h3{margin:0 0 4px}
+.animal .say{background:#ffd54f;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:14px;font-weight:700;color:#1b4d2e;margin-top:6px}
+.fact{background:#e6f2e8;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:14px;color:#1b4d2e}
+.quiz{margin:9px 0}
+.qbtn{display:block;width:100%;text-align:left;background:#f5faf6;border:2px solid #c8dfd0;border-radius:9px;padding:8px 12px;margin:5px 0;cursor:pointer;font-size:15px}
+.qbtn.ok{background:#d9f2d9;border-color:#4caf50}
+.qbtn.bad{background:#fde0dc;border-color:#e57373}
+.tile{display:inline-block;background:#e6f2e8;border:2px solid #9dc4a5;border-radius:9px;padding:9px 12px;margin:4px;cursor:pointer;font-size:15px;font-weight:700;min-width:110px;text-align:center}
+.tile.sel{background:#ffd54f;border-color:#d09500}
+.tile.done{background:#d9f2d9;border-color:#4caf50;cursor:default;opacity:.8}
+.gap{width:160px;border:1px solid #9dc4a5;border-radius:7px;padding:5px 8px;font-size:14px;margin:4px}
+.check{background:#1b4d2e;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-size:15px;font-weight:700;margin-top:8px}
+.mark{font-weight:700;margin-left:6px}
+.msg{color:#2e7d32;font-weight:700;margin-top:8px;font-size:15px}
+ul{margin:6px 0 6px 22px}
+li{margin:4px 0}
+.small{font-size:13px;color:#547a63}
+.bank{background:#fff7d6;border:1px dashed #d0a600;border-radius:10px;padding:9px 12px;margin:8px 0;font-size:15px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🐍 Английский язык • 9 класс</h1>
+<div style="font-size:20px;font-weight:600">Природа: флора и фауна. Опасные животные</div>
+<div class="meta">Spotlight 9 • Module 7 «Staying Safe» • Culture Corner 7 «The USA&#39;s Dangerous Wild Animals» (стр. 117) • 7b «In an Emergency» • ФГОС ООО и ФРП</div>
+<div class="badge">⏱ 40 минут</div>
+</header>
+
+<div class="tabs">
+<button class="tab on" data-p="p1">Цели и задачи</button>
+<button class="tab" data-p="p2">Ход урока</button>
+<button class="tab" data-p="p3">Разминка</button>
+<button class="tab" data-p="p4">Новые слова</button>
+<button class="tab" data-p="p5">Игра: пары</button>
+<button class="tab" data-p="p6">Опасные животные США</button>
+<button class="tab" data-p="p7">Грамматика</button>
+<button class="tab" data-p="p8">Диалог: звонок 999</button>
+<button class="tab" data-p="p9">Говорение</button>
+<button class="tab" data-p="p10">Итоги</button>
+</div>
+
+<div class="panel on" id="p1">
+<h2>Цели и задачи урока</h2>
+<h3>Цель</h3>
+<p>Научиться говорить об опасных животных на английском языке: описывать, чем опасны животные и как защититься, а также вызывать экстренную помощь.</p>
+<h3>Задачи</h3>
+<ul>
+<li><b>Обучающие:</b> ввести лексику «Дикие животные и опасность»; научить описывать животное по факту-файлу; отработать Conditionals Type 1 и 2 и модальные глаголы should/must/can в советах.</li>
+<li><b>Развивающие:</b> развивать умения чтения с извлечением информации, диалогической речи и языковой догадки.</li>
+<li><b>Воспитательные:</b> формировать бережное отношение к природе и культуру безопасного поведения в дикой природе.</li>
+</ul>
+<h3>Планируемые результаты</h3>
+<table>
+<tr><th>Предметные</th><th>Метапредметные</th><th>Личностные</th></tr>
+<tr><td>Называет опасных животных; ведёт факты и советы; употребляет Conditionals 1/2; ведёт диалог со службой спасения</td><td>Составляет факты-файлы по схеме, сравнивает животных двух стран, проверяет себя</td><td>Отвеченно относится к природе, соблюдает правила безопасности, уважает диких животных</td></tr>
+</table>
+<p class="small"><b>Оборудование:</b> компьютер/телефон с браузером, проектор (по возможности), учебник Spotlight 9 (стр. 106–117).</p>
+</div>
+
+<div class="panel" id="p2">
+<h2>Ход урока</h2>
+<table>
+<tr><th>Этап</th><th>Время</th><th>Деятельность учителя</th><th>Деятельность учеников</th></tr>
+<tr><td>Организационный момент</td><td>2 мин</td><td>Приветствует, объявляет тему и план</td><td>Приветствуют, включаются в работу</td></tr>
+<tr><td>Речевая разминка</td><td>3 мин</td><td>Задаёт вопросы по вкладке «Разминка»</td><td>Отвечают цепочкой с опорами</td></tr>
+<tr><td>Введение новой лексики</td><td>7 мин</td><td>Открывает вкладку «Новые слова», слушает произношение</td><td>Слушают, повторяют хором и индивидуально</td></tr>
+<tr><td>Лексическая игра</td><td>5 мин</td><td>Организует игру «Пары»</td><td>Играют индивидуально или в парах</td></tr>
+<tr><td>Чтение Culture Corner</td><td>8 мин</td><td>Читает текст об опасных животных США, слушает озвучку</td><td>Заполняют факты-файлы по четырём животным</td></tr>
+<tr><td>Грамматика: conditionals</td><td>6 мин</td><td>Разбирает таблицу и советы, выполняет задания</td><td>Вставляют слова, проверяют себя</td></tr>
+<tr><td>Диалог: звонок 999</td><td>5 мин</td><td>Читает диалог по ролям, задаёт вопросы викторины</td><td>Читают по ролям, отвечают на вопросы</td></tr>
+<tr><td>Говорение (пары)</td><td>2 мин</td><td>Организует сравнение животных США и России</td><td>Сравнивают животных, меняются ролями</td></tr>
+<tr><td>Рефлексия и домашнее задание</td><td>2 мин</td><td>Проводит рефлексию, объясняет домашку</td><td>Оценивают свою работу, записывают задание</td></tr>
+</table>
+<p class="small"><b>Если урок 45 минут:</b> добавьте фонетическую зарядку — звуки [s] и [z] (snake, venom, zone, slides) и ролевую игру «Проводник по парку» (вкладка «Говорение»).</p>
+</div>
+
+<div class="panel" id="p3">
+<h2>Разминка — 4 вопроса цепочкой</h2>
+<p class="small">Нажмите на вопрос — откроется перевод и опора. Отвечайте по цепочке.</p>
+<div class="dline"><span class="emo">🌳</span>1. Do you like spending time in nature?<div class="tr">Тебе нравится проводить время на природе? (Опора: Yes, I do. I like walking in the forest and by the river.)</div></div>
+<div class="dline"><span class="emo">🐻</span>2. What wild animals live in your region?<div class="tr">Какие дикие животные живут в вашем регионе? (Опора: In my region there are hares, foxes, wild boars, vipers…)</div></div>
+<div class="dline"><span class="emo">⚠️</span>3. Are there any dangerous animals in your area?<div class="tr">Есть ли в вашем районе опасные животные? (Опора: Yes, vipers and ticks can be dangerous in summer.)</div></div>
+<div class="dline"><span class="emo">🧭</span>4. What do you do if you meet a wild animal?<div class="tr">Что ты делаешь, если встретишь дикое животное? (Опора: If I meet a wild animal, I stay calm and slowly walk away.)</div></div>
+</div>
+
+<div class="panel" id="p4">
+<h2>Новые слова — 12 карточек со звучкой</h2>
+<p class="small">Нажмите кнопку 🔊 — слово прозвучит дважды. Нажмите на карточку — откроются перевод и пример.</p>
+<div id="words"></div>
+<div class="hint">💡 Полезные словосочетания: snatch prey — схватить добычу; be alert to danger — быть начеку; keep a safe distance — держать безопасную дистанцию; play dead — притвориться мёртвым.</div>
+</div>
+
+<div class="panel" id="p5">
+<h2>Игра: собери пары</h2>
+<p class="small">Откройте две плитки: слово и его перевод. Совпали — станут зелёными. Все 8 пар — победа!</p>
+<div id="game"></div>
+<div class="msg" id="gmsg"></div>
+<button class="check" id="grestart">Начать заново</button>
+</div>
+
+<div class="panel" id="p6">
+<h2>Culture Corner: The USA&#39;s Dangerous Wild Animals (стр. 117)</h2>
+<p class="small">Нажмите 🔊 Listen — описание животного прозвучит дважды. Нажмите на факты — откроется перевод. Заполните факты-файл по схеме: Where it lives? How it can be dangerous? How can you protect yourself?</p>
+
+<div class="animal">
+<h3>🐊 Alligator</h3>
+<div class="desc">Over a million alligators live in slow-moving rivers, lakes, marshes and swamps in the southern states of Florida, Louisiana, Texas and Georgia. They are usually 3 to 5 metres long and eat almost anything, swallowing it whole. They often hide motionless, usually waiting to snatch their prey and drag it under the water. Never try to feed alligators or walk too close to the edge of the water. You don&#39;t want to become an alligator&#39;s next meal!</div>
+<button class="say">🔊 Listen</button>
+<div class="fact">💡 Fascinating fact: Alligators have about 80 teeth which are replaced continuously. Throughout their lifetime they go through at least 2,000 of them!<div class="tr">Более миллиона аллигаторов живут в медленных реках, озёрах, болотах и трясинах южных штатов: Флорида, Луизиана, Техас и Джорджия. Они обычно 3–5 метров длиной и едят почти всё, проглатывая пищу целиком. Часто они прячутся неподвижно, поджидая добычу, чтобы схватить её и утащить под воду. Никогда не пытайтесь кормить аллигаторов и не подходите слишком близко к краю воды. Факт: у аллигатора около 80 зубов, которые постоянно сменяются — за жизнь их бывает не меньше 2 000!</div></div>
+</div>
+
+<div class="animal">
+<h3>🐍 Rattlesnake</h3>
+<div class="desc">Rattlesnakes live mostly in the southwestern states, such as California and Arizona, and are the most common type of poisonous snake in the country. There are 16 different species, but they all have one thing in common — a rattle on their tail that is used to warn other creatures (and people!) to stay away. A rattlesnake bite is very painful and the venom can be fatal. So, when you are walking in an area where there could be snakes, watch where you step. If you know there are rattlesnakes around, wear strong leather boots!</div>
+<button class="say">🔊 Listen</button>
+<div class="fact">💡 Fascinating fact: Baby rattlesnakes are able to attack prey minutes after they are born!<div class="tr">Гремучие змеи живут в основном в юго-западных штатах, таких как Калифорния и Аризона, — это самые распространённые ядовитые змеи страны. Видов 16, но у всех есть общая черта — погремушка на хвосте, которой они предупреждают других (и людей!), чтобы не подходили. Укус очень болезненный, а яд может быть смертельным. Поэтому, гуляя там, где могут быть змеи, смотрите под ноги. Если знаете, что рядом гремучие змеи, надевайте крепкие кожаные сапоги! Факт: змееныши способны нападать на добычу уже через несколько минут после рождения!</div></div>
+</div>
+
+<div class="animal">
+<h3>🐻 Grizzly bear</h3>
+<div class="desc">Grizzly bears live alongside streams, lakes and rivers in Alaska and northwestern states such as Idaho, Montana, Washington and Wyoming. Although sightings are not very common, these huge animals are the most dangerous of all bears and can easily kill or seriously injure humans. They can be unpredictable and ferocious, especially when they are hungry, injured or with their cubs. So, if a bear approaches you, don&#39;t run and if you are attacked, lie face down and play dead!</div>
+<button class="say">🔊 Listen</button>
+<div class="fact">💡 Fascinating fact: Grizzlies can run much faster than humans and even climb trees!<div class="tr">Гризли живут у ручьёв, озёр и рек на Аляске и в северо-западных штатах: Айдахо, Монтана, Вашингтон, Вайоминг. Хотя встречи редки, эти огромные звери — самые опасные из всех медведей и легко могут убить или тяжело ранить человека. Они бывают непредсказуемыми и свирепыми, особенно когда голодны, ранены или рядом с медвежатами. Если медведь приближается — не бегите, а если нападает, ложитесь лицом вниз и притворитесь мёртвым! Факт: гризли бегают гораздо быстрее человека и даже умеют лазать по деревьям!</div></div>
+</div>
+
+<div class="animal">
+<h3>🦝 Raccoon</h3>
+<div class="desc">Raccoons might look cute and cuddly, but they can actually carry many diseases, including rabies, a deadly virus. Raccoons usually live in attics, garages and rubbish bins near people&#39;s homes. Never touch a wild raccoon, and don&#39;t let it scratch you. If you are ever scratched by one, wash the scratch well and see a doctor immediately.</div>
+<button class="say">🔊 Listen</button>
+<div class="fact">💡 Fascinating fact: Raccoons can carry rabies — a deadly virus, so a scratch from a raccoon is a real medical emergency.<div class="tr">Еноты могут выглядеть милыми и пушистыми, но на самом деле они переносят множество болезней, включая бешенство — смертельный вирус. Обычно еноты живут на чердаках, в гаражах и мусорных баках рядом с домами. Никогда не трогайте дикого енота и не давайте ему себя поцарапать. Если енот вас поцарапал, хорошо промойте рану и сразу обратитесь к врачу!</div></div>
+</div>
+
+<h3>Факты-файлы: соотнесите животное и совет</h3>
+<div id="match"></div>
+<button class="check" id="mcheck">Проверить</button>
+<div class="msg" id="mmsg"></div>
+</div>
+
+<div class="panel" id="p7">
+<h2>Грамматика: советы и условия</h2>
+<p class="small">В советах по безопасности звучат conditionals и модальные глаголы. Нажмите на строку таблицы — откроется перевод.</p>
+<table>
+<tr><th>Структура</th><th>Пример</th></tr>
+<tr class="dline"><td>Conditional Type 1: If + Present Simple, will/imperative</td><td>If you see a rattlesnake, do not move.<div class="tr">Если увидишь гремучую змею — не двигайся.</div></td></tr>
+<tr class="dline"><td>Conditional Type 2: If + Past Simple, would + инфинитив</td><td>If I met a grizzly, I would stay very still.<div class="tr">Если бы я встретил гризли, я бы замер.</div></td></tr>
+<tr class="dline"><td>should — совет</td><td>You should wear strong leather boots.<div class="tr">Тебе следует носить крепкие кожаные сапоги.</div></td></tr>
+<tr class="dline"><td>must — строгая обязанность</td><td>You must never feed wild animals.<div class="tr">Никогда нельзя кормить диких животных.</div></td></tr>
+<tr class="dline"><td>can — возможность</td><td>A grizzly can run much faster than you.<div class="tr">Гризли может бежать гораздо быстрее тебя.</div></td></tr>
+</table>
+<div class="bank">Глаголы для вставки: see · were · should · see · would · can</div>
+<div id="gaps"></div>
+<button class="check" id="gapcheck">Проверить</button>
+<div class="msg" id="gapmsg"></div>
+<div class="hint">💡 Памятка: в Type 1 условие — Present Simple (If you see…), а следствие — will или повелительное наклонение. В Type 2 после if — Past Simple (If I were…), а в следствии — would. Совет — should, строгий запрет — must not.</div>
+</div>
+
+<div class="panel" id="p8">
+<h2>Диалог: звонок в службу спасения 999 (7b)</h2>
+<p class="small">Нажмите на реплику — откроется перевод. Потом читайте по ролям!</p>
+<div id="dialogue"></div>
+<h3>Вопросы собеседника о происшествии</h3>
+<div id="speak"></div>
+<p class="small"><b>Ролевая игра:</b> один из вас — оператор службы спасения, второй — пострадавший в парке. Опишите животное, место и состояние пострадавшего. Потом поменяйтесь ролями!</p>
+<h3>Викторина по диалогу</h3>
+<div id="quiz"></div>
+<div class="msg" id="qmsg"></div>
+</div>
+
+<div class="panel" id="p9">
+<h2>Говорение — работа в парах</h2>
+<p class="small">Спросите друг друга по очереди. Нажмите на вопрос — откроется перевод.</p>
+<div id="speakq"></div>
+<p class="small"><b>Ролевая игра «Проводник по парку»:</b> один — гид по природному заповеднику, второй — турист. Гид рассказывает об опасностях заповедника и правилах безопасности, турист задаёт вопросы: Is it dangerous? What should I do if…? Потом поменяйтесь ролями!</p>
+<h3>Опоры для сравнения животных США и России</h3>
+<div class="dline">The grizzly bear is like the brown bear of Russia: both can be dangerous when they are hungry or with their cubs.<div class="tr">Гризли похож на бурого медведя России: оба опасны, когда голодны или рядом с детёнышами.</div></div>
+<div class="dline">The rattlesnake is like the steppe viper: both are poisonous snakes.<div class="tr">Гремучая змея похожа на степную гадюку: обе ядовиты.</div></div>
+<div class="dline">Alligators are not found in Russia, but in America they live in swamps near people.<div class="tr">Аллигаторы в России не водятся, а в Америке живут в болотах рядом с людьми.</div></div>
+</div>
+
+<div class="panel" id="p10">
+<h2>Итоги урока</h2>
+<h3>Сегодня я научился…</h3>
+<ul>
+<li> 🐍 называть опасных животных и описывать, чем они опасны;</li>
+<li> 🗺 рассказывать по факты-файлу: где живёт, чем опасен, как защититься;</li>
+<li> ⚖️ строить советы с conditionals и should / must / can;</li>
+<li> 📞 вести диалог со службой спасения: In an emergency, call 999!</li>
+</ul>
+<h3>Рефлексия: осторожный турист</h3>
+<p class="small">Нажми на кружок: зелёный — всё понятно, жёлтый — не всё понятно, красный — нужна помощь.</p>
+<div>
+<button class="check" id="fl1">🟩 Всё понятно!</button>
+<button class="check" id="fl2">🟨 Не всё понятно</button>
+<button class="check" id="fl3">🟥 Нужна помощь</button>
+</div>
+<div class="msg" id="fmsg"></div>
+<h3>Домашнее задание</h3>
+<p>📝 Составь facts file об одном опасном животном твоего региона по схеме урока: Name / Where it lives / How it can be dangerous / How can you protect yourself (5–6 предложений на английском).</p>
+<p>⭐ Звёздочка: узнай про опасное животное Крыма — степную гадюку, крымского скорпиона или каракурта — и добавь в facts file один поразительный факт ⭐</p>
+<p class="small">Молодцы! Good job today! 👏</p>
+</div>
+
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});
+document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("on")});
+t.classList.add("on");document.getElementById(t.dataset.p).classList.add("on");});});
+
+document.querySelectorAll(".dline").forEach(function(d){d.addEventListener("click",function(){
+var tr=d.querySelector(".tr");if(tr){tr.style.display=tr.style.display==="block"?"none":"block";}});});
+
+document.querySelectorAll(".animal .say").forEach(function(b){b.addEventListener("click",function(){
+var an=b.closest(".animal");var d=an.querySelector(".desc").textContent;say(d);});});
+
+function say(w){var u=new SpeechSynthesisUtterance(w);u.lang="en-GB";u.rate=0.88;
+speechSynthesis.speak(u);setTimeout(function(){speechSynthesis.speak(u);},1700);}
+
+var WORDS=[["motionless","неподвижный","The alligator hides motionless."],
+["fatal","смертельный","A rattlesnake bite can be fatal."],
+["disease","болезнь","Raccoons carry many diseases."],
+["warn","предупреждать","The rattle warns people to stay away."],
+["poisonous","ядовитый","It is the most common poisonous snake."],
+["drag","тащить","They drag their prey under the water."],
+["unpredictable","непредсказуемый","Grizzly bears can be unpredictable."],
+["wildlife","дикая природа","We must respect wildlife."],
+["venom","яд (змеи)","The venom of this snake is very strong."],
+["bite","укус","A snake bite is very painful."],
+["protect","защищать","Strong boots protect your legs."],
+["emergency","чрезвычайная ситуация","In an emergency, call 999."]];
+var wbox=document.getElementById("words");
+WORDS.forEach(function(w){var c=document.createElement("div");c.className="card";
+c.innerHTML="<span class=\"word\">"+w[0]+"</span><button class=\"snd\">🔊</button><div class=\"tr\"><b>"+w[1]+"</b><br><i>"+w[2]+"</i></div>";
+c.querySelector(".snd").addEventListener("click",function(e){e.stopPropagation();say(w[0]);});
+c.addEventListener("click",function(){var tr=c.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+wbox.appendChild(c);});
+
+var PAIRS=[["motionless","неподвижный"],["fatal","смертельный"],["poisonous","ядовитый"],["unpredictable","непредсказуемый"],["drag","тащить"],["warn","предупреждать"],["disease","болезнь"],["venom","яд"]];
+var gEl=document.getElementById("game"),gmsg=document.getElementById("gmsg"),first=null,lock=false,matched=0;
+function buildGame(){gEl.innerHTML="";gmsg.textContent="";first=null;lock=false;matched=0;
+var tiles=[];PAIRS.forEach(function(p,i){tiles.push({t:p[0],id:i});tiles.push({t:p[1],id:i});});
+tiles.sort(function(){return Math.random()-0.5;});
+tiles.forEach(function(tl){var b=document.createElement("div");b.className="tile";b.textContent=tl.t;b.dataset.id=tl.id;
+b.addEventListener("click",function(){pick(b);});gEl.appendChild(b);});}
+function pick(b){if(lock||b.classList.contains("done")||b===first)return;
+b.classList.add("sel");
+if(!first){first=b;return;}
+if(first.dataset.id===b.dataset.id&&first.textContent!==b.textContent){
+first.classList.remove("sel");first.classList.add("done");b.classList.add("done");matched++;first=null;
+if(matched===PAIRS.length){gmsg.textContent="🎉 Отлично! Все 8 пар собраны! Great job!";}
+}else{lock=true;var f=first;first=null;setTimeout(function(){f.classList.remove("sel");b.classList.remove("sel");lock=false;},700);}}
+buildGame();
+document.getElementById("grestart").addEventListener("click",buildGame);
+
+var MATCH=[["The alligator","2"],["The rattlesnake","1"],["The grizzly bear","4"],["The raccoon","3"]];
+var ADV=["wear strong leather boots and watch where you step","never feed it and don&#39;t walk too close to the water","wash the scratch well and see a doctor immediately","don&#39;t run; lie face down and play dead"];
+var mbox=document.getElementById("match");
+MATCH.forEach(function(m,ix){var row=document.createElement("div");row.className="dline";
+row.innerHTML=(ix+1)+". <b>"+m[0]+"</b> — совет № <input class=\"gap\" style=\"width:60px\" data-a=\""+m[1]+"\"> <span class=\"mark\"></span>";
+row.innerHTML+="<div class=\"tr\">"+ADV[+m[1]-1]+"</div>";
+row.addEventListener("click",function(){var tr=row.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+mbox.appendChild(row);});
+document.getElementById("mcheck").addEventListener("click",function(){
+var ok=0;var inputs=mbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("mmsg").textContent="Советов найдено правильно: "+ok+" из 4."+(ok===4?" Все животные в безопасности! 🎉":"");});
+
+var GAPS=[["If you ___ a rattlesnake, do not move.","see"],
+["If I ___ you, I would wear leather boots.","were"],
+["You ___ wear strong boots in rattlesnake areas.","should"],
+["If a raccoon scratches you, ___ a doctor immediately.","see"],
+["If you met an alligator, what ___ you do?","would"],
+["A grizzly ___ run much faster than you.","can"]];
+var gapbox=document.getElementById("gaps");
+GAPS.forEach(function(g){var row=document.createElement("div");
+row.innerHTML=g[0].replace("___","<input class=\"gap\" data-a=\""+g[1]+"\">")+" <span class=\"mark\"></span>";
+gapbox.appendChild(row);});
+document.getElementById("gapcheck").addEventListener("click",function(){
+var ok=0;var inputs=gapbox.querySelectorAll("input");
+inputs.forEach(function(i){var m=i.parentElement.querySelector(".mark");
+if(i.value.trim().toLowerCase()===i.dataset.a){m.textContent="✓";m.style.color="#2e7d32";ok++;}
+else{m.textContent="✗";m.style.color="#c62828";}});
+document.getElementById("gapmsg").textContent="Правильно: "+ok+" из "+GAPS.length+(ok===GAPS.length?" — превосходно! 🎉":"");});
+
+var DLG=[["Operator","Emergency services. Which service do you require?","Служба спасения. Какая служба вам нужна?"],
+["Caller","Ambulance, please. A man has been bitten by a snake in the park.","Скорая, пожалуйста. В парке человека укусила змея."],
+["Operator","Stay calm. What is your location exactly?","Сохраняйте спокойствие. Где вы находитесь точно?"],
+["Caller","We are near the lake, by the visitor centre.","Мы у озера, рядом с визит-центром."],
+["Operator","Is the man conscious? Is he breathing?","Человек в сознании? Он дышит?"],
+["Caller","Yes, he is conscious, but his leg is very painful and swelling.","Да, в сознании, но нога сильно болит и распухает."],
+["Operator","Tell him not to walk and not to move the leg. Keep it still.","Скажите ему не ходить и не двигать ногу. Пусть держит её неподвижно."],
+["Caller","I see. What else should we do?","Понял. Что ещё нам делать?"],
+["Operator","Keep him calm and do not apply a tight bandage. The ambulance is on its way.","Успокойте его и не накладывайте тугой повязку. Скорая уже едет."],
+["Caller","Thank you very much!","Большое спасибо!"],
+["Operator","Stay on the line. Help is coming.","Оставайтесь на линии. Помощь уже идёт."]];
+var dbox=document.getElementById("dialogue");
+DLG.forEach(function(l){var d=document.createElement("div");d.className="dline";
+d.innerHTML="<span class=\"speaker\">"+l[0]+":</span> "+l[1]+"<div class=\"tr\">"+l[2]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+dbox.appendChild(d);});
+
+var SPEAK=["1. What has happened?","2. What animal attacked you?","3. Where exactly are you?","4. Is the person conscious?","5. What does the injured leg look like?"];
+var TRS=["Что произошло?","Какое животное напало?","Где вы точно находитесь?","Человек в сознании?","Как выглядит пострадавшая нога?"];
+var spbox=document.getElementById("speak");
+SPEAK.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+TRS[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+spbox.appendChild(d);});
+
+var QUIZ=[["Which animal can drag its prey under the water?","the alligator","the raccoon","the grizzly bear"],
+["How many teeth does an alligator have at one time?","about 80","about 20","about 200"],
+["What warns people about the rattlesnake?","the rattle on its tail","its bright colour","its loud hiss"],
+["What should you do if a grizzly approaches you?","don&#39;t run; play dead if attacked","run as fast as you can","climb the nearest tree"],
+["Why is a raccoon dangerous?","it can carry diseases like rabies","it is bigger than a bear","it lives in the desert"]];
+var qbox=document.getElementById("quiz"),qScore=0,qDone=0;
+QUIZ.forEach(function(q){var div=document.createElement("div");div.className="quiz";
+div.innerHTML="<b>"+q[0]+"</b>";
+var right=q[1];var opts=[q[1],q[2],q[3]].sort(function(){return Math.random()-0.5;});
+opts.forEach(function(o){var b=document.createElement("button");b.className="qbtn";b.textContent=o;
+b.addEventListener("click",function(){
+if(div.dataset.done)return;div.dataset.done="1";qDone++;
+if(o===right){b.classList.add("ok");qScore++;}else{b.classList.add("bad");
+div.querySelectorAll(".qbtn").forEach(function(x){if(x.textContent===right)x.classList.add("ok");});}
+if(qDone===QUIZ.length){document.getElementById("qmsg").textContent="Результат: "+qScore+" из 5. "+(qScore===5?"Превосходно! Excellent!":"Хорошая работа, перечитайте факты-файлы!");}
+});div.appendChild(b);});qbox.appendChild(div);});
+
+var SPQ=["1. Which wild animal do you find the most dangerous?","2. What dangerous animals live in your region?","3. What should you never do near wild animals?","4. What would you do if you met a wild animal in the forest?","5. Why is it important to protect wildlife?"];
+var SPTR=["Какое дикое животное ты считаешь самым опасным?","Какие опасные животные живут в твоём регионе?","Чего никогда не следует делать рядом с дикими животными?","Что бы ты сделал, если бы встретил дикое животное в лесу?","Почему важно беречь дикую природу?"];
+var sqbox=document.getElementById("speakq");
+SPQ.forEach(function(s,i){var d=document.createElement("div");d.className="dline";d.innerHTML=s+"<div class=\"tr\">"+SPTR[i]+"</div>";
+d.addEventListener("click",function(){var tr=d.querySelector(".tr");tr.style.display=tr.style.display==="block"?"none":"block";});
+sqbox.appendChild(d);});
+
+var msg1="Ты настоящий знаток дикой природы! Молодец! 🌿";
+var msg2="Ещё чуть-чуть, и джунгли будут покорены! 🌿";
+var msg3="Спроси учителя — и опасности больше не страшны! 🌿";
+document.getElementById("fl1").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg1;});
+document.getElementById("fl2").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg2;});
+document.getElementById("fl3").addEventListener("click",function(){document.getElementById("fmsg").textContent=msg3;});
+</script>
+</body>
+</html>
